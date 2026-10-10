@@ -70,8 +70,16 @@ export class SceneRuntime {
   private observer: ResizeObserver;
   private stopped = false;
   private reduced: MediaQueryList;
-  data: ViewData = {};
-  frozen = false;
+  private viewData:ViewData={};
+  private dirty=true;
+  private lastRender=-Infinity;
+  private lastReduced=false;
+  private isFrozen=false;
+  get data(){return this.viewData;}
+  set data(value:ViewData){this.viewData=value;this.dirty=true;}
+  get frozen(){return this.isFrozen;}
+  set frozen(value:boolean){if(value!==this.isFrozen)this.dirty=true;this.isFrozen=value;}
+
   constructor(
     private canvas: HTMLCanvasElement,
     private status: (s: string) => void,
@@ -86,7 +94,7 @@ export class SceneRuntime {
     this.reduced = matchMedia("(prefers-reduced-motion: reduce)");
     this.observer = new ResizeObserver(() => {
       const r = canvas.getBoundingClientRect();
-      this.width=r.width;this.height=r.height;
+      this.width=r.width;this.height=r.height;this.dirty=true;
       this.renderer.setSize(r.width, r.height, false);
       this.active?.resize?.(r.width,r.height);
     });
@@ -102,14 +110,18 @@ export class SceneRuntime {
   private tick = () => {
     if (this.stopped) return;
     const now = performance.now();
-    if (this.active) {
+    const reduced=this.frozen||this.reduced.matches;
+    if(reduced!==this.lastReduced)this.dirty=true;
+    this.lastReduced=reduced;
+    if (this.active && (this.dirty || (!reduced && now-this.lastRender>=1000/30))) {
+      this.dirty=false;this.lastRender=now;
       this.active.update(
         this.frozen ? 0 : (now - this.start) / 1000,
         this.data,
         this.frozen || this.reduced.matches,
       );
       this.renderer.render(this.active.scene, this.active.camera);
-      this.canvas.style.opacity = this.reduced.matches
+      this.canvas.style.opacity = reduced
         ? "1"
         : String(Math.min(1, (now - this.entered) / 550));
     }
@@ -135,6 +147,7 @@ export class SceneRuntime {
       this.active?.exit();
       this.active?.dispose();
       this.active = next;
+      this.dirty=true;
       next.resize?.(this.width,this.height);
       next.enter();
       this.entered = performance.now();

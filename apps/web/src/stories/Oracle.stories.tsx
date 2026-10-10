@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
-import { SceneCanvas } from "../runtime/SceneHost";
+import { SceneCanvas } from "../runtime/SceneCanvas";
 import { StateProvider, useOracle } from "../state/store";
 import Astrology from "../features/Astrology";
 import Tarot from "../features/Tarot";

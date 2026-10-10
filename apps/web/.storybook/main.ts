@@ -7,6 +7,10 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     // Storybook staticDirs owns copying/serving assets; avoid Vite copying them concurrently.
     config.publicDir = false;
+    config.define = { "process.env": "{}", ...config.define };
+    config.optimizeDeps ??= {};
+    config.optimizeDeps.esbuildOptions ??= {};
+    config.optimizeDeps.esbuildOptions.define = {"process.env":"{}",...config.optimizeDeps.esbuildOptions.define};
     config.resolve ??= {};
     config.resolve.alias = {
       ...(config.resolve.alias as Record<string, string>),

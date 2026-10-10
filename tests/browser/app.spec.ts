@@ -120,7 +120,9 @@ test("rapid route changes keep a single canvas and usable keyboard navigation", 
 
 test('repeated navigation releases WebGL allocations and records a frame baseline',async({page,browserName,isMobile})=>{
  test.skip(browserName!=='chromium'||isMobile,'Allocation instrumentation baseline is desktop Chromium only');
- test.setTimeout(120000);
+ test.setTimeout(240000);
+ await page.setViewportSize({width:640,height:480});
+ await page.emulateMedia({reducedMotion:"no-preference"});
  await page.addInitScript(()=>{
   const live={textures:new Set<unknown>(),buffers:new Set<unknown>(),programs:new Set<unknown>()};
   for(const ctor of [WebGLRenderingContext,WebGL2RenderingContext]){
@@ -144,7 +146,7 @@ test('repeated navigation releases WebGL allocations and records a frame baselin
  }
  for(const key of ['textures','buffers','programs'])expect(samples.at(-1)![key]).toBeLessThanOrEqual(samples[1][key]+1);
  const frameIntervals=await page.evaluate(()=>new Promise<number[]>(resolve=>{const values:number[]=[];let last=performance.now();function frame(now:number){values.push(now-last);last=now;if(values.length===60)resolve(values);else requestAnimationFrame(frame);}requestAnimationFrame(frame);}));
- await test.info().attach('navigation-resource-baseline',{body:JSON.stringify({samples,frameIntervalsMs:frameIntervals,scope:'CI software-rendered Chromium, not a physical-device FPS guarantee'},null,2),contentType:'application/json'});
+ await test.info().attach('navigation-resource-baseline',{body:JSON.stringify({samples,frameIntervalsMs:frameIntervals,viewport:{width:640,height:480},scope:'CI software-rendered Chrome at 640x480, standard motion; not a physical-device FPS guarantee'},null,2),contentType:'application/json'});
 });
 
 test('failed scene art preserves controls and offers an accessible retry',async({page,browserName})=>{
