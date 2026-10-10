@@ -8,3 +8,7 @@ apps/web/public/engines/
 .DS_Store
 playwright-report/
 test-results/
+safari-results/
+qualified-build/
+
+__pycache__/

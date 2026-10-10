@@ -216,3 +216,21 @@ test("repeated calls free wire allocations and record honest Node baseline", asy
     JSON.stringify(baseline, null, 2) + "\n",
   );
 });
+
+test("independent condition-aligned Swiss/Moshier reference positions and angles", async () => {
+ const refs=JSON.parse(readFileSync(new URL('tests/fixtures/astronomy-reference.json',root),'utf8'));
+ const delta=(a,b)=>Math.abs((a-b+540)%360-180);
+ for(const ref of refs.cases){
+  const response=await call('astrology',ref.input);assert.equal(response.ok,true);
+  const actual=response.result;
+  for(const body of actual.bodies){
+   const expected=ref.bodies.find(b=>b.id===body.id);
+   assert.ok(delta(body.longitude,expected.longitude)<1/60,`${ref.input.date} ${body.id} longitude`);
+   assert.ok(Math.abs(body.latitude-expected.latitude)<1/60,`${body.id} latitude`);
+   assert.ok(Math.abs(body.speed-expected.speed)<0.001,`${body.id} speed`);
+   assert.equal(body.sign,Math.floor(expected.longitude/30));
+   assert.equal(body.house,(body.sign-Math.floor(ref.angles.asc/30)+12)%12+1);
+  }
+  for(const angle of ['asc','mc'])assert.ok(delta(actual.angles[angle],ref.angles[angle])<0.002,angle);
+ }
+});

@@ -1,0 +1,7 @@
+# Independent numerical fixtures
+
+`npm test` checks six condition-aligned Swiss Ephemeris 2.10.03 / Moshier reference cases (1900, 1950, 2000, 2024, 2050, 2100), all ten bodies, ASC/MC, zodiac and Whole Sign assignment. Planetary TT is explicitly matched to Astronomy Engine's recorded TT; house calculations use the same UTC-as-UT1 input. The independent models differ in nutation/precession and aberration details. This does not certify every instant in the supported interval or eliminate uncertainty near a boundary.
+
+Regression limits: position longitude/latitude 1 arcminute; longitude speed 0.001 degrees/day; ASC/MC 0.002 degrees. Observed maxima are in `astronomy-reference-errors.json`: 0.004613 degrees longitude, 0.005154 latitude, 0.000319 degrees/day speed, 0.000594 degrees angles. Native/WASM parity uses the separate tighter 1e-8 tolerance.
+
+Reference API: https://www.astro.com/swisseph/swephprg.htm. Flags: FLG_MOSEPH | FLG_SPEED, apparent geocentric tropical true ecliptic/equinox of date, east-positive longitude, Whole Sign `W`. Reproduce only in a separate reference environment with `pyswisseph==2.10.3.2`, build `cargo build --locked -p pxoracle-astrology-wasm --example dispatch`, then run `python scripts/generate-astronomy-reference.py`. The reference package is not a production, build, or CI dependency and is not linked into or distributed with PXOracle; only numeric fixtures are committed. Its separate license applies when installing or redistributing that reference tool.

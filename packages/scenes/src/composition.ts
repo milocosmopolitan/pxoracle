@@ -81,6 +81,7 @@ export async function composition(
     return {
       scene,
       camera,
+      resize(width:number,height:number){const aspect=width/Math.max(height,1);const center=aspect<1?-2:0;camera.left=center-5*aspect;camera.right=center+5*aspect;camera.top=5;camera.bottom=-5;camera.updateProjectionMatrix();},
       enter() {
         enteredAt = null;
       },

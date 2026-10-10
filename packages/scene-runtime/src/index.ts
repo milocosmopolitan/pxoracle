@@ -4,6 +4,7 @@ export interface SceneInstance {
   scene: THREE.Scene;
   camera: THREE.Camera;
   enter(): void;
+  resize?(width:number,height:number):void;
   update(time: number, data: ViewData, reduced: boolean): void;
   exit(): void;
   dispose(): void;
@@ -64,6 +65,8 @@ export class SceneRuntime {
   private frame = 0;
   private start = performance.now();
   private entered = 0;
+  private width=1;
+  private height=1;
   private observer: ResizeObserver;
   private stopped = false;
   private reduced: MediaQueryList;
@@ -83,7 +86,9 @@ export class SceneRuntime {
     this.reduced = matchMedia("(prefers-reduced-motion: reduce)");
     this.observer = new ResizeObserver(() => {
       const r = canvas.getBoundingClientRect();
+      this.width=r.width;this.height=r.height;
       this.renderer.setSize(r.width, r.height, false);
+      this.active?.resize?.(r.width,r.height);
     });
     this.observer.observe(canvas);
     canvas.addEventListener("webglcontextlost", this.lost);
@@ -130,6 +135,7 @@ export class SceneRuntime {
       this.active?.exit();
       this.active?.dispose();
       this.active = next;
+      next.resize?.(this.width,this.height);
       next.enter();
       this.entered = performance.now();
       this.status("");

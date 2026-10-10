@@ -209,6 +209,7 @@ export default function Astrology({
               <h2>Your celestial map</h2>
               <button onClick={() => setChart(null)}>Edit details</button>
             </div>
+            {chart.interval[0]!==chart.interval[1] && <p className="hint" role="status">Birth time is uncertain. These positions are midpoint samples; possible signs are sampled across the interval. Ascendant, houses and aspects are omitted.</p>}
             {chart.angles && (
               <p className="hint">
                 Ascendant · {SIGNS[Math.floor(chart.angles.asc / 30)]}{" "}

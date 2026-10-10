@@ -16,10 +16,12 @@ export function SceneCanvas({
   route,
   data = {},
   frozen = false,
+  embedded = false,
 }: {
   route: RouteScene;
   data?: ViewData;
   frozen?: boolean;
+  embedded?: boolean;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const runtime = useRef<SceneRuntime | null>(null);
@@ -63,7 +65,7 @@ export function SceneCanvas({
     }
   }, [data, frozen]);
   return (
-    <div className="scene-host">
+    <div className="scene-host" style={embedded?{position:"absolute"}:undefined}>
       <canvas ref={canvas} aria-hidden="true" />
       <div className="scene-shade" />
       {status && (

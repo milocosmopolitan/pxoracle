@@ -39,6 +39,7 @@ jobs:
           STORYBOOK_DISABLE_TELEMETRY: '1'
       - run: npx playwright install --with-deps chromium firefox webkit
       - run: npx playwright test
+      - run: npx playwright test --config playwright.storybook.config.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -48,3 +49,21 @@ jobs:
             playwright-report/
             test-results/
             apps/web/out/
+
+  safari:
+    needs: verify
+    runs-on: macos-14
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: verification-and-static-export
+          path: qualified-build
+      - run: sudo safaridriver --enable
+      - run: python3 tests/safari/smoke.py qualified-build/apps/web/out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-safari-verification
+          path: safari-results/

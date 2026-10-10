@@ -2,6 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "tests/browser",
   timeout: 60000,
+  workers: 2,
   use: { baseURL: "http://127.0.0.1:4173", trace: "retain-on-failure", screenshot:"only-on-failure" },
   webServer: {
     command: "python3 -m http.server 4173 --directory apps/web/out",
@@ -12,6 +13,7 @@ export default defineConfig({
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
     { name: "firefox", use: { ...devices["Desktop Firefox"] } },
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
+    {name:"mobile-chromium-emulation",use:{...devices["Pixel 7"],reducedMotion:"reduce"}},
   ],
   reporter: [["list"], ["html", { open: "never" }]],
 });

@@ -105,6 +105,7 @@ function Harness({
           STORYBOOK · Deterministic mock data · No WASM calculations
         </p>
         <SceneCanvas
+          embedded
           route={route}
           data={
             state === "reading"

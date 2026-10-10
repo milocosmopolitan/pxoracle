@@ -10,7 +10,8 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
   );
   await page.waitForTimeout(1000);
   expect(requests.filter((x) => x.endsWith(".wasm"))).toEqual([]);
-    await page.screenshot({path:test.info().outputPath("landing.png"),fullPage:true});
+    await page.evaluate(()=>window.scrollTo(0,0));
+  await page.screenshot({path:test.info().outputPath("landing.png"),fullPage:true});
   await page
     .getByRole("link", { name: "Let the cards speak", exact: false })
     .click();
@@ -33,6 +34,7 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
   expect(
     requests.some((x) => x.includes("/astrology/engine.wasm")),
   ).toBeFalsy();
+  await page.evaluate(()=>window.scrollTo(0,0));
   await page.screenshot({path:test.info().outputPath("tarot-reading.png"),fullPage:true});
     await page.getByRole("button", { name: "Save reading", exact: true }).click();
   await page.reload();
@@ -66,13 +68,20 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   ).toBeVisible();
   expect(wasm.some((x) => x.includes("/astrology/"))).toBeTruthy();
   expect(wasm.some((x) => x.includes("/tarot/"))).toBeFalsy();
+  await page.evaluate(()=>window.scrollTo(0,0));
   await page.screenshot({path:test.info().outputPath("astrology-chart.png"),fullPage:true});
+  await page.getByRole('button',{name:'Edit details'}).click();
+  await page.getByLabel('Time accuracy').selectOption('unknown');
+  await page.getByRole('button',{name:'Enter the crystal'}).click();
+  await expect(page.getByText('Birth time is uncertain.',{exact:false})).toBeVisible();
+  await expect(page.getByText('Ascendant ·',{exact:false})).toHaveCount(0);
+
 });
 test("failed engine initialization offers a working retry", async ({
   page,
 }) => {
   let fail = true;
-  await page.route("**/tarot/engine.wasm", (route) =>
+  await page.route("**/tarot/worker.mjs", (route) =>
     fail ? route.abort() : route.continue(),
   );
   await page.goto("/tarot/");
