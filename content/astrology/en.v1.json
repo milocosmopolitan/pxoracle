@@ -1,0 +1,21 @@
+{
+  "version": "en.v1",
+  "locale": "en",
+  "meanings": {
+    "body.sun": "Identity, vitality, and the ways you choose to shine.",
+    "body.moon": "Emotional rhythms, belonging, and what helps you feel at home.",
+    "body.mercury": "How you think, learn, and exchange ideas.",
+    "body.venus": "What you appreciate and how you build connection.",
+    "body.mars": "The way you pursue, act, and assert yourself.",
+    "body.jupiter": "Growth, possibility, and the beliefs that broaden your horizon.",
+    "body.saturn": "Responsibility, boundaries, and lasting commitments.",
+    "body.uranus": "Independence, change, and unexpected perspectives.",
+    "body.neptune": "Imagination, sensitivity, and the edges of certainty.",
+    "body.pluto": "Transformation and your relationship with power.",
+    "aspect.conjunction": "Two themes meet closely. Where do they reinforce or crowd each other?",
+    "aspect.sextile": "A possible opening between these themes. What would it take to use it?",
+    "aspect.square": "A tension worth examining. What competing needs are asking for attention?",
+    "aspect.trine": "An easy relationship between these themes. How might you use it consciously?",
+    "aspect.opposition": "Two different perspectives. What would a workable balance look like?"
+  }
+}

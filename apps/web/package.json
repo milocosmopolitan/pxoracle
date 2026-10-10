@@ -1,1 +1,27 @@
-{"name":"@pxoracle/web","version":"0.1.0","private":true,"scripts":{"dev":"next dev","build":"next build --webpack","storybook":"storybook dev -p 6006 --no-open","build-storybook":"storybook build"},"dependencies":{"next":"16.4.0","react":"19.3.0","react-dom":"19.3.0","three":"0.186.1","zustand":"5.0.15"},"devDependencies":{"storybook":"10.6.1","@storybook/react-vite":"10.6.1","vite":"7.1.12"}}
+{
+  "name": "@pxoracle/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "three": "0.186.1",
+    "zustand": "5.0.15",
+    "@pxoracle/contracts": "0.1.0",
+    "@pxoracle/engine-client": "0.1.0",
+    "@pxoracle/scene-runtime": "0.1.0",
+    "@pxoracle/scenes": "0.1.0"
+  },
+  "devDependencies": {
+    "storybook": "10.6.1",
+    "@storybook/react-vite": "10.6.1",
+    "vite": "7.1.12"
+  }
+}

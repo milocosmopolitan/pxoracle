@@ -4,8 +4,8 @@
   "engines": {
     "astrology": {
       "bytes": 1172615,
-      "gzipBytes": 271606,
-      "initializationMs": 45.160291,
+      "gzipBytes": 271609,
+      "initializationMs": 36.053304999999995,
       "imports": [
         "env.invoke_vi",
         "env.__cxa_find_matching_catch_2",
@@ -34,9 +34,9 @@
       ]
     },
     "tarot": {
-      "bytes": 254161,
-      "gzipBytes": 88059,
-      "initializationMs": 18.78740499999992,
+      "bytes": 254185,
+      "gzipBytes": 88074,
+      "initializationMs": 15.655890999999997,
       "imports": [
         "env.invoke_vi",
         "env.__cxa_find_matching_catch_2",
@@ -64,7 +64,7 @@
         "env.invoke_jiii",
         "env.invoke_jii"
       ],
-      "meanCreateMs": 0.22572317999999997,
+      "meanCreateMs": 0.20316869599999995,
       "heapBytes": 16908288
     }
   }

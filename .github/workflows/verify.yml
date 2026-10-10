@@ -1,5 +1,11 @@
 name: Verify PXOracle
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

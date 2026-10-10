@@ -172,6 +172,9 @@ pub fn select(s: &mut Session, slot: usize) -> Result<(), String> {
 pub fn reveal(s: &mut Session, index: usize) -> Result<(), String> {
     validate(s)?;
     let x = s.selections.get_mut(index).ok_or("NOT_SELECTED")?;
+    if x.revealed {
+        return Ok(());
+    }
     x.revealed = true;
     if s.selections.len() == s.spread && s.selections.iter().all(|x| x.revealed) {
         s.state = "reading".into()
@@ -218,6 +221,8 @@ mod tests {
             reveal(&mut s, i).unwrap();
         }
         complete(&mut s).unwrap();
+        reveal(&mut s, 0).unwrap();
+        assert_eq!(s.state, "completed");
         let restored: Session = serde_json::from_str(&serde_json::to_string(&s).unwrap()).unwrap();
         validate(&restored).unwrap();
         assert_eq!(s, restored);

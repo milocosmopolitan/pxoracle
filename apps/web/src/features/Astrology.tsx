@@ -4,18 +4,8 @@ import Link from "next/link";
 import { SIGNS, type BirthInput } from "@pxoracle/contracts";
 import { useOracle } from "../state/store";
 import { ErrorNotice, Loading, saveReading, readReading } from "./shared";
-const meanings: Record<string, string> = {
-  sun: "Identity, vitality, and the ways you choose to shine.",
-  moon: "Emotional rhythms, belonging, and what helps you feel at home.",
-  mercury: "How you think, learn, and exchange ideas.",
-  venus: "What you appreciate and how you build connection.",
-  mars: "The way you pursue, act, and assert yourself.",
-  jupiter: "Growth, possibility, and the beliefs that broaden your horizon.",
-  saturn: "Responsibility, boundaries, and lasting commitments.",
-  uranus: "Independence, change, and unexpected perspectives.",
-  neptune: "Imagination, sensitivity, and the edges of certainty.",
-  pluto: "Transformation and your relationship with power.",
-};
+import astrologyContent from "../../../../content/astrology/en.v1.json";
+const meanings:Record<string,string> = astrologyContent.meanings;
 export default function Astrology({
   engine: providedEngine,
 }: {
@@ -243,7 +233,7 @@ export default function Astrology({
                   {body.id} · {SIGNS[body.sign]}
                   {body.house ? ` · HOUSE ${body.house}` : ""}
                 </p>
-                <h3>{meanings[body.id]}</h3>
+                <h3>{meanings[body.meaningRef]}</h3>
                 {body.possibleSigns.length > 1 && (
                   <p>
                     Possible signs in the sampled interval:{" "}
@@ -262,7 +252,7 @@ export default function Astrology({
               </summary>
               {chart.aspects.map((a, i) => (
                 <p key={i}>
-                  {a.a} — {a.kind} — {a.b} · orb {a.orb.toFixed(2)}°
+                  {a.a} — {a.kind} — {a.b} · orb {a.orb.toFixed(2)}°<br/>{meanings[a.meaningRef]}
                 </p>
               ))}
             </details>

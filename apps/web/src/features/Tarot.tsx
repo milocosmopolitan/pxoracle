@@ -24,6 +24,8 @@ export default function Tarot({
     [art, setArt] = useState<ArtManifest | null>(null),
     [content, setContent] = useState<TarotContent | null>(null);
   const locked = useRef(false);
+  const generation = useRef(0);
+  useEffect(()=>()=>{++generation.current;},[]);
   async function loadContent() {
     const [a, c] = await Promise.all([
       fetch("/art/manifest.json"),
@@ -53,17 +55,19 @@ export default function Tarot({
   async function action(fn: (engine: Engine) => Promise<TarotSession>) {
     if (locked.current) return;
     locked.current = true;
+    const id=++generation.current;
     setBusy(true);
     setError("");
     try {
       const engine =
         providedEngine ?? (await import("@pxoracle/engine-client/tarot"));
-      setSession(await fn(engine));
+      const result=await fn(engine);
+      if(id===generation.current)setSession(result);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "ERROR");
+      if(id===generation.current)setError(e instanceof Error ? e.message : "ERROR");
     } finally {
-      locked.current = false;
-      setBusy(false);
+      if(id===generation.current){locked.current = false;
+      setBusy(false); }
     }
   }
   const allRevealed =

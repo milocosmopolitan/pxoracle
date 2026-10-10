@@ -6,5 +6,9 @@
   "exports": {
     "./*": "./src/*.ts",
     ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pxoracle/contracts": "0.1.0",
+    "three": "0.186.1"
   }
 }

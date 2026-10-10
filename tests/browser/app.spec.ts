@@ -10,6 +10,7 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
   );
   await page.waitForTimeout(1000);
   expect(requests.filter((x) => x.endsWith(".wasm"))).toEqual([]);
+    await page.screenshot({path:test.info().outputPath("landing.png"),fullPage:true});
   await page
     .getByRole("link", { name: "Let the cards speak", exact: false })
     .click();
@@ -32,7 +33,8 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
   expect(
     requests.some((x) => x.includes("/astrology/engine.wasm")),
   ).toBeFalsy();
-  await page.getByRole("button", { name: "Save reading", exact: true }).click();
+  await page.screenshot({path:test.info().outputPath("tarot-reading.png"),fullPage:true});
+    await page.getByRole("button", { name: "Save reading", exact: true }).click();
   await page.reload();
   await page.getByRole("button", { name: "Resume a saved reading" }).click();
   await expect(
@@ -64,6 +66,7 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   ).toBeVisible();
   expect(wasm.some((x) => x.includes("/astrology/"))).toBeTruthy();
   expect(wasm.some((x) => x.includes("/tarot/"))).toBeFalsy();
+  await page.screenshot({path:test.info().outputPath("astrology-chart.png"),fullPage:true});
 });
 test("failed engine initialization offers a working retry", async ({
   page,

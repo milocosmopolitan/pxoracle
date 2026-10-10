@@ -36,3 +36,5 @@ test("SSG outputs include direct routes, no application server", () => {
     assert.doesNotMatch(html, /storybook-static/);
   }
 });
+
+test("all astrology meaning references resolve to the versioned pack",()=>{const fixture=json("tests/fixtures/engines.json");const content=json("content/astrology/en.v1.json");for(const item of [...fixture.chart.bodies,...fixture.chart.aspects])assert.ok(content.meanings[item.meaningRef],item.meaningRef);});
