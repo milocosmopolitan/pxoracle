@@ -14,6 +14,6 @@
 | Unknown/approximate birth time | Accepted conservative presentation | Local-day range respects DST; omit angles/houses/aspects; disclose midpoint and sampled signs. Certified interval extrema remain a separate accuracy improvement. |
 | SplitMix64 + rejection Fisher–Yates | Accepted | Fixed testable algorithm version, no modulo bias in bounded draws; crypto entropy from browser, not animation. |
 | Art/content external to WASM | Accepted | 78 stable IDs, separate English content pack, only revealed faces requested. Source hashes retained. |
-| Broader browser/mobile performance budgets | Pending measurement | Node timings cannot establish mobile rendering/interaction budgets. |
+| Browser/resource qualification | Accepted with measured limits | Actual Chrome/Firefox/Safari plus WebKit/mobile emulation, bounded seven-cycle GL allocation baseline, and HMR checks. Physical mobile and hardware GPU budgets remain unqualified; see validation/STATUS.md. |
 
 No library/source license is silently applied to the supplied art. No actual AWS account changes are part of the deployment configuration.

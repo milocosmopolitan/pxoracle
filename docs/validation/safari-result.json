@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "landing",
+    "real tarot WASM selection/reveal",
+    "real astrology WASM ten-body chart"
+  ],
+  "scope": "actual Safari on hosted macOS; not iOS or physical mobile",
+  "workflowRun": 38083929265,
+  "commit": "c5d0aa72e75b6f638476181118f2273bf22f8613"
+}

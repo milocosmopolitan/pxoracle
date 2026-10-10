@@ -3,6 +3,7 @@ import {test,expect} from "@playwright/test";
 test("isolated production stories are labeled, interactive and never load WASM",async({page})=>{
  const wasm:string[]=[];page.on("request",r=>{if(r.url().includes("/engines/"))wasm.push(r.url());});
  for(const story of ["landing","astrology-input","astrology-reading","tarot-input","tarot-reading","loading-state","retry-state","mobile-tarot"]){
+  await page.setViewportSize(story==="mobile-tarot"?{width:390,height:844}:{width:1280,height:720});
   await page.goto(`/iframe.html?id=pxoracle-scenes--${story}&viewMode=story`);
   await expect(page.getByText("STORYBOOK · Deterministic mock data · No WASM calculations")).toBeVisible();
   await expect(page.locator("canvas")).toHaveCount(1);

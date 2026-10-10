@@ -174,5 +174,6 @@ export const TarotReading: Story = {
 export const LoadingState: Story = { args: { state: "loading" } };
 export const RetryState: Story = { args: { state: "error" } };
 export const MobileTarot: Story = {
+  globals:{viewport:{value:"mobile390",isRotated:false}},
   args: { route: "tarot", state: "reading", width: 390 },
 };

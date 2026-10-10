@@ -4,7 +4,7 @@ A private, browser-first tarot and Western astrology experience in an oracle’s
 
 ## Implementation status
 
-The npm/Cargo workspaces, two Rust engines, separately linked Emscripten WASM modules, typed Worker clients, Next.js static application, Zustand state, Three.js scenes, supplied 78-card art, and Storybook are implemented. Native tests, Node/WASM parity, static export, and Storybook builds have run successfully in the development environment. See [verification](docs/validation/STATUS.md) for exact evidence and outstanding gates. **This is not a claim of completed Safari/mobile or visual qualification.**
+Epics #1–#3 are implemented: pinned npm/Cargo workspaces, independent Rust/WASM engines, Next.js static export for S3, Zustand client state, supplied 78-card art, persistent Three.js scenes, explicit saved results and a production-code Storybook harness. Qualification passes 10 Rust tests, 15 Node tests, 21 app browser tests, two Storybook interaction/HMR tests, and actual Safari smoke checks. See [verification and support limits](docs/validation/STATUS.md) and the [issue acceptance map](docs/validation/acceptance.md).
 
 | Route | Experience | Calculation download |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ node scripts/check-boundaries.mjs
 bash scripts/generate-schemas.sh
 ```
 
-Browser integration tests are defined for Chromium, Firefox, and WebKit in `playwright.config.ts`. They run against exported HTML, not Next’s development server. WebKit is not branded Safari; actual Safari and mobile device qualification remain separate requirements.
+Browser integration tests run against exported HTML in actual Chrome, Firefox, WebKit and mobile Chromium emulation. A separate macOS job uses actual Safari. Hosted Firefox exercises the usable HTML fallback because WebGL is unavailable there. Physical mobile and hardware GPU performance are not claimed. See the verification guide for exact browser versions and reproduction commands.
 
 ## AWS S3 deployment
 
