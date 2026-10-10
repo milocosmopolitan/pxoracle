@@ -40,9 +40,11 @@ A standard 78-card configuration; one-card and three-card spreads; selection wit
 
 Artwork is independent from stable card IDs. The PXOracle deck preserves deliberate symbolism while allowing diverse people and removing unwanted religious bias. Changes to meaning require content/profile versioning rather than silently changing saved readings.
 
-### Local frontend and storyboard
+### Local frontend and Storybook
 
 A runnable local application should demonstrate all three routes, lazy loading, navigation and return, card reveal, chart element selection, loading/retry states, and reduced motion. Clearly labeled mock providers allow scene work before real engines are ready; mock data must never be presented as calculated output.
+
+Storybook is the local development and review environment for reusable UI and the three scene harnesses. Stories cover loading, ready, error, selection/reveal, reduced motion, and responsive states with deterministic mock providers by default. Storybook reuses production components and scene lifecycle code; route/history and real WASM integration are verified in the Next.js app. Storybook development dependencies must not enter the production bundle.
 
 ## Repository map
 
@@ -50,7 +52,7 @@ The folders below are **planned**, not a claim that they exist:
 
 | Path | Owner |
 | --- | --- |
-| `apps/web` | Next.js routes, app state, browser composition, local storyboard |
+| `apps/web` | Next.js routes, app state, browser composition, Storybook configuration |
 | `packages/scene-runtime` | Persistent renderer, scene lifecycle, transitions, shared resource leases |
 | `packages/scenes` | Independently imported landing, astrology, and tarot scene entrypoints |
 | `packages/engine-client` | Typed worker clients and separate lazy loaders |
@@ -62,7 +64,7 @@ The folders below are **planned**, not a claim that they exist:
 | `crates/pxoracle-tarot-wasm` | Tarot browser adapter |
 | `content` | Interpretation and locale packs |
 | `assets` | Art manifests and approved source metadata |
-| `docs` | Decisions, contracts, storyboard, and validation plans |
+| `docs` | Decisions, contracts, Storybook conventions, and validation plans |
 | `tests` | Cross-boundary fixtures and browser integration |
 
 ## Development
@@ -75,7 +77,7 @@ The C/WASM path should use Rust 1.89 or later for the standardized `wasm32-unkno
 
 1. Scaffold folders, documentation, ownership, versioned contracts, and architecture decisions.
 2. Implement and qualify the two independent engines.
-3. Implement the Next.js app and three local scenes; scene work may start with contract-conforming mocks after the scaffold contracts are ready.
+3. Implement the Next.js app and three local scenes plus Storybook; scene work may start with contract-conforming mocks after the scaffold contracts are ready.
 
 Each epic must link its child issues and dependencies. Completion requires evidence for its acceptance criteria, not just source files.
 
