@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+test.beforeEach(async({browser},info)=>{await info.attach("browser-version",{body:JSON.stringify({project:info.project.name,version:browser.version()}),contentType:"application/json"});});
 test("static direct routes, feature-only WASM, tarot restore and history", async ({
   page,
 }) => {
@@ -70,6 +71,12 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   expect(wasm.some((x) => x.includes("/tarot/"))).toBeFalsy();
   await page.evaluate(()=>window.scrollTo(0,0));
   await page.screenshot({path:test.info().outputPath("astrology-chart.png"),fullPage:true});
+  await page.getByRole('button',{name:'Save on this device'}).click();
+  await page.reload();
+  const beforeRestore=wasm.length;
+  await page.getByRole('button',{name:'Open saved chart'}).click();
+  await expect(page.getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible();
+  expect(wasm.length).toBe(beforeRestore);
   await page.getByRole('button',{name:'Edit details'}).click();
   await page.getByLabel('Time accuracy').selectOption('unknown');
   await page.getByRole('button',{name:'Enter the crystal'}).click();
@@ -134,4 +141,17 @@ test('repeated navigation releases WebGL allocations and records a frame baselin
  for(const key of ['textures','buffers','programs'])expect(samples.at(-1)![key]).toBeLessThanOrEqual(samples[1][key]+1);
  const frameIntervals=await page.evaluate(()=>new Promise<number[]>(resolve=>{const values:number[]=[];let last=performance.now();function frame(now:number){values.push(now-last);last=now;if(values.length===60)resolve(values);else requestAnimationFrame(frame);}requestAnimationFrame(frame);}));
  await test.info().attach('navigation-resource-baseline',{body:JSON.stringify({samples,frameIntervalsMs:frameIntervals,scope:'CI software-rendered Chromium, not a physical-device FPS guarantee'},null,2),contentType:'application/json'});
+});
+
+test('failed scene art preserves controls and offers an accessible retry',async({page})=>{
+ let fail=true;
+ await page.route('**/art/room.webp',route=>fail?route.abort():route.continue());
+ await page.goto('/astrology/');
+ await expect(page.getByLabel('Birth date',{exact:true})).toBeVisible();
+ await page.getByLabel('Birth date',{exact:true}).fill('2000-01-01');
+ const retry=page.getByRole('button',{name:'Retry scene'});
+ await expect(retry).toBeVisible();fail=false;
+ await retry.focus();await page.keyboard.press('Enter');
+ await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
+ await expect(page.getByLabel('Birth date',{exact:true})).toHaveValue('2000-01-01');
 });

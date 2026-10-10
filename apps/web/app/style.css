@@ -121,7 +121,8 @@ nav a:hover {
   pointer-events: none;
 }
 .scene-status {
-  position: absolute;
+  position: fixed;
+  z-index: 30;
   left: 24px;
   bottom: 25px;
   background: #13201eee;

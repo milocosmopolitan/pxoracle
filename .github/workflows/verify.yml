@@ -37,7 +37,7 @@ jobs:
       - run: npm run build-storybook
         env:
           STORYBOOK_DISABLE_TELEMETRY: '1'
-      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npx playwright install --with-deps chromium firefox webkit chrome
       - run: npx playwright test
       - run: npx playwright test --config playwright.storybook.config.ts
       - uses: actions/upload-artifact@v4

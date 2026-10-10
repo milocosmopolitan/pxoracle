@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { SIGNS, type BirthInput } from "@pxoracle/contracts";
+import { SIGNS, type BirthInput, type Chart } from "@pxoracle/contracts";
 import { useOracle } from "../state/store";
 import { ErrorNotice, Loading, saveReading, readReading } from "./shared";
 import astrologyContent from "../../../../content/astrology/en.v1.json";
+import {validateBirth,validateChart} from "./persistence-validators";
 const meanings:Record<string,string> = astrologyContent.meanings;
 export default function Astrology({
   engine: providedEngine,
@@ -20,9 +21,9 @@ export default function Astrology({
     setBody = useOracle((s) => s.setBody);
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
-    [accuracy, setAccuracy] = useState<BirthInput["accuracy"]>("exact"),
+    [accuracy, setAccuracy] = useState<BirthInput["accuracy"]>((chart?.provenance.settings as BirthInput|undefined)?.accuracy??"exact"),
     [notice, setNotice] = useState("");
-  const lastInput = useRef<BirthInput | null>(null);
+  const lastInput = useRef<BirthInput | null>((chart?.provenance.settings as BirthInput|undefined)??null);
   const request = useRef(0);
   useEffect(
     () => () => {
@@ -275,10 +276,10 @@ export default function Astrology({
                 onClick={() => {
                   try {
                     saveReading(
-                      "astrology",
-                      lastInput.current ?? chart.provenance.settings,
+                      "astrology-chart",
+                      {input:lastInput.current ?? chart.provenance.settings,chart},
                     );
-                    setNotice("Birth details saved on this device.");
+                    setNotice("Chart and birth details saved on this device.");
                   } catch {
                     setNotice("This browser could not save the reading.");
                   }
@@ -290,13 +291,14 @@ export default function Astrology({
                 onClick={() => {
                   try {
                     localStorage.removeItem("pxoracle.astrology.v1");
-                    setNotice("Saved birth details deleted.");
+                    localStorage.removeItem("pxoracle.astrology-chart.v1");
+                    setNotice("Saved chart and birth details deleted.");
                   } catch {
                     setNotice("Storage is unavailable.");
                   }
                 }}
               >
-                Delete saved details
+                Delete saved chart
               </button>
             </div>
           </>
@@ -317,9 +319,18 @@ export default function Astrology({
           disabled={busy}
           onClick={() => {
             try {
-              const value = readReading("astrology");
-              if (value) void calculate(value as BirthInput);
-              else setNotice("No saved birth details on this device.");
+              const saved = readReading("astrology-chart") as {input:unknown;chart:unknown}|null;
+              if(saved){
+                if(!validateBirth(saved.input)||!validateChart(saved.chart)||(saved.chart as Chart).schemaVersion!==1||(saved.chart as Chart).engineVersion!=="0.1.0")throw new Error("INCOMPATIBLE_SESSION");
+                lastInput.current=saved.input as BirthInput;
+                setAccuracy(lastInput.current.accuracy);
+                setChart(saved.chart as Chart);
+                setNotice("Saved chart restored without recalculation.");
+              }else{
+                const legacy=readReading("astrology");
+                if(legacy&&validateBirth(legacy))void calculate(legacy as BirthInput);
+                else setNotice("No saved chart on this device.");
+              }
             } catch {
               setError("INCOMPATIBLE_SESSION");
             }

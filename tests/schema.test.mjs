@@ -26,3 +26,11 @@ test("Rust-generated schemas validate wire fixtures and reject malformed fields"
   );
   assert.equal(session({ ...fixtures.session, spread: "3" }), false);
 });
+
+test('generated persistence validators accept actual results and reject malformed saves',async()=>{
+ const {validateBirth,validateChart}=await import('../apps/web/src/features/persistence-validators.ts');
+ assert.equal(validateBirth(fixtures.birth),true);
+ assert.equal(validateChart(fixtures.chart),true);
+ assert.equal(validateChart({...fixtures.chart,bodies:[{id:'sun'}]}),false);
+ assert.equal(validateBirth({...fixtures.birth,latitude:'unknown'}),false);
+});

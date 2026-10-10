@@ -65,9 +65,11 @@ export function SceneCanvas({
     }
   }, [data, frozen]);
   return (
+    <>
     <div className="scene-host" style={embedded?{position:"absolute"}:undefined}>
       <canvas ref={canvas} aria-hidden="true" />
       <div className="scene-shade" />
+    </div>
       {status && (
         <div className="scene-status" role="status">
           {status}
@@ -76,7 +78,7 @@ export function SceneCanvas({
           ) : null}
         </div>
       )}
-    </div>
+    </>
   );
 }
 export default function SceneHost() {

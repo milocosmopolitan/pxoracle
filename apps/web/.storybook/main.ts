@@ -5,6 +5,8 @@ const config: StorybookConfig = {
   framework: "@storybook/react-vite",
   staticDirs: ["../public"],
   viteFinal: async (config) => {
+    // Storybook staticDirs owns copying/serving assets; avoid Vite copying them concurrently.
+    config.publicDir = false;
     config.resolve ??= {};
     config.resolve.alias = {
       ...(config.resolve.alias as Record<string, string>),

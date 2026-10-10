@@ -30,4 +30,4 @@ The full serialized deck is client-local, inspectable by a determined user, and 
 
 ## Persistence
 
-Envelope `{schemaVersion:1,value}` with feature-specific key. Explicit save and delete only. No automatic persistence/hydration. Tarot restore goes through Rust. Astrology saved settings are recalculated through Rust; the original chart result remains in memory across route changes. Incompatible/corrupt data is rejected. Quota/storage errors stay in the UI.
+Envelope `{schemaVersion:1,value}` with feature-specific key. Explicit save and delete only. No automatic persistence/hydration. Tarot restore goes through Rust. Astrology saves both the actual chart and its input under `astrology-chart.v1`; generated Rust-schema validators reject malformed data before restoring without recalculation. Legacy input-only `astrology.v1` records are explicitly recalculated. Chart schema/engine version must be supported. Incompatible/corrupt data is rejected. Quota/storage errors stay in the UI.
