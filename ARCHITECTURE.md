@@ -35,7 +35,8 @@ apps/web/
   src/runtime/
   src/features/
   src/state/
-  src/storyboard/
+  .storybook/
+  src/stories/
 packages/
   contracts/
   engine-client/
@@ -61,7 +62,7 @@ assets/
 docs/
   decisions/
   contracts/
-  storyboard/
+  storybook/
 tests/
   fixtures/
   browser/
@@ -168,9 +169,19 @@ Scaffold gate: workspace manifests, ownership/import rules, ADRs, contract fixtu
 
 Engine gate: native and WASM parity, reference fixtures, invalid input/error contracts, worker smoke execution, artifact sizes, and real browser qualification before claiming browser support. Tarot needs invariant/reference tests; astrology needs condition-aligned independent references and boundary tests.
 
-Frontend gate: direct-route access, latest-navigation wins, history consistency, keyboard/focus behavior, reduced motion, failed asset/WASM retry, resumed sessions, and disposal verification. Network traces prove feature isolation. Browser tests exercise real adapters after engine qualification; storyboard mocks remain visibly labeled.
+Frontend gate: direct-route access, latest-navigation wins, history consistency, keyboard/focus behavior, reduced motion, failed asset/WASM retry, resumed sessions, and disposal verification. Network traces prove feature isolation. Browser tests exercise real adapters after engine qualification; Storybook mock providers remain visibly labeled.
 
 Report separate compressed download, initialization, calculation, navigation/frame behavior, and memory measurements. Set budgets after the initial baseline.
+
+## Storybook development boundary
+
+Storybook is a separate local development entrypoint configured under apps/web/.storybook, with stories under apps/web/src/stories or beside shared components. The builder/framework adapter and versions are pinned after compatibility with the selected Next.js version is checked.
+
+Stories import the same production components, scene entrypoints, and runtime harness; do not implement parallel scene logic. Decorators inject synthetic fixtures, mock worker clients, asset resolvers, container dimensions, and reduced-motion preferences. Each scene story owns a renderer lease or isolated runtime instance that is fully cleaned up on story switch, unmount, and hot reload; the single persistent renderer rule applies to the production Next.js app, not across Storybook iframes.
+
+Cover oracle expressions, crystal idle/active/chart states, card back/upright/reversed/selected/revealed states, forms and reading panels, and isolated landing/astrology/tarot scenes. Use deterministic fixtures and an explicit freeze/reset mechanism for animated capture. No ordinary story initializes real WASM; opt-in real-engine integration stories must be labeled and load only the selected engine.
+
+Storybook component/interaction/visual checks complement app tests. It does not prove actual App Router history, direct links, production lazy bundles, or browser engine support. Keep Storybook output and dependencies outside the production app bundle and use synthetic personal information only.
 
 ## 12. Decisions to capture as ADRs
 
@@ -182,6 +193,7 @@ Report separate compressed download, initialization, calculation, navigation/fra
 | Time conversion | Explicit historical timezone adapter | Dataset, coverage, ambiguity policy, and browser delivery |
 | Rendering | Persistent renderer, three lazy scenes | Interface, camera transition, asset leases, reduced motion |
 | Tarot RNG/session | Versioned permutation and saved actual results | Pin PRNG, reference vectors, schema migration |
+| Storybook | Shared components and isolated scene harnesses | Compatible adapter/version, decorators, deterministic captures, and teardown |
 | Content/art | Separate versioned packs and stable IDs | Authoring schema, approval and licensing workflow |
 
 Every ADR records context, decision, alternatives, consequences, validation evidence, and supersession rules. Folder names are not sufficient boundary enforcement; add import checks and contract tests as implementations land.
