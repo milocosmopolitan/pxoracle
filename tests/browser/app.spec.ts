@@ -107,3 +107,31 @@ test("rapid route changes keep a single canvas and usable keyboard navigation", 
   await page.keyboard.press("Tab");
   await expect(page.locator(":focus")).toHaveCount(1);
 });
+
+test('repeated navigation releases WebGL allocations and records a frame baseline',async({page,browserName,isMobile})=>{
+ test.skip(browserName!=='chromium'||isMobile,'Allocation instrumentation baseline is desktop Chromium only');
+ await page.addInitScript(()=>{
+  const live={textures:new Set<unknown>(),buffers:new Set<unknown>(),programs:new Set<unknown>()};
+  for(const ctor of [WebGLRenderingContext,WebGL2RenderingContext]){
+   for(const [kind,suffix] of [['textures','Texture'],['buffers','Buffer'],['programs','Program']] as const){
+    const proto=ctor.prototype as any,create=proto['create'+suffix],remove=proto['delete'+suffix];
+    proto['create'+suffix]=function(...args:unknown[]){const item=create.apply(this,args);if(item)live[kind].add(item);return item;};
+    proto['delete'+suffix]=function(item:unknown){live[kind].delete(item);return remove.call(this,item);};
+   }
+  }
+  (window as any).__pxResources=()=>Object.fromEntries(Object.entries(live).map(([k,v])=>[k,v.size]));
+ });
+ await page.goto('/');
+ const samples:Record<string,number>[]=[];
+ for(let i=0;i<7;i++){
+  for(const name of ['Astrology','Tarot','The room']){
+   await page.getByRole('link',{name,exact:true}).click();
+   await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
+   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  }
+  samples.push(await page.evaluate(()=>(window as any).__pxResources()));
+ }
+ for(const key of ['textures','buffers','programs'])expect(samples.at(-1)![key]).toBeLessThanOrEqual(samples[1][key]+1);
+ const frameIntervals=await page.evaluate(()=>new Promise<number[]>(resolve=>{const values:number[]=[];let last=performance.now();function frame(now:number){values.push(now-last);last=now;if(values.length===60)resolve(values);else requestAnimationFrame(frame);}requestAnimationFrame(frame);}));
+ await test.info().attach('navigation-resource-baseline',{body:JSON.stringify({samples,frameIntervalsMs:frameIntervals,scope:'CI software-rendered Chromium, not a physical-device FPS guarantee'},null,2),contentType:'application/json'});
+});
