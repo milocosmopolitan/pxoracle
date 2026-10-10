@@ -21,7 +21,7 @@ test("isolated production stories are labeled, interactive and never load WASM",
    await expect(page.getByRole("heading",{name:"Let the images settle."})).toBeVisible();
   }
   await page.evaluate(()=>window.scrollTo(0,0));
-  await page.screenshot({path:test.info().outputPath(`${story}.png`),fullPage:true});
+  await page.screenshot({path:test.info().outputPath(`${story}.png`),fullPage:false,scale:"css"});
  }
  expect(wasm).toEqual([]);
 });

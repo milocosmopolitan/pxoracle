@@ -69,6 +69,10 @@ const mockTarot = {
   complete: async (s: TarotSession) => ({ ...s, state: "completed" as const }),
   evict() {},
 };
+function SceneBridge({route,frozen}:{route:RouteScene;frozen:boolean}){
+ const chart=useOracle(s=>s.chart),selectedBody=useOracle(s=>s.selectedBody),tarot=useOracle(s=>s.tarot);
+ return <SceneCanvas embedded route={route} frozen={frozen} data={{bodies:chart?.bodies,selectedBody,revealedCount:tarot?.selections.filter(x=>x.revealed).length}}/>;
+}
 function Harness({
   route = "landing",
   state = "ready",
@@ -89,9 +93,9 @@ function Harness({
         style={{
           width,
           maxWidth: "100%",
-          minHeight: 800,
+          height: 800,
           position: "relative",
-          overflow: "hidden",
+          overflow: "auto",
         }}
       >
         <p
@@ -104,16 +108,7 @@ function Harness({
         >
           STORYBOOK · Deterministic mock data · No WASM calculations
         </p>
-        <SceneCanvas
-          embedded
-          route={route}
-          data={
-            state === "reading"
-              ? { bodies: chart.bodies, selectedBody: "sun" }
-              : {}
-          }
-          frozen={frozen}
-        />
+        <SceneBridge route={route} frozen={frozen} />
         <div style={{ position: "relative", zIndex: 2 }}>
           {shown === "loading" ? (
             <div className="panel">

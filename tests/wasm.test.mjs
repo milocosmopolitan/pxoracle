@@ -234,3 +234,18 @@ test("independent condition-aligned Swiss/Moshier reference positions and angles
   for(const angle of ['asc','mc'])assert.ok(delta(actual.angles[angle],ref.angles[angle])<0.002,angle);
  }
 });
+
+test('major aspect orb inclusion and Whole Sign cusp boundaries',async()=>{
+ const base=(await call('astrology',birth)).result;
+ const orb=base.aspects.find(x=>x.a==='sun'&&x.b==='moon'&&x.kind==='sextile').orb;
+ const at=(await call('astrology',{...birth,orbs:[0,orb,0,0,0]})).result;
+ const outside=(await call('astrology',{...birth,orbs:[0,orb-1e-7,0,0,0]})).result;
+ const sunMoon=a=>a.aspects.some(x=>x.a==='sun'&&x.b==='moon'&&x.kind==='sextile');
+ assert.equal(sunMoon(at),true);assert.equal(sunMoon(outside),false);
+ let low=0,high=30;
+ for(let n=0;n<30;n++){const longitude=(low+high)/2;const chart=(await call('astrology',{...birth,longitude})).result;if(chart.angles.asc<30)low=longitude;else high=longitude;}
+ const before=(await call('astrology',{...birth,longitude:low-0.001})).result;
+ const after=(await call('astrology',{...birth,longitude:high+0.001})).result;
+ assert.equal(before.houses[0],0);assert.equal(after.houses[0],30);
+ assert.equal(before.bodies[0].house,10);assert.equal(after.bodies[0].house,9);
+});
