@@ -1,0 +1,10 @@
+[package]
+name = "pxoracle-ephemeris"
+version.workspace = true
+edition.workspace = true
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+
+[build-dependencies]
+cc = "1.2.41"

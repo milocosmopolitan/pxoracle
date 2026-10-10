@@ -1,0 +1,75 @@
+name: Verify PXOracle
+on:
+  push:
+    branches: [main]
+  pull_request:
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    outputs:
+      static_built: ${{ steps.static-build.outcome == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - uses: dtolnay/rust-toolchain@1.90.0
+        with:
+          targets: wasm32-unknown-emscripten
+      - uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: '4.0.10'
+          actions-cache-folder: emsdk-cache
+      - run: npm ci
+      - run: node scripts/check-boundaries.mjs
+      - run: cargo test --locked
+      - run: npm run wasm
+      - run: npm run typecheck
+      - id: static-build
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+      - run: npm test
+      - id: storybook-build
+        run: npm run build-storybook
+        env:
+          STORYBOOK_DISABLE_TELEMETRY: '1'
+      - run: npx playwright install --with-deps chromium firefox webkit chrome
+      - run: npx playwright test
+      - if: ${{ !cancelled() && steps.storybook-build.outcome == 'success' }}
+        run: npx playwright test --config playwright.storybook.config.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-and-static-export
+          path: |
+            docs/validation/
+            playwright-report/
+            test-results/
+            apps/web/out/
+
+  safari:
+    needs: verify
+    if: ${{ !cancelled() && needs.verify.outputs.static_built == 'true' }}
+    runs-on: macos-14
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: verification-and-static-export
+          path: qualified-build
+      - run: sudo safaridriver --enable
+      - run: python3 tests/safari/smoke.py qualified-build/apps/web/out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-safari-verification
+          path: safari-results/

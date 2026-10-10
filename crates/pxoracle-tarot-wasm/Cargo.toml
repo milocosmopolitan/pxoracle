@@ -1,0 +1,11 @@
+[package]
+name = "pxoracle-tarot-wasm"
+version.workspace = true
+edition.workspace = true
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+pxoracle-tarot = { path = "../pxoracle-tarot" }
+
+[lib]
+crate-type = ["staticlib", "rlib"]

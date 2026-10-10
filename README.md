@@ -1,105 +1,67 @@
 # PXOracle
 
-PXOracle is a browser-first tarot and Western astrology experience set in a premium celestial pixel-art world. An oracle character guides visitors from a quiet room into either a card reading at the table or an interactive chart inside a crystal ball.
+A private, browser-first tarot and Western astrology experience in an oracle’s pixel-art study.
 
-**Status: architecture and implementation planning.** This repository begins with documentation. Engines, WASM builds, scenes, and browser qualification are not implemented or verified yet.
+## Implementation status
 
-## Product experience
+Epics #1–#3 are implemented: pinned npm/Cargo workspaces, independent Rust/WASM engines, Next.js static export for S3, Zustand client state, supplied 78-card art, persistent Three.js scenes, explicit saved results and a production-code Storybook harness. Qualification passes 10 Rust tests, 15 Node tests, 21 app browser tests, two Storybook interaction/HMR tests, and actual Safari smoke checks. See [verification and support limits](docs/validation/STATUS.md) and the [issue acceptance map](docs/validation/acceptance.md).
 
-| Route | Experience | Calculation dependency |
+| Route | Experience | Calculation download |
 | --- | --- | --- |
-| `/` | Oracle, room, table, and choice of reading | None |
-| `/astrology` | Birth information, chart calculation, crystal-ball entry, planet exploration | Astrology WASM, loaded on demand |
-| `/tarot` | Question, spread, card selection, reveal, and reading | Tarot WASM, loaded on demand |
+| `/` | Oracle’s study and two accessible entry links | None |
+| `/tarot/` | One/three cards, selection, reveal, reflective reading, explicit save/restore | Tarot worker + WASM on first action |
+| `/astrology/` | Local birth information, ten celestial bodies, Whole Sign chart | Astrology worker + WASM on calculation |
 
-One persistent browser canvas and renderer host three independently managed scenes. Navigation should preserve visual continuity while keeping URL history, loading states, and accessible HTML controls correct. Direct visits to any route must work without visiting the landing page.
+## Run locally
 
-## Technical direction
+Prerequisites: Node 22.16+ (development verified on Node 24.19), npm, Rust 1.90.0, Emscripten 4.0.10. Activate the Emscripten SDK in the current shell before building. The Rust toolchain file installs the target. Runtime WebP art is checked in; the original uploads do not need to be downloaded to run the app.
 
-- **Rust:** independent astrology and tarot domain engines, usable natively and through separate WASM artifacts.
-- **Astronomy Engine C:** preferred astronomical backend behind a small internal FFI boundary. Native and browser integration requires a build/accuracy spike before commitment to a toolchain.
-- **TypeScript + Three.js:** scenes, camera transitions, animation, interaction, and rendering.
-- **Next.js App Router:** static route content, metadata, accessible forms and reading panels, and the persistent client runtime.
-- **npm workspaces + Cargo workspace:** one repository with explicit package and crate ownership.
-- **Web Workers:** initialize only the needed calculation engine; avoid coupling calculation to render frames.
-- **Independent content and art packs:** card illustrations, translations, and interpretation text are not embedded in engine WASM.
+```bash
+npm ci
+cargo test --locked
+npm run wasm
+npm run dev
+```
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for dependency rules, proposed folders, data contracts, resource ownership, and unresolved decisions.
+```bash
+npm run typecheck
+npm run build             # apps/web/out/ — deploy these files to S3
+npm test                  # requires WASM and static build
+npm run storybook         # localhost:6006, deterministic mocks
+npm run build-storybook
+node scripts/check-boundaries.mjs
+bash scripts/generate-schemas.sh
+```
 
-## Initial scope
+Browser integration tests run against exported HTML in actual Chrome, Firefox, WebKit and mobile Chromium emulation. A separate macOS job uses actual Safari. Hosted Firefox exercises the usable HTML fallback because WebGL is unavailable there. Physical mobile and hardware GPU performance are not claimed. See the verification guide for exact browser versions and reproduction commands.
 
-### Astrology
+## AWS S3 deployment
 
-Tropical zodiac, geocentric positions, ten bodies (Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto), ASC/MC, Whole Sign houses, and conjunction/sextile/square/trine/opposition.
+This is a fully static export: `output: 'export'`, `trailingSlash: true`, no application server/API routes/middleware. See [S3 and CloudFront](docs/deployment.md). A CloudFront viewer-request function resolves `/tarot/` to `/tarot/index.html` for a private S3 REST origin. The optional deployment script requires explicitly supplied bucket/distribution identifiers. No AWS deployment was performed as part of implementation.
 
-Birth time accuracy is explicit. Unknown time produces supported date-range results without invented ASC or houses. Historical timezone ambiguity must be resolved explicitly. Transits, Placidus, sidereal profiles, and synastry follow the first natal-chart experience.
+## Boundaries
 
-### Tarot
+- Rust cores own astronomical/reading semantics. They do not own DOM, images, local storage, or animation.
+- Astronomy Engine C is vendored at a fixed commit under its MIT license; one mutex guards all native C calls and its mutable caches.
+- Each engine has its own Worker and WASM. The C shim and astrology Rust code are statically linked into the same module.
+- A persistent client canvas hosts separately imported scenes; Zustand survives route changes outside scene lifetimes.
+- Card illustrations and English reflective content load separately. Hidden deck order is never given to scenes; local session storage contains the actual full deck to restore unfinished readings.
+- Save/delete is explicit. Tarot questions remain in memory; they are never included in saved readings. Birth records are saved only on request. No analytics or remote geocoding is included.
 
-A standard 78-card configuration; one-card and three-card spreads; selection without replacement; separately recorded card orientation; and versioned interpretation references. Reversals are supported but disabled by default. The first three-card spread uses situation, what to examine, and possible next action.
+See [architecture](ARCHITECTURE.md), [decisions](docs/decisions/README.md), [contracts](docs/contracts/README.md), and [contributing](CONTRIBUTING.md).
 
-Artwork is independent from stable card IDs. The PXOracle deck preserves deliberate symbolism while allowing diverse people and removing unwanted religious bias. Changes to meaning require content/profile versioning rather than silently changing saved readings.
+## Accuracy and interpretation
 
-### Local frontend and Storybook
+The initial chart is tropical, apparent geocentric true ecliptic/equinox of date; ten bodies; major aspects; Whole Sign houses. UTC approximates UT1 (no DUT1 correction); Astronomy Engine supplies its default Espenak–Meeus delta-T. Local historical times use pinned `chrono-tz` data, never the device time zone. DST gaps and folds require explicit resolution.
 
-A runnable local application should demonstrate all three routes, lazy loading, navigation and return, card reveal, chart element selection, loading/retry states, and reduced motion. Clearly labeled mock providers allow scene work before real engines are ready; mock data must never be presented as calculated output.
+Dates are restricted to 1900–2100 for this initial profile. This is an input support policy, **not a certified accuracy bound across that whole interval**. Unknown/approximate times omit angles, houses, and aspects; midpoint positions and 15-minute sampled possible signs are disclosed. Sampling is not a rigorous extrema proof. Polar locations at |latitude| ≥66° omit angles/houses with a warning.
 
-Storybook is the local development and review environment for reusable UI and the three scene harnesses. Stories cover loading, ready, error, selection/reveal, reduced motion, and responsive states with deterministic mock providers by default. Storybook reuses production components and scene lifecycle code; route/history and real WASM integration are verified in the Next.js app. Storybook development dependencies must not enter the production bundle.
+Tarot uses SplitMix64 and unbiased rejection-sampled Fisher–Yates with browser-supplied entropy. It is deterministic for testing, not intended as a cryptographic lottery. Actual serialized results, not seeds, are restored.
 
-## Repository map
+Astrology and tarot interpretations are reflective content, not scientifically validated predictions. The initial English pack is deliberately concise and needs editorial review before commercial launch.
 
-The folders below are **planned**, not a claim that they exist:
+## Art and licenses
 
-| Path | Owner |
-| --- | --- |
-| `apps/web` | Next.js routes, app state, browser composition, Storybook configuration |
-| `packages/scene-runtime` | Persistent renderer, scene lifecycle, transitions, shared resource leases |
-| `packages/scenes` | Independently imported landing, astrology, and tarot scene entrypoints |
-| `packages/engine-client` | Typed worker clients and separate lazy loaders |
-| `packages/contracts` | Versioned browser protocol schemas and fixtures |
-| `crates/pxoracle-ephemeris` | C backend build, private FFI, astronomical conversion |
-| `crates/pxoracle-astrology` | Astrology domain calculations |
-| `crates/pxoracle-astrology-wasm` | Astrology browser adapter |
-| `crates/pxoracle-tarot` | Tarot domain and session calculations |
-| `crates/pxoracle-tarot-wasm` | Tarot browser adapter |
-| `content` | Interpretation and locale packs |
-| `assets` | Art manifests and approved source metadata |
-| `docs` | Decisions, contracts, Storybook conventions, and validation plans |
-| `tests` | Cross-boundary fixtures and browser integration |
+The user supplied six original archives. Runtime copies preserve transparency, use nearest-neighbor reduction and lossless WebP, and retain source hashes/dimensions in `assets/manifests/art.json`. Original files are unchanged. `scripts/import-assets.py` rebuilds runtime copies from the extracted source directories (Pillow required). All 78 card IDs are mapped and checked. Door exploration and unused source variants remain in the original archives, not the runtime download.
 
-## Development
-
-There are no working install/build/run commands yet. The scaffold epic will introduce pinned toolchains, workspace manifests, truthful commands, and minimal checks. Engine and frontend epics will add runnable implementations.
-
-The C/WASM path should use Rust 1.89 or later for the standardized `wasm32-unknown-unknown` C ABI. ABI compatibility does not supply C libc/libm or prove an Astronomy Engine build. Final Rust/Clang/SDK versions and target will be pinned after the backend spike.
-
-## Delivery order
-
-1. Scaffold folders, documentation, ownership, versioned contracts, and architecture decisions.
-2. Implement and qualify the two independent engines.
-3. Implement the Next.js app and three local scenes plus Storybook; scene work may start with contract-conforming mocks after the scaffold contracts are ready.
-
-Each epic must link its child issues and dependencies. Completion requires evidence for its acceptance criteria, not just source files.
-
-## Validation principles
-
-- Compare astronomy results only after aligning time scales, coordinate frames, and correction policy.
-- Test angle wraparound, boundaries, historical local times, unknown birth time, and native/WASM agreement.
-- Test tarot permutation invariants, deterministic reference vectors, duplicate actions, and saved-result restoration.
-- Verify that landing does not download either engine and each feature does not download the other engine.
-- Exercise direct links, rapid navigation, browser history, asset failures, reduced motion, keyboard access, and resource cleanup.
-- Record artifact sizes and representative mobile performance before setting final budgets.
-
-## Privacy and interpretation
-
-Calculation is intended to run locally. Browser-side locality must be verified through network tests. Birth information and tarot questions must not enter URLs, analytics, or logs. Saving is explicit, versioned, and removable; any future location lookup service must disclose what it receives.
-
-Astronomical positions and interpretive content are separate. Astrology and tarot readings are reflective content, not scientifically validated predictions.
-
-## References
-
-- [Astronomy Engine](https://github.com/cosinekitty/astronomy) — preferred MIT-licensed backend candidate.
-- [Rust 1.89 C ABI change](https://blog.rust-lang.org/2025/08/07/Rust-1.89.0/#standards-compliant-c-abi-on-the-wasm32-unknown-unknown-target).
-- [Rust WASM target guidance](https://doc.rust-lang.org/rustc/platform-support/wasm32-unknown-unknown.html).
-
-A repository license has not been selected. Do not assume third-party code, generated assets, and future commercial deck art share one license.
+No repository-wide redistribution license is inferred for supplied art or project code. Third-party Astronomy Engine retains its upstream MIT license in its vendor directory.

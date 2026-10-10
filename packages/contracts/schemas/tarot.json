@@ -1,0 +1,109 @@
+{
+  "tarot": {
+    "$defs": {
+      "Card": {
+        "additionalProperties": false,
+        "properties": {
+          "cardId": {
+            "type": "string"
+          },
+          "orientation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "cardId",
+          "orientation"
+        ],
+        "type": "object"
+      },
+      "Selection": {
+        "additionalProperties": false,
+        "properties": {
+          "card": {
+            "$ref": "#/$defs/Card"
+          },
+          "meaningRefs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "positionId": {
+            "type": "string"
+          },
+          "revealed": {
+            "type": "boolean"
+          },
+          "slot": {
+            "format": "uint",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "slot",
+          "positionId",
+          "revealed",
+          "card",
+          "meaningRefs"
+        ],
+        "type": "object"
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "algorithm": {
+        "type": "string"
+      },
+      "contentVersion": {
+        "type": "string"
+      },
+      "deck": {
+        "items": {
+          "$ref": "#/$defs/Card"
+        },
+        "type": "array"
+      },
+      "deckId": {
+        "type": "string"
+      },
+      "engineVersion": {
+        "type": "string"
+      },
+      "schemaVersion": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "selections": {
+        "items": {
+          "$ref": "#/$defs/Selection"
+        },
+        "type": "array"
+      },
+      "spread": {
+        "format": "uint",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "state": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schemaVersion",
+      "engineVersion",
+      "algorithm",
+      "deckId",
+      "contentVersion",
+      "spread",
+      "deck",
+      "selections",
+      "state"
+    ],
+    "title": "Session",
+    "type": "object"
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "astrology": {
+    "$defs": {
+      "Angles": {
+        "properties": {
+          "asc": {
+            "format": "double",
+            "type": "number"
+          },
+          "mc": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "required": [
+          "asc",
+          "mc"
+        ],
+        "type": "object"
+      },
+      "Aspect": {
+        "properties": {
+          "a": {
+            "type": "string"
+          },
+          "angle": {
+            "format": "double",
+            "type": "number"
+          },
+          "b": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "meaningRef": {
+            "type": "string"
+          },
+          "orb": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "required": [
+          "a",
+          "b",
+          "kind",
+          "angle",
+          "orb",
+          "meaningRef"
+        ],
+        "type": "object"
+      },
+      "Body": {
+        "properties": {
+          "degree": {
+            "format": "double",
+            "type": "number"
+          },
+          "house": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "latitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "longitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "meaningRef": {
+            "type": "string"
+          },
+          "possibleSigns": {
+            "items": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "sign": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "speed": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "longitude",
+          "latitude",
+          "speed",
+          "sign",
+          "degree",
+          "possibleSigns",
+          "meaningRef"
+        ],
+        "type": "object"
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "properties": {
+      "angles": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Angles"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "aspects": {
+        "items": {
+          "$ref": "#/$defs/Aspect"
+        },
+        "type": "array"
+      },
+      "bodies": {
+        "items": {
+          "$ref": "#/$defs/Body"
+        },
+        "type": "array"
+      },
+      "engineVersion": {
+        "type": "string"
+      },
+      "houses": {
+        "items": {
+          "format": "double",
+          "type": "number"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "interval": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "provenance": true,
+      "schemaVersion": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "warnings": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "schemaVersion",
+      "engineVersion",
+      "bodies",
+      "aspects",
+      "interval",
+      "warnings",
+      "provenance"
+    ],
+    "title": "Chart",
+    "type": "object"
+  },
+  "input": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "accuracy": {
+        "type": "string"
+      },
+      "date": {
+        "type": "string"
+      },
+      "fold": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "latitude": {
+        "format": "double",
+        "type": "number"
+      },
+      "longitude": {
+        "format": "double",
+        "type": "number"
+      },
+      "orbs": {
+        "default": [
+          8.0,
+          4.0,
+          6.0,
+          6.0,
+          8.0
+        ],
+        "items": {
+          "format": "double",
+          "type": "number"
+        },
+        "maxItems": 5,
+        "minItems": 5,
+        "type": "array"
+      },
+      "time": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "timezone": {
+        "type": "string"
+      },
+      "uncertaintyMinutes": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "date",
+      "timezone",
+      "latitude",
+      "longitude",
+      "accuracy"
+    ],
+    "title": "Input",
+    "type": "object"
+  }
+}

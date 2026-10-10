@@ -1,0 +1,13 @@
+{
+  "name": "@pxoracle/engine-client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": "./src/*.ts",
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pxoracle/contracts": "0.1.0"
+  }
+}

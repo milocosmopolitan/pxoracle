@@ -1,0 +1,11 @@
+[package]
+name = "pxoracle-astrology"
+version.workspace = true
+edition.workspace = true
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+pxoracle-ephemeris = { path = "../pxoracle-ephemeris" }
+chrono = { version = "0.4.42", default-features = false, features = ["std", "serde"] }
+chrono-tz = "0.10.4"
+schemars = "=1.0.4"

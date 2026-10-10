@@ -1,0 +1,14 @@
+node_modules/
+target/
+.next/
+out/
+storybook-static/
+apps/web/public/engines/
+*.tsbuildinfo
+.DS_Store
+playwright-report/
+test-results/
+safari-results/
+qualified-build/
+
+__pycache__/

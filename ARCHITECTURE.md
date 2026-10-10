@@ -1,12 +1,12 @@
 # PXOracle Architecture
 
-**Status:** design baseline, 2026-10-10. Everything described here is planned unless an implementation issue provides verification evidence. This document defines code boundaries before implementation.
+**Status:** implementation baseline, 2026-10-10. See `docs/validation/STATUS.md` for measured results and unqualified browser/device gates. Accepted implementation choices supersede provisional wording below: Next.js static export to S3, Zustand client state, Emscripten 4.0.10, Rust 1.90.0, and embedded chrono-tz historical rules.
 
 ## 1. Design goals
 
 Deliver three route-specific experiences in one visual world, with independent Rust engines loaded only when needed. Preserve approved pixel artwork, support accessible HTML interaction, and allow engine, scene, art, and interpretation changes without cross-layer rewrites.
 
-The first delivery is local. Hosting and commercial deck entitlement services are outside the initial implementation epics.
+The first delivery runs locally and produces an S3-compatible static export. AWS account provisioning and commercial deck entitlement services are outside this delivery.
 
 ## 2. Dependency and ownership rules
 
@@ -24,7 +24,7 @@ The first delivery is local. Hosting and commercial deck entitlement services ar
 
 Astrology and tarot cores have no dependency on each other. The app may combine their serialized results later. There is no generic “oracle engine” in the initial scope.
 
-## 3. Proposed workspace
+## 3. Workspace
 
 ```text
 apps/web/
@@ -74,6 +74,8 @@ Use separate scene and engine entrypoints. A common barrel must not eagerly impo
 
 ## 4. Routes and persistent rendering
 
+Client state uses a per-root-provider Zustand vanilla store. No mutable global store is accessed during server rendering. User-triggered persistence is outside the scene runtime; unhydrated state is identical on server and client.
+
 Use Next.js App Router with a client runtime mounted in the root layout, above feature route content. It owns one canvas and one Three.js renderer. Server-rendered route content provides page metadata, headings, forms, and usable loading/fallback UI.
 
 | Route | Scene | Feature engine |
@@ -84,7 +86,7 @@ Use Next.js App Router with a client runtime mounted in the root layout, above f
 
 One renderer does not imply one camera: scenes can have their own cameras and presentation state. The runtime selects active views and coordinates transitions.
 
-Static export is the preferred initial deployment shape; choose Next.js features that support it. The scaffold ADR must explain direct route resolution for a static host. No server-only feature is required by the two engine workflows.
+Static export is the implemented deployment shape (`output: export`, `trailingSlash: true`). The scaffold ADR must explain direct route resolution for a static host. No server-only feature is required by the two engine workflows.
 
 ## 5. Scene lifecycle and navigation
 
@@ -197,3 +199,4 @@ Storybook component/interaction/visual checks complement app tests. It does not 
 | Content/art | Separate versioned packs and stable IDs | Authoring schema, approval and licensing workflow |
 
 Every ADR records context, decision, alternatives, consequences, validation evidence, and supersession rules. Folder names are not sufficient boundary enforcement; add import checks and contract tests as implementations land.
+

@@ -1,0 +1,608 @@
+{
+  "birth": {
+    "date": "2000-01-01",
+    "time": "12:00",
+    "timezone": "UTC",
+    "latitude": 0,
+    "longitude": 0,
+    "accuracy": "exact",
+    "fold": null,
+    "uncertaintyMinutes": null
+  },
+  "chart": {
+    "angles": {
+      "asc": 11.373869662157603,
+      "mc": 279.6110618554224
+    },
+    "aspects": [
+      {
+        "a": "sun",
+        "angle": 60,
+        "b": "moon",
+        "kind": "sextile",
+        "meaningRef": "aspect.sextile",
+        "orb": 2.9551524876556527
+      },
+      {
+        "a": "sun",
+        "angle": 120,
+        "b": "saturn",
+        "kind": "trine",
+        "meaningRef": "aspect.trine",
+        "orb": 0.027385497359887268
+      },
+      {
+        "a": "moon",
+        "angle": 180,
+        "b": "saturn",
+        "kind": "opposition",
+        "meaningRef": "aspect.opposition",
+        "orb": 2.9277669902957655
+      },
+      {
+        "a": "moon",
+        "angle": 90,
+        "b": "uranus",
+        "kind": "square",
+        "meaningRef": "aspect.square",
+        "orb": 1.4822134996865657
+      },
+      {
+        "a": "mercury",
+        "angle": 60,
+        "b": "mars",
+        "kind": "sextile",
+        "meaningRef": "aspect.sextile",
+        "orb": 3.9250129885601837
+      },
+      {
+        "a": "venus",
+        "angle": 90,
+        "b": "mars",
+        "kind": "square",
+        "meaningRef": "aspect.square",
+        "orb": 3.6013338624591995
+      },
+      {
+        "a": "venus",
+        "angle": 60,
+        "b": "neptune",
+        "kind": "sextile",
+        "meaningRef": "aspect.sextile",
+        "orb": 1.6302091191113561
+      },
+      {
+        "a": "mars",
+        "angle": 60,
+        "b": "jupiter",
+        "kind": "sextile",
+        "meaningRef": "aspect.sextile",
+        "orb": 2.70969923302863
+      },
+      {
+        "a": "saturn",
+        "angle": 90,
+        "b": "uranus",
+        "kind": "square",
+        "meaningRef": "aspect.square",
+        "orb": 4.409980489982331
+      },
+      {
+        "a": "uranus",
+        "angle": 60,
+        "b": "pluto",
+        "kind": "sextile",
+        "meaningRef": "aspect.sextile",
+        "orb": 3.3513694672471104
+      }
+    ],
+    "bodies": [
+      {
+        "degree": 10.368738639818503,
+        "house": 10,
+        "id": "sun",
+        "latitude": 0.0000011205040933117655,
+        "longitude": 280.3687386398185,
+        "meaningRef": "body.sun",
+        "possibleSigns": [
+          9
+        ],
+        "sign": 9,
+        "speed": 1.0194321050448707
+      },
+      {
+        "degree": 13.323891127474155,
+        "house": 8,
+        "id": "moon",
+        "latitude": 5.170789330457821,
+        "longitude": 223.32389112747416,
+        "meaningRef": "body.moon",
+        "possibleSigns": [
+          7
+        ],
+        "sign": 7,
+        "speed": 12.02141526202638
+      },
+      {
+        "degree": 1.8889120664630354,
+        "house": 10,
+        "id": "mercury",
+        "latitude": -0.9950666269255495,
+        "longitude": 271.88891206646304,
+        "meaningRef": "body.mercury",
+        "possibleSigns": [
+          9
+        ],
+        "sign": 9,
+        "speed": 1.5562876168928597
+      },
+      {
+        "degree": 1.5652329403620513,
+        "house": 9,
+        "id": "venus",
+        "latitude": 2.0659966042455618,
+        "longitude": 241.56523294036205,
+        "meaningRef": "body.venus",
+        "possibleSigns": [
+          8
+        ],
+        "sign": 8,
+        "speed": 1.2090433813625623
+      },
+      {
+        "degree": 27.963899077902852,
+        "house": 11,
+        "id": "mars",
+        "latitude": -1.0680820296312368,
+        "longitude": 327.96389907790285,
+        "meaningRef": "body.mars",
+        "possibleSigns": [
+          10
+        ],
+        "sign": 10,
+        "speed": 0.7756789667496378
+      },
+      {
+        "degree": 25.254199844874247,
+        "house": 1,
+        "id": "jupiter",
+        "latitude": -1.2604530079556926,
+        "longitude": 25.254199844874247,
+        "meaningRef": "body.jupiter",
+        "possibleSigns": [
+          0
+        ],
+        "sign": 0,
+        "speed": 0.04075535352399129
+      },
+      {
+        "degree": 10.396124137178397,
+        "house": 2,
+        "id": "saturn",
+        "latitude": -2.444809723353514,
+        "longitude": 40.3961241371784,
+        "meaningRef": "body.saturn",
+        "possibleSigns": [
+          1
+        ],
+        "sign": 1,
+        "speed": -0.0199390866896465
+      },
+      {
+        "degree": 14.806104627160721,
+        "house": 11,
+        "id": "uranus",
+        "latitude": -0.6596606636031208,
+        "longitude": 314.8061046271607,
+        "meaningRef": "body.uranus",
+        "possibleSigns": [
+          10
+        ],
+        "sign": 10,
+        "speed": 0.05034577652622829
+      },
+      {
+        "degree": 3.1954420594734074,
+        "house": 11,
+        "id": "neptune",
+        "latitude": 0.23714822429110913,
+        "longitude": 303.1954420594734,
+        "meaningRef": "body.neptune",
+        "possibleSigns": [
+          10
+        ],
+        "sign": 10,
+        "speed": 0.035571275003576375
+      },
+      {
+        "degree": 11.45473515991361,
+        "house": 9,
+        "id": "pluto",
+        "latitude": 10.855210704886899,
+        "longitude": 251.4547351599136,
+        "meaningRef": "body.pluto",
+        "possibleSigns": [
+          8
+        ],
+        "sign": 8,
+        "speed": 0.035153801582055166
+      }
+    ],
+    "engineVersion": "0.1.0",
+    "houses": [
+      0,
+      30,
+      60,
+      90,
+      120,
+      150,
+      180,
+      210,
+      240,
+      270,
+      300,
+      330
+    ],
+    "interval": [
+      "2000-01-01T12:00:00+00:00",
+      "2000-01-01T12:00:00+00:00"
+    ],
+    "provenance": {
+      "backend": "astronomy-engine/865d3da7d8112bbc7911238052c6af4aaf877181",
+      "deltaT": "Espenak-Meeus backend default",
+      "frame": "apparent geocentric true ecliptic/equinox of date",
+      "houses": "whole-sign",
+      "settings": {
+        "accuracy": "exact",
+        "date": "2000-01-01",
+        "fold": null,
+        "latitude": 0,
+        "longitude": 0,
+        "orbs": [
+          8,
+          4,
+          6,
+          6,
+          8
+        ],
+        "time": "12:00",
+        "timezone": "UTC",
+        "uncertaintyMinutes": null
+      },
+      "speed": "central difference +/-0.005 days",
+      "timezoneDatabase": "2025b",
+      "ttDays": 0.0007389709440951036,
+      "uncertaintyPolicy": "midpoint with 15-minute sampled signs; no interval angles/aspects",
+      "utPolicy": "UTC-as-UT1",
+      "zodiac": "tropical"
+    },
+    "schemaVersion": 1,
+    "warnings": [
+      "UTC approximates UT1; no Earth-orientation DUT1 correction"
+    ]
+  },
+  "session": {
+    "algorithm": "splitmix64-fisher-yates-rejection-v1",
+    "contentVersion": "en.v1",
+    "deck": [
+      {
+        "cardId": "wands.13",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.03",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.11",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.10",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.11",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.06",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.10",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.02",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.14",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.13",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.04",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.13",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.07",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.03",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.05",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.07",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.05",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.16",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.05",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.01",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.09",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.08",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.01",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.18",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.08",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.08",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.12",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.02",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.12",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.02",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.06",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.08",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.06",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.13",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.10",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.15",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.09",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.09",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.17",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.07",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.14",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.02",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.09",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.01",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.13",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.09",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.12",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.21",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.11",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.05",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.11",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.11",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.02",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.04",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.10",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.04",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.06",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.19",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.14",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.14",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.08",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.12",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.03",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.04",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.20",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.03",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.07",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "swords.12",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.03",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.05",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "wands.01",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.01",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.10",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.07",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.00",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "cups.14",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "pentacles.04",
+        "orientation": "upright"
+      },
+      {
+        "cardId": "major.06",
+        "orientation": "upright"
+      }
+    ],
+    "deckId": "pxoracle.standard.v1",
+    "engineVersion": "0.1.0",
+    "schemaVersion": 1,
+    "selections": [],
+    "spread": 3,
+    "state": "selecting"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@pxoracle/scenes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": "./src/*.ts",
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pxoracle/contracts": "0.1.0",
+    "@pxoracle/scene-runtime": "0.1.0",
+    "three": "0.186.1"
+  }
+}

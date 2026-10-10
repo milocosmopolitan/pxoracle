@@ -1,0 +1,71 @@
+{
+  "runtime": "v22.16.0",
+  "platform": "linux",
+  "engines": {
+    "astrology": {
+      "bytes": 1172727,
+      "gzipBytes": 271658,
+      "initializationMs": 70.10465400000001,
+      "imports": [
+        "env.invoke_vi",
+        "env.__cxa_find_matching_catch_2",
+        "env.invoke_viii",
+        "env.__resumeException",
+        "env.invoke_vii",
+        "env.invoke_viiii",
+        "env.invoke_iiii",
+        "env.invoke_viiiii",
+        "env.invoke_ii",
+        "env.invoke_iiiii",
+        "env._abort_js",
+        "env.emscripten_resize_heap",
+        "env.__cxa_throw",
+        "env.__syscall_getcwd",
+        "wasi_snapshot_preview1.environ_sizes_get",
+        "wasi_snapshot_preview1.environ_get",
+        "wasi_snapshot_preview1.fd_write",
+        "env.invoke_iii",
+        "env.invoke_iiiiii",
+        "env.invoke_i",
+        "env.invoke_viiiiii",
+        "env.invoke_vid",
+        "env.invoke_iij",
+        "env.invoke_viid"
+      ]
+    },
+    "tarot": {
+      "bytes": 254233,
+      "gzipBytes": 88055,
+      "initializationMs": 38.64042099999995,
+      "imports": [
+        "env.invoke_vi",
+        "env.__cxa_find_matching_catch_2",
+        "env.invoke_viii",
+        "env.__resumeException",
+        "env.invoke_vii",
+        "env.invoke_viiii",
+        "env.invoke_iiii",
+        "env.invoke_viiiii",
+        "env.invoke_ii",
+        "env.invoke_iiiii",
+        "env._abort_js",
+        "env.emscripten_resize_heap",
+        "env.__cxa_throw",
+        "env.__syscall_getcwd",
+        "wasi_snapshot_preview1.environ_sizes_get",
+        "wasi_snapshot_preview1.environ_get",
+        "wasi_snapshot_preview1.fd_write",
+        "env.invoke_iii",
+        "env.invoke_iiiiii",
+        "wasi_snapshot_preview1.random_get",
+        "env.invoke_i",
+        "env.invoke_vij",
+        "env.invoke_jij",
+        "env.invoke_jiii",
+        "env.invoke_jii"
+      ],
+      "meanCreateMs": 0.246531882,
+      "heapBytes": 16908288
+    }
+  }
+}

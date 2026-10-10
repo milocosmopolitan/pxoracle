@@ -1,0 +1,11 @@
+[package]
+name = "pxoracle-astrology-wasm"
+version.workspace = true
+edition.workspace = true
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+pxoracle-astrology = { path = "../pxoracle-astrology" }
+
+[lib]
+crate-type = ["staticlib", "rlib"]
