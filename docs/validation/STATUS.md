@@ -16,6 +16,8 @@
 
 `tests/browser/app.spec.ts` defines real-engine static-host flows, feature-only WASM requests, save/reload, history, failed-WASM retry, and single-canvas navigation for Playwright Chromium, Firefox, WebKit. The GitHub workflow executes these checks and saves reports. Their status must be taken from the actual workflow run, not inferred from source.
 
+First CI run (38080607692) passed all three normal-flow/navigation tests on Chromium, Firefox and WebKit (9 passes). Its three retry tests incorrectly matched the Next.js route-announcement alert before the actual engine error. The retry locator is narrowed to the production error notice and is being rerun. This is a test synchronization correction, not a claim that the original run passed.
+
 Local browser preview/interaction was unavailable under this environment’s supported preview workflow. No local browser, Safari, or physical mobile results are claimed. WebKit automation is not Safari qualification.
 
 ## Remaining qualification before claiming all three epics complete

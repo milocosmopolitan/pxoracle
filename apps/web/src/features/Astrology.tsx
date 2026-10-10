@@ -33,6 +33,7 @@ export default function Astrology({
   async function calculate(input: BirthInput) {
     const id = ++request.current;
     lastInput.current = input;
+    setAccuracy(input.accuracy);
     setBusy(true);
     setError("");
     try {
@@ -95,6 +96,7 @@ export default function Astrology({
                   Birth date
                   <input
                     name="date"
+                    defaultValue={lastInput.current?.date}
                     type="date"
                     min="1900-01-01"
                     max="2100-12-31"
@@ -119,7 +121,7 @@ export default function Astrology({
                 <div className="two">
                   <label>
                     Local birth time
-                    <input name="time" type="time" required />
+                    <input name="time" type="time" defaultValue={lastInput.current?.time??undefined} required />
                   </label>
                   {accuracy === "approximate" && (
                     <label>
@@ -140,6 +142,7 @@ export default function Astrology({
                 Birthplace time zone
                 <input
                   name="timezone"
+                  defaultValue={lastInput.current?.timezone}
                   placeholder="America/New_York"
                   required
                   autoComplete="off"
@@ -154,6 +157,7 @@ export default function Astrology({
                   Latitude
                   <input
                     name="latitude"
+                    defaultValue={lastInput.current?.latitude}
                     type="number"
                     step="any"
                     min="-90"
@@ -166,6 +170,7 @@ export default function Astrology({
                   Longitude
                   <input
                     name="longitude"
+                    defaultValue={lastInput.current?.longitude}
                     type="number"
                     step="any"
                     min="-180"

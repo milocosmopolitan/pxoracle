@@ -77,7 +77,8 @@ test("failed engine initialization offers a working retry", async ({
   );
   await page.goto("/tarot/");
   await page.getByRole("button", { name: "Shuffle the deck" }).click();
-  await expect(page.getByRole("alert")).toBeVisible();
+  await expect(page.locator('.error[role="alert"]')).toContainText("The calculation engine could not load");
+  await expect(page.getByRole("button", {name:"Shuffle the deck"})).toBeEnabled();
   fail = false;
   await page.getByRole("button", { name: "Shuffle the deck" }).click();
   await expect(
