@@ -1,0 +1,44 @@
+name: Verify PXOracle
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - uses: dtolnay/rust-toolchain@1.90.0
+        with:
+          targets: wasm32-unknown-emscripten
+      - uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: '4.0.10'
+          actions-cache-folder: emsdk-cache
+      - run: npm ci
+      - run: node scripts/check-boundaries.mjs
+      - run: cargo test --locked
+      - run: npm run wasm
+      - run: npm run typecheck
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+      - run: npm test
+      - run: npm run build-storybook
+        env:
+          STORYBOOK_DISABLE_TELEMETRY: '1'
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-and-static-export
+          path: |
+            docs/validation/
+            playwright-report/
+            test-results/
+            apps/web/out/
