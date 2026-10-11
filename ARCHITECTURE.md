@@ -210,3 +210,5 @@ See [ADR 003](docs/decisions/003-tarot-perspective-rig.md) for articulated arms,
 ## Deterministic three-card interpretation
 
 [ADR 004](docs/decisions/004-deterministic-free-readings.md) adds the independent pure Rust `pxoracle-tarot-reading` crate to the existing tarot WASM adapter. Its external symbolic packs are validated/cached in the Worker; English sentences remain a separate frontend content pack. Only three revealed cards and a fixed structured perspective enter interpretation. The original draw engine, position IDs, `en.v1`, Scene contracts, and astrology engine remain independent. Versioned v2 save envelopes preserve draw identity and require explicit perspective selection or version migration when needed.
+
+[ADR 005](docs/decisions/005-exhaustive-reading-export.md) adds an offline exhaustive export of every three-card reading (43,819,776 rows). It reuses the production Rust interpreter (via the `reading-export` example) and the shared `composeReading`/`renderPhrase` formatter, stays out of CI and public assets, and is operated with `npm run reading-export` as described in [docs/reading-export.md](docs/reading-export.md).

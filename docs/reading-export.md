@@ -81,3 +81,22 @@ Reasons also tag repetition/complement/tension, priority-ordered vs equal-priori
 ## Storage and publication
 
 Do not commit exported CSVs or copy them to `apps/web/public`. Keep them in a user-controlled location and publish nothing without explicit approval. The tool never uploads. Small evidence (manifest, validation report, benchmark JSON, sample rows) lives in `docs/validation/reading-export/`.
+
+## Recorded runs (this repository, 2026-10-11)
+
+Host: Apple Silicon, 10 cores, shared and heavily loaded (load average 25–30 during all runs), Node 22.16.0, Rust 1.90.0. Evidence is in `docs/validation/reading-export/`.
+
+**Benchmark** (`benchmark --start 1000000 --end 1080000 --chunk-size 10000`, all 12 contexts, 80,000 cases = 960,000 rows):
+
+| Jobs | cases/s | gzip B/case (12 ctx) | raw B/case | peak RSS (workers + runners) | chunk temp |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 4 | 1,596 | 999 (≈83 B/row) | 24,089 (≈2.0 KB/row) | ≈0.42 GB | 83 MB |
+| 8 | 924 | same | same | ≈0.84 GB | same |
+
+More jobs was slower because the host was oversubscribed, hence the default of at most 6. Extrapolation to 3,651,648 cases: ≈38 min render at the 4-job rate, ≈3.6 GB gzip, ≈88 GB uncompressed, ≈7.3 GB peak disk with chunks plus assembled files. A single-worker profile put the cost in `JSON.parse` of the plans, `renderPhrase`, and zlib; no output-changing optimisation was applied.
+
+**Full export** (`full --jobs 4`, commit `1b53168`, clean tree): all 74 chunks rendered in 2,196 s (≈1,660 cases/s), assembled, validated and promoted to `manifest.json` with `state: "complete"`: **43,819,776 rows**, 3,512,426,574 gzip bytes, 89,406,676,048 raw bytes, all 12 files with identical case ranges, 0 validation errors, 0 sample/fixture parity mismatches (2,279 sampled cases × 12 contexts and 18 native/WASM fixture cases), 75,001 fallback cases per context (2.05%), all 21 rules reachable and each primary in at least one case. The 12 files and review outputs live in `~/pxoracle-exports/reading-export-1b53168` (not in git). Verification is of the automated gates only; no human has reviewed the sentences.
+
+Representative rows: `docs/validation/reading-export/representative-sample.csv`.
+
+Reproduce: `npm run reading-export -- full --out <DIR> --jobs 4`; interrupt-safe: rerun `resume` with the same flags.
