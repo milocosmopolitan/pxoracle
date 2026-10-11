@@ -67,8 +67,8 @@ test("the room globe opens birthplace editing from an existing chart without cha
   await page.waitForFunction(() => document.querySelector("canvas")?.style.opacity === "1");
   // The public globe surface at this fixed room viewport, using an actual mouse event.
   // Dispatching directly to the canvas would miss a blocking HTML overlay regression.
-  await expect.poll(() => page.evaluate(() => document.elementFromPoint(698, 431)?.tagName)).toBe("CANVAS");
-  await page.mouse.click(698, 431);
+  await expect.poll(() => page.evaluate(() => document.elementFromPoint(671, 431)?.tagName)).toBe("CANVAS");
+  await page.mouse.click(671, 431);
   await expect(page).toHaveURL(/\/astrology\/$/);
   await expect(page.getByLabel("Birth country")).toBeVisible();
   await expect(page.getByLabel("Birth date", { exact: true })).toHaveValue("2000-01-01");

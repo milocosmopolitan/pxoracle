@@ -40,6 +40,12 @@ bulb/wick anchors, attached lights, deterministic update and idempotent disposal
 Scene placement is centralized in `study-props.ts`. Tarot's table has a -90° X
 rotation; props use world-space groups rather than inheriting that rotated parent.
 The lamp shade bends +X, matching the old image's `flipX: true` usage.
+After visual review, the globe sits on the user's right outside the reading mat,
+toward the front of the desk. The painted room uses its own grounded composition;
+the tarot table places the same assembly in three-dimensional tabletop coordinates.
+The candle body and holder are original lit meshes, revised at the user's request
+after oblique views exposed the flat sprite. Only the flame retains the source
+sprite; the wax, melted rim, wick and brass holder provide physical volume.
 
 The lamp SpotLight is the main warm shadow source. Its target belongs to the prop
 group, never the camera. Candle PointLight is shadowless and shares a continuous

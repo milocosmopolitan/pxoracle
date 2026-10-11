@@ -10,7 +10,7 @@ export const BROWSING_REGIONS: [GlobeRegion, string][] = [
 export function GlobeChooser() {
   const state = useOracle(s => s.birthplace);
   const navigate = useOracle(s => s.navigateBirthplace);
-  return <section className="globe-chooser" aria-label="Browse the birthplace globe">
+  return <section className="globe-chooser" data-camera-revision={state.revision} aria-label="Browse the birthplace globe">
     <div className="actions">
       <button type="button" onClick={() => navigate({type:"open"})}>Explore the globe</button>
       {state.phase !== "room" && <button type="button" onClick={() => navigate({type:"back"})}>Back one view</button>}

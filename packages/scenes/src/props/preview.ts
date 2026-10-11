@@ -4,7 +4,7 @@ import { createCandle } from "./candle";
 import { createLamp } from "./lamp";
 
 export interface LightingPreviewOptions {
-  view?: "front" | "side" | "rear" | "above" | "candle";
+  view?: "front" | "side" | "rear" | "above" | "candle" | "candle-side" | "candle-above";
   fixedTime?: number;
   reduced?: boolean;
   lampOn?: boolean;
@@ -56,9 +56,10 @@ export function lightingPreview(options: LightingPreviewOptions = {}): SceneFact
     const positions = {
       front: [0, 2.4, 7], side: [7, 2.4, 0], rear: [0, 2.4, -7],
       above: [3.3, 6, 3.5], candle: [1.45, 1.03, 2.8],
+      "candle-side": [3.1, 1.0, .7], "candle-above": [1.4, 2.7, 1.2],
     } as const;
     camera.position.fromArray(positions[options.view ?? "front"]);
-    if (options.view === "candle") camera.lookAt(.9, .45, .7);
+    if (options.view?.startsWith("candle")) camera.lookAt(.9, .45, .7);
     else camera.lookAt(0, 1.25, 0);
     let active = false, disposed = false;
     return {

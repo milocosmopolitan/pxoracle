@@ -5,8 +5,8 @@ import { createCandle } from "./props/candle";
 
 // World coordinates: tarot's tabletop is y=-1 despite its rotated local parent.
 export const STUDY_ANCHORS = {
-  lamp: [-5.9, -1, 0.25], candle: [-1.45, -1, 0.9], globe: [-0.25, -1, 0.15],
-  tarotLamp: [-7.25, -0.96, -0.9], tarotCandle: [1.2, -0.96, -0.7], tarotGlobe: [1.6, -0.96, -2.4],
+  lamp: [-5.9, -1, 0.25], candle: [-1.45, -1, 0.9], globe: [-0.55, -1, 0.75],
+  tarotLamp: [-7.25, -0.96, -0.9], tarotCandle: [1.2, -0.96, -0.7], tarotGlobe: [1.6, -0.96, 2.6],
 } as const;
 
 export async function createStudyProps(leases: TextureLeases, signal: AbortSignal, tarot = false) {

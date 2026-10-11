@@ -135,21 +135,86 @@ test("asset retry restores the scene and city search survives WebGL unavailabili
 });
 
 test("keyboard rotation and zoom controls visibly adjust a country view", async ({ page }) => {
-  await room(page);
-  await page.getByLabel("Birth country").selectOption("SG");
-  const before = await stableStage(page);
-  await page.getByRole("button", { name: "Turn globe east" }).focus();
-  await page.keyboard.press("Enter");
-  const turned = await stableStage(page, before);
-  expect(turned.equals(before)).toBe(false);
-  await page.getByRole("button", { name: "Zoom globe out" }).focus();
-  await page.keyboard.press("Enter");
-  const zoomed = await stableStage(page, turned);
-  expect(zoomed.equals(turned)).toBe(false);
-  await expect(page.getByLabel("Birth country")).toHaveValue("SG");
-  await page.getByRole("button", { name: "Turn globe west" }).focus();
-  await page.keyboard.press("Enter");
-  await expect(page.getByRole("button", { name: "Zoom globe in" })).toBeEnabled();
+  // Diagnostics contain only public controls, revision numbers and draw counts.
+  await page.addInitScript(() => {
+    type Sample = { event: string; key?: string; control?: string; revision: string | null; draws: number };
+    const diagnostics = { draws: 0, events: [] as Sample[] };
+    (window as Window & { __globeKeyboard?: typeof diagnostics }).__globeKeyboard = diagnostics;
+    for (const eventName of ["keydown", "keyup", "click"]) {
+      document.addEventListener(eventName, event => {
+        const target = event.target instanceof Element ? event.target : null;
+        const control = target?.getAttribute("aria-label");
+        if (!control || !["Turn globe east", "Turn globe west", "Zoom globe out", "Zoom globe in"].includes(control)) return;
+        if (diagnostics.events.length < 32) diagnostics.events.push({
+          event: eventName, control,
+          key: event instanceof KeyboardEvent && ["Enter", " "].includes(event.key) ? event.key : undefined,
+          revision: document.querySelector(".globe-chooser")?.getAttribute("data-camera-revision") ?? null,
+          draws: diagnostics.draws,
+        });
+      }, true);
+    }
+    const observed = new WeakSet<object>();
+    const originalContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function(type: string, ...args: unknown[]) {
+      const context = Reflect.apply(originalContext, this, [type, ...args]);
+      if (type.startsWith("webgl") && context && !observed.has(context)) {
+        observed.add(context);
+        for (const method of ["drawElements", "drawArrays", "drawElementsInstanced", "drawArraysInstanced"]) {
+          const original = context[method];
+          if (typeof original !== "function") continue;
+          context[method] = function(...drawArgs: unknown[]) {
+            diagnostics.draws++;
+            return Reflect.apply(original, context, drawArgs);
+          };
+        }
+      }
+      return context;
+    } as typeof originalContext;
+  });
+  const timeline: unknown[] = [];
+  const checkpoint = async (stage: string) => {
+    timeline.push(await page.evaluate(stage => {
+      const diagnostics = (window as Window & { __globeKeyboard?: { draws: number; events: unknown[] } }).__globeKeyboard;
+      return { stage, revision: document.querySelector(".globe-chooser")?.getAttribute("data-camera-revision") ?? null, draws: diagnostics?.draws ?? 0 };
+    }, stage));
+  };
+  try {
+    await room(page);
+    const chooser = page.locator(".globe-chooser");
+    const initialRevision = Number(await chooser.getAttribute("data-camera-revision"));
+    await page.getByLabel("Birth country").selectOption("SG");
+    await expect(chooser).toHaveAttribute("data-camera-revision", String(initialRevision + 1));
+    const pressControl = async (name: string) => {
+      const revision = Number(await chooser.getAttribute("data-camera-revision"));
+      const button = page.getByRole("button", { name, exact: true });
+      await button.focus();
+      await expect(button).toBeFocused();
+      await page.keyboard.press("Enter");
+      // An accepted native key action and a changed rendered frame are separate requirements.
+      await expect(chooser).toHaveAttribute("data-camera-revision", String(revision + 1));
+    };
+    const before = await stableStage(page);
+    await checkpoint("country-settled");
+    await pressControl("Turn globe east");
+    await checkpoint("east-accepted");
+    const turned = await stableStage(page, before);
+    await checkpoint("east-rendered");
+    expect(turned.equals(before)).toBe(false);
+    await pressControl("Zoom globe out");
+    await checkpoint("zoom-accepted");
+    const zoomed = await stableStage(page, turned);
+    await checkpoint("zoom-rendered");
+    expect(zoomed.equals(turned)).toBe(false);
+    await expect(page.getByLabel("Birth country")).toHaveValue("SG");
+    await pressControl("Turn globe west");
+    await expect(page.getByRole("button", { name: "Zoom globe in" })).toBeEnabled();
+  } finally {
+    await checkpoint("finished");
+    const events = await page.evaluate(() => (window as Window & { __globeKeyboard?: { events: unknown[] } }).__globeKeyboard?.events ?? []);
+    await test.info().attach("globe-keyboard-public-diagnostics", {
+      body: Buffer.from(JSON.stringify({ timeline, events }, null, 2)), contentType: "application/json",
+    });
+  }
 });
 
 test("actual globe raycasts select the same region, country and atlas shard as the HTML flow", async ({ page, isMobile }) => {

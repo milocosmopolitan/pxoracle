@@ -13,13 +13,28 @@ export function createPixelPresentation() {
   const glow = new THREE.WebGLRenderTarget(1, 1, {
     ...options, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter,
   });
+  const blurOptions = { ...options, type: THREE.HalfFloatType, depthBuffer: false, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter };
+  const glowHorizontal = new THREE.WebGLRenderTarget(1, 1, blurOptions);
+  const glowBlurred = new THREE.WebGLRenderTarget(1, 1, blurOptions);
   const geometry = new THREE.PlaneGeometry(2, 2);
+  const blurMaterial = new THREE.ShaderMaterial({
+    uniforms: { source: { value: glow.texture }, step: { value: new THREE.Vector2() } },
+    vertexShader: `varying vec2 vUv; void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}`,
+    fragmentShader: `uniform sampler2D source; uniform vec2 step; varying vec2 vUv;
+      void main(){vec4 sum=vec4(0.); float total=0.;
+        for(int i=-3;i<=3;i++) {float weight=exp(-float(i*i)/4.5);
+          sum+=texture2D(source,vUv+float(i)*step)*weight;total+=weight;}
+        gl_FragColor=sum/total;}`,
+    depthTest: false, depthWrite: false,
+  });
+  const blurScreen = new THREE.Scene();
+  blurScreen.add(new THREE.Mesh(geometry, blurMaterial));
   const material = new THREE.ShaderMaterial({
     uniforms: {
       full: { value: full.texture },
       low: { value: low.texture },
       mask: { value: mask.texture },
-      glow: { value: glow.texture },
+      glow: { value: glowBlurred.texture },
       glowStep: { value: new THREE.Vector2(1, 1) },
       glowStrength: { value: 0 },
     },
@@ -27,13 +42,17 @@ export function createPixelPresentation() {
     fragmentShader: `uniform sampler2D full,low,mask,glow; uniform vec2 glowStep; uniform float glowStrength; varying vec2 vUv;
       void main(){gl_FragColor=mix(texture2D(full,vUv),texture2D(low,vUv),step(.5,texture2D(mask,vUv).r));
         if(glowStrength > 0.) {
-          vec3 bloom=vec3(0.); float total=0.;
-          for(int x=-3;x<=3;x++) for(int y=-3;y<=3;y++) {
-            float weight=exp(-float(x*x+y*y)/4.5);
-            bloom+=texture2D(glow,vUv+vec2(float(x),float(y))*glowStep*2.).rgb*weight;
-            total+=weight;
-          }
-          gl_FragColor.rgb += bloom/total*glowStrength;
+          #ifdef SEPARABLE_GLOW
+            gl_FragColor.rgb += texture2D(glow,vUv).rgb*glowStrength;
+          #else
+            vec3 bloom=vec3(0.); float total=0.;
+            for(int x=-3;x<=3;x++) for(int y=-3;y<=3;y++) {
+              float weight=exp(-float(x*x+y*y)/4.5);
+              bloom+=texture2D(glow,vUv+vec2(float(x),float(y))*glowStep*2.).rgb*weight;
+              total+=weight;
+            }
+            gl_FragColor.rgb += bloom/total*glowStrength;
+          #endif
         }
         #include <tonemapping_fragment>
         #include <colorspace_fragment>
@@ -50,6 +69,7 @@ export function createPixelPresentation() {
   ];
   let width = 1,
     height = 1;
+  let separableGlow: boolean | undefined;
   function maskMaterial(source: THREE.Material, selected: boolean) {
     const cache = masks[selected ? 1 : 0];
     let result = cache.get(source);
@@ -87,6 +107,8 @@ export function createPixelPresentation() {
       );
       mask.setSize(low.width, low.height);
       glow.setSize(Math.max(1, Math.round(w / 2)), Math.max(1, Math.round(h / 2)));
+      glowHorizontal.setSize(glow.width, glow.height);
+      glowBlurred.setSize(glow.width, glow.height);
       material.uniforms.glowStep.value.set(1 / glow.width, 1 / glow.height);
     },
     render(
@@ -94,6 +116,13 @@ export function createPixelPresentation() {
       world: THREE.Scene,
       view: THREE.Camera,
     ) {
+      if (separableGlow === undefined) {
+        // Keep the original filter on devices without renderable half-float targets.
+        separableGlow = renderer.extensions.has("EXT_color_buffer_float");
+        material.defines = separableGlow ? { SEPARABLE_GLOW: 1 } : {};
+        material.uniforms.glow.value = separableGlow ? glowBlurred.texture : glow.texture;
+        material.needsUpdate = true;
+      }
       const shadowType = renderer.shadowMap.type;
       const background = world.background;
       const previous = renderer.getRenderTarget(),
@@ -117,9 +146,9 @@ export function createPixelPresentation() {
         }
       });
       const saved = meshes.map((mesh) => mesh.material);
-      const effects: THREE.Points[] = [];
+      const effects: (THREE.Points | THREE.Sprite)[] = [];
       world.traverse((object) => {
-        if (object instanceof THREE.Points && object.visible) effects.push(object);
+        if ((object instanceof THREE.Points || object instanceof THREE.Sprite) && object.visible) effects.push(object);
       });
       try {
         renderer.shadowMap.enabled = true;
@@ -164,6 +193,18 @@ export function createPixelPresentation() {
           renderer.render(world, view);
           meshes.forEach((mesh, i) => (mesh.material = saved[i]));
           world.background = background;
+          // The original 7×7 Gaussian factors into two identical 7-tap kernels.
+          // Filter at glow resolution instead of taking 49 samples per display pixel.
+          if (separableGlow) {
+            blurMaterial.uniforms.source.value = glow.texture;
+            blurMaterial.uniforms.step.value.set(2 / glow.width, 0);
+            renderer.setRenderTarget(glowHorizontal);
+            renderer.render(blurScreen, camera);
+            blurMaterial.uniforms.source.value = glowHorizontal.texture;
+            blurMaterial.uniforms.step.value.set(0, 2 / glow.height);
+            renderer.setRenderTarget(glowBlurred);
+            renderer.render(blurScreen, camera);
+          }
         }
         renderer.setRenderTarget(previous);
         renderer.render(screen, camera);
@@ -183,7 +224,10 @@ export function createPixelPresentation() {
       low.dispose();
       mask.dispose();
       glow.dispose();
+      glowHorizontal.dispose();
+      glowBlurred.dispose();
       geometry.dispose();
+      blurMaterial.dispose();
       material.dispose();
       masks.forEach((cache) => {
         cache.forEach((m) => m.dispose());

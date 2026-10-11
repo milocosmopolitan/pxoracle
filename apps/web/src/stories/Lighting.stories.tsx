@@ -6,7 +6,7 @@ import { lightingPreview, type LightingPreviewOptions } from "@pxoracle/scenes/p
 function LightingStory(options: LightingPreviewOptions) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const runtime = useRef<SceneRuntime | null>(null);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Preparing the room…");
   const [retry, setRetry] = useState(0);
   useEffect(() => {
     if (!canvas.current) return;
@@ -30,7 +30,7 @@ function LightingStory(options: LightingPreviewOptions) {
 const meta = {
   title: "Room/Production Lighting", component: LightingStory, parameters: { layout: "fullscreen" },
   args: { view: "front", fixedTime: 2.5, reduced: false, lampOn: true, candleOn: true, shadows: true },
-  argTypes: { view: { control: "select", options: ["front", "side", "rear", "above", "candle"] } },
+  argTypes: { view: { control: "select", options: ["front", "side", "rear", "above", "candle", "candle-side", "candle-above"] } },
 } satisfies Meta<typeof LightingStory>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -42,6 +42,8 @@ export const Side: Story = { args: { view: "side" } };
 export const Rear: Story = { args: { view: "rear" } };
 export const ShadeInterior: Story = { args: { view: "above" } };
 export const CandleClose: Story = { args: { view: "candle" } };
+export const CandleSide: Story = { args: { view: "candle-side" } };
+export const CandleAbove: Story = { args: { view: "candle-above" } };
 export const CandleOnly: Story = { args: { view: "candle", lampOn: false } };
 export const CandleAnimated: Story = { args: { view: "candle", fixedTime: undefined, lampOn: false } };
 export const Animated: Story = { args: { fixedTime: undefined } };

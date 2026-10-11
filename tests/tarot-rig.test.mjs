@@ -231,12 +231,14 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
   art.material = hand.material;
   const dust = new THREE.Points(new THREE.BufferGeometry(), new THREE.PointsMaterial());
   dust.userData.glow = true;
-  world.add(art, hand, dust);
+  const flame = new THREE.Sprite(new THREE.SpriteMaterial());
+  world.add(art, hand, dust, flame);
   pass.resize(1100, 800);
   const original = hand.material,
     calls = [];
   let target = null;
   const renderer = {
+    extensions: { has: () => true },
     shadowMap: { enabled: false, autoUpdate: true, type: THREE.BasicShadowMap },
     getPixelRatio: () => 2,
     getRenderTarget: () => target,
@@ -249,6 +251,7 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
         material: hand.material,
         art: art.material,
         dust: dust.visible,
+        flame: flame.visible,
       });
     },
   };
@@ -263,7 +266,13 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
   assert.equal(calls[1].dust, true);
   assert.equal(calls[2].dust, false, "particles must not select the low-resolution pass");
   assert.equal(calls[3].dust, true, "glow is rendered independently of the limb mask");
+  assert.equal(calls[2].flame, false, "sprite flames must not mark the limb mask");
+  assert.equal(calls[3].flame, false, "ordinary sprite flames do not create a second bloom halo");
+  assert.equal(calls[4].width, 550);
+  assert.equal(calls[5].width, 550, "both Gaussian passes stay at glow resolution");
+  assert.equal(calls[6].width, undefined, "only the composite renders to the display");
   assert.equal(dust.visible, true);
+  assert.equal(flame.visible, true);
   assert.equal(hand.material, original);
   assert.equal(hand.visible, true);
   assert.equal(target, null);
@@ -284,7 +293,25 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
   assert.equal(hand.material, original);
   assert.equal(dust.visible, true);
   assert.equal(target, null);
+  n = 0;
+  renderer.render = () => { if (++n === 5) throw Error("blur lost"); };
+  assert.throws(() => pass.render(renderer, world, camera), /blur lost/);
+  assert.equal(flame.visible, true);
+  assert.equal(hand.material, original);
+  assert.equal(target, null);
   pass.dispose();
+  const fallback = createPixelPresentation();
+  renderer.extensions.has = () => false;
+  const fallbackTargets = [];
+  renderer.render = () => fallbackTargets.push(target);
+  fallback.resize(1100, 800);
+  fallback.render(renderer, world, camera);
+  assert.equal(fallbackTargets.length, 5, "unsupported float attachments retain the original glow filter");
+  assert.ok(fallbackTargets.every(t => !t || t.texture.type !== THREE.HalfFloatType));
+  assert.equal(flame.visible, true);
+  assert.equal(target, null);
+  fallback.dispose();
+  flame.material.dispose();
   dust.geometry.dispose();
   dust.material.dispose();
   art.geometry.dispose();
