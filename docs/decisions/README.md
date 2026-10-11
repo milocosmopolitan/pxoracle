@@ -25,3 +25,5 @@ Perspective camera and separate arm rig: [ADR 003](003-tarot-perspective-rig.md)
 Deterministic free readings: [ADR 004](004-deterministic-free-readings.md).
 
 Manual static publishing: [ADR 005](005-manual-static-publishing.md).
+
+Exhaustive reading export: [ADR 006](006-exhaustive-reading-export.md).

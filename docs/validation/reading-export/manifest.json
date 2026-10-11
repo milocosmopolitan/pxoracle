@@ -1,0 +1,417 @@
+{
+ "manifestVersion": 1,
+ "exportSchema": "reading-export.v1",
+ "state": "complete",
+ "scope": "full",
+ "completedAt": "2026-10-11T14:44:22.353Z",
+ "source": {
+  "commit": "1b53168fb3ed7fd1dbf73cd7d29b37b0f89eb3a3",
+  "dirty": false,
+  "dirtyFiles": [],
+  "dirtyDigest": null
+ },
+ "tools": {
+  "node": "v22.16.0",
+  "zlib": "1.3.0.1-motley-780819f",
+  "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)",
+  "binarySha256": "7d489d5e3b3886d56ddc2e6c4637a90b848c1b4d644fc280e7ad247bcce3b524",
+  "platform": "darwin-arm64",
+  "gzipLevel": 6
+ },
+ "versions": {
+  "schema": 1,
+  "engine": "reading.1",
+  "semantics": "semantics.1",
+  "rules": "rules.1",
+  "content": "reading.en.1"
+ },
+ "inputs": {
+  "semanticsSha256": "0fd3eccd96f746b5baeca122a19d0c4ed2ef62c30dd096c7dec9f642e0ccd4e1",
+  "rulesSha256": "fb6f82b5f1addd75e30fcdfe550e2a97e9af5d88bc844d49c8628120f5351101",
+  "proseSha256": "ea929ef93f75ec25f8e13576cac4b95f8c74c5a7d848169c6ad98df362f44c93",
+  "deckSha256": "06ad246d75df6316dc0a1d4ecb66873c0416253148ef9539abe0341378ab48e5",
+  "columnsSha256": "62c412f0bcb15cf9816a6623c645ea87117b2d268016e9e5ed83275bd5876adf",
+  "columns": [
+   "case_id",
+   "topic",
+   "intent",
+   "card_1_id",
+   "card_1_name",
+   "card_1_orientation",
+   "card_2_id",
+   "card_2_name",
+   "card_2_orientation",
+   "card_3_id",
+   "card_3_name",
+   "card_3_orientation",
+   "position_1_role",
+   "position_1_role_label",
+   "position_1_lens",
+   "position_2_role",
+   "position_2_role_label",
+   "position_2_lens",
+   "position_3_role",
+   "position_3_role_label",
+   "position_3_lens",
+   "overall_text",
+   "relation_rule_ids",
+   "relation_evidence",
+   "relation_text",
+   "fallback",
+   "action_text",
+   "question_text",
+   "position_1_text",
+   "position_2_text",
+   "position_3_text",
+   "engine_version",
+   "semantics_version",
+   "rules_version",
+   "content_version",
+   "export_schema_version"
+  ]
+ },
+ "enumeration": {
+  "name": "ordered-distinct-triples.lex.v1",
+  "deckSize": 78,
+  "casesPerContext": 3651648,
+  "contexts": [
+   "relationships-present",
+   "relationships-crossroads",
+   "relationships-action",
+   "work-present",
+   "work-crossroads",
+   "work-action",
+   "creativity-present",
+   "creativity-crossroads",
+   "creativity-action",
+   "growth-present",
+   "growth-crossroads",
+   "growth-action"
+  ],
+  "caseId": "rank(ordered distinct triple, lexicographic by deck index) * 8 + orientation mask; mask bit i (1<<i) = card in position i+1 reversed"
+ },
+ "caseRange": {
+  "start": 0,
+  "end": 3651648
+ },
+ "chunkSize": 50000,
+ "expectedRows": 43819776,
+ "actualRows": 43819776,
+ "files": {
+  "relationships-present": {
+   "path": "relationships-present.csv.gz",
+   "rows": 3651648,
+   "bytes": 294780892,
+   "sha256": "07d75f76974f35621d30778b8abd8b2a5373dc6e0f6b21d250fbc538b93768d3",
+   "rawBytes": 7519086995,
+   "rawSha256": "4b1fd9b8ba037bf9a827b97f85ec4b4ae46343ad3daa5c666ad54bb74378d86f"
+  },
+  "relationships-crossroads": {
+   "path": "relationships-crossroads.csv.gz",
+   "rows": 3651648,
+   "bytes": 299144814,
+   "sha256": "5f541e6e0917543c0b55c3c54d7d46be6dca15925da37ff2412270a4f88f38ae",
+   "rawBytes": 7618776897,
+   "rawSha256": "8de66a0979a46866abc849f07cccb10ba6e749f9fd0f27be6bce5602b9658e5c"
+  },
+  "relationships-action": {
+   "path": "relationships-action.csv.gz",
+   "rows": 3651648,
+   "bytes": 296808941,
+   "sha256": "3588f566d639034139087cc2e25e3dbb29e8657db2b26176beff25bc91f0afd1",
+   "rawBytes": 7560389222,
+   "rawSha256": "3b362c50157992d0a0ede6f71df883456d2130af0d103c9e98a8373c6c74ebb9"
+  },
+  "work-present": {
+   "path": "work-present.csv.gz",
+   "rows": 3651648,
+   "bytes": 288479501,
+   "sha256": "7da7b11a085c61bd350dbee96f0836da565b7bd3050539e8c7e4fbfdbf2ee66e",
+   "rawBytes": 7354051041,
+   "rawSha256": "5cdd0ffd34e6e8e9de80bad840993acfa0abfa7bda963e0c67b718498fb35c89"
+  },
+  "work-crossroads": {
+   "path": "work-crossroads.csv.gz",
+   "rows": 3651648,
+   "bytes": 293888992,
+   "sha256": "309901970425baec3909a2e72ed4ee5fcba98d483d807cd7ba24681b09894d96",
+   "rawBytes": 7453740943,
+   "rawSha256": "6e15376d687b4d080c79277f3a2f52a1c6a765617a537e2d3c8af41f8d9b15b6"
+  },
+  "work-action": {
+   "path": "work-action.csv.gz",
+   "rows": 3651648,
+   "bytes": 290504498,
+   "sha256": "a72b41cc3171b869e450c9b3c9ba39143991234d8ec9c25a117b23b2f9cafd86",
+   "rawBytes": 7395353268,
+   "rawSha256": "3175f7a389417da41d75e0e50663867e62b79a8ac1c18cd0d4ed41ea0fb21c15"
+  },
+  "creativity-present": {
+   "path": "creativity-present.csv.gz",
+   "rows": 3651648,
+   "bytes": 290569493,
+   "sha256": "64df1774bc181f870f48c98011e6648c2a63b9c60fb26df1ed1d6cc9b33ae9ef",
+   "rawBytes": 7393938273,
+   "rawSha256": "afe83cda6f1cb19bf5bb3e66c7adf7cde96989ba296659d931c8b8f87fd0b37b"
+  },
+  "creativity-crossroads": {
+   "path": "creativity-crossroads.csv.gz",
+   "rows": 3651648,
+   "bytes": 295132600,
+   "sha256": "c2646d582f7fb1e8e98612153d507ccce9d00ed52fbcffbb8637d6f7a60242d6",
+   "rawBytes": 7493628175,
+   "rawSha256": "577ab624b6334e203928828793fb5981d92f6c3de4c4dd9c391fcb28fa0a5400"
+  },
+  "creativity-action": {
+   "path": "creativity-action.csv.gz",
+   "rows": 3651648,
+   "bytes": 292210198,
+   "sha256": "f39721a18fd9b97ac96d7e8e86a6e35f1339950ff5c9b38120c0f65aeb6c46b5",
+   "rawBytes": 7435240500,
+   "rawSha256": "42476b8cce0d13b4565e2f8cb90653ef751a56491d599f968e3c6da67cf41287"
+  },
+  "growth-present": {
+   "path": "growth-present.csv.gz",
+   "rows": 3651648,
+   "bytes": 287992571,
+   "sha256": "2424dc7ceea9845b478265a88e6e494752b0c50a0a7f820f37fab0e8489a6dcb",
+   "rawBytes": 7347159535,
+   "rawSha256": "cc341bbe09d683363d49c27d41d4f8427fdd1ef75ba72d6a79815ee17466df8c"
+  },
+  "growth-crossroads": {
+   "path": "growth-crossroads.csv.gz",
+   "rows": 3651648,
+   "bytes": 293062518,
+   "sha256": "9d972f9205771152f3d01cd188fd1603d1260b5cd6fc550433db54d02edcc8ac",
+   "rawBytes": 7446849437,
+   "rawSha256": "7b0957764449a71f8dd03aecff6810c5c5381405d6e39b7a05b571ef268460de"
+  },
+  "growth-action": {
+   "path": "growth-action.csv.gz",
+   "rows": 3651648,
+   "bytes": 289851556,
+   "sha256": "31552ae0c3705f2a172ccfe3e2b75fe8be70013a95b744d8e261c0a75b577f43",
+   "rawBytes": 7388461762,
+   "rawSha256": "72a3ecb652cf3c8dda6779b09127e7abc3fa21ff93a85e995f65d724e931b461"
+  }
+ },
+ "review": {
+  "cases": 2696,
+  "files": {
+   "relationships-present": {
+    "path": "relationships-present-review.csv",
+    "bytes": 5577277,
+    "sha256": "17f93fe756845ad46d3f46ea8a7afd85a9ce8ebea376e4c9f724aab5fee11fe9"
+   },
+   "relationships-crossroads": {
+    "path": "relationships-crossroads-review.csv",
+    "bytes": 5666653,
+    "sha256": "177267fd3766326f6ffb1d9dfca4edb85957b2ac788b666bba55d37a8a64bf06"
+   },
+   "relationships-action": {
+    "path": "relationships-action-review.csv",
+    "bytes": 5613829,
+    "sha256": "e64cb27c844c16491b7684be123c5c0b6dd50c33261c0755f368253aa99c1f3e"
+   },
+   "work-present": {
+    "path": "work-present-review.csv",
+    "bytes": 5455299,
+    "sha256": "d9048cfb4f6f3c3163f814484dbb56dedaa4ed1b575c178a1550e74a4adece07"
+   },
+   "work-crossroads": {
+    "path": "work-crossroads-review.csv",
+    "bytes": 5544675,
+    "sha256": "5c10cc115aea30d4aa8a398d07819c1497533de83285aea3f1480d0f2130bba2"
+   },
+   "work-action": {
+    "path": "work-action-review.csv",
+    "bytes": 5491851,
+    "sha256": "dcb5501ea0b2ef95ecddb03ec63359913892ba5bfd106f423f4021efd8a7493c"
+   },
+   "creativity-present": {
+    "path": "creativity-present-review.csv",
+    "bytes": 5455089,
+    "sha256": "0bf0dd3458a546534be90ac63359c80a255f92fd811d6fa83ed87b99423daf6e"
+   },
+   "creativity-crossroads": {
+    "path": "creativity-crossroads-review.csv",
+    "bytes": 5544465,
+    "sha256": "3a24ab87acffb738d71673a6b22ac6b844402b760f20212844336a59cf8015ce"
+   },
+   "creativity-action": {
+    "path": "creativity-action-review.csv",
+    "bytes": 5491641,
+    "sha256": "cbc36517811504644dda4126546de1d39554733e81f6c4e28c792932ef1545fe"
+   },
+   "growth-present": {
+    "path": "growth-present-review.csv",
+    "bytes": 5442697,
+    "sha256": "4d000ab14d0a83def8c3e1521aa3dd219f3cc375ef91d60619def17f327cc712"
+   },
+   "growth-crossroads": {
+    "path": "growth-crossroads-review.csv",
+    "bytes": 5532073,
+    "sha256": "27a5d5146e5810a757515d96f9d6d9c6a2a10c4d417760f4098f3c0b836e6fb4"
+   },
+   "growth-action": {
+    "path": "growth-action-review.csv",
+    "bytes": 5479249,
+    "sha256": "c748026bc48d7a64e5aa6cf478c6d27115c0b9e8e32a29ebf0606122150dcea8"
+   }
+  },
+  "contentFile": {
+   "path": "reading-content.csv",
+   "bytes": 192386,
+   "sha256": "f2598a80e4dcd4058e05cd3525063f5f3480d07fb4c321398236efb86773bef9"
+  },
+  "caseFile": {
+   "path": "review-cases.json",
+   "bytes": 410772,
+   "sha256": "13e166d2ea10c6f4ccbfc1b00a61d84ff9e4e17be0fc908c725ebf814cefc308"
+  },
+  "coverage": {
+   "deckSize": 78,
+   "scannedCases": 3651648,
+   "signatures": 2139,
+   "selectedCases": 2696,
+   "rules": {
+    "repetition.expansion": {
+     "any": 79928,
+     "primary": 21046,
+     "signatures": 25
+    },
+    "repetition.boundaries": {
+     "any": 453027,
+     "primary": 119271,
+     "signatures": 121
+    },
+    "repetition.connection": {
+     "any": 135137,
+     "primary": 39986,
+     "signatures": 57
+    },
+    "repetition.solitude": {
+     "any": 34830,
+     "primary": 7212,
+     "signatures": 25
+    },
+    "repetition.clarity": {
+     "any": 616897,
+     "primary": 159745,
+     "signatures": 90
+    },
+    "repetition.uncertainty": {
+     "any": 40854,
+     "primary": 6758,
+     "signatures": 4
+    },
+    "repetition.change": {
+     "any": 124609,
+     "primary": 34977,
+     "signatures": 63
+    },
+    "repetition.stability": {
+     "any": 138799,
+     "primary": 25903,
+     "signatures": 4
+    },
+    "repetition.effort": {
+     "any": 74017,
+     "primary": 19190,
+     "signatures": 40
+    },
+    "repetition.rest": {
+     "any": 84487,
+     "primary": 15390,
+     "signatures": 31
+    },
+    "repetition.care": {
+     "any": 563335,
+     "primary": 214223,
+     "signatures": 137
+    },
+    "repetition.release": {
+     "any": 39691,
+     "primary": 8651,
+     "signatures": 10
+    },
+    "tension.expansion-boundaries": {
+     "any": 543762,
+     "primary": 514230,
+     "signatures": 205
+    },
+    "tension.connection-solitude": {
+     "any": 229296,
+     "primary": 162438,
+     "signatures": 151
+    },
+    "tension.change-stability": {
+     "any": 388950,
+     "primary": 284736,
+     "signatures": 212
+    },
+    "tension.effort-rest": {
+     "any": 296322,
+     "primary": 296322,
+     "signatures": 247
+    },
+    "tension.clarity-uncertainty": {
+     "any": 536514,
+     "primary": 298908,
+     "signatures": 178
+    },
+    "tension.care-boundaries": {
+     "any": 1284246,
+     "primary": 960480,
+     "signatures": 208
+    },
+    "complement.clarity-effort": {
+     "any": 349391,
+     "primary": 158173,
+     "signatures": 137
+    },
+    "complement.care-connection": {
+     "any": 385286,
+     "primary": 184929,
+     "signatures": 113
+    },
+    "complement.release-change": {
+     "any": 100488,
+     "primary": 44079,
+     "signatures": 80
+    }
+   },
+   "unreachableRules": [],
+   "rulesNeverPrimary": [],
+   "classCaseCounts": {
+    "repetition": 672352,
+    "complement": 387181,
+    "tension": 2517114,
+    "ties": 356726,
+    "priorityConflicts": 2566493,
+    "singles": 653428,
+    "fallback": 75001
+   },
+   "cardOrientationPositionCombos": 468,
+   "cardOrientationPositionCovered": 468,
+   "cardOrientationPositionRequired": 468,
+   "reachabilityScope": "complete-enumeration"
+  }
+ },
+ "validation": {
+  "ok": true,
+  "parity": {
+   "sampled": 2279,
+   "mismatches": 0,
+   "fixtureCases": 18,
+   "fixtureMismatches": 0
+  },
+  "fallbackRows": 75001,
+  "humanEditorialApproval": false
+ },
+ "run": {
+  "chunksRendered": 74,
+  "chunksTotal": 74,
+  "seconds": 2196.06
+ }
+}

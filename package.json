@@ -16,7 +16,8 @@
     "storybook": "npm run storybook -w @pxoracle/web",
     "build-storybook": "npm run build-storybook -w @pxoracle/web",
     "test": "node --import tsx --test tests/*.test.mjs",
-    "wasm": "bash scripts/build-wasm.sh"
+    "wasm": "bash scripts/build-wasm.sh",
+    "reading-export": "node --import tsx scripts/reading-export/cli.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

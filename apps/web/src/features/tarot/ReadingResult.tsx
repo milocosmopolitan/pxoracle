@@ -1,17 +1,11 @@
 "use client";
 import type { Context, ReadingPlan } from "@pxoracle/contracts/reading";
-import { TOPICS, INTENTS, renderPhrase, type ProsePack } from "./reading";
-const roleLabels = {
-  visible: "Visible situation",
-  examination: "What to examine",
-  direction: "Helpful direction",
-  values: "What matters to you",
-  conditions: "Overlooked conditions",
-  checks: "Checks before deciding",
-  foundation: "Your foundation",
-  difficulty: "A difficulty to account for",
-  small_action: "A small action",
-};
+import {
+  TOPICS,
+  INTENTS,
+  composeReading,
+  type ProsePack,
+} from "./reading";
 export function PerspectiveFields({
   value,
   onChange,
@@ -67,7 +61,7 @@ export function ReadingResult({
   focus: number | null;
   onFocus: (index: number) => void;
 }) {
-  const text = (p: Parameters<typeof renderPhrase>[0]) => renderPhrase(p, pack);
+  const view = composeReading(plan, pack);
   return (
     <section className="structured-reading" aria-label="Three-card reflection">
       <p className="reading-disclosure">
@@ -75,59 +69,46 @@ export function ReadingResult({
         note is not analyzed. These prompts do not predict an outcome.
       </p>
       <h3>The whole reading</h3>
-      <p>{plan.overall.map(text).join(" ")}</p>
+      <p>{view.overall}</p>
       <h3>Connections and themes</h3>
-      {plan.fallback ? (
-        <p>
-          No strong relationship rule connected these cards. Follow their
-          positions in order without forcing a shared theme.
-        </p>
+      {view.fallbackText !== null ? (
+        <p>{view.fallbackText}</p>
       ) : (
-        plan.relations.map((r) => (
+        view.relations.map((r) => (
           <p key={r.ruleId}>
-            <strong>{r.kind[0].toUpperCase() + r.kind.slice(1)}</strong> ·{" "}
-            {r.cardIndices
-              .map((i) => pack.strings[`name.${plan.cards[i].cardId}`])
-              .join(" / ")}
-            .{" "}
-            {plan.overall.some((p) => p.reference === r.phrase.reference)
-              ? "This is the main connection described above."
-              : text(r.phrase)}{" "}
-            <small>Cards {r.cardIndices.map((i) => i + 1).join(", ")}</small>
+            <strong>{r.kindLabel}</strong> · {r.cardNames.join(" / ")}. {r.text}{" "}
+            <small>Cards {r.cardNumbers.join(", ")}</small>
           </p>
         ))
       )}
       <h3>One small action</h3>
-      <p className="prompt">{text(plan.action)}</p>
+      <p className="prompt">{view.action}</p>
       <h3>A question to sit with</h3>
-      <p>{text(plan.question)}</p>
+      <p>{view.question}</p>
       <h3>Your cards, in order</h3>
-      {plan.positions.map((position) => {
-        const card = plan.cards[position.index];
-        return (
-          <article className="reading-card" key={position.index}>
-            <p className="eyebrow">
-              {position.index + 1} · {roleLabels[position.role]}
-            </p>
-            <h4>
-              <button
-                className="text-button"
-                aria-pressed={focus === position.index}
-                onClick={() => onFocus(position.index)}
-              >
-                {pack.strings[`name.${card.cardId}`]}
-              </button>
-            </h4>
-            <small>
-              {card.orientation}
-              {position.lens !== "direct" ? ` · ${position.lens}` : ""}
-            </small>
-            {position.phrases.map((p, i) => (
-              <p key={i}>{text(p)}</p>
-            ))}
-          </article>
-        );
-      })}
+      {view.positions.map((position) => (
+        <article className="reading-card" key={position.index}>
+          <p className="eyebrow">
+            {position.index + 1} · {position.roleLabel}
+          </p>
+          <h4>
+            <button
+              className="text-button"
+              aria-pressed={focus === position.index}
+              onClick={() => onFocus(position.index)}
+            >
+              {position.cardName}
+            </button>
+          </h4>
+          <small>
+            {position.orientation}
+            {position.lens !== "direct" ? ` · ${position.lens}` : ""}
+          </small>
+          {position.paragraphs.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </article>
+      ))}
       <details>
         <summary>How this reflection was assembled</summary>
         <p>
