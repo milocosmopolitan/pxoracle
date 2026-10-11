@@ -6,7 +6,7 @@
 
 Deliver three route-specific experiences in one visual world, with independent Rust engines loaded only when needed. Preserve approved pixel artwork, support accessible HTML interaction, and allow engine, scene, art, and interpretation changes without cross-layer rewrites.
 
-The first delivery runs locally and produces an S3-compatible static export. AWS account provisioning and commercial deck entitlement services are outside this delivery.
+The app runs locally and produces an S3-compatible static export. ADR 005 adds SAM-managed hosting and manual GitHub publishing; commercial deck entitlement services remain outside this delivery.
 
 ## 2. Dependency and ownership rules
 
@@ -210,3 +210,7 @@ See [ADR 003](docs/decisions/003-tarot-perspective-rig.md) for articulated arms,
 ## Deterministic three-card interpretation
 
 [ADR 004](docs/decisions/004-deterministic-free-readings.md) adds the independent pure Rust `pxoracle-tarot-reading` crate to the existing tarot WASM adapter. Its external symbolic packs are validated/cached in the Worker; English sentences remain a separate frontend content pack. Only three revealed cards and a fixed structured perspective enter interpretation. The original draw engine, position IDs, `en.v1`, Scene contracts, and astrology engine remain independent. Versioned v2 save envelopes preserve draw identity and require explicit perspective selection or version migration when needed.
+
+## Manual publishing
+
+[ADR 005](docs/decisions/005-manual-static-publishing.md) defines a manually dispatched main-only workflow, GitHub OIDC, private S3/CloudFront hosting and complete-release staging. Both WASM engines rebuild before export; publishing does not add an application server or interpretation service.

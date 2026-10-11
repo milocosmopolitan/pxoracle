@@ -9,6 +9,21 @@ concurrency:
 permissions:
   contents: read
 jobs:
+  infrastructure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      AWS_DEFAULT_REGION: us-east-1
+      SAM_CLI_TELEMETRY: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/setup-sam@v2
+        with:
+          use-installer: true
+      - run: sam validate --lint --template-file infra/template.json
+      - run: sam validate --lint --template-file infra/bootstrap.json
+      - run: python3 -m unittest discover -s tests/deployment -v
+      - run: bash -n scripts/bootstrap-publish.sh
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 25

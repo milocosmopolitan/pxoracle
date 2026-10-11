@@ -1,0 +1,88 @@
+name: Publish PXOracle
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pxoracle-production-publish
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - uses: dtolnay/rust-toolchain@1.90.0
+        with:
+          targets: wasm32-unknown-emscripten
+      - uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: '4.0.10'
+          actions-cache-folder: emsdk-cache
+      - run: npm ci
+      - run: node scripts/check-boundaries.mjs
+      - run: cargo test --locked
+      # Rebuild ignored engine artifacts so new UI never ships with an old Worker/WASM.
+      - run: npm run wasm
+      - run: npm run typecheck
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+      - run: npm test
+      - run: python3 -m unittest discover -s tests/deployment -v
+      - run: npm run build-storybook
+        env:
+          STORYBOOK_DISABLE_TELEMETRY: '1'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: publish-static-export
+          path: apps/web/out/
+          if-no-files-found: error
+          retention-days: 14
+  publish:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      AWS_DEFAULT_REGION: ${{ vars.AWS_REGION }}
+      AWS_CLOUDFORMATION_ROLE_ARN: ${{ vars.AWS_CLOUDFORMATION_ROLE_ARN }}
+      SAM_CLI_TELEMETRY: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: publish-static-export
+          path: apps/web/out/
+      - uses: aws-actions/setup-sam@v2
+        with:
+          use-installer: true
+      - name: Require bootstrap configuration
+        env:
+          PUBLISH_ROLE: ${{ vars.AWS_PUBLISH_ROLE_ARN }}
+          ACCOUNT: ${{ vars.AWS_ACCOUNT_ID }}
+        run: |
+          test -n "$AWS_REGION"
+          test -n "$AWS_CLOUDFORMATION_ROLE_ARN"
+          test -n "$PUBLISH_ROLE"
+          test -n "$ACCOUNT"
+      - uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.AWS_PUBLISH_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          allowed-account-ids: ${{ vars.AWS_ACCOUNT_ID }}
+          role-session-name: pxoracle-${{ github.run_id }}
+      - run: sam validate --lint --template-file infra/template.json
+      - name: Publish a complete release and verify public URLs
+        env:
+          RELEASE_ID: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+        run: python3 scripts/publish.py --release "$RELEASE_ID"
