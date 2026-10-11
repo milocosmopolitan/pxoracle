@@ -1,4 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
+// Use Chromium's explicit software GL driver on GPU-less CI, including compositing.
+const softwareGL = process.env.CI
+  ? { args: ["--use-gl=angle", "--use-angle=swiftshader"] }
+  : undefined;
 export default defineConfig({
   testDir: "tests/browser",
   timeout: 180000,
@@ -18,13 +22,13 @@ export default defineConfig({
   projects: [
     {
       name: "chrome",
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+      use: { ...devices["Desktop Chrome"], channel: "chrome", deviceScaleFactor: process.env.CI ? 0.5 : 1, launchOptions: softwareGL },
     },
     { name: "firefox", use: { ...devices["Desktop Firefox"] } },
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
     {
       name: "mobile-chromium-emulation",
-      use: { ...devices["Pixel 7"], reducedMotion: "reduce" },
+      use: { ...devices["Pixel 7"], reducedMotion: "reduce", deviceScaleFactor: process.env.CI ? 0.5 : devices["Pixel 7"].deviceScaleFactor, launchOptions: softwareGL },
     },
   ],
   reporter: [["list"], ["html", { open: "never" }]],
