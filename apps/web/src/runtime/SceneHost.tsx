@@ -16,6 +16,10 @@ export default function SceneHost() {
       ? "tarot"
       : "landing";
   useEffect(() => {
+    // A lazy scene may mount after the reader has already focused a control.
+    // Preserve that intent; navigation from outside main still announces its heading.
+    const active = document.activeElement;
+    if (active && active !== document.body && document.querySelector("main")?.contains(active)) return;
     document.querySelector<HTMLElement>("h1")?.focus();
   }, [path]);
   return (
