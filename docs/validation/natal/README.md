@@ -46,8 +46,17 @@ inconsistent saved plans, deletion and route abandonment/resumption. Canvas test
 wait for actual camera readiness, then exercise body/line raycasting, drag rejection
 and background return. Keyboard/HTML controls use the same selection state.
 
-Final post-main-integration verification and CI results will be recorded here before
-the PR is marked ready. No pending run is counted as a completed qualification.
+Local post-integration natal browser suite: **32 passed**, eight each in installed
+Chrome, bundled Firefox, bundled WebKit and Pixel 7 Chromium emulation. This includes
+the quick select/Escape readiness regression. The full Storybook suite passed 18
+checks, including existing tarot cameras/rig, reading states and HMR cleanup.
+[Browser versions](browser-versions.json) record the actual local engines.
+
+[PR #61 checks](https://github.com/milocosmopolitan/pxoracle/pull/61/checks) provide the
+final commit's hosted full regression results and downloadable artifacts, including
+actual Safari via WebDriver on macOS. Local Safari remote automation was disabled,
+so no local Safari success is claimed. The PR remains draft until its hosted gates
+pass; a pending run is never counted as completed qualification.
 
 ## Download and lazy-loading boundaries
 
@@ -110,3 +119,12 @@ three documented keys. A load or interpretation failure does not change the char
   intermediate frames and sequence videos.
 - #48: versioned envelope, current/legacy/inconsistent save and deletion tests.
 - #49: six repository gates, browser/Storybook regression suite, this evidence record.
+
+## Earlier deployment completed
+
+Before this epic, PR #50 and the OIDC/hydration follow-up #59 were merged and deployed
+using `AWS_PROFILE=milo`, us-east-1. The manual
+[Publish run 38145221654](https://github.com/milocosmopolitan/pxoracle/actions/runs/38145221654)
+succeeded, serving main `6d57488` at
+[CloudFront](https://d2zqxem1cx5v8m.cloudfront.net). This natal PR is a separate review
+step; its creation does not deploy the new natal experience automatically.
