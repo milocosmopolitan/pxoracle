@@ -740,3 +740,76 @@ summary {
     scroll-behavior: auto !important;
   }
 }
+
+/* Authored door frames keep the original wood, moon and brass details. */
+.door-entrance { position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow: hidden; }
+.door-surround { position: absolute; inset: 0; background: #0b0e14; }
+.door-art { position: absolute; inset: 0; display: grid; place-items: center; }
+.door-art-frame { position: absolute; width: min(96vw, 78vh); height: 96%; object-fit: contain; opacity: 0; image-rendering: pixelated; }
+.door-art-closed { opacity: 1; }
+.door-caption { position: absolute; bottom: 3%; left: 0; width: 100%; text-align: center; color: #eadcc4; text-shadow: 0 2px 8px #000; font: italic 16px Georgia, serif; }
+.door-caption button { pointer-events: auto; font: 12px Arial, sans-serif; background: #101a17e8; }
+.door-opening .door-art-closed { animation: door-first .35s step-end forwards; }
+.door-opening .door-art-ajar { animation: door-frame-step .3s .35s step-end; }
+.door-opening .door-art-half { animation: door-frame-step .3s .65s step-end; }
+.door-opening .door-art-open { animation: door-frame-step .4s .95s step-end; }
+.door-opening .door-art-frame:last-child { animation: door-last .01s 1.35s forwards; }
+.door-opening .door-art { animation: door-approach 2.2s ease-in forwards; }
+.door-opening { animation: entrance-clear 2.2s forwards; }
+.door-opening .door-surround { animation: surround-clear 2.2s forwards; }
+@keyframes door-first { from { opacity: 1; } to { opacity: 0; } }
+@keyframes door-frame-step { 0%, 99% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes door-last { to { opacity: 1; } }
+@keyframes door-approach { 0%, 55% { transform: scale(1); } 100% { transform: scale(1.65); } }
+@keyframes entrance-clear { 0%, 70% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+@keyframes surround-clear { 0%, 60% { opacity: 1; } 100% { opacity: 0; } }
+@media (min-width: 901px) {
+  .tarot-layout { display: grid; grid-template-columns: 1fr minmax(380px, 510px); gap: 32px; }
+  .tarot-heading { grid-column: 2; text-align: left; margin-bottom: 0; }
+  .tarot-panel { grid-column: 2; width: 100%; }
+  .tarot-layout:has(.card-fan, .spread) { display: block; }
+  .tarot-layout:has(.card-fan, .spread) .tarot-panel { max-width: 960px; }
+  .scene-label > .eyebrow { margin-top: 25px; }
+  .scene-label h1 { font-size: clamp(32px, 3.5vw, 48px); }
+  .scene-shade { background: linear-gradient(90deg, #0a101000 35%, #0a101099 64%, #0a1010ed), linear-gradient(0deg, #0a1010b0, transparent 22%); }
+}
+@media (max-width: 900px) {
+  .scene-host { position: absolute; height: 560px; }
+  .tarot-heading { padding-top: 340px; }
+  .scene-label { min-height: 490px; }
+  .scene-label > .eyebrow { margin-top: 310px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .door-opening { display: none; }
+}
+@media (min-width: 901px) {
+  .feature-layout { gap: 28px 50px; }
+  .scene-label, .astrology-panel { grid-column: 2; }
+  .scene-label { padding-top: 0; }
+  .scene-label h1 { font-size: 42px; }
+}
+
+/* The DOM panel leaves the real Mesh hit area unobstructed. */
+body:has(.table-reading) main { pointer-events: none; }
+.table-reading .tarot-heading { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.tarot-layout.table-reading { display: block; padding: 24px; margin: 0 0 0 auto; width: 380px; }
+.table-reading .tarot-panel { width: 100%; max-width: none; padding: 24px; pointer-events: auto; }
+.scene-host[data-table="active"] { right: 380px; height: 100svh; position: fixed; }
+.scene-host[data-table="active"] .scene-shade { background: linear-gradient(0deg,#0a101055,transparent 20%); }
+.slot-controls { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin: 18px 0; }
+.slot-controls button { min-width: 44px; min-height: 44px; padding: 7px; }
+.slot-controls button[aria-pressed="true"] { outline: 2px solid var(--gold); background: #435951; }
+.reading-card { padding: 16px 0; border-top: 1px solid var(--line); }
+.reading-card h3 { margin: 4px 0; }
+.reading-disclosure { color: var(--muted); font-size: 12px; }
+.motion-controls { margin: 16px 0; font-size: 12px; }
+.tarot-story .scene-host[data-table="active"] { inset: 0; height: 100%; width: 100%; position: absolute; }
+@media (max-width: 760px) {
+  .scene-host[data-table="active"] { inset: 70px 0 auto; height: 56svh; width: 100%; position: fixed; }
+  .tarot-layout.table-reading { padding: 12px; width: 100%; padding-top: 56svh; }
+  .table-reading .tarot-panel { padding: 20px; }
+  .tarot-story .scene-host[data-table="active"] { inset: 0; height: 100%; }
+}
+
+.scene-host { transition: right 1.2s ease, height 1.2s ease, top 1.2s ease; }
+@media (prefers-reduced-motion: reduce) { .scene-host { transition: none; } }

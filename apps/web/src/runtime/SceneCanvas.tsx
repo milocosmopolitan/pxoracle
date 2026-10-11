@@ -15,12 +15,20 @@ export function SceneCanvas({
   data = {},
   frozen = false,
   embedded = false,
+  onStatus,
 }: {
   route: RouteScene;
   data?: ViewData;
   frozen?: boolean;
   embedded?: boolean;
+  onStatus?: (status: string) => void;
 }) {
+  const statusCallback = useRef(onStatus);
+  statusCallback.current = onStatus;
+  const reportStatus = (message: string) => {
+    setStatus(message);
+    statusCallback.current?.(message);
+  };
   const canvas = useRef<HTMLCanvasElement>(null);
   const runtime = useRef<SceneRuntime | null>(null);
   const ownership=useRef(0);
@@ -31,9 +39,9 @@ export function SceneCanvas({
     const lease=++ownership.current;
     let r=runtime.current;
     try {
-      if(!r){r = new SceneRuntime(canvas.current, setStatus);runtime.current = r;}
+      if(!r){r = new SceneRuntime(canvas.current, reportStatus);runtime.current = r;}
     } catch {
-      setStatus(
+      reportStatus(
         "Your browser cannot start WebGL. All reading controls remain available.",
       );
       return;
@@ -52,7 +60,7 @@ export function SceneCanvas({
         if (!canceled) return runtime.current?.navigate(module.createScene);
       })
       .catch(() => {
-        if (!canceled) setStatus("The scene could not load. Please retry.");
+        if (!canceled) reportStatus("The scene could not load. Please retry.");
       });
     return () => {
       canceled = true;
@@ -66,7 +74,7 @@ export function SceneCanvas({
   }, [data, frozen]);
   return (
     <>
-    <div className="scene-host" style={embedded?{position:"absolute"}:undefined}>
+    <div data-table={route === "tarot" && data.tarot && data.tarot.phase !== "conversation" ? "active" : undefined} className="scene-host" style={embedded?{position:"absolute"}:undefined}>
       <canvas ref={canvas} aria-hidden="true" />
       <div className="scene-shade" />
     </div>

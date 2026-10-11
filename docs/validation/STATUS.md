@@ -1,5 +1,7 @@
 # Verification status
 
+For the current tarot choreography implementation, see [2026-10-10 checks and visual evidence](tarot-table/README.md). The counts and browser versions below describe the earlier baseline, not new head qualification.
+
 Baseline qualification: [successful workflow 38083929265](https://github.com/milocosmopolitan/pxoracle/actions/runs/38083929265), source commit `c5d0aa72e75b6f638476181118f2273bf22f8613`. Current head checks are attached to PR #26. The subsequent Storybook mobile viewport adjustment is covered by that head's story checks.
 
 ## Executed checks

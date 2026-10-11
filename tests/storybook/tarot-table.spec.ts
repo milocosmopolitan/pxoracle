@@ -1,0 +1,73 @@
+import { test, expect } from "@playwright/test";
+import { mkdirSync } from "node:fs";
+test("production table stories cover grip, camera, mobile, retry and reversed reveal without WASM", async ({
+  page,
+}) => {
+  const engines: string[] = [];
+  page.on("request", (r) => {
+    if (r.url().includes("/engines/")) engines.push(r.url());
+  });
+  mkdirSync("docs/validation/tarot-table", { recursive: true });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 1100, height: 800 });
+  await page.goto(
+    "/iframe.html?id=pxoracle-tarot-table--hand-pick-place-flip&viewMode=story",
+  );
+  await expect(page.getByText(/No WASM · reading/)).toBeVisible({
+    timeout: 20000,
+  });
+  await page.getByRole("button", { name: "Replay", exact: true }).click();
+  await page.waitForTimeout(900);
+  await page.screenshot({ path: "docs/validation/tarot-table/hand-carry.png" });
+  await expect(page.getByText(/No WASM · reading/)).toBeVisible();
+  await page.screenshot({
+    path: "docs/validation/tarot-table/hand-revealed.png",
+  });
+  for (const story of [
+    "camera-transition",
+    "shuffle",
+    "selection",
+    "upright",
+    "reversed",
+    "three-cards",
+    "mobile",
+    "loading-failure",
+    "restored",
+    "reduced-motion",
+  ]) {
+    await page.setViewportSize(
+      story === "mobile"
+        ? { width: 390, height: 844 }
+        : { width: 1100, height: 800 },
+    );
+    await page.goto(
+      `/iframe.html?id=pxoracle-tarot-table--${story}&viewMode=story`,
+    );
+    await expect(page.locator("canvas")).toHaveCount(1);
+    await expect(
+      page.getByText(/STORYBOOK · Synthetic fixed cards/),
+    ).toBeVisible();
+    await expect(page.locator(".scene-status")).toHaveCount(0, {
+      timeout: 20000,
+    });
+    if (story === "loading-failure") {
+      await page.getByRole("button", { name: "Retry same card" }).click();
+      await expect(page.getByText(/No WASM · reading/)).toBeVisible();
+    }
+    if (story === "camera-transition") {
+      for (let i = 0; i < 2; i++) {
+        await page
+          .getByRole("button", { name: "Conversation / table" })
+          .click();
+        await expect(page.getByText(/No WASM · selecting/)).toBeVisible({
+          timeout: 20000,
+        });
+        await page
+          .getByRole("button", { name: "Conversation / table" })
+          .click();
+        await expect(page.getByText(/No WASM · conversation/)).toBeVisible();
+      }
+    }
+  }
+  expect(engines).toEqual([]);
+});

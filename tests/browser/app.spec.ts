@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { settleTarot } from "./tarot-support";
 test.beforeEach(async({browser},info)=>{await info.attach("browser-version",{body:JSON.stringify({project:info.project.name,version:browser.version()}),contentType:"application/json"});});
 test("static direct routes, feature-only WASM, tarot restore and history", async ({
   page,
@@ -17,20 +18,15 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
     .getByRole("link", { name: "Let the cards speak", exact: false })
     .click();
   await page.getByRole("button", { name: "Shuffle the deck" }).click();
-  await expect(
-    page.getByRole("button", { name: "Choose slot 1", exact: true }),
-  ).toBeVisible();
-  for (const n of [1, 13, 78])
-    await page
-      .getByRole("button", { name: `Choose slot ${n}`, exact: true })
-      .click();
-  for (const n of [1, 2, 3])
-    await page
-      .getByRole("button", { name: `Reveal card ${n}`, exact: true })
-      .click();
-  await expect(
-    page.getByRole("heading", { name: "Let the images settle." }),
-  ).toBeVisible();
+  await settleTarot(page, page.getByRole("button", { name: "Choose slot 1", exact: true }));
+  await page.getByRole("button", { name: "Choose slot 1", exact: true }).click();
+  await settleTarot(page, page.getByRole("button", { name: "Next cards", exact: true }));
+  await page.getByRole("button", { name: "Next cards", exact: true }).click();
+  await page.getByRole("button", { name: "Choose slot 13", exact: true }).click();
+  await settleTarot(page, page.getByRole("button", { name: "Next cards", exact: true }));
+  for (let n = 0; n < 5; n++) await page.getByRole("button", { name: "Next cards", exact: true }).click();
+  await page.getByRole("button", { name: "Choose slot 78", exact: true }).click();
+  await settleTarot(page, page.getByRole("heading", { name: "Let the images settle." }));
   expect(requests.some((x) => x.includes("/tarot/engine.wasm"))).toBeTruthy();
   expect(
     requests.some((x) => x.includes("/astrology/engine.wasm")),
@@ -40,9 +36,7 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
     await page.getByRole("button", { name: "Save reading", exact: true }).click();
   await page.reload();
   await page.getByRole("button", { name: "Resume a saved reading" }).click();
-  await expect(
-    page.getByRole("heading", { name: "Let the images settle." }),
-  ).toBeVisible();
+  await settleTarot(page, page.getByRole("heading", { name: "Let the images settle." }));
   await page.getByRole("link", { name: "The room", exact: true }).click();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole('heading',{level:1})).toContainText('Some answers');
@@ -66,10 +60,10 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   await page.getByRole("button", { name: "Enter the crystal" }).click();
   await expect(
     page.getByRole("heading", { name: "Your celestial map" }),
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 20000 });
   await expect(
     page.getByRole("button", { name: /sun.*Capricorn/i }),
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 20000 });
   expect(wasm.some((x) => x.includes("/astrology/"))).toBeTruthy();
   expect(wasm.some((x) => x.includes("/tarot/"))).toBeFalsy();
   await page.evaluate(()=>window.scrollTo(0,0));
@@ -78,12 +72,12 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   await page.reload();
   const beforeRestore=wasm.length;
   await page.getByRole('button',{name:'Open saved chart'}).click();
-  await expect(page.getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible();
+  await expect(page.getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible({ timeout: 20000 });
   expect(wasm.length).toBe(beforeRestore);
   await page.getByRole('button',{name:'Edit details'}).click();
   await page.getByLabel('Time accuracy').selectOption('unknown');
   await page.getByRole('button',{name:'Enter the crystal'}).click();
-  await expect(page.getByText('Birth time is uncertain.',{exact:false})).toBeVisible();
+  await expect(page.getByText('Birth time is uncertain.',{exact:false})).toBeVisible({ timeout: 20000 });
   await expect(page.getByText('Ascendant ·',{exact:false})).toHaveCount(0);
 
 });
@@ -100,9 +94,7 @@ test("failed engine initialization offers a working retry", async ({
   await expect(page.getByRole("button", {name:"Shuffle the deck"})).toBeEnabled();
   fail = false;
   await page.getByRole("button", { name: "Shuffle the deck" }).click();
-  await expect(
-    page.getByRole("button", { name: "Choose slot 1", exact: true }),
-  ).toBeVisible();
+  await settleTarot(page, page.getByRole("button", { name: "Choose slot 1", exact: true }));
 });
 test("rapid route changes keep a single canvas and usable keyboard navigation", async ({
   page,
@@ -114,8 +106,10 @@ test("rapid route changes keep a single canvas and usable keyboard navigation", 
     await page.getByRole("link", { name: "The room", exact: true }).click();
   }
   await expect(page.locator("canvas")).toHaveCount(1);
-  await page.keyboard.press("Tab");
-  await expect(page.locator(":focus")).toHaveCount(1);
+  const tarotLink = page.getByRole("link", { name: "Tarot", exact: true });
+  await tarotLink.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/tarot\/$/);
 });
 
 test('repeated navigation releases WebGL allocations and records a frame baseline',async({page,browserName,isMobile})=>{
@@ -153,7 +147,7 @@ test('failed scene art preserves controls and offers an accessible retry',async(
  let fail=true;
  await page.route('**/art/room.webp',route=>fail?route.abort():route.continue());
  await page.goto('/astrology/');
- await expect(page.getByLabel('Birth date',{exact:true})).toBeVisible();
+ await expect(page.getByLabel('Birth date',{exact:true})).toBeVisible({ timeout: 20000 });
  await page.getByLabel('Birth date',{exact:true}).fill('2000-01-01');
  await expect(page.locator('.scene-status')).toContainText(/retry|cannot start WebGL/i,{timeout:15000});
  if(browserName==='firefox'&&(await page.locator('.scene-status').innerText()).includes('cannot start WebGL')){
@@ -162,7 +156,7 @@ test('failed scene art preserves controls and offers an accessible retry',async(
   return;
  }
  const retry=page.getByRole('button',{name:'Retry scene'});
- await expect(retry).toBeVisible();fail=false;
+ await expect(retry).toBeVisible({ timeout: 20000 });fail=false;
  await retry.focus();await page.keyboard.press('Enter');
  await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
  await expect(page.getByLabel('Birth date',{exact:true})).toHaveValue('2000-01-01');

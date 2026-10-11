@@ -17,8 +17,7 @@ test("isolated production stories are labeled, interactive and never load WASM",
   }
   if(story==="tarot-input"){
    await page.getByRole("button",{name:"Shuffle the deck"}).click();
-   for(const n of [1,13,78])await page.getByRole("button",{name:`Choose slot ${n}`,exact:true}).click();
-   for(const n of [1,2,3])await page.getByRole("button",{name:`Reveal card ${n}`,exact:true}).click();
+   for(const n of [1,2,3])await page.getByRole("button",{name:`Choose slot ${n}`,exact:true}).click();
    await expect(page.getByRole("heading",{name:"Let the images settle."})).toBeVisible();
   }
   await page.evaluate(()=>window.scrollTo(0,0));
@@ -34,7 +33,7 @@ test("Storybook dev HMR releases old scene listeners",async({page})=>{
   EventTarget.prototype.removeEventListener=function(type,...args){if(this instanceof HTMLCanvasElement&&type==='webglcontextlost')active--;return (remove as any).call(this,type,...args);};
   (window as any).__pxSceneListeners=()=>active;
  });
- await page.goto('http://127.0.0.1:6007/iframe.html?id=pxoracle-scenes--landing&viewMode=story');
+ await page.goto('http://127.0.0.1:6107/iframe.html?id=pxoracle-scenes--landing&viewMode=story');
  await expect(page.getByRole('heading',{name:'Take your time.'})).toBeVisible();
  await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:20000});
  const path='apps/web/src/stories/Oracle.stories.tsx',original=readFileSync(path,'utf8');

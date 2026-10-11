@@ -6,7 +6,7 @@ Rust DTOs generate JSON Schema through schemars (`scripts/generate-schemas.sh`).
 
 Request `{version:1,id:integer,payload}`; response `{version:1,id,ok:true,result}` or `{version:1,id,ok:false,error:{code}}`. One feature per worker. Initialization Promise deduplicates requests and evicts failures; client timeouts/errors terminate the worker and reject all pending operations. Retry creates a clean instance. UI request generations ignore stale astrology responses; tarot actions are serialized by an immediate lock.
 
-Stable errors include PROTOCOL_VERSION, ENGINE_LOAD_FAILED, ENGINE_TIMEOUT, INVALID_INPUT, INVALID_SETTINGS, INVALID_SESSION, INCOMPATIBLE_SESSION, NONEXISTENT_LOCAL_TIME, AMBIGUOUS_LOCAL_TIME, INVALID_TIMEZONE, UNSUPPORTED_DATE, SPREAD_FULL, NOT_SELECTED. Messages must not include input values.
+Stable errors include PROTOCOL_VERSION, ENGINE_LOAD_FAILED, ENGINE_TIMEOUT, INVALID_INPUT, INVALID_SETTINGS, INVALID_SESSION, INCOMPATIBLE_SESSION, NONEXISTENT_LOCAL_TIME, AMBIGUOUS_LOCAL_TIME, INVALID_TIMEZONE, UNSUPPORTED_DATE, SPREAD_FULL, NOT_SELECTED, SPREAD_INCOMPLETE, REVEAL_OUT_OF_ORDER. Messages must not include input values.
 
 C ABI input is a NUL-terminated UTF-8 allocation made with the module allocator and freed by JS. Output is a Rust CString; JS copies it and calls px_free once. No pointers leave the Worker or enter Zustand.
 
@@ -20,9 +20,9 @@ Whole Sign starts at the sign containing ASC. Angles omitted for uncertain time 
 
 Standard IDs: major.00–major.21, then wands/cups/swords/pentacles.01–.14. Courts: .11 Page, .12 Knight, .13 Queen, .14 King. Meaning/card art/content identity is independent.
 
-Creation fixes all 78 card identities and directions. Selection is slot-to-permutation lookup, not a new random draw. Repeated selection/reveal is idempotent. Selection is limited by spread, reveal requires prior selection. Reading starts after all selected cards are revealed. Complete is explicit and idempotent. Restoring validates actual permutation, selection consistency, orientations, versions, and state; it does not rerun a seed.
+Creation fixes all 78 card identities and directions. Selection is slot-to-permutation lookup, not a new random draw. Repeated selection/reveal is idempotent. Selection is limited by spread. A new reveal requires a complete selection and all earlier selected cards revealed; repeated reveals remain idempotent. Reading starts after all selected cards are revealed. Complete is explicit and idempotent. Restoring validates actual permutation, selection consistency, orientations, versions, and state; it does not rerun a seed.
 
-The full serialized deck is client-local, inspectable by a determined user, and may be stored to resume unfinished readings. This is not a secrecy or gambling boundary. Scene view models contain only visible counts/positions and disclosed chart data.
+The full serialized deck is client-local, inspectable by a determined user, and may be stored to resume unfinished readings. This is not a secrecy or gambling boundary. The tarot scene receives `TarotView`: phase/revision, anonymous slot page/focus, selected face URLs/orientation/reveal flags, and intent/event callbacks. It receives no engine session or hidden permutation. Per-frame positions live inside the scene. See [ADR 002](../decisions/002-tarot-table-choreography.md).
 
 ## Scene and resource ownership
 

@@ -6,9 +6,11 @@ import type {RouteScene} from "@pxoracle/contracts";
 import {SceneCanvas} from "./SceneCanvas";
 export default function SceneHost() {
   const path = usePathname();
+  const setSceneReady = useOracle((s) => s.setSceneReady);
+  const setEntrance = useOracle((s) => s.setEntrance);
   const chart = useOracle((s) => s.chart);
   const selectedBody = useOracle((s) => s.selectedBody);
-  const tarot = useOracle((s) => s.tarot);
+  const tarotView = useOracle((s) => s.tarotView);
   const route: RouteScene = path.startsWith("/astrology")
     ? "astrology"
     : path.startsWith("/tarot")
@@ -20,10 +22,14 @@ export default function SceneHost() {
   return (
     <SceneCanvas
       route={route}
+      onStatus={(status) => {
+        setSceneReady(!status);
+        if (status && status !== "Preparing the room…") setEntrance("entered");
+      }}
       data={{
         bodies: chart?.bodies,
         selectedBody,
-        revealedCount: tarot?.selections.filter((x) => x.revealed).length,
+        tarot: route === "tarot" ? tarotView : undefined,
       }}
     />
   );

@@ -5,470 +5,470 @@
     "major.00": {
       "name": "The Fool",
       "theme": "beginnings",
-      "upright": "Consider beginnings in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at beginnings. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Begin with curiosity and one small, reversible step.",
+      "reversed": "Pause before a leap that depends on luck alone; prepare practical support."
     },
     "major.01": {
       "name": "The Magician",
       "theme": "agency",
-      "upright": "Consider agency in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at agency. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Bring the skills and tools you already have into one deliberate action.",
+      "reversed": "Check whether preparation has become avoidance or a promise exceeds your practice."
     },
     "major.02": {
       "name": "The High Priestess",
       "theme": "intuition",
-      "upright": "Consider intuition in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at intuition. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Leave room for an observation you cannot yet explain; listen before responding.",
+      "reversed": "Balance intuition with evidence, especially where silence prevents a necessary question."
     },
     "major.03": {
       "name": "The Empress",
       "theme": "nurturing",
-      "upright": "Consider nurturing in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at nurturing. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Tend the conditions that help something grow: nourishment, rest, time, and care.",
+      "reversed": "Restore a boundary where caring for others is depleting your own resources."
     },
     "major.04": {
       "name": "The Emperor",
       "theme": "structure",
-      "upright": "Consider structure in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at structure. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Make responsibilities and limits clear enough to support steady progress.",
+      "reversed": "Ask whether a rule protects useful structure or merely preserves control."
     },
     "major.05": {
       "name": "The Teacher",
       "theme": "guidance",
-      "upright": "Consider guidance in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at guidance. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Learn from a mentor or shared practice and test its wisdom in your circumstances.",
+      "reversed": "Distinguish an inherited value worth keeping from a custom that no longer fits."
     },
     "major.06": {
       "name": "The Lovers",
       "theme": "values",
-      "upright": "Consider values in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at values. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Name the values a choice must honor, then compare them with your actions.",
+      "reversed": "Make competing loyalties explicit before agreeing to something you cannot sustain."
     },
     "major.07": {
       "name": "The Chariot",
       "theme": "direction",
-      "upright": "Consider direction in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at direction. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Choose a direction and coordinate the effort that will carry you toward it.",
+      "reversed": "More force will not resolve a conflict of direction; reconsider the destination."
     },
     "major.08": {
       "name": "Strength",
       "theme": "courage",
-      "upright": "Consider courage in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at courage. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Meet a difficult impulse with patience; gentle consistency can be courage.",
+      "reversed": "Reduce a demand that turns exhaustion into self-criticism and ask for support."
     },
     "major.09": {
       "name": "The Hermit",
       "theme": "reflection",
-      "upright": "Consider reflection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at reflection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Step back from constant input long enough to hear your own judgment.",
+      "reversed": "Reflection may be becoming isolation; share one unfinished thought with someone trusted."
     },
     "major.10": {
       "name": "Wheel of Fortune",
       "theme": "change",
-      "upright": "Consider change in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at change. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Conditions are changing; notice an opening you can respond to without claiming certainty.",
+      "reversed": "Examine a repeated cycle and separate influence from an attempt to control everything."
     },
     "major.11": {
       "name": "Justice",
       "theme": "fairness",
-      "upright": "Consider fairness in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at fairness. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Compare choices with consequences using accurate information and consistent standards.",
+      "reversed": "Revisit the evidence and include a perspective missing from your account of events."
     },
     "major.12": {
       "name": "The Hanged Man",
       "theme": "perspective",
-      "upright": "Consider perspective in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at perspective. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "A deliberate pause can loosen an old assumption and offer another point of view.",
+      "reversed": "Decide what new information would justify waiting and what would let you act."
     },
     "major.13": {
       "name": "Death",
       "theme": "transition",
-      "upright": "Consider transition in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at transition. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Name what is finished and allow an ending to release space for transition.",
+      "reversed": "Holding on may be extending an exhausted arrangement; try one small act of letting go."
     },
     "major.14": {
       "name": "Temperance",
       "theme": "balance",
-      "upright": "Consider balance in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at balance. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Combine differences slowly and observe which rhythm you can sustain.",
+      "reversed": "Adjust one ingredient of an unbalanced routine instead of changing everything at once."
     },
     "major.15": {
       "name": "The Devil",
       "theme": "attachment",
-      "upright": "Consider attachment in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at attachment. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Name the cost of an attachment that offers relief while reducing your freedom.",
+      "reversed": "Support a new distance from an old pattern with a practical limit or honest conversation."
     },
     "major.16": {
       "name": "The Tower",
       "theme": "disruption",
-      "upright": "Consider disruption in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at disruption. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "A disrupted assumption reveals what needs support before it can be rebuilt.",
+      "reversed": "Address one visible weakness rather than rehearsing every possible collapse."
     },
     "major.17": {
       "name": "The Star",
       "theme": "hope",
-      "upright": "Consider hope in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at hope. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Let hope take a practical form through a habit that restores your longer view.",
+      "reversed": "Borrow support when discouragement makes it difficult to imagine renewal."
     },
     "major.18": {
       "name": "The Moon",
       "theme": "uncertainty",
-      "upright": "Consider uncertainty in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at uncertainty. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Move carefully through uncertainty and distinguish impressions from established facts.",
+      "reversed": "As confusion lifts, check your interpretation against evidence before calling it an answer."
     },
     "major.19": {
       "name": "The Sun",
       "theme": "vitality",
-      "upright": "Consider vitality in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at vitality. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Share a source of clarity and enjoyment without requiring it to be perfect.",
+      "reversed": "Allow mixed feelings instead of using positivity to conceal a real difficulty."
     },
     "major.20": {
       "name": "Judgement",
       "theme": "renewal",
-      "upright": "Consider renewal in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at renewal. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Review an earlier choice with present understanding and choose a responsible response.",
+      "reversed": "Define enough clarity to decide instead of waiting to feel entirely ready."
     },
     "major.21": {
       "name": "The World",
       "theme": "integration",
-      "upright": "Consider integration in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at integration. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Recognize meaningful completion by celebrating, documenting, and resting.",
+      "reversed": "Identify whether an unfinished detail needs action, acceptance, or a clearer stopping point."
     },
     "wands.11": {
       "name": "Page of Wands",
       "theme": "curiosity in creativity and intention",
-      "upright": "Consider curiosity in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at curiosity in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Follow an interesting question with playful, practical exploration.",
+      "reversed": "Finish one experiment before adding another source of scattered excitement."
     },
     "wands.06": {
       "name": "Six of Wands",
       "theme": "support in creativity and intention",
-      "upright": "Consider support in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at support in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Acknowledge visible progress and the effort behind it.",
+      "reversed": "Define success you can recognize without relying entirely on applause."
     },
     "wands.08": {
       "name": "Eight of Wands",
       "theme": "movement in creativity and intention",
-      "upright": "Consider movement in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at movement in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "When events move quickly, confirm essentials and communicate clearly.",
+      "reversed": "Slow an exchange down enough to repair confusion or crossed messages."
     },
     "wands.14": {
       "name": "King of Wands",
       "theme": "stewardship in creativity and intention",
-      "upright": "Consider stewardship in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stewardship in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Give effort a purpose that others can understand and help shape.",
+      "reversed": "Listen for information that impatience with other people may be hiding."
     },
     "wands.12": {
       "name": "Knight of Wands",
       "theme": "pursuit in creativity and intention",
-      "upright": "Consider pursuit in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at pursuit in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Act on a direction that has earned commitment while remaining open to adjustment.",
+      "reversed": "Check the effect on others before letting impulse outrun preparation."
     },
     "wands.04": {
       "name": "Four of Wands",
       "theme": "stability in creativity and intention",
-      "upright": "Consider stability in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stability in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Mark a milestone with the people who helped make it possible.",
+      "reversed": "Ask what would make a shared space or celebration more welcoming."
     },
     "wands.05": {
       "name": "Five of Wands",
       "theme": "challenge in creativity and intention",
-      "upright": "Consider challenge in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at challenge in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Let different approaches create useful friction while keeping the purpose shared.",
+      "reversed": "Address a concrete disagreement that is continuing beneath polite avoidance."
     },
     "wands.01": {
       "name": "Ace of Wands",
       "theme": "potential in creativity and intention",
-      "upright": "Consider potential in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at potential in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Give a spark of interest a small experiment and observe whether energy grows.",
+      "reversed": "Improve the conditions for an idea instead of forcing enthusiasm."
     },
     "wands.10": {
       "name": "Ten of Wands",
       "theme": "completion in creativity and intention",
-      "upright": "Consider completion in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at completion in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Sort responsibilities into what only you can do and what can be shared.",
+      "reversed": "Renegotiate a commitment whose burden has outgrown its purpose."
     },
     "wands.13": {
       "name": "Queen of Wands",
       "theme": "care in creativity and intention",
-      "upright": "Consider care in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at care in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Bring warmth and confidence to a space where others can participate.",
+      "reversed": "Return to an activity that feels like your own when comparison dims confidence."
     },
     "wands.03": {
       "name": "Three of Wands",
       "theme": "growth in creativity and intention",
-      "upright": "Consider growth in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at growth in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Prepare to meet the response to work already begun, with patience and cooperation.",
+      "reversed": "Recheck assumptions when an expected response is delayed or different."
     },
     "wands.02": {
       "name": "Two of Wands",
       "theme": "choice in creativity and intention",
-      "upright": "Consider choice in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at choice in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Compare realistic directions so that a desire can become a workable plan.",
+      "reversed": "Choose a limited trial when keeping every option open prevents movement."
     },
     "wands.09": {
       "name": "Nine of Wands",
       "theme": "culmination in creativity and intention",
-      "upright": "Consider culmination in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at culmination in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Use experience to take a manageable step while protecting your recovery.",
+      "reversed": "Ask where support could replace exhausting vigilance against another setback."
     },
     "wands.07": {
       "name": "Seven of Wands",
       "theme": "assessment in creativity and intention",
-      "upright": "Consider assessment in creativity and intention in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at assessment in creativity and intention. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Protect a position that matters with a clear reason and a sustainable boundary.",
+      "reversed": "Choose which boundary deserves your energy instead of answering every challenge."
     },
     "cups.10": {
       "name": "Ten of Cups",
       "theme": "completion in feelings and connection",
-      "upright": "Consider completion in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at completion in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Notice the repeated acts of care that make belonging possible.",
+      "reversed": "Allow different needs and disagreements inside a valued connection."
     },
     "cups.08": {
       "name": "Eight of Cups",
       "theme": "movement in feelings and connection",
-      "upright": "Consider movement in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at movement in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Name what you are moving toward when leaving something that no longer meets a need.",
+      "reversed": "Describe the conditions under which staying or leaving would feel honest."
     },
     "cups.05": {
       "name": "Five of Cups",
       "theme": "challenge in feelings and connection",
-      "upright": "Consider challenge in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at challenge in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Acknowledge a loss while noticing the support that remains available.",
+      "reversed": "Allow renewed interest to coexist with disappointment that still hurts."
     },
     "cups.09": {
       "name": "Nine of Cups",
       "theme": "culmination in feelings and connection",
-      "upright": "Consider culmination in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at culmination in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Enjoy a satisfaction without immediately raising the standard again.",
+      "reversed": "Explore the need beneath an achievement that feels different from what you expected."
     },
     "cups.03": {
       "name": "Three of Cups",
       "theme": "growth in feelings and connection",
-      "upright": "Consider growth in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at growth in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Seek friendship and shared enjoyment where you can contribute without performing.",
+      "reversed": "Choose a form of connection that nourishes rather than excludes or depletes."
     },
     "cups.14": {
       "name": "King of Cups",
       "theme": "stewardship in feelings and connection",
-      "upright": "Consider stewardship in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stewardship in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Hold a strong feeling without letting it make every decision.",
+      "reversed": "Name a suppressed emotion in a setting where it can be considered safely."
     },
     "cups.06": {
       "name": "Six of Cups",
       "theme": "support in feelings and connection",
-      "upright": "Consider support in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at support in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Carry a useful tenderness or forgotten interest forward from a memory.",
+      "reversed": "Ask what your present self needs that an idealized past cannot provide."
     },
     "cups.04": {
       "name": "Four of Cups",
       "theme": "stability in feelings and connection",
-      "upright": "Consider stability in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stability in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Reflect on dissatisfaction and notice an offer you may have overlooked.",
+      "reversed": "Try engaging with one possibility as a period of withdrawal begins to loosen."
     },
     "cups.01": {
       "name": "Ace of Cups",
       "theme": "potential in feelings and connection",
-      "upright": "Consider potential in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at potential in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Make room for a new feeling or an offered kindness; receiving is also an action.",
+      "reversed": "Notice an emotion privately before deciding how to express it."
     },
     "cups.07": {
       "name": "Seven of Cups",
       "theme": "assessment in feelings and connection",
-      "upright": "Consider assessment in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at assessment in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Make the costs and requirements of attractive possibilities concrete.",
+      "reversed": "Release an appealing option that does not fit your actual priorities."
     },
     "cups.13": {
       "name": "Queen of Cups",
       "theme": "care in feelings and connection",
-      "upright": "Consider care in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at care in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Listen with compassion while staying in contact with your own feelings.",
+      "reversed": "Distinguish what is yours to carry from what belongs to someone else."
     },
     "cups.02": {
       "name": "Two of Cups",
       "theme": "choice in feelings and connection",
-      "upright": "Consider choice in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at choice in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Deepen trust through an exchange in which both people can speak and be heard.",
+      "reversed": "Check expectations and reciprocity rather than assuming a connection is balanced."
     },
     "cups.11": {
       "name": "Page of Cups",
       "theme": "curiosity in feelings and connection",
-      "upright": "Consider curiosity in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at curiosity in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Receive a surprising feeling with curiosity and try a tentative expression.",
+      "reversed": "Write a sensitive feeling down before deciding who should hear it."
     },
     "cups.12": {
       "name": "Knight of Cups",
       "theme": "pursuit in feelings and connection",
-      "upright": "Consider pursuit in feelings and connection in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at pursuit in feelings and connection. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Support a heartfelt invitation with an action that makes it tangible.",
+      "reversed": "Compare an appealing promise with the ordinary behavior behind it."
     },
     "swords.11": {
       "name": "Page of Swords",
       "theme": "curiosity in thought and communication",
-      "upright": "Consider curiosity in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at curiosity in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Ask careful questions and listen as closely as you investigate.",
+      "reversed": "Verify a quick interpretation before it becomes a rumor or an argument."
     },
     "swords.12": {
       "name": "Knight of Swords",
       "theme": "pursuit in thought and communication",
-      "upright": "Consider pursuit in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at pursuit in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Use direct action when the objective is clear and consequences have been considered.",
+      "reversed": "Pause long enough to hear a relevant objection to an urgent plan."
     },
     "swords.05": {
       "name": "Five of Swords",
       "theme": "challenge in thought and communication",
-      "upright": "Consider challenge in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at challenge in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Consider the trust a victory may cost and leave room for future cooperation.",
+      "reversed": "Step out of an unproductive contest by naming a specific harm or limit."
     },
     "swords.10": {
       "name": "Ten of Swords",
       "theme": "completion in thought and communication",
-      "upright": "Consider completion in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at completion in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Accept the limit of an exhausted plan and focus on the next basic need.",
+      "reversed": "Measure recovery by small changes instead of the intensity of what ended."
     },
     "swords.01": {
       "name": "Ace of Swords",
       "theme": "potential in thought and communication",
-      "upright": "Consider potential in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at potential in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "State an issue precisely so that an honest question can cut through confusion.",
+      "reversed": "Clarify terms and check evidence before defending a strong conclusion."
     },
     "swords.08": {
       "name": "Eight of Swords",
       "theme": "movement in thought and communication",
-      "upright": "Consider movement in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at movement in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Test one constraint when fear makes a situation feel completely closed.",
+      "reversed": "Practice a small choice as a limiting assumption begins to loosen."
     },
     "swords.14": {
       "name": "King of Swords",
       "theme": "stewardship in thought and communication",
-      "upright": "Consider stewardship in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stewardship in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Explain the consistent principle behind a complicated decision so it can be questioned.",
+      "reversed": "Include the human effect of a decision rather than hiding behind detached authority."
     },
     "swords.09": {
       "name": "Nine of Swords",
       "theme": "culmination in thought and communication",
-      "upright": "Consider culmination in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at culmination in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Share a worry and separate a solvable problem from a feared possibility.",
+      "reversed": "Notice support that helps distress ease without demanding immediate relief."
     },
     "swords.13": {
       "name": "Queen of Swords",
       "theme": "care in thought and communication",
-      "upright": "Consider care in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at care in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Make a difficult conversation clearer through precise language and humane boundaries.",
+      "reversed": "Check whether past disappointment is making your present judgment too sharp."
     },
     "swords.02": {
       "name": "Two of Swords",
       "theme": "choice in thought and communication",
-      "upright": "Consider choice in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at choice in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Gather the information that would help you choose between competing considerations.",
+      "reversed": "Identify the smallest decision available when avoidance begins to have its own costs."
     },
     "swords.03": {
       "name": "Three of Swords",
       "theme": "growth in thought and communication",
-      "upright": "Consider growth in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at growth in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Acknowledge a painful truth without turning it into a harsher story about yourself.",
+      "reversed": "Allow uneven healing without treating a difficult feeling as proof of no progress."
     },
     "swords.04": {
       "name": "Four of Swords",
       "theme": "stability in thought and communication",
-      "upright": "Consider stability in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stability in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Give rest a clear place in your routine so that attention can recover.",
+      "reversed": "Re-enter a demanding situation gradually and keep a restorative practice."
     },
     "swords.06": {
       "name": "Six of Swords",
       "theme": "support in thought and communication",
-      "upright": "Consider support in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at support in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Let a quiet transition carry useful learning toward steadier conditions.",
+      "reversed": "Attend to an unresolved concern that may follow you into a new setting."
     },
     "swords.07": {
       "name": "Seven of Swords",
       "theme": "assessment in thought and communication",
-      "upright": "Consider assessment in thought and communication in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at assessment in thought and communication. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Check whether a careful strategy could withstand an honest explanation.",
+      "reversed": "Choose a clear account over adding another layer of concealment."
     },
     "pentacles.12": {
       "name": "Knight of Pentacles",
       "theme": "pursuit in practical life and resources",
-      "upright": "Consider pursuit in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at pursuit in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Build reliability through steady attention at a pace you can maintain.",
+      "reversed": "Change one part of a routine that has become rigid or stalled."
     },
     "pentacles.11": {
       "name": "Page of Pentacles",
       "theme": "curiosity in practical life and resources",
-      "upright": "Consider curiosity in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at curiosity in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Approach a practical skill as a learner with a modest plan and regular attention.",
+      "reversed": "Turn a plan into one small task with a visible finish."
     },
     "pentacles.07": {
       "name": "Seven of Pentacles",
       "theme": "assessment in practical life and resources",
-      "upright": "Consider assessment in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at assessment in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Assess what patient effort produces before deciding to continue, change, or stop.",
+      "reversed": "Review the method before assuming that more time will improve the result."
     },
     "pentacles.03": {
       "name": "Three of Pentacles",
       "theme": "growth in practical life and resources",
-      "upright": "Consider growth in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at growth in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Clarify contributions and invite feedback so different skills can improve the work.",
+      "reversed": "Agree on roles and standards when cooperation becomes difficult."
     },
     "pentacles.14": {
       "name": "King of Pentacles",
       "theme": "stewardship in practical life and resources",
-      "upright": "Consider stewardship in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stewardship in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Use experience and resources to support something durable.",
+      "reversed": "Ask what security is meant to support beyond possession and control."
     },
     "pentacles.04": {
       "name": "Four of Pentacles",
       "theme": "stability in practical life and resources",
-      "upright": "Consider stability in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at stability in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Define enough security to protect resources while still allowing movement.",
+      "reversed": "Distinguish a prudent reserve from a restriction driven by fear."
     },
     "pentacles.01": {
       "name": "Ace of Pentacles",
       "theme": "potential in practical life and resources",
-      "upright": "Consider potential in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at potential in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Invest a realistic amount of time or skill in a practical opportunity.",
+      "reversed": "Check everyday requirements before committing to a promising start."
     },
     "pentacles.02": {
       "name": "Two of Pentacles",
       "theme": "choice in practical life and resources",
-      "upright": "Consider choice in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at choice in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Make priorities visible and leave margin for adjustment among competing demands.",
+      "reversed": "Simplify an obligation or renegotiate a deadline when too many parts are moving."
     },
     "pentacles.06": {
       "name": "Six of Pentacles",
       "theme": "support in practical life and resources",
-      "upright": "Consider support in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at support in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Make an exchange fair to both the capacity of the giver and dignity of the receiver.",
+      "reversed": "Discuss an unspoken obligation or power imbalance in an offer of help."
     },
     "pentacles.10": {
       "name": "Ten of Pentacles",
       "theme": "completion in practical life and resources",
-      "upright": "Consider completion in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at completion in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Consider the resources, knowledge, and care you want to pass on.",
+      "reversed": "Discuss which inherited expectations should continue and which need to change."
     },
     "pentacles.13": {
       "name": "Queen of Pentacles",
       "theme": "care in practical life and resources",
-      "upright": "Consider care in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at care in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Include your own needs in the practical care that makes a space secure.",
+      "reversed": "Reserve time for a personal foundation crowded out by caring for everyone else."
     },
     "pentacles.09": {
       "name": "Nine of Pentacles",
       "theme": "culmination in practical life and resources",
-      "upright": "Consider culmination in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at culmination in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Enjoy the independence and comfort your efforts support while staying connected.",
+      "reversed": "Define sustainable success that includes time and wellbeing, not only appearance."
     },
     "pentacles.05": {
       "name": "Five of Pentacles",
       "theme": "challenge in practical life and resources",
-      "upright": "Consider challenge in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at challenge in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Identify a person or resource you could approach during a period of lack.",
+      "reversed": "Accept available support as a practical step without making it a measure of worth."
     },
     "pentacles.08": {
       "name": "Eight of Pentacles",
       "theme": "movement in practical life and resources",
-      "upright": "Consider movement in practical life and resources in your present situation. What does this image bring to your attention?",
-      "reversed": "Look inward at movement in practical life and resources. Where might this quality feel blocked, excessive, or ready for a different expression?"
+      "upright": "Choose one detail to improve through repetition and attentive practice.",
+      "reversed": "Reconnect repetitive work with a useful goal when perfection or boredom drains it."
     }
   },
   "positions": {

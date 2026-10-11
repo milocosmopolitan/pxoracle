@@ -17,3 +17,5 @@
 | Browser/resource qualification | Accepted with measured limits | Actual Chrome/Firefox/Safari plus WebKit/mobile emulation, bounded seven-cycle GL allocation baseline, and HMR checks. Physical mobile and hardware GPU budgets remain unqualified; see validation/STATUS.md. |
 
 No library/source license is silently applied to the supplied art. No actual AWS account changes are part of the deployment configuration.
+
+Tarot table choreography: [ADR 002](002-tarot-table-choreography.md).

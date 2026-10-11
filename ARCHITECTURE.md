@@ -200,3 +200,7 @@ Storybook component/interaction/visual checks complement app tests. It does not 
 
 Every ADR records context, decision, alternatives, consequences, validation evidence, and supersession rules. Folder names are not sufficient boundary enforcement; add import checks and contract tests as implementations land.
 
+
+## Implemented tarot choreography
+
+See [ADR 002](docs/decisions/002-tarot-table-choreography.md) for the engine-confirmed controller, minimal `TarotView`, Mesh picking, hand anchors, camera transition, restoration, and texture lifetime contract. Frame coordinates remain scene-local; questions never enter scene or engine requests. The authored English reflection pack does not analyze questions.
