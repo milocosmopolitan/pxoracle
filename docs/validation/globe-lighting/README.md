@@ -2,7 +2,10 @@
 
 Implemented on `feat/63-globe-prop-lighting` against main
 `2482c84ef91fcc9643247493629ebb01f6c68ada`, inspected 2026-10-11.
-The current [issue bodies](issue-snapshot.json) are retained for scope review.
+The initial [issue bodies](issue-snapshot.json) are retained for scope review.
+Subsequent user visual review on 2026-10-11 moved the globe to the user's right
+outside the mat and replaced the candle body/holder sprite with original meshes;
+the flame remains a sprite. Issues #73/#75 record that approved scope revision.
 No merge or production deployment was performed.
 
 ## Delivered behavior
@@ -17,9 +20,11 @@ zone flow and explicit chart save/delete remain available.
 
 The original globe has actual ETOPO1-derived vertex displacement plus bump detail,
 independent sphere rotation, engraved brass mount and turned walnut base. The lamp
-has a lined thick shade, bent bronze column and layered base. The original candle
-plate is split into complementary body/flame layers; seeded smooth noise drives the
-single wick flame and actual shadowless PointLight. A prop-owned warm SpotLight is
+has a lined thick shade, bent bronze column and layered base. Following user visual
+review, the candle has an original three-dimensional wax body and brass holder;
+only its single flame uses the source sprite. Seeded smooth noise drives the
+wick flame and actual shadowless PointLight. The globe now sits toward the user's
+right outside the reading mat. A prop-owned warm SpotLight is
 the main warm shadow source. Painted backgrounds, portraits and card faces retain
 their existing unlit color policy. Mesh hands, table and props receive real light.
 
@@ -31,6 +36,7 @@ Rust schemas and calculation semantics were unchanged; schema regeneration was n
 ## Inspectable images and motion
 
 - [Integrated room](room-integrated.png), [approach](globe-approach.png),
+  [camera midpoint](globe-camera-midpoint.png), [completed camera approach](globe-camera-completed.png),
   [region](globe-region-asia.png), [Russia](globe-country-ru.png),
   [Singapore](globe-country-sg.png), [Fiji](globe-country-fj.png),
   [Iceland](globe-country-is.png), [city selection](globe-city-selected.png).
@@ -40,6 +46,8 @@ Rust schemas and calculation semantics were unchanged; schema regeneration was n
   [above/interior](lamp-above.png). Lighting A/B: [all sources](lamp-all-lights.png),
   [shade glow without prop lights](lamp-shade-only.png), [no lamp shadow](lamp-no-shadows.png).
 - [Candle close](candle-close.png), [candle-only light](candle-only.png),
+  [mesh front](candle-mesh-front.png), [mesh side](candle-mesh-side.png),
+  [wax well and holder from above](candle-mesh-above.png),
   [stable reduced motion](lighting-reduced-motion.png),
   [injected failure](lighting-asset-failure.png), [retry](lighting-asset-retry.png).
 - [Tarot conversation](tarot-lighting-conversation.png), [table view](tarot-lighting-table.png),
@@ -64,7 +72,7 @@ The final images were inspected directly, not inferred from passing Node tests.
   changing the shared SDK. Native/WASM parity passes in the Node suite.
 - `npm run typecheck`, `npm run build`, `npm run build-storybook`: passed.
   Next output contains static `/`, `/astrology/`, `/tarot/` and404 routes.
-- `npm test`: **88/88 passed**, including geography alignment, state invalidation,
+- `npm test`: **90/90 passed** on the final mesh/glow implementation (78.89s), including geography alignment, state invalidation,
   exact city-camera invariance, lamp/candle cleanup and existing native/WASM/saves.
 - `node scripts/check-boundaries.mjs` and `git diff --check`: passed.
 - Globe functional suite: **20/20** across desktop Chrome, Firefox, Playwright WebKit
@@ -80,11 +88,26 @@ The final images were inspected directly, not inferred from passing Node tests.
 - Existing Storybook suites: **3/4 initially**; HMR failed because Vite selected the
   native watcher before applying environment polling. Explicit opt-in watcher config
   fixed it; the unchanged three-edit listener check passed (**1/1**,16.7s).
+- Final natal camera Storybook checks: **8/8 passed in46.35s** using the rebuilt
+  static Storybook. Seven normal-motion scenes and one reduced-motion scene retain
+  all original controls, assertions and screenshots. Separating independent cases
+  fixes the hosted run's aggregate240s timeout, which occurred after all assertions.
+  [Results](natal-camera-story-results.json).
+- The added production birthplace camera midpoint check passes **1/1 in10.3s**.
+  It starts after the first actual room frame, then fixes camera progress at50%;
+  globe orientation is explicitly settled. Two captures are pixel-identical and
+  differ from the completed approach. This is a camera review frame, not a claim
+  to freeze every animated object at half its trajectory.
+  [Results](birthplace-midpoint-story-results.json).
 - Two additional real-WASM browser regressions verified route remount and manual/atlas
   switching submit the displayed Seoul coordinates and provenance together.
   All **3/3** final Chrome checks passed, including actual room globe clicking after
   an existing saved chart with retained date/time and byte-identical saved storage.
   [Results](birthplace-regression-results.json).
+- Source commit `a3b301b979e186cbb74a5bb167880826f7c314cd` passes CI's native/WASM,
+  static build,90-test Node suite, Storybook build and actual macOS Safari smoke.
+  [Workflow](https://github.com/milocosmopolitan/pxoracle/actions/runs/38173313664).
+  Remaining browser/Storybook jobs are pending; this does not claim a green workflow.
 
 A failed first attempt is recorded above rather than hidden. Subsequent targeted
 reruns verify the repaired boundary; Node tests are not presented as browser coverage.
@@ -94,30 +117,42 @@ Latest browser capture records [zero page errors](capture-browser.json).
 
 [Full methods/raw results](performance.md), [JSON](performance.json).
 One persistent renderer completed seven overview→Fiji→tarot→room cycles with exactly
-**204 live GL buffers,29 textures,4 framebuffers,22 programs** at every return.
-All4,889 created buffers were deleted on teardown; leases returned to0 and the
-context was lost. An actual two-buffer-per-cycle InstancedMesh leak was found and fixed.
+**218 live GL buffers** at every room return after the candle-mesh revision.
+All4,826 buffers created in the Metal run were deleted on teardown; leases returned
+to0 and the context was lost. An actual two-buffer-per-cycle InstancedMesh leak
+was found and fixed. The flame now owns a clone of the shared Sprite geometry.
 [Eight isolated globe cycles](globe-resources.json) independently exercise preparation
 competition and return to an empty scene.
 
-Final complete-frame draw calls: room61, overview37, Singapore29, tarot250. Lamp
+Final complete-frame draw calls with shadows: room63, overview40, Singapore30, tarot222. Lamp
 shadows add8 calls in room/globe and27 across tarot's multiple passes. Default512²
 shadow color/depth attachment payload is nominally2MiB, not measured driver memory.
-Room/tarot fixed LOD reduced submitted triangles by approximately71%; detailed country
+Before the candle-mesh revision, room/tarot fixed LOD reduced submitted triangles
+by approximately71%; that historical percentage is not the final mesh delta. Detailed country
 relief remains360×180. Room-only globe assets total1,058,875raw bytes, country tier
 5,323,448raw bytes. Exact gzip9 sizes and exclusions are in the measurement report.
 
-The software measurements used headless Chromium141,1280×720,DPR1, ANGLE SwiftShader. Tarot submission median316ms/p95782.6ms is a serious software-renderer
-limitation, not a hardware FPS claim. No GPU timer extension was available. Baseline
-comparison restores only historical tarot source with current shared runtime, so it
-is explicitly an approximate comparison, not a pristine historical build.
+The software measurements used headless Chromium141,1280×720,DPR1, ANGLE SwiftShader.
+Software rasterization exhibits substantial backpressure and is not a hardware FPS
+claim. No GPU timer extension was available. Exact final submission timings and
+resource counts are in the raw reports. The historical baseline restores only tarot
+source with current shared runtime, so it is an approximate comparison, not a
+pristine historical build.
 
 The separate [Apple M4 Metal measurement](performance-hardware.json) uses actual
 desktop GPU execution queries: room/overview/Singapore/tarot GPU p95 was
-2.157/1.150/2.860/2.293ms (12 valid samples per view). CPU submission p95 was at
-most3.4ms. All seven cycles retained204buffers; teardown released all4,732buffers
-and every lease. This qualifies that desktop fixture, not physical mobile or thermal
-behavior. Software rasterizers now automatically disable only the lamp shadow;
+**1.884/3.722/3.930/6.983ms**, with60 valid samples per view and nearest-rank p95.
+Tarot exceeds the provisional4ms target. The earlier12-sample result understated
+the longer measurement and is retained as historical evidence, not a passing result.
+The two-pass half-float glow filter reduced tarot p95 from9.106ms in the preceding
+full measurement. A paired A/B independently confirms lower GPU cost and at most
+1/255 image rounding outside the intentionally removed duplicate flame halo.
+Its two640×360 RGBA16F targets add3,686,400 nominal bytes at this viewport. Browsers
+without renderable float attachments retain the original filter; forced fallback
+matches its reading/detail pixels exactly. See [A/B evidence](blur-ab.json) and
+[fallback evidence](blur-fallback-ab.json).
+These results qualify the documented desktop fixture, not physical mobile or thermal
+behavior. Software rasterizers automatically disable only the lamp shadow;
 other illumination and artwork remain. [Default-policy browser evidence](quality-policy.json) verifies all three routes on both backends. Unknown hardware keeps the bounded512²
 default when texture capability permits it. No renderer identity leaves the client.
 
@@ -133,7 +168,8 @@ default when texture capability permits it. No renderer identity leaves the clie
   The verified original was `Aged bronze desk lamp.png`; no claim is made that an
   unavailable alternate attachment was inspected. Geometry/textures are newly authored.
 - [Candle provenance](../../assets/candle.md): existing original/runtime hashes and
-  lossless import process retained. Runtime separation shares the existing texture.
+  lossless import process retained. The flame shares the existing texture; the body
+  and holder use original procedural geometry and painterly materials.
 - Existing GeoNames atlas covers34,159 cities/244 country-territory entries. Boundaries
   cover234 entries; BQ,CC,CX,GF,GI,GP,MQ,RE,SJ,YT remain selectable by list without an
   invented polygon. The UI explains unavailable boundaries. Region memberships are
@@ -144,7 +180,7 @@ default when texture capability permits it. No renderer identity leaves the clie
 
 ## Issue disposition
 
-Implemented and locally verified, with source/evidence linked in each GitHub issue:
+Implementation map, with final issue disposition pending the current PR checks:
 
 - #64 contracts/state: `globe-view.ts`, `state/birthplace.ts`, ADR009, navigation tests.
 - #65 data: `scripts/build-globe.py`, retained ETOPO1/Natural Earth source/manifests.
@@ -166,8 +202,13 @@ Implemented and locally verified, with source/evidence linked in each GitHub iss
 - #79 lighting qualification: four-sided mesh inspection, source isolation A/B,
   camera videos, reduced motion and actual GPU/shadow/lifecycle measurements.
 
-Implementation and local qualification are complete for both epics. GitHub CI must
-be checked on the PR commit before closing the verification issues and parent epics.
+Both epics are implemented, including the subsequent placement and candle-mesh revision.
+Qualification is still in progress. The latest completed CI passed verification,
+infrastructure, Chrome, Firefox fallback, mobile emulation and native macOS Safari;
+WebKit's keyboard zoom check and a combined eight-scene Storybook timeout failed.
+The next run includes public input/render diagnostics and independent Storybook cases.
+The measured tarot fixture also exceeds the provisional4ms GPU p95 target; this is
+not represented as passing. Verification issues and parent epics remain open.
 No result here qualifies a physical mobile device or sustained thermal performance.
 Native Safari results must be read from the PR workflow, not inferred from WebKit.
 The desktop budget and software fallback are scoped to the documented measured

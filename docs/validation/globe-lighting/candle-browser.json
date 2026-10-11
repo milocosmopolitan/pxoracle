@@ -1,7 +1,9 @@
 {
-  "browser": "Chromium headless desktop 1100x800",
-  "reducedMotionStable": true,
-  "assetFailure": "injected acquisition rejection",
-  "assetRetry": "ready",
+  "date": "2026-10-11T20:21:56.561Z",
+  "browser": "desktop headless Chromium",
+  "viewport": "1100x800",
+  "model": "authored wax/brass meshes; original sprite flame; bounded wax near-field point response",
+  "reducedMotionIdenticalPixels": true,
+  "failureRetry": "injected asset acquisition rejection then successful visible Retry assets",
   "errors": []
 }

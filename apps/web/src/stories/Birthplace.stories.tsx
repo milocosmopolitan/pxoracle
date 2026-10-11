@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { Chart } from "@pxoracle/contracts";
 import type { InterpretationPlan, NatalInput } from "@pxoracle/contracts/natal";
@@ -20,14 +20,20 @@ function Journey({ country, frozen = false, midpoint = false }: {country?:string
   const store = useOracleStore();
   const astrology = useOracle(s => s.astrologyView);
   const globe = useOracle(s => s.globeView);
-  useEffect(() => { store.getState().navigateBirthplace(country ? {type:"country",country} : {type:"open"}); }, [store,country]);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    // A midpoint must start after the room frame, not initialize directly at its destination.
+    if (midpoint && !ready) return;
+    store.getState().navigateBirthplace(country ? {type:"country",country} : {type:"open"});
+  }, [store,country,midpoint,ready]);
   return <>
-    <SceneCanvas route="astrology" frozen={frozen} data={{astrology, globe:globe ? {...globe,...(midpoint ? {reviewProgress:.5} : {})} : undefined}} />
+    <SceneCanvas route="astrology" frozen={frozen} onStatus={status => { if (!status && midpoint) setReady(true); }} data={{astrology, globe:globe ? {...globe,...(midpoint ? {reviewProgress:.5} : {})} : undefined}} />
     <Astrology engine={engine}/>
-    <p style={{position:"fixed",bottom:0,left:12,zIndex:30,fontSize:11}}>STORYBOOK · Production birthplace journey · Synthetic chart transport · No WASM</p>
+    <p style={{position:"fixed",bottom:0,left:12,zIndex:30,fontSize:11}}>STORYBOOK · Production birthplace journey · Synthetic chart transport · No WASM{midpoint ? " · Camera midpoint (50%); globe orientation settled" : ""}</p>
   </>;
 }
 export const RegionToCity: Story = {render:()=><Journey/>};
+export const RoomToGlobeMidpoint: Story = {render:()=><Journey midpoint frozen/>};
 export const Russia: Story = {render:()=><Journey country="RU" frozen/>};
 export const Singapore: Story = {render:()=><Journey country="SG" frozen/>};
 export const Fiji: Story = {render:()=><Journey country="FJ" frozen/>};

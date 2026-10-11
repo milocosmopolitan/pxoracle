@@ -1,0 +1,43 @@
+import { chromium } from "playwright";
+import { writeFile, mkdir, rm } from "node:fs/promises";
+const directory = "docs/validation/globe-lighting";
+const origin = process.env.PXORACLE_STORY_URL ?? "http://localhost:6007";
+const browser = await chromium.launch();
+const context = await browser.newContext({ viewport: { width: 1100, height: 800 }, reducedMotion: "reduce" });
+const page = await context.newPage(), errors = [];
+page.on("pageerror", e => errors.push(e.message));
+page.on("console", m => { if (m.type() === "error") errors.push(m.text()); });
+const story = async name => {
+  await page.goto(`${origin}/iframe.html?id=room-production-lighting--${name}&viewMode=story`);
+  await page.getByText("Ready").waitFor();
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+};
+for (const [name, file] of [["candle-close", "candle-close"], ["candle-only", "candle-only"], ["reduced-motion", "lighting-reduced-motion"]]) {
+  await story(name);
+  await page.screenshot({ path: `${directory}/${file}.png` });
+}
+const before = await page.locator("canvas").screenshot();
+await page.waitForTimeout(1200);
+const reducedSteady = before.equals(await page.locator("canvas").screenshot());
+if (!reducedSteady) throw new Error("Reduced-motion canvas changed");
+await page.goto(`${origin}/iframe.html?id=room-production-lighting--asset-failure-retry&viewMode=story`);
+await page.getByRole("button", { name: "Retry assets" }).waitFor();
+await page.screenshot({ path: `${directory}/lighting-asset-failure.png` });
+await page.getByRole("button", { name: "Retry assets" }).click();
+await page.getByText("Ready").waitFor();
+await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+await page.screenshot({ path: `${directory}/lighting-asset-retry.png` });
+await context.close();
+await mkdir(`${directory}/candle-raw`, { recursive: true });
+const animation = await browser.newContext({ viewport: { width: 1100, height: 800 }, recordVideo: { dir: `${directory}/candle-raw`, size: { width: 1100, height: 800 } } });
+const animatedPage = await animation.newPage();
+await animatedPage.goto(`${origin}/iframe.html?id=room-production-lighting--candle-animated&viewMode=story`);
+await animatedPage.getByText("Ready").waitFor();
+await animatedPage.waitForTimeout(8000);
+const video = animatedPage.video();
+await animation.close();
+await video.saveAs(`${directory}/candle-animation.webm`);
+await browser.close();
+await rm(`${directory}/candle-raw`, { recursive: true, force: true });
+await writeFile(`${directory}/candle-browser.json`, JSON.stringify({ date: new Date().toISOString(), browser: "desktop headless Chromium", viewport: "1100x800", model: "authored wax/brass meshes; original sprite flame; bounded wax near-field point response", reducedMotionIdenticalPixels: reducedSteady, failureRetry: "injected asset acquisition rejection then successful visible Retry assets", errors }, null, 2) + "\n");
+if (errors.length) throw new Error(errors.join("\n"));

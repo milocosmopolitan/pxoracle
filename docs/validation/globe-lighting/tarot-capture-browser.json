@@ -1,0 +1,15 @@
+{
+  "recordedAt": "2026-10-11T20:49:19.894Z",
+  "browser": "Chromium headless default software backend",
+  "viewport": [
+    1100,
+    800
+  ],
+  "method": "Production Storybook full-camera-sequence current HalfFloat capability path; normal motion approach and return. Actual screenshot/video capture; synthetic display-only cards, no WASM.",
+  "errors": [],
+  "video": {
+    "durationSeconds": 22.2,
+    "bytes": 2440711
+  },
+  "visualReview": "Inspected actual conversation and table screenshots plus video frame at13s during shuffle. Cards, hands, warm lamp/candle surfaces, mat and fixed prop placement remain coherent during camera movement."
+}

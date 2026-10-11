@@ -25,7 +25,9 @@
     {
       "command": "npm test",
       "result": "passed",
-      "tests": 88
+      "tests": 90,
+      "durationMs": 78888.273125,
+      "sourceCommit": "a3b301b979e186cbb74a5bb167880826f7c314cd"
     },
     {
       "command": "npm run build-storybook",
@@ -69,10 +71,26 @@
       "command": "Playwright Storybook natal/stories",
       "result": "3 passed initially; HMR watcher configuration fixed; unchanged final HMR rerun passed",
       "tests": 4
+    },
+    {
+      "command": "Playwright Storybook same-scene camera stories",
+      "result": "passed after splitting independent cases; assertions retained",
+      "tests": 8,
+      "durationSeconds": 46.349,
+      "motion": "7 normal-motion, 1 reduced-motion"
+    },
+    {
+      "command": "Playwright Storybook birthplace camera midpoint",
+      "result": "passed; stable actual intermediate camera frame differs from completed approach",
+      "tests": 1,
+      "durationSeconds": 10.3
     }
   ],
   "physicalMobile": "not tested",
-  "nativeSafari": "not run for this branch",
+  "nativeSafari": "passed on actual macOS Safari in CI38173313664 for a3b301b",
+  "ci": "https://github.com/milocosmopolitan/pxoracle/actions/runs/38173313664",
+  "ciStatus": "verify, infrastructure and actual Safari passed; remaining browser and Storybook jobs pending",
+  "gpuBudget": "tarot p95 6.983ms exceeds provisional4ms target; open qualification gap",
   "schemaRegeneration": "not required; RustDTOunchanged",
   "desktopGPU": "Apple M4 Metal measured with actual timer queries; performance-hardware.json"
 }

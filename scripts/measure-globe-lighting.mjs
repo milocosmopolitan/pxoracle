@@ -86,7 +86,7 @@ const measured = await page.evaluate(async ({root,baselineAvailable,measureGpuTi
     const extension = gl.getExtension('EXT_disjoint_timer_query_webgl2');
     if(!measureGpuTimers || !extension) return {requested:measureGpuTimers,available:!!extension,samples:0};
     const times=[];
-    for(let i=0;i<12;i++) {
+    for(let i=0;i<60;i++) {
       const query=gl.createQuery();
       gl.beginQuery(extension.TIME_ELAPSED_EXT,query);render();gl.endQuery(extension.TIME_ELAPSED_EXT);gl.flush();
       let available=false;
@@ -99,8 +99,9 @@ const measured = await page.evaluate(async ({root,baselineAvailable,measureGpuTi
       if(available&&!disjoint)times.push(gl.getQueryParameter(query,gl.QUERY_RESULT)/1e6);
       gl.deleteQuery(query);
     }
+    const rawSamplesMs=[...times];
     times.sort((a,b)=>a-b);
-    return {requested:true,available:true,samples:times.length,median:times[Math.floor(times.length/2)]??null,p95:times[Math.floor(times.length*.95)]??null,max:times.at(-1)??null};
+    return {requested:true,available:true,attempts:60,samples:times.length,rawSamplesMs,median:times[Math.floor(times.length/2)]??null,p95:times[Math.max(0,Math.ceil(times.length*.95)-1)]??null,max:times.at(-1)??null};
   }
   const views=[];
   const cases = [['room','landing',{}],['overview','astrology',globe('overview')],['country-SG','astrology',globe('country','SG')],['tarot','tarot',tarot]];
