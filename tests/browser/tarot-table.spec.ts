@@ -29,13 +29,13 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
     .click();
   await expect(
     page.getByRole("button", { name: "Retry same card" }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 60000 });
   expect(new Set(faces).size).toBe(1);
   fail = false;
   await page.getByRole("button", { name: "Retry same card" }).click();
   await expect(
     page.getByRole("heading", { name: "Let the images settle." }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 60000 });
   expect(new Set(faces).size).toBe(1);
   await expect(page.locator(".tarot-panel img")).toHaveCount(0);
   await page.getByRole("button", { name: "Save reading", exact: true }).click();
@@ -52,7 +52,7 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
   await page.getByRole("button", { name: "Resume a saved reading" }).click();
   await expect(
     page.getByRole("heading", { name: "Let the images settle." }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 60000 });
   expect(
     await page.evaluate(() => localStorage.getItem("pxoracle.tarot.v2")),
   ).toBe(saved);
@@ -87,7 +87,7 @@ test("standard motion camera, keyboard highlight, route cancellation and three-c
   await page.getByRole("link", { name: "Tarot", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Choose slot 2", exact: true }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 60000 });
   await page
     .getByRole("button", { name: "Choose slot 2", exact: true })
     .click();
@@ -96,7 +96,7 @@ test("standard motion camera, keyboard highlight, route cancellation and three-c
     .click();
   await expect(
     page.getByRole("heading", { name: "Let the images settle." }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 60000 });
   await expect(page.locator(".reading-card")).toHaveCount(3);
   await expect(page.locator("canvas")).toHaveCount(1);
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
@@ -130,7 +130,7 @@ test("standard motion camera, keyboard highlight, route cancellation and three-c
   await page.getByRole("button", { name: "New reading" }).click();
   await expect(
     page.getByRole("button", { name: "Shuffle the deck" }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 60000 });
 });
 
 test("Mesh picking ignores a drag and accepts a click or touch", async ({

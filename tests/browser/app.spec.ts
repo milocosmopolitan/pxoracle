@@ -24,7 +24,10 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
   await page.getByRole("button", { name: "Next cards", exact: true }).click();
   await page.getByRole("button", { name: "Choose slot 13", exact: true }).click();
   await settleTarot(page, page.getByRole("button", { name: "Next cards", exact: true }));
-  for (let n = 0; n < 5; n++) await page.getByRole("button", { name: "Next cards", exact: true }).click();
+  for (let n = 0; n < 5; n++) {
+    await page.getByRole("button", { name: "Next cards", exact: true }).click();
+    await expect(page.getByText(`${n + 3} / 7`, { exact: true })).toBeVisible();
+  }
   await page.getByRole("button", { name: "Choose slot 78", exact: true }).click();
   await settleTarot(page, page.getByRole("heading", { name: "Let the images settle." }));
   expect(requests.some((x) => x.includes("/tarot/engine.wasm"))).toBeTruthy();

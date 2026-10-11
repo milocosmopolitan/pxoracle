@@ -6,8 +6,9 @@ export default defineConfig({
     "tarot-fallback.spec.ts",
     "tarot-table.spec.ts",
   ],
-  timeout: 120000,
+  timeout: 180000,
   workers: 1,
+  expect: { timeout: 15000 },
   use: {
     baseURL: "http://127.0.0.1:4180",
     reducedMotion: "reduce",

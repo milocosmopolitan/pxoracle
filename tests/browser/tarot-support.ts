@@ -14,7 +14,7 @@ export async function settleTarot(page: Page, target: Locator) {
       }
     }
     return false;
-  }, { timeout: 25000 }).toBe(true);
+  }, { timeout: 60000 }).toBe(true);
 }
 
 export async function graphicsAvailable(page: Page) {

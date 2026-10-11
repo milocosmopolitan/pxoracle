@@ -347,14 +347,14 @@ export default function Tarot({
                 <div className="actions">
                   <button
                     disabled={p.page === 0 || p.busy}
-                    onClick={() => controller?.page(p.page - 1)}
+                    onClick={() => controller?.page(store.getState().tarotPresentation.page - 1)}
                   >
                     Previous cards
                   </button>
                   <span>{p.page + 1} / 7</span>
                   <button
                     disabled={p.page === 6 || p.busy}
-                    onClick={() => controller?.page(p.page + 1)}
+                    onClick={() => controller?.page(store.getState().tarotPresentation.page + 1)}
                   >
                     Next cards
                   </button>

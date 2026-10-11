@@ -40,12 +40,12 @@ try:
  wait(lambda:execute("return !!document.querySelector('[aria-label=\"Choose slot 1\"]')"))
  for slot in [1,2,3]:
   wait(lambda:execute(f"return !!document.querySelector('[aria-label=\"Choose slot {slot}\"]:not(:disabled)')"));click(f'[aria-label="Choose slot {slot}"]')
- wait(lambda:execute("return document.querySelector('.synthesis')!==null"));screenshot('tarot.png')
+ wait(lambda:execute("return document.querySelectorAll('.structured-reading .reading-card').length===3"));screenshot('tarot.png')
  visit('/astrology/');wait(lambda:execute("return !!document.querySelector('canvas') && !!document.querySelector('input[name=date]')"))
  execute("for (const [name,value] of Object.entries({date:'2000-01-01',time:'12:00',timezone:'UTC',latitude:'0',longitude:'0'})) document.querySelector('[name='+name+']').value=value;")
  click('button.primary');wait(lambda:execute("return document.querySelectorAll('.planets button').length===10"))
  assert 'Capricorn' in execute("return document.querySelector('.planets button').textContent")
- screenshot('astrology.png');(out/'result.json').write_text(json.dumps({'passed':True,'checks':['landing','real tarot WASM selection/reveal','real astrology WASM ten-body chart'],'scope':'actual Safari on hosted macOS; not iOS or physical mobile'},indent=2));print('Actual Safari smoke checks passed')
+ screenshot('astrology.png');(out/'result.json').write_text(json.dumps({'passed':True,'checks':['landing','real tarot WASM selection/reveal and structured reflection','real astrology WASM ten-body chart'],'scope':'actual Safari on hosted macOS; not iOS or physical mobile'},indent=2));print('Actual Safari smoke checks passed')
 finally:
  if session:
   try:request('DELETE',f'/session/{session}')

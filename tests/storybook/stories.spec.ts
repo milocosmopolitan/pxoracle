@@ -17,8 +17,12 @@ test("isolated production stories are labeled, interactive and never load WASM",
   }
   if(story==="tarot-input"){
    await page.getByRole("button",{name:"Shuffle the deck"}).click();
-   for(const n of [1,2,3])await page.getByRole("button",{name:`Choose slot ${n}`,exact:true}).click();
-   await expect(page.getByRole("heading",{name:"Let the images settle."})).toBeVisible();
+   for(const n of [1,2,3]) {
+    await expect(page.locator('.tarot-layout')).toHaveAttribute('data-phase','selecting',{timeout:60000});
+    await page.getByRole("button",{name:`Choose slot ${n}`,exact:true}).click();
+    await expect(page.getByRole('heading',{name:`${n} of 3 cards selected`,exact:true})).toBeVisible();
+   }
+   await expect(page.getByRole("heading",{name:"Let the images settle."})).toBeVisible({timeout:60000});
   }
   await page.evaluate(()=>window.scrollTo(0,0));
   await page.screenshot({path:test.info().outputPath(`${story}.png`),fullPage:false,scale:"css"});
