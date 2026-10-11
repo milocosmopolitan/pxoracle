@@ -1,79 +1,132 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import type {
-  ArtManifest,
-  TarotContent,
-  TarotSession,
-} from "@pxoracle/contracts";
-import { useOracle } from "../state/store";
-import { ErrorNotice, Loading, saveReading, readReading } from "./shared";
-type Engine = typeof import("@pxoracle/engine-client/tarot");
+import type { ArtManifest, TarotContent } from "@pxoracle/contracts";
+import { useOracle, useOracleStore } from "../state/store";
+import { ErrorNotice, saveReading, readReading } from "./shared";
+import {
+  TarotController,
+  tarotView,
+  type TarotEngine,
+} from "./tarot/controller";
+const labels: Record<string, string> = {
+  conversation: "Before we begin",
+  approach: "Coming closer to the table…",
+  shuffle: "Shuffling the deck…",
+  fan: "Laying out the cards…",
+  selecting: "Choose a card from the table",
+  dealing: "Placing your chosen card…",
+  preparing: "Preparing the same selected card…",
+  revealing: "Turning your card…",
+  reading: "Your reading",
+};
 export default function Tarot({
   engine: providedEngine,
-}: { engine?: Engine } = {}) {
+}: { engine?: TarotEngine } = {}) {
+  const store = useOracleStore();
   const session = useOracle((s) => s.tarot),
-    setSession = useOracle((s) => s.setTarot),
+    p = useOracle((s) => s.tarotPresentation),
     question = useOracle((s) => s.question),
     setQuestion = useOracle((s) => s.setQuestion);
+  const [controller, setController] = useState<TarotController | null>(null);
   const [spread, setSpread] = useState<1 | 3>(3),
     [reversals, setReversals] = useState(false),
-    [busy, setBusy] = useState(false),
-    [error, setError] = useState(""),
-    [notice, setNotice] = useState(""),
-    [art, setArt] = useState<ArtManifest | null>(null),
-    [content, setContent] = useState<TarotContent | null>(null);
-  const locked = useRef(false);
-  const generation = useRef(0);
-  useEffect(()=>()=>{++generation.current;},[]);
-  async function loadContent() {
-    const [a, c] = await Promise.all([
-      fetch("/art/manifest.json"),
-      fetch("/content/tarot.en.v1.json"),
-    ]);
-    if (!a.ok || !c.ok) throw new Error("CONTENT_LOAD_FAILED");
-    const manifest: ArtManifest = await a.json(),
-      pack: TarotContent = await c.json();
-    if (
-      manifest.schemaVersion !== 1 ||
-      pack.version !== "en.v1" ||
-      Object.keys(manifest.cards).length !== 78
-    )
-      throw new Error("INCOMPATIBLE_SESSION");
-    setArt(manifest);
-    setContent(pack);
-  }
+    [notice, setNotice] = useState("");
+  const [art, setArt] = useState<ArtManifest | null>(null),
+    [content, setContent] = useState<TarotContent | null>(null),
+    [contentError, setContentError] = useState(false),
+    [contentAttempt, setContentAttempt] = useState(0);
   useEffect(() => {
-    let active = true;
-    void loadContent().catch(() => {
-      if (active) setError("CONTENT_LOAD_FAILED");
-    });
+    const c = new TarotController(
+      {
+        get: store.getState,
+        session: (s) => store.getState().setTarot(s),
+        presentation: (v) => store.getState().setTarotPresentation(v),
+      },
+      () =>
+        providedEngine
+          ? Promise.resolve(providedEngine)
+          : import("@pxoracle/engine-client/tarot"),
+    );
+    c.resume();
+    setController(c);
     return () => {
-      active = false;
+      c.dispose();
+      store.getState().setTarotView(undefined);
     };
-  }, []);
-  async function action(fn: (engine: Engine) => Promise<TarotSession>) {
-    if (locked.current) return;
-    locked.current = true;
-    const id=++generation.current;
-    setBusy(true);
-    setError("");
-    try {
-      const engine =
-        providedEngine ?? (await import("@pxoracle/engine-client/tarot"));
-      const result=await fn(engine);
-      if(id===generation.current)setSession(result);
-    } catch (e) {
-      if(id===generation.current)setError(e instanceof Error ? e.message : "ERROR");
-    } finally {
-      if(id===generation.current){locked.current = false;
-      setBusy(false); }
-    }
-  }
-  const allRevealed =
-    session?.state === "reading" || session?.state === "completed";
+  }, [store, providedEngine]);
+  useEffect(() => {
+    const abort = new AbortController();
+    setContentError(false);
+    void Promise.all([
+      fetch("/art/manifest.json", { signal: abort.signal }),
+      fetch("/content/tarot.en.v1.json", { signal: abort.signal }),
+    ])
+      .then(async ([a, c]) => {
+        if (!a.ok || !c.ok) throw new Error("content");
+        const manifest = (await a.json()) as ArtManifest,
+          pack = (await c.json()) as TarotContent;
+        if (
+          manifest.schemaVersion !== 1 ||
+          pack.version !== "en.v1" ||
+          Object.keys(manifest.cards).length !== 78
+        )
+          throw new Error("content");
+        if (!abort.signal.aborted) {
+          setArt(manifest);
+          setContent(pack);
+        }
+      })
+      .catch(() => {
+        if (!abort.signal.aborted) setContentError(true);
+      });
+    return () => abort.abort();
+  }, [contentAttempt]);
+  const view = useMemo(
+    () => ({
+      ...tarotView(session, p, art),
+      readingPanel: true,
+      readingFocus: p.readingFocus ?? null,
+      onIntent: (e: { type: "select" | "focus" | "inspect"; slot: number }) => {
+        if (e.type === "select") void controller?.select(e.slot);
+        else if (e.type === "focus") controller?.focus(e.slot);
+        else {
+          const index =
+            session?.selections.findIndex((card) => card.slot === e.slot) ?? -1;
+          if (index >= 0)
+            store.getState().setTarotPresentation({ readingFocus: index });
+        }
+      },
+      onEvent: (e: Parameters<TarotController["event"]>[0]) => {
+        void controller?.event(e);
+      },
+    }),
+    [session, p, art, controller],
+  );
+  useEffect(() => {
+    store.getState().setTarotView(view);
+  }, [view, store]);
+  useEffect(() => {
+    if (p.phase === "selecting" && document.activeElement === document.body)
+      document
+        .querySelector<HTMLButtonElement>(
+          ".slot-controls button:not(:disabled)",
+        )
+        ?.focus({ preventScroll: true });
+  }, [p.phase]);
+  useEffect(() => {
+    // The form button may have scrolled the page. Keep the fixed table visible during choreography.
+    if (["approach", "dealing", "revealing"].includes(p.phase))
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [p.phase]);
+  const active = !!session,
+    selecting = p.phase === "selecting",
+    reading = p.phase === "reading";
   return (
-    <div className="tarot-layout">
+    <div
+      data-phase={p.phase}
+      className={`tarot-layout ${active ? "table-reading" : ""}`}
+    >
       <div className="tarot-heading">
         <Link href="/" prefetch={false}>
           ← Back to the room
@@ -94,9 +147,9 @@ export default function Tarot({
             <label>
               A question, if you have one
               <textarea
+                maxLength={1000}
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                maxLength={1000}
                 placeholder="What deserves my attention right now?"
               />
               <small>
@@ -126,21 +179,21 @@ export default function Tarot({
             </div>
             <button
               className="primary"
-              disabled={busy || !art || !content}
-              onClick={() => void action((e) => e.create(spread, reversals))}
+              disabled={p.busy || !art || !content || !controller}
+              onClick={() => void controller?.start(spread, reversals)}
             >
               Shuffle the deck →
             </button>
             <button
               className="text-button"
-              disabled={busy}
+              disabled={p.busy || !controller}
               onClick={() => {
                 try {
-                  const s = readReading("tarot");
-                  if (s) void action((e) => e.restore(s));
+                  const saved = readReading("tarot");
+                  if (saved) void controller?.restore(saved);
                   else setNotice("No saved reading on this device.");
                 } catch {
-                  setError("INCOMPATIBLE_SESSION");
+                  setNotice("The saved reading could not be read.");
                 }
               }}
             >
@@ -151,139 +204,186 @@ export default function Tarot({
           <>
             <div className="panel-heading">
               <div>
-                <p className="eyebrow">
-                  {allRevealed ? "YOUR READING" : "TRUST YOUR CURIOSITY"}
-                </p>
+                <p className="eyebrow">{labels[p.phase]}</p>
                 <h2>
-                  {allRevealed
+                  {reading
                     ? "Let the images settle."
-                    : `Choose ${session.spread === 1 ? "one card" : "three cards"}.`}
+                    : `${session.selections.length} of ${session.spread} cards selected`}
                 </h2>
               </div>
+            </div>
+            <p role="status" aria-live="polite">
+              {p.busy ? "Confirming your choice…" : labels[p.phase]}
+            </p>
+            {selecting && (
+              <>
+                <p>
+                  Touch a card on the mat, or use these numbered controls. Focus
+                  highlights the same card.
+                </p>
+                <div
+                  className="slot-controls"
+                  aria-label="Choose a face-down slot"
+                >
+                  {Array.from(
+                    { length: Math.min(12, 78 - p.page * 12) },
+                    (_, n) => {
+                      const slot = p.page * 12 + n,
+                        used = session.selections.some((x) => x.slot === slot);
+                      return (
+                        <button
+                          key={slot}
+                          disabled={p.busy || used}
+                          aria-label={`Choose slot ${slot + 1}`}
+                          aria-pressed={p.focus === slot}
+                          onFocus={() => controller?.focus(slot)}
+                          onClick={() => void controller?.select(slot)}
+                        >
+                          {slot + 1}
+                          {used ? " ✓" : ""}
+                        </button>
+                      );
+                    },
+                  )}
+                </div>
+                <div className="actions">
+                  <button
+                    disabled={p.page === 0 || p.busy}
+                    onClick={() => controller?.page(p.page - 1)}
+                  >
+                    Previous cards
+                  </button>
+                  <span>{p.page + 1} / 7</span>
+                  <button
+                    disabled={p.page === 6 || p.busy}
+                    onClick={() => controller?.page(p.page + 1)}
+                  >
+                    Next cards
+                  </button>
+                </div>
+                {!session.selections.length && (
+                  <button
+                    disabled={p.busy}
+                    onClick={() =>
+                      void controller?.start(session.spread, reversals)
+                    }
+                  >
+                    Shuffle again
+                  </button>
+                )}
+              </>
+            )}
+            {p.error === "CARD_ART_FAILED" && (
+              <div role="alert" className="error">
+                <p>
+                  The selected card image could not load. Your draw is
+                  unchanged.
+                </p>
+                <button onClick={() => controller?.retryArt()}>
+                  Retry same card
+                </button>
+              </div>
+            )}
+            {!reading && !selecting && (
+              <details className="motion-controls">
+                <summary>Animation or graphics unavailable?</summary>
+                <button
+                  disabled={p.busy}
+                  onClick={() =>
+                    void controller?.event({
+                      type: p.phase === "preparing" ? "ready" : "done",
+                      revision: p.revision,
+                    })
+                  }
+                >
+                  Continue with text reading
+                </button>
+              </details>
+            )}
+            {reading && (
+              <>
+                <p>Choose an open card on the table to look closer.</p>
+                <div className="actions" aria-label="Reading camera">
+                  <button
+                    aria-pressed={p.readingFocus == null}
+                    onClick={() =>
+                      store
+                        .getState()
+                        .setTarotPresentation({ readingFocus: null })
+                    }
+                  >
+                    Show all cards
+                  </button>
+                  {session.selections.map((_, i) => (
+                    <button
+                      key={i}
+                      aria-pressed={p.readingFocus === i}
+                      onClick={() =>
+                        store
+                          .getState()
+                          .setTarotPresentation({ readingFocus: i })
+                      }
+                    >
+                      Look closer at card {i + 1}
+                    </button>
+                  ))}
+                </div>
+                <details open className="reading-details">
+                  <summary>Card meanings and reflection</summary>
+                  {question && <p className="question">“{question}”</p>}
+                  <p className="reading-disclosure">
+                    These are card-based reflection prompts. Your question is
+                    not analyzed.
+                  </p>
+                  {session.selections.map((selected, i) => {
+                    const detail = content?.cards[selected.card.cardId];
+                    return (
+                      <article className="reading-card" key={selected.slot}>
+                        <p className="eyebrow">
+                          {i + 1} · {selected.positionId.replace("_", " ")}
+                        </p>
+                        <h3>{detail?.name ?? selected.card.cardId}</h3>
+                        <small>{selected.card.orientation}</small>
+                        <p>{detail?.[selected.card.orientation]}</p>
+                        <p className="prompt">
+                          {content?.positions[selected.positionId]}
+                        </p>
+                      </article>
+                    );
+                  })}
+                  <aside className="synthesis">
+                    <p className="eyebrow">BRINGING IT TOGETHER</p>
+                    {session.selections.map((s) => (
+                      <p key={s.slot}>
+                        <strong>{s.positionId.replace("_", " ")}: </strong>
+                        {content?.cards[s.card.cardId]?.theme} through{" "}
+                        {content?.cards[s.card.cardId]?.name} (
+                        {s.card.orientation}).
+                      </p>
+                    ))}
+                    <p>
+                      {session.spread === 3
+                        ? "Read the first card as the situation, the second as a lens to examine it, and the third as an action to try. Where do these perspectives agree or pull in different directions? Choose one concrete step you can revisit tomorrow."
+                        : "Choose one detail in this card that you can turn into a small action today. Return later to notice what changed."}
+                    </p>
+                  </aside>
+                </details>
+              </>
+            )}
+            <div className="actions">
               <button
-                disabled={busy}
+                disabled={p.busy}
                 onClick={() => {
-                  setSession(null);
+                  store.getState().setTarotPresentation({ readingFocus: null });
+                  controller?.reset();
+                  setQuestion("");
                   setNotice("");
                 }}
               >
                 New reading
               </button>
-            </div>
-            {question && <p className="question">“{question}”</p>}
-            <div
-              className="spread"
-              style={{
-                gridTemplateColumns: `repeat(${session.spread},minmax(0,1fr))`,
-              }}
-            >
-              {Array.from({ length: session.spread }, (_, i) => {
-                const picked = session.selections[i];
-                const details = picked && content?.cards[picked.card.cardId];
-                const asset = picked && art?.cards[picked.card.cardId];
-                return (
-                  <article className="spread-card" key={i}>
-                    <p className="eyebrow">
-                      {session.spread === 1
-                        ? "Focus"
-                        : ["Situation", "Examination", "Next action"][i]}
-                    </p>
-                    {picked ? (
-                      <>
-                        <button
-                          className={`card-face ${picked.revealed ? "revealed" : ""}`}
-                          disabled={busy || picked.revealed}
-                          aria-label={
-                            picked.revealed
-                              ? details?.name
-                              : `Reveal card ${i + 1}`
-                          }
-                          onClick={() =>
-                            void action((e) => e.reveal(session, i))
-                          }
-                        >
-                          {picked.revealed && asset ? (
-                            <img
-                              src={asset.url}
-                              alt={asset.name}
-                              style={{
-                                transform:
-                                  picked.card.orientation === "reversed"
-                                    ? "rotate(180deg)"
-                                    : undefined,
-                              }}
-                            />
-                          ) : (
-                            <span className="card-back">
-                              ✧<small>Reveal</small>
-                            </span>
-                          )}
-                        </button>
-                        {picked.revealed && (
-                          <>
-                            <h3>{details?.name}</h3>
-                            <small className="orientation">
-                              {picked.card.orientation}
-                            </small>
-                            <p>{details?.[picked.card.orientation]}</p>
-                            <p className="prompt">
-                              {content?.positions[picked.positionId]}
-                            </p>
-                          </>
-                        )}
-                      </>
-                    ) : (
-                      <div className="empty-card">
-                        <span>{String(i + 1).padStart(2, "0")}</span>
-                        <small>Choose from the deck</small>
-                      </div>
-                    )}
-                  </article>
-                );
-              })}
-            </div>
-            {session.selections.length < session.spread && (
-              <>
-                <p className="deck-instruction">
-                  {session.selections.length} of {session.spread} selected ·
-                  78-card deck
-                </p>
-                <div className="card-fan" aria-label="Choose a face-down slot">
-                  {Array.from({ length: 78 }, (_, slot) => (
-                    <button
-                      key={slot}
-                      disabled={
-                        busy || session.selections.some((x) => x.slot === slot)
-                      }
-                      aria-label={`Choose slot ${slot + 1}`}
-                      onClick={() =>
-                        void action((e) => e.select(session, slot))
-                      }
-                    >
-                      <span>✧</span>
-                      <small>{slot + 1}</small>
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-            {allRevealed && (
-              <aside className="synthesis">
-                <p className="eyebrow">BRINGING IT TOGETHER</p>
-                <p>
-                  Notice how{" "}
-                  {session.selections
-                    .map((s) => content?.cards[s.card.cardId]?.theme)
-                    .filter(Boolean)
-                    .join(", ")}{" "}
-                  meet in your question. Which image feels most useful, and what
-                  is one small step you can take from it?
-                </p>
-              </aside>
-            )}
-            <div className="actions">
               <button
-                disabled={busy}
+                disabled={p.busy}
                 onClick={() => {
                   try {
                     saveReading("tarot", session);
@@ -309,26 +409,31 @@ export default function Tarot({
               >
                 Delete saved reading
               </button>
-              {session.state === "reading" && (
-                <button onClick={() => void action((e) => e.complete(session))}>
+              {session.state === "reading" && reading && (
+                <button
+                  disabled={p.busy}
+                  onClick={() => void controller?.complete()}
+                >
                   Complete reading
                 </button>
               )}
             </div>
           </>
         )}
-        {busy && <Loading />}
-        {error && (
+        {p.error && p.error !== "CARD_ART_FAILED" && (
           <ErrorNotice
-            code={error}
-            retry={
-              error === "CONTENT_LOAD_FAILED"
-                ? () =>
-                    void loadContent()
-                      .then(() => setError(""))
-                      .catch(() => setError("CONTENT_LOAD_FAILED"))
-                : undefined
+            code={p.error}
+            retry={() =>
+              session
+                ? controller?.retryArt()
+                : void controller?.start(spread, reversals)
             }
+          />
+        )}
+        {contentError && (
+          <ErrorNotice
+            code="CONTENT_LOAD_FAILED"
+            retry={() => setContentAttempt((n) => n + 1)}
           />
         )}
         <p role="status">{notice}</p>

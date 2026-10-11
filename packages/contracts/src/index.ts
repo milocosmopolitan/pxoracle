@@ -78,7 +78,61 @@ export interface TarotContent {
   >;
   positions: Record<string, string>;
 }
+export type TarotPhase =
+  | "conversation"
+  | "approach"
+  | "shuffle"
+  | "fan"
+  | "selecting"
+  | "dealing"
+  | "preparing"
+  | "revealing"
+  | "reading";
+export interface TarotPresentation {
+  readingFocus?: number | null;
+  phase: TarotPhase;
+  revision: number;
+  page: number;
+  focus: number | null;
+  index: number;
+  attempt: number;
+  error: string;
+  busy: boolean;
+}
+/** Presentation only: no hidden card identities, shuffled order, seed, or question. */
+export interface TarotView {
+  /** Review-only fixed camera and timeline samples; no engine state. */
+  reviewShot?: "shuffle" | "selection" | "reveal" | "reading" | "detail";
+  reviewProgress?: number;
+  cameraProfile?: "A" | "B" | "C";
+  handPose?: "rest" | "support" | "packet" | "pinch" | "release";
+  readingPanel?: boolean;
+  readingFocus?: number | null;
+  phase: TarotPhase;
+  revision: number;
+  page: number;
+  focus: number | null;
+  index: number;
+  attempt: number;
+  spread: 1 | 3;
+  cards: {
+    slot: number;
+    revealed: boolean;
+    reversed: boolean;
+    face?: string;
+    name?: string;
+  }[];
+  onIntent?: (intent: {
+    type: "select" | "focus" | "inspect";
+    slot: number;
+  }) => void;
+  onEvent?: (event: {
+    type: "done" | "ready" | "asset-error";
+    revision: number;
+  }) => void;
+}
 export interface ViewData {
+  tarot?: TarotView;
   bodies?: Pick<Body, "id" | "longitude">[];
   selectedBody?: string | null;
   revealedCount?: number;

@@ -1248,6 +1248,260 @@
         768
       ],
       "bytes": 598782
+    },
+    "mug": {
+      "url": "/art/mug.webp",
+      "source": "environment/Handmade charcoal mug, retro pixel art.png",
+      "sha256": "a6ed105eac38c60f8bacd02b43bee7991d0ca5da7a7083fe052f2ec735a5081f",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        900,
+        900
+      ],
+      "bytes": 424108
+    },
+    "notebook": {
+      "url": "/art/notebook.webp",
+      "source": "environment/Open cloth-bound notebook with blank pages.png",
+      "sha256": "895b2d4bcb10ec6365bcec81b82743a62a925bdf86a78c371fd42668459b842c",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        900,
+        900
+      ],
+      "bytes": 548550
+    },
+    "pen": {
+      "url": "/art/pen.webp",
+      "source": "tabletop/Charcoal fountain pen with bronze clip.png",
+      "sha256": "4c1c52f1070374dc1c0f562a2278641c2e467ed0c17dcc1b91104206c776d46d",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "size": [
+        900,
+        600
+      ],
+      "bytes": 149602
+    },
+    "tray": {
+      "url": "/art/tray.webp",
+      "source": "tabletop/Empty walnut tray.png",
+      "sha256": "3fb5b72fcc2a8bc8d27a5e9e24392d0e3f9f6edbed18634dd25bc7b70cb1418a",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "size": [
+        900,
+        600
+      ],
+      "bytes": 329894
+    },
+    "three-cards": {
+      "url": "/art/three-cards.webp",
+      "source": "tabletop/Three Face-Down Teal Tarot Cards.png",
+      "sha256": "883f31e4869fada6a1625b6c726067b049f0a263c654fba4403c24251755c668",
+      "originalSize": [
+        1774,
+        887
+      ],
+      "size": [
+        900,
+        450
+      ],
+      "bytes": 417424
+    },
+    "door/closed": {
+      "url": "/art/door/closed.webp",
+      "source": "door/ChatGPT Image Oct 10, 2026, 02_43_26 PM.png",
+      "sha256": "1798607a817e2167f806d90e7049b4f01888d096faca74467d2d82dc9cac51b9",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 294956
+    },
+    "door/ajar": {
+      "url": "/art/door/ajar.webp",
+      "source": "door/ChatGPT Image Oct 10, 2026, 02_43_39 PM.png",
+      "sha256": "a2d947e595b04e74f71197d3079386d75d9fca95717308b850b26baea007d2aa",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 272648
+    },
+    "door/half": {
+      "url": "/art/door/half.webp",
+      "source": "door/ChatGPT Image Oct 10, 2026, 02_43_31 PM.png",
+      "sha256": "e137a3b793457884f9c979794e24ef0ab3846fa3718a3367709d613c600fcc57",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 309492
+    },
+    "door/open": {
+      "url": "/art/door/open.webp",
+      "source": "door/ChatGPT Image Oct 10, 2026, 02_43_36 PM.png",
+      "sha256": "378b1b4b06baf5c6b6aea1e7af73f92df3fa60362c6504eec7dfd0be4b36e80f",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 276922
+    },
+    "door/frame": {
+      "url": "/art/door/frame.webp",
+      "source": "door/ChatGPT Image Oct 10, 2026, 02_43_43 PM.png",
+      "sha256": "064e6692f594dede47df41e36ae9a6c0b3998ad57269b6a9f2b0a0cc4abe1bef",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 122398
+    },
+    "door/glow": {
+      "url": "/art/door/glow.webp",
+      "source": "door/ChatGPT Image Oct 10, 2026, 02_43_46 PM.png",
+      "sha256": "db0cc1c137e7846ec268dd4c70c4bbbd2c40ac02005b810a9acdc5ff0d5ed29c",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 283262
+    },
+    "candle": {
+      "url": "/art/candle.webp",
+      "source": "assets/sources/concept-additions/candle.png",
+      "sha256": "8b81a07094ad4c3335af1dc1e842e2990ee9c77fe1c022a169d74700f6a0441a",
+      "originalSize": [
+        1237,
+        1272
+      ],
+      "size": [
+        875,
+        900
+      ],
+      "bytes": 267480,
+      "origin": "Generated with Imagegen from user-supplied concept, 2026-10-10; supplemental artwork, not an original supplied prop.",
+      "reference": "1654eae3-aa67-4e53-8bb3-00e7158e905b.png"
+    },
+    "cat-chair": {
+      "url": "/art/cat-chair.webp",
+      "source": "assets/sources/concept-additions/cat-chair.png",
+      "sha256": "39e17d9d85b406ec9aa0fdbd6275652a68d13cd2d39fae99409316cb5389aead",
+      "originalSize": [
+        1189,
+        1323
+      ],
+      "size": [
+        809,
+        900
+      ],
+      "bytes": 510788,
+      "origin": "Generated with Imagegen from user-supplied concept, 2026-10-10; supplemental artwork, not an original supplied prop.",
+      "reference": "1654eae3-aa67-4e53-8bb3-00e7158e905b.png"
+    },
+    "runner": {
+      "url": "/art/runner.webp",
+      "source": "assets/sources/concept-additions/runner.png",
+      "sha256": "657b9dcb728fc2915b46aae18c53dc583f5d3092c600130add3586e2834ff637",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 670070,
+      "origin": "Generated with Imagegen from user-supplied concept, 2026-10-10; supplemental artwork, not an original supplied prop.",
+      "reference": "1654eae3-aa67-4e53-8bb3-00e7158e905b.png"
+    },
+    "moon-frame": {
+      "url": "/art/moon-frame.webp",
+      "source": "assets/sources/concept-additions/moon-frame.png",
+      "sha256": "cc2ab70d4906f25cc8f4c0dec8037185351807e6554affa08469efc55cb53fb9",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "size": [
+        720,
+        900
+      ],
+      "bytes": 451040,
+      "origin": "Generated with Imagegen from user-supplied concept, 2026-10-10; supplemental artwork, not an original supplied prop.",
+      "reference": "1654eae3-aa67-4e53-8bb3-00e7158e905b.png"
+    },
+    "tarot-hand": {
+      "url": "/art/tarot-table/hand.png",
+      "size": [
+        1122,
+        1402
+      ],
+      "source": "Generated with OpenAI image_gen, 2026-10-10; source and runtime PNG are identical",
+      "sha256": "29cdf126066586be3e51ec7190c9452f2abb71abf75fb1424534e7ce1ab9d882",
+      "license": "Project-specific generated artwork; reference user-supplied PXOracle concept, no third-party license asserted.",
+      "bytes": 717472,
+      "sourceSha256": "29cdf126066586be3e51ec7190c9452f2abb71abf75fb1424534e7ce1ab9d882"
+    },
+    "tarot-surface": {
+      "url": "/art/tarot-table/surface.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "source": "Generated with OpenAI image_gen, 2026-10-10; source and runtime PNG are identical",
+      "sha256": "374860609e2e55301197f885c2c9515ef44543f5db6c852d5af956c8bd2e0661",
+      "license": "Project-specific generated artwork; reference user-supplied PXOracle concept, no third-party license asserted.",
+      "bytes": 3155605,
+      "sourceSha256": "374860609e2e55301197f885c2c9515ef44543f5db6c852d5af956c8bd2e0661"
+    },
+    "tarot-back": {
+      "url": "/art/tarot-table/back.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "source": "Generated with OpenAI image_gen, 2026-10-10; source and runtime PNG are identical",
+      "sha256": "8a53006f5232c31955fa142474c83f481493344143b9986a47e10f1cd0bced4b",
+      "license": "Project-specific generated artwork; reference user-supplied PXOracle concept, no third-party license asserted.",
+      "bytes": 3172410,
+      "sourceSha256": "8a53006f5232c31955fa142474c83f481493344143b9986a47e10f1cd0bced4b"
     }
   },
   "cards": {

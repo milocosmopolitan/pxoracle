@@ -38,10 +38,8 @@ try:
  visit('/');wait(lambda:execute("return document.querySelector('h1')?.textContent.includes('Some answers')"));screenshot('landing.png')
  visit('/tarot/');wait(lambda:execute("return document.querySelector('button.primary') && !document.querySelector('button.primary').disabled"));click('button.primary')
  wait(lambda:execute("return !!document.querySelector('[aria-label=\"Choose slot 1\"]')"))
- for slot in [1,13,78]:
-  wait(lambda:execute(f"return !document.querySelector('[aria-label=\"Choose slot {slot}\"]').disabled"));click(f'[aria-label="Choose slot {slot}"]')
- for card in [1,2,3]:
-  wait(lambda:execute(f"return document.querySelector('[aria-label=\"Reveal card {card}\"]') && !document.querySelector('[aria-label=\"Reveal card {card}\"]').disabled"));click(f'[aria-label="Reveal card {card}"]')
+ for slot in [1,2,3]:
+  wait(lambda:execute(f"return !!document.querySelector('[aria-label=\"Choose slot {slot}\"]:not(:disabled)')"));click(f'[aria-label="Choose slot {slot}"]')
  wait(lambda:execute("return document.querySelector('.synthesis')!==null"));screenshot('tarot.png')
  visit('/astrology/');wait(lambda:execute("return !!document.querySelector('canvas') && !!document.querySelector('input[name=date]')"))
  execute("for (const [name,value] of Object.entries({date:'2000-01-01',time:'12:00',timezone:'UTC',latitude:'0',longitude:'0'})) document.querySelector('[name='+name+']').value=value;")

@@ -70,8 +70,8 @@ const mockTarot = {
   evict() {},
 };
 function SceneBridge({route,frozen}:{route:RouteScene;frozen:boolean}){
- const chart=useOracle(s=>s.chart),selectedBody=useOracle(s=>s.selectedBody),tarot=useOracle(s=>s.tarot);
- return <SceneCanvas embedded route={route} frozen={frozen} data={{bodies:chart?.bodies,selectedBody,revealedCount:tarot?.selections.filter(x=>x.revealed).length}}/>;
+ const chart=useOracle(s=>s.chart),selectedBody=useOracle(s=>s.selectedBody),tarotView=useOracle(s=>s.tarotView);
+ return <SceneCanvas embedded route={route} frozen={frozen} data={{bodies:chart?.bodies,selectedBody,tarot:tarotView}}/>;
 }
 function Harness({
   route = "landing",

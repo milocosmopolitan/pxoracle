@@ -4,7 +4,7 @@ A private, browser-first tarot and Western astrology experience in an oracle’s
 
 ## Implementation status
 
-Epics #1–#3 are implemented: pinned npm/Cargo workspaces, independent Rust/WASM engines, Next.js static export for S3, Zustand client state, supplied 78-card art, persistent Three.js scenes, explicit saved results and a production-code Storybook harness. Qualification passes 10 Rust tests, 15 Node tests, 21 app browser tests, two Storybook interaction/HMR tests, and actual Safari smoke checks. See [verification and support limits](docs/validation/STATUS.md) and the [issue acceptance map](docs/validation/acceptance.md).
+The browser-first core, independent Rust/WASM engines, Next.js static export for S3, and production-code Storybook harness are implemented. Tarot now uses engine-confirmed Mesh cards, a continuous oblique table approach, hand pick/place/flip choreography, keyboard/touch selection, sequential reveal and explicit persistence. See [tarot implementation and evidence](docs/validation/tarot-table/README.md), [architecture decision](docs/decisions/002-tarot-table-choreography.md), and [baseline qualification](docs/validation/STATUS.md).
 
 | Route | Experience | Calculation download |
 | --- | --- | --- |
@@ -14,7 +14,7 @@ Epics #1–#3 are implemented: pinned npm/Cargo workspaces, independent Rust/WAS
 
 ## Run locally
 
-Prerequisites: Node 22.16+ (development verified on Node 24.19), npm, Rust 1.90.0, Emscripten 4.0.10. Activate the Emscripten SDK in the current shell before building. The Rust toolchain file installs the target. Runtime WebP art is checked in; the original uploads do not need to be downloaded to run the app.
+Prerequisites: Node 22.16+ (development verified on Node 24.19), npm, Rust 1.90.0, Emscripten 4.0.10. Activate the Emscripten SDK in the current shell before building. The Rust toolchain file installs the target. Runtime WebP/PNG art is checked in; the original uploads do not need to be downloaded to run the app.
 
 ```bash
 npm ci
@@ -62,6 +62,6 @@ Astrology and tarot interpretations are reflective content, not scientifically v
 
 ## Art and licenses
 
-The user supplied six original archives. Runtime copies preserve transparency, use nearest-neighbor reduction and lossless WebP, and retain source hashes/dimensions in `assets/manifests/art.json`. Original files are unchanged. `scripts/import-assets.py` rebuilds runtime copies from the extracted source directories (Pillow required). All 78 card IDs are mapped and checked. Door exploration and unused source variants remain in the original archives, not the runtime download.
+The user supplied six original archives. Runtime copies preserve transparency, use nearest-neighbor reduction and lossless WebP, and retain source hashes/dimensions in `assets/manifests/art.json`. Original files are unchanged. `scripts/import-assets.py` rebuilds runtime copies from the extracted source directories (Pillow required). All 78 card IDs are mapped and checked. Original door frames now power the entrance. The additional overhead surface, independent forearm, and shared card back are documented with provenance and rig constraints in [tarot table artwork](docs/assets/tarot-table.md). Unused source variants remain outside the runtime download.
 
 No repository-wide redistribution license is inferred for supplied art or project code. Third-party Astronomy Engine retains its upstream MIT license in its vendor directory.

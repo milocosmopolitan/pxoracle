@@ -2,8 +2,16 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { createStore, type StoreApi } from "zustand/vanilla";
 import { useStore } from "zustand";
-import type { Chart, TarotSession } from "@pxoracle/contracts";
+import type { Chart, TarotSession, TarotPresentation, TarotView } from "@pxoracle/contracts";
 export interface AppState {
+  tarotPresentation: TarotPresentation;
+  tarotView: TarotView | undefined;
+  setTarotView: (tarotView: TarotView | undefined) => void;
+  setTarotPresentation: (value: Partial<TarotPresentation>) => void;
+  sceneReady: boolean;
+  setSceneReady: (ready: boolean) => void;
+  entrance: "waiting" | "opening" | "entered";
+  setEntrance: (phase: "waiting" | "opening" | "entered") => void;
   chart: Chart | null;
   tarot: TarotSession | null;
   selectedBody: string | null;
@@ -15,6 +23,14 @@ export interface AppState {
 }
 export function createAppStore() {
   return createStore<AppState>()((set) => ({
+    tarotPresentation: { phase: "conversation", revision: 0, page: 0, focus: null, index: 0, attempt: 0, error: "", busy: false },
+    tarotView: undefined,
+    setTarotView: (tarotView) => set({ tarotView }),
+    setTarotPresentation: (value) => set(s => ({ tarotPresentation: { ...s.tarotPresentation, ...value } })),
+    sceneReady: false,
+    setSceneReady: (sceneReady) => set({ sceneReady }),
+    entrance: "waiting",
+    setEntrance: (entrance) => set({ entrance }),
     chart: null,
     tarot: null,
     selectedBody: null,
@@ -35,4 +51,10 @@ export function useOracle<T>(selector: (state: AppState) => T) {
   const store = useContext(Context);
   if (!store) throw new Error("Missing StateProvider");
   return useStore(store, selector);
+}
+
+export function useOracleStore() {
+  const store = useContext(Context);
+  if (!store) throw new Error("Missing StateProvider");
+  return store;
 }

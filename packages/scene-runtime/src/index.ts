@@ -3,8 +3,11 @@ import type { RouteScene, ViewData } from "@pxoracle/contracts";
 export interface SceneInstance {
   scene: THREE.Scene;
   camera: THREE.Camera;
+  needsRender?(): boolean;
+  render?(renderer: THREE.WebGLRenderer): void;
+  pointer?(event: { type: "focus" | "select"; x: number; y: number }): void;
   enter(): void;
-  resize?(width:number,height:number):void;
+  resize?(width: number, height: number): void;
   update(time: number, data: ViewData, reduced: boolean): void;
   exit(): void;
   dispose(): void;
@@ -65,20 +68,66 @@ export class SceneRuntime {
   private frame = 0;
   private start = performance.now();
   private entered = 0;
-  private width=1;
-  private height=1;
+  private width = 1;
+  private height = 1;
   private observer: ResizeObserver;
   private stopped = false;
   private reduced: MediaQueryList;
-  private viewData:ViewData={};
-  private dirty=true;
-  private lastRender=-Infinity;
-  private lastReduced=false;
-  private isFrozen=false;
-  get data(){return this.viewData;}
-  set data(value:ViewData){this.viewData=value;this.dirty=true;}
-  get frozen(){return this.isFrozen;}
-  set frozen(value:boolean){if(value!==this.isFrozen)this.dirty=true;this.isFrozen=value;}
+  private viewData: ViewData = {};
+  private dirty = true;
+  private lastRender = -Infinity;
+  private lastReduced = false;
+  private isFrozen = false;
+  private acceptingInput = false;
+  private down: { x: number; y: number; id: number; moved: boolean } | null =
+    null;
+  private pointerDown = (e: PointerEvent) => {
+    this.down = { x: e.clientX, y: e.clientY, id: e.pointerId, moved: false };
+  };
+  private pointerMove = (e: PointerEvent) => {
+    if (
+      this.down &&
+      Math.hypot(e.clientX - this.down.x, e.clientY - this.down.y) > 8
+    )
+      this.down.moved = true;
+    if (e.pointerType !== "touch") this.sendPointer(e, "focus");
+  };
+  private pointerUp = (e: PointerEvent) => {
+    if (
+      this.down?.id === e.pointerId &&
+      !this.down.moved &&
+      Math.hypot(e.clientX - this.down.x, e.clientY - this.down.y) <= 8
+    )
+      this.sendPointer(e, "select");
+    this.down = null;
+  };
+  private pointerCancel = () => {
+    this.down = null;
+  };
+  private sendPointer(e: PointerEvent, type: "focus" | "select") {
+    if (!this.acceptingInput) return;
+    const r = this.canvas.getBoundingClientRect();
+    this.active?.pointer?.({
+      type,
+      x: ((e.clientX - r.left) / r.width) * 2 - 1,
+      y: 1 - ((e.clientY - r.top) / r.height) * 2,
+    });
+    this.dirty = true;
+  }
+  get data() {
+    return this.viewData;
+  }
+  set data(value: ViewData) {
+    this.viewData = value;
+    this.dirty = true;
+  }
+  get frozen() {
+    return this.isFrozen;
+  }
+  set frozen(value: boolean) {
+    if (value !== this.isFrozen) this.dirty = true;
+    this.isFrozen = value;
+  }
 
   constructor(
     private canvas: HTMLCanvasElement,
@@ -94,12 +143,18 @@ export class SceneRuntime {
     this.reduced = matchMedia("(prefers-reduced-motion: reduce)");
     this.observer = new ResizeObserver(() => {
       const r = canvas.getBoundingClientRect();
-      this.width=r.width;this.height=r.height;this.dirty=true;
+      this.width = r.width;
+      this.height = r.height;
+      this.dirty = true;
       this.renderer.setSize(r.width, r.height, false);
-      this.active?.resize?.(r.width,r.height);
+      this.active?.resize?.(r.width, r.height);
     });
     this.observer.observe(canvas);
     canvas.addEventListener("webglcontextlost", this.lost);
+    canvas.addEventListener("pointerdown", this.pointerDown);
+    canvas.addEventListener("pointermove", this.pointerMove);
+    canvas.addEventListener("pointerup", this.pointerUp);
+    canvas.addEventListener("pointercancel", this.pointerCancel);
     this.tick();
   }
   private lost = (event: Event) => {
@@ -110,17 +165,24 @@ export class SceneRuntime {
   private tick = () => {
     if (this.stopped) return;
     const now = performance.now();
-    const reduced=this.frozen||this.reduced.matches;
-    if(reduced!==this.lastReduced)this.dirty=true;
-    this.lastReduced=reduced;
-    if (this.active && (this.dirty || (!reduced && now-this.lastRender>=1000/30))) {
-      this.dirty=false;this.lastRender=now;
+    const reduced = this.frozen || this.reduced.matches;
+    if (reduced !== this.lastReduced) this.dirty = true;
+    this.lastReduced = reduced;
+    if (
+      this.active &&
+      (this.dirty ||
+        this.active.needsRender?.() ||
+        (!reduced && now - this.lastRender >= 1000 / 30))
+    ) {
+      this.dirty = false;
+      this.lastRender = now;
       this.active.update(
         this.frozen ? 0 : (now - this.start) / 1000,
         this.data,
         this.frozen || this.reduced.matches,
       );
-      this.renderer.render(this.active.scene, this.active.camera);
+      if (this.active.render) this.active.render(this.renderer);
+      else this.renderer.render(this.active.scene, this.active.camera);
       this.canvas.style.opacity = reduced
         ? "1"
         : String(Math.min(1, (now - this.entered) / 550));
@@ -128,10 +190,13 @@ export class SceneRuntime {
     this.frame = requestAnimationFrame(this.tick);
   };
   cancelPreparation() {
+    this.acceptingInput = false;
+    this.down = null;
     ++this.generation;
     this.abort?.abort();
   }
   async navigate(factory: SceneFactory) {
+    this.acceptingInput = false;
     const generation = ++this.generation;
     this.abort?.abort();
     this.abort = new AbortController();
@@ -147,8 +212,9 @@ export class SceneRuntime {
       this.active?.exit();
       this.active?.dispose();
       this.active = next;
-      this.dirty=true;
-      next.resize?.(this.width,this.height);
+      this.acceptingInput = true;
+      this.dirty = true;
+      next.resize?.(this.width, this.height);
       next.enter();
       this.entered = performance.now();
       this.status("");
@@ -166,6 +232,10 @@ export class SceneRuntime {
     this.abort?.abort();
     cancelAnimationFrame(this.frame);
     this.observer.disconnect();
+    this.canvas.removeEventListener("pointerdown", this.pointerDown);
+    this.canvas.removeEventListener("pointermove", this.pointerMove);
+    this.canvas.removeEventListener("pointerup", this.pointerUp);
+    this.canvas.removeEventListener("pointercancel", this.pointerCancel);
     this.canvas.removeEventListener("webglcontextlost", this.lost);
     this.active?.dispose();
     this.active = null;

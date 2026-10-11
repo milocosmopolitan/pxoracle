@@ -171,11 +171,17 @@ pub fn select(s: &mut Session, slot: usize) -> Result<(), String> {
 }
 pub fn reveal(s: &mut Session, index: usize) -> Result<(), String> {
     validate(s)?;
-    let x = s.selections.get_mut(index).ok_or("NOT_SELECTED")?;
+    let x = s.selections.get(index).ok_or("NOT_SELECTED")?;
     if x.revealed {
         return Ok(());
     }
-    x.revealed = true;
+    if s.selections.len() != s.spread {
+        return Err("SPREAD_INCOMPLETE".into());
+    }
+    if s.selections[..index].iter().any(|card| !card.revealed) {
+        return Err("REVEAL_OUT_OF_ORDER".into());
+    }
+    s.selections[index].revealed = true;
     if s.selections.len() == s.spread && s.selections.iter().all(|x| x.revealed) {
         s.state = "reading".into()
     }
@@ -226,6 +232,23 @@ mod tests {
         let restored: Session = serde_json::from_str(&serde_json::to_string(&s).unwrap()).unwrap();
         validate(&restored).unwrap();
         assert_eq!(s, restored);
+    }
+    #[test]
+    fn reveal_requires_complete_spread_and_selection_order() {
+        let mut s = create([5, 9], 3, 50).unwrap();
+        select(&mut s, 1).unwrap();
+        let fixed = s.clone();
+        assert_eq!(reveal(&mut s, 0), Err("SPREAD_INCOMPLETE".into()));
+        assert_eq!(s, fixed);
+        select(&mut s, 5).unwrap();
+        select(&mut s, 7).unwrap();
+        let fixed = s.clone();
+        assert_eq!(reveal(&mut s, 1), Err("REVEAL_OUT_OF_ORDER".into()));
+        assert_eq!(s, fixed);
+        reveal(&mut s, 0).unwrap();
+        reveal(&mut s, 1).unwrap();
+        reveal(&mut s, 2).unwrap();
+        assert_eq!(s.state, "reading");
     }
     #[test]
     fn tamper() {
