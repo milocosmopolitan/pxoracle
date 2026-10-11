@@ -58,7 +58,7 @@ npm run reading-export -- benchmark --out DIR --start 1000000 --end 1080000 --jo
 
 ## Architecture and bounds
 
-Node orchestrates at most `--jobs` worker processes. Each worker spawns the Rust runner (`target/export/reading-export batch --start --end`), reads one NDJSON line per case through a pipe (the pipe is the backpressure), renders 12 rows, and streams them to 12 gzip streams (`drain` honoured). Memory is per-case; nothing holds a chunk or the full result. The Rust runner never starts one process per case. `--stop-file PATH` asks the runner to stop at a case boundary. A broken pipe, a gzip/disk error or a runner failure aborts the chunk and deletes its partial files; errors name the case and context.
+Node orchestrates at most `--jobs` worker processes. Each worker spawns the Rust runner (`target/export/examples/reading-export batch --start --end`), reads one NDJSON line per case through a pipe (the pipe is the backpressure), renders 12 rows, and streams them to 12 gzip streams (`drain` honoured). Memory is per-case; nothing holds a chunk or the full result. The Rust runner never starts one process per case. `--stop-file PATH` asks the runner to stop at a case boundary. A broken pipe, a gzip/disk error or a runner failure aborts the chunk and deletes its partial files; errors name the case and context.
 
 Assembly streams each chunk member into `<ctx>.csv.gz.partial`, verifying its SHA-256, and renames atomically. Disk preflight estimates need as chunks + assembled copy; `--cleanup` removes the chunks after the manifest is written.
 

@@ -9,12 +9,12 @@ import {
   COLUMNS, CsvParser, CONTEXTS, csvLine, caseCount, decodeCase, encodeCase, deckIds, loadPacks, rowFromPlan, sha256,
 } from "../scripts/reading-export/common.mjs";
 
-const BIN = "target/export/reading-export";
+const BIN = "target/export/examples/reading-export";
 const run = (args, opts = {}) =>
   spawnSync("node", ["--import", "tsx", "scripts/reading-export/cli.mjs", ...args, "--allow-dirty"], { encoding: "utf8", ...opts });
 const tmp = () => mkdtempSync(join(tmpdir(), "pxexport-"));
 test.before(() => {
-  execFileSync("cargo", ["build", "--locked", "--profile", "export", "-p", "pxoracle-tarot-reading", "--bin", "reading-export"], { stdio: "ignore" });
+  execFileSync("cargo", ["build", "--locked", "--profile", "export", "-p", "pxoracle-tarot-reading", "--example", "reading-export"], { stdio: "ignore" });
 });
 const packs = loadPacks();
 const batch = (args) =>

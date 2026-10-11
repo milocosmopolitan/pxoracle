@@ -17,7 +17,7 @@ import {
 import { chunkName } from "./chunk-worker.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-export const BINARY = join(ROOT, "target/export/reading-export");
+export const BINARY = join(ROOT, "target/export/examples/reading-export");
 export const DEFAULT_CHUNK = 50_000;
 /** Measured steady-state upper bound used only for the disk preflight; `benchmark` reports real values. */
 export const EST_GZ_BYTES_PER_ROW = 100; // measured ~83 B/row (999 B/case over 12 contexts)
@@ -31,7 +31,7 @@ const atomicWrite = (path, text) => {
 export const readJson = (p) => JSON.parse(readFileSync(p, "utf8"));
 
 export function buildBinary({ force = false } = {}) {
-  execFileSync("cargo", ["build", "--locked", "--profile", "export", "-p", "pxoracle-tarot-reading", "--bin", "reading-export"], { cwd: ROOT, stdio: "inherit" });
+  execFileSync("cargo", ["build", "--locked", "--profile", "export", "-p", "pxoracle-tarot-reading", "--example", "reading-export"], { cwd: ROOT, stdio: "inherit" });
   return BINARY;
 }
 export function toolInfo() {
