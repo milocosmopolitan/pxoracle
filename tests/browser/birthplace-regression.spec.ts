@@ -61,6 +61,8 @@ test("the room globe opens birthplace editing from an existing chart without cha
   const savedBefore = await page.evaluate(() => localStorage.getItem("pxoracle.natal-report.v1"));
   await page.getByRole("link", { name: /Back to the room/ }).click();
   await expect(page).toHaveURL(/^https?:\/\/[^/]+\/$/);
+  // URL and old canvas opacity can update before the replacement scene's first frame.
+  await expect(page.locator('.scene-host[data-route="landing"]')).toHaveAttribute("data-ready", "true");
   await expect(page.locator(".scene-status")).toHaveCount(0);
   await page.waitForFunction(() => document.querySelector("canvas")?.style.opacity === "1");
   // The public globe surface at this fixed room viewport, using an actual mouse event.
@@ -74,6 +76,7 @@ test("the room globe opens birthplace editing from an existing chart without cha
   await expect(page.getByRole("button", { name: "Search a city", exact: true })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByRole("button", { name: "Room view", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Find your beginning." })).toBeVisible();
+  await expect(page.locator('.scene-host[data-route="astrology"]')).toHaveAttribute("data-ready", "true");
   await expect(page.locator(".scene-status")).toHaveCount(0);
   const stage = page.locator(".natal-stage");
   await expect(stage).toHaveAttribute("data-settled", "true");

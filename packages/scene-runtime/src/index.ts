@@ -86,6 +86,7 @@ export class SceneRuntime {
   private lastReduced = false;
   private isFrozen = false;
   private acceptingInput = false;
+  private firstFramePending = false;
   private down: { x: number; y: number; id: number; moved: boolean } | null =
     null;
   private pointerDown = (e: PointerEvent) => {
@@ -208,6 +209,11 @@ export class SceneRuntime {
       );
       if (this.active.render) this.active.render(this.renderer);
       else this.renderer.render(this.active.scene, this.active.camera);
+      if (this.firstFramePending) {
+        this.firstFramePending = false;
+        this.acceptingInput = true;
+        this.status("");
+      }
       this.canvas.style.opacity = reduced
         ? "1"
         : String(Math.min(1, (now - this.entered) / 550));
@@ -216,12 +222,14 @@ export class SceneRuntime {
   };
   cancelPreparation() {
     this.acceptingInput = false;
+    this.firstFramePending = false;
     this.down = null;
     ++this.generation;
     this.abort?.abort();
   }
   async navigate(factory: SceneFactory) {
     this.acceptingInput = false;
+    this.firstFramePending = false;
     const generation = ++this.generation;
     this.abort?.abort();
     this.abort = new AbortController();
@@ -238,12 +246,11 @@ export class SceneRuntime {
       this.active?.exit();
       this.active?.dispose();
       this.active = next;
-      this.acceptingInput = true;
+      this.firstFramePending = true;
       this.dirty = true;
       next.resize?.(this.width, this.height);
       next.enter();
       this.entered = performance.now();
-      this.status("");
     } catch {
       next?.dispose();
       if (generation === this.generation && !signal.aborted)

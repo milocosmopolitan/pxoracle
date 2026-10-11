@@ -91,8 +91,11 @@ test("same-scene camera stories expose overview, body and relationship selection
       `/iframe.html?id=pxoracle-natal-reading--${name}&viewMode=story`,
     );
     await expect(page.locator("canvas")).toHaveCount(1);
+    const scene = page.locator('.scene-host[data-route="astrology"]');
+    await expect(scene).toHaveAttribute("data-ready", "true", { timeout: 60000 });
     await expect(page.locator(".scene-status")).toHaveCount(0);
     await page.getByRole("button", { name: "Approach the crystal" }).click();
+    await expect(scene).toHaveAttribute("data-ready", "true", { timeout: 60000 });
     await expect(page.getByRole("status")).toHaveText("chart");
     await page.getByRole("button", { name: "Moon detail" }).click();
     await expect(page.getByRole("status")).toContainText("moon");

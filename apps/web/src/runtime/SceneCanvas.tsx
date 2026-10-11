@@ -23,10 +23,13 @@ export function SceneCanvas({
   embedded?: boolean;
   onStatus?: (status: string) => void;
 }) {
+  const preparedFor = useRef(route);
+  const [preparedRoute, setPreparedRoute] = useState<RouteScene | null>(null);
   const statusCallback = useRef(onStatus);
   statusCallback.current = onStatus;
   const reportStatus = (message: string) => {
     setStatus(message);
+    setPreparedRoute(message ? null : preparedFor.current);
     statusCallback.current?.(message);
   };
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -54,7 +57,10 @@ export function SceneCanvas({
   }, []);
   useEffect(() => {
     let canceled = false;
-    runtime.current?.cancelPreparation();
+    if (!runtime.current) return;
+    preparedFor.current = route;
+    reportStatus("Preparing the room…");
+    runtime.current.cancelPreparation();
     factories[route]()
       .then((module) => {
         if (!canceled) return runtime.current?.navigate(module.createScene);
@@ -74,7 +80,7 @@ export function SceneCanvas({
   }, [data, frozen]);
   return (
     <>
-    <div data-route={route} data-table={route === "tarot" && data.tarot && data.tarot.phase !== "conversation" ? "active" : undefined} className="scene-host" style={embedded?{position:"absolute"}:undefined}>
+    <div data-ready={preparedRoute === route && !status} data-route={route} data-table={route === "tarot" && data.tarot && data.tarot.phase !== "conversation" ? "active" : undefined} className="scene-host" style={embedded?{position:"absolute"}:undefined}>
       <canvas ref={canvas} aria-hidden="true" />
       <div className="scene-shade" />
     </div>

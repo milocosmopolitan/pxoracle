@@ -14,20 +14,24 @@ async function room(page: Page, requireGraphics = true) {
   await expect(page.locator(".scene-status")).toHaveCount(0);
   await page.waitForFunction(() => [...document.querySelectorAll("canvas")].some(canvas => canvas.style.opacity === "1"));
 }
-async function stableStage(page: Page) {
+async function stableStage(page: Page, changedFrom?: Buffer) {
   const stage = page.locator(".natal-stage");
   await stage.scrollIntoViewIfNeeded();
   let previous = await stage.screenshot({ animations: "disabled" });
   const first = previous;
-  for (let i = 0; i < 12; i++) {
+  // A slow compositor can expose two identical pre-action frames before the requested draw.
+  // After a camera action, require both a changed image and subsequent exact stability.
+  const deadline = Date.now() + 15000;
+  while (Date.now() < deadline) {
     await page.waitForTimeout(250);
     const current = await stage.screenshot({ animations: "disabled" });
-    if (current.equals(previous)) return current;
+    if (current.equals(previous) && (!changedFrom || !current.equals(changedFrom))) return current;
     previous = current;
   }
   await test.info().attach("unsettled-first", { body: first, contentType: "image/png" });
   await test.info().attach("unsettled-last", { body: previous, contentType: "image/png" });
-  throw new Error("Reduced-motion country view did not settle; reduce=" + await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
+  if (changedFrom) await test.info().attach("pre-action-frame", { body: changedFrom, contentType: "image/png" });
+  throw new Error((changedFrom && previous.equals(changedFrom) ? "Camera action produced no changed frame" : "Reduced-motion country view did not settle") + "; reduce=" + await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
 }
 
 test("region/country/city keeps the country frame and only loads selected atlas shards", async ({ page }) => {
@@ -136,11 +140,11 @@ test("keyboard rotation and zoom controls visibly adjust a country view", async 
   const before = await stableStage(page);
   await page.getByRole("button", { name: "Turn globe east" }).focus();
   await page.keyboard.press("Enter");
-  const turned = await stableStage(page);
+  const turned = await stableStage(page, before);
   expect(turned.equals(before)).toBe(false);
   await page.getByRole("button", { name: "Zoom globe out" }).focus();
   await page.keyboard.press("Enter");
-  const zoomed = await stableStage(page);
+  const zoomed = await stableStage(page, turned);
   expect(zoomed.equals(turned)).toBe(false);
   await expect(page.getByLabel("Birth country")).toHaveValue("SG");
   await page.getByRole("button", { name: "Turn globe west" }).focus();
