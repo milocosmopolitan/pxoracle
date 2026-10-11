@@ -1,6 +1,6 @@
 import type { BirthInput, Chart } from "@pxoracle/contracts";
 import type { InterpretationPlan } from "@pxoracle/contracts/natal";
-import type { PlaceProvenance } from "@pxoracle/contracts/atlas";
+import { ATLAS_COUNTRIES, type PlaceProvenance } from "@pxoracle/contracts/atlas";
 import { validateBirth, validateChart } from "../persistence-validators";
 import { currentVersions } from "./content";
 export const NATAL_KEY = "pxoracle.natal-report.v1";
@@ -40,7 +40,7 @@ function validPlace(value: unknown): value is PlaceProvenance | null {
     [p.cityId, p.atlasVersion].every(
       (x) => x === null || (typeof x === "string" && x.length <= 100),
     ) &&
-    (p.country === null || p.country === "US" || p.country === "KR")
+    (p.country === null || (typeof p.country === "string" && Object.hasOwn(ATLAS_COUNTRIES, p.country)))
   );
 }
 export function readNatal(

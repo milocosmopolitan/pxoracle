@@ -1,9 +1,13 @@
 import {
   ATLAS_VERSION,
+  ATLAS_COUNTRIES,
+  ATLAS_CITY_COUNT,
   type AtlasCountry,
   type Birthplace,
 } from "@pxoracle/contracts/atlas";
-export const COUNTRIES = { US: "United States", KR: "South Korea" } as const;
+export const COUNTRIES = ATLAS_COUNTRIES;
+export { ATLAS_CITY_COUNT };
+export const COUNTRY_OPTIONS = Object.entries(COUNTRIES).sort((a, b) => a[1].localeCompare(b[1], "en"));
 interface Shard {
   label: string;
   file: string;
@@ -147,22 +151,25 @@ export async function loadCities(
   signal: AbortSignal,
 ): Promise<Birthplace[]> {
   if (signal.aborted) throw new DOMException("Aborted", "AbortError");
+  if (!Object.hasOwn(COUNTRIES, country)) throw new Error("ATLAS_INVALID");
   if (cache.has(country)) return cache.get(country)!;
   if (!manifest) {
     const data = JSON.parse(
       new TextDecoder().decode(
-        await bounded("/content/atlas/manifest.1.json", 10000, signal),
+        await bounded(`/content/atlas/manifest.${ATLAS_VERSION}.json`, 100000, signal),
       ),
     ) as Manifest;
     if (
       data.version !== ATLAS_VERSION ||
       !data.countries ||
-      Object.keys(data.countries).sort().join(",") !== "KR,US"
+      Object.keys(data.countries).sort().join(",") !== Object.keys(COUNTRIES).sort().join(",")
     )
       throw new Error("ATLAS_INVALID");
-    for (const key of ["US", "KR"] as const) {
+    for (const key of Object.keys(COUNTRIES) as AtlasCountry[]) {
       const s = data.countries[key];
       if (
+        !s ||
+        s.label !== COUNTRIES[key] ||
         s.file !== `${key}.${ATLAS_VERSION}.json` ||
         !Number.isInteger(s.count) ||
         s.count < 1 ||

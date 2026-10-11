@@ -1,5 +1,7 @@
-export const ATLAS_VERSION = "geonames-us-kr.2026-10-11" as const;
-export type AtlasCountry = "US" | "KR";
+export const ATLAS_VERSION = "geonames-world.2026-10-11" as const;
+export { ATLAS_COUNTRIES, ATLAS_CITY_COUNT } from "./atlas-countries";
+import type { ATLAS_COUNTRIES } from "./atlas-countries";
+export type AtlasCountry = keyof typeof ATLAS_COUNTRIES;
 export interface Birthplace {
   id: string;
   name: string;

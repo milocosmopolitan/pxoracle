@@ -1,16 +1,18 @@
 {
-  "version": "geonames-us-kr.2026-10-11",
+  "version": "geonames-world.2026-10-11",
   "retrieved": "2026-10-11",
   "source": "https://download.geonames.org/export/dump/",
   "license": "CC-BY-4.0",
   "originalSha256": {
     "cities15000.zip": "f2948e3d98e6ff6897db42d93986b755892a1f11fe39d666c217823bac062dc4",
     "admin1CodesASCII.txt": "1da92a6323a5fec3176f3f743bf4cf4040fd56a876da55e46fbca23c863aa60a",
+    "countryInfo.txt": "c5997ea659df5bcf42509eb937064d172b2a998bb873608603e8421d714a9974",
     "readme.txt": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5"
   },
   "snapshotSha256": {
-    "source-US-KR.tsv.gz": "3ce28b754303aa7db80fda9a9ddc4059adae55a79f98bda0a6149637c2717486",
-    "source-admin1.tsv": "634a648d41b0eb8f9a4b9807f8abe64c370839f33afcd5e0dbb106dd8b76c22f"
+    "source-world.tsv.gz": "647243f3807afe7357e2fae63e90d18d84184a5ced5a8e4cca0a6fb7624a4e6c",
+    "source-admin1.tsv": "1da92a6323a5fec3176f3f743bf4cf4040fd56a876da55e46fbca23c863aa60a",
+    "source-countries.tsv": "c5997ea659df5bcf42509eb937064d172b2a998bb873608603e8421d714a9974"
   },
   "timezoneAssignment": "Explicit IANA timezone field supplied by GeoNames for the representative city point. No polygon lookup or nearest-city inference performed.",
   "historicalLimits": "Current city-to-zone assignment is not a reconstruction of historical jurisdiction boundaries. IANA history is representative, particularly incomplete before 1970."

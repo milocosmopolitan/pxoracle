@@ -58,6 +58,22 @@ actual Safari via WebDriver on macOS. Local Safari remote automation was disable
 so no local Safari success is claimed. The PR remains draft until its hosted gates
 pass; a pending run is never counted as completed qualification.
 
+## Worldwide atlas follow-up
+
+The two-country filter is removed. The pinned source now supplies 34,159 cities
+across 244 countries and territories, with a generated alphabetic country picker.
+All advertised records pass decoding, manifest hash/length checks and IANA-name
+validation. Offline regeneration is checked in the Node suite. Tests cover Japanese,
+Arabic and accented names as well as inherited Korean aliases and duplicate towns.
+
+The added real-browser flow selects Japan, France, Brazil, Egypt, Australia and
+Nepal, confirms only those six shards were fetched, then calculates Kathmandu's
+UTC+05:45 chart and saves/reloads/restores it without changing storage. It passes
+Chrome, Firefox, WebKit and Pixel 7 Chromium emulation. [Desktop](evidence/worldwide-desktop.png) and [mobile](evidence/worldwide-mobile.png)
+captures show the restored Nepal chart. The existing `CityInput`
+Storybook story uses the same worldwide chooser. Old US/Korea atlas URLs and saved
+place versions remain supported; no existing chart is relocalized or recalculated.
+
 ## Download and lazy-loading boundaries
 
 Measured raw / gzip-equivalent bytes, using Python gzip with mtime 0:
@@ -75,8 +91,9 @@ comparison spans Linux/macOS builds; it is not a controlled compiler-size benchm
 See `sizes.json`. Gzip-equivalent size is not a claim that a plain local HTTP server
 actually compresses the response. Existing artwork remains the main visual payload.
 
-Atlas: US 1,191,115 raw / 429,314 gzip bytes, Korea 32,536 / 12,067. No world atlas is
-downloaded. A country shard is fetched after its explicit selection, cached for
+Atlas: 244 country/territory shards, 34,159 cities. The manifest is 60,336 raw /
+16,486 gzip bytes; the largest shard remains US, 1,191,115 / 429,314. The full
+7,867,316-byte world dataset is never downloaded up front. A country shard is fetched after its explicit selection, cached for
 in-page offline search and retried after failure. Landing/tarot request no atlas,
 natal pack or astrology WASM. Astrology requests no tarot WASM. Engine initialization
 starts only on calculation/restore. Symbolic packs install once per Worker/version;
@@ -84,8 +101,8 @@ prose is fetched separately and successful page-module loads are reused.
 
 ## Scope and compatibility limits
 
-City search covers the source's **3,408 US and 147 South Korean records**, not every
-settlement or worldwide coverage. Missing, renamed and border locations retain a
+City search covers **34,159 cities across 244 countries and territories**, all
+records in the pinned GeoNames cities15000 snapshot, not every settlement. Missing, renamed and border locations retain a
 manual coordinate/IANA path. GeoNames supplies modern representative point/zone
 assignments under CC BY 4.0; historical civil offsets come from embedded IANA 2025b,
 with pre-1970 limitations disclosed. No polygon timezone lookup is claimed.

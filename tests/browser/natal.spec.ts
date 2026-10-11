@@ -344,3 +344,35 @@ test("crystal raycasting selects bodies and relationships; drag and empty backgr
     page.getByRole("button", { name: "Whole chart", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
 });
+
+test("worldwide country shards stay lazy and a quarter-hour-zone chart restores", async ({page}) => {
+ const atlasRequests:string[]=[];
+ page.on("request",r=>{if(r.url().includes("/content/atlas/"))atlasRequests.push(r.url());});
+ await page.goto("/astrology/");
+ await expect(page.locator(".door-entrance")).toHaveCount(0,{timeout:20000});
+ await expect(page.getByLabel("Birth country").locator("option")).toHaveCount(245);
+ expect(atlasRequests).toEqual([]);
+ for(const [country,query,zone] of [["JP","東京","Asia/Tokyo"],["FR","Paris","Europe/Paris"],["BR","São Paulo","America/Sao_Paulo"],["EG","القاهرة","Africa/Cairo"],["AU","Sydney","Australia/Sydney"],["NP","Kathmandu","Asia/Kathmandu"]]) {
+  await page.getByLabel("Birth country").selectOption(country);
+  await page.getByLabel("Birth city",{exact:true}).fill(query);
+  await page.locator(".city-results button").first().click();
+  await expect(page.locator(".place-confirmation")).toContainText(zone);
+ }
+ const shards=atlasRequests.filter(u=>!/manifest\./.test(u)).map(u=>u.split("/").at(-1)!.split(".")[0]);
+ expect(shards.sort()).toEqual(["AU","BR","EG","FR","JP","NP"]);
+ expect(atlasRequests.every(u=>!u.includes("Kathmandu")&&!u.includes("Paris"))).toBe(true);
+ await page.getByLabel("Birth date",{exact:true}).fill("2000-01-01");
+ await page.getByLabel("Local birth time").fill("12:00");
+ await page.getByRole("button",{name:"Enter the crystal"}).click();
+ await expect(page.getByRole("heading",{name:"A first look at your map"})).toBeVisible();
+ await expect(page.getByText("Asia/Kathmandu · UTC+05:45",{exact:false})).toBeVisible();
+ await page.getByRole("button",{name:"Save on this device"}).click();
+ const saved=await page.evaluate(()=>localStorage.getItem("pxoracle.natal-report.v1"));
+ expect(JSON.parse(saved!).place.country).toBe("NP");
+ await page.reload();
+ await page.getByRole("button",{name:"Open saved chart"}).click();
+ await expect(page.getByRole("heading",{name:"A first look at your map"})).toBeVisible();
+ expect(await page.evaluate(()=>localStorage.getItem("pxoracle.natal-report.v1"))).toBe(saved);
+ await expect(page.locator(".door-entrance")).toHaveCount(0,{timeout:20000});
+ await page.screenshot({path:test.info().outputPath("worldwide-kathmandu-restored.png"),scale:"css"});
+});

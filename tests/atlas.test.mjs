@@ -1,10 +1,13 @@
+import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import atlas from "../apps/web/src/features/astrology/atlas.ts";
 const { decodeCities, searchCities, loadCities } = atlas;
+import { ATLAS_VERSION, ATLAS_COUNTRIES } from "../packages/contracts/src/atlas.ts";
 const root = new URL("../apps/web/public/content/atlas/", import.meta.url);
-const manifest = JSON.parse(readFileSync(new URL("manifest.1.json",root)));
+const manifest = JSON.parse(readFileSync(new URL(`manifest.${ATLAS_VERSION}.json`,root)));
 const shards = Object.fromEntries(Object.entries(manifest.countries).map(([country,entry]) => [country,JSON.parse(readFileSync(new URL(entry.file,root)))]));
 test("licensed atlas preserves explicit city identity, aliases and duplicate regions", () => {
  const kr=decodeCities(shards.KR,"KR"),us=decodeCities(shards.US,"US");
@@ -29,4 +32,29 @@ test("country loads are verified and reused offline; failed or abandoned loads a
   await assert.rejects(loadCities("US",new AbortController().signal),/offline/);
   offline=false;const us=await loadCities("US",new AbortController().signal);assert.equal(us.length,3408);
  } finally { globalThis.fetch=original; }
+});
+
+test("world atlas covers every advertised country with bounded, valid, attributed cities", () => {
+ assert.equal(Object.keys(manifest.countries).length,244);
+ assert.deepEqual(Object.keys(manifest.countries).sort(),Object.keys(ATLAS_COUNTRIES).sort());
+ let total=0;
+ for(const [code,entry] of Object.entries(manifest.countries)) {
+  const raw=readFileSync(new URL(entry.file,root));
+  assert.equal(raw.length,entry.bytes,code);
+  assert.equal(createHash("sha256").update(raw).digest("hex"),entry.sha256,code);
+  const cities=decodeCities(shards[code],code); total+=cities.length;
+  assert.equal(cities.length,entry.count,code); assert.ok(entry.bytes<=1500000,code);
+  for(const zone of new Set(cities.map(c=>c.timezone))) assert.doesNotThrow(()=>new Intl.DateTimeFormat("en",{timeZone:zone}),`${code}: ${zone}`);
+ }
+ assert.equal(total,34159);
+ for(const [code,query,zone] of [
+  ["JP","東京","Asia/Tokyo"],["FR","Paris","Europe/Paris"],
+  ["BR","São Paulo","America/Sao_Paulo"],["EG","القاهرة","Africa/Cairo"],
+  ["AU","Sydney","Australia/Sydney"],["NP","Kathmandu","Asia/Kathmandu"],
+  ["IN","Mumbai","Asia/Kolkata"],["NZ","Auckland","Pacific/Auckland"]
+ ]) assert.equal(searchCities(decodeCities(shards[code],code),query)[0]?.timezone,zone,query);
+});
+
+test("pinned world atlas regenerates offline without drift", () => {
+ execFileSync("python3",["scripts/build-birthplace-atlas.py","--check"],{cwd:new URL("../",import.meta.url),stdio:"pipe"});
 });

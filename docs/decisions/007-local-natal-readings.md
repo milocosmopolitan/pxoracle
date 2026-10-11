@@ -59,8 +59,8 @@ Display degrees must never round 29°59′ into 0° of the same sign.
 ## City input and privacy
 
 Static country shards from a pinned GeoNames snapshot provide explicit coordinates,
-IANA IDs and aliases. Initial atlas coverage is the US/Korea subset of cities15000,
-not worldwide and not every settlement in those countries. City coordinates are
+IANA IDs and aliases. The atlas covers all 244 countries/territories in the pinned cities15000 snapshot,
+34,159 cities, with country-specific lazy loading. It does not cover every settlement. City coordinates are
 representative points. We do not infer zones from longitude, nearest cities or the
 device; boundary/renamed/missing places have manual correction. Current geographic
 assignments and pre-1970 civil-time limits are disclosed. Rust's embedded IANA data
@@ -102,8 +102,9 @@ not wording. Its Placidus output is not a numerical reference for our Whole Sign
 All new prose is authored locally. Automated coverage is not human editorial approval.
 
 A remote geocoder/LLM would add private-data exposure, cost and nondeterminism. A TS
-interpretation engine would duplicate Rust authority. A full world atlas would cost
-unnecessary initial bytes. These are not required for the chosen bounded local path.
+interpretation engine would duplicate Rust authority. Downloading all worldwide cities initially would cost unnecessary bytes.
+A generated country catalog and versioned, lazily selected shards keep initial
+loading bounded while supporting international city search.
 
 ## Implementation references
 

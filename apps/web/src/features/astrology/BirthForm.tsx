@@ -6,7 +6,7 @@ import type {
   Birthplace,
   PlaceProvenance,
 } from "@pxoracle/contracts/atlas";
-import { COUNTRIES, loadCities, searchCities } from "./atlas";
+import { COUNTRIES, COUNTRY_OPTIONS, ATLAS_CITY_COUNT, loadCities, searchCities } from "./atlas";
 
 export function BirthForm({
   initial,
@@ -141,14 +141,14 @@ export function BirthForm({
                 required
               >
                 <option value="">Choose a country</option>
-                <option value="US">United States</option>
-                <option value="KR">South Korea</option>
+                {COUNTRY_OPTIONS.map(([code, label]) => (
+                  <option key={code} value={code}>{label}</option>
+                ))}
               </select>
             </label>
             <small>
-              Local atlas: 3,408 US and 147 South Korean cities from GeoNames
-              cities15000. Smaller or missing places and other countries use
-              manual entry.
+              Search {ATLAS_CITY_COUNT.toLocaleString("en")} cities across {COUNTRY_OPTIONS.length} countries and territories.
+              GeoNames covers cities above 15,000 people and capitals; smaller or missing places use manual entry.
             </small>
             {country && (
               <label>

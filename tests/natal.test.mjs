@@ -208,6 +208,12 @@ test("saved natal envelopes preserve legacy facts and expose unavailable version
   };
   saveNatal(storage, saved);
   assert.equal(readNatal(storage).mode, "current");
+  for (const [country, atlasVersion] of [["JP", "geonames-world.2026-10-11"], ["KR", "geonames-us-kr.2026-10-11"]]) {
+    const place = {source:"atlas",label:"Saved birthplace",cityId:"1835848",country,atlasVersion};
+    saveNatal(storage, {...saved,place});
+    assert.deepEqual(readNatal(storage).place,place);
+    assert.deepEqual(readNatal(storage).chart,f.chart);
+  }
   const future = structuredClone(saved);
   future.versions.content = "future";
   values.set(NATAL_KEY, JSON.stringify(future));

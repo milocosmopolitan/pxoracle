@@ -1,0 +1,1959 @@
+{
+  "version": "geonames-world.2026-10-11",
+  "license": "CC-BY-4.0",
+  "attribution": "GeoNames",
+  "countries": {
+    "AD": {
+      "label": "Andorra",
+      "file": "AD.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 1796,
+      "gzipBytes": 992,
+      "sha256": "19bdef88fac5e5d9b2b4b44b30f7aac6b725570f7ebc466de1bde54c1e6147f1"
+    },
+    "AE": {
+      "label": "United Arab Emirates",
+      "file": "AE.geonames-world.2026-10-11.json",
+      "count": 63,
+      "bytes": 14340,
+      "gzipBytes": 5975,
+      "sha256": "eb8718aee0cec9d33a0091023af5c037b06cf4e66e531899675c7932c84c2118"
+    },
+    "AF": {
+      "label": "Afghanistan",
+      "file": "AF.geonames-world.2026-10-11.json",
+      "count": 55,
+      "bytes": 23587,
+      "gzipBytes": 9819,
+      "sha256": "e91d99f1f77c4f51d2a70386f2e9fb1d0011477d695648aea7294fc347342079"
+    },
+    "AG": {
+      "label": "Antigua and Barbuda",
+      "file": "AG.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 665,
+      "gzipBytes": 455,
+      "sha256": "cedbdc0a8da76b72689e30aade46b2c2ab8f0698198ed92299dc3a593c04da36"
+    },
+    "AI": {
+      "label": "Anguilla",
+      "file": "AI.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 501,
+      "gzipBytes": 392,
+      "sha256": "7d04c30d4c09bea126c480b7876e2a376b58a2efc35c976276b7c1783c460789"
+    },
+    "AL": {
+      "label": "Albania",
+      "file": "AL.geonames-world.2026-10-11.json",
+      "count": 25,
+      "bytes": 11812,
+      "gzipBytes": 5369,
+      "sha256": "401a987cb65d2d2cec319217cbab0b457780cb5c30237b400d27046cd1b3a783"
+    },
+    "AM": {
+      "label": "Armenia",
+      "file": "AM.geonames-world.2026-10-11.json",
+      "count": 29,
+      "bytes": 17332,
+      "gzipBytes": 6863,
+      "sha256": "bbb92535776ca9a71eceba2d594b2cfabe1fa5a515d5d5b2884a20a45e821e45"
+    },
+    "AO": {
+      "label": "Angola",
+      "file": "AO.geonames-world.2026-10-11.json",
+      "count": 133,
+      "bytes": 21405,
+      "gzipBytes": 8435,
+      "sha256": "1f2fb0bb271331047f04594b7d16c68016b16f28832c0e751c3c8ff23df14164"
+    },
+    "AR": {
+      "label": "Argentina",
+      "file": "AR.geonames-world.2026-10-11.json",
+      "count": 329,
+      "bytes": 141834,
+      "gzipBytes": 51768,
+      "sha256": "e93c15a913034ac41c54c7efb582223e8ed498e4d81c9a319181e8813fd571fa"
+    },
+    "AS": {
+      "label": "American Samoa",
+      "file": "AS.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 708,
+      "gzipBytes": 423,
+      "sha256": "d40558c3199c6c54e62f6e46d751a890e17aaacd7ae97eded56e17bcbdaf0bcc"
+    },
+    "AT": {
+      "label": "Austria",
+      "file": "AT.geonames-world.2026-10-11.json",
+      "count": 66,
+      "bytes": 17408,
+      "gzipBytes": 7657,
+      "sha256": "30f7691c1257984da8c9b681a474ab3902f53e31fbc63f1a24ee9e7852b4ad05"
+    },
+    "AU": {
+      "label": "Australia",
+      "file": "AU.geonames-world.2026-10-11.json",
+      "count": 313,
+      "bytes": 71068,
+      "gzipBytes": 27126,
+      "sha256": "c06de49c10b48391b40c3bb470ab0aea99d2ae305b3c8927cb7bfbfee97c1004"
+    },
+    "AW": {
+      "label": "Aruba",
+      "file": "AW.geonames-world.2026-10-11.json",
+      "count": 4,
+      "bytes": 1104,
+      "gzipBytes": 667,
+      "sha256": "772777f947fb18d02a07513092232d3cf7003bbc79a25eec62d879bd5f3c2940"
+    },
+    "AX": {
+      "label": "Aland Islands",
+      "file": "AX.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 359,
+      "gzipBytes": 256,
+      "sha256": "39e7408bfe3cc65a38f41bc3e213f7c7e5e4677fe634b7ef29a71de1bb37e331"
+    },
+    "AZ": {
+      "label": "Azerbaijan",
+      "file": "AZ.geonames-world.2026-10-11.json",
+      "count": 65,
+      "bytes": 25425,
+      "gzipBytes": 10823,
+      "sha256": "bbb6bb599734ecd19e0340fecabfb975f50936101d7dbf98a46020b959de0de6"
+    },
+    "BA": {
+      "label": "Bosnia and Herzegovina",
+      "file": "BA.geonames-world.2026-10-11.json",
+      "count": 23,
+      "bytes": 9681,
+      "gzipBytes": 4514,
+      "sha256": "721d4c19d387b7e42e3f17d7cbc385fa1c6a8bd06fe9edd344f466ef972e9439"
+    },
+    "BB": {
+      "label": "Barbados",
+      "file": "BB.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 468,
+      "gzipBytes": 385,
+      "sha256": "b07e8aeeb74a95e596192474c0015fa34285e83297a4034dfe58475f032106a5"
+    },
+    "BD": {
+      "label": "Bangladesh",
+      "file": "BD.geonames-world.2026-10-11.json",
+      "count": 139,
+      "bytes": 22620,
+      "gzipBytes": 8867,
+      "sha256": "88a541a918ae06228fedc17cb763331c67b47e761457f63bd66b204d29d0bcf5"
+    },
+    "BE": {
+      "label": "Belgium",
+      "file": "BE.geonames-world.2026-10-11.json",
+      "count": 223,
+      "bytes": 49354,
+      "gzipBytes": 19767,
+      "sha256": "361e6ba6ef94e523db80542c5fb3417b49e8363aad9062f310e3de8b29b355e1"
+    },
+    "BF": {
+      "label": "Burkina Faso",
+      "file": "BF.geonames-world.2026-10-11.json",
+      "count": 74,
+      "bytes": 16401,
+      "gzipBytes": 6729,
+      "sha256": "174668868d002ac81045b3448b57d89c48d45cc8729a0cb6dc3353f683b03aca"
+    },
+    "BG": {
+      "label": "Bulgaria",
+      "file": "BG.geonames-world.2026-10-11.json",
+      "count": 56,
+      "bytes": 27827,
+      "gzipBytes": 11497,
+      "sha256": "0f1c8699cca537e520cb8aeb5e7be21f557f13a3d9cd00194d25ba159b291f59"
+    },
+    "BH": {
+      "label": "Bahrain",
+      "file": "BH.geonames-world.2026-10-11.json",
+      "count": 8,
+      "bytes": 3404,
+      "gzipBytes": 1674,
+      "sha256": "ece1c1b5b2ffd280445dc7654684238e36a7992357761e0cc6f7abb9d6b3933d"
+    },
+    "BI": {
+      "label": "Burundi",
+      "file": "BI.geonames-world.2026-10-11.json",
+      "count": 14,
+      "bytes": 3859,
+      "gzipBytes": 1825,
+      "sha256": "1fd9338d0b15441e275dc93bfafbab46bfc1cb3697ee4923a73059a267b07f6b"
+    },
+    "BJ": {
+      "label": "Benin",
+      "file": "BJ.geonames-world.2026-10-11.json",
+      "count": 66,
+      "bytes": 9819,
+      "gzipBytes": 4093,
+      "sha256": "fb7136d877ae2549e1e43d16a492642a2af93927dbfdb1924c5304e0aae57b0b"
+    },
+    "BL": {
+      "label": "Saint Barthelemy",
+      "file": "BL.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 687,
+      "gzipBytes": 476,
+      "sha256": "d762705b5fc853eecd9e9e243edb55a77ff807cf3e1ecdcdde13ac374076b2e6"
+    },
+    "BM": {
+      "label": "Bermuda",
+      "file": "BM.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 706,
+      "gzipBytes": 484,
+      "sha256": "7b3d5d28854b6d9c07e9b87651d120eb93834857aa5b85016fcb1e32ec162913"
+    },
+    "BN": {
+      "label": "Brunei",
+      "file": "BN.geonames-world.2026-10-11.json",
+      "count": 7,
+      "bytes": 3453,
+      "gzipBytes": 1692,
+      "sha256": "1b6ff80f169a53cbc18ff21e542eab31e0adb58f8372226c256119c3a32d35c3"
+    },
+    "BO": {
+      "label": "Bolivia",
+      "file": "BO.geonames-world.2026-10-11.json",
+      "count": 39,
+      "bytes": 14683,
+      "gzipBytes": 6576,
+      "sha256": "3c4e07ec7faf6a2b257a8949fd86fb84701ab9557d3ffde90fbdf63da79189b2"
+    },
+    "BQ": {
+      "label": "Bonaire, Saint Eustatius and Saba ",
+      "file": "BQ.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 602,
+      "gzipBytes": 417,
+      "sha256": "9b042b057efcc6f208bd2722ddd7168dd9dadbad7d9fdc28f55993954987350c"
+    },
+    "BR": {
+      "label": "Brazil",
+      "file": "BR.geonames-world.2026-10-11.json",
+      "count": 2377,
+      "bytes": 334482,
+      "gzipBytes": 109764,
+      "sha256": "178559edbf484a6af456a5b9f7a55ee3d2a0ead9f45580081e364cba11ce75f4"
+    },
+    "BS": {
+      "label": "Bahamas",
+      "file": "BS.geonames-world.2026-10-11.json",
+      "count": 4,
+      "bytes": 1458,
+      "gzipBytes": 897,
+      "sha256": "221eaaaa9ac257b0aff14e29dc0592087f028166d3331d1e6aeb0e1e5e89bec6"
+    },
+    "BT": {
+      "label": "Bhutan",
+      "file": "BT.geonames-world.2026-10-11.json",
+      "count": 4,
+      "bytes": 2259,
+      "gzipBytes": 1228,
+      "sha256": "db50864e5697d3e49287010498cefc319faed2cacf78789af9af9b5962c9e81b"
+    },
+    "BW": {
+      "label": "Botswana",
+      "file": "BW.geonames-world.2026-10-11.json",
+      "count": 25,
+      "bytes": 8211,
+      "gzipBytes": 3688,
+      "sha256": "1c48bcd05118fe399ec5b6efdae5e3b79f10dc9d5f61c15cc39666241549027c"
+    },
+    "BY": {
+      "label": "Belarus",
+      "file": "BY.geonames-world.2026-10-11.json",
+      "count": 56,
+      "bytes": 17331,
+      "gzipBytes": 7222,
+      "sha256": "098e33533f432eaf4ce9ea55182d999a67515e9808b64e344f609f6b16001bf8"
+    },
+    "BZ": {
+      "label": "Belize",
+      "file": "BZ.geonames-world.2026-10-11.json",
+      "count": 5,
+      "bytes": 3240,
+      "gzipBytes": 1764,
+      "sha256": "4f295b6da5479be9b61f11ec47b84f919adf40264a8f54a9f283fad8a209e4b0"
+    },
+    "CA": {
+      "label": "Canada",
+      "file": "CA.geonames-world.2026-10-11.json",
+      "count": 512,
+      "bytes": 104919,
+      "gzipBytes": 40965,
+      "sha256": "04af65dbf3aa18676ea262fb17bd7f7c4c68036f8f66a95fca6546232843888e"
+    },
+    "CC": {
+      "label": "Cocos Islands",
+      "file": "CC.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 188,
+      "gzipBytes": 183,
+      "sha256": "9b7db014320a0b2a982ed16c8dba52e2feecd9648eb79418d2133b1a8111ec44"
+    },
+    "CD": {
+      "label": "Democratic Republic of the Congo",
+      "file": "CD.geonames-world.2026-10-11.json",
+      "count": 114,
+      "bytes": 20971,
+      "gzipBytes": 8996,
+      "sha256": "80aeed4cf3077eaf718dbcbe67f769943cd2d142b62fbc7e93f42084c9f023da"
+    },
+    "CF": {
+      "label": "Central African Republic",
+      "file": "CF.geonames-world.2026-10-11.json",
+      "count": 33,
+      "bytes": 7843,
+      "gzipBytes": 3520,
+      "sha256": "335198a6ebe31ef7cbc43af92e10da354aa024d82d2174e89472194bfb89a54f"
+    },
+    "CG": {
+      "label": "Republic of the Congo",
+      "file": "CG.geonames-world.2026-10-11.json",
+      "count": 23,
+      "bytes": 4592,
+      "gzipBytes": 2231,
+      "sha256": "202736924c6033af410bc473bfe9f66a2e116520c81423687a8780a17ebd2b57"
+    },
+    "CH": {
+      "label": "Switzerland",
+      "file": "CH.geonames-world.2026-10-11.json",
+      "count": 95,
+      "bytes": 26175,
+      "gzipBytes": 11344,
+      "sha256": "905d3c1b6817ff19073f00884a63ea8c669bfbda883adf70c7794615f1f5c755"
+    },
+    "CI": {
+      "label": "Ivory Coast",
+      "file": "CI.geonames-world.2026-10-11.json",
+      "count": 183,
+      "bytes": 24194,
+      "gzipBytes": 8788,
+      "sha256": "0276f1098645c06d45301f6f5c0e02d85987026636c0f74d619073b038332b56"
+    },
+    "CK": {
+      "label": "Cook Islands",
+      "file": "CK.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 532,
+      "gzipBytes": 417,
+      "sha256": "9c482022fef6080c2db3a09732b7094bb914bcc3b4fcfcc364b7b9d26c28f5f9"
+    },
+    "CL": {
+      "label": "Chile",
+      "file": "CL.geonames-world.2026-10-11.json",
+      "count": 147,
+      "bytes": 36106,
+      "gzipBytes": 14721,
+      "sha256": "8bbf7377b80d30f236a4f3a9254aa4a3f35b19e10ec55d5bb175679cc7315e3b"
+    },
+    "CM": {
+      "label": "Cameroon",
+      "file": "CM.geonames-world.2026-10-11.json",
+      "count": 87,
+      "bytes": 10961,
+      "gzipBytes": 4566,
+      "sha256": "8a7660b45320ac6c231a91e731171fbcaad2a62b81d9647f53b290c0815312c3"
+    },
+    "CN": {
+      "label": "China",
+      "file": "CN.geonames-world.2026-10-11.json",
+      "count": 2122,
+      "bytes": 472237,
+      "gzipBytes": 161587,
+      "sha256": "52d9e12ff2ceedc3ca64896eb8cf95a0c606cf760bbdbc01a21c53d0f821b3c2"
+    },
+    "CO": {
+      "label": "Colombia",
+      "file": "CO.geonames-world.2026-10-11.json",
+      "count": 319,
+      "bytes": 48687,
+      "gzipBytes": 18116,
+      "sha256": "7ff0ad6f4856b87e58480458a0be47d9b25976772357f8bdf351ed177c211b41"
+    },
+    "CR": {
+      "label": "Costa Rica",
+      "file": "CR.geonames-world.2026-10-11.json",
+      "count": 41,
+      "bytes": 8229,
+      "gzipBytes": 3460,
+      "sha256": "94933e3f2cd585fd42ae19cece81fbae8f53034453c5287c41a97d862faf7ced"
+    },
+    "CU": {
+      "label": "Cuba",
+      "file": "CU.geonames-world.2026-10-11.json",
+      "count": 140,
+      "bytes": 25047,
+      "gzipBytes": 9604,
+      "sha256": "e0154860c803a9977a96a2b5cb5d3e6be7fa5f6a4d2e5fe60a25d8a4e16dfa71"
+    },
+    "CV": {
+      "label": "Cabo Verde",
+      "file": "CV.geonames-world.2026-10-11.json",
+      "count": 4,
+      "bytes": 1844,
+      "gzipBytes": 1111,
+      "sha256": "e6c338cdb11d5ed42f5ba6fbfcbeae75c2dce4cbbb6c51e364dbe55c4853d659"
+    },
+    "CW": {
+      "label": "Curacao",
+      "file": "CW.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 836,
+      "gzipBytes": 558,
+      "sha256": "c89699a71dd4deeb68619678ba26e8b527f6aa37ca02dc7774b40accd0b01290"
+    },
+    "CX": {
+      "label": "Christmas Island",
+      "file": "CX.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 961,
+      "gzipBytes": 652,
+      "sha256": "1981a714f2499c593da657df0c133e85117c1ed3a1687e3a2acf195abecc7adc"
+    },
+    "CY": {
+      "label": "Cyprus",
+      "file": "CY.geonames-world.2026-10-11.json",
+      "count": 15,
+      "bytes": 6245,
+      "gzipBytes": 2976,
+      "sha256": "e9ce26f8aa823f31e2e861bf08924a6064cb9b07b8c6009938001f371138e926"
+    },
+    "CZ": {
+      "label": "Czechia",
+      "file": "CZ.geonames-world.2026-10-11.json",
+      "count": 123,
+      "bytes": 34866,
+      "gzipBytes": 14307,
+      "sha256": "a008440f47fc15bb8858415a0ab7e145381e4b3163a08336da61674d13dc35ae"
+    },
+    "DE": {
+      "label": "Germany",
+      "file": "DE.geonames-world.2026-10-11.json",
+      "count": 1140,
+      "bytes": 316077,
+      "gzipBytes": 113887,
+      "sha256": "72ab0c3d37cd85ed69912956cb8a0546775fdd478a002ce6fb80e819e4c28fe0"
+    },
+    "DJ": {
+      "label": "Djibouti",
+      "file": "DJ.geonames-world.2026-10-11.json",
+      "count": 7,
+      "bytes": 3710,
+      "gzipBytes": 1885,
+      "sha256": "0e488dd35c19c492739d7f2e09b6acfaeaecad61737d30240cedb19962d58c21"
+    },
+    "DK": {
+      "label": "Denmark",
+      "file": "DK.geonames-world.2026-10-11.json",
+      "count": 67,
+      "bytes": 18944,
+      "gzipBytes": 7424,
+      "sha256": "649bc18cdd82193e72963970ac04a10417fd24faee8d2bfe5cc5b04e1801b3d0"
+    },
+    "DM": {
+      "label": "Dominica",
+      "file": "DM.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 466,
+      "gzipBytes": 397,
+      "sha256": "a06b87f6057ec614404f54342bd9182cc5f3842020745d9ba83cfacf7ec7c38f"
+    },
+    "DO": {
+      "label": "Dominican Republic",
+      "file": "DO.geonames-world.2026-10-11.json",
+      "count": 50,
+      "bytes": 20624,
+      "gzipBytes": 7502,
+      "sha256": "072b5cbaba5f98c71379043fae4be903398d6363bf9eae016ef5b6b00da3469e"
+    },
+    "DZ": {
+      "label": "Algeria",
+      "file": "DZ.geonames-world.2026-10-11.json",
+      "count": 295,
+      "bytes": 55696,
+      "gzipBytes": 21841,
+      "sha256": "32173c7f7841419548a797c0be191442b3022c3128af7388638897b7f3461df8"
+    },
+    "EC": {
+      "label": "Ecuador",
+      "file": "EC.geonames-world.2026-10-11.json",
+      "count": 71,
+      "bytes": 16542,
+      "gzipBytes": 7189,
+      "sha256": "89b814af6e7246dad05d2c2a9e4aa736b5628849cd3c388580ff255e2bfd8461"
+    },
+    "EE": {
+      "label": "Estonia",
+      "file": "EE.geonames-world.2026-10-11.json",
+      "count": 15,
+      "bytes": 4978,
+      "gzipBytes": 2245,
+      "sha256": "898642b4f7d901c0770230b4af1430a061d54dfe34c36a41203a4c099edffdfa"
+    },
+    "EG": {
+      "label": "Egypt",
+      "file": "EG.geonames-world.2026-10-11.json",
+      "count": 241,
+      "bytes": 55293,
+      "gzipBytes": 21658,
+      "sha256": "e4e412bf1f404a2df074dedf93a0af5eb0a5582019ddefe7fa189b3fb92b976e"
+    },
+    "EH": {
+      "label": "Western Sahara",
+      "file": "EH.geonames-world.2026-10-11.json",
+      "count": 4,
+      "bytes": 1181,
+      "gzipBytes": 663,
+      "sha256": "b4d77bd10e348e54706a4558a5afeea755ef7ecfcf9194ee6bf5bdc03c5de36d"
+    },
+    "ER": {
+      "label": "Eritrea",
+      "file": "ER.geonames-world.2026-10-11.json",
+      "count": 8,
+      "bytes": 2381,
+      "gzipBytes": 1395,
+      "sha256": "52567fd4512984007a202743a4b482f389b5ecfadf7cae3a73214cf29a96e19b"
+    },
+    "ES": {
+      "label": "Spain",
+      "file": "ES.geonames-world.2026-10-11.json",
+      "count": 736,
+      "bytes": 139378,
+      "gzipBytes": 51572,
+      "sha256": "5dd0d9139bd458bdeebb9084e8da11b101b6203710788a5e5f134e1e732dcc8d"
+    },
+    "ET": {
+      "label": "Ethiopia",
+      "file": "ET.geonames-world.2026-10-11.json",
+      "count": 233,
+      "bytes": 35834,
+      "gzipBytes": 13088,
+      "sha256": "2eb288ba8220a9d4a3df42574220a4425cfb2b727c66620822d6077e0d39b61f"
+    },
+    "FI": {
+      "label": "Finland",
+      "file": "FI.geonames-world.2026-10-11.json",
+      "count": 102,
+      "bytes": 25559,
+      "gzipBytes": 10956,
+      "sha256": "29bb432fcf4fc11ec90b4f68a71b1a7602502cf16df97410a6db076f8770411f"
+    },
+    "FJ": {
+      "label": "Fiji",
+      "file": "FJ.geonames-world.2026-10-11.json",
+      "count": 7,
+      "bytes": 1413,
+      "gzipBytes": 849,
+      "sha256": "c159bb91a315546d7a24a491bb36c879e9e24ba6fb4bd7ae4eb251636822f9a5"
+    },
+    "FK": {
+      "label": "Falkland Islands",
+      "file": "FK.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 1035,
+      "gzipBytes": 630,
+      "sha256": "9dd5bb9b652ecf23b406e10bdbd1dfaec53cb5d96aa01c5b80bcbb0fa6a56660"
+    },
+    "FM": {
+      "label": "Micronesia",
+      "file": "FM.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 411,
+      "gzipBytes": 354,
+      "sha256": "8580bfaef81e2249363fe3166e517c522ffb64ec6ccae401593f75d5a2087650"
+    },
+    "FO": {
+      "label": "Faroe Islands",
+      "file": "FO.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 881,
+      "gzipBytes": 584,
+      "sha256": "4a4c0787fb754b59542dc4cda370583fc515674883d57d19a9ea27ff9ee13b4e"
+    },
+    "FR": {
+      "label": "France",
+      "file": "FR.geonames-world.2026-10-11.json",
+      "count": 692,
+      "bytes": 207700,
+      "gzipBytes": 78945,
+      "sha256": "c4a09eeaa0a1b2286eef4d5b91c45c82820e785c1fb03ba7273c17f4dbfe261c"
+    },
+    "GA": {
+      "label": "Gabon",
+      "file": "GA.geonames-world.2026-10-11.json",
+      "count": 15,
+      "bytes": 3397,
+      "gzipBytes": 1740,
+      "sha256": "30d0c10b99239426b4d4310072a10ff238aef7733fcdc0af1a690fd827c69d83"
+    },
+    "GB": {
+      "label": "United Kingdom",
+      "file": "GB.geonames-world.2026-10-11.json",
+      "count": 866,
+      "bytes": 186715,
+      "gzipBytes": 73283,
+      "sha256": "e4647a518ef4046757230daa8520d254785bde6c5792b498631fedb626280905"
+    },
+    "GD": {
+      "label": "Grenada",
+      "file": "GD.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 539,
+      "gzipBytes": 394,
+      "sha256": "c0bf68dcdd85be9180b4cb3062388d79770c5163943dd133c02c705441047119"
+    },
+    "GE": {
+      "label": "Georgia",
+      "file": "GE.geonames-world.2026-10-11.json",
+      "count": 17,
+      "bytes": 5844,
+      "gzipBytes": 2774,
+      "sha256": "bfeace80817bea9974dd913b4a8abaadcb519cbf83c286dcb8ffb0303a25c086"
+    },
+    "GF": {
+      "label": "French Guiana",
+      "file": "GF.geonames-world.2026-10-11.json",
+      "count": 5,
+      "bytes": 1671,
+      "gzipBytes": 912,
+      "sha256": "0654ec1cc19e02c23a84a3489b64a494fdd6d7643db283743bc7fc40feabbeed"
+    },
+    "GG": {
+      "label": "Guernsey",
+      "file": "GG.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 923,
+      "gzipBytes": 544,
+      "sha256": "6563162a051a673365999ab3f4b958cc0009dfd27aa784cbe7450baae1db9084"
+    },
+    "GH": {
+      "label": "Ghana",
+      "file": "GH.geonames-world.2026-10-11.json",
+      "count": 102,
+      "bytes": 13343,
+      "gzipBytes": 5935,
+      "sha256": "292fd3645b30087c469fd32149e8bb87003d6f47d15835460f912fd365fd761b"
+    },
+    "GI": {
+      "label": "Gibraltar",
+      "file": "GI.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 597,
+      "gzipBytes": 415,
+      "sha256": "35498414a5506593d97b820d643836dcbf2a53fa19c6d036efd6e713d3c7b9be"
+    },
+    "GL": {
+      "label": "Greenland",
+      "file": "GL.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 533,
+      "gzipBytes": 396,
+      "sha256": "24be5d167bbbee2142930bf69102ec2a88496ffe259ac0863c9af72422a7e1ba"
+    },
+    "GM": {
+      "label": "Gambia",
+      "file": "GM.geonames-world.2026-10-11.json",
+      "count": 33,
+      "bytes": 4134,
+      "gzipBytes": 1810,
+      "sha256": "fe2e4a1c0bb22d4697f13450f1a451572ead8060d02afc2c5bb87160fda99544"
+    },
+    "GN": {
+      "label": "Guinea",
+      "file": "GN.geonames-world.2026-10-11.json",
+      "count": 47,
+      "bytes": 4918,
+      "gzipBytes": 1916,
+      "sha256": "0e1b86bd37ea4dc4a8c8f19ee9d4b35b74ef5a6d318bfcfa5aec75dfb8632665"
+    },
+    "GP": {
+      "label": "Guadeloupe",
+      "file": "GP.geonames-world.2026-10-11.json",
+      "count": 10,
+      "bytes": 2661,
+      "gzipBytes": 1375,
+      "sha256": "dd4173f5a72758da1956f3dc71ea24dd7fb2c8c859a037c31d1076a0f97d6ada"
+    },
+    "GQ": {
+      "label": "Equatorial Guinea",
+      "file": "GQ.geonames-world.2026-10-11.json",
+      "count": 6,
+      "bytes": 1967,
+      "gzipBytes": 1191,
+      "sha256": "9d47fa78dc4c3e9d09f375c261cccd23fe340dd09db59551d5a8b2f07179d3cc"
+    },
+    "GR": {
+      "label": "Greece",
+      "file": "GR.geonames-world.2026-10-11.json",
+      "count": 118,
+      "bytes": 28284,
+      "gzipBytes": 11283,
+      "sha256": "5c7476e4db89c0089ae4c99343f02770188c12fa8926233f97c8b87989feb122"
+    },
+    "GS": {
+      "label": "South Georgia and the South Sandwich Islands",
+      "file": "GS.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 562,
+      "gzipBytes": 418,
+      "sha256": "90d1acfc1cc0a8acb8ffccf719ec7cd5dd6db80658b75fde06c5e0a90ad00330"
+    },
+    "GT": {
+      "label": "Guatemala",
+      "file": "GT.geonames-world.2026-10-11.json",
+      "count": 102,
+      "bytes": 14497,
+      "gzipBytes": 5232,
+      "sha256": "60ec54c9d2f5767a4546e3a6e0fbe19ee21346d9b2b2d1063846f0c3d8f3203a"
+    },
+    "GU": {
+      "label": "Guam",
+      "file": "GU.geonames-world.2026-10-11.json",
+      "count": 6,
+      "bytes": 1505,
+      "gzipBytes": 841,
+      "sha256": "1617aca721f313c21251f1b04456f2f4e45644c93e700ada8f9cf33612262d6f"
+    },
+    "GW": {
+      "label": "Guinea-Bissau",
+      "file": "GW.geonames-world.2026-10-11.json",
+      "count": 15,
+      "bytes": 1864,
+      "gzipBytes": 897,
+      "sha256": "fd1f0ee333978d13946d6a82e78f4ab5578ad47161cd56c7f51819c86e024f94"
+    },
+    "GY": {
+      "label": "Guyana",
+      "file": "GY.geonames-world.2026-10-11.json",
+      "count": 3,
+      "bytes": 1646,
+      "gzipBytes": 1033,
+      "sha256": "eb75519c94bc8b1c724e4e485721fa5a4a1a399d7658ae329488b5816e8953e5"
+    },
+    "HK": {
+      "label": "Hong Kong",
+      "file": "HK.geonames-world.2026-10-11.json",
+      "count": 141,
+      "bytes": 19773,
+      "gzipBytes": 6972,
+      "sha256": "837e5ee01dfc9264993352200157ca96996bac016dcdd2912f44f25ea760ea6c"
+    },
+    "HN": {
+      "label": "Honduras",
+      "file": "HN.geonames-world.2026-10-11.json",
+      "count": 65,
+      "bytes": 9127,
+      "gzipBytes": 3226,
+      "sha256": "28b62e8e567406d28564472243ad0be944bdef06f2f326627ee90dce3ff6ec24"
+    },
+    "HR": {
+      "label": "Croatia",
+      "file": "HR.geonames-world.2026-10-11.json",
+      "count": 26,
+      "bytes": 10261,
+      "gzipBytes": 4883,
+      "sha256": "8f7c8aa51cf17c2ff835a9a8563f3db239d6df632a6d1debf05855628e2a5e94"
+    },
+    "HT": {
+      "label": "Haiti",
+      "file": "HT.geonames-world.2026-10-11.json",
+      "count": 32,
+      "bytes": 6818,
+      "gzipBytes": 3049,
+      "sha256": "81ba3d3869a352f333c10dddd6c1b927577ae9bfeee247b095f950b70d33c2d9"
+    },
+    "HU": {
+      "label": "Hungary",
+      "file": "HU.geonames-world.2026-10-11.json",
+      "count": 141,
+      "bytes": 34436,
+      "gzipBytes": 13882,
+      "sha256": "77b63aa377c7db6580bc1206edf4a07f2137a2998e97d1df9c79afea32b4483d"
+    },
+    "ID": {
+      "label": "Indonesia",
+      "file": "ID.geonames-world.2026-10-11.json",
+      "count": 448,
+      "bytes": 59285,
+      "gzipBytes": 21227,
+      "sha256": "e65cb9b95794ea58c7e7ea95d0645eec43d3e93462522ecfeef662029aabe0ca"
+    },
+    "IE": {
+      "label": "Ireland",
+      "file": "IE.geonames-world.2026-10-11.json",
+      "count": 43,
+      "bytes": 12962,
+      "gzipBytes": 5963,
+      "sha256": "edac39687f04ab08d57df3f56b3609236a8d0741255fad6e620294715cfa9373"
+    },
+    "IL": {
+      "label": "Israel",
+      "file": "IL.geonames-world.2026-10-11.json",
+      "count": 106,
+      "bytes": 45065,
+      "gzipBytes": 17784,
+      "sha256": "aa26c48a701439866f874704523afa90a1e30a1f330204aa2468b4a3546911f0"
+    },
+    "IM": {
+      "label": "Isle of Man",
+      "file": "IM.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 688,
+      "gzipBytes": 478,
+      "sha256": "51e40dc7424ccdc0a719d9f4f3682f0780be069b6e065a2b223f11dca67ca6d3"
+    },
+    "IN": {
+      "label": "India",
+      "file": "IN.geonames-world.2026-10-11.json",
+      "count": 3780,
+      "bytes": 586086,
+      "gzipBytes": 205524,
+      "sha256": "aa15bb25cc4b9d3cbe2e0f5e7ed59dd649d17df71fe40b77698739cf3cbf8060"
+    },
+    "IQ": {
+      "label": "Iraq",
+      "file": "IQ.geonames-world.2026-10-11.json",
+      "count": 105,
+      "bytes": 30686,
+      "gzipBytes": 12222,
+      "sha256": "321b3834619326ab8064cd3d7b4052da74edcc27cec6a470d7b2d3cd970e7ae4"
+    },
+    "IR": {
+      "label": "Iran",
+      "file": "IR.geonames-world.2026-10-11.json",
+      "count": 428,
+      "bytes": 93881,
+      "gzipBytes": 35279,
+      "sha256": "71c14c62299ae19d6c368c19f8ab44ec4bbab4005cc12ebd3df4d66b0dc239dc"
+    },
+    "IS": {
+      "label": "Iceland",
+      "file": "IS.geonames-world.2026-10-11.json",
+      "count": 6,
+      "bytes": 4438,
+      "gzipBytes": 2110,
+      "sha256": "4f9448f599b213d2e12780e7d4012e07fe0ccfd53209ff57b7c66c0f6e44b296"
+    },
+    "IT": {
+      "label": "Italy",
+      "file": "IT.geonames-world.2026-10-11.json",
+      "count": 661,
+      "bytes": 93049,
+      "gzipBytes": 34628,
+      "sha256": "79bd31f581035f76f335603ced4344c790914beb861420b388fa5b7e4bf10079"
+    },
+    "JE": {
+      "label": "Jersey",
+      "file": "JE.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 296,
+      "gzipBytes": 238,
+      "sha256": "6796c6ca160ebf2bd2d2df28769644a08c1d6ef27e854b05309e84c6cabbcb36"
+    },
+    "JM": {
+      "label": "Jamaica",
+      "file": "JM.geonames-world.2026-10-11.json",
+      "count": 13,
+      "bytes": 2631,
+      "gzipBytes": 1437,
+      "sha256": "cbf6492ddaac5ee336d17e4849f3f40ce674af8330b5e40b1110372027aa74a4"
+    },
+    "JO": {
+      "label": "Jordan",
+      "file": "JO.geonames-world.2026-10-11.json",
+      "count": 34,
+      "bytes": 7424,
+      "gzipBytes": 3426,
+      "sha256": "6844f5323aa51be310294bfadb1a996b171a3421c2e7f642e0b50662bf86783e"
+    },
+    "JP": {
+      "label": "Japan",
+      "file": "JP.geonames-world.2026-10-11.json",
+      "count": 1300,
+      "bytes": 259268,
+      "gzipBytes": 88502,
+      "sha256": "f9e8486afd75db7bf2dd29f55e189194ee75fbd0ce7f6c647218cb471b0d666c"
+    },
+    "KE": {
+      "label": "Kenya",
+      "file": "KE.geonames-world.2026-10-11.json",
+      "count": 123,
+      "bytes": 17705,
+      "gzipBytes": 7238,
+      "sha256": "5cccb035c8be8b7e16b9b3850ddc692847a4688491056513c2e23c64cfd2d2c2"
+    },
+    "KG": {
+      "label": "Kyrgyzstan",
+      "file": "KG.geonames-world.2026-10-11.json",
+      "count": 32,
+      "bytes": 9216,
+      "gzipBytes": 4115,
+      "sha256": "7b00498c184032c96678fc1a8c2dd7126b50f1e7be7158ce67cbea839b3d95cd"
+    },
+    "KH": {
+      "label": "Cambodia",
+      "file": "KH.geonames-world.2026-10-11.json",
+      "count": 46,
+      "bytes": 17514,
+      "gzipBytes": 6876,
+      "sha256": "3777c4d76ea00cc554b304ab9021c06e22e5c0cd69cf918ff1a198a56aa04998"
+    },
+    "KI": {
+      "label": "Kiribati",
+      "file": "KI.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 423,
+      "gzipBytes": 308,
+      "sha256": "9dd1b8c7a5b2ea347be24b4777c7b25b1642be38167f9217bd26f525c4e3e598"
+    },
+    "KM": {
+      "label": "Comoros",
+      "file": "KM.geonames-world.2026-10-11.json",
+      "count": 3,
+      "bytes": 1289,
+      "gzipBytes": 791,
+      "sha256": "3c26847b32286661903e82001a6dc03e61e09bd569e8d964364ff4d4c132b924"
+    },
+    "KN": {
+      "label": "Saint Kitts and Nevis",
+      "file": "KN.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 645,
+      "gzipBytes": 491,
+      "sha256": "72f16dd9dd41c10efedaa11084932b366d41253a1e3f548d25e82428211f6a1c"
+    },
+    "KP": {
+      "label": "North Korea",
+      "file": "KP.geonames-world.2026-10-11.json",
+      "count": 97,
+      "bytes": 23956,
+      "gzipBytes": 8594,
+      "sha256": "33a2325888dbac43507bf611f857118a259c9f4be11b9c9cc7bdc4f7c8600558"
+    },
+    "KR": {
+      "label": "South Korea",
+      "file": "KR.geonames-world.2026-10-11.json",
+      "count": 147,
+      "bytes": 32536,
+      "gzipBytes": 12067,
+      "sha256": "46ab3bede5a5d100533002e36fed506a5171503fb8c9ea42e3e3b10d3be3fdc8"
+    },
+    "KW": {
+      "label": "Kuwait",
+      "file": "KW.geonames-world.2026-10-11.json",
+      "count": 18,
+      "bytes": 5684,
+      "gzipBytes": 2455,
+      "sha256": "8a5197e46166a9dd282dce62f76fd04a9476177b573f0cbf499b4cba1c60527e"
+    },
+    "KY": {
+      "label": "Cayman Islands",
+      "file": "KY.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 1482,
+      "gzipBytes": 958,
+      "sha256": "ecbfec72265f449f8da902142d8a9648d0ef643d8075b18732925f3b9f449d09"
+    },
+    "KZ": {
+      "label": "Kazakhstan",
+      "file": "KZ.geonames-world.2026-10-11.json",
+      "count": 84,
+      "bytes": 28089,
+      "gzipBytes": 11592,
+      "sha256": "f5ac92d1e51acd94ec1efec4c65ce6f831086ad4c5b5fee78df939f55a698ca7"
+    },
+    "LA": {
+      "label": "Laos",
+      "file": "LA.geonames-world.2026-10-11.json",
+      "count": 18,
+      "bytes": 7851,
+      "gzipBytes": 3413,
+      "sha256": "0336125f72b809d3e43103b41446f2ccb444ab872f19975a43a25f7215fdd1a0"
+    },
+    "LB": {
+      "label": "Lebanon",
+      "file": "LB.geonames-world.2026-10-11.json",
+      "count": 18,
+      "bytes": 8349,
+      "gzipBytes": 3955,
+      "sha256": "dc852f619712602361e2533305de0b2e00bde1ba489f7d5c39b77e9ad42a4fc9"
+    },
+    "LC": {
+      "label": "Saint Lucia",
+      "file": "LC.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 1283,
+      "gzipBytes": 810,
+      "sha256": "cfd44350d7e47a9da850d25f41481b808321db0fd7cb6b4978b5cb529ca65e8e"
+    },
+    "LI": {
+      "label": "Liechtenstein",
+      "file": "LI.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 335,
+      "gzipBytes": 303,
+      "sha256": "747a2866bffd38886ee86556233d8a48f625f858118b09678100ba490aaec1c4"
+    },
+    "LK": {
+      "label": "Sri Lanka",
+      "file": "LK.geonames-world.2026-10-11.json",
+      "count": 60,
+      "bytes": 21918,
+      "gzipBytes": 9174,
+      "sha256": "2cf8cb3b53bbdcafd27bb523d4e9798c9302887484261677bab0f0fb20525a90"
+    },
+    "LR": {
+      "label": "Liberia",
+      "file": "LR.geonames-world.2026-10-11.json",
+      "count": 16,
+      "bytes": 5849,
+      "gzipBytes": 2882,
+      "sha256": "acb33aa02e8102d3def0e0a3f41ddb58b5ca24a7aa8c37a29ebac4c671ef629f"
+    },
+    "LS": {
+      "label": "Lesotho",
+      "file": "LS.geonames-world.2026-10-11.json",
+      "count": 11,
+      "bytes": 3750,
+      "gzipBytes": 1860,
+      "sha256": "d4ca13a969df5bdc0e1e8bbffa750ddf7d6ce7d6481ef43a1a1e096663113c1c"
+    },
+    "LT": {
+      "label": "Lithuania",
+      "file": "LT.geonames-world.2026-10-11.json",
+      "count": 36,
+      "bytes": 12917,
+      "gzipBytes": 5619,
+      "sha256": "7885d0b30c42488ce80c2b5b2b0d7b98cf51fe9f45fd51546333a9da8b51da89"
+    },
+    "LU": {
+      "label": "Luxembourg",
+      "file": "LU.geonames-world.2026-10-11.json",
+      "count": 3,
+      "bytes": 2755,
+      "gzipBytes": 1397,
+      "sha256": "6ebeb8765c4f874ef450d7bcd1876cdf2c74d116947f957413cac5f1152fe5ef"
+    },
+    "LV": {
+      "label": "Latvia",
+      "file": "LV.geonames-world.2026-10-11.json",
+      "count": 15,
+      "bytes": 8314,
+      "gzipBytes": 3770,
+      "sha256": "a768ab70c3443ddd130edd43f830a3da2bc6dd788a4b0b18e2d239dd514734c1"
+    },
+    "LY": {
+      "label": "Libya",
+      "file": "LY.geonames-world.2026-10-11.json",
+      "count": 59,
+      "bytes": 19603,
+      "gzipBytes": 8407,
+      "sha256": "5fd7a8d829befa3774ba67010e83a345afe5d06052d831e0a283d650e9406838"
+    },
+    "MA": {
+      "label": "Morocco",
+      "file": "MA.geonames-world.2026-10-11.json",
+      "count": 180,
+      "bytes": 34521,
+      "gzipBytes": 13251,
+      "sha256": "8a6d4ef302862eb69b779e9d308c4cc73d5363f27c7e3aaa63854ca0706967ed"
+    },
+    "MC": {
+      "label": "Monaco",
+      "file": "MC.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 448,
+      "gzipBytes": 296,
+      "sha256": "1fe4224bc48e5f72f98b706464e55a0afc0d721ef41e7aaebd47d223d4e100bf"
+    },
+    "MD": {
+      "label": "Moldova",
+      "file": "MD.geonames-world.2026-10-11.json",
+      "count": 22,
+      "bytes": 10520,
+      "gzipBytes": 4734,
+      "sha256": "85ecb52030a55ec90f99290b5d16206fc6d4fbd27fb3f996b3d4d2679aa43af9"
+    },
+    "ME": {
+      "label": "Montenegro",
+      "file": "ME.geonames-world.2026-10-11.json",
+      "count": 8,
+      "bytes": 3958,
+      "gzipBytes": 2072,
+      "sha256": "cbf96ce967ba6d1f5b7f5aa4b2a907025d0ff634aed6a413a978649c1485ba83"
+    },
+    "MF": {
+      "label": "Saint Martin",
+      "file": "MF.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 499,
+      "gzipBytes": 383,
+      "sha256": "a51b0561859aa5ef7deea3d632aca731968e1a52d539789b16d1370f1dce0db6"
+    },
+    "MG": {
+      "label": "Madagascar",
+      "file": "MG.geonames-world.2026-10-11.json",
+      "count": 106,
+      "bytes": 23194,
+      "gzipBytes": 8829,
+      "sha256": "8043232850c667b6e30784859559aad16ecebbef17bb4cf92e07ceec9f27d9d7"
+    },
+    "MH": {
+      "label": "Marshall Islands",
+      "file": "MH.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 331,
+      "gzipBytes": 258,
+      "sha256": "fad26d38b96f6d22302b0df957052d98bb1653bec170776c34ffc67df6d82ac5"
+    },
+    "MK": {
+      "label": "North Macedonia",
+      "file": "MK.geonames-world.2026-10-11.json",
+      "count": 38,
+      "bytes": 15349,
+      "gzipBytes": 6821,
+      "sha256": "becd67f2d3290f73ef4ac0854a06c80fd6ca225bf2591ae98dff807b2ea45534"
+    },
+    "ML": {
+      "label": "Mali",
+      "file": "ML.geonames-world.2026-10-11.json",
+      "count": 60,
+      "bytes": 9427,
+      "gzipBytes": 4105,
+      "sha256": "f3c3c322678fd2cf58b7e075003122f8d1d75aaab6bf44ed53ed19c421ab093c"
+    },
+    "MM": {
+      "label": "Myanmar",
+      "file": "MM.geonames-world.2026-10-11.json",
+      "count": 178,
+      "bytes": 38295,
+      "gzipBytes": 14568,
+      "sha256": "52fb41758ad0cf60b3c009d450ef1a4a9f5c68e4da465c7bb6ed5dc2907eb368"
+    },
+    "MN": {
+      "label": "Mongolia",
+      "file": "MN.geonames-world.2026-10-11.json",
+      "count": 24,
+      "bytes": 13153,
+      "gzipBytes": 5795,
+      "sha256": "dcee2a1f4167d83c6deed1d878d18d4ebd46e8b1d5e5537c45914fef035fa282"
+    },
+    "MO": {
+      "label": "Macao",
+      "file": "MO.geonames-world.2026-10-11.json",
+      "count": 6,
+      "bytes": 1859,
+      "gzipBytes": 1078,
+      "sha256": "71277580eeefbe8747bf83af69c8c9766e74579a9801bb7c9a5b410e412d11ee"
+    },
+    "MP": {
+      "label": "Northern Mariana Islands",
+      "file": "MP.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 183,
+      "gzipBytes": 170,
+      "sha256": "ec011174d72952bf4647d8a7e260b42e321f011b716abddadb4d5b1da9559103"
+    },
+    "MQ": {
+      "label": "Martinique",
+      "file": "MQ.geonames-world.2026-10-11.json",
+      "count": 8,
+      "bytes": 2157,
+      "gzipBytes": 1117,
+      "sha256": "ab8895ee5030966dc7f6b3f71bc056402970876507914dcbf85d5f1b38da35d3"
+    },
+    "MR": {
+      "label": "Mauritania",
+      "file": "MR.geonames-world.2026-10-11.json",
+      "count": 26,
+      "bytes": 7835,
+      "gzipBytes": 3749,
+      "sha256": "5ae049e3a7aea74876b0eed81bf3c2e83919b15ff8c126662377d7f2a47a331e"
+    },
+    "MS": {
+      "label": "Montserrat",
+      "file": "MS.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 1020,
+      "gzipBytes": 700,
+      "sha256": "a7f1a271ad2a59533bfeaaeb2a80958d547659c1ee05d8464927a2b906edc62f"
+    },
+    "MT": {
+      "label": "Malta",
+      "file": "MT.geonames-world.2026-10-11.json",
+      "count": 7,
+      "bytes": 3633,
+      "gzipBytes": 1857,
+      "sha256": "377c471902041506a299491526f84f47605642211b6ba54410ca758e433fc972"
+    },
+    "MU": {
+      "label": "Mauritius",
+      "file": "MU.geonames-world.2026-10-11.json",
+      "count": 14,
+      "bytes": 4326,
+      "gzipBytes": 2324,
+      "sha256": "3590ee40077f698bd3184db7afad5f05fbdb3d63ee5acd2a41d0eb8962b36ad4"
+    },
+    "MV": {
+      "label": "Maldives",
+      "file": "MV.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 371,
+      "gzipBytes": 318,
+      "sha256": "ed07d75ded3348a4d8a5763e464065838f85ca5e2a48bbe3c6e8b69af2fe7c5e"
+    },
+    "MW": {
+      "label": "Malawi",
+      "file": "MW.geonames-world.2026-10-11.json",
+      "count": 23,
+      "bytes": 4302,
+      "gzipBytes": 2037,
+      "sha256": "59c99d39269fbd8e22a245033ff73bc2bef09f9575cc6bd5f9ea5f3f22e721b6"
+    },
+    "MX": {
+      "label": "Mexico",
+      "file": "MX.geonames-world.2026-10-11.json",
+      "count": 643,
+      "bytes": 149579,
+      "gzipBytes": 52439,
+      "sha256": "8fd07118cb8e041a6b6bb473fda1c75e990b5ef1bcaafdc7662c24b997db0f3f"
+    },
+    "MY": {
+      "label": "Malaysia",
+      "file": "MY.geonames-world.2026-10-11.json",
+      "count": 355,
+      "bytes": 55607,
+      "gzipBytes": 20473,
+      "sha256": "4c08d6314ff9c800b4e6b857cba97e0d0088ecba657b494352140692c4acd040"
+    },
+    "MZ": {
+      "label": "Mozambique",
+      "file": "MZ.geonames-world.2026-10-11.json",
+      "count": 66,
+      "bytes": 12871,
+      "gzipBytes": 5515,
+      "sha256": "217fff10b5fc9f0d5a9aa1b89b0c9ede49e2ff61e708cdf25ee2814b243f6733"
+    },
+    "NA": {
+      "label": "Namibia",
+      "file": "NA.geonames-world.2026-10-11.json",
+      "count": 19,
+      "bytes": 7185,
+      "gzipBytes": 3637,
+      "sha256": "73f0a17436a1ced5989bead8c05f02ed1e8c12a6719fb3bfba62a9f0f5cf9c26"
+    },
+    "NC": {
+      "label": "New Caledonia",
+      "file": "NC.geonames-world.2026-10-11.json",
+      "count": 3,
+      "bytes": 622,
+      "gzipBytes": 451,
+      "sha256": "32e42274f899ef0913a2f7f546ebcd5c939c9718de4e128dafc7ed030661ab61"
+    },
+    "NE": {
+      "label": "Niger",
+      "file": "NE.geonames-world.2026-10-11.json",
+      "count": 42,
+      "bytes": 6731,
+      "gzipBytes": 3017,
+      "sha256": "aec4daed590161660ff2f508bb0d7f3a3838eae3e0eebe0cd04d3679c2db5ba6"
+    },
+    "NF": {
+      "label": "Norfolk Island",
+      "file": "NF.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 682,
+      "gzipBytes": 477,
+      "sha256": "ba2cf3c5ec957dcba1f9e2987c9e4397f056f153d607360e210f5b644ad028c4"
+    },
+    "NG": {
+      "label": "Nigeria",
+      "file": "NG.geonames-world.2026-10-11.json",
+      "count": 269,
+      "bytes": 34638,
+      "gzipBytes": 13925,
+      "sha256": "87fec151b77b4a57935584dbcd8faa3c7fa930510ea84bc77ef4a697fded9c7a"
+    },
+    "NI": {
+      "label": "Nicaragua",
+      "file": "NI.geonames-world.2026-10-11.json",
+      "count": 37,
+      "bytes": 9149,
+      "gzipBytes": 4019,
+      "sha256": "c933c90e32050164f837d839c07becbdc675889ef7af4bf955d978f120699b36"
+    },
+    "NL": {
+      "label": "The Netherlands",
+      "file": "NL.geonames-world.2026-10-11.json",
+      "count": 252,
+      "bytes": 49246,
+      "gzipBytes": 19146,
+      "sha256": "b006a27e5ed8edd860f29231d27b2ca1c16b55ffebbeb2a998dfd1e9492d2539"
+    },
+    "NO": {
+      "label": "Norway",
+      "file": "NO.geonames-world.2026-10-11.json",
+      "count": 42,
+      "bytes": 15353,
+      "gzipBytes": 6746,
+      "sha256": "f528ed2eeec99a45e178baac45cc9d8174f83da011e09c936728c82cdfc7f5ec"
+    },
+    "NP": {
+      "label": "Nepal",
+      "file": "NP.geonames-world.2026-10-11.json",
+      "count": 46,
+      "bytes": 11754,
+      "gzipBytes": 4717,
+      "sha256": "1b6db792d9f62ea95849c0f2a028945f02e98000ba5d456b86b2ea00363315fe"
+    },
+    "NR": {
+      "label": "Nauru",
+      "file": "NR.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 674,
+      "gzipBytes": 518,
+      "sha256": "147d1c3b54f2f7de850bcd4b9a57eafdfee99094594db8c5e862c61ff1f8a2f0"
+    },
+    "NU": {
+      "label": "Niue",
+      "file": "NU.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 430,
+      "gzipBytes": 360,
+      "sha256": "6f40b3e70db67c4f5031760bada2142620df82393e501396e63b3d4151cc68cf"
+    },
+    "NZ": {
+      "label": "New Zealand",
+      "file": "NZ.geonames-world.2026-10-11.json",
+      "count": 58,
+      "bytes": 20451,
+      "gzipBytes": 8896,
+      "sha256": "34629e36556fd7a0223bdb1729ed62fabe7a05f813938f9671940c2ba13663a0"
+    },
+    "OM": {
+      "label": "Oman",
+      "file": "OM.geonames-world.2026-10-11.json",
+      "count": 28,
+      "bytes": 6568,
+      "gzipBytes": 2949,
+      "sha256": "725501b89f8790963b1caf853e9bda4f5e37f58e634834508329b10f7c534225"
+    },
+    "PA": {
+      "label": "Panama",
+      "file": "PA.geonames-world.2026-10-11.json",
+      "count": 27,
+      "bytes": 5538,
+      "gzipBytes": 2630,
+      "sha256": "a82cd80cb2f6d6fcdef2349f1e122325669d7efc77347d951badca799b35f286"
+    },
+    "PE": {
+      "label": "Peru",
+      "file": "PE.geonames-world.2026-10-11.json",
+      "count": 140,
+      "bytes": 27099,
+      "gzipBytes": 11179,
+      "sha256": "59f70e9b7263549aee78f28e8a81ea07c9d1cb8fe0957486bc5d357c989353c6"
+    },
+    "PF": {
+      "label": "French Polynesia",
+      "file": "PF.geonames-world.2026-10-11.json",
+      "count": 3,
+      "bytes": 779,
+      "gzipBytes": 490,
+      "sha256": "1e3fda415f668edaccf24a9579f02e255b8f1e05a0f04639bac58cb08fddabb9"
+    },
+    "PG": {
+      "label": "Papua New Guinea",
+      "file": "PG.geonames-world.2026-10-11.json",
+      "count": 13,
+      "bytes": 4782,
+      "gzipBytes": 2409,
+      "sha256": "74155366f71d8742df9f062ccf9b1ea34061b6760ac75c9037d8aa2ade70950f"
+    },
+    "PH": {
+      "label": "Philippines",
+      "file": "PH.geonames-world.2026-10-11.json",
+      "count": 530,
+      "bytes": 73508,
+      "gzipBytes": 25404,
+      "sha256": "f4b9240d6bbb1de10f4d8ce566d202820e5898856ed8f54391fa8d9f1bab011e"
+    },
+    "PK": {
+      "label": "Pakistan",
+      "file": "PK.geonames-world.2026-10-11.json",
+      "count": 372,
+      "bytes": 64022,
+      "gzipBytes": 24917,
+      "sha256": "ed708114b2ccf716214be5403ad284b25668c1b4e0d8c1e633bc20003909ae09"
+    },
+    "PL": {
+      "label": "Poland",
+      "file": "PL.geonames-world.2026-10-11.json",
+      "count": 363,
+      "bytes": 118484,
+      "gzipBytes": 45741,
+      "sha256": "e5c978d3021395a58f328987c9ddd822f7609231ab2c673c7ad829a7740c2a4f"
+    },
+    "PM": {
+      "label": "Saint Pierre and Miquelon",
+      "file": "PM.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 254,
+      "gzipBytes": 227,
+      "sha256": "cc03259753486559fa90475f81c680ca5756e6acea3e48e3d7d71a6fb4630303"
+    },
+    "PN": {
+      "label": "Pitcairn",
+      "file": "PN.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 711,
+      "gzipBytes": 539,
+      "sha256": "343746e017f1d465f20957f0fd3f45c917ef56cb81638cb485581c4cb1bedade"
+    },
+    "PR": {
+      "label": "Puerto Rico",
+      "file": "PR.geonames-world.2026-10-11.json",
+      "count": 21,
+      "bytes": 9267,
+      "gzipBytes": 4037,
+      "sha256": "a2789eac279dd24318ec61eb24c8915c30d90808a3e90b42692b119af490b6d0"
+    },
+    "PS": {
+      "label": "Palestinian Territory",
+      "file": "PS.geonames-world.2026-10-11.json",
+      "count": 45,
+      "bytes": 14897,
+      "gzipBytes": 6554,
+      "sha256": "8c4b043d3d6d2449a51ab4c3a46908df0eb2c6ae3d3afb5822594084b38d3312"
+    },
+    "PT": {
+      "label": "Portugal",
+      "file": "PT.geonames-world.2026-10-11.json",
+      "count": 179,
+      "bytes": 29183,
+      "gzipBytes": 11526,
+      "sha256": "351adb3838af65d12d4348f287988896872bc4ad05de07c72b5e5946d92734d3"
+    },
+    "PW": {
+      "label": "Palau",
+      "file": "PW.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 192,
+      "gzipBytes": 201,
+      "sha256": "e5930f9396c0846a92e93832569bffdfbfc1e53963c68a858cc6f42e70bca111"
+    },
+    "PY": {
+      "label": "Paraguay",
+      "file": "PY.geonames-world.2026-10-11.json",
+      "count": 30,
+      "bytes": 12570,
+      "gzipBytes": 5421,
+      "sha256": "50de69596365db2cc66b25587ac2d66916155b8d4156d2aaf3feaee5576a4c78"
+    },
+    "QA": {
+      "label": "Qatar",
+      "file": "QA.geonames-world.2026-10-11.json",
+      "count": 26,
+      "bytes": 6900,
+      "gzipBytes": 2855,
+      "sha256": "6669d4361c7174b85ecd491a740a68b23423771fae355bb8c83c49eb6ff0a2db"
+    },
+    "RE": {
+      "label": "Reunion",
+      "file": "RE.geonames-world.2026-10-11.json",
+      "count": 14,
+      "bytes": 2036,
+      "gzipBytes": 896,
+      "sha256": "57b5287c580f1ad3a2efc603ff7f27e197a255f798d35cc10588336c290e673f"
+    },
+    "RO": {
+      "label": "Romania",
+      "file": "RO.geonames-world.2026-10-11.json",
+      "count": 134,
+      "bytes": 49690,
+      "gzipBytes": 19577,
+      "sha256": "35b712e0d9535ad1b025ef8fd684acd8981146369e9e0b51d4c1874b1b8e9b22"
+    },
+    "RS": {
+      "label": "Serbia",
+      "file": "RS.geonames-world.2026-10-11.json",
+      "count": 51,
+      "bytes": 19577,
+      "gzipBytes": 8262,
+      "sha256": "c53bfc11fdc7c7be5569158bf38c73138f1c6ba8eba914112985caf336ed34e8"
+    },
+    "RU": {
+      "label": "Russia",
+      "file": "RU.geonames-world.2026-10-11.json",
+      "count": 1108,
+      "bytes": 343845,
+      "gzipBytes": 125001,
+      "sha256": "ba23fb6952de302470fbebdf6449dc3ab927eef4c3743441ae8690b2ed6b7dc3"
+    },
+    "RW": {
+      "label": "Rwanda",
+      "file": "RW.geonames-world.2026-10-11.json",
+      "count": 45,
+      "bytes": 6056,
+      "gzipBytes": 2481,
+      "sha256": "967cae29983ead191d585e1206ded6e06f2f0236a813628a95c4c978d3890378"
+    },
+    "SA": {
+      "label": "Saudi Arabia",
+      "file": "SA.geonames-world.2026-10-11.json",
+      "count": 98,
+      "bytes": 24070,
+      "gzipBytes": 10082,
+      "sha256": "1d5e5f460de8c9ce78dc17cacc8bea4d9a574d47ec1271fd750e7423bd5c88f1"
+    },
+    "SB": {
+      "label": "Solomon Islands",
+      "file": "SB.geonames-world.2026-10-11.json",
+      "count": 7,
+      "bytes": 973,
+      "gzipBytes": 536,
+      "sha256": "764fdb4ac29a11f72b3c494668dbf14007bd4b50582d4b53144c83280c8ed98f"
+    },
+    "SC": {
+      "label": "Seychelles",
+      "file": "SC.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 1056,
+      "gzipBytes": 671,
+      "sha256": "cdaff073377416eb4f6f6aa1af803fa6e0db23810b1fc0a9644b2c270648b917"
+    },
+    "SD": {
+      "label": "Sudan",
+      "file": "SD.geonames-world.2026-10-11.json",
+      "count": 76,
+      "bytes": 19716,
+      "gzipBytes": 8296,
+      "sha256": "9cd14f913c1a4af167ef4c15683259013909391c0ff4368596aa23a8aab91c3b"
+    },
+    "SE": {
+      "label": "Sweden",
+      "file": "SE.geonames-world.2026-10-11.json",
+      "count": 111,
+      "bytes": 38269,
+      "gzipBytes": 15186,
+      "sha256": "60c9fd0ee2fe32a7fb962e7ba6cc1b9aaac57b554120d9d96178abf35c02522a"
+    },
+    "SG": {
+      "label": "Singapore",
+      "file": "SG.geonames-world.2026-10-11.json",
+      "count": 65,
+      "bytes": 10870,
+      "gzipBytes": 4215,
+      "sha256": "bdc05ca39359fdac4982f8080189306093c109b000e14eb5132a404e7b7743db"
+    },
+    "SH": {
+      "label": "Saint Helena",
+      "file": "SH.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 972,
+      "gzipBytes": 642,
+      "sha256": "056d308066c783bd5408047b0ff15f67d20ae69e8da25e5e3a655b0137296f1d"
+    },
+    "SI": {
+      "label": "Slovenia",
+      "file": "SI.geonames-world.2026-10-11.json",
+      "count": 9,
+      "bytes": 5011,
+      "gzipBytes": 2450,
+      "sha256": "f6d3b3a9cb0bdcd9da8ddb90fed43e7be48cf5faf4e86f5b21754839ebcfc7c5"
+    },
+    "SJ": {
+      "label": "Svalbard and Jan Mayen",
+      "file": "SJ.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 967,
+      "gzipBytes": 593,
+      "sha256": "329be0bc207e8d3c5f297ff1e21553df2b172f271337b276065a912b1b39c869"
+    },
+    "SK": {
+      "label": "Slovakia",
+      "file": "SK.geonames-world.2026-10-11.json",
+      "count": 61,
+      "bytes": 22144,
+      "gzipBytes": 9144,
+      "sha256": "0cd770b309e82806f4bed862e47f6ff5db5e755dd25a8958042d4c255630e3f4"
+    },
+    "SL": {
+      "label": "Sierra Leone",
+      "file": "SL.geonames-world.2026-10-11.json",
+      "count": 14,
+      "bytes": 4908,
+      "gzipBytes": 2588,
+      "sha256": "7d29b3ef5be243375e2e1fb4dc8790f587cfc23bbb601ba98783c6414c513f2c"
+    },
+    "SM": {
+      "label": "San Marino",
+      "file": "SM.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 1825,
+      "gzipBytes": 844,
+      "sha256": "b9254510da0f247dd348a5a69a78f92fca4e29c62fff6f72d8c1f61d87742976"
+    },
+    "SN": {
+      "label": "Senegal",
+      "file": "SN.geonames-world.2026-10-11.json",
+      "count": 71,
+      "bytes": 12655,
+      "gzipBytes": 5640,
+      "sha256": "d2be06e1e646389829e345b344511e4f852edaf6c2ff7d90809eefa160b9eb17"
+    },
+    "SO": {
+      "label": "Somalia",
+      "file": "SO.geonames-world.2026-10-11.json",
+      "count": 42,
+      "bytes": 11612,
+      "gzipBytes": 5301,
+      "sha256": "c57bfddb5ec1273f66d2382ce9f6f512cf705c127c93a634e151b9164dbf15b0"
+    },
+    "SR": {
+      "label": "Suriname",
+      "file": "SR.geonames-world.2026-10-11.json",
+      "count": 12,
+      "bytes": 2178,
+      "gzipBytes": 1035,
+      "sha256": "4054af4216348a5d65c2593323ed87782d3c8bd163448c0f06ae63ddf8b166b9"
+    },
+    "SS": {
+      "label": "South Sudan",
+      "file": "SS.geonames-world.2026-10-11.json",
+      "count": 16,
+      "bytes": 4990,
+      "gzipBytes": 2661,
+      "sha256": "b236fe83b06fa5a418ab59ed431812b67d6464ea856b49f0bfb0207835c74b7a"
+    },
+    "ST": {
+      "label": "Sao Tome and Principe",
+      "file": "ST.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 1027,
+      "gzipBytes": 671,
+      "sha256": "d9c0be5ee66d10538596d655f3a71ae4ae8946a08e48aa4a55722bf1703fab9c"
+    },
+    "SV": {
+      "label": "El Salvador",
+      "file": "SV.geonames-world.2026-10-11.json",
+      "count": 35,
+      "bytes": 10977,
+      "gzipBytes": 4339,
+      "sha256": "f3a8c49ee149be7f95ec864143bf813d93a2d2efef3e893994fa4c124d4e8771"
+    },
+    "SX": {
+      "label": "Sint Maarten",
+      "file": "SX.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 830,
+      "gzipBytes": 618,
+      "sha256": "6d9d3fb97b1aa3f0181cbe21db5b75751fd75793196aaee3b53731522fdb6736"
+    },
+    "SY": {
+      "label": "Syria",
+      "file": "SY.geonames-world.2026-10-11.json",
+      "count": 89,
+      "bytes": 28152,
+      "gzipBytes": 11592,
+      "sha256": "8f6cea7e9f159a45a6077e93647b9d606d161690b4c00a0cb13a940a55bfe5a8"
+    },
+    "SZ": {
+      "label": "Eswatini",
+      "file": "SZ.geonames-world.2026-10-11.json",
+      "count": 3,
+      "bytes": 1548,
+      "gzipBytes": 843,
+      "sha256": "afef08077b1cb33da6a87e15218db77493cd70a34a92768e4b71c1dac372aeed"
+    },
+    "TC": {
+      "label": "Turks and Caicos Islands",
+      "file": "TC.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 950,
+      "gzipBytes": 663,
+      "sha256": "1ec1d52d8de1d515cfae11be30c20d39933b7dd0c35ad9a6ebde205c26320e23"
+    },
+    "TD": {
+      "label": "Chad",
+      "file": "TD.geonames-world.2026-10-11.json",
+      "count": 46,
+      "bytes": 10696,
+      "gzipBytes": 4841,
+      "sha256": "4e5980fd5ebccf11707931d4683dd61e87fa7b7a2b3971fbee705b094bf4e85a"
+    },
+    "TF": {
+      "label": "French Southern Territories",
+      "file": "TF.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 471,
+      "gzipBytes": 362,
+      "sha256": "53130c07d39a5f218dabb3867f996600127426d629a7843ca8fb583e30b70460"
+    },
+    "TG": {
+      "label": "Togo",
+      "file": "TG.geonames-world.2026-10-11.json",
+      "count": 20,
+      "bytes": 4638,
+      "gzipBytes": 2359,
+      "sha256": "547d105886d13f8a71ac072f9eac4a1602814416da49e533ac150a56f3f8febb"
+    },
+    "TH": {
+      "label": "Thailand",
+      "file": "TH.geonames-world.2026-10-11.json",
+      "count": 330,
+      "bytes": 97471,
+      "gzipBytes": 31529,
+      "sha256": "70045c6037b769c33bfd89cca960c9f661894104771f61d4abf1f369f1cd5687"
+    },
+    "TJ": {
+      "label": "Tajikistan",
+      "file": "TJ.geonames-world.2026-10-11.json",
+      "count": 31,
+      "bytes": 7221,
+      "gzipBytes": 3333,
+      "sha256": "1617ac98a1ac292abbcc24728b2175835f78f4b689529ca53032e612920ccc2a"
+    },
+    "TL": {
+      "label": "Timor Leste",
+      "file": "TL.geonames-world.2026-10-11.json",
+      "count": 10,
+      "bytes": 3139,
+      "gzipBytes": 1743,
+      "sha256": "52846a91269b5a4c90aa8e89f1622ad3ed606426288bc632ad25c31baf76a9fa"
+    },
+    "TM": {
+      "label": "Turkmenistan",
+      "file": "TM.geonames-world.2026-10-11.json",
+      "count": 36,
+      "bytes": 11239,
+      "gzipBytes": 4935,
+      "sha256": "d59b202fac786523b141b1ce2c97f23fbdf9de4ba305fb9f9f3ff5c555bd340c"
+    },
+    "TN": {
+      "label": "Tunisia",
+      "file": "TN.geonames-world.2026-10-11.json",
+      "count": 130,
+      "bytes": 28767,
+      "gzipBytes": 11596,
+      "sha256": "18c21f775aee65c7243ac69a1ac038227ad53ee86de227a2de5231b0b59fcf11"
+    },
+    "TO": {
+      "label": "Tonga",
+      "file": "TO.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 559,
+      "gzipBytes": 410,
+      "sha256": "c7258b963e4608a64ac001ee23d7c169465ffe6adaa0486290a57cd0d1b68dff"
+    },
+    "TR": {
+      "label": "Turkey",
+      "file": "TR.geonames-world.2026-10-11.json",
+      "count": 432,
+      "bytes": 109703,
+      "gzipBytes": 44150,
+      "sha256": "dba94666535993eed8b5a8948af127759b60f64a28ca86a4c1a24de1cec314b5"
+    },
+    "TT": {
+      "label": "Trinidad and Tobago",
+      "file": "TT.geonames-world.2026-10-11.json",
+      "count": 14,
+      "bytes": 6450,
+      "gzipBytes": 2921,
+      "sha256": "edd32e711aefbd2129588b2acba9f891649785fb827b64d09ab1940a0a08b68d"
+    },
+    "TV": {
+      "label": "Tuvalu",
+      "file": "TV.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 288,
+      "gzipBytes": 223,
+      "sha256": "b5806040777204bf84d1b2bb49ab33092699f998cced89798ce889d23c96826a"
+    },
+    "TW": {
+      "label": "Taiwan",
+      "file": "TW.geonames-world.2026-10-11.json",
+      "count": 67,
+      "bytes": 20085,
+      "gzipBytes": 8062,
+      "sha256": "ae547ed51ba093207c858f4f279bb4cad14d1deb97ee8f32447723a40a0488ba"
+    },
+    "TZ": {
+      "label": "Tanzania",
+      "file": "TZ.geonames-world.2026-10-11.json",
+      "count": 228,
+      "bytes": 27784,
+      "gzipBytes": 9916,
+      "sha256": "2d2cb2c019963ff46cde022a3e8b4d11058daf4e2d3db716a6cc6aac667c5ae3"
+    },
+    "UA": {
+      "label": "Ukraine",
+      "file": "UA.geonames-world.2026-10-11.json",
+      "count": 401,
+      "bytes": 141837,
+      "gzipBytes": 50223,
+      "sha256": "26db8e5a591a4ffa2bc94b62514af346e263ffe32e49af57383db2a211ea34f1"
+    },
+    "UG": {
+      "label": "Uganda",
+      "file": "UG.geonames-world.2026-10-11.json",
+      "count": 141,
+      "bytes": 14177,
+      "gzipBytes": 5056,
+      "sha256": "d05d34cff4acebd35c09576cdcd1001d03b2d34b84f6c03566e7a79831bd89aa"
+    },
+    "US": {
+      "label": "United States",
+      "file": "US.geonames-world.2026-10-11.json",
+      "count": 3408,
+      "bytes": 1191115,
+      "gzipBytes": 429313,
+      "sha256": "0124801e6aed4d3d52d8e226747110612ed8ec38ea16ede903e1bca9d57426fc"
+    },
+    "UY": {
+      "label": "Uruguay",
+      "file": "UY.geonames-world.2026-10-11.json",
+      "count": 31,
+      "bytes": 20136,
+      "gzipBytes": 8384,
+      "sha256": "70c8051159362d776395882709ff3840c91fec70dc59ac69b3a4a51223ec4482"
+    },
+    "UZ": {
+      "label": "Uzbekistan",
+      "file": "UZ.geonames-world.2026-10-11.json",
+      "count": 112,
+      "bytes": 27489,
+      "gzipBytes": 11199,
+      "sha256": "9d549eee98179caa09d56a110d80161f3430fa9760d0c4dd45441d8889b35937"
+    },
+    "VA": {
+      "label": "Vatican",
+      "file": "VA.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 628,
+      "gzipBytes": 358,
+      "sha256": "56501c8c72cb42b11eabb59f02ebd16f180b374e62ad0046398b739ff205f58c"
+    },
+    "VC": {
+      "label": "Saint Vincent and the Grenadines",
+      "file": "VC.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 1075,
+      "gzipBytes": 725,
+      "sha256": "b3f5ea2d0766dbe51c078b3d136f32357e4f63dd98446aec0edeb6e3aea93e8e"
+    },
+    "VE": {
+      "label": "Venezuela",
+      "file": "VE.geonames-world.2026-10-11.json",
+      "count": 216,
+      "bytes": 36749,
+      "gzipBytes": 14073,
+      "sha256": "fa7eae5b40559052dda8bcc96f8fd71ffa76724b5f90be27038415e7c0eaa345"
+    },
+    "VG": {
+      "label": "British Virgin Islands",
+      "file": "VG.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 541,
+      "gzipBytes": 423,
+      "sha256": "bdf920ad1cf3ff62f31d86f4b6444177b5026f6eaae2cb5478f47d6492b1be98"
+    },
+    "VI": {
+      "label": "U.S. Virgin Islands",
+      "file": "VI.geonames-world.2026-10-11.json",
+      "count": 2,
+      "bytes": 2059,
+      "gzipBytes": 1094,
+      "sha256": "096de0aaf09e0df1a90eb60972f440de718551a0e297ee5447ebdf69099989bc"
+    },
+    "VN": {
+      "label": "Vietnam",
+      "file": "VN.geonames-world.2026-10-11.json",
+      "count": 313,
+      "bytes": 59737,
+      "gzipBytes": 21761,
+      "sha256": "78cb11b925c2acd2707909d0bb5a70433e177813c0372a3197e1f02f92a862fd"
+    },
+    "VU": {
+      "label": "Vanuatu",
+      "file": "VU.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 391,
+      "gzipBytes": 325,
+      "sha256": "cb52e1876c0737fad8664bf77447ade166f23c7e7c20e2fef6f0008623fb3c30"
+    },
+    "WF": {
+      "label": "Wallis and Futuna",
+      "file": "WF.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 500,
+      "gzipBytes": 379,
+      "sha256": "c46f69123ea8bebdbdd9391016413d7355f704558cdd38ddbf1dcac8ae180d9a"
+    },
+    "WS": {
+      "label": "Samoa",
+      "file": "WS.geonames-world.2026-10-11.json",
+      "count": 1,
+      "bytes": 562,
+      "gzipBytes": 402,
+      "sha256": "9c0efa665e172f9ab88edb588626890a735721cdb9c92597d4dfc1ef022c006d"
+    },
+    "XK": {
+      "label": "Kosovo",
+      "file": "XK.geonames-world.2026-10-11.json",
+      "count": 21,
+      "bytes": 5772,
+      "gzipBytes": 2564,
+      "sha256": "85ee3d52f090b651ebf354f0ed439c31a56429068f189372fd0ea763f1265ae0"
+    },
+    "YE": {
+      "label": "Yemen",
+      "file": "YE.geonames-world.2026-10-11.json",
+      "count": 25,
+      "bytes": 8314,
+      "gzipBytes": 3694,
+      "sha256": "ec6fc14e856621a88565555db4a4381605908c91c8df26e13b75b20224b39365"
+    },
+    "YT": {
+      "label": "Mayotte",
+      "file": "YT.geonames-world.2026-10-11.json",
+      "count": 6,
+      "bytes": 1176,
+      "gzipBytes": 668,
+      "sha256": "be07c567cbb5293f3ea183ff4bb7705917907ab5caee58e0043f6748e4cf6941"
+    },
+    "ZA": {
+      "label": "South Africa",
+      "file": "ZA.geonames-world.2026-10-11.json",
+      "count": 307,
+      "bytes": 48714,
+      "gzipBytes": 19190,
+      "sha256": "174a616ae00e51fd59e91b007a944fddf12b1dc0f675852e419953d0bb576c02"
+    },
+    "ZM": {
+      "label": "Zambia",
+      "file": "ZM.geonames-world.2026-10-11.json",
+      "count": 77,
+      "bytes": 12113,
+      "gzipBytes": 5120,
+      "sha256": "54510192363984132de3495cc6d5f736c7bd819065e9dc2a43c62fd47f7c8fe9"
+    },
+    "ZW": {
+      "label": "Zimbabwe",
+      "file": "ZW.geonames-world.2026-10-11.json",
+      "count": 31,
+      "bytes": 7047,
+      "gzipBytes": 3260,
+      "sha256": "06d7b25029c9bcbcc81ab97349054095b6988dbb1ac32404fee5bfcb0e22db68"
+    }
+  }
+}

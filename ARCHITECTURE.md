@@ -217,7 +217,7 @@ See [ADR 003](docs/decisions/003-tarot-perspective-rig.md) for articulated arms,
 `pxoracle-natal-reading` crate to the astrology WASM adapter. Calculation still owns
 chart facts and uncertainty. The Worker installs bounded, hashed symbolic packs once;
 the frontend resolves the resulting evidence-linked `InterpretationPlan` against a
-separate English pack. Only explicit US/Korea city shards are requested by the city
+separate English pack. Only explicitly selected country/territory city shards are requested by the city
 chooser. Scene data contains display longitudes, supported houses/aspects, selection
 and usable viewport, never birth records or interpretation rules. Current and legacy
 saved charts are validated without ephemeris recalculation; version changes require
