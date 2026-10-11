@@ -4,7 +4,10 @@ import type {
   TarotView,
   ArtManifest,
 } from "@pxoracle/contracts";
-export type TarotEngine = typeof import("@pxoracle/engine-client/tarot");
+export type TarotEngine = Pick<
+  typeof import("@pxoracle/engine-client/tarot"),
+  "create" | "select" | "reveal" | "restore" | "complete" | "evict"
+>;
 interface State {
   tarot: TarotSession | null;
   tarotPresentation: TarotPresentation;

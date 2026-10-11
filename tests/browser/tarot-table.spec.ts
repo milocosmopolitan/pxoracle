@@ -40,7 +40,7 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
   await expect(page.locator(".tarot-panel img")).toHaveCount(0);
   await page.getByRole("button", { name: "Save reading", exact: true }).click();
   const saved = await page.evaluate(() =>
-    localStorage.getItem("pxoracle.tarot.v1"),
+    localStorage.getItem("pxoracle.tarot.v2"),
   );
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
   await page.waitForTimeout(1000);
@@ -54,11 +54,11 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
     page.getByRole("heading", { name: "Let the images settle." }),
   ).toBeVisible({ timeout: 20000 });
   expect(
-    await page.evaluate(() => localStorage.getItem("pxoracle.tarot.v1")),
+    await page.evaluate(() => localStorage.getItem("pxoracle.tarot.v2")),
   ).toBe(saved);
   await page.getByRole("button", { name: "Delete saved reading" }).click();
   expect(
-    await page.evaluate(() => localStorage.getItem("pxoracle.tarot.v1")),
+    await page.evaluate(() => localStorage.getItem("pxoracle.tarot.v2")),
   ).toBeNull();
 });
 

@@ -1,0 +1,18 @@
+{
+  "browser": "141.0.7390.37",
+  "checks": [
+    "representative",
+    "all-reversed",
+    "weak-relationship",
+    "complement",
+    "repeated-theme",
+    "mobile",
+    "keyboard",
+    "all-twelve-perspectives",
+    "error-and-retry",
+    "legacy-session",
+    "unsupported-version",
+    "Existing tarot scene: injected native fixture, no real WASM"
+  ],
+  "errors": []
+}

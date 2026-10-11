@@ -1,0 +1,4364 @@
+[
+  {
+    "label": "relationships-present",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.visible",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.relationships",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.examination",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.relationships",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.direction",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.relationships",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.present.opening",
+          "arguments": [
+            "topic.expansion.relationships"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.present.third",
+          "arguments": [
+            "role.care.direction"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.relationships",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.relationships",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "relationships-crossroads",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.values",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.relationships",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.conditions",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.relationships",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.checks",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.relationships",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.crossroads.opening",
+          "arguments": [
+            "topic.expansion.relationships"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.crossroads.third",
+          "arguments": [
+            "role.care.checks"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.relationships",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.relationships",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "relationships-action",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.foundation",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.relationships",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.difficulty",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.relationships",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.small_action",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.relationships",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.action.opening",
+          "arguments": [
+            "topic.expansion.relationships"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.action.third",
+          "arguments": [
+            "role.care.small_action"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.relationships",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.relationships",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "work-present",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.visible",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.work",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.examination",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.work",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.direction",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.work",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.present.opening",
+          "arguments": [
+            "topic.expansion.work"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.present.third",
+          "arguments": [
+            "role.care.direction"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "work-crossroads",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.values",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.work",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.conditions",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.work",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.checks",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.work",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.crossroads.opening",
+          "arguments": [
+            "topic.expansion.work"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.crossroads.third",
+          "arguments": [
+            "role.care.checks"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "work-action",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.foundation",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.work",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.difficulty",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.work",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.small_action",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.work",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.action.opening",
+          "arguments": [
+            "topic.expansion.work"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.action.third",
+          "arguments": [
+            "role.care.small_action"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "creativity-present",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.visible",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.creativity",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.examination",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.creativity",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.direction",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.creativity",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.present.opening",
+          "arguments": [
+            "topic.expansion.creativity"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.present.third",
+          "arguments": [
+            "role.care.direction"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "creativity-crossroads",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.values",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.creativity",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.conditions",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.creativity",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.checks",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.creativity",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.crossroads.opening",
+          "arguments": [
+            "topic.expansion.creativity"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.crossroads.third",
+          "arguments": [
+            "role.care.checks"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "creativity-action",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.foundation",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.creativity",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.difficulty",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.creativity",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.small_action",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.creativity",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.action.opening",
+          "arguments": [
+            "topic.expansion.creativity"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.action.third",
+          "arguments": [
+            "role.care.small_action"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "growth-present",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.visible",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.growth",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.examination",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.growth",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.direction",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.growth",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.present.opening",
+          "arguments": [
+            "topic.expansion.growth"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.present.third",
+          "arguments": [
+            "role.care.direction"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.growth",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.growth",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "growth-crossroads",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.values",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.growth",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.conditions",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.growth",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.checks",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.growth",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.crossroads.opening",
+          "arguments": [
+            "topic.expansion.growth"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.crossroads.third",
+          "arguments": [
+            "role.care.checks"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.growth",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.growth",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "growth-action",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.04",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.14",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.foundation",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.growth",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.04.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.boundaries.difficulty",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.boundaries.growth",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.small_action",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.growth",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.action.opening",
+          "arguments": [
+            "topic.expansion.growth"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.second",
+          "arguments": [
+            "major.04.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.action.third",
+          "arguments": [
+            "role.care.small_action"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.expansion-boundaries",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.tension.expansion-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.care-boundaries",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.expansion-boundaries.growth",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "question": {
+        "reference": "question.tension.expansion-boundaries.growth",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          1
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "all-reversed",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.09",
+          "orientation": "reversed",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "swords.09",
+          "orientation": "reversed",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "pentacles.05",
+          "orientation": "reversed",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "growth",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.09",
+          "orientation": "reversed",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "swords.09",
+          "orientation": "reversed",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "pentacles.05",
+          "orientation": "reversed",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "lens": "excess",
+          "phrases": [
+            {
+              "reference": "major.09.reversed.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.connection.foundation",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.connection.growth",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "lens": "restoration",
+          "phrases": [
+            {
+              "reference": "swords.09.reversed.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.care.difficulty",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.care.growth",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "lens": "restoration",
+          "phrases": [
+            {
+              "reference": "pentacles.05.reversed.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.small_action",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.growth",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.action.opening",
+          "arguments": [
+            "topic.connection.growth"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.first",
+          "arguments": [
+            "major.09.reversed.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.second",
+          "arguments": [
+            "swords.09.reversed.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.action.third",
+          "arguments": [
+            "role.care.small_action"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.repetition.care",
+          "arguments": [],
+          "cardIndices": [
+            1,
+            2
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "repetition.care",
+          "kind": "repetition",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.repetition.care",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.repeat.care.growth",
+        "arguments": [],
+        "cardIndices": [
+          1,
+          2
+        ]
+      },
+      "question": {
+        "reference": "question.repeat.care.growth",
+        "arguments": [],
+        "cardIndices": [
+          1,
+          2
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "repetition",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.01",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.06",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.01",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.06",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.visible",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.relationships",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.01.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.effort.examination",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.effort.relationships",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.06.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.connection.direction",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.connection.relationships",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.present.opening",
+          "arguments": [
+            "topic.expansion.relationships"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.second",
+          "arguments": [
+            "major.01.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.present.third",
+          "arguments": [
+            "role.connection.direction"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.repetition.clarity",
+          "arguments": [],
+          "cardIndices": [
+            1,
+            2
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "repetition.clarity",
+          "kind": "repetition",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.repetition.clarity",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.repeat.clarity.relationships",
+        "arguments": [],
+        "cardIndices": [
+          1,
+          2
+        ]
+      },
+      "question": {
+        "reference": "question.repeat.clarity.relationships",
+        "arguments": [],
+        "cardIndices": [
+          1,
+          2
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "complement",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.01",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.07",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.01",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "major.07",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.visible",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.relationships",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.01.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.effort.examination",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.effort.relationships",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.07.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.effort.direction",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.effort.relationships",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.present.opening",
+          "arguments": [
+            "topic.expansion.relationships"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.second",
+          "arguments": [
+            "major.01.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.present.third",
+          "arguments": [
+            "role.effort.direction"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.complement.clarity-effort",
+          "arguments": [],
+          "cardIndices": [
+            1,
+            2
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "complement.clarity-effort",
+          "kind": "complement",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.complement.clarity-effort",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "ruleId": "repetition.clarity",
+          "kind": "repetition",
+          "cardIndices": [
+            1,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.repetition.clarity",
+            "arguments": [],
+            "cardIndices": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.complement.clarity-effort.relationships",
+        "arguments": [],
+        "cardIndices": [
+          1,
+          2
+        ]
+      },
+      "question": {
+        "reference": "question.complement.clarity-effort.relationships",
+        "arguments": [],
+        "cardIndices": [
+          1,
+          2
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "fallback",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.01",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "cups.01",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "relationships",
+        "intent": "present"
+      },
+      "cards": [
+        {
+          "cardId": "major.00",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "major.01",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "cups.01",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.00.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.expansion.visible",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.expansion.relationships",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.01.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.effort.examination",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.effort.relationships",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "cups.01.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.connection.direction",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.connection.relationships",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.present.opening",
+          "arguments": [
+            "topic.expansion.relationships"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.first",
+          "arguments": [
+            "major.00.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.present.second",
+          "arguments": [
+            "major.01.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.present.third",
+          "arguments": [
+            "role.connection.direction"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "flow.present.fallback",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "relations": [],
+      "action": {
+        "reference": "cups.01.upright.action",
+        "arguments": [],
+        "cardIndices": [
+          2
+        ]
+      },
+      "question": {
+        "reference": "cups.01.upright.question",
+        "arguments": [],
+        "cardIndices": [
+          2
+        ]
+      },
+      "fallback": true
+    }
+  },
+  {
+    "label": "court-and-minor",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "wands.14",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "cups.12",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "pentacles.11",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "work",
+        "intent": "crossroads"
+      },
+      "cards": [
+        {
+          "cardId": "wands.14",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "cups.12",
+          "orientation": "upright",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "pentacles.11",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "wands.14.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.clarity.values",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.clarity.work",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "cups.12.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.connection.conditions",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.connection.work",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "pentacles.11.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.effort.checks",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.effort.work",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.crossroads.opening",
+          "arguments": [
+            "topic.clarity.work"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.first",
+          "arguments": [
+            "wands.14.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.crossroads.second",
+          "arguments": [
+            "cups.12.upright.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.crossroads.third",
+          "arguments": [
+            "role.effort.checks"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.complement.clarity-effort",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            2
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "complement.clarity-effort",
+          "kind": "complement",
+          "cardIndices": [
+            0,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.complement.clarity-effort",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              2
+            ]
+          }
+        },
+        {
+          "ruleId": "repetition.effort",
+          "kind": "repetition",
+          "cardIndices": [
+            0,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.repetition.effort",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              2
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.complement.clarity-effort.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          2
+        ]
+      },
+      "question": {
+        "reference": "question.complement.clarity-effort.work",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          2
+        ]
+      },
+      "fallback": false
+    }
+  },
+  {
+    "label": "mixed-orientations",
+    "input": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.16",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "swords.04",
+          "orientation": "reversed",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "cups.06",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ]
+    },
+    "plan": {
+      "versions": {
+        "schema": 1,
+        "engine": "reading.1",
+        "semantics": "semantics.1",
+        "rules": "rules.1",
+        "content": "reading.en.1"
+      },
+      "context": {
+        "topic": "creativity",
+        "intent": "action"
+      },
+      "cards": [
+        {
+          "cardId": "major.16",
+          "orientation": "upright",
+          "positionId": "situation"
+        },
+        {
+          "cardId": "swords.04",
+          "orientation": "reversed",
+          "positionId": "examination"
+        },
+        {
+          "cardId": "cups.06",
+          "orientation": "upright",
+          "positionId": "next_action"
+        }
+      ],
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "major.16.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "role.change.foundation",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            },
+            {
+              "reference": "topic.change.creativity",
+              "arguments": [],
+              "cardIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "lens": "review",
+          "phrases": [
+            {
+              "reference": "swords.04.reversed.core",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "role.rest.difficulty",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            },
+            {
+              "reference": "topic.rest.creativity",
+              "arguments": [],
+              "cardIndices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "lens": "direct",
+          "phrases": [
+            {
+              "reference": "cups.06.upright.core",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "role.care.small_action",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            },
+            {
+              "reference": "topic.care.creativity",
+              "arguments": [],
+              "cardIndices": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "overall": [
+        {
+          "reference": "flow.action.opening",
+          "arguments": [
+            "topic.change.creativity"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.first",
+          "arguments": [
+            "major.16.upright.resource"
+          ],
+          "cardIndices": [
+            0
+          ]
+        },
+        {
+          "reference": "flow.action.second",
+          "arguments": [
+            "swords.04.reversed.difficulty"
+          ],
+          "cardIndices": [
+            1
+          ]
+        },
+        {
+          "reference": "flow.action.third",
+          "arguments": [
+            "role.care.small_action"
+          ],
+          "cardIndices": [
+            2
+          ]
+        },
+        {
+          "reference": "relation.tension.change-stability",
+          "arguments": [],
+          "cardIndices": [
+            0,
+            2
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "ruleId": "tension.change-stability",
+          "kind": "tension",
+          "cardIndices": [
+            0,
+            2
+          ],
+          "phrase": {
+            "reference": "relation.tension.change-stability",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              2
+            ]
+          }
+        },
+        {
+          "ruleId": "complement.clarity-effort",
+          "kind": "complement",
+          "cardIndices": [
+            0,
+            1
+          ],
+          "phrase": {
+            "reference": "relation.complement.clarity-effort",
+            "arguments": [],
+            "cardIndices": [
+              0,
+              1
+            ]
+          }
+        }
+      ],
+      "action": {
+        "reference": "action.tension.change-stability.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          2
+        ]
+      },
+      "question": {
+        "reference": "question.tension.change-stability.creativity",
+        "arguments": [],
+        "cardIndices": [
+          0,
+          2
+        ]
+      },
+      "fallback": false
+    }
+  }
+]

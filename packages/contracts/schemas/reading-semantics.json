@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SemanticPack",
+  "type": "object",
+  "properties": {
+    "meanings": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/Meaning"
+      }
+    },
+    "referenceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "versions": {
+      "$ref": "#/$defs/Versions"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "versions",
+    "meanings",
+    "referenceIds"
+  ],
+  "$defs": {
+    "Lens": {
+      "type": "string",
+      "enum": [
+        "direct",
+        "inward",
+        "blockage",
+        "excess",
+        "review",
+        "restoration"
+      ]
+    },
+    "Meaning": {
+      "type": "object",
+      "properties": {
+        "actionRef": {
+          "type": "string"
+        },
+        "coreRef": {
+          "type": "string"
+        },
+        "difficultyRef": {
+          "type": "string"
+        },
+        "lens": {
+          "$ref": "#/$defs/Lens"
+        },
+        "questionRef": {
+          "type": "string"
+        },
+        "resourceRef": {
+          "type": "string"
+        },
+        "roleRefs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "themes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Theme"
+          }
+        },
+        "topicRefs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "themes",
+        "lens",
+        "coreRef",
+        "resourceRef",
+        "difficultyRef",
+        "topicRefs",
+        "roleRefs",
+        "actionRef",
+        "questionRef"
+      ]
+    },
+    "Theme": {
+      "type": "string",
+      "enum": [
+        "expansion",
+        "boundaries",
+        "connection",
+        "solitude",
+        "clarity",
+        "uncertainty",
+        "change",
+        "stability",
+        "effort",
+        "rest",
+        "care",
+        "release"
+      ]
+    },
+    "Versions": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "const": "reading.en.1"
+        },
+        "engine": {
+          "type": "string",
+          "const": "reading.1"
+        },
+        "rules": {
+          "type": "string",
+          "const": "rules.1"
+        },
+        "schema": {
+          "type": "integer",
+          "format": "uint32",
+          "const": 1,
+          "minimum": 0
+        },
+        "semantics": {
+          "type": "string",
+          "const": "semantics.1"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "engine",
+        "semantics",
+        "rules",
+        "content"
+      ]
+    }
+  }
+}

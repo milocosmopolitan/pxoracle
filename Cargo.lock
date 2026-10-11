@@ -138,10 +138,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "pxoracle-tarot-reading"
+version = "0.1.0"
+dependencies = [
+ "schemars",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "pxoracle-tarot-wasm"
 version = "0.1.0"
 dependencies = [
  "pxoracle-tarot",
+ "pxoracle-tarot-reading",
  "serde",
  "serde_json",
 ]

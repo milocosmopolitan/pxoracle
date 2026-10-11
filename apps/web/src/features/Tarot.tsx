@@ -3,12 +3,33 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { ArtManifest, TarotContent } from "@pxoracle/contracts";
 import { useOracle, useOracleStore } from "../state/store";
-import { ErrorNotice, saveReading, readReading } from "./shared";
+import { ErrorNotice } from "./shared";
 import {
   TarotController,
   tarotView,
   type TarotEngine,
 } from "./tarot/controller";
+import type { Context } from "@pxoracle/contracts/reading";
+import {
+  PerspectiveFields,
+  ReadingResult,
+  ReadingFailure,
+  LegacyPerspective,
+  UnsupportedReading,
+} from "./tarot/ReadingResult";
+import { useReading } from "./tarot/useReading";
+import {
+  READING_VERSIONS,
+  TOPICS,
+  INTENTS,
+  currentVersions,
+} from "./tarot/reading";
+import {
+  readSavedTarot,
+  saveTarot,
+  deleteTarot,
+  type SavedTarot,
+} from "./tarot/persistence";
 const labels: Record<string, string> = {
   conversation: "Before we begin",
   approach: "Coming closer to the table…",
@@ -22,12 +43,24 @@ const labels: Record<string, string> = {
 };
 export default function Tarot({
   engine: providedEngine,
-}: { engine?: TarotEngine } = {}) {
+}: {
+  engine?: TarotEngine & {
+    interpret?: typeof import("@pxoracle/engine-client/tarot").interpret;
+  };
+} = {}) {
   const store = useOracleStore();
+  const interpretation = useReading(
+    providedEngine ? (providedEngine.interpret ?? false) : undefined,
+  );
+  const [perspective, setPerspective] = useState<Context>({
+    topic: "relationships",
+    intent: "present",
+  });
   const session = useOracle((s) => s.tarot),
     p = useOracle((s) => s.tarotPresentation),
     question = useOracle((s) => s.question),
     setQuestion = useOracle((s) => s.setQuestion);
+  const [pendingRestore, setPendingRestore] = useState<SavedTarot | null>(null);
   const [controller, setController] = useState<TarotController | null>(null);
   const [spread, setSpread] = useState<1 | 3>(3),
     [reversals, setReversals] = useState(false),
@@ -119,6 +152,19 @@ export default function Tarot({
     if (["approach", "dealing", "revealing"].includes(p.phase))
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [p.phase]);
+  const startReading = () => {
+    setPendingRestore(null);
+    store
+      .getState()
+      .setReading({
+        context: spread === 3 ? perspective : null,
+        versions: spread === 3 ? READING_VERSIONS : null,
+        plan: null,
+        status: "idle",
+        error: "",
+      });
+    void controller?.start(spread, reversals);
+  };
   const active = !!session,
     selecting = p.phase === "selecting",
     reading = p.phase === "reading";
@@ -145,7 +191,7 @@ export default function Tarot({
             <p className="eyebrow">BEFORE WE BEGIN</p>
             <h2>What’s on your mind?</h2>
             <label>
-              A question, if you have one
+              A private note, if you wish
               <textarea
                 maxLength={1000}
                 value={question}
@@ -153,8 +199,8 @@ export default function Tarot({
                 placeholder="What deserves my attention right now?"
               />
               <small>
-                Your question stays in memory and is not included in saved
-                readings.
+                This note is not analyzed. It stays in memory and is never saved
+                or sent.
               </small>
             </label>
             <div className="two">
@@ -177,10 +223,16 @@ export default function Tarot({
                 Include reversed cards
               </label>
             </div>
+            {spread === 3 && (
+              <PerspectiveFields
+                value={perspective}
+                onChange={setPerspective}
+              />
+            )}
             <button
               className="primary"
               disabled={p.busy || !art || !content || !controller}
-              onClick={() => void controller?.start(spread, reversals)}
+              onClick={startReading}
             >
               Shuffle the deck →
             </button>
@@ -189,9 +241,20 @@ export default function Tarot({
               disabled={p.busy || !controller}
               onClick={() => {
                 try {
-                  const saved = readReading("tarot");
-                  if (saved) void controller?.restore(saved);
-                  else setNotice("No saved reading on this device.");
+                  setPendingRestore(null);
+                  store.getState().setTarotPresentation({ error: "" });
+                  const saved = readSavedTarot(localStorage);
+                  if (saved) {
+                    setPendingRestore(saved);
+                    store.getState().setReading({
+                      context: saved.perspective,
+                      versions: saved.readingVersions,
+                      plan: null,
+                      status: "idle",
+                      error: "",
+                    });
+                    void controller?.restore(saved.draw);
+                  } else setNotice("No saved reading on this device.");
                 } catch {
                   setNotice("The saved reading could not be read.");
                 }
@@ -215,6 +278,41 @@ export default function Tarot({
             <p role="status" aria-live="polite">
               {p.busy ? "Confirming your choice…" : labels[p.phase]}
             </p>
+            {session.spread === 3 && interpretation.context && (
+              <p>
+                {TOPICS[interpretation.context.topic]} ·{" "}
+                {INTENTS[interpretation.context.intent]}
+                <small> · Fixed for this reading</small>
+              </p>
+            )}
+            {session.spread === 3 && !interpretation.context && (
+              <LegacyPerspective
+                value={perspective}
+                onChange={setPerspective}
+                onConfirm={() =>
+                  store
+                    .getState()
+                    .setReading({
+                      context: perspective,
+                      versions: READING_VERSIONS,
+                    })
+                }
+              />
+            )}
+            {session.spread === 3 &&
+              interpretation.versions &&
+              !currentVersions(interpretation.versions) && (
+                <UnsupportedReading
+                  onConfirm={() => {
+                    store
+                      .getState()
+                      .setReading({ versions: READING_VERSIONS, plan: null });
+                    setNotice(
+                      "Reinterpreted with current content. Save explicitly to replace the saved version.",
+                    );
+                  }}
+                />
+              )}
             {selecting && (
               <>
                 <p>
@@ -328,46 +426,68 @@ export default function Tarot({
                     </button>
                   ))}
                 </div>
-                <details open className="reading-details">
-                  <summary>Card meanings and reflection</summary>
-                  {question && <p className="question">“{question}”</p>}
-                  <p className="reading-disclosure">
-                    These are card-based reflection prompts. Your question is
-                    not analyzed.
-                  </p>
-                  {session.selections.map((selected, i) => {
-                    const detail = content?.cards[selected.card.cardId];
-                    return (
-                      <article className="reading-card" key={selected.slot}>
-                        <p className="eyebrow">
-                          {i + 1} · {selected.positionId.replace("_", " ")}
-                        </p>
-                        <h3>{detail?.name ?? selected.card.cardId}</h3>
-                        <small>{selected.card.orientation}</small>
-                        <p>{detail?.[selected.card.orientation]}</p>
-                        <p className="prompt">
-                          {content?.positions[selected.positionId]}
-                        </p>
-                      </article>
-                    );
-                  })}
-                  <aside className="synthesis">
-                    <p className="eyebrow">BRINGING IT TOGETHER</p>
-                    {session.selections.map((s) => (
-                      <p key={s.slot}>
-                        <strong>{s.positionId.replace("_", " ")}: </strong>
-                        {content?.cards[s.card.cardId]?.theme} through{" "}
-                        {content?.cards[s.card.cardId]?.name} (
-                        {s.card.orientation}).
-                      </p>
-                    ))}
-                    <p>
-                      {session.spread === 3
-                        ? "Read the first card as the situation, the second as a lens to examine it, and the third as an action to try. Where do these perspectives agree or pull in different directions? Choose one concrete step you can revisit tomorrow."
-                        : "Choose one detail in this card that you can turn into a small action today. Return later to notice what changed."}
+                {session.spread === 3 ? (
+                  <>
+                    {interpretation.status === "loading" && (
+                      <p role="status">Assembling your reflection…</p>
+                    )}
+                    {interpretation.status === "error" && (
+                      <ReadingFailure retry={interpretation.retry} />
+                    )}
+                    {interpretation.plan && interpretation.pack && (
+                      <ReadingResult
+                        plan={interpretation.plan}
+                        pack={interpretation.pack}
+                        focus={p.readingFocus ?? null}
+                        onFocus={(index) =>
+                          store
+                            .getState()
+                            .setTarotPresentation({ readingFocus: index })
+                        }
+                      />
+                    )}
+                  </>
+                ) : (
+                  <details open className="reading-details">
+                    <summary>Card meanings and reflection</summary>
+                    {question && <p className="question">“{question}”</p>}
+                    <p className="reading-disclosure">
+                      These are card-based reflection prompts. Your question is
+                      not analyzed.
                     </p>
-                  </aside>
-                </details>
+                    {session.selections.map((selected, i) => {
+                      const detail = content?.cards[selected.card.cardId];
+                      return (
+                        <article className="reading-card" key={selected.slot}>
+                          <p className="eyebrow">
+                            {i + 1} · {selected.positionId.replace("_", " ")}
+                          </p>
+                          <h3>{detail?.name ?? selected.card.cardId}</h3>
+                          <small>{selected.card.orientation}</small>
+                          <p>{detail?.[selected.card.orientation]}</p>
+                          <p className="prompt">
+                            {content?.positions[selected.positionId]}
+                          </p>
+                        </article>
+                      );
+                    })}
+                    <aside className="synthesis">
+                      <p className="eyebrow">BRINGING IT TOGETHER</p>
+                      {session.selections.map((s) => (
+                        <p key={s.slot}>
+                          <strong>{s.positionId.replace("_", " ")}: </strong>
+                          {content?.cards[s.card.cardId]?.theme} through{" "}
+                          {content?.cards[s.card.cardId]?.name} (
+                          {s.card.orientation}).
+                        </p>
+                      ))}
+                      <p>
+                        Choose one detail in this card that you can turn into a
+                        small action today. Return later to notice what changed.
+                      </p>
+                    </aside>
+                  </details>
+                )}
               </>
             )}
             <div className="actions">
@@ -376,6 +496,7 @@ export default function Tarot({
                 onClick={() => {
                   store.getState().setTarotPresentation({ readingFocus: null });
                   controller?.reset();
+                  setPendingRestore(null);
                   setQuestion("");
                   setNotice("");
                 }}
@@ -386,9 +507,14 @@ export default function Tarot({
                 disabled={p.busy}
                 onClick={() => {
                   try {
-                    saveReading("tarot", session);
+                    saveTarot(
+                      localStorage,
+                      session,
+                      interpretation.context,
+                      interpretation.versions,
+                    );
                     setNotice(
-                      "Reading saved on this device. Your question was not saved.",
+                      "Reading saved on this device. Your private note was not saved.",
                     );
                   } catch {
                     setNotice("This browser could not save the reading.");
@@ -400,7 +526,7 @@ export default function Tarot({
               <button
                 onClick={() => {
                   try {
-                    localStorage.removeItem("pxoracle.tarot.v1");
+                    deleteTarot(localStorage);
                     setNotice("Saved reading deleted.");
                   } catch {
                     setNotice("Storage is unavailable.");
@@ -426,7 +552,9 @@ export default function Tarot({
             retry={() =>
               session
                 ? controller?.retryArt()
-                : void controller?.start(spread, reversals)
+                : pendingRestore
+                  ? void controller?.restore(pendingRestore.draw)
+                  : startReading()
             }
           />
         )}

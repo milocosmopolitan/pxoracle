@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RulePack",
+  "type": "object",
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Rule"
+      }
+    },
+    "versions": {
+      "$ref": "#/$defs/Versions"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "versions",
+    "rules"
+  ],
+  "$defs": {
+    "RelationKind": {
+      "type": "string",
+      "enum": [
+        "repetition",
+        "complement",
+        "tension"
+      ]
+    },
+    "Rule": {
+      "type": "object",
+      "properties": {
+        "actionRefs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/RelationKind"
+        },
+        "left": {
+          "$ref": "#/$defs/Theme"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0
+        },
+        "questionRefs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "relationRef": {
+          "type": "string"
+        },
+        "right": {
+          "$ref": "#/$defs/Theme"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "left",
+        "right",
+        "priority",
+        "relationRef",
+        "actionRefs",
+        "questionRefs"
+      ]
+    },
+    "Theme": {
+      "type": "string",
+      "enum": [
+        "expansion",
+        "boundaries",
+        "connection",
+        "solitude",
+        "clarity",
+        "uncertainty",
+        "change",
+        "stability",
+        "effort",
+        "rest",
+        "care",
+        "release"
+      ]
+    },
+    "Versions": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "const": "reading.en.1"
+        },
+        "engine": {
+          "type": "string",
+          "const": "reading.1"
+        },
+        "rules": {
+          "type": "string",
+          "const": "rules.1"
+        },
+        "schema": {
+          "type": "integer",
+          "format": "uint32",
+          "const": 1,
+          "minimum": 0
+        },
+        "semantics": {
+          "type": "string",
+          "const": "semantics.1"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "engine",
+        "semantics",
+        "rules",
+        "content"
+      ]
+    }
+  }
+}

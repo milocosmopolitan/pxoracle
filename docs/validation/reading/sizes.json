@@ -1,0 +1,32 @@
+[
+  {
+    "path": "apps/web/public/engines/tarot/engine.wasm",
+    "bytes": 499810,
+    "gzipBytes": 142465
+  },
+  {
+    "path": "apps/web/public/engines/tarot/engine.mjs",
+    "bytes": 17971,
+    "gzipBytes": 5254
+  },
+  {
+    "path": "apps/web/public/engines/tarot/worker.mjs",
+    "bytes": 2933,
+    "gzipBytes": 1099
+  },
+  {
+    "path": "apps/web/public/content/reading/semantics.1.json",
+    "bytes": 203165,
+    "gzipBytes": 10990
+  },
+  {
+    "path": "apps/web/public/content/reading/rules.1.json",
+    "bytes": 15958,
+    "gzipBytes": 1320
+  },
+  {
+    "path": "apps/web/public/content/reading/reading.en.1.json",
+    "bytes": 122043,
+    "gzipBytes": 27753
+  }
+]

@@ -1,0 +1,431 @@
+{
+  "versions": {
+    "schema": 1,
+    "engine": "reading.1",
+    "semantics": "semantics.1",
+    "rules": "rules.1",
+    "content": "reading.en.1"
+  },
+  "rules": [
+    {
+      "id": "repetition.expansion",
+      "kind": "repetition",
+      "left": "expansion",
+      "right": "expansion",
+      "priority": 40,
+      "relationRef": "relation.repetition.expansion",
+      "actionRefs": {
+        "relationships": "action.repeat.expansion.relationships",
+        "work": "action.repeat.expansion.work",
+        "creativity": "action.repeat.expansion.creativity",
+        "growth": "action.repeat.expansion.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.expansion.relationships",
+        "work": "question.repeat.expansion.work",
+        "creativity": "question.repeat.expansion.creativity",
+        "growth": "question.repeat.expansion.growth"
+      }
+    },
+    {
+      "id": "repetition.boundaries",
+      "kind": "repetition",
+      "left": "boundaries",
+      "right": "boundaries",
+      "priority": 40,
+      "relationRef": "relation.repetition.boundaries",
+      "actionRefs": {
+        "relationships": "action.repeat.boundaries.relationships",
+        "work": "action.repeat.boundaries.work",
+        "creativity": "action.repeat.boundaries.creativity",
+        "growth": "action.repeat.boundaries.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.boundaries.relationships",
+        "work": "question.repeat.boundaries.work",
+        "creativity": "question.repeat.boundaries.creativity",
+        "growth": "question.repeat.boundaries.growth"
+      }
+    },
+    {
+      "id": "repetition.connection",
+      "kind": "repetition",
+      "left": "connection",
+      "right": "connection",
+      "priority": 40,
+      "relationRef": "relation.repetition.connection",
+      "actionRefs": {
+        "relationships": "action.repeat.connection.relationships",
+        "work": "action.repeat.connection.work",
+        "creativity": "action.repeat.connection.creativity",
+        "growth": "action.repeat.connection.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.connection.relationships",
+        "work": "question.repeat.connection.work",
+        "creativity": "question.repeat.connection.creativity",
+        "growth": "question.repeat.connection.growth"
+      }
+    },
+    {
+      "id": "repetition.solitude",
+      "kind": "repetition",
+      "left": "solitude",
+      "right": "solitude",
+      "priority": 40,
+      "relationRef": "relation.repetition.solitude",
+      "actionRefs": {
+        "relationships": "action.repeat.solitude.relationships",
+        "work": "action.repeat.solitude.work",
+        "creativity": "action.repeat.solitude.creativity",
+        "growth": "action.repeat.solitude.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.solitude.relationships",
+        "work": "question.repeat.solitude.work",
+        "creativity": "question.repeat.solitude.creativity",
+        "growth": "question.repeat.solitude.growth"
+      }
+    },
+    {
+      "id": "repetition.clarity",
+      "kind": "repetition",
+      "left": "clarity",
+      "right": "clarity",
+      "priority": 40,
+      "relationRef": "relation.repetition.clarity",
+      "actionRefs": {
+        "relationships": "action.repeat.clarity.relationships",
+        "work": "action.repeat.clarity.work",
+        "creativity": "action.repeat.clarity.creativity",
+        "growth": "action.repeat.clarity.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.clarity.relationships",
+        "work": "question.repeat.clarity.work",
+        "creativity": "question.repeat.clarity.creativity",
+        "growth": "question.repeat.clarity.growth"
+      }
+    },
+    {
+      "id": "repetition.uncertainty",
+      "kind": "repetition",
+      "left": "uncertainty",
+      "right": "uncertainty",
+      "priority": 40,
+      "relationRef": "relation.repetition.uncertainty",
+      "actionRefs": {
+        "relationships": "action.repeat.uncertainty.relationships",
+        "work": "action.repeat.uncertainty.work",
+        "creativity": "action.repeat.uncertainty.creativity",
+        "growth": "action.repeat.uncertainty.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.uncertainty.relationships",
+        "work": "question.repeat.uncertainty.work",
+        "creativity": "question.repeat.uncertainty.creativity",
+        "growth": "question.repeat.uncertainty.growth"
+      }
+    },
+    {
+      "id": "repetition.change",
+      "kind": "repetition",
+      "left": "change",
+      "right": "change",
+      "priority": 40,
+      "relationRef": "relation.repetition.change",
+      "actionRefs": {
+        "relationships": "action.repeat.change.relationships",
+        "work": "action.repeat.change.work",
+        "creativity": "action.repeat.change.creativity",
+        "growth": "action.repeat.change.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.change.relationships",
+        "work": "question.repeat.change.work",
+        "creativity": "question.repeat.change.creativity",
+        "growth": "question.repeat.change.growth"
+      }
+    },
+    {
+      "id": "repetition.stability",
+      "kind": "repetition",
+      "left": "stability",
+      "right": "stability",
+      "priority": 40,
+      "relationRef": "relation.repetition.stability",
+      "actionRefs": {
+        "relationships": "action.repeat.stability.relationships",
+        "work": "action.repeat.stability.work",
+        "creativity": "action.repeat.stability.creativity",
+        "growth": "action.repeat.stability.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.stability.relationships",
+        "work": "question.repeat.stability.work",
+        "creativity": "question.repeat.stability.creativity",
+        "growth": "question.repeat.stability.growth"
+      }
+    },
+    {
+      "id": "repetition.effort",
+      "kind": "repetition",
+      "left": "effort",
+      "right": "effort",
+      "priority": 40,
+      "relationRef": "relation.repetition.effort",
+      "actionRefs": {
+        "relationships": "action.repeat.effort.relationships",
+        "work": "action.repeat.effort.work",
+        "creativity": "action.repeat.effort.creativity",
+        "growth": "action.repeat.effort.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.effort.relationships",
+        "work": "question.repeat.effort.work",
+        "creativity": "question.repeat.effort.creativity",
+        "growth": "question.repeat.effort.growth"
+      }
+    },
+    {
+      "id": "repetition.rest",
+      "kind": "repetition",
+      "left": "rest",
+      "right": "rest",
+      "priority": 40,
+      "relationRef": "relation.repetition.rest",
+      "actionRefs": {
+        "relationships": "action.repeat.rest.relationships",
+        "work": "action.repeat.rest.work",
+        "creativity": "action.repeat.rest.creativity",
+        "growth": "action.repeat.rest.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.rest.relationships",
+        "work": "question.repeat.rest.work",
+        "creativity": "question.repeat.rest.creativity",
+        "growth": "question.repeat.rest.growth"
+      }
+    },
+    {
+      "id": "repetition.care",
+      "kind": "repetition",
+      "left": "care",
+      "right": "care",
+      "priority": 40,
+      "relationRef": "relation.repetition.care",
+      "actionRefs": {
+        "relationships": "action.repeat.care.relationships",
+        "work": "action.repeat.care.work",
+        "creativity": "action.repeat.care.creativity",
+        "growth": "action.repeat.care.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.care.relationships",
+        "work": "question.repeat.care.work",
+        "creativity": "question.repeat.care.creativity",
+        "growth": "question.repeat.care.growth"
+      }
+    },
+    {
+      "id": "repetition.release",
+      "kind": "repetition",
+      "left": "release",
+      "right": "release",
+      "priority": 40,
+      "relationRef": "relation.repetition.release",
+      "actionRefs": {
+        "relationships": "action.repeat.release.relationships",
+        "work": "action.repeat.release.work",
+        "creativity": "action.repeat.release.creativity",
+        "growth": "action.repeat.release.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.repeat.release.relationships",
+        "work": "question.repeat.release.work",
+        "creativity": "question.repeat.release.creativity",
+        "growth": "question.repeat.release.growth"
+      }
+    },
+    {
+      "id": "tension.expansion-boundaries",
+      "kind": "tension",
+      "left": "expansion",
+      "right": "boundaries",
+      "priority": 90,
+      "relationRef": "relation.tension.expansion-boundaries",
+      "actionRefs": {
+        "relationships": "action.tension.expansion-boundaries.relationships",
+        "work": "action.tension.expansion-boundaries.work",
+        "creativity": "action.tension.expansion-boundaries.creativity",
+        "growth": "action.tension.expansion-boundaries.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.tension.expansion-boundaries.relationships",
+        "work": "question.tension.expansion-boundaries.work",
+        "creativity": "question.tension.expansion-boundaries.creativity",
+        "growth": "question.tension.expansion-boundaries.growth"
+      }
+    },
+    {
+      "id": "tension.connection-solitude",
+      "kind": "tension",
+      "left": "connection",
+      "right": "solitude",
+      "priority": 85,
+      "relationRef": "relation.tension.connection-solitude",
+      "actionRefs": {
+        "relationships": "action.tension.connection-solitude.relationships",
+        "work": "action.tension.connection-solitude.work",
+        "creativity": "action.tension.connection-solitude.creativity",
+        "growth": "action.tension.connection-solitude.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.tension.connection-solitude.relationships",
+        "work": "question.tension.connection-solitude.work",
+        "creativity": "question.tension.connection-solitude.creativity",
+        "growth": "question.tension.connection-solitude.growth"
+      }
+    },
+    {
+      "id": "tension.change-stability",
+      "kind": "tension",
+      "left": "change",
+      "right": "stability",
+      "priority": 85,
+      "relationRef": "relation.tension.change-stability",
+      "actionRefs": {
+        "relationships": "action.tension.change-stability.relationships",
+        "work": "action.tension.change-stability.work",
+        "creativity": "action.tension.change-stability.creativity",
+        "growth": "action.tension.change-stability.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.tension.change-stability.relationships",
+        "work": "question.tension.change-stability.work",
+        "creativity": "question.tension.change-stability.creativity",
+        "growth": "question.tension.change-stability.growth"
+      }
+    },
+    {
+      "id": "tension.effort-rest",
+      "kind": "tension",
+      "left": "effort",
+      "right": "rest",
+      "priority": 90,
+      "relationRef": "relation.tension.effort-rest",
+      "actionRefs": {
+        "relationships": "action.tension.effort-rest.relationships",
+        "work": "action.tension.effort-rest.work",
+        "creativity": "action.tension.effort-rest.creativity",
+        "growth": "action.tension.effort-rest.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.tension.effort-rest.relationships",
+        "work": "question.tension.effort-rest.work",
+        "creativity": "question.tension.effort-rest.creativity",
+        "growth": "question.tension.effort-rest.growth"
+      }
+    },
+    {
+      "id": "tension.clarity-uncertainty",
+      "kind": "tension",
+      "left": "clarity",
+      "right": "uncertainty",
+      "priority": 80,
+      "relationRef": "relation.tension.clarity-uncertainty",
+      "actionRefs": {
+        "relationships": "action.tension.clarity-uncertainty.relationships",
+        "work": "action.tension.clarity-uncertainty.work",
+        "creativity": "action.tension.clarity-uncertainty.creativity",
+        "growth": "action.tension.clarity-uncertainty.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.tension.clarity-uncertainty.relationships",
+        "work": "question.tension.clarity-uncertainty.work",
+        "creativity": "question.tension.clarity-uncertainty.creativity",
+        "growth": "question.tension.clarity-uncertainty.growth"
+      }
+    },
+    {
+      "id": "tension.care-boundaries",
+      "kind": "tension",
+      "left": "care",
+      "right": "boundaries",
+      "priority": 88,
+      "relationRef": "relation.tension.care-boundaries",
+      "actionRefs": {
+        "relationships": "action.tension.care-boundaries.relationships",
+        "work": "action.tension.care-boundaries.work",
+        "creativity": "action.tension.care-boundaries.creativity",
+        "growth": "action.tension.care-boundaries.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.tension.care-boundaries.relationships",
+        "work": "question.tension.care-boundaries.work",
+        "creativity": "question.tension.care-boundaries.creativity",
+        "growth": "question.tension.care-boundaries.growth"
+      }
+    },
+    {
+      "id": "complement.clarity-effort",
+      "kind": "complement",
+      "left": "clarity",
+      "right": "effort",
+      "priority": 65,
+      "relationRef": "relation.complement.clarity-effort",
+      "actionRefs": {
+        "relationships": "action.complement.clarity-effort.relationships",
+        "work": "action.complement.clarity-effort.work",
+        "creativity": "action.complement.clarity-effort.creativity",
+        "growth": "action.complement.clarity-effort.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.complement.clarity-effort.relationships",
+        "work": "question.complement.clarity-effort.work",
+        "creativity": "question.complement.clarity-effort.creativity",
+        "growth": "question.complement.clarity-effort.growth"
+      }
+    },
+    {
+      "id": "complement.care-connection",
+      "kind": "complement",
+      "left": "care",
+      "right": "connection",
+      "priority": 65,
+      "relationRef": "relation.complement.care-connection",
+      "actionRefs": {
+        "relationships": "action.complement.care-connection.relationships",
+        "work": "action.complement.care-connection.work",
+        "creativity": "action.complement.care-connection.creativity",
+        "growth": "action.complement.care-connection.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.complement.care-connection.relationships",
+        "work": "question.complement.care-connection.work",
+        "creativity": "question.complement.care-connection.creativity",
+        "growth": "question.complement.care-connection.growth"
+      }
+    },
+    {
+      "id": "complement.release-change",
+      "kind": "complement",
+      "left": "release",
+      "right": "change",
+      "priority": 65,
+      "relationRef": "relation.complement.release-change",
+      "actionRefs": {
+        "relationships": "action.complement.release-change.relationships",
+        "work": "action.complement.release-change.work",
+        "creativity": "action.complement.release-change.creativity",
+        "growth": "action.complement.release-change.growth"
+      },
+      "questionRefs": {
+        "relationships": "question.complement.release-change.relationships",
+        "work": "question.complement.release-change.work",
+        "creativity": "question.complement.release-change.creativity",
+        "growth": "question.complement.release-change.growth"
+      }
+    }
+  ]
+}

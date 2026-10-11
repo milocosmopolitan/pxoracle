@@ -1,0 +1,21 @@
+// Generated from Rust schemars DTOs. Run scripts/generate-schemas.sh.
+export type Context = { "intent": Intent; "topic": Topic };
+export type Evidence = { "cardIndices": Array<number>; "kind": RelationKind; "phrase": Phrase; "ruleId": string };
+export type Intent = "present" | "crossroads" | "action";
+export type Lens = "direct" | "inward" | "blockage" | "excess" | "review" | "restoration";
+export type Meaning = { "actionRef": string; "coreRef": string; "difficultyRef": string; "lens": Lens; "questionRef": string; "resourceRef": string; "roleRefs": Record<string, string>; "themes": Array<Theme>; "topicRefs": Record<string, string> };
+export type Orientation = "upright" | "reversed";
+export type Phrase = { "arguments": Array<string>; "cardIndices": Array<number>; "reference": string };
+export type Position = "situation" | "examination" | "next_action";
+export type PositionPlan = { "index": number; "lens": Lens; "phrases": Array<Phrase>; "role": Role };
+export type ReadingInput = { "cards": Array<RevealedCard>; "context": Context; "versions": Versions };
+export type ReadingPlan = { "action": Phrase; "cards": Array<RevealedCard>; "context": Context; "fallback": boolean; "overall": Array<Phrase>; "positions": Array<PositionPlan>; "question": Phrase; "relations": Array<Evidence>; "versions": Versions };
+export type RelationKind = "repetition" | "complement" | "tension";
+export type RevealedCard = { "cardId": string; "orientation": Orientation; "positionId": Position };
+export type Role = "visible" | "examination" | "direction" | "values" | "conditions" | "checks" | "foundation" | "difficulty" | "small_action";
+export type Rule = { "actionRefs": Record<string, string>; "id": string; "kind": RelationKind; "left": Theme; "priority": number; "questionRefs": Record<string, string>; "relationRef": string; "right": Theme };
+export type RulePack = { "rules": Array<Rule>; "versions": Versions };
+export type SemanticPack = { "meanings": Record<string, Meaning>; "referenceIds": Array<string>; "versions": Versions };
+export type Theme = "expansion" | "boundaries" | "connection" | "solitude" | "clarity" | "uncertainty" | "change" | "stability" | "effort" | "rest" | "care" | "release";
+export type Topic = "relationships" | "work" | "creativity" | "growth";
+export type Versions = { "content": "reading.en.1"; "engine": "reading.1"; "rules": "rules.1"; "schema": 1; "semantics": "semantics.1" };
