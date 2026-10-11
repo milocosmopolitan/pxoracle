@@ -1,0 +1,4 @@
+interface:
+  display_name: "Improve Tarot Readings"
+  short_description: "Audit review CSVs and improve deterministic readings"
+  default_prompt: "Use $improve-tarot-readings to audit review CSVs, coordinate subagents, and improve PXOracle production interpretation quality."
