@@ -113,7 +113,15 @@ class PublishTests(unittest.TestCase):
         self.assertEqual(config["Origins"][0]["OriginPath"], {"Fn::Sub": "/releases/${ReleaseId}"})
         trust = json.loads((ROOT / "infra/bootstrap.json").read_text())["Resources"]["PublishRole"]["Properties"]["AssumeRolePolicyDocument"]["Statement"][0]
         self.assertEqual(trust["Condition"]["StringEquals"]["token.actions.githubusercontent.com:sub"],
-                         {"Fn::Sub": "repo:${GitHubRepository}:ref:refs/heads/main"})
+                         {"Fn::Sub": "${GitHubSubjectPrefix}:ref:refs/heads/main"})
+
+        parameters = json.loads((ROOT / "infra/bootstrap.json").read_text())["Parameters"]
+        self.assertEqual(parameters["GitHubSubjectPrefix"]["Default"],
+                         "repo:milocosmopolitan@5334538/pxoracle@1413138338")
+        import re
+        pattern = parameters["GitHubSubjectPrefix"]["AllowedPattern"]
+        for bad in ["repo:*/*", "repo:owner/repo:pull_request", "repo:owner/repo:ref:refs/heads/other"]:
+            self.assertIsNone(re.fullmatch(pattern, bad))
 
 
 if __name__ == "__main__":

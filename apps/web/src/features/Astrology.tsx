@@ -19,6 +19,8 @@ export default function Astrology({
     setChart = useOracle((s) => s.setChart),
     selected = useOracle((s) => s.selectedBody),
     setBody = useOracle((s) => s.setBody);
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [accuracy, setAccuracy] = useState<BirthInput["accuracy"]>((chart?.provenance.settings as BirthInput|undefined)?.accuracy??"exact"),
@@ -92,6 +94,7 @@ export default function Astrology({
             <h2>Where did your story begin?</h2>
             <p>Enter the local time recorded at your birthplace.</p>
             <form onSubmit={submit}>
+              <fieldset disabled={!ready || busy} style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>
               <div className="two">
                 <label>
                   Birth date
@@ -202,6 +205,7 @@ export default function Astrology({
               <button className="primary" disabled={busy}>
                 {busy ? "Calculating…" : "Enter the crystal →"}
               </button>
+              </fieldset>
             </form>
           </>
         ) : (

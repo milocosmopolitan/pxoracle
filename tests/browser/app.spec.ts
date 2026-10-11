@@ -167,3 +167,21 @@ test('failed scene art preserves controls and offers an accessible retry',async(
  await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
  await expect(page.getByLabel('Birth date',{exact:true})).toHaveValue('2000-01-01');
 });
+
+
+test("birth fields remain disabled until hydration owns their values", async ({ page }) => {
+  let release!: () => void;
+  const gate = new Promise<void>((resolve) => { release = resolve; });
+  await page.route("**/_next/static/**/*.js", async (route) => {
+    await gate;
+    await route.continue();
+  });
+  try {
+    await page.goto("/astrology/", { waitUntil: "commit" });
+    await expect(page.getByLabel("Birth date", { exact: true })).toBeDisabled();
+    await expect(page.getByRole("button", { name: "Enter the crystal" })).toBeDisabled();
+  } finally { release(); }
+  await expect(page.getByLabel("Birth date", { exact: true })).toBeEnabled();
+  await page.getByLabel("Birthplace time zone").fill("UTC");
+  await expect(page.getByLabel("Birthplace time zone")).toHaveValue("UTC");
+});
