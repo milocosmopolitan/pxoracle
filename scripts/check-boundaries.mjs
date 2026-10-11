@@ -15,6 +15,7 @@ const rules = [
     /engine-client|localStorage|calculateNatal|pxoracle-tarot/,
   ],
   ["packages/contracts/src", /from ['"](?:three|zustand|react)|new Worker/],
+  ["crates/pxoracle-tarot-reading/src", /pxoracle_tarot::|pxoracle-astrology|web_sys|js_sys|include_str!|std::fs|reqwest/],
   ["crates/pxoracle-tarot", /pxoracle-astrology|web_sys|js_sys/],
   ["crates/pxoracle-astrology", /pxoracle-tarot|web_sys|js_sys/],
 ];

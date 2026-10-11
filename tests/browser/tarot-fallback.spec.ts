@@ -20,10 +20,10 @@ test("explicit DOM progression works without WebGL and keeps questions private",
   await page.getByRole("button", { name: "Choose slot 1", exact: true }).click();
   await settleTarot(page, page.getByRole("heading", { name: "Let the images settle." }));
   await page.getByRole("button", { name: "Save reading", exact: true }).click();
-  const saved = await page.evaluate(() => localStorage.getItem("pxoracle.tarot.v1"));
+  const saved = await page.evaluate(() => localStorage.getItem("pxoracle.tarot.v2"));
   expect(saved).not.toContain(question);
   expect(requests.join(" ")).not.toContain(question);
-  expect(JSON.parse(saved!).value.selections[0].revealed).toBe(true);
+  expect(JSON.parse(saved!).draw.selections[0].revealed).toBe(true);
   await page.getByRole("button", { name: "New reading" }).click();
   await expect(page.getByRole("textbox")).toHaveValue("");
 });

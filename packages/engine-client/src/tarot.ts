@@ -19,3 +19,7 @@ export const restore = (session: unknown) =>
 export const complete = (session: TarotSession) =>
   client.request<TarotSession>({ op: "complete", session });
 export const evict = () => client.dispose();
+
+import type { ReadingInput, ReadingPlan } from "@pxoracle/contracts/reading";
+export const interpret = (input: ReadingInput) =>
+  client.request<ReadingPlan>({ op: "readingInterpret", input });

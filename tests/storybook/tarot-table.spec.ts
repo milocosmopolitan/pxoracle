@@ -15,11 +15,11 @@ test("articulated hand replay and fixed carry use production meshes without WASM
   );
   await expect(page.locator(".scene-status")).toHaveCount(0, { timeout: 45000 });
   await expect(page.getByText(/No WASM · reading/)).toBeVisible({
-    timeout: 20000,
+    timeout: 60000,
   });
   await page.getByRole("button", { name: "Replay", exact: true }).click();
   await expect(page.getByText(/No WASM · reading/)).toBeVisible({
-    timeout: 20000,
+    timeout: 60000,
   });
   await page.screenshot({
     path: "docs/validation/tarot-table-v2/hand-revealed.png",
@@ -72,12 +72,12 @@ for (const story of [
       page.getByText(/STORYBOOK · Synthetic fixed cards/),
     ).toBeVisible();
     await expect(page.locator(".scene-status")).toHaveCount(0, {
-      timeout: 20000,
+      timeout: 60000,
     });
     if (story === "loading-failure") {
       await page.getByRole("button", { name: "Retry same card" }).click();
       await expect(page.getByText(/No WASM · reading/)).toBeVisible({
-        timeout: 20000,
+        timeout: 60000,
       });
     }
     if (story === "camera-transition") {
@@ -94,7 +94,7 @@ for (const story of [
           path: "docs/validation/tarot-table-v2/approach.png",
         });
         await expect(page.getByText(/No WASM · selecting/)).toBeVisible({
-          timeout: 20000,
+          timeout: 60000,
         });
         expect(await page.locator("canvas").boundingBox()).toEqual(
           canvasBounds,

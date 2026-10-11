@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReadingPlan",
+  "type": "object",
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/Phrase"
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RevealedCard"
+      }
+    },
+    "context": {
+      "$ref": "#/$defs/Context"
+    },
+    "fallback": {
+      "type": "boolean"
+    },
+    "overall": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Phrase"
+      }
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PositionPlan"
+      }
+    },
+    "question": {
+      "$ref": "#/$defs/Phrase"
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      }
+    },
+    "versions": {
+      "$ref": "#/$defs/Versions"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "versions",
+    "context",
+    "cards",
+    "positions",
+    "overall",
+    "relations",
+    "action",
+    "question",
+    "fallback"
+  ],
+  "$defs": {
+    "Context": {
+      "type": "object",
+      "properties": {
+        "intent": {
+          "$ref": "#/$defs/Intent"
+        },
+        "topic": {
+          "$ref": "#/$defs/Topic"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "topic",
+        "intent"
+      ]
+    },
+    "Evidence": {
+      "type": "object",
+      "properties": {
+        "cardIndices": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint",
+            "minimum": 0
+          }
+        },
+        "kind": {
+          "$ref": "#/$defs/RelationKind"
+        },
+        "phrase": {
+          "$ref": "#/$defs/Phrase"
+        },
+        "ruleId": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ruleId",
+        "kind",
+        "cardIndices",
+        "phrase"
+      ]
+    },
+    "Intent": {
+      "type": "string",
+      "enum": [
+        "present",
+        "crossroads",
+        "action"
+      ]
+    },
+    "Lens": {
+      "type": "string",
+      "enum": [
+        "direct",
+        "inward",
+        "blockage",
+        "excess",
+        "review",
+        "restoration"
+      ]
+    },
+    "Orientation": {
+      "type": "string",
+      "enum": [
+        "upright",
+        "reversed"
+      ]
+    },
+    "Phrase": {
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cardIndices": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint",
+            "minimum": 0
+          }
+        },
+        "reference": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "reference",
+        "arguments",
+        "cardIndices"
+      ]
+    },
+    "Position": {
+      "type": "string",
+      "enum": [
+        "situation",
+        "examination",
+        "next_action"
+      ]
+    },
+    "PositionPlan": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "lens": {
+          "$ref": "#/$defs/Lens"
+        },
+        "phrases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Phrase"
+          }
+        },
+        "role": {
+          "$ref": "#/$defs/Role"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "role",
+        "lens",
+        "phrases"
+      ]
+    },
+    "RelationKind": {
+      "type": "string",
+      "enum": [
+        "repetition",
+        "complement",
+        "tension"
+      ]
+    },
+    "RevealedCard": {
+      "type": "object",
+      "properties": {
+        "cardId": {
+          "type": "string",
+          "pattern": "^(major\\.(0[0-9]|1[0-9]|2[01])|(wands|cups|swords|pentacles)\\.(0[1-9]|1[0-4]))$"
+        },
+        "orientation": {
+          "$ref": "#/$defs/Orientation"
+        },
+        "positionId": {
+          "$ref": "#/$defs/Position"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "cardId",
+        "orientation",
+        "positionId"
+      ]
+    },
+    "Role": {
+      "type": "string",
+      "enum": [
+        "visible",
+        "examination",
+        "direction",
+        "values",
+        "conditions",
+        "checks",
+        "foundation",
+        "difficulty",
+        "small_action"
+      ]
+    },
+    "Topic": {
+      "type": "string",
+      "enum": [
+        "relationships",
+        "work",
+        "creativity",
+        "growth"
+      ]
+    },
+    "Versions": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "const": "reading.en.1"
+        },
+        "engine": {
+          "type": "string",
+          "const": "reading.1"
+        },
+        "rules": {
+          "type": "string",
+          "const": "rules.1"
+        },
+        "schema": {
+          "type": "integer",
+          "format": "uint32",
+          "const": 1,
+          "minimum": 0
+        },
+        "semantics": {
+          "type": "string",
+          "const": "semantics.1"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "engine",
+        "semantics",
+        "rules",
+        "content"
+      ]
+    }
+  }
+}

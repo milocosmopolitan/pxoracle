@@ -27,9 +27,18 @@ pub unsafe extern "C" fn px_free(ptr: *mut c_char) {
 }
 
 use pxoracle_tarot::*;
+use pxoracle_tarot_reading::{Interpreter, ReadingInput, RulePack, SemanticPack};
+thread_local! { static READING: std::cell::RefCell<Option<Interpreter>> = const { std::cell::RefCell::new(None) }; }
 #[derive(serde::Deserialize)]
 #[serde(tag = "op", rename_all = "camelCase", deny_unknown_fields)]
 enum Request {
+    ReadingInitialize {
+        semantics: SemanticPack,
+        rules: RulePack,
+    },
+    ReadingInterpret {
+        input: ReadingInput,
+    },
     Create {
         seed: [u32; 2],
         spread: usize,
@@ -52,8 +61,23 @@ enum Request {
     },
 }
 pub fn dispatch(text: &str) -> Result<serde_json::Value, String> {
+    if text.len() > 1_000_000 {
+        return Err("INPUT_TOO_LARGE".into());
+    }
     let request: Request = serde_json::from_str(text).map_err(|_| "INVALID_INPUT")?;
     let s = match request {
+        Request::ReadingInitialize { semantics, rules } => {
+            let engine = Interpreter::new(semantics, rules)?;
+            READING.with(|cache| *cache.borrow_mut() = Some(engine));
+            return Ok(serde_json::json!({"initialized":true}));
+        }
+        Request::ReadingInterpret { input } => {
+            return READING.with(|cache| {
+                let cache = cache.borrow();
+                let engine = cache.as_ref().ok_or("READING_NOT_INITIALIZED")?;
+                serde_json::to_value(engine.interpret(input)?).map_err(|_| "SERIALIZATION".into())
+            });
+        }
         Request::Create {
             seed,
             spread,

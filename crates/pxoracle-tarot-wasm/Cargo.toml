@@ -6,6 +6,7 @@ edition.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 pxoracle-tarot = { path = "../pxoracle-tarot" }
+pxoracle-tarot-reading = { path = "../pxoracle-tarot-reading" }
 
 [lib]
 crate-type = ["staticlib", "rlib"]

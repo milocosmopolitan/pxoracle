@@ -1,0 +1,16 @@
+{
+  "browser": "141.0.7390.37",
+  "desktop": "1355x900",
+  "mobile": "390x844 Chromium emulation",
+  "checks": [
+    "Desktop real WASM draw/reveal, frozen perspective, keyboard card focus, pack failure/retry keeps same cards, explicit save, request/note privacy, independent lazy engines",
+    "Pinned restore reproduces exactly the same reading",
+    "Failed saved-draw engine initialization retries restore, never creates a replacement deck",
+    "Legacy v1 keeps cards and requires explicit perspective",
+    "Unavailable pinned version explicitly regenerates with unchanged cards; no auto-overwrite; deletion removes both envelopes",
+    "390x844 mobile emulation: full draw/reveal/reading, no horizontal overflow",
+    "SPA navigation abandons pending interpretation; returning resumes the same pinned draw without stale errors",
+    "One-card reflection retains its separate flow and does not download interpretation packs"
+  ],
+  "errors": []
+}

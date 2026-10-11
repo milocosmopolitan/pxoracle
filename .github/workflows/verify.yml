@@ -41,10 +41,6 @@ jobs:
         run: npm run build-storybook
         env:
           STORYBOOK_DISABLE_TELEMETRY: '1'
-      - run: npx playwright install --with-deps chromium firefox webkit chrome
-      - run: npx playwright test
-      - if: ${{ !cancelled() && steps.storybook-build.outcome == 'success' }}
-        run: npx playwright test --config playwright.storybook.config.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -54,6 +50,69 @@ jobs:
             playwright-report/
             test-results/
             apps/web/out/
+            apps/web/storybook-static/
+
+  browsers:
+    needs: verify
+    if: ${{ !cancelled() && needs.verify.outputs.static_built == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: chrome
+            install: chrome
+          - project: firefox
+            install: firefox
+          - project: webkit
+            install: webkit
+          - project: mobile-chromium-emulation
+            install: chromium
+    name: browser (${{ matrix.project }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: verification-and-static-export
+          path: .
+      - run: npx playwright install --with-deps ${{ matrix.install }}
+      - run: npx playwright test --project=${{ matrix.project }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-${{ matrix.project }}
+          path: |
+            playwright-report/
+            test-results/
+
+  storybook:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: verification-and-static-export
+          path: .
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test --config playwright.storybook.config.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: storybook-verification
+          path: test-results/storybook/
 
   safari:
     needs: verify

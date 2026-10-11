@@ -24,7 +24,10 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
   await page.getByRole("button", { name: "Next cards", exact: true }).click();
   await page.getByRole("button", { name: "Choose slot 13", exact: true }).click();
   await settleTarot(page, page.getByRole("button", { name: "Next cards", exact: true }));
-  for (let n = 0; n < 5; n++) await page.getByRole("button", { name: "Next cards", exact: true }).click();
+  for (let n = 0; n < 5; n++) {
+    await page.getByRole("button", { name: "Next cards", exact: true }).click();
+    await expect(page.getByText(`${n + 3} / 7`, { exact: true })).toBeVisible();
+  }
   await page.getByRole("button", { name: "Choose slot 78", exact: true }).click();
   await settleTarot(page, page.getByRole("heading", { name: "Let the images settle." }));
   expect(requests.some((x) => x.includes("/tarot/engine.wasm"))).toBeTruthy();
@@ -89,7 +92,10 @@ test("failed engine initialization offers a working retry", async ({
     fail ? route.abort() : route.continue(),
   );
   await page.goto("/tarot/");
-  await page.getByRole("button", { name: "Shuffle the deck" }).click();
+  const shuffle = page.getByRole("button", { name: "Shuffle the deck" });
+  await expect(shuffle).toBeEnabled();
+  await shuffle.focus();
+  await page.keyboard.press("Enter");
   await expect(page.locator('.error[role="alert"]')).toContainText("The calculation engine could not load");
   await expect(page.getByRole("button", {name:"Shuffle the deck"})).toBeEnabled();
   fail = false;

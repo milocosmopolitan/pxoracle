@@ -206,3 +206,7 @@ Every ADR records context, decision, alternatives, consequences, validation evid
 See [ADR 002](docs/decisions/002-tarot-table-choreography.md) for the engine-confirmed controller, minimal `TarotView`, Mesh picking, hand anchors, camera transition, restoration, and texture lifetime contract. Frame coordinates remain scene-local; questions never enter scene or engine requests. The authored English reflection pack does not analyze questions.
 
 See [ADR 003](docs/decisions/003-tarot-perspective-rig.md) for articulated arms, authored camera-view torso plates, PBR materials and Scene-owned selective pixel compositing. The optional render hook preserves runtime renderer ownership and existing scene isolation.
+
+## Deterministic three-card interpretation
+
+[ADR 004](docs/decisions/004-deterministic-free-readings.md) adds the independent pure Rust `pxoracle-tarot-reading` crate to the existing tarot WASM adapter. Its external symbolic packs are validated/cached in the Worker; English sentences remain a separate frontend content pack. Only three revealed cards and a fixed structured perspective enter interpretation. The original draw engine, position IDs, `en.v1`, Scene contracts, and astrology engine remain independent. Versioned v2 save envelopes preserve draw identity and require explicit perspective selection or version migration when needed.

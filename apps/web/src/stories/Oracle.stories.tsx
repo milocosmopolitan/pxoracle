@@ -8,7 +8,15 @@ import { ErrorNotice, Loading } from "../features/shared";
 import fixture from "../../../../tests/fixtures/engines.json";
 import type { Chart, TarotSession, RouteScene } from "@pxoracle/contracts";
 const chart = fixture.chart as Chart;
-const session = fixture.session as TarotSession;
+import readingFixtures from "../../../../tests/fixtures/readings.json";
+import type { ReadingInput, ReadingPlan } from "@pxoracle/contracts/reading";
+const session = structuredClone(fixture.session) as TarotSession;
+// Match the first three selectable slots to a native-evaluated synthetic reading.
+readingFixtures[0].input.cards.forEach((card, i) => {
+  const from = session.deck.findIndex((c) => c.cardId === card.cardId);
+  [session.deck[i], session.deck[from]] = [session.deck[from], session.deck[i]];
+  session.deck[i].orientation = card.orientation as "upright" | "reversed";
+});
 function Seed({
   feature,
   revealed,
@@ -17,7 +25,8 @@ function Seed({
   revealed: boolean;
 }) {
   const setChart = useOracle((s) => s.setChart),
-    setTarot = useOracle((s) => s.setTarot);
+    setTarot = useOracle((s) => s.setTarot),
+    setReading = useOracle((s) => s.setReading);
   useEffect(() => {
     if (!revealed) return;
     if (feature === "astrology") setChart(chart);
@@ -32,11 +41,25 @@ function Seed({
       }));
       s.state = "reading";
       setTarot(s);
+      setReading({
+        context: readingFixtures[0].plan.context as ReadingPlan["context"],
+        versions: readingFixtures[0].plan.versions as ReadingPlan["versions"],
+      });
     }
-  }, [feature, revealed, setChart, setTarot]);
+  }, [feature, revealed, setChart, setTarot, setReading]);
   return null;
 }
 const mockTarot = {
+  interpret: async (input: ReadingInput): Promise<ReadingPlan> => {
+    const fixture = readingFixtures.find(
+      (f) =>
+        JSON.stringify(f.input.cards) === JSON.stringify(input.cards) &&
+        f.input.context.topic === input.context.topic &&
+        f.input.context.intent === input.context.intent,
+    );
+    if (!fixture) throw new Error("READING_FIXTURE_UNAVAILABLE");
+    return structuredClone(fixture.plan) as ReadingPlan;
+  },
   create: async () => structuredClone(session),
   select: async (s: TarotSession, slot: number) => {
     const next = structuredClone(s);
@@ -69,9 +92,24 @@ const mockTarot = {
   complete: async (s: TarotSession) => ({ ...s, state: "completed" as const }),
   evict() {},
 };
-function SceneBridge({route,frozen}:{route:RouteScene;frozen:boolean}){
- const chart=useOracle(s=>s.chart),selectedBody=useOracle(s=>s.selectedBody),tarotView=useOracle(s=>s.tarotView);
- return <SceneCanvas embedded route={route} frozen={frozen} data={{bodies:chart?.bodies,selectedBody,tarot:tarotView}}/>;
+function SceneBridge({
+  route,
+  frozen,
+}: {
+  route: RouteScene;
+  frozen: boolean;
+}) {
+  const chart = useOracle((s) => s.chart),
+    selectedBody = useOracle((s) => s.selectedBody),
+    tarotView = useOracle((s) => s.tarotView);
+  return (
+    <SceneCanvas
+      embedded
+      route={route}
+      frozen={frozen}
+      data={{ bodies: chart?.bodies, selectedBody, tarot: tarotView }}
+    />
+  );
 }
 function Harness({
   route = "landing",
@@ -174,6 +212,6 @@ export const TarotReading: Story = {
 export const LoadingState: Story = { args: { state: "loading" } };
 export const RetryState: Story = { args: { state: "error" } };
 export const MobileTarot: Story = {
-  globals:{viewport:{value:"mobile390",isRotated:false}},
+  globals: { viewport: { value: "mobile390", isRotated: false } },
   args: { route: "tarot", state: "reading", width: 390 },
 };
