@@ -341,6 +341,16 @@ test("smaller cards stay inside the mat with mobile touch targets and retain the
       const mat = scene.scene.getObjectByName("reading-mat");
       mat.geometry.computeBoundingBox();
       const bounds = mat.geometry.boundingBox;
+      assert.ok(Math.abs(mat.position.y + bounds.max.y - 3) < 1e-6, "rear mat edge stays anchored");
+      const body = scene.scene.getObjectByName("reading-mat-body");
+      body.geometry.computeBoundingBox();
+      assert.ok(body.geometry.boundingBox.getSize(new THREE.Vector3()).z > 0.04);
+      assert.ok(body.castShadow && mat.receiveShadow);
+      assert.ok(mat.position.z >= body.position.z + body.geometry.boundingBox.max.z);
+      const first = scene.scene.getObjectByName("tarot-card-0");
+      const next = scene.scene.getObjectByName("tarot-card-1");
+      const previousGap = (width < 760 ? 1.1 : 1.15) - 0.705;
+      assert.ok(Math.abs(next.position.x - first.position.x - 0.705 - previousGap / 2) < 1e-6);
       for (let i = 0; i < 12; i++) {
         const card = scene.scene.getObjectByName(`tarot-card-${i}`);
         const paper = card.children[0].children[0].children[0];
@@ -352,6 +362,7 @@ test("smaller cards stay inside the mat with mobile touch targets and retain the
           );
           paper.localToWorld(point);
           const onMat = mat.worldToLocal(point.clone());
+          assert.ok(onMat.z > 0, "card volume clears the raised mat");
           assert.ok(
             onMat.x > bounds.min.x + 0.15 && onMat.x < bounds.max.x - 0.15,
             "horizontal mat margin",

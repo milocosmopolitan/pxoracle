@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { mkdirSync } from "node:fs";
-test("review four fixed stage compositions on desktop and mobile", async ({
+test("review stage and detail compositions on desktop and mobile", async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -12,7 +12,7 @@ test("review four fixed stage compositions on desktop and mobile", async ({
     await page.setViewportSize(
       mobile ? { width: 390, height: 700 } : { width: 1100, height: 800 },
     );
-    for (const shot of ["shuffle", "selection", "reveal", "reading"]) {
+    for (const shot of ["shuffle", "selection", "reveal", "reading", "detail"]) {
       await page.goto(
         `/iframe.html?id=pxoracle-tarot-table--frame-${shot}&viewMode=story`,
       );

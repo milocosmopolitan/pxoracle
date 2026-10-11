@@ -10,6 +10,12 @@ This revision replaces the sprite hands from [the earlier implementation](../tar
 - Only limb meshes are pixelated through a depth-tested mask. Face, room, wood, mat and cards render at display resolution. Cleanup covers all three targets, mask materials, geometry, shadow maps, GLB skeletons and texture leases.
 - Approved phase cameras settle for shuffle and selection, follow the reveal, then frame all reading cards. Exposed card Mesh clicks/taps and equivalent DOM controls offer a focused card view and return to overview; mobile descriptions collapse below the canvas.
 
+## Spacing and surface follow-up
+
+The card-to-card empty gaps are now 50% of their former horizontal/vertical spacing. The mat is 7.4 × 5.4, with its character-side edge fixed at local Y=3; a thin rounded cloth body casts shadows below the complete artwork. Tests check the anchored edge, physical thickness, card clearance and mobile touch bounds. Selection/reading cameras move closer; card detail rises from 55°/60° to 72°/75° on desktop/mobile. Table/floor albedo multipliers, roughness and warm fill are subdued to match the dim painted room. The follow-up reran 35 Node tests, 14 focused Scene/rig checks, typecheck, static export, Storybook build and ownership-boundary checks successfully. All six real static-app desktop/mobile browser checks pass again. Twelve tarot/fixed-frame Storybook checks also pass; the full 15-test result below belongs to the preceding revision. After the final mat-edge inset, the stage/detail-frame and animated hand browser checks were rerun: both pass, and their screenshots are refreshed.
+
+[Desktop detail](frames/desktop-detail.png) · [Mobile detail](frames/mobile-detail.png)
+
 ## Checks
 
 - `cargo test --locked`: 11 pass, plus doc tests.

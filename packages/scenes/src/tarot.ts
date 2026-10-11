@@ -15,6 +15,8 @@ import {
   CARD_GRIP_Y,
   MAT_WIDTH,
   MAT_DEPTH,
+  MAT_CENTER_Y,
+  MAT_TOP,
   slotPosition,
   spreadPosition,
   readingPlacement,
@@ -197,10 +199,10 @@ export const createScene: SceneFactory = async (leases, signal) => {
     const walnut = await acquire("/art/hand-mesh/table-reference-albedo.png");
     const wood = surfaceMaterial("wood", walnut, owner),
       trim = surfaceMaterial("wood", walnut, owner);
-    trim.color.set(0xe0bc93);
-    wood.color.setRGB(0.62, 0.72, 0.82);
+    trim.color.setRGB(0.42, 0.40, 0.43);
+    wood.color.setRGB(0.40, 0.46, 0.55);
     wood.normalScale.setScalar(0.22);
-    wood.roughness = 0.82;
+    wood.roughness = 0.94;
 
     function box(
       name: string,
@@ -230,6 +232,18 @@ export const createScene: SceneFactory = async (leases, signal) => {
       for (const y of [-3.4, 3.4])
         box("table-leg", [0.45, 0.45, 3.35], [x, y, -2.0], wood);
     }
+    // A thin rounded cloth volume provides an actual edge and contact shadow.
+    const matEdgeMaterial = surfaceMaterial("cloth", surface, owner);
+    matEdgeMaterial.color.set(0x343a36);
+    const matBodyGeometry = new RoundedBoxGeometry(
+      MAT_WIDTH - 0.40, MAT_DEPTH - 0.32, MAT_TOP - 0.003, 3, 0.018,
+    );
+    geometries.push(matBodyGeometry);
+    const matBody = new THREE.Mesh(matBodyGeometry, matEdgeMaterial);
+    matBody.name = "reading-mat-body";
+    matBody.position.set(0, MAT_CENTER_Y, (MAT_TOP - 0.003) / 2);
+    matBody.castShadow = matBody.receiveShadow = true;
+    table.add(matBody);
     const mat = plane(MAT_WIDTH, MAT_DEPTH, surface);
     const matMaterial = surfaceMaterial("cloth", surface, owner);
     matMaterial.color.set(0xffffff);
@@ -241,10 +255,11 @@ export const createScene: SceneFactory = async (leases, signal) => {
     >;
     matMesh.material = matMaterial;
     mat.name = "reading-mat";
-    mat.position.z = 0.035;
+    mat.position.set(0, MAT_CENTER_Y, MAT_TOP);
     mat.material.depthWrite = true;
     mat.renderOrder = 0;
     mat.receiveShadow = true;
+    mat.castShadow = true;
     table.add(mat);
     const floorMaterial = surfaceMaterial(
       "wood",
@@ -252,7 +267,8 @@ export const createScene: SceneFactory = async (leases, signal) => {
       owner,
     );
     floorMaterial.normalScale.setScalar(0.18);
-    floorMaterial.roughness = 0.7;
+    floorMaterial.roughness = 0.92;
+    floorMaterial.color.setRGB(0.52, 0.58, 0.70);
     for (const texture of [
       floorMaterial.map,
       floorMaterial.normalMap,
@@ -274,8 +290,8 @@ export const createScene: SceneFactory = async (leases, signal) => {
       pixelMaterial(0x171919, owner),
       base.scene,
     );
-    const ambient = new THREE.HemisphereLight(0xd2cfdf, 0x171324, 0.9);
-    const warm = new THREE.DirectionalLight(0xffdeb7, 1.5);
+    const ambient = new THREE.HemisphereLight(0xd2cfdf, 0x171324, 0.7);
+    const warm = new THREE.DirectionalLight(0xffdeb7, 1.25);
     warm.position.set(-10, 12, 7);
     warm.target.position.set(-3, -1, 0);
     warm.castShadow = true;
@@ -289,12 +305,12 @@ export const createScene: SceneFactory = async (leases, signal) => {
       far: 45,
     });
     warm.shadow.bias = -0.0003;
-    warm.shadow.normalBias = 0.025;
+    warm.shadow.normalBias = 0.008;
     releases.push(() => warm.shadow.dispose());
     base.scene.add(warm.target);
     const rim = new THREE.DirectionalLight(0x777acb, 0.7);
     rim.position.set(8, 5, -4);
-    const deskGlow = new THREE.PointLight(0xffb978, 70, 23, 2);
+    const deskGlow = new THREE.PointLight(0xffb978, 42, 23, 2);
     deskGlow.position.set(-8, 3.8, 1.5);
     const windowGlow = new THREE.PointLight(0x7585bf, 28, 25, 2);
     windowGlow.position.set(5, 4, -5);
