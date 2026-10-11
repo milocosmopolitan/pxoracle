@@ -1,10 +1,12 @@
 import * as THREE from "three";
 import type { RouteScene, ViewData } from "@pxoracle/contracts";
 export interface SceneInstance {
+  setShadows?(enabled: boolean): void;
   scene: THREE.Scene;
   camera: THREE.Camera;
   needsRender?(): boolean;
   render?(renderer: THREE.WebGLRenderer): void;
+  gesture?(event: { dx: number; dy: number; zoom: number }): boolean;
   pointer?(event: { type: "focus" | "select"; x: number; y: number }): void;
   enter(): void;
   resize?(width: number, height: number): void;
@@ -59,9 +61,14 @@ export class TextureLeases {
     return this.entries.size;
   }
 }
+/** Conservative fallback for measured software rasterizers; renderer details stay local. */
+export function supportsStudyShadows(rendererName: string, maxTextureSize: number) {
+  return maxTextureSize >= 512 && !/swiftshader|llvmpipe|softpipe|software rasterizer/i.test(rendererName);
+}
 export class SceneRuntime {
   readonly leases = new TextureLeases();
   private renderer: THREE.WebGLRenderer;
+  private studyShadows = true;
   private active: SceneInstance | null = null;
   private generation = 0;
   private abort: AbortController | null = null;
@@ -82,14 +89,20 @@ export class SceneRuntime {
   private down: { x: number; y: number; id: number; moved: boolean } | null =
     null;
   private pointerDown = (e: PointerEvent) => {
+    this.previousPointer = {x:e.clientX,y:e.clientY};
     this.down = { x: e.clientX, y: e.clientY, id: e.pointerId, moved: false };
   };
+  private previousPointer: {x:number;y:number} | null = null;
   private pointerMove = (e: PointerEvent) => {
     if (
       this.down &&
       Math.hypot(e.clientX - this.down.x, e.clientY - this.down.y) > 8
     )
       this.down.moved = true;
+    if (this.down?.moved && this.previousPointer && this.acceptingInput) {
+      this.dirty = this.active?.gesture?.({dx:(e.clientX-this.previousPointer.x)/this.width,dy:(e.clientY-this.previousPointer.y)/this.height,zoom:0}) || this.dirty;
+      this.previousPointer = {x:e.clientX,y:e.clientY};
+    }
     if (e.pointerType !== "touch") this.sendPointer(e, "focus");
   };
   private pointerUp = (e: PointerEvent) => {
@@ -100,6 +113,9 @@ export class SceneRuntime {
     )
       this.sendPointer(e, "select");
     this.down = null;
+  };
+  private wheel = (event: WheelEvent) => {
+    if(this.acceptingInput && this.active?.gesture?.({dx:0,dy:0,zoom:Math.sign(event.deltaY)*.06})) { event.preventDefault(); this.dirty=true; }
   };
   private pointerCancel = () => {
     this.down = null;
@@ -139,6 +155,14 @@ export class SceneRuntime {
       antialias: false,
       powerPreference: "low-power",
     });
+    const gl = this.renderer.getContext();
+    const debug = gl.getExtension("WEBGL_debug_renderer_info");
+    const rendererName = String(gl.getParameter(debug?.UNMASKED_RENDERER_WEBGL ?? gl.RENDERER));
+    this.studyShadows = supportsStudyShadows(rendererName, this.renderer.capabilities.maxTextureSize);
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
+    this.renderer.toneMapping = THREE.NoToneMapping;
+    this.renderer.toneMappingExposure = 1;
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
     this.reduced = matchMedia("(prefers-reduced-motion: reduce)");
     this.observer = new ResizeObserver(() => {
@@ -155,6 +179,7 @@ export class SceneRuntime {
     canvas.addEventListener("pointermove", this.pointerMove);
     canvas.addEventListener("pointerup", this.pointerUp);
     canvas.addEventListener("pointercancel", this.pointerCancel);
+    canvas.addEventListener("wheel", this.wheel, {passive:false});
     this.tick();
   }
   private lost = (event: Event) => {
@@ -209,6 +234,7 @@ export class SceneRuntime {
         next.dispose();
         return;
       }
+      next.setShadows?.(this.studyShadows);
       this.active?.exit();
       this.active?.dispose();
       this.active = next;
@@ -236,6 +262,7 @@ export class SceneRuntime {
     this.canvas.removeEventListener("pointermove", this.pointerMove);
     this.canvas.removeEventListener("pointerup", this.pointerUp);
     this.canvas.removeEventListener("pointercancel", this.pointerCancel);
+    this.canvas.removeEventListener("wheel", this.wheel);
     this.canvas.removeEventListener("webglcontextlost", this.lost);
     this.active?.dispose();
     this.active = null;
@@ -246,6 +273,10 @@ export class SceneRuntime {
     return {
       textures: this.leases.count,
       geometries: this.renderer.info.memory.geometries,
+      gpuTextures: this.renderer.info.memory.textures,
+      calls: this.renderer.info.render.calls,
+      triangles: this.renderer.info.render.triangles,
+      programs: this.renderer.info.programs?.length ?? 0,
     };
   }
 }

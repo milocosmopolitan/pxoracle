@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { createStudyProps } from "./study-props";
 import type { SceneInstance, TextureLeases } from "@pxoracle/scene-runtime";
 import type { ViewData } from "@pxoracle/contracts";
 type Crop = [left: number, top: number, right: number, bottom: number];
@@ -19,6 +20,7 @@ export async function composition(
   const markers = new THREE.Group();
   scene.add(markers);
   let disposed = false;
+  let props: Awaited<ReturnType<typeof createStudyProps>> | undefined;
   let oracle: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial> | null =
     null;
   let neutral: THREE.Texture | null = null;
@@ -27,6 +29,7 @@ export async function composition(
   const dispose = () => {
     if (disposed) return;
     disposed = true;
+    props?.dispose();
     geometries.forEach((g) => g.dispose());
     materials.forEach((m) => m.dispose());
     releases.forEach((r) => r());
@@ -79,7 +82,8 @@ export async function composition(
         map: lease.texture,
         color: appearance?.tint ?? 0xffffff,
         transparent: true,
-        depthWrite: false,
+        depthWrite: true,
+        alphaTest: 0.025,
       });
       const mesh = new THREE.Mesh(geometry, material);
       mesh.position.set(x, y, z * 0.02);
@@ -91,6 +95,10 @@ export async function composition(
         oracle = mesh;
         neutral = lease.texture;
       }
+    }
+    if (mode !== "tarot") {
+      props = await createStudyProps(leases, signal);
+      scene.add(props.group);
     }
     if (oracle) {
       const lease = await leases.acquire("/art/oracle-smile.webp");
@@ -122,6 +130,7 @@ export async function composition(
       markers.add(dot);
     }
     return {
+      setShadows(enabled) { props?.lamp.setShadows(enabled); },
       scene,
       camera,
       resize(width:number,height:number){const aspect=width/Math.max(height,1);const center=aspect<1.45?-3:0;const halfWidth=Math.max(5.2,5*aspect);camera.left=center-halfWidth;camera.right=center+halfWidth;camera.top=halfWidth/aspect;camera.bottom=-halfWidth/aspect;camera.updateProjectionMatrix();},
@@ -131,6 +140,7 @@ export async function composition(
       exit() {},
       dispose,
       update(time: number, data: ViewData, reduced: boolean) {
+        props?.update(time, reduced);
         if (enteredAt === null) enteredAt = time;
         const progress = reduced ? 1 : Math.min(1, (time - enteredAt) / 1.2);
         camera.zoom = mode === "landing" ? 1 : 1 + 0.025 * (1 - Math.pow(1 - progress, 3));

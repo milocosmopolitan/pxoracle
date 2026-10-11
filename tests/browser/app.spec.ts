@@ -145,6 +145,7 @@ test('repeated navigation releases WebGL allocations and records a frame baselin
   }
   samples.push(await page.evaluate(()=>(window as any).__pxResources()));
  }
+ await test.info().attach('navigation-live-allocations',{body:JSON.stringify(samples,null,2),contentType:'application/json'});
  for(const key of ['textures','buffers','programs'])expect(samples.at(-1)![key]).toBeLessThanOrEqual(samples[1][key]+1);
  const frameIntervals=await page.evaluate(()=>new Promise<number[]>(resolve=>{const values:number[]=[];let last=performance.now();function frame(now:number){values.push(now-last);last=now;if(values.length===60)resolve(values);else requestAnimationFrame(frame);}requestAnimationFrame(frame);}));
  await test.info().attach('navigation-resource-baseline',{body:JSON.stringify({samples,frameIntervalsMs:frameIntervals,viewport:{width:640,height:480},scope:'CI software-rendered Chrome at 640x480, standard motion; not a physical-device FPS guarantee'},null,2),contentType:'application/json'});

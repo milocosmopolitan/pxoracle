@@ -1,0 +1,7 @@
+{
+  "browser": "Chromium headless desktop 1100x800",
+  "reducedMotionStable": true,
+  "assetFailure": "injected acquisition rejection",
+  "assetRetry": "ready",
+  "errors": []
+}

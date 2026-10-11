@@ -1,0 +1,118 @@
+{
+  "version": "ne-5.1.2-etopo1-v1",
+  "sources": [
+    {
+      "file": "sources/ne_50m_admin_0_countries.geojson",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson",
+      "license": "Public domain",
+      "attribution": "Natural Earth 5.1.2, de facto boundaries; no sovereignty endorsement",
+      "sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb"
+    },
+    {
+      "file": "sources/etopo1.csv.gz",
+      "url": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/etopo180.csv?altitude%5B(90):20:(-90)%5D%5B(-180):20:(180)%5D",
+      "license": "NOAA freely usable and redistributable; no warranty; not for legal use",
+      "attribution": "Amante, C. and B. W. Eakins, ETOPO1, NOAA NGDC-24 (2009); NOAA NGDC, WGS84 / mean sea level, ice surface",
+      "sha256": "61a0bd2f769e5b54e683dcbaf977ed59adc00a717363d2a5e681647a067cc53f"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "brass-roughness.png",
+      "bytes": 46505,
+      "gzipBytes": 46538,
+      "sha256": "1bab2d1c93391d70d4c9c7f4d55be9010a37d8695958aa61ce04b247acda72cb",
+      "width": 256,
+      "height": 256,
+      "colorSpace": "none",
+      "magnification": "nearest"
+    },
+    {
+      "file": "elevation-room.i16",
+      "bytes": 293222,
+      "gzipBytes": 246565,
+      "sha256": "9fd2e44d64df7fcf37542554fcc926c04ca7a4be0023451b6f89307d9856f67f"
+    },
+    {
+      "file": "elevation.i16",
+      "bytes": 1169642,
+      "gzipBytes": 963679,
+      "sha256": "c5a16cb6caed8fd670223b74a71bfcb5e1defdd6749afda319442c1b86ce6371"
+    },
+    {
+      "file": "geography.json",
+      "bytes": 1806623,
+      "gzipBytes": 655102,
+      "sha256": "b578c29c046b7d48d2616b507db6a0672291b09e18cfd3e39d5fff287c0f9444"
+    },
+    {
+      "file": "parchment-room.png",
+      "bytes": 601259,
+      "gzipBytes": 601462,
+      "sha256": "c4a06552cd1c31670d0cc8486200b23983dd85bd634ba6dac90a408cc75139f7",
+      "width": 1024,
+      "height": 512,
+      "colorSpace": "sRGB",
+      "magnification": "nearest"
+    },
+    {
+      "file": "parchment.png",
+      "bytes": 1955644,
+      "gzipBytes": 1953453,
+      "sha256": "d1610f36938e370bbc7e35af2809517d7dc1c6ebd3fbd5aa4b57cd47bd845c77",
+      "width": 2048,
+      "height": 1024,
+      "colorSpace": "sRGB",
+      "magnification": "nearest"
+    },
+    {
+      "file": "relief-bump-room.png",
+      "bytes": 61171,
+      "gzipBytes": 61209,
+      "sha256": "b25d572adc666a4b9d416119d71dadcdf96d31e2781a8f5d2f4ea3ad0bd5522b",
+      "width": 541,
+      "height": 271,
+      "colorSpace": "none",
+      "magnification": "nearest"
+    },
+    {
+      "file": "relief-bump.png",
+      "bytes": 288316,
+      "gzipBytes": 288424,
+      "sha256": "fd5b27effc738a4a55c8e25e3c8a0e5b9430382aeb6f38d203475aa959fc2380",
+      "width": 1081,
+      "height": 541,
+      "colorSpace": "none",
+      "magnification": "nearest"
+    },
+    {
+      "file": "walnut.png",
+      "bytes": 56718,
+      "gzipBytes": 56756,
+      "sha256": "3ef3a7f98e1df273c6ed5dfd1a2fa09b90fe108e2cc80d200717bd905b82d03d",
+      "width": 256,
+      "height": 256,
+      "colorSpace": "sRGB",
+      "magnification": "nearest"
+    }
+  ],
+  "grid": {
+    "width": 1081,
+    "height": 541,
+    "encoding": "little-endian signed int16 metres, north first, duplicated seam",
+    "sampleDegrees": 0.3333333333333333
+  },
+  "missingGeometry": [
+    "BQ",
+    "CC",
+    "CX",
+    "GF",
+    "GI",
+    "GP",
+    "MQ",
+    "RE",
+    "SJ",
+    "YT"
+  ],
+  "transform": "python3 scripts/build-globe.py; Python 3; Pillow 12.3.0; deterministic seed 63067; no network; CPU elevation linear land-only displacement"
+}

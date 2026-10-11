@@ -42,7 +42,19 @@ export interface NatalState {
   restored: "none" | "legacy" | "current" | "unsupported";
 }
 export const emptyNatal = (): NatalState => ({ facts: null, restorePlan: null, plan: null, place: null, status: "idle", error: "", selection: null, revision: 0, restored: "none" });
+import { emptyBirthplace, navigateBirthplace, chooseBirthplace, type BirthplaceNavigation } from "./birthplace";
+import type { Birthplace } from "@pxoracle/contracts/atlas";
+import type { GlobeIntent, GlobeView } from "@pxoracle/contracts/globe-view";
 export interface AppState {
+  birthplace: BirthplaceNavigation;
+  globeEntryPending: boolean;
+  requestGlobeEntry: () => void;
+  consumeGlobeEntry: () => void;
+  navigateBirthplace: (intent: GlobeIntent) => void;
+  chooseBirthplace: (city: Birthplace, revision: number) => void;
+  clearBirthplaceCandidate: () => void;
+  globeView: GlobeView | undefined;
+  setGlobeView: (view: GlobeView | undefined) => void;
   natal: NatalState;
   setNatal: (value: Partial<NatalState>) => void;
   astrologyView: AstrologyView | undefined;
@@ -78,6 +90,15 @@ export function createAppStore() {
       error: "",
       busy: false,
     },
+    birthplace: emptyBirthplace(),
+    globeEntryPending: false,
+    requestGlobeEntry: () => set(s => ({ globeEntryPending: true, birthplace: navigateBirthplace(s.birthplace, {type: "open"}) })),
+    consumeGlobeEntry: () => set({ globeEntryPending: false }),
+    navigateBirthplace: intent => set(s => ({ birthplace: navigateBirthplace(s.birthplace, intent) })),
+    chooseBirthplace: (city, revision) => set(s => ({ birthplace: chooseBirthplace(s.birthplace, city, revision) })),
+    clearBirthplaceCandidate: () => set(s => ({ birthplace: { ...s.birthplace, candidate: null } })),
+    globeView: undefined,
+    setGlobeView: globeView => set({ globeView }),
     natal: emptyNatal(),
     setNatal: value => set(s => ({ natal: { ...s.natal, ...value } })),
     astrologyView: undefined,

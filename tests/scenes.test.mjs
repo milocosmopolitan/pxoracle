@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import * as THREE from 'three';
-import { TextureLeases } from '../packages/scene-runtime/src/index.ts';
+import { TextureLeases, supportsStudyShadows } from '../packages/scene-runtime/src/index.ts';
 import { composition } from '../packages/scenes/src/composition.ts';
 import { studyLayers } from '../packages/scenes/src/study.ts';
 
@@ -19,6 +19,9 @@ test('room scenes use manifested art and release shared portrait leases on dispo
       const view = await composition(leases, new AbortController().signal, layers, mode);
       view.resize(990, 619);
       view.enter();
+      view.setShadows(false);
+      view.scene.traverse(o => { if (o.isLight) assert.equal(o.castShadow, false); });
+      view.setShadows(true);
       view.update(0, {}, true);
       view.resize(390, 560);
       view.update(1, {}, false);
@@ -45,4 +48,13 @@ test('abandoning a room while a prop loads releases every acquired texture', asy
   } finally {
     THREE.TextureLoader.prototype.loadAsync = original;
   }
+});
+
+
+test('measured software renderers use shadowless lighting while hardware keeps the bounded shadow', () => {
+  for (const name of ['ANGLE Vulkan SwiftShader', 'llvmpipe', 'softpipe', 'Software Rasterizer'])
+    assert.equal(supportsStudyShadows(name, 16384), false);
+  assert.equal(supportsStudyShadows('ANGLE Metal Renderer: Apple M4', 16384), true);
+  assert.equal(supportsStudyShadows('unknown', 256), false);
+  assert.equal(supportsStudyShadows('unknown', 512), true);
 });

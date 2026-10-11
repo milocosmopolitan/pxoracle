@@ -1,5 +1,7 @@
 # Verification status
 
+Current globe/lighting delivery: [2026-10-11 implementation, visual evidence and open hardware gates](globe-lighting/README.md). These measurements supersede older scene allocation counts only for the new feature branch; Apple M4 desktop GPU and software fallback are measured; physical mobile remains unqualified.
+
 For the current tarot choreography implementation, see [2026-10-10 checks and visual evidence](tarot-table/README.md). The counts and browser versions below describe the earlier baseline, not new head qualification.
 
 Baseline qualification: [successful workflow 38083929265](https://github.com/milocosmopolitan/pxoracle/actions/runs/38083929265), source commit `c5d0aa72e75b6f638476181118f2273bf22f8613`. Current head checks are attached to PR #26. The subsequent Storybook mobile viewport adjustment is covered by that head's story checks.

@@ -1,0 +1,113 @@
+{
+  "cycles": [
+    {
+      "cycle": 0,
+      "prepareAndFirstRenderMs": 5362.299999952316,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    },
+    {
+      "cycle": 1,
+      "prepareAndFirstRenderMs": 3748.199999809265,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    },
+    {
+      "cycle": 2,
+      "prepareAndFirstRenderMs": 2498.800000190735,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    },
+    {
+      "cycle": 3,
+      "prepareAndFirstRenderMs": 2048.399999856949,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    },
+    {
+      "cycle": 4,
+      "prepareAndFirstRenderMs": 2653.2000000476837,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    },
+    {
+      "cycle": 5,
+      "prepareAndFirstRenderMs": 1716.7000000476837,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    },
+    {
+      "cycle": 6,
+      "prepareAndFirstRenderMs": 1173.7000000476837,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    },
+    {
+      "cycle": 7,
+      "prepareAndFirstRenderMs": 1595.7000000476837,
+      "textures": 4,
+      "geometries": 12,
+      "gpuTextures": 5,
+      "calls": 12,
+      "triangles": 156768,
+      "programs": 3,
+      "rawBuffers": 48
+    }
+  ],
+  "rapid": {
+    "textures": 4,
+    "geometries": 7,
+    "gpuTextures": 5,
+    "calls": 7,
+    "triangles": 148896,
+    "programs": 3,
+    "rawBuffers": 28
+  },
+  "empty": {
+    "textures": 0,
+    "geometries": 0,
+    "gpuTextures": 1,
+    "calls": 0,
+    "triangles": 0,
+    "programs": 0,
+    "rawBuffers": 0
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "errors": [],
+  "scope": "Headless Chromium, isolated production globe. Preview has no shadow-casting lights. Counts are live renderer allocation counts, not hardware VRAM bytes or physical mobile qualification. Empty scene retains one renderer-owned Three r186 DFG LUT after physical-material warmup (WebGLRenderer getDFGLUT); all globe textures, geometries, programs and leases return to zero."
+}

@@ -132,6 +132,7 @@ export interface TarotView {
   }) => void;
 }
 export interface ViewData {
+  globe?: import("./globe-view").GlobeView;
   astrology?: import("./astrology-view").AstrologyView;
   tarot?: TarotView;
   bodies?: Pick<Body, "id" | "longitude">[];

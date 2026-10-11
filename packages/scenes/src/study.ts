@@ -14,8 +14,6 @@ export function studyLayers(mode: "landing" | "tarot" | "astrology"): Layer[] {
     ["/art/table.webp", -3, -2.5, 9, 6],
     ["/art/runner.webp", -3.1, -2.4, 1.65, 4],
     ["/art/mat.webp", -3.1, -0.98, 4.5, 1.7],
-    ["/art/candle.webp", -4.65, -0.53, 0.8, 1.05],
-    ["/art/lamp.webp", -5.2, 0.5, 3, 3, 1, { flipX: true }],
     ["/art/notebook.webp", -0.7, -0.78, 1.45, 0.9],
     ["/art/pen.webp", -0.55, -1.13, 0.95, 0.36],
     ["/art/mug.webp", -5.35, -0.74, 0.8, 0.8],

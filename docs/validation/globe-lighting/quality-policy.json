@@ -1,0 +1,156 @@
+{
+  "recordedAt": "2026-10-11T19:41:07.162Z",
+  "method": "Actual production SceneRuntime.navigate defaults; no manual shadow overrides. Three real factories at1280x720DPR1; settled astrology overview and tarot selection review.",
+  "runs": [
+    {
+      "backend": "software",
+      "args": [],
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+      "maxTextureSize": 8192,
+      "policyStudyShadows": false,
+      "scenes": [
+        {
+          "route": "landing",
+          "lamps": [
+            {
+              "castShadow": false,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": false
+            }
+          ],
+          "textures": 19,
+          "geometries": 51,
+          "gpuTextures": 23,
+          "calls": 53,
+          "triangles": 42436,
+          "programs": 13
+        },
+        {
+          "route": "astrology",
+          "lamps": [
+            {
+              "castShadow": false,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": false
+            }
+          ],
+          "textures": 21,
+          "geometries": 27,
+          "gpuTextures": 21,
+          "calls": 29,
+          "triangles": 156816,
+          "programs": 9
+        },
+        {
+          "route": "tarot",
+          "lamps": [
+            {
+              "castShadow": false,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": false
+            }
+          ],
+          "textures": 17,
+          "geometries": 57,
+          "gpuTextures": 49,
+          "calls": 223,
+          "triangles": 187966,
+          "programs": 32
+        }
+      ],
+      "errors": [],
+      "afterDispose": {
+        "leases": 0,
+        "contextLost": true
+      }
+    },
+    {
+      "backend": "metal",
+      "args": [
+        "--use-angle=metal"
+      ],
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "maxTextureSize": 16384,
+      "policyStudyShadows": true,
+      "scenes": [
+        {
+          "route": "landing",
+          "lamps": [
+            {
+              "castShadow": true,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": true
+            }
+          ],
+          "textures": 19,
+          "geometries": 51,
+          "gpuTextures": 25,
+          "calls": 61,
+          "triangles": 51908,
+          "programs": 14
+        },
+        {
+          "route": "astrology",
+          "lamps": [
+            {
+              "castShadow": true,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": true
+            }
+          ],
+          "textures": 21,
+          "geometries": 35,
+          "gpuTextures": 24,
+          "calls": 37,
+          "triangles": 166288,
+          "programs": 10
+        },
+        {
+          "route": "tarot",
+          "lamps": [
+            {
+              "castShadow": true,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": true
+            }
+          ],
+          "textures": 17,
+          "geometries": 57,
+          "gpuTextures": 51,
+          "calls": 250,
+          "triangles": 207052,
+          "programs": 38
+        }
+      ],
+      "errors": [],
+      "afterDispose": {
+        "leases": 0,
+        "contextLost": true
+      }
+    }
+  ]
+}

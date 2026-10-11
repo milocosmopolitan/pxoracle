@@ -22,8 +22,17 @@ import {
 export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
   const chart = useOracle((s) => s.chart),
     natal = useOracle((s) => s.natal);
+  const birthplace = useOracle(s => s.birthplace);
   const store = useOracleStore();
   const controller = useNatal(engine);
+  const entryPending = useOracle(s => s.globeEntryPending);
+  const [preferAtlas, setPreferAtlas] = useState(entryPending);
+  useEffect(() => {
+    if (!entryPending) return;
+    store.getState().consumeGlobeEntry();
+    setPreferAtlas(true);
+    if (store.getState().chart) controller.edit();
+  }, [entryPending, store, controller]);
   const [full, setFull] = useState(false);
   const [sceneSettled, setSceneSettled] = useState(false);
   const cameraRequest = useRef(0);
@@ -129,7 +138,14 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
     onSettled,
     store,
   ]);
-  useEffect(() => () => store.getState().setAstrologyView(undefined), [store]);
+  useEffect(() => {
+    store.getState().setGlobeView({
+      phase: chart ? "crystal" : birthplace.phase,
+      region: birthplace.region, country: birthplace.country, revision: birthplace.revision, adjustment: birthplace.adjustment, viewport,
+      onIntent: store.getState().navigateBirthplace,
+    });
+  }, [chart, birthplace.phase, birthplace.region, birthplace.country, birthplace.revision, birthplace.adjustment, viewport, store]);
+  useEffect(() => () => { store.getState().setAstrologyView(undefined); store.getState().setGlobeView(undefined); }, [store]);
   useEffect(() => {
     const escape = (event: KeyboardEvent) => {
       if (event.key === "Escape") select(null);
@@ -165,15 +181,13 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
           className="natal-stage"
           data-settled={sceneSettled}
           aria-busy={!sceneSettled}
-          aria-label="Crystal exploration area"
+          aria-label={chart ? "Crystal exploration area" : "Birthplace globe exploration area"}
         >
           <div className="natal-scene-caption">
-            <p className="eyebrow">THE CELESTIAL MIRROR</p>
+            <p className="eyebrow">{!chart && birthplace.phase !== "room" ? "THE WORLD AT YOUR BEGINNING" : "THE CELESTIAL MIRROR"}</p>
             {!chart ? (
               <h1 tabIndex={-1}>
-                A sky that
-                <br />
-                <em>began with you.</em>
+                {birthplace.phase === "room" ? <>A sky that<br /><em>began with you.</em></> : <>Find your <em>beginning.</em></>}
               </h1>
             ) : (
               <>
@@ -201,6 +215,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
             <h2>Where did your story begin?</h2>
             <p>Use the local date and time recorded at your birthplace.</p>
             <BirthForm
+              preferAtlas={preferAtlas}
               initial={controller.initial}
               initialPlace={controller.initialPlace}
               busy={controller.busy}

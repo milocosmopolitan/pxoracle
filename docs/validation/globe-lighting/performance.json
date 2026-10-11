@@ -1,0 +1,883 @@
+{
+  "recordedAt": "2026-10-11T19:28:12.459Z",
+  "method": "Actual headless Chromium, production SceneRuntime + landing/astrology/tarot factories imported through local Storybook Vite; no substitute scene.",
+  "limitations": [
+    "Approximate tarot source baseline from2482c84 uses current shared composition/runtime, not an isolated old full application.",
+    "Headless local browser is not physical mobile qualification.",
+    "CPU submission durations are wall clock around production update/render, not GPU execution time; software-driver backpressure may block submission.",
+    "Preparation duration includes navigation, first render and an intentional 70 ms stabilization wait.",
+    "GPU resource counts are WebGL create/delete and renderer.info counts, not driver memory bytes.",
+    "No GPU timer duration collected."
+  ],
+  "device": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "dpr": 1,
+    "viewport": [
+      1280,
+      720
+    ],
+    "vendor": "Google Inc. (Google)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+    "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "timerQueryAvailable": false
+  },
+  "views": [
+    {
+      "label": "room",
+      "preparationMs": 7520.399999856949,
+      "withShadows": {
+        "label": "room",
+        "textures": 19,
+        "geometries": 51,
+        "gpuTextures": 25,
+        "calls": 61,
+        "triangles": 51908,
+        "programs": 14,
+        "shadowLights": 1,
+        "lights": 5,
+        "gpu": {
+          "Texture": {
+            "created": 29,
+            "deleted": 0,
+            "live": 29
+          },
+          "Framebuffer": {
+            "created": 4,
+            "deleted": 0,
+            "live": 4
+          },
+          "Buffer": {
+            "created": 204,
+            "deleted": 0,
+            "live": 204
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 0,
+            "live": 14
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          }
+        }
+      },
+      "withoutShadows": {
+        "label": "room-no-shadow",
+        "textures": 19,
+        "geometries": 51,
+        "gpuTextures": 23,
+        "calls": 53,
+        "triangles": 42436,
+        "programs": 26,
+        "shadowLights": 0,
+        "lights": 5,
+        "gpu": {
+          "Texture": {
+            "created": 29,
+            "deleted": 2,
+            "live": 27
+          },
+          "Framebuffer": {
+            "created": 4,
+            "deleted": 1,
+            "live": 3
+          },
+          "Buffer": {
+            "created": 204,
+            "deleted": 0,
+            "live": 204
+          },
+          "Program": {
+            "created": 26,
+            "deleted": 0,
+            "live": 26
+          },
+          "Shader": {
+            "created": 52,
+            "deleted": 52,
+            "live": 0
+          }
+        }
+      },
+      "cpuSubmissionMs": {
+        "median": 0.5999999046325684,
+        "p95": 1.5999999046325684,
+        "max": 4,
+        "samples": 60
+      }
+    },
+    {
+      "label": "overview",
+      "preparationMs": 7142.5,
+      "withShadows": {
+        "label": "overview",
+        "textures": 21,
+        "geometries": 35,
+        "gpuTextures": 24,
+        "calls": 37,
+        "triangles": 166288,
+        "programs": 10,
+        "shadowLights": 1,
+        "lights": 5,
+        "gpu": {
+          "Texture": {
+            "created": 40,
+            "deleted": 12,
+            "live": 28
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 2,
+            "live": 4
+          },
+          "Buffer": {
+            "created": 344,
+            "deleted": 204,
+            "live": 140
+          },
+          "Program": {
+            "created": 35,
+            "deleted": 25,
+            "live": 10
+          },
+          "Shader": {
+            "created": 70,
+            "deleted": 70,
+            "live": 0
+          }
+        }
+      },
+      "withoutShadows": {
+        "label": "overview-no-shadow",
+        "textures": 21,
+        "geometries": 35,
+        "gpuTextures": 22,
+        "calls": 29,
+        "triangles": 156816,
+        "programs": 18,
+        "shadowLights": 0,
+        "lights": 5,
+        "gpu": {
+          "Texture": {
+            "created": 40,
+            "deleted": 14,
+            "live": 26
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 3,
+            "live": 3
+          },
+          "Buffer": {
+            "created": 344,
+            "deleted": 204,
+            "live": 140
+          },
+          "Program": {
+            "created": 43,
+            "deleted": 25,
+            "live": 18
+          },
+          "Shader": {
+            "created": 86,
+            "deleted": 86,
+            "live": 0
+          }
+        }
+      },
+      "cpuSubmissionMs": {
+        "median": 0.40000009536743164,
+        "p95": 1.1000001430511475,
+        "max": 3.1000001430511475,
+        "samples": 60
+      }
+    },
+    {
+      "label": "country-SG",
+      "preparationMs": 3926.4000000953674,
+      "withShadows": {
+        "label": "country-SG",
+        "textures": 21,
+        "geometries": 28,
+        "gpuTextures": 24,
+        "calls": 29,
+        "triangles": 160326,
+        "programs": 9,
+        "shadowLights": 1,
+        "lights": 5,
+        "gpu": {
+          "Texture": {
+            "created": 47,
+            "deleted": 19,
+            "live": 28
+          },
+          "Framebuffer": {
+            "created": 8,
+            "deleted": 4,
+            "live": 4
+          },
+          "Buffer": {
+            "created": 453,
+            "deleted": 344,
+            "live": 109
+          },
+          "Program": {
+            "created": 51,
+            "deleted": 42,
+            "live": 9
+          },
+          "Shader": {
+            "created": 102,
+            "deleted": 102,
+            "live": 0
+          }
+        }
+      },
+      "withoutShadows": {
+        "label": "country-SG-no-shadow",
+        "textures": 21,
+        "geometries": 28,
+        "gpuTextures": 22,
+        "calls": 21,
+        "triangles": 150854,
+        "programs": 15,
+        "shadowLights": 0,
+        "lights": 5,
+        "gpu": {
+          "Texture": {
+            "created": 47,
+            "deleted": 21,
+            "live": 26
+          },
+          "Framebuffer": {
+            "created": 8,
+            "deleted": 5,
+            "live": 3
+          },
+          "Buffer": {
+            "created": 453,
+            "deleted": 344,
+            "live": 109
+          },
+          "Program": {
+            "created": 57,
+            "deleted": 42,
+            "live": 15
+          },
+          "Shader": {
+            "created": 114,
+            "deleted": 114,
+            "live": 0
+          }
+        }
+      },
+      "cpuSubmissionMs": {
+        "median": 0.20000004768371582,
+        "p95": 0.5,
+        "max": 0.7000000476837158,
+        "samples": 60
+      }
+    },
+    {
+      "label": "tarot",
+      "preparationMs": 15709.799999952316,
+      "withShadows": {
+        "label": "tarot",
+        "textures": 17,
+        "geometries": 57,
+        "gpuTextures": 51,
+        "calls": 250,
+        "triangles": 207052,
+        "programs": 38,
+        "shadowLights": 1,
+        "lights": 7,
+        "gpu": {
+          "Texture": {
+            "created": 92,
+            "deleted": 37,
+            "live": 55
+          },
+          "Framebuffer": {
+            "created": 14,
+            "deleted": 6,
+            "live": 8
+          },
+          "Buffer": {
+            "created": 686,
+            "deleted": 453,
+            "live": 233
+          },
+          "Program": {
+            "created": 94,
+            "deleted": 56,
+            "live": 38
+          },
+          "Shader": {
+            "created": 188,
+            "deleted": 188,
+            "live": 0
+          },
+          "Renderbuffer": {
+            "created": 4,
+            "deleted": 0,
+            "live": 4
+          }
+        }
+      },
+      "withoutShadows": {
+        "label": "tarot-no-shadow",
+        "textures": 17,
+        "geometries": 57,
+        "gpuTextures": 49,
+        "calls": 223,
+        "triangles": 187966,
+        "programs": 58,
+        "shadowLights": 0,
+        "lights": 7,
+        "gpu": {
+          "Texture": {
+            "created": 92,
+            "deleted": 39,
+            "live": 53
+          },
+          "Framebuffer": {
+            "created": 14,
+            "deleted": 7,
+            "live": 7
+          },
+          "Buffer": {
+            "created": 686,
+            "deleted": 453,
+            "live": 233
+          },
+          "Program": {
+            "created": 114,
+            "deleted": 56,
+            "live": 58
+          },
+          "Shader": {
+            "created": 228,
+            "deleted": 228,
+            "live": 0
+          },
+          "Renderbuffer": {
+            "created": 4,
+            "deleted": 0,
+            "live": 4
+          }
+        }
+      },
+      "cpuSubmissionMs": {
+        "median": 316,
+        "p95": 782.5999999046326,
+        "max": 1016,
+        "samples": 60
+      }
+    },
+    {
+      "label": "tarot-baseline-shared-runtime",
+      "preparationMs": 25439.89999985695,
+      "withShadows": {
+        "label": "tarot-baseline-shared-runtime",
+        "textures": 12,
+        "geometries": 38,
+        "gpuTextures": 42,
+        "calls": 144,
+        "triangles": 43012,
+        "programs": 30,
+        "shadowLights": 1,
+        "lights": 6,
+        "gpu": {
+          "Texture": {
+            "created": 127,
+            "deleted": 81,
+            "live": 46
+          },
+          "Framebuffer": {
+            "created": 20,
+            "deleted": 12,
+            "live": 8
+          },
+          "Buffer": {
+            "created": 843,
+            "deleted": 686,
+            "live": 157
+          },
+          "Program": {
+            "created": 139,
+            "deleted": 109,
+            "live": 30
+          },
+          "Shader": {
+            "created": 278,
+            "deleted": 278,
+            "live": 0
+          },
+          "Renderbuffer": {
+            "created": 8,
+            "deleted": 4,
+            "live": 4
+          }
+        }
+      },
+      "withoutShadows": {
+        "label": "tarot-baseline-shared-runtime-no-shadow",
+        "textures": 12,
+        "geometries": 38,
+        "gpuTextures": 42,
+        "calls": 144,
+        "triangles": 43012,
+        "programs": 30,
+        "shadowLights": 1,
+        "lights": 6,
+        "gpu": {
+          "Texture": {
+            "created": 127,
+            "deleted": 81,
+            "live": 46
+          },
+          "Framebuffer": {
+            "created": 20,
+            "deleted": 12,
+            "live": 8
+          },
+          "Buffer": {
+            "created": 843,
+            "deleted": 686,
+            "live": 157
+          },
+          "Program": {
+            "created": 139,
+            "deleted": 109,
+            "live": 30
+          },
+          "Shader": {
+            "created": 278,
+            "deleted": 278,
+            "live": 0
+          },
+          "Renderbuffer": {
+            "created": 8,
+            "deleted": 4,
+            "live": 4
+          }
+        }
+      },
+      "cpuSubmissionMs": {
+        "median": 2,
+        "p95": 466.40000009536743,
+        "max": 498.5,
+        "samples": 60
+      }
+    }
+  ],
+  "cycles": [
+    {
+      "label": "return-room-1",
+      "textures": 19,
+      "geometries": 51,
+      "gpuTextures": 25,
+      "calls": 61,
+      "triangles": 51908,
+      "programs": 22,
+      "shadowLights": 1,
+      "lights": 5,
+      "gpu": {
+        "Texture": {
+          "created": 203,
+          "deleted": 174,
+          "live": 29
+        },
+        "Framebuffer": {
+          "created": 27,
+          "deleted": 23,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 1421,
+          "deleted": 1217,
+          "live": 204
+        },
+        "Program": {
+          "created": 195,
+          "deleted": 173,
+          "live": 22
+        },
+        "Shader": {
+          "created": 390,
+          "deleted": 390,
+          "live": 0
+        },
+        "Renderbuffer": {
+          "created": 12,
+          "deleted": 12,
+          "live": 0
+        }
+      }
+    },
+    {
+      "label": "return-room-2",
+      "textures": 19,
+      "geometries": 51,
+      "gpuTextures": 25,
+      "calls": 61,
+      "triangles": 51908,
+      "programs": 22,
+      "shadowLights": 1,
+      "lights": 5,
+      "gpu": {
+        "Texture": {
+          "created": 271,
+          "deleted": 242,
+          "live": 29
+        },
+        "Framebuffer": {
+          "created": 34,
+          "deleted": 30,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 1999,
+          "deleted": 1795,
+          "live": 204
+        },
+        "Program": {
+          "created": 251,
+          "deleted": 229,
+          "live": 22
+        },
+        "Shader": {
+          "created": 502,
+          "deleted": 502,
+          "live": 0
+        },
+        "Renderbuffer": {
+          "created": 16,
+          "deleted": 16,
+          "live": 0
+        }
+      }
+    },
+    {
+      "label": "return-room-3",
+      "textures": 19,
+      "geometries": 51,
+      "gpuTextures": 25,
+      "calls": 61,
+      "triangles": 51908,
+      "programs": 22,
+      "shadowLights": 1,
+      "lights": 5,
+      "gpu": {
+        "Texture": {
+          "created": 339,
+          "deleted": 310,
+          "live": 29
+        },
+        "Framebuffer": {
+          "created": 41,
+          "deleted": 37,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 2577,
+          "deleted": 2373,
+          "live": 204
+        },
+        "Program": {
+          "created": 307,
+          "deleted": 285,
+          "live": 22
+        },
+        "Shader": {
+          "created": 614,
+          "deleted": 614,
+          "live": 0
+        },
+        "Renderbuffer": {
+          "created": 20,
+          "deleted": 20,
+          "live": 0
+        }
+      }
+    },
+    {
+      "label": "return-room-4",
+      "textures": 19,
+      "geometries": 51,
+      "gpuTextures": 25,
+      "calls": 61,
+      "triangles": 51908,
+      "programs": 22,
+      "shadowLights": 1,
+      "lights": 5,
+      "gpu": {
+        "Texture": {
+          "created": 407,
+          "deleted": 378,
+          "live": 29
+        },
+        "Framebuffer": {
+          "created": 48,
+          "deleted": 44,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 3155,
+          "deleted": 2951,
+          "live": 204
+        },
+        "Program": {
+          "created": 363,
+          "deleted": 341,
+          "live": 22
+        },
+        "Shader": {
+          "created": 726,
+          "deleted": 726,
+          "live": 0
+        },
+        "Renderbuffer": {
+          "created": 24,
+          "deleted": 24,
+          "live": 0
+        }
+      }
+    },
+    {
+      "label": "return-room-5",
+      "textures": 19,
+      "geometries": 51,
+      "gpuTextures": 25,
+      "calls": 61,
+      "triangles": 51908,
+      "programs": 22,
+      "shadowLights": 1,
+      "lights": 5,
+      "gpu": {
+        "Texture": {
+          "created": 475,
+          "deleted": 446,
+          "live": 29
+        },
+        "Framebuffer": {
+          "created": 55,
+          "deleted": 51,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 3733,
+          "deleted": 3529,
+          "live": 204
+        },
+        "Program": {
+          "created": 419,
+          "deleted": 397,
+          "live": 22
+        },
+        "Shader": {
+          "created": 838,
+          "deleted": 838,
+          "live": 0
+        },
+        "Renderbuffer": {
+          "created": 28,
+          "deleted": 28,
+          "live": 0
+        }
+      }
+    },
+    {
+      "label": "return-room-6",
+      "textures": 19,
+      "geometries": 51,
+      "gpuTextures": 25,
+      "calls": 61,
+      "triangles": 51908,
+      "programs": 22,
+      "shadowLights": 1,
+      "lights": 5,
+      "gpu": {
+        "Texture": {
+          "created": 543,
+          "deleted": 514,
+          "live": 29
+        },
+        "Framebuffer": {
+          "created": 62,
+          "deleted": 58,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 4311,
+          "deleted": 4107,
+          "live": 204
+        },
+        "Program": {
+          "created": 475,
+          "deleted": 453,
+          "live": 22
+        },
+        "Shader": {
+          "created": 950,
+          "deleted": 950,
+          "live": 0
+        },
+        "Renderbuffer": {
+          "created": 32,
+          "deleted": 32,
+          "live": 0
+        }
+      }
+    },
+    {
+      "label": "return-room-7",
+      "textures": 19,
+      "geometries": 51,
+      "gpuTextures": 25,
+      "calls": 61,
+      "triangles": 51908,
+      "programs": 22,
+      "shadowLights": 1,
+      "lights": 5,
+      "gpu": {
+        "Texture": {
+          "created": 611,
+          "deleted": 582,
+          "live": 29
+        },
+        "Framebuffer": {
+          "created": 69,
+          "deleted": 65,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 4889,
+          "deleted": 4685,
+          "live": 204
+        },
+        "Program": {
+          "created": 531,
+          "deleted": 509,
+          "live": 22
+        },
+        "Shader": {
+          "created": 1062,
+          "deleted": 1062,
+          "live": 0
+        },
+        "Renderbuffer": {
+          "created": 36,
+          "deleted": 36,
+          "live": 0
+        }
+      }
+    }
+  ],
+  "animationFrameIntervalsMs": {
+    "median": 49.899999999965075,
+    "p95": 116.59999999997672,
+    "samples": 30
+  },
+  "afterDispose": {
+    "contextLost": true,
+    "leases": 0,
+    "gpu": {
+      "Texture": {
+        "created": 611,
+        "deleted": 590,
+        "live": 21
+      },
+      "Framebuffer": {
+        "created": 69,
+        "deleted": 66,
+        "live": 3
+      },
+      "Buffer": {
+        "created": 4889,
+        "deleted": 4889,
+        "live": 0
+      },
+      "Program": {
+        "created": 531,
+        "deleted": 522,
+        "live": 9
+      },
+      "Shader": {
+        "created": 1062,
+        "deleted": 1062,
+        "live": 0
+      },
+      "Renderbuffer": {
+        "created": 36,
+        "deleted": 36,
+        "live": 0
+      }
+    }
+  },
+  "statuses": [],
+  "assets": [
+    {
+      "path": "apps/web/public/globe/brass-roughness.png",
+      "bytes": 46505,
+      "gzipBytes": 46538
+    },
+    {
+      "path": "apps/web/public/globe/elevation-room.i16",
+      "bytes": 293222,
+      "gzipBytes": 249658
+    },
+    {
+      "path": "apps/web/public/globe/elevation.i16",
+      "bytes": 1169642,
+      "gzipBytes": 975510
+    },
+    {
+      "path": "apps/web/public/globe/geography.json",
+      "bytes": 1806623,
+      "gzipBytes": 650485
+    },
+    {
+      "path": "apps/web/public/globe/parchment-room.png",
+      "bytes": 601259,
+      "gzipBytes": 601462
+    },
+    {
+      "path": "apps/web/public/globe/parchment.png",
+      "bytes": 1955644,
+      "gzipBytes": 1954937
+    },
+    {
+      "path": "apps/web/public/globe/relief-bump-room.png",
+      "bytes": 61171,
+      "gzipBytes": 61209
+    },
+    {
+      "path": "apps/web/public/globe/relief-bump.png",
+      "bytes": 288316,
+      "gzipBytes": 288424
+    },
+    {
+      "path": "apps/web/public/globe/walnut.png",
+      "bytes": 56718,
+      "gzipBytes": 56756
+    }
+  ],
+  "assetTotals": {
+    "bytes": 6279100,
+    "gzipBytes": 4884979
+  },
+  "errors": [],
+  "assetTiers": {
+    "room": {
+      "bytes": 1058875,
+      "gzipBytes": 1015623
+    },
+    "country": {
+      "bytes": 5323448,
+      "gzipBytes": 3972650
+    }
+  }
+}

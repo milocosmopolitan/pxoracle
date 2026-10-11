@@ -173,7 +173,9 @@ p {
   font-weight: bold;
   color: var(--gold);
 }
+main:has(.landing) { pointer-events: none; }
 .landing {
+  pointer-events: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: calc(100vh - 165px);
@@ -182,6 +184,7 @@ p {
   gap: 7vw;
 }
 .welcome {
+  pointer-events: auto;
   max-width: 520px;
   justify-self: end;
 }
@@ -895,3 +898,7 @@ body:has(.natal-layout) main { pointer-events: none; }
 .natal-layout[data-chart="ready"] .natal-scene-caption h1 { font-size: 17px; margin: 0; line-height: 24px; }
 .natal-layout[data-chart="ready"] .natal-scene-caption p { display: none; }
 @media (max-width: 800px) { .natal-layout[data-chart="ready"] .natal-scene-caption { left: 170px; top: -25px; } .natal-layout[data-chart="ready"] .natal-scene-caption h1 { font-size: 15px; } }
+
+.globe-chooser { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 12px 0; margin: 14px 0; }
+.globe-chooser details { font-size: 12px; margin-top: 10px; }
+.globe-chooser summary { cursor: pointer; min-height: 32px; }
