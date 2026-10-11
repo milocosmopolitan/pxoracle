@@ -16,13 +16,31 @@ The card-to-card empty gaps are now 50% of their former horizontal/vertical spac
 
 [Desktop detail](frames/desktop-detail.png) · [Mobile detail](frames/mobile-detail.png)
 
+## Card finish follow-up
+
+Card faces and backs now write depth rather than depending on transparent draw ordering. A hollow focus outline follows the lifted card, and the fixed selection story highlights a nearer-row card to expose overlap regressions. The front shader clips the original art's exterior fringe; paper caps no longer fill transparent corners. The lower nameplate uses the selected card's public name, rendered as a local serif CanvasTexture on the face Mesh.
+
+Detail-only soft gold particles surround the card and sit behind the inscription. The reduced-motion test verifies stable particles, normal-motion updates and resource disposal; depth-write assertions guard the occlusion regression. No hidden deck or question data is added to the Scene. Current detail captures show the name and clipped frame. This follow-up passes 36 Node tests, all six desktop/mobile app browser tests, twelve tarot Storybook checks, typecheck, static export, Storybook build and boundary checks.
+
+## Knit, glow and instancing follow-up
+
+A separate tarot-only shawl now has open front drapes, a .056-unit inner/outer separation, rounded hems, broad folds, shoulder pins and damped motion. Existing sleeves retain their dimensions. The portrait and cloth share shoulder anchors; amber shoulder lighting supplements the existing warm/cool scene lights. The heavy-knit reference comes from the user's front/profile/back images. Landing and astrology are unchanged.
+
+Detail particles use independent smooth-noise drift. A selective, depth-occluded glow pass highlights particles and gold outlines without blurring the artwork. The anonymous fan/shuffle cards render in three instanced surface batches; confirmed cards remain independent Meshes. Tests cover instance-slot picking after pagination, selected-slot removal, final-page bounds and buffer disposal.
+
+Current code passes 38 Node tests, typecheck, static export, Storybook build and ownership checks. The initial software-renderer Storybook attempt failed cold-load and animation deadlines; a GPU Chrome attempt also exceeded the combined ten-frame test/readiness budget. These failures are retained as qualification limits, not presented as passing performance tests. Frame capture now allows 300 seconds for ten cold Scene loads, with each readiness wait capped at 45 seconds. Animated replay still has its separate 20-second completion check after readiness. The GPU retry completed all ten screenshots but failed the console assertion on an unrelated missing Storybook favicon; an explicit empty preview favicon removes that request. After fixing the favicon and reducing the focus-ring width/brightness, the fixed-frame test passes with all ten desktop/mobile captures refreshed. Eleven other tarot browser stories pass on this revision, including live hand/camera playback, mobile, retry, restore and reduced motion. The current browser runs use the installed Chrome channel on the existing static servers (Storybook 6108, app 4174), with the same checked-in assertions and Pixel 7 emulation for mobile. Hardware Chrome reports Apple M4 Metal; no hardware FPS or physical-device qualification is inferred.
+
+The final exported-app run also passes all six desktop/mobile checks with real WASM after instancing, knit and glow changes; the six app screenshots are refreshed.
+
+Ammo and baked lighting were evaluated as options, not added. No claim of measured FPS improvement or new baked lightmaps is made. See the [performance decisions](../../assets/tarot-table.md#repeated-cards-and-performance-decisions).
+
 ## Checks
 
 - `cargo test --locked`: 11 pass, plus doc tests.
 - `npm run wasm`: pass, both independent engines, pinned Emscripten 4.0.10. Existing upstream C warnings remain.
 - `npm run typecheck`: pass after the static build. An earlier concurrent run raced Next's generated type-directory replacement; the sequential rerun passes.
 - `npm run build`: pass, static export preserved.
-- `npm test`: 35 pass, including 14 rig/Scene checks for constant 75% card dimensions, mat containment, 44-pixel mobile targets and continuous joint motion.
+- `npm test`: 38 pass, including 17 rig/Scene checks for constant 75% card dimensions, mat containment, 44-pixel mobile targets and continuous joint motion.
 - `npm run build-storybook`: pass.
 - `node scripts/check-boundaries.mjs`: pass.
 
@@ -45,6 +63,6 @@ Storybook fixtures are explicitly synthetic, with no WASM requests. App captures
 
 ## Limits
 
-The character is a painted torso plus generic rigged hand topology and procedural arms, not a bespoke elderly full-body sculpt or cloth simulation. Skin UVs tile a material rather than painting anatomically specific nail/knuckle regions. The generated textures derive from the original artwork; they are not byte-identical extracted pixels. Their references, exact prompts and license/provenance are in [asset documentation](../../assets/tarot-table.md) and [generation prompts](../../assets/tarot-material-prompts.md).
+The character is a painted torso plus generic rigged hand topology and procedural arms, not a bespoke elderly full-body sculpt. The added shawl is a constrained heavy-knit drape, not a complete collision-aware garment simulation. Skin UVs tile a material rather than painting anatomically specific nail/knuckle regions. The generated textures derive from the original artwork; they are not byte-identical extracted pixels. Their references, exact prompts and license/provenance are in [asset documentation](../../assets/tarot-table.md) and [generation prompts](../../assets/tarot-material-prompts.md).
 
 Readings remain authored card/orientation/position reflections; they do not analyze the question. No physical-phone, screen-reader, native Safari, new Firefox/WebKit qualification or hardware FPS claim is made by these checks. No AWS deployment or qualification-issue closure is included. Visual approval remains the user's decision.

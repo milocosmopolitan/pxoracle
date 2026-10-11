@@ -229,7 +229,9 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
   hand.userData.pixelate = true;
   art.material.dispose();
   art.material = hand.material;
-  world.add(art, hand);
+  const dust = new THREE.Points(new THREE.BufferGeometry(), new THREE.PointsMaterial());
+  dust.userData.glow = true;
+  world.add(art, hand, dust);
   pass.resize(1100, 800);
   const original = hand.material,
     calls = [];
@@ -246,6 +248,7 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
         hand: hand.visible,
         material: hand.material,
         art: art.material,
+        dust: dust.visible,
       });
     },
   };
@@ -257,6 +260,10 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
   assert.equal(calls[1].hand, false);
   assert.equal(calls[2].material.color.getHex(), 0xffffff);
   assert.equal(calls[2].art.color.getHex(), 0);
+  assert.equal(calls[1].dust, true);
+  assert.equal(calls[2].dust, false, "particles must not select the low-resolution pass");
+  assert.equal(calls[3].dust, true, "glow is rendered independently of the limb mask");
+  assert.equal(dust.visible, true);
   assert.equal(hand.material, original);
   assert.equal(hand.visible, true);
   assert.equal(target, null);
@@ -269,8 +276,53 @@ test("selective pixels preserve artwork resolution, depth masks and renderer own
   assert.equal(hand.material, original);
   assert.equal(hand.visible, true);
   assert.equal(target, null);
+  assert.equal(dust.visible, true, "effect visibility survives a failed mask pass");
+  n = 0;
+  renderer.render = () => { if (++n === 4) throw Error("glow lost"); };
+  assert.throws(() => pass.render(renderer, world, camera), /glow lost/);
+  assert.equal(world.background, null);
+  assert.equal(hand.material, original);
+  assert.equal(dust.visible, true);
+  assert.equal(target, null);
   pass.dispose();
+  dust.geometry.dispose();
+  dust.material.dispose();
   art.geometry.dispose();
   hand.geometry.dispose();
   original.dispose();
+});
+
+test("shawl follows pinned shoulders while its hem lags, and reduced motion settles deterministically", async () => {
+  const { createShawl } = await import("../packages/scenes/src/tarot-shawl.ts");
+  const resources = [];
+  const shawl = createShawl(new THREE.Texture(), {
+    geometry: x => resources.push(() => x.dispose()),
+    material: x => resources.push(() => x.dispose()),
+    cleanup: f => resources.push(f),
+  });
+  const arms = [-1, 1].map(side => ({
+    shoulder: new THREE.Vector3(side * 1.25, 5, 2.5),
+    elbow: new THREE.Vector3(side * 1.6, 4.8, .4),
+    wrist: new THREE.Vector3(side * 1.2, 2.7, .5),
+  }));
+  shawl.update(arms, 0, true);
+  arms.forEach(arm => { arm.shoulder.x += .1; arm.elbow.y -= .25; });
+  shawl.update(arms, 1 / 60, false);
+  const moving = Array.from(shawl.group.children[0].geometry.attributes.position.array);
+  shawl.update(arms, 0, true);
+  const settled = Array.from(shawl.group.children[0].geometry.attributes.position.array);
+  assert.deepEqual(moving.slice(0, 45), settled.slice(0, 45), "shoulder seam stays attached");
+  assert.notDeepEqual(moving.slice(45), settled.slice(45), "free cloth has inertia");
+  assert.ok(moving.every(Number.isFinite));
+  const front = shawl.group.children[0];
+  const lining = front.children.find(child => child.name.endsWith("-lining"));
+  const hem = front.children.find(child => child.name.endsWith("-knit-hem"));
+  assert.ok(lining && hem, "knit has a separate inner surface and rounded physical hem");
+  const outerPoint = new THREE.Vector3().fromBufferAttribute(front.geometry.attributes.position, 120);
+  const innerPoint = new THREE.Vector3().fromBufferAttribute(lining.geometry.attributes.position, 120);
+  assert.ok(Math.abs(outerPoint.distanceTo(innerPoint) - .056) < 1e-5, "fabric thickness survives deformation");
+  assert.ok(Array.from(hem.geometry.attributes.position.array).every(Number.isFinite));
+  shawl.update(arms, 1, true);
+  assert.deepEqual(Array.from(shawl.group.children[0].geometry.attributes.position.array), settled);
+  resources.forEach(dispose => dispose());
 });

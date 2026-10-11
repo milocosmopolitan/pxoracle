@@ -31,7 +31,7 @@ function TableStory({
     [error, setError] = useState(false),
     [retry, setRetry] = useState(0),
     [selectedSlot, setSelectedSlot] = useState(4),
-    [focusedSlot, setFocusedSlot] = useState(4),
+    [focusedSlot, setFocusedSlot] = useState(8),
     [readingFocus, setReadingFocus] = useState<number | null>(null);
   const count = three ? 3 : 1;
   const view: TarotView = {
@@ -58,6 +58,7 @@ function TableStory({
       )
       .map((id, i) => ({
         slot: i + selectedSlot,
+        name: manifest.cards[id as keyof typeof manifest.cards].name,
         revealed: stage === "reading" || stage === "revealing",
         reversed: reversed || i === 1,
         face:

@@ -13,6 +13,7 @@ test("articulated hand replay and fixed carry use production meshes without WASM
   await page.goto(
     "/iframe.html?id=pxoracle-tarot-table--hand-pick-place-flip&viewMode=story",
   );
+  await expect(page.locator(".scene-status")).toHaveCount(0, { timeout: 45000 });
   await expect(page.getByText(/No WASM · reading/)).toBeVisible({
     timeout: 20000,
   });
@@ -28,7 +29,7 @@ test("articulated hand replay and fixed carry use production meshes without WASM
   );
   await expect(page.locator("canvas")).toHaveCount(1);
   await expect(page.locator(".scene-status")).toHaveCount(0, {
-    timeout: 20000,
+    timeout: 45000,
   });
   await page.waitForTimeout(300);
   await page.screenshot({

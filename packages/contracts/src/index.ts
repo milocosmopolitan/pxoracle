@@ -120,6 +120,7 @@ export interface TarotView {
     revealed: boolean;
     reversed: boolean;
     face?: string;
+    name?: string;
   }[];
   onIntent?: (intent: {
     type: "select" | "focus" | "inspect";

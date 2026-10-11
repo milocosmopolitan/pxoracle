@@ -10,16 +10,31 @@ export function createPixelPresentation() {
   const full = new THREE.WebGLRenderTarget(1, 1, options);
   const low = new THREE.WebGLRenderTarget(1, 1, options);
   const mask = new THREE.WebGLRenderTarget(1, 1, options);
+  const glow = new THREE.WebGLRenderTarget(1, 1, {
+    ...options, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter,
+  });
   const geometry = new THREE.PlaneGeometry(2, 2);
   const material = new THREE.ShaderMaterial({
     uniforms: {
       full: { value: full.texture },
       low: { value: low.texture },
       mask: { value: mask.texture },
+      glow: { value: glow.texture },
+      glowStep: { value: new THREE.Vector2(1, 1) },
+      glowStrength: { value: 0 },
     },
     vertexShader: `varying vec2 vUv; void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}`,
-    fragmentShader: `uniform sampler2D full,low,mask; varying vec2 vUv;
+    fragmentShader: `uniform sampler2D full,low,mask,glow; uniform vec2 glowStep; uniform float glowStrength; varying vec2 vUv;
       void main(){gl_FragColor=mix(texture2D(full,vUv),texture2D(low,vUv),step(.5,texture2D(mask,vUv).r));
+        if(glowStrength > 0.) {
+          vec3 bloom=vec3(0.); float total=0.;
+          for(int x=-3;x<=3;x++) for(int y=-3;y<=3;y++) {
+            float weight=exp(-float(x*x+y*y)/4.5);
+            bloom+=texture2D(glow,vUv+vec2(float(x),float(y))*glowStep*2.).rgb*weight;
+            total+=weight;
+          }
+          gl_FragColor.rgb += bloom/total*glowStrength;
+        }
         #include <tonemapping_fragment>
         #include <colorspace_fragment>
       }`,
@@ -71,6 +86,8 @@ export function createPixelPresentation() {
         Math.max(1, Math.round(h / pixel)),
       );
       mask.setSize(low.width, low.height);
+      glow.setSize(Math.max(1, Math.round(w / 2)), Math.max(1, Math.round(h / 2)));
+      material.uniforms.glowStep.value.set(1 / glow.width, 1 / glow.height);
     },
     render(
       renderer: THREE.WebGLRenderer,
@@ -78,6 +95,7 @@ export function createPixelPresentation() {
       view: THREE.Camera,
     ) {
       const shadowType = renderer.shadowMap.type;
+      const background = world.background;
       const previous = renderer.getRenderTarget(),
         shadows = renderer.shadowMap.enabled,
         update = renderer.shadowMap.autoUpdate;
@@ -99,9 +117,13 @@ export function createPixelPresentation() {
         }
       });
       const saved = meshes.map((mesh) => mesh.material);
+      const effects: THREE.Points[] = [];
+      world.traverse((object) => {
+        if (object instanceof THREE.Points && object.visible) effects.push(object);
+      });
       try {
         renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.shadowMap.type = THREE.PCFShadowMap;
         renderer.setRenderTarget(low);
         renderer.render(world, view);
         renderer.shadowMap.autoUpdate = false;
@@ -118,12 +140,36 @@ export function createPixelPresentation() {
               : maskMaterial(mesh.material, !!mesh.userData.pixelate)),
         );
         renderer.shadowMap.enabled = false;
+        effects.forEach((effect) => (effect.visible = false));
         renderer.setRenderTarget(mask);
         renderer.render(world, view);
         meshes.forEach((mesh, i) => (mesh.material = saved[i]));
+        const visible = (object: THREE.Object3D) => {
+          for (let node: THREE.Object3D | null = object; node; node = node.parent)
+            if (!node.visible) return false;
+          return true;
+        };
+        effects.forEach((effect) => (effect.visible = true));
+        const glowing = [...meshes, ...effects].some((object) => object.userData.glow && visible(object));
+        material.uniforms.glowStrength.value = glowing ? 2.8 : 0;
+        if (glowing) {
+          world.background = new THREE.Color(0x000000);
+          meshes.forEach((mesh, i) => {
+            if (!mesh.userData.glow) mesh.material = Array.isArray(saved[i])
+              ? (saved[i] as THREE.Material[]).map((m) => maskMaterial(m, false))
+              : maskMaterial(saved[i] as THREE.Material, false);
+          });
+          effects.forEach((effect) => (effect.visible = !!effect.userData.glow));
+          renderer.setRenderTarget(glow);
+          renderer.render(world, view);
+          meshes.forEach((mesh, i) => (mesh.material = saved[i]));
+          world.background = background;
+        }
         renderer.setRenderTarget(previous);
         renderer.render(screen, camera);
       } finally {
+        world.background = background;
+        effects.forEach((effect) => (effect.visible = true));
         selected.forEach((mesh) => (mesh.visible = true));
         meshes.forEach((mesh, i) => (mesh.material = saved[i]));
         renderer.shadowMap.enabled = shadows;
@@ -136,6 +182,7 @@ export function createPixelPresentation() {
       full.dispose();
       low.dispose();
       mask.dispose();
+      glow.dispose();
       geometry.dispose();
       material.dispose();
       masks.forEach((cache) => {

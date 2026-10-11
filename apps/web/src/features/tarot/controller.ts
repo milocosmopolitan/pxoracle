@@ -189,6 +189,7 @@ export function tarotView(
         reversed: x.card.orientation === "reversed",
         revealed: x.revealed,
         face: art?.cards[x.card.cardId]?.url,
+        name: art?.cards[x.card.cardId]?.name,
       })) ?? [],
   };
 }

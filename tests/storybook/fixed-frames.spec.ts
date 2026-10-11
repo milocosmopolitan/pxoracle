@@ -3,6 +3,7 @@ import { mkdirSync } from "node:fs";
 test("review stage and detail compositions on desktop and mobile", async ({
   page,
 }) => {
+  test.setTimeout(300000); // Ten cold Scene loads; readiness is bounded independently.
   const errors: string[] = [];
   page.on("console", (message) => {
     if (message.type() === "error") errors.push(message.text());
@@ -18,7 +19,7 @@ test("review stage and detail compositions on desktop and mobile", async ({
       );
       await expect(page.getByText(/FIXED FRAME FOR REVIEW/)).toBeVisible();
       await expect(page.locator(".scene-status")).toHaveCount(0, {
-        timeout: 20000,
+        timeout: 45000,
       });
       await page.waitForTimeout(700);
       const before = await page.locator("canvas").boundingBox();

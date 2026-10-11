@@ -354,6 +354,10 @@ test("smaller cards stay inside the mat with mobile touch targets and retain the
       for (let i = 0; i < 12; i++) {
         const card = scene.scene.getObjectByName(`tarot-card-${i}`);
         const paper = card.children[0].children[0].children[0];
+        for (const face of card.children[0].children[0].children.slice(1)) {
+          assert.equal(face.material.depthWrite, true, "faces participate in physical occlusion");
+          assert.equal(face.material.transparent, false, "face ordering must not depend on transparent draw order");
+        }
         const screen = new THREE.Box2();
         for (let v = 0; v < paper.geometry.attributes.position.count; v++) {
           const point = new THREE.Vector3().fromBufferAttribute(
@@ -511,6 +515,59 @@ test("portrait shoulder landmarks drive both sleeves, and revealed Mesh clicks i
     );
   } finally {
     scene?.dispose();
+    THREE.TextureLoader.prototype.loadAsync = original;
+  }
+});
+
+test("card detail dust freezes with reduced motion and releases its GPU resources", async () => {
+  const { createCardInscription } = await import("../packages/scenes/src/tarot-card-finish.ts");
+  const inscription = createCardInscription();
+  const dust = inscription.group.getObjectByName("detail-stardust");
+  inscription.update("The Fool", true, 2, true);
+  const initial = Array.from(dust.geometry.attributes.position.array);
+  inscription.update("The Fool", true, 99, true);
+  assert.deepEqual(Array.from(dust.geometry.attributes.position.array), initial);
+  inscription.update("The Fool", true, 99, false);
+  assert.notDeepEqual(Array.from(dust.geometry.attributes.position.array), initial);
+  inscription.update("The Fool", false, 100, false);
+  assert.equal(dust.visible, false);
+  let released = 0;
+  dust.geometry.addEventListener("dispose", () => released++);
+  dust.material.addEventListener("dispose", () => released++);
+  inscription.dispose();
+  assert.equal(released, 2);
+});
+
+test("instanced anonymous cards keep page slot identities and leave confirmed cards individual", async () => {
+  const original = THREE.TextureLoader.prototype.loadAsync;
+  THREE.TextureLoader.prototype.loadAsync = async () => new THREE.Texture();
+  const pool = new TextureLeases();
+  let scene;
+  try {
+    scene = await createScene(pool, new AbortController().signal);
+    scene.resize(1000, 750);
+    const intents = [];
+    const view = { ...fixture, phase: "selecting", cards: [], page: 1, onIntent: x => intents.push(x) };
+    scene.update(1, { tarot: view }, true);
+    scene.scene.updateMatrixWorld(true);
+    const batch = scene.scene.getObjectByName("deck-back-instances");
+    assert.equal(batch.isInstancedMesh, true);
+    assert.equal(batch.count, 12);
+    const handle = scene.scene.getObjectByName("tarot-card-4");
+    const point = handle.getWorldPosition(new THREE.Vector3()).project(scene.camera);
+    scene.pointer({ type: "select", x: point.x, y: point.y });
+    assert.deepEqual(intents, [{ type: "select", slot: 16 }]);
+    scene.update(2, { tarot: { ...view, revision: 2, cards: [{ slot: 16, reversed: false, revealed: false }] } }, true);
+    assert.equal(batch.count, 11);
+    assert.equal(scene.scene.getObjectByName("tarot-card-12").visible, true);
+    scene.update(3, { tarot: { ...view, revision: 3, page: 6 } }, true);
+    assert.equal(batch.count, 6, "last page excludes nonexistent slots");
+    let disposed = false;
+    batch.addEventListener("dispose", () => { disposed = true; });
+    scene.dispose(); scene = null;
+    assert.equal(disposed, true, "instance buffers are owned by the Scene");
+  } finally {
+    scene?.dispose(); assert.equal(pool.count, 0);
     THREE.TextureLoader.prototype.loadAsync = original;
   }
 });

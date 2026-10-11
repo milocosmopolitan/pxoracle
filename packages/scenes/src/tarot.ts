@@ -7,6 +7,8 @@ import { studyLayers } from "./study";
 import { frameTarot, frameReview, TarotCameraDirector } from "./tarot-camera";
 import { createArm, pixelMaterial, type HandPose } from "./tarot-rig";
 import { surfaceMaterial } from "./tarot-materials";
+import { createShawl } from "./tarot-shawl";
+import { createCardInscription, finishCardFace } from "./tarot-card-finish";
 import { createPixelPresentation } from "./tarot-pixels";
 import {
   CARD_WIDTH,
@@ -314,7 +316,10 @@ export const createScene: SceneFactory = async (leases, signal) => {
     deskGlow.position.set(-8, 3.8, 1.5);
     const windowGlow = new THREE.PointLight(0x7585bf, 28, 25, 2);
     windowGlow.position.set(5, 4, -5);
-    base.scene.add(ambient, warm, rim, deskGlow, windowGlow);
+    // Match the portrait's amber light along the screen-left shoulder and lapel.
+    const shoulderGlow = new THREE.PointLight(0xffcb86, 9, 9, 2);
+    shoulderGlow.position.set(-6, 3.1, -1.2);
+    base.scene.add(ambient, warm, rim, deskGlow, windowGlow, shoulderGlow);
     const textures = {
       skin: await acquire("/art/hand-mesh/skin-albedo.png"),
       cloth: await acquire("/art/hand-mesh/cloth-albedo.png"),
@@ -322,6 +327,8 @@ export const createScene: SceneFactory = async (leases, signal) => {
     const rightArm = await createArm("right", owner, signal, textures);
     const leftArm = await createArm("left", owner, signal, textures);
     table.add(rightArm.root, leftArm.root);
+    const shawl = createShawl(textures.cloth, owner);
+    table.add(shawl.group);
     handAnchor = rightArm.handAnchor;
     otherHand = leftArm.handAnchor;
     type CardMesh = {
@@ -330,6 +337,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
       front: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>;
       back: THREE.Mesh;
       slot: number;
+      inscription: ReturnType<typeof createCardInscription>;
     };
     const cards: CardMesh[] = [];
     // Only twelve anonymous slots are visible at once. Every one of the 78 slots remains reachable.
@@ -342,31 +350,88 @@ export const createScene: SceneFactory = async (leases, signal) => {
       flip.add(orientation);
       cardRoot.add(group);
       const backMesh = plane(CARD_WIDTH, CARD_HEIGHT, back);
-      backMesh.renderOrder = 60;
+      finishCardFace(backMesh.material, false);
       backMesh.position.z = CARD_THICKNESS / 2 + 0.004;
       const paper = new THREE.Mesh(
         new THREE.BoxGeometry(CARD_WIDTH, CARD_HEIGHT, CARD_THICKNESS),
-        new THREE.MeshBasicMaterial({ color: 0x857552 }),
+        new THREE.MeshBasicMaterial({ color: 0xcbb893 }),
       );
+      // Only the four thin edges are paper; opaque caps would fill the clipped artwork corners.
+      paper.geometry.setDrawRange(0, 24);
+      paper.geometry.scale(.96, .965, 1);
       geometries.push(paper.geometry);
       materials.push(paper.material);
-      paper.renderOrder = 58;
+      paper.renderOrder = 0;
       orientation.add(paper);
       const front = plane(CARD_WIDTH, CARD_HEIGHT, undefined, 0xd2bd91);
       front.rotation.y = Math.PI;
       front.position.z = -CARD_THICKNESS / 2 - 0.004;
-      front.renderOrder = 60;
+      finishCardFace(front.material, true);
+      const inscription = createCardInscription();
+      front.add(inscription.group);
+      releases.push(inscription.dispose);
       orientation.add(backMesh, front);
-      cards.push({ group, flip, front, back: backMesh, slot: -1 });
+      cards.push({ group, flip, front, back: backMesh, slot: -1, inscription });
     }
-    const halo = plane(
-      CARD_WIDTH + 0.1,
-      CARD_HEIGHT + 0.1,
+    // Keep transform handles for choreography, but batch the anonymous deck's surfaces.
+    const anonymous = cards.slice(0, 12);
+    const instanceSlots: number[] = [];
+    const template = anonymous[0].flip.children[0];
+    const batches = template.children.map((surface, i) => {
+      const source = surface as THREE.Mesh;
+      const batch = new THREE.InstancedMesh(source.geometry, source.material, 12);
+      batch.name = ["deck-paper-instances", "deck-back-instances", "deck-front-instances"][i];
+      batch.count = 0;
+      batch.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+      batch.frustumCulled = false;
+      cardRoot.add(batch);
+      releases.push(() => batch.dispose());
+      return batch;
+    });
+    for (const card of anonymous)
+      card.flip.children[0].children.forEach((surface) => (surface.visible = false));
+    const inverseRoot = new THREE.Matrix4(), instanceMatrix = new THREE.Matrix4();
+    const syncDeckInstances = () => {
+      table.updateMatrixWorld(true);
+      inverseRoot.copy(cardRoot.matrixWorld).invert();
+      instanceSlots.length = 0;
+      for (const card of anonymous) {
+        if (!card.group.visible) continue;
+        const index = instanceSlots.length;
+        instanceSlots.push(card.slot);
+        card.flip.children[0].children.forEach((surface, i) => {
+          instanceMatrix.multiplyMatrices(inverseRoot, surface.matrixWorld);
+          batches[i].setMatrixAt(index, instanceMatrix);
+        });
+      }
+      for (const batch of batches) {
+        batch.count = instanceSlots.length;
+        batch.instanceMatrix.needsUpdate = true;
+        batch.computeBoundingSphere();
+      }
+    };
+    const halo: THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial> = plane(
+      CARD_WIDTH + 0.032,
+      CARD_HEIGHT + 0.032,
       undefined,
-      0xe6c382,
+      0xb38a3b,
     );
-    halo.material.opacity = 0.65;
-    halo.renderOrder = 55;
+    const outline = new THREE.Shape();
+    const hw = (CARD_WIDTH + .032) / 2, hh = (CARD_HEIGHT + .032) / 2;
+    outline.moveTo(-hw, -hh); outline.lineTo(hw, -hh);
+    outline.lineTo(hw, hh); outline.lineTo(-hw, hh); outline.closePath();
+    const hole = new THREE.Path();
+    hole.moveTo(-hw + .007, -hh + .007); hole.lineTo(-hw + .007, hh - .007);
+    hole.lineTo(hw - .007, hh - .007); hole.lineTo(hw - .007, -hh + .007); hole.closePath();
+    outline.holes.push(hole);
+    const outlineGeometry = new THREE.ShapeGeometry(outline);
+    geometries.push(outlineGeometry);
+    halo.geometry = outlineGeometry;
+    halo.name = "card-focus-outline";
+    halo.userData.glow = true;
+    halo.material.transparent = false;
+    halo.material.depthWrite = true;
+    halo.renderOrder = 0;
     cardRoot.add(halo);
     const requestFaces = (view: TarotView) => {
       const wanted = view.cards.filter(
@@ -451,18 +516,12 @@ export const createScene: SceneFactory = async (leases, signal) => {
         }
         if (current?.phase !== "selecting") return;
         ray.setFromCamera(new THREE.Vector2(event.x, event.y), camera);
-        const hit = ray.intersectObjects(
-          cards
-            .slice(0, 12)
-            .filter((c) => c.group.visible)
-            .map((c) => c.back),
-          false,
-        )[0];
-        const picked = cards.find((c) => c.back === hit?.object);
-        if (picked && picked.slot >= 0)
+        const hit = ray.intersectObject(batches[1], false)[0];
+        const slot = hit?.instanceId === undefined ? undefined : instanceSlots[hit.instanceId];
+        if (slot !== undefined && slot >= 0)
           current.onIntent?.({
             type: event.type === "select" ? "select" : "focus",
-            slot: picked.slot,
+            slot,
           });
       },
       update(time, data, reduced) {
@@ -557,6 +616,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
           leftActive = false;
         handAnchor.visible = otherHand.visible = table.visible;
         halo.visible = false;
+        halo.rotation.z = 0;
         for (const card of cards) {
           if (card.group.parent !== cardRoot) cardRoot.attach(card.group);
           card.group.visible = false;
@@ -611,6 +671,17 @@ export const createScene: SceneFactory = async (leases, signal) => {
             card.front.material.map = texture;
             card.front.material.color.set(0xffffff);
             card.front.material.needsUpdate = true;
+          }
+          card.inscription.update(
+            selected.name ?? "",
+            view.phase === "reading" && (view.readingFocus === i || view.reviewShot === "detail"),
+            time, reduced,
+          );
+          if (view.phase === "reading" && (view.readingFocus === i || view.reviewShot === "detail")) {
+            halo.visible = true;
+            halo.position.copy(card.group.position);
+            halo.position.z -= .012;
+            halo.rotation.z = card.group.rotation.z;
           }
           card.flip.children[0].rotation.z = selected.reversed ? Math.PI : 0;
           card.flip.rotation.y = selected.revealed && texture ? Math.PI : 0;
@@ -915,6 +986,12 @@ export const createScene: SceneFactory = async (leases, signal) => {
           lateral,
           attachment(1),
         );
+        shawl.update([rightArm, leftArm].map((arm) => ({
+          shoulder: new THREE.Vector3().fromArray(arm.root.userData.shoulder),
+          elbow: new THREE.Vector3().fromArray(arm.root.userData.elbow),
+          wrist: new THREE.Vector3().fromArray(arm.root.userData.wrist),
+        })), dt, reduced || view.reviewProgress !== undefined);
+        syncDeckInstances();
         if (!view.reviewShot && duration && progress >= 1 && !sent) {
           sent = true;
           emit("done", view);

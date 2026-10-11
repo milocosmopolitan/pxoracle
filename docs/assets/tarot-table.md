@@ -16,7 +16,7 @@ Each GLB has 25 weighted joints. Flat WebXR joints are reparented with world-pre
 
 The upper arm is 2.2 units and forearm 2.1, with fixed geometry. An analytic two-link solution chooses the elbow toward the side of the body. **There is no elbow-to-table-height constraint.** Elbows may hang below the tabletop behind its rear edge. Actual forearm/table intersection and deformed hand surface height are checked separately. Wrist orientation follows the forearm and palm rotation follows the card during a reveal. Both shoulders and the torso move together for forward and lateral reaches. The upper sleeve is tapered to a .36-unit shoulder radius and has no separate spherical shoulder cap. Tests exercise all twelve visible slots and all three destination positions in desktop/mobile layouts without limb stretching.
 
-Skin and cloth have generated albedo textures applied through UVs. Hand topology/weights/UV islands are preserved; forearms and sleeves have cylindrical UVs. Skin, cloth, mat and wood use MeshStandardMaterial with UV normal and roughness maps. Technical relief maps are generated as small DataTextures from periodic weave, pore and grain height functions, not baked light/shadow. Warm desk light, cool window fill and a shadowed key light share the same space. This remains a hybrid character, with generic hand topology and a painted torso, not a fully sculpted elderly body or physically simulated cloth.
+Skin and cloth have generated albedo textures applied through UVs. Hand topology/weights/UV islands are preserved; forearms and sleeves have cylindrical UVs. Skin, cloth, mat and wood use MeshStandardMaterial with UV normal and roughness maps. Technical relief maps are generated as small DataTextures from periodic weave, pore and grain height functions, not baked light/shadow. Warm desk light, cool window fill and a shadowed key light share the same space. This remains a hybrid character, with generic hand topology and a painted torso, not a fully sculpted elderly body. The separate shawl uses the constrained knit model described below.
 
 ## Table and cards
 
@@ -34,7 +34,7 @@ Canvas bounds do not resize at phase transitions. Desktop reading reserves the r
 
 ## Selective pixel presentation
 
-Only mesh limbs carry `userData.pixelate`. The tarot Scene owns a low-resolution color target, a low-resolution depth-tested selection mask and a full-resolution art target. The background pass excludes the limbs while retaining their cached shadows; the composite restores only the masked pixelated limbs. Face, room, mat and card artwork remain at display resolution. The mask respects intervening geometry, alpha-tested artwork and card depth. Desktop limb pixels are 2 CSS pixels; mobile uses 1.5. DOM remains outside the renderer.
+Only mesh limbs and the separate knit shawl carry `userData.pixelate`. The tarot Scene owns a low-resolution color target, a low-resolution depth-tested selection mask and a full-resolution art target. The background pass excludes the limbs while retaining their cached shadows; the composite restores only the masked pixelated limbs. Face, room, mat and card artwork remain at display resolution. The mask respects intervening geometry, alpha-tested artwork and card depth. Desktop limb pixels are 2 CSS pixels; mobile uses 1.5. DOM remains outside the renderer.
 
 `SceneInstance.render` is an optional runtime hook; other scenes keep their existing render path. Targets, mask materials and directional shadow maps are disposed with Scene ownership, and render-target/material/visibility state is restored even if rendering throws. Tests cover this failure path and continuous choreography frame-to-frame, in addition to fixed poses.
 
@@ -51,3 +51,31 @@ The portrait's frontal/elevated shoulder landmarks interpolate with the same vie
 Revealed cards have a 1.0-unit center spacing and deterministic placement variation, at most 0.048 radians and 0.045 units. The selected slot/index determines the small variation; no engine randomness or private question enters rendering. Restoring a reading preserves it. One-card and three-card camera framing use different extents. Desktop framing reserves the actual 380-pixel reading-panel region. A raycast hit on an exposed face emits `inspect` with its selected slot; the DOM controller maps it to `readingFocus` without an engine mutation. Hover never starts a camera move. Equivalent DOM buttons and a return-to-overview control remain available.
 
 The spacing follow-up halves the empty horizontal and vertical gaps between fan cards, rather than halving center distances and overlapping them. Reading gaps also halve. Mat resizing preserves the rear edge nearest the character. A rounded cloth body casts contact shadows beneath the complete alpha-tested artwork; card resting heights clear its .045 surface. Darker, rougher wood and restrained warm fill bring the desk/floor closer to the painted room lighting.
+
+## Card finish and detail atmosphere
+
+Selected-card DTOs carry the public artwork name alongside the face URL. A local CanvasTexture renders that name in Georgia/serif in the lower nameplate; it is attached to the front Mesh and follows its flip and orientation. No question text enters the Scene. Only the selected names are rasterized, and replaced textures are disposed.
+
+Front UVs crop the baked green fringe outside the gold frame and apply a rounded discard mask at render time, leaving original artwork unchanged. The thin paper mesh renders only side edges, avoiding opaque caps behind transparent corners. Face/back/hover-ring materials write depth; a hollow focus outline follows the lifted card so nearer geometry correctly occludes farther cards.
+
+Detail focus enables 42 soft gold points around the card and behind its inscription. They use a soft circular point shader, additive blending and no depth writes; the opaque card occludes particles behind it. The overview has no particles. Reduced motion freezes their positions/opacity. Geometry, materials and inscription textures are released with Scene ownership.
+
+
+## Tarot-only knit shawl
+
+The shawl is an additional `oracle-shawl` group, separate from the unchanged upper-arm sleeves. Open front drapes attach to the same moving portrait shoulder landmarks as the arms. They do not wrap or enlarge the upper arm. The user's standing front, left profile and orthographic back references establish a heavy purple knitted shawl, with an amber screen-left light and cool opposite edge. Source references are `Elderly Oracle Standing Front Reference.png`, `Elderly Oracle Left Profile Reference.png` and `Elderly Oracle Orthographic Back View.png`, supplied from the user’s Downloads directory. They remain local source references, not newly vendored artwork.
+
+Each drape has a front, an inner surface .056 world units apart and an eight-sided rounded hem. Broad folds, structural and two-step bending constraints, damped inertia and shoulder pins represent heavy knit rather than a fluttering paper sheet. Existing knit albedo, normal and roughness maps remain UV-mapped; a local amber light continues the portrait illumination onto the shoulder/lapel. The solver is a small WebGL-compatible, arm-driven approximation, not a full collision-aware garment or WebGPU cloth implementation. Landing and astrology are unchanged.
+
+Reduced motion and fixed review poses settle directly. Normal playback applies constrained inertia to free vertices, with capsule/table clearance and bounded displacement. Tests cover shoulder attachment, hem lag, finite geometry, physical thickness and deterministic settling. All added geometries/material maps use Scene ownership cleanup.
+
+The glow pass renders only tagged particles and focus outlines into a half-resolution target, while other geometry supplies depth occlusion. A restrained Gaussian glow is composited after selective limb pixelation. Independent seeded smooth noise gives each particle irregular speed, direction and brightness instead of synchronized orbits; it does not touch engine randomness. Render state is restored on failures in both mask and glow passes.
+
+
+## Repeated cards and performance decisions
+
+Twelve anonymous transform handles retain choreography and hand-anchor parenting. Their paper edges, shared backs and blank undersides render as three [`InstancedMesh`](https://threejs.org/docs/pages/InstancedMesh.html) batches. Scene updates instance matrices after both hands settle, then recomputes bounds. Raycasting maps `instanceId` through the current visible-slot list; omitted selections and the last six-slot page do not change engine identities. Up to three confirmed cards remain ordinary meshes for independent face textures, inscriptions, grip attachment and reveal. Instance buffers are disposed alongside shared geometry/material ownership.
+
+The [Three.js Ammo cloth example](https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/physics_ammo_cloth.html) was considered. It adds a separate soft-body WASM world and bridge; it is not adopted without a measured benefit over the small constrained shawl. Software-renderer cold-load/animation timeouts are not evidence of a cloth-solver bottleneck. A local CPU-only probe is diagnostic, not a browser or device FPS qualification.
+
+Future light baking should target stationary room, floor and desk illumination/contact occlusion. Moving arms, shawl and cards still need directional light and dynamic contact shadows. No new baked lightmaps or claimed bake speedup are included in this revision; the existing normal/roughness maps remain material relief rather than baked illumination.
