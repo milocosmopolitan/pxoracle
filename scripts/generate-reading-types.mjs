@@ -1,9 +1,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
+const family = process.argv[2] ?? "reading";
 const roots = ["input", "plan", "semantics", "rules"].map((x) =>
-  JSON.parse(readFileSync(`packages/contracts/schemas/reading-${x}.json`)),
+  JSON.parse(readFileSync(`packages/contracts/schemas/${family}-${x}.json`)),
 );
 const definitions = Object.assign({}, ...roots.map((s) => s.$defs));
 function type(s) {
+  if (Array.isArray(s.type)) return s.type.map(t => type({ ...s, type: t })).join(" | ");
   if (s.$ref) return s.$ref.split("/").at(-1);
   if (s.const !== undefined) return JSON.stringify(s.const);
   if (s.enum) return s.enum.map((x) => JSON.stringify(x)).join(" | ");
@@ -37,4 +39,4 @@ const out =
     .map(([n, s]) => `export type ${n} = ${type(s)};`)
     .join("\n") +
   "\n";
-writeFileSync("packages/contracts/src/reading.ts", out);
+writeFileSync(`packages/contracts/src/${family}.ts`, out);

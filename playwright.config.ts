@@ -3,6 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 const softwareGL = process.env.CI
   ? { args: ["--use-gl=angle", "--use-angle=swiftshader"] }
   : undefined;
+const port = Number(process.env.PXORACLE_TEST_PORT ?? 4173);
 export default defineConfig({
   testDir: "tests/browser",
   timeout: 180000,
@@ -10,13 +11,13 @@ export default defineConfig({
   expect: { timeout: 15000 },
   use: {
     reducedMotion: "reduce",
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: `http://127.0.0.1:${port}`,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
   webServer: {
-    command: "python3 -m http.server 4173 --directory apps/web/out",
-    url: "http://127.0.0.1:4173",
+    command: `python3 -m http.server ${port} --directory apps/web/out`,
+    url: `http://127.0.0.1:${port}`,
     reuseExistingServer: !process.env.CI,
   },
   projects: [

@@ -1,0 +1,1123 @@
+{
+  "maximumAllowedOrb": 15,
+  "sampledPairMaxima": {
+    "jupiter.neptune": 179.9995559415512,
+    "jupiter.pluto": 179.99917818638562,
+    "jupiter.saturn": 179.9888664742495,
+    "jupiter.uranus": 179.99951930105493,
+    "mars.jupiter": 179.99769197116882,
+    "mars.neptune": 179.99948010261568,
+    "mars.pluto": 179.99928099810256,
+    "mars.saturn": 179.99770043902294,
+    "mars.uranus": 179.99993694859373,
+    "mercury.jupiter": 179.9998612191991,
+    "mercury.mars": 179.9979465706033,
+    "mercury.neptune": 179.99911208330377,
+    "mercury.pluto": 179.99771375181547,
+    "mercury.saturn": 179.99058639654004,
+    "mercury.uranus": 179.99980719545,
+    "mercury.venus": 73.75914415284666,
+    "moon.jupiter": 179.99835233000655,
+    "moon.mars": 179.9992734230593,
+    "moon.mercury": 179.9951868324737,
+    "moon.neptune": 179.99984925348025,
+    "moon.pluto": 179.9962062114227,
+    "moon.saturn": 179.99619848000964,
+    "moon.uranus": 179.99242308314933,
+    "moon.venus": 179.9997943579409,
+    "neptune.pluto": 136.13056136217705,
+    "saturn.neptune": 179.9970006051489,
+    "saturn.pluto": 179.99996092676585,
+    "saturn.uranus": 179.99740946639486,
+    "sun.jupiter": 179.99980906514253,
+    "sun.mars": 179.998276277292,
+    "sun.mercury": 27.789165654069905,
+    "sun.moon": 179.99969338574698,
+    "sun.neptune": 179.9963442278962,
+    "sun.pluto": 179.99679231509674,
+    "sun.saturn": 179.99396229327692,
+    "sun.uranus": 179.99269996626236,
+    "sun.venus": 47.265748697582524,
+    "uranus.neptune": 179.99936211522447,
+    "uranus.pluto": 179.99928670443603,
+    "venus.jupiter": 179.99947982462334,
+    "venus.mars": 179.99780607386742,
+    "venus.neptune": 179.99576689813819,
+    "venus.pluto": 179.99573229086872,
+    "venus.saturn": 179.99759136153688,
+    "venus.uranus": 179.99340929776946
+  },
+  "sampling": "daily at 12:00 UTC, 1900-01-01 through 2100-12-31; witnesses only, not an exclusion proof",
+  "witnesses": {
+    "aspect.jupiter.neptune.conjunction": {
+      "distance": 0.00039056390136238406,
+      "orb": 0.00039056390136238406,
+      "utc": "1997-01-09T12:00:00+00:00"
+    },
+    "aspect.jupiter.neptune.opposition": {
+      "distance": 179.9995559415512,
+      "orb": 0.0004440584488065724,
+      "utc": "2067-07-23T12:00:00+00:00"
+    },
+    "aspect.jupiter.neptune.sextile": {
+      "distance": 60.00004760087373,
+      "orb": 0.00004760087372801536,
+      "utc": "2096-07-27T12:00:00+00:00"
+    },
+    "aspect.jupiter.neptune.square": {
+      "distance": 90.00261672598982,
+      "orb": 0.002616725989824431,
+      "utc": "2095-07-01T12:00:00+00:00"
+    },
+    "aspect.jupiter.neptune.trine": {
+      "distance": 120.00200673649232,
+      "orb": 0.0020067364923193054,
+      "utc": "2000-07-27T12:00:00+00:00"
+    },
+    "aspect.jupiter.pluto.conjunction": {
+      "distance": 0.022128114644715424,
+      "orb": 0.022128114644715424,
+      "utc": "2045-04-12T12:00:00+00:00"
+    },
+    "aspect.jupiter.pluto.opposition": {
+      "distance": 179.99917818638562,
+      "orb": 0.0008218136143796073,
+      "utc": "2076-03-31T12:00:00+00:00"
+    },
+    "aspect.jupiter.pluto.sextile": {
+      "distance": 60.000875888401566,
+      "orb": 0.0008758884015662716,
+      "utc": "1916-09-19T12:00:00+00:00"
+    },
+    "aspect.jupiter.pluto.square": {
+      "distance": 90.00059807232685,
+      "orb": 0.0005980723268521615,
+      "utc": "1934-02-05T12:00:00+00:00"
+    },
+    "aspect.jupiter.pluto.trine": {
+      "distance": 120.00125307629699,
+      "orb": 0.0012530762969902298,
+      "utc": "2016-06-26T12:00:00+00:00"
+    },
+    "aspect.jupiter.saturn.conjunction": {
+      "distance": 0.00037196034978137504,
+      "orb": 0.00037196034978137504,
+      "utc": "2040-10-31T12:00:00+00:00"
+    },
+    "aspect.jupiter.saturn.opposition": {
+      "distance": 179.9888664742495,
+      "orb": 0.011133525750494755,
+      "utc": "1990-07-13T12:00:00+00:00"
+    },
+    "aspect.jupiter.saturn.sextile": {
+      "distance": 60.001547544001824,
+      "orb": 0.0015475440018235531,
+      "utc": "2017-08-27T12:00:00+00:00"
+    },
+    "aspect.jupiter.saturn.square": {
+      "distance": 90.00020853341289,
+      "orb": 0.00020853341288784577,
+      "utc": "1965-07-06T12:00:00+00:00"
+    },
+    "aspect.jupiter.saturn.trine": {
+      "distance": 120.0012473136905,
+      "orb": 0.001247313690498686,
+      "utc": "1908-04-30T12:00:00+00:00"
+    },
+    "aspect.jupiter.uranus.conjunction": {
+      "distance": 0.00021973003376274391,
+      "orb": 0.00021973003376274391,
+      "utc": "1927-08-11T12:00:00+00:00"
+    },
+    "aspect.jupiter.uranus.opposition": {
+      "distance": 179.99951930105493,
+      "orb": 0.00048069894506852506,
+      "utc": "2031-01-20T12:00:00+00:00"
+    },
+    "aspect.jupiter.uranus.sextile": {
+      "distance": 59.995756962594214,
+      "orb": 0.004243037405785799,
+      "utc": "2040-02-17T12:00:00+00:00"
+    },
+    "aspect.jupiter.uranus.square": {
+      "distance": 89.9981310886709,
+      "orb": 0.0018689113290975001,
+      "utc": "2035-01-16T12:00:00+00:00"
+    },
+    "aspect.jupiter.uranus.trine": {
+      "distance": 120.00005147321949,
+      "orb": 0.00005147321948584249,
+      "utc": "2005-11-27T12:00:00+00:00"
+    },
+    "aspect.mars.jupiter.conjunction": {
+      "distance": 0.008926994089051732,
+      "orb": 0.008926994089051732,
+      "utc": "2020-03-20T12:00:00+00:00"
+    },
+    "aspect.mars.jupiter.opposition": {
+      "distance": 179.99769197116882,
+      "orb": 0.0023080288311803088,
+      "utc": "2032-07-22T12:00:00+00:00"
+    },
+    "aspect.mars.jupiter.sextile": {
+      "distance": 59.9999389259828,
+      "orb": 0.00006107401719646077,
+      "utc": "2080-07-08T12:00:00+00:00"
+    },
+    "aspect.mars.jupiter.square": {
+      "distance": 90.00151971312829,
+      "orb": 0.0015197131282889131,
+      "utc": "1926-09-17T12:00:00+00:00"
+    },
+    "aspect.mars.jupiter.trine": {
+      "distance": 119.99930706929308,
+      "orb": 0.0006929307069185597,
+      "utc": "1927-06-06T12:00:00+00:00"
+    },
+    "aspect.mars.neptune.conjunction": {
+      "distance": 0.00026537977677776325,
+      "orb": 0.00026537977677776325,
+      "utc": "2072-03-03T12:00:00+00:00"
+    },
+    "aspect.mars.neptune.opposition": {
+      "distance": 179.99948010261568,
+      "orb": 0.0005198973843221211,
+      "utc": "1974-03-16T12:00:00+00:00"
+    },
+    "aspect.mars.neptune.sextile": {
+      "distance": 60.00167057820977,
+      "orb": 0.0016705782097687916,
+      "utc": "1967-11-24T12:00:00+00:00"
+    },
+    "aspect.mars.neptune.square": {
+      "distance": 90.0002062071505,
+      "orb": 0.00020620715049801674,
+      "utc": "1951-07-29T12:00:00+00:00"
+    },
+    "aspect.mars.neptune.trine": {
+      "distance": 120.00023499950365,
+      "orb": 0.00023499950364680444,
+      "utc": "1917-03-29T12:00:00+00:00"
+    },
+    "aspect.mars.pluto.conjunction": {
+      "distance": 0.0009484741238168226,
+      "orb": 0.0009484741238168226,
+      "utc": "1940-07-06T12:00:00+00:00"
+    },
+    "aspect.mars.pluto.opposition": {
+      "distance": 179.99928099810256,
+      "orb": 0.0007190018974370105,
+      "utc": "2017-07-02T12:00:00+00:00"
+    },
+    "aspect.mars.pluto.sextile": {
+      "distance": 59.99857650776215,
+      "orb": 0.0014234922378477677,
+      "utc": "2069-12-29T12:00:00+00:00"
+    },
+    "aspect.mars.pluto.square": {
+      "distance": 89.99886042792701,
+      "orb": 0.0011395720729865388,
+      "utc": "1919-12-13T12:00:00+00:00"
+    },
+    "aspect.mars.pluto.trine": {
+      "distance": 119.99961741090715,
+      "orb": 0.0003825890928510489,
+      "utc": "1904-12-26T12:00:00+00:00"
+    },
+    "aspect.mars.saturn.conjunction": {
+      "distance": 0.005496904090364296,
+      "orb": 0.005496904090364296,
+      "utc": "1907-12-30T12:00:00+00:00"
+    },
+    "aspect.mars.saturn.opposition": {
+      "distance": 179.99770043902294,
+      "orb": 0.0022995609770646297,
+      "utc": "2031-09-30T12:00:00+00:00"
+    },
+    "aspect.mars.saturn.sextile": {
+      "distance": 60.00038889379209,
+      "orb": 0.00038889379209194885,
+      "utc": "1904-03-20T12:00:00+00:00"
+    },
+    "aspect.mars.saturn.square": {
+      "distance": 90.00086523428581,
+      "orb": 0.0008652342858113116,
+      "utc": "2075-03-08T12:00:00+00:00"
+    },
+    "aspect.mars.saturn.trine": {
+      "distance": 120.00141708584351,
+      "orb": 0.0014170858435136324,
+      "utc": "1906-07-04T12:00:00+00:00"
+    },
+    "aspect.mars.uranus.conjunction": {
+      "distance": 0.00011484755134461011,
+      "orb": 0.00011484755134461011,
+      "utc": "2090-03-08T12:00:00+00:00"
+    },
+    "aspect.mars.uranus.opposition": {
+      "distance": 179.99993694859373,
+      "orb": 0.00006305140627205219,
+      "utc": "1992-10-09T12:00:00+00:00"
+    },
+    "aspect.mars.uranus.sextile": {
+      "distance": 60.00233747690001,
+      "orb": 0.0023374769000099604,
+      "utc": "2059-04-30T12:00:00+00:00"
+    },
+    "aspect.mars.uranus.square": {
+      "distance": 90.0020355932466,
+      "orb": 0.0020355932466031845,
+      "utc": "1946-07-24T12:00:00+00:00"
+    },
+    "aspect.mars.uranus.trine": {
+      "distance": 120.00082666718959,
+      "orb": 0.0008266671895853506,
+      "utc": "2077-05-12T12:00:00+00:00"
+    },
+    "aspect.mercury.jupiter.conjunction": {
+      "distance": 0.003194322688500506,
+      "orb": 0.003194322688500506,
+      "utc": "1938-02-17T12:00:00+00:00"
+    },
+    "aspect.mercury.jupiter.opposition": {
+      "distance": 179.9998612191991,
+      "orb": 0.00013878080090989897,
+      "utc": "2069-09-02T12:00:00+00:00"
+    },
+    "aspect.mercury.jupiter.sextile": {
+      "distance": 60.000087090995095,
+      "orb": 0.00008709099509474072,
+      "utc": "1912-10-04T12:00:00+00:00"
+    },
+    "aspect.mercury.jupiter.square": {
+      "distance": 90.00107878823115,
+      "orb": 0.0010787882311547037,
+      "utc": "2059-08-24T12:00:00+00:00"
+    },
+    "aspect.mercury.jupiter.trine": {
+      "distance": 120.00049947868666,
+      "orb": 0.0004994786866632239,
+      "utc": "1939-12-04T12:00:00+00:00"
+    },
+    "aspect.mercury.mars.conjunction": {
+      "distance": 0.0007104294946884693,
+      "orb": 0.0007104294946884693,
+      "utc": "1976-08-30T12:00:00+00:00"
+    },
+    "aspect.mercury.mars.opposition": {
+      "distance": 179.9979465706033,
+      "orb": 0.0020534293967102712,
+      "utc": "1963-02-22T12:00:00+00:00"
+    },
+    "aspect.mercury.mars.sextile": {
+      "distance": 59.99930681056273,
+      "orb": 0.0006931894372712577,
+      "utc": "2076-08-27T12:00:00+00:00"
+    },
+    "aspect.mercury.mars.square": {
+      "distance": 89.99961032224894,
+      "orb": 0.00038967775105902547,
+      "utc": "2046-08-16T12:00:00+00:00"
+    },
+    "aspect.mercury.mars.trine": {
+      "distance": 119.99618374334153,
+      "orb": 0.0038162566584674096,
+      "utc": "1975-09-29T12:00:00+00:00"
+    },
+    "aspect.mercury.neptune.conjunction": {
+      "distance": 0.0003359617868454734,
+      "orb": 0.0003359617868454734,
+      "utc": "2002-01-09T12:00:00+00:00"
+    },
+    "aspect.mercury.neptune.opposition": {
+      "distance": 179.99911208330377,
+      "orb": 0.0008879166962287854,
+      "utc": "1975-05-11T12:00:00+00:00"
+    },
+    "aspect.mercury.neptune.sextile": {
+      "distance": 60.00341874282378,
+      "orb": 0.00341874282378285,
+      "utc": "1914-09-12T12:00:00+00:00"
+    },
+    "aspect.mercury.neptune.square": {
+      "distance": 90.00346782993523,
+      "orb": 0.003467829935232203,
+      "utc": "2068-09-15T12:00:00+00:00"
+    },
+    "aspect.mercury.neptune.trine": {
+      "distance": 120.00026336753851,
+      "orb": 0.0002633675385084189,
+      "utc": "1967-06-27T12:00:00+00:00"
+    },
+    "aspect.mercury.pluto.conjunction": {
+      "distance": 0.0018456828126147684,
+      "orb": 0.0018456828126147684,
+      "utc": "1956-08-04T12:00:00+00:00"
+    },
+    "aspect.mercury.pluto.opposition": {
+      "distance": 179.99771375181547,
+      "orb": 0.002286248184532269,
+      "utc": "2062-09-11T12:00:00+00:00"
+    },
+    "aspect.mercury.pluto.sextile": {
+      "distance": 59.999980255254656,
+      "orb": 0.00001974474534449655,
+      "utc": "1993-01-18T12:00:00+00:00"
+    },
+    "aspect.mercury.pluto.square": {
+      "distance": 89.99990877009967,
+      "orb": 0.00009122990033461065,
+      "utc": "2006-09-09T12:00:00+00:00"
+    },
+    "aspect.mercury.pluto.trine": {
+      "distance": 120.00053046313167,
+      "orb": 0.0005304631316676023,
+      "utc": "2010-05-03T12:00:00+00:00"
+    },
+    "aspect.mercury.saturn.conjunction": {
+      "distance": 0.0008236973865791697,
+      "orb": 0.0008236973865791697,
+      "utc": "1935-03-22T12:00:00+00:00"
+    },
+    "aspect.mercury.saturn.opposition": {
+      "distance": 179.99058639654004,
+      "orb": 0.00941360345996145,
+      "utc": "1976-01-03T12:00:00+00:00"
+    },
+    "aspect.mercury.saturn.sextile": {
+      "distance": 60.003962897448076,
+      "orb": 0.003962897448076319,
+      "utc": "2005-05-25T12:00:00+00:00"
+    },
+    "aspect.mercury.saturn.square": {
+      "distance": 90.00239327004533,
+      "orb": 0.002393270045331519,
+      "utc": "2021-04-25T12:00:00+00:00"
+    },
+    "aspect.mercury.saturn.trine": {
+      "distance": 119.9996307099077,
+      "orb": 0.0003692900922942499,
+      "utc": "2076-03-31T12:00:00+00:00"
+    },
+    "aspect.mercury.uranus.conjunction": {
+      "distance": 0.0013348072187682192,
+      "orb": 0.0013348072187682192,
+      "utc": "1909-12-28T12:00:00+00:00"
+    },
+    "aspect.mercury.uranus.opposition": {
+      "distance": 179.99980719545,
+      "orb": 0.00019280455001080554,
+      "utc": "2057-05-07T12:00:00+00:00"
+    },
+    "aspect.mercury.uranus.sextile": {
+      "distance": 59.99925315563729,
+      "orb": 0.0007468443627089982,
+      "utc": "1935-06-10T12:00:00+00:00"
+    },
+    "aspect.mercury.uranus.square": {
+      "distance": 90.00045498172844,
+      "orb": 0.00045498172843849716,
+      "utc": "1912-10-15T12:00:00+00:00"
+    },
+    "aspect.mercury.uranus.trine": {
+      "distance": 119.99779781832422,
+      "orb": 0.0022021816757842316,
+      "utc": "1926-12-07T12:00:00+00:00"
+    },
+    "aspect.mercury.venus.conjunction": {
+      "distance": 0.0006543113697148328,
+      "orb": 0.0006543113697148328,
+      "utc": "1939-10-01T12:00:00+00:00"
+    },
+    "aspect.mercury.venus.sextile": {
+      "distance": 60.00085320586021,
+      "orb": 0.0008532058602099823,
+      "utc": "1972-10-28T12:00:00+00:00"
+    },
+    "aspect.moon.jupiter.conjunction": {
+      "distance": 0.00026546962050133516,
+      "orb": 0.00026546962050133516,
+      "utc": "1906-11-06T12:00:00+00:00"
+    },
+    "aspect.moon.jupiter.opposition": {
+      "distance": 179.99835233000655,
+      "orb": 0.0016476699934457884,
+      "utc": "2093-12-11T12:00:00+00:00"
+    },
+    "aspect.moon.jupiter.sextile": {
+      "distance": 60.00093545917912,
+      "orb": 0.00093545917911797,
+      "utc": "2080-06-30T12:00:00+00:00"
+    },
+    "aspect.moon.jupiter.square": {
+      "distance": 90.00058065999369,
+      "orb": 0.0005806599936875045,
+      "utc": "2072-08-03T12:00:00+00:00"
+    },
+    "aspect.moon.jupiter.trine": {
+      "distance": 119.99889839730503,
+      "orb": 0.0011016026949732804,
+      "utc": "1953-07-27T12:00:00+00:00"
+    },
+    "aspect.moon.mars.conjunction": {
+      "distance": 0.0012087391595514418,
+      "orb": 0.0012087391595514418,
+      "utc": "2002-06-12T12:00:00+00:00"
+    },
+    "aspect.moon.mars.opposition": {
+      "distance": 179.9992734230593,
+      "orb": 0.0007265769407069911,
+      "utc": "1941-03-08T12:00:00+00:00"
+    },
+    "aspect.moon.mars.sextile": {
+      "distance": 59.999691771782636,
+      "orb": 0.0003082282173636486,
+      "utc": "2068-07-07T12:00:00+00:00"
+    },
+    "aspect.moon.mars.square": {
+      "distance": 89.99866624514038,
+      "orb": 0.0013337548596155102,
+      "utc": "1920-10-25T12:00:00+00:00"
+    },
+    "aspect.moon.mars.trine": {
+      "distance": 120.00016180875156,
+      "orb": 0.00016180875155669128,
+      "utc": "1952-10-04T12:00:00+00:00"
+    },
+    "aspect.moon.mercury.conjunction": {
+      "distance": 0.0048755331469862995,
+      "orb": 0.0048755331469862995,
+      "utc": "1977-10-12T12:00:00+00:00"
+    },
+    "aspect.moon.mercury.opposition": {
+      "distance": 179.9951868324737,
+      "orb": 0.004813167526293682,
+      "utc": "2000-11-10T12:00:00+00:00"
+    },
+    "aspect.moon.mercury.sextile": {
+      "distance": 60.00080728709679,
+      "orb": 0.0008072870967907875,
+      "utc": "1968-04-01T12:00:00+00:00"
+    },
+    "aspect.moon.mercury.square": {
+      "distance": 90.00021674440893,
+      "orb": 0.0002167444089309356,
+      "utc": "2073-09-10T12:00:00+00:00"
+    },
+    "aspect.moon.mercury.trine": {
+      "distance": 120.00157528681865,
+      "orb": 0.0015752868186496016,
+      "utc": "1901-05-08T12:00:00+00:00"
+    },
+    "aspect.moon.neptune.conjunction": {
+      "distance": 0.003765618783205582,
+      "orb": 0.003765618783205582,
+      "utc": "1961-04-03T12:00:00+00:00"
+    },
+    "aspect.moon.neptune.opposition": {
+      "distance": 179.99984925348025,
+      "orb": 0.0001507465197505553,
+      "utc": "1992-07-28T12:00:00+00:00"
+    },
+    "aspect.moon.neptune.sextile": {
+      "distance": 60.00025060949787,
+      "orb": 0.0002506094978684814,
+      "utc": "1968-12-13T12:00:00+00:00"
+    },
+    "aspect.moon.neptune.square": {
+      "distance": 90.0022874110169,
+      "orb": 0.002287411016894225,
+      "utc": "2077-05-19T12:00:00+00:00"
+    },
+    "aspect.moon.neptune.trine": {
+      "distance": 120.00127279136268,
+      "orb": 0.0012727913626804366,
+      "utc": "1933-08-03T12:00:00+00:00"
+    },
+    "aspect.moon.pluto.conjunction": {
+      "distance": 0.0009623503219131635,
+      "orb": 0.0009623503219131635,
+      "utc": "1932-03-17T12:00:00+00:00"
+    },
+    "aspect.moon.pluto.opposition": {
+      "distance": 179.9962062114227,
+      "orb": 0.0037937885772976188,
+      "utc": "1922-09-28T12:00:00+00:00"
+    },
+    "aspect.moon.pluto.sextile": {
+      "distance": 59.999819235313055,
+      "orb": 0.00018076468694516734,
+      "utc": "2040-03-15T12:00:00+00:00"
+    },
+    "aspect.moon.pluto.square": {
+      "distance": 89.99947534645266,
+      "orb": 0.0005246535473446556,
+      "utc": "1968-05-28T12:00:00+00:00"
+    },
+    "aspect.moon.pluto.trine": {
+      "distance": 119.99953479229129,
+      "orb": 0.000465207708714388,
+      "utc": "2003-08-26T12:00:00+00:00"
+    },
+    "aspect.moon.saturn.conjunction": {
+      "distance": 0.00022024796788855383,
+      "orb": 0.00022024796788855383,
+      "utc": "1990-06-11T12:00:00+00:00"
+    },
+    "aspect.moon.saturn.opposition": {
+      "distance": 179.99619848000964,
+      "orb": 0.0038015199903611574,
+      "utc": "2047-12-04T12:00:00+00:00"
+    },
+    "aspect.moon.saturn.sextile": {
+      "distance": 59.99950930152059,
+      "orb": 0.0004906984794104119,
+      "utc": "1942-01-03T12:00:00+00:00"
+    },
+    "aspect.moon.saturn.square": {
+      "distance": 90.00060311517414,
+      "orb": 0.0006031151741439089,
+      "utc": "2038-05-06T12:00:00+00:00"
+    },
+    "aspect.moon.saturn.trine": {
+      "distance": 120.00017663939923,
+      "orb": 0.00017663939922840655,
+      "utc": "2091-02-08T12:00:00+00:00"
+    },
+    "aspect.moon.uranus.conjunction": {
+      "distance": 0.0002697783239682394,
+      "orb": 0.0002697783239682394,
+      "utc": "2005-11-10T12:00:00+00:00"
+    },
+    "aspect.moon.uranus.opposition": {
+      "distance": 179.99242308314933,
+      "orb": 0.007576916850666748,
+      "utc": "1943-03-26T12:00:00+00:00"
+    },
+    "aspect.moon.uranus.sextile": {
+      "distance": 59.999843778829586,
+      "orb": 0.00015622117041402817,
+      "utc": "1996-09-18T12:00:00+00:00"
+    },
+    "aspect.moon.uranus.square": {
+      "distance": 90.00085122689632,
+      "orb": 0.0008512268963158931,
+      "utc": "1957-04-29T12:00:00+00:00"
+    },
+    "aspect.moon.uranus.trine": {
+      "distance": 120.0011743802948,
+      "orb": 0.0011743802947989934,
+      "utc": "2058-11-04T12:00:00+00:00"
+    },
+    "aspect.moon.venus.conjunction": {
+      "distance": 0.0013875940443313084,
+      "orb": 0.0013875940443313084,
+      "utc": "1976-11-24T12:00:00+00:00"
+    },
+    "aspect.moon.venus.opposition": {
+      "distance": 179.9997943579409,
+      "orb": 0.00020564205908613076,
+      "utc": "2062-07-19T12:00:00+00:00"
+    },
+    "aspect.moon.venus.sextile": {
+      "distance": 60.001863314852784,
+      "orb": 0.0018633148527840149,
+      "utc": "1925-01-18T12:00:00+00:00"
+    },
+    "aspect.moon.venus.square": {
+      "distance": 89.9981487609785,
+      "orb": 0.00185123902150508,
+      "utc": "2020-03-06T12:00:00+00:00"
+    },
+    "aspect.moon.venus.trine": {
+      "distance": 119.999649133567,
+      "orb": 0.00035086643299564457,
+      "utc": "1974-06-26T12:00:00+00:00"
+    },
+    "aspect.neptune.pluto.conjunction": {
+      "distance": 9.494678056826956,
+      "orb": 9.494678056826956,
+      "utc": "1900-03-16T12:00:00+00:00"
+    },
+    "aspect.neptune.pluto.sextile": {
+      "distance": 59.99982403900344,
+      "orb": 0.0001759609965574782,
+      "utc": "1956-10-18T12:00:00+00:00"
+    },
+    "aspect.neptune.pluto.square": {
+      "distance": 89.99988006086704,
+      "orb": 0.00011993913295782477,
+      "utc": "2061-09-19T12:00:00+00:00"
+    },
+    "aspect.neptune.pluto.trine": {
+      "distance": 119.9968286455022,
+      "orb": 0.0031713544977947095,
+      "utc": "2087-11-12T12:00:00+00:00"
+    },
+    "aspect.saturn.neptune.conjunction": {
+      "distance": 0.001024047913688264,
+      "orb": 0.001024047913688264,
+      "utc": "1952-11-21T12:00:00+00:00"
+    },
+    "aspect.saturn.neptune.opposition": {
+      "distance": 179.9970006051489,
+      "orb": 0.0029993948510878,
+      "utc": "2007-02-28T12:00:00+00:00"
+    },
+    "aspect.saturn.neptune.sextile": {
+      "distance": 60.001883585114626,
+      "orb": 0.001883585114626385,
+      "utc": "1995-06-27T12:00:00+00:00"
+    },
+    "aspect.saturn.neptune.square": {
+      "distance": 90.00029126853144,
+      "orb": 0.00029126853144134657,
+      "utc": "2053-01-13T12:00:00+00:00"
+    },
+    "aspect.saturn.neptune.trine": {
+      "distance": 119.99827922058995,
+      "orb": 0.0017207794100499996,
+      "utc": "2072-03-28T12:00:00+00:00"
+    },
+    "aspect.saturn.pluto.conjunction": {
+      "distance": 0.00033611266962907393,
+      "orb": 0.00033611266962907393,
+      "utc": "2053-06-15T12:00:00+00:00"
+    },
+    "aspect.saturn.pluto.opposition": {
+      "distance": 179.99996092676585,
+      "orb": 0.0000390732341486455,
+      "utc": "2035-10-17T12:00:00+00:00"
+    },
+    "aspect.saturn.pluto.sextile": {
+      "distance": 60.00190222186784,
+      "orb": 0.0019022218678372838,
+      "utc": "1943-02-15T12:00:00+00:00"
+    },
+    "aspect.saturn.pluto.square": {
+      "distance": 90.00146550961529,
+      "orb": 0.0014655096152864644,
+      "utc": "1973-10-07T12:00:00+00:00"
+    },
+    "aspect.saturn.pluto.trine": {
+      "distance": 120.00002155973732,
+      "orb": 0.00002155973731987615,
+      "utc": "2096-06-27T12:00:00+00:00"
+    },
+    "aspect.saturn.uranus.conjunction": {
+      "distance": 0.00038428538005064183,
+      "orb": 0.00038428538005064183,
+      "utc": "1988-10-18T12:00:00+00:00"
+    },
+    "aspect.saturn.uranus.opposition": {
+      "distance": 179.99740946639486,
+      "orb": 0.002590533605143719,
+      "utc": "2100-09-13T12:00:00+00:00"
+    },
+    "aspect.saturn.uranus.sextile": {
+      "distance": 59.99939295637623,
+      "orb": 0.0006070436237735066,
+      "utc": "1948-09-23T12:00:00+00:00"
+    },
+    "aspect.saturn.uranus.square": {
+      "distance": 89.99954468597164,
+      "orb": 0.000455314028357634,
+      "utc": "2066-08-31T12:00:00+00:00"
+    },
+    "aspect.saturn.uranus.trine": {
+      "distance": 119.99986231946639,
+      "orb": 0.00013768053361218335,
+      "utc": "1912-11-25T12:00:00+00:00"
+    },
+    "aspect.sun.jupiter.conjunction": {
+      "distance": 0.0003121089810633748,
+      "orb": 0.0003121089810633748,
+      "utc": "2053-11-08T12:00:00+00:00"
+    },
+    "aspect.sun.jupiter.opposition": {
+      "distance": 179.99980906514253,
+      "orb": 0.00019093485747134764,
+      "utc": "1993-03-30T12:00:00+00:00"
+    },
+    "aspect.sun.jupiter.sextile": {
+      "distance": 59.99880280759908,
+      "orb": 0.001197192400923086,
+      "utc": "2036-03-06T12:00:00+00:00"
+    },
+    "aspect.sun.jupiter.square": {
+      "distance": 89.99959814819525,
+      "orb": 0.0004018518047530506,
+      "utc": "1912-08-30T12:00:00+00:00"
+    },
+    "aspect.sun.jupiter.trine": {
+      "distance": 119.99924701997168,
+      "orb": 0.0007529800283236909,
+      "utc": "1972-08-21T12:00:00+00:00"
+    },
+    "aspect.sun.mars.conjunction": {
+      "distance": 0.0003822454401927189,
+      "orb": 0.0003822454401927189,
+      "utc": "1970-08-02T12:00:00+00:00"
+    },
+    "aspect.sun.mars.opposition": {
+      "distance": 179.998276277292,
+      "orb": 0.0017237227079931472,
+      "utc": "1963-02-04T12:00:00+00:00"
+    },
+    "aspect.sun.mars.sextile": {
+      "distance": 60.00267165838545,
+      "orb": 0.002671658385452247,
+      "utc": "1990-04-18T12:00:00+00:00"
+    },
+    "aspect.sun.mars.square": {
+      "distance": 89.99987322516009,
+      "orb": 0.00012677483991296867,
+      "utc": "2095-09-18T12:00:00+00:00"
+    },
+    "aspect.sun.mars.trine": {
+      "distance": 119.99817510995115,
+      "orb": 0.0018248900488515574,
+      "utc": "2026-12-31T12:00:00+00:00"
+    },
+    "aspect.sun.mercury.conjunction": {
+      "distance": 0.00026388151263745385,
+      "orb": 0.00026388151263745385,
+      "utc": "2069-10-20T12:00:00+00:00"
+    },
+    "aspect.sun.moon.conjunction": {
+      "distance": 0.0005717717944264677,
+      "orb": 0.0005717717944264677,
+      "utc": "1988-04-16T12:00:00+00:00"
+    },
+    "aspect.sun.moon.opposition": {
+      "distance": 179.99969338574698,
+      "orb": 0.0003066142530201432,
+      "utc": "1916-08-13T12:00:00+00:00"
+    },
+    "aspect.sun.moon.sextile": {
+      "distance": 60.00232906726336,
+      "orb": 0.0023290672633606846,
+      "utc": "2073-05-31T12:00:00+00:00"
+    },
+    "aspect.sun.moon.square": {
+      "distance": 90.00164768876962,
+      "orb": 0.001647688769622846,
+      "utc": "1986-06-15T12:00:00+00:00"
+    },
+    "aspect.sun.moon.trine": {
+      "distance": 120.00071016432375,
+      "orb": 0.0007101643237490407,
+      "utc": "1975-11-13T12:00:00+00:00"
+    },
+    "aspect.sun.neptune.conjunction": {
+      "distance": 0.005079251107900973,
+      "orb": 0.005079251107900973,
+      "utc": "2081-07-27T12:00:00+00:00"
+    },
+    "aspect.sun.neptune.opposition": {
+      "distance": 179.9963442278962,
+      "orb": 0.003655772103797972,
+      "utc": "1965-05-09T12:00:00+00:00"
+    },
+    "aspect.sun.neptune.sextile": {
+      "distance": 60.00076444283454,
+      "orb": 0.0007644428345372489,
+      "utc": "1937-11-13T12:00:00+00:00"
+    },
+    "aspect.sun.neptune.square": {
+      "distance": 90.0003486813074,
+      "orb": 0.0003486813074005113,
+      "utc": "2097-05-28T12:00:00+00:00"
+    },
+    "aspect.sun.neptune.trine": {
+      "distance": 120.00091738268986,
+      "orb": 0.0009173826898631887,
+      "utc": "1901-10-25T12:00:00+00:00"
+    },
+    "aspect.sun.pluto.conjunction": {
+      "distance": 0.005067432822272622,
+      "orb": 0.005067432822272622,
+      "utc": "2080-04-02T12:00:00+00:00"
+    },
+    "aspect.sun.pluto.opposition": {
+      "distance": 179.99679231509674,
+      "orb": 0.003207684903259178,
+      "utc": "1919-12-29T12:00:00+00:00"
+    },
+    "aspect.sun.pluto.sextile": {
+      "distance": 59.99943235187379,
+      "orb": 0.000567648126207132,
+      "utc": "2065-01-15T12:00:00+00:00"
+    },
+    "aspect.sun.pluto.square": {
+      "distance": 90.00254252455483,
+      "orb": 0.0025425245548262865,
+      "utc": "2083-01-05T12:00:00+00:00"
+    },
+    "aspect.sun.pluto.trine": {
+      "distance": 120.00181624096746,
+      "orb": 0.001816240967457361,
+      "utc": "1988-07-01T12:00:00+00:00"
+    },
+    "aspect.sun.saturn.conjunction": {
+      "distance": 0.0005278445435692447,
+      "orb": 0.0005278445435692447,
+      "utc": "2013-11-06T12:00:00+00:00"
+    },
+    "aspect.sun.saturn.opposition": {
+      "distance": 179.99396229327692,
+      "orb": 0.006037706723077463,
+      "utc": "2066-02-12T12:00:00+00:00"
+    },
+    "aspect.sun.saturn.sextile": {
+      "distance": 59.999623869012396,
+      "orb": 0.00037613098760402863,
+      "utc": "1987-10-10T12:00:00+00:00"
+    },
+    "aspect.sun.saturn.square": {
+      "distance": 89.99903560327391,
+      "orb": 0.0009643967260899444,
+      "utc": "1971-02-05T12:00:00+00:00"
+    },
+    "aspect.sun.saturn.trine": {
+      "distance": 119.99987708039211,
+      "orb": 0.00012291960788957113,
+      "utc": "1933-10-03T12:00:00+00:00"
+    },
+    "aspect.sun.uranus.conjunction": {
+      "distance": 0.0005252443191920975,
+      "orb": 0.0005252443191920975,
+      "utc": "1944-05-30T12:00:00+00:00"
+    },
+    "aspect.sun.uranus.opposition": {
+      "distance": 179.99269996626236,
+      "orb": 0.007300033737635658,
+      "utc": "1908-07-07T12:00:00+00:00"
+    },
+    "aspect.sun.uranus.sextile": {
+      "distance": 59.99978413251793,
+      "orb": 0.00021586748206914308,
+      "utc": "1939-07-14T12:00:00+00:00"
+    },
+    "aspect.sun.uranus.square": {
+      "distance": 90.00219903440905,
+      "orb": 0.0021990344090454528,
+      "utc": "2008-12-10T12:00:00+00:00"
+    },
+    "aspect.sun.uranus.trine": {
+      "distance": 120.00071785929691,
+      "orb": 0.000717859296912593,
+      "utc": "2006-11-03T12:00:00+00:00"
+    },
+    "aspect.sun.venus.conjunction": {
+      "distance": 0.000938758819756913,
+      "orb": 0.000938758819756913,
+      "utc": "2095-07-23T12:00:00+00:00"
+    },
+    "aspect.sun.venus.sextile": {
+      "distance": 47.265748697582524,
+      "orb": 12.734251302417476,
+      "utc": "2096-12-19T12:00:00+00:00"
+    },
+    "aspect.uranus.neptune.conjunction": {
+      "distance": 0.000989762111089476,
+      "orb": 0.000989762111089476,
+      "utc": "1993-02-02T12:00:00+00:00"
+    },
+    "aspect.uranus.neptune.opposition": {
+      "distance": 179.99936211522447,
+      "orb": 0.0006378847755286188,
+      "utc": "1910-10-28T12:00:00+00:00"
+    },
+    "aspect.uranus.neptune.sextile": {
+      "distance": 59.999901720103594,
+      "orb": 0.00009827989640598389,
+      "utc": "2027-06-06T12:00:00+00:00"
+    },
+    "aspect.uranus.neptune.square": {
+      "distance": 89.99684624246878,
+      "orb": 0.0031537575312228228,
+      "utc": "1956-01-19T12:00:00+00:00"
+    },
+    "aspect.uranus.neptune.trine": {
+      "distance": 120.00043745831077,
+      "orb": 0.0004374583107704666,
+      "utc": "1942-12-11T12:00:00+00:00"
+    },
+    "aspect.uranus.pluto.conjunction": {
+      "distance": 0.0005427643213522515,
+      "orb": 0.0005427643213522515,
+      "utc": "1966-06-30T12:00:00+00:00"
+    },
+    "aspect.uranus.pluto.opposition": {
+      "distance": 179.99928670443603,
+      "orb": 0.0007132955639690408,
+      "utc": "1902-06-28T12:00:00+00:00"
+    },
+    "aspect.uranus.pluto.sextile": {
+      "distance": 59.9997143694323,
+      "orb": 0.00028563056770281037,
+      "utc": "2084-09-07T12:00:00+00:00"
+    },
+    "aspect.uranus.pluto.square": {
+      "distance": 89.99930001198277,
+      "orb": 0.0006999880172315898,
+      "utc": "2074-10-24T12:00:00+00:00"
+    },
+    "aspect.uranus.pluto.trine": {
+      "distance": 119.99868657519784,
+      "orb": 0.0013134248021628991,
+      "utc": "1921-03-17T12:00:00+00:00"
+    },
+    "aspect.venus.jupiter.conjunction": {
+      "distance": 0.001733463679045144,
+      "orb": 0.001733463679045144,
+      "utc": "1960-01-21T12:00:00+00:00"
+    },
+    "aspect.venus.jupiter.opposition": {
+      "distance": 179.99947982462334,
+      "orb": 0.0005201753766641559,
+      "utc": "2016-03-25T12:00:00+00:00"
+    },
+    "aspect.venus.jupiter.sextile": {
+      "distance": 60.000210333387855,
+      "orb": 0.00021033338785514388,
+      "utc": "2049-06-13T12:00:00+00:00"
+    },
+    "aspect.venus.jupiter.square": {
+      "distance": 89.99666321527604,
+      "orb": 0.0033367847239560433,
+      "utc": "1968-01-06T12:00:00+00:00"
+    },
+    "aspect.venus.jupiter.trine": {
+      "distance": 119.99805637879149,
+      "orb": 0.0019436212085111038,
+      "utc": "1967-02-20T12:00:00+00:00"
+    },
+    "aspect.venus.mars.conjunction": {
+      "distance": 0.0009111782115951428,
+      "orb": 0.0009111782115951428,
+      "utc": "2029-11-14T12:00:00+00:00"
+    },
+    "aspect.venus.mars.opposition": {
+      "distance": 179.99780607386742,
+      "orb": 0.002193926132576962,
+      "utc": "2061-03-30T12:00:00+00:00"
+    },
+    "aspect.venus.mars.sextile": {
+      "distance": 59.99945182732293,
+      "orb": 0.0005481726770710793,
+      "utc": "2094-11-12T12:00:00+00:00"
+    },
+    "aspect.venus.mars.square": {
+      "distance": 90.00038451318511,
+      "orb": 0.0003845131851107908,
+      "utc": "2018-02-25T12:00:00+00:00"
+    },
+    "aspect.venus.mars.trine": {
+      "distance": 119.99805432067399,
+      "orb": 0.0019456793260133054,
+      "utc": "1943-08-04T12:00:00+00:00"
+    },
+    "aspect.venus.neptune.conjunction": {
+      "distance": 0.003682371644003979,
+      "orb": 0.003682371644003979,
+      "utc": "1971-01-09T12:00:00+00:00"
+    },
+    "aspect.venus.neptune.opposition": {
+      "distance": 179.99576689813819,
+      "orb": 0.004233101861814248,
+      "utc": "2061-10-29T12:00:00+00:00"
+    },
+    "aspect.venus.neptune.sextile": {
+      "distance": 60.00061992111304,
+      "orb": 0.00061992111304221,
+      "utc": "2069-04-16T12:00:00+00:00"
+    },
+    "aspect.venus.neptune.square": {
+      "distance": 89.9997339981137,
+      "orb": 0.00026600188630254706,
+      "utc": "1949-01-25T12:00:00+00:00"
+    },
+    "aspect.venus.neptune.trine": {
+      "distance": 120.0008033717846,
+      "orb": 0.0008033717845989941,
+      "utc": "1983-09-29T12:00:00+00:00"
+    },
+    "aspect.venus.pluto.conjunction": {
+      "distance": 0.000784721291609003,
+      "orb": 0.000784721291609003,
+      "utc": "2021-12-25T12:00:00+00:00"
+    },
+    "aspect.venus.pluto.opposition": {
+      "distance": 179.99573229086872,
+      "orb": 0.004267709131283937,
+      "utc": "1920-02-03T12:00:00+00:00"
+    },
+    "aspect.venus.pluto.sextile": {
+      "distance": 60.0022149072806,
+      "orb": 0.002214907280603029,
+      "utc": "1952-09-21T12:00:00+00:00"
+    },
+    "aspect.venus.pluto.square": {
+      "distance": 90.0010546508525,
+      "orb": 0.0010546508524953424,
+      "utc": "2030-10-30T12:00:00+00:00"
+    },
+    "aspect.venus.pluto.trine": {
+      "distance": 120.00029462201591,
+      "orb": 0.0002946220159145696,
+      "utc": "1952-04-25T12:00:00+00:00"
+    },
+    "aspect.venus.saturn.conjunction": {
+      "distance": 0.008414228218441622,
+      "orb": 0.008414228218441622,
+      "utc": "2095-10-10T12:00:00+00:00"
+    },
+    "aspect.venus.saturn.opposition": {
+      "distance": 179.99759136153688,
+      "orb": 0.002408638463123225,
+      "utc": "1970-12-20T12:00:00+00:00"
+    },
+    "aspect.venus.saturn.sextile": {
+      "distance": 59.99361387625595,
+      "orb": 0.006386123744050565,
+      "utc": "2024-11-22T12:00:00+00:00"
+    },
+    "aspect.venus.saturn.square": {
+      "distance": 89.99898693946088,
+      "orb": 0.0010130605391225345,
+      "utc": "1920-06-04T12:00:00+00:00"
+    },
+    "aspect.venus.saturn.trine": {
+      "distance": 120.00097923248904,
+      "orb": 0.0009792324890440796,
+      "utc": "2026-06-25T12:00:00+00:00"
+    },
+    "aspect.venus.uranus.conjunction": {
+      "distance": 0.0028185029742644474,
+      "orb": 0.0028185029742644474,
+      "utc": "1933-04-15T12:00:00+00:00"
+    },
+    "aspect.venus.uranus.opposition": {
+      "distance": 179.99340929776946,
+      "orb": 0.006590702230539591,
+      "utc": "2060-03-11T12:00:00+00:00"
+    },
+    "aspect.venus.uranus.sextile": {
+      "distance": 60.000142519985445,
+      "orb": 0.00014251998544523303,
+      "utc": "2092-06-26T12:00:00+00:00"
+    },
+    "aspect.venus.uranus.square": {
+      "distance": 90.00105219337047,
+      "orb": 0.0010521933704694675,
+      "utc": "2053-12-28T12:00:00+00:00"
+    },
+    "aspect.venus.uranus.trine": {
+      "distance": 119.99946294716739,
+      "orb": 0.0005370528326125168,
+      "utc": "2095-06-17T12:00:00+00:00"
+    }
+  }
+}

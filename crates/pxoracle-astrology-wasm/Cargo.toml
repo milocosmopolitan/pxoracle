@@ -6,6 +6,7 @@ edition.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 pxoracle-astrology = { path = "../pxoracle-astrology" }
+pxoracle-natal-reading = { path = "../pxoracle-natal-reading" }
 
 [lib]
 crate-type = ["staticlib", "rlib"]

@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InterpretationPlan",
+  "type": "object",
+  "properties": {
+    "aspects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NatalItem"
+      }
+    },
+    "certainty": {
+      "$ref": "#/$defs/Certainty"
+    },
+    "coreIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "distribution": {
+      "$ref": "#/$defs/NatalDistribution"
+    },
+    "importantAspectIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overviewRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "placements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NatalItem"
+      }
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NatalItem"
+      }
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NatalTopicSection"
+      }
+    },
+    "versions": {
+      "$ref": "#/$defs/NatalVersions"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "versions",
+    "certainty",
+    "overviewRefs",
+    "placements",
+    "aspects",
+    "coreIds",
+    "importantAspectIds",
+    "themes",
+    "topics",
+    "distribution"
+  ],
+  "$defs": {
+    "Certainty": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "sampled"
+      ]
+    },
+    "EvidenceKind": {
+      "type": "string",
+      "enum": [
+        "sign",
+        "house",
+        "ascendant",
+        "aspect"
+      ]
+    },
+    "NatalDistribution": {
+      "type": "object",
+      "properties": {
+        "ambiguousBodies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exactElements": {
+          "description": "Exact-time placements only. Sampled alternatives never enter these counts.",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "exactModalities": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0
+          },
+          "maxItems": 3,
+          "minItems": 3
+        },
+        "sampledElements": {
+          "description": "Counts among midpoint/sampled single-sign observations, not certified bounds.",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "sampledModalities": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0
+          },
+          "maxItems": 3,
+          "minItems": 3
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "exactElements",
+        "exactModalities",
+        "sampledElements",
+        "sampledModalities",
+        "ambiguousBodies"
+      ]
+    },
+    "NatalEvidence": {
+      "type": "object",
+      "properties": {
+        "aspect": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bodies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "certainty": {
+          "$ref": "#/$defs/Certainty"
+        },
+        "house": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        },
+        "kind": {
+          "$ref": "#/$defs/EvidenceKind"
+        },
+        "orb": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "sign": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "bodies",
+        "certainty"
+      ]
+    },
+    "NatalItem": {
+      "type": "object",
+      "properties": {
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NatalEvidence"
+          }
+        },
+        "fallback": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "reference": {
+          "type": "string"
+        },
+        "ruleId": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/NatalScope"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "fallback",
+        "id",
+        "reference",
+        "ruleId",
+        "priority",
+        "evidence"
+      ]
+    },
+    "NatalScope": {
+      "type": "string",
+      "enum": [
+        "personal",
+        "social",
+        "generational"
+      ]
+    },
+    "NatalTopic": {
+      "type": "string",
+      "enum": [
+        "self_emotions",
+        "communication",
+        "relationships",
+        "action_work_growth"
+      ]
+    },
+    "NatalTopicSection": {
+      "type": "object",
+      "properties": {
+        "itemIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reference": {
+          "type": "string"
+        },
+        "topic": {
+          "$ref": "#/$defs/NatalTopic"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "topic",
+        "reference",
+        "itemIds"
+      ]
+    },
+    "NatalVersions": {
+      "type": "object",
+      "properties": {
+        "calculation": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "interpretation": {
+          "type": "string"
+        },
+        "rules": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "integer",
+          "format": "uint32",
+          "const": 1,
+          "minimum": 0
+        },
+        "semantics": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "calculation",
+        "interpretation",
+        "semantics",
+        "rules",
+        "content"
+      ]
+    }
+  }
+}

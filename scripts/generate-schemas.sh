@@ -11,3 +11,8 @@ for kind in input plan semantics rules; do
   cargo run --quiet --locked -p pxoracle-tarot-reading --example reading-schema -- "$kind" > "packages/contracts/schemas/reading-$kind.json"
 done
 node scripts/generate-reading-types.mjs
+
+for kind in input plan semantics rules; do
+  cargo run --quiet --locked -p pxoracle-natal-reading --example natal-schema -- "$kind" > "packages/contracts/schemas/natal-$kind.json"
+done
+node scripts/generate-reading-types.mjs natal

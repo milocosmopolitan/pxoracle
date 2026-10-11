@@ -1,0 +1,19 @@
+// Generated from Rust schemars DTOs. Run scripts/generate-schemas.sh.
+export type Certainty = "exact" | "sampled";
+export type EvidenceKind = "sign" | "house" | "ascendant" | "aspect";
+export type InterpretationPlan = { "aspects": Array<NatalItem>; "certainty": Certainty; "coreIds": Array<string>; "distribution": NatalDistribution; "importantAspectIds": Array<string>; "overviewRefs": Array<string>; "placements": Array<NatalItem>; "themes": Array<NatalItem>; "topics": Array<NatalTopicSection>; "versions": NatalVersions };
+export type NatalAspect = { "a": string; "b": string; "kind": string; "orb": number };
+export type NatalBody = { "house"?: number | null; "id": string; "longitude": number; "possibleSigns": Array<number>; "speed": number };
+export type NatalDistribution = { "ambiguousBodies": Array<string>; "exactElements": Array<number>; "exactModalities": Array<number>; "sampledElements": Array<number>; "sampledModalities": Array<number> };
+export type NatalEvidence = { "aspect"?: string | null; "bodies": Array<string>; "certainty": Certainty; "house"?: number | null; "kind": EvidenceKind; "orb"?: number | null; "sign"?: number | null };
+export type NatalInput = { "ascendant"?: number | null; "aspects": Array<NatalAspect>; "bodies": Array<NatalBody>; "certainty": Certainty; "orbs": Array<number>; "polar": boolean; "versions": NatalVersions };
+export type NatalItem = { "evidence": Array<NatalEvidence>; "fallback": boolean; "id": string; "priority": number; "reference": string; "ruleId": string; "scope": NatalScope };
+export type NatalMeaning = { "fallback": boolean; "reference": string; "scope": NatalScope; "themes": Array<string>; "topics": Array<NatalTopic> };
+export type NatalRules = { "aspectWeights": Record<string, number>; "bodyWeights": Record<string, number>; "noAspectsRef": string; "overviewRef": string; "polarRef": string; "sampledRef": string; "themeRules": Array<NatalThemeRule>; "topicRefs": Record<string, string>; "versions": NatalVersions; "weakRef": string };
+export type NatalScope = "personal" | "social" | "generational";
+export type NatalSemantics = { "meanings": Record<string, NatalMeaning>; "referenceIds": Array<string>; "versions": NatalVersions };
+export type NatalThemeRule = { "id": string; "kind": ThemeRelation; "left": string; "priority": number; "reference": string; "right": string };
+export type NatalTopic = "self_emotions" | "communication" | "relationships" | "action_work_growth";
+export type NatalTopicSection = { "itemIds": Array<string>; "reference": string; "topic": NatalTopic };
+export type NatalVersions = { "calculation": string; "content": string; "interpretation": string; "rules": string; "schema": 1; "semantics": string };
+export type ThemeRelation = "repetition" | "complement" | "tension";

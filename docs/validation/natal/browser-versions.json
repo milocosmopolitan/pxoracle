@@ -1,0 +1,10 @@
+{
+  "runtime": "v22.16.0",
+  "platform": "darwin",
+  "versions": {
+    "Chrome": "154.0.8037.98",
+    "Firefox": "142.0.1",
+    "WebKit": "26.0"
+  },
+  "scope": "Local desktop engines; Chromium Pixel 7 emulation is not a physical Android device."
+}

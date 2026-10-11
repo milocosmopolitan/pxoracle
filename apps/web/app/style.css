@@ -827,3 +827,71 @@ body:has(.table-reading) main { pointer-events: none; }
   .tarot-story[data-review] { height: 70svh !important; overflow: visible !important; }
   .tarot-story[data-review] > div:last-child:not(.scene-host) { top: 100%; bottom: auto !important; left: 0 !important; width: 100%; font-size: 12px; }
 }
+
+/* Astrology keeps one full-viewport canvas; only the available framing rectangle changes. */
+.scene-host[data-route="astrology"] { position: fixed; inset: 0; width: 100%; height: 100dvh; }
+.scene-host[data-route="astrology"] .scene-shade { background: linear-gradient(90deg, transparent 42%, #090d12a0 70%, #090d12d9); }
+body:has(.natal-layout) main { pointer-events: none; }
+.natal-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 440px); gap: 24px; padding: 22px 28px 18px; min-height: calc(100dvh - 98px); }
+.natal-stage-column > a, .natal-panel { pointer-events: auto; }
+.natal-stage { height: calc(100dvh - 202px); min-height: 260px; position: relative; }
+.natal-scene-caption { position: absolute; left: 8px; top: 10px; text-shadow: 0 2px 14px #000; }
+.natal-scene-caption h1 { font-size: clamp(26px, 3vw, 44px); margin: 8px 0; }
+.natal-layout[data-chart="ready"] .natal-scene-caption { top: 0; }
+.natal-layout[data-chart="ready"] .natal-scene-caption h1 { font-size: 22px; }
+.natal-scene-caption p, .natal-stage-instruction { font-size: 12px; color: #e2d7c4; }
+.natal-panel { max-height: calc(100dvh - 145px); overflow: auto; overscroll-behavior: contain; padding: 26px; background: #101a1af5; scrollbar-color: #887b5b #101a1a; }
+.natal-panel h2 { font-size: 27px; }
+.natal-panel .panel-heading { flex-wrap: wrap; gap: 8px; }
+.natal-panel button { min-height: 44px; }
+.natal-panel .planets { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.natal-panel .planets button { text-align: left; min-width: 0; }
+.natal-panel .planets strong, .natal-panel .planets span { display: block; }
+.natal-panel .planets span { font-size: 11px; }
+.natal-panel button[aria-pressed="true"] { border-color: #d8bc80; box-shadow: inset 0 0 0 1px #d8bc80; }
+.birth-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.birth-form .actions { flex-wrap: wrap; }
+.city-results { list-style: none; margin: 8px 0; padding: 0; max-height: 230px; overflow: auto; }
+.city-results button { display: block; width: 100%; text-align: left; margin: 4px 0; }
+.city-results span, .city-results small { display: block; }
+.place-confirmation, .historical-time { border-left: 2px solid #af976b; padding: 4px 12px; margin: 16px 0; }
+.place-confirmation p, .historical-time p { margin: 4px 0; }
+.aspect-controls { display: grid; gap: 6px; margin: 12px 0; }
+.aspect-controls small { display: block; }
+.natal-report > section { border-top: 1px solid var(--line); padding: 20px 0; }
+.natal-report h3 { font-size: 26px; }
+.natal-panel h4 { font-family: Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.35; color: #e6d2a9; margin: 16px 0 8px; }
+.natal-placement { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.natal-placement summary { line-height: 1.5; padding: 8px 0; cursor: pointer; color: #ead8b7; }
+.natal-placement .eyebrow { font-size: 10px; margin: 16px 0 4px; }
+.natal-theme, .life-topic { margin: 20px 0 28px; }
+.reflection { font-family: Georgia, serif; font-style: italic; font-size: 17px; color: #dbc89f; }
+.rule-evidence { display: block; overflow-wrap: anywhere; color: var(--muted); font-size: 10px; margin-top: 10px; }
+.evidence-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.evidence-links button { font-size: 12px; }
+.distribution { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.distribution dd { margin: 4px 0; color: #dfc794; }
+.table-scroll { overflow: auto; }
+.table-scroll table { border-collapse: collapse; width: 100%; font-size: 12px; }
+.table-scroll th, .table-scroll td { padding: 8px 5px; text-align: left; border-bottom: 1px solid var(--line); }
+.table-scroll td small { display: block; }
+.table-scroll button { padding: 4px; }
+.natal-report footer { font-size: 11px; color: var(--muted); }
+@media (max-width: 800px) {
+ .natal-layout { display: flex; flex-direction: column; gap: 4px; padding: 12px; min-height: calc(100dvh - 70px); }
+ .natal-stage { height: 37dvh; min-height: 190px; }
+ .natal-panel { max-height: 47dvh; padding: 20px; width: 100%; }
+ .natal-scene-caption { top: 2px; }
+ .natal-scene-caption h1 { font-size: 24px; }
+ .natal-scene-caption p { margin: 4px 0; }
+ .natal-stage-instruction { margin: 0 0 8px; font-size: 10px; }
+ .scene-host[data-route="astrology"] .scene-shade { background: linear-gradient(0deg, #090d12b0, transparent 65%); }
+}
+
+.natal-camera-story .scene-host[data-route="astrology"] { position: absolute; inset: 0; height: 100%; }
+.natal-camera-story .scene-shade { background: none; }
+
+.natal-layout[data-chart="ready"] .natal-scene-caption { top: -33px; left: 185px; }
+.natal-layout[data-chart="ready"] .natal-scene-caption h1 { font-size: 17px; margin: 0; line-height: 24px; }
+.natal-layout[data-chart="ready"] .natal-scene-caption p { display: none; }
+@media (max-width: 800px) { .natal-layout[data-chart="ready"] .natal-scene-caption { left: 170px; top: -25px; } .natal-layout[data-chart="ready"] .natal-scene-caption h1 { font-size: 15px; } }

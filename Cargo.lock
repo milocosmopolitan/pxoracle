@@ -115,6 +115,7 @@ name = "pxoracle-astrology-wasm"
 version = "0.1.0"
 dependencies = [
  "pxoracle-astrology",
+ "pxoracle-natal-reading",
  "serde",
  "serde_json",
 ]
@@ -124,6 +125,15 @@ name = "pxoracle-ephemeris"
 version = "0.1.0"
 dependencies = [
  "cc",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "pxoracle-natal-reading"
+version = "0.1.0"
+dependencies = [
+ "schemars",
  "serde",
  "serde_json",
 ]

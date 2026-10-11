@@ -1,0 +1,17 @@
+{
+  "astrology": {
+    "deployedMainBytes": 1172727,
+    "deployedMainGzip": 267418,
+    "branchBytes": 1539686,
+    "branchGzip": 359216,
+    "byteIdentical": false
+  },
+  "tarot": {
+    "deployedMainBytes": 499855,
+    "deployedMainGzip": 141342,
+    "branchBytes": 499868,
+    "branchGzip": 141233,
+    "byteIdentical": false
+  },
+  "note": "Deployed PR59 Linux artifacts versus current macOS build including main PR60; gzip level 9, mtime 0. Not a controlled compiler-size comparison."
+}

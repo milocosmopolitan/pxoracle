@@ -1,0 +1,27 @@
+{
+  "versions": {
+    "schema": 1,
+    "calculation": "0.1.0",
+    "interpretation": "natal.1",
+    "semantics": "natal-semantics.1",
+    "rules": "natal-rules.1",
+    "content": "natal.en.1"
+  },
+  "files": {
+    "semantics": {
+      "path": "semantics.1.json",
+      "bytes": 94752,
+      "sha256": "5d4e508b8b13bc2a4f56b9de67e63ea4010777f03cc5eee773006f440656034c"
+    },
+    "rules": {
+      "path": "rules.1.json",
+      "bytes": 2966,
+      "sha256": "bab49a5e5f4ca50841c2e450ad92c8a6cd2727dc62a2a76610cda796b8099ada"
+    },
+    "en": {
+      "path": "en.1.json",
+      "bytes": 379619,
+      "sha256": "7d0270b501f8e461dfc0d3ac3e0fa1162df54278bcb1db65b7bf8e7bebb2c46c"
+    }
+  }
+}

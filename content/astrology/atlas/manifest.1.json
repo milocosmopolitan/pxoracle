@@ -1,0 +1,23 @@
+{
+  "version": "geonames-us-kr.2026-10-11",
+  "license": "CC-BY-4.0",
+  "attribution": "GeoNames",
+  "countries": {
+    "US": {
+      "label": "United States",
+      "file": "US.geonames-us-kr.2026-10-11.json",
+      "count": 3408,
+      "bytes": 1191115,
+      "gzipBytes": 429314,
+      "sha256": "6026b71a7f18361242136a850b2682b76949f28eb8db04ed248e3b286102f950"
+    },
+    "KR": {
+      "label": "South Korea",
+      "file": "KR.geonames-us-kr.2026-10-11.json",
+      "count": 147,
+      "bytes": 32536,
+      "gzipBytes": 12067,
+      "sha256": "4b6a915483f9500a7f6b5a46d594824b11fb3132b94120b1c79c485c608b4837"
+    }
+  }
+}

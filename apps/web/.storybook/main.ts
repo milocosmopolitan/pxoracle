@@ -14,6 +14,7 @@ const config: StorybookConfig = {
     config.resolve ??= {};
     config.resolve.alias = {
       ...(config.resolve.alias as Record<string, string>),
+      "@pxoracle/contracts/atlas": fileURLToPath(new URL("../../../packages/contracts/src/atlas.ts", import.meta.url)),
       "@pxoracle/contracts": fileURLToPath(
         new URL("../../../packages/contracts/src/index.ts", import.meta.url),
       ),

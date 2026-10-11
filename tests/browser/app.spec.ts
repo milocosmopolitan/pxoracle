@@ -57,6 +57,7 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   await page.goto("/astrology/");
   await page.getByLabel("Birth date", { exact: true }).fill("2000-01-01");
   await page.getByLabel("Local birth time").fill("12:00");
+  await page.getByRole("button", { name: "Enter or adjust coordinates" }).click();
   await page.getByLabel("Birthplace time zone").fill("UTC");
   await page.getByLabel("Latitude", { exact: true }).fill("0");
   await page.getByLabel("Longitude", { exact: true }).fill("0");
@@ -65,7 +66,7 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
     page.getByRole("heading", { name: "Your celestial map" }),
   ).toBeVisible({ timeout: 20000 });
   await expect(
-    page.getByRole("button", { name: /sun.*Capricorn/i }),
+    page.locator(".planets").getByRole("button", { name: /sun.*Capricorn/i }),
   ).toBeVisible({ timeout: 20000 });
   expect(wasm.some((x) => x.includes("/astrology/"))).toBeTruthy();
   expect(wasm.some((x) => x.includes("/tarot/"))).toBeFalsy();
@@ -75,8 +76,8 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   await page.reload();
   const beforeRestore=wasm.length;
   await page.getByRole('button',{name:'Open saved chart'}).click();
-  await expect(page.getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible({ timeout: 20000 });
-  expect(wasm.length).toBe(beforeRestore);
+  await expect(page.locator('.planets').getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible({ timeout: 20000 });
+  expect(wasm.length).toBe(beforeRestore + 1); // The isolated Worker validates restored facts; it does not recalculate them.
   await page.getByRole('button',{name:'Edit details'}).click();
   await page.getByLabel('Time accuracy').selectOption('unknown');
   await page.getByRole('button',{name:'Enter the crystal'}).click();
@@ -182,6 +183,7 @@ test("birth fields remain disabled until hydration owns their values", async ({ 
     await expect(page.getByRole("button", { name: "Enter the crystal" })).toBeDisabled();
   } finally { release(); }
   await expect(page.getByLabel("Birth date", { exact: true })).toBeEnabled();
+  await page.getByRole("button", { name: "Enter or adjust coordinates" }).click();
   await page.getByLabel("Birthplace time zone").fill("UTC");
   await expect(page.getByLabel("Birthplace time zone")).toHaveValue("UTC");
 });

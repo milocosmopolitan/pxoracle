@@ -8,6 +8,14 @@ import { ErrorNotice, Loading } from "../features/shared";
 import fixture from "../../../../tests/fixtures/engines.json";
 import type { Chart, TarotSession, RouteScene } from "@pxoracle/contracts";
 const chart = fixture.chart as Chart;
+import natalFixtures from "../../../../tests/fixtures/natal.json";
+import type { NatalInput, InterpretationPlan } from "@pxoracle/contracts/natal";
+const natalFixture = natalFixtures[0];
+const mockNatal = {
+  calculateNatal: async () => ({ chart: natalFixture.chart as Chart, facts: natalFixture.facts as NatalInput }),
+  restoreNatal: async () => ({ chart: natalFixture.chart as Chart, facts: natalFixture.facts as NatalInput }),
+  interpretNatal: async () => structuredClone(natalFixture.plan) as InterpretationPlan,
+};
 import readingFixtures from "../../../../tests/fixtures/readings.json";
 import type { ReadingInput, ReadingPlan } from "@pxoracle/contracts/reading";
 const session = structuredClone(fixture.session) as TarotSession;
@@ -26,10 +34,11 @@ function Seed({
 }) {
   const setChart = useOracle((s) => s.setChart),
     setTarot = useOracle((s) => s.setTarot),
-    setReading = useOracle((s) => s.setReading);
+    setReading = useOracle((s) => s.setReading),
+    setNatal = useOracle((s) => s.setNatal);
   useEffect(() => {
     if (!revealed) return;
-    if (feature === "astrology") setChart(chart);
+    if (feature === "astrology") { setChart(natalFixture.chart as Chart); setNatal({ facts: natalFixture.facts as NatalInput, plan: natalFixture.plan as InterpretationPlan, status: "ready" }); }
     else {
       const s = structuredClone(session);
       s.selections = [0, 1, 2].map((slot, i) => ({
@@ -46,7 +55,7 @@ function Seed({
         versions: readingFixtures[0].plan.versions as ReadingPlan["versions"],
       });
     }
-  }, [feature, revealed, setChart, setTarot, setReading]);
+  }, [feature, revealed, setChart, setTarot, setReading, setNatal]);
   return null;
 }
 const mockTarot = {
@@ -101,13 +110,14 @@ function SceneBridge({
 }) {
   const chart = useOracle((s) => s.chart),
     selectedBody = useOracle((s) => s.selectedBody),
-    tarotView = useOracle((s) => s.tarotView);
+    tarotView = useOracle((s) => s.tarotView),
+    astrologyView = useOracle((s) => s.astrologyView);
   return (
     <SceneCanvas
       embedded
       route={route}
       frozen={frozen}
-      data={{ bodies: chart?.bodies, selectedBody, tarot: tarotView }}
+      data={{ bodies: chart?.bodies, selectedBody, tarot: tarotView, astrology: astrologyView }}
     />
   );
 }
@@ -162,7 +172,7 @@ function Harness({
           ) : route === "astrology" ? (
             <>
               <Seed feature="astrology" revealed={state === "reading"} />
-              <Astrology engine={{ calculate: async () => chart }} />
+              <Astrology engine={mockNatal} />
             </>
           ) : route === "tarot" ? (
             <>

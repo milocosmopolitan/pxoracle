@@ -6,6 +6,13 @@ use serde::{Deserialize, Serialize};
 pub const BODIES: [&str; 10] = [
     "sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto",
 ];
+pub const ASPECTS: [(f64, &str); 5] = [
+    (0., "conjunction"),
+    (60., "sextile"),
+    (90., "square"),
+    (120., "trine"),
+    (180., "opposition"),
+];
 #[derive(Clone, Debug, Serialize, Deserialize, schemars::JsonSchema)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct Input {
@@ -202,16 +209,7 @@ pub fn chart(i: &Input) -> Result<Chart, String> {
         for a in 0..10 {
             for b in a + 1..10 {
                 let distance = delta(bodies[a].longitude, bodies[b].longitude).abs();
-                for (n, (angle, kind)) in [
-                    (0., "conjunction"),
-                    (60., "sextile"),
-                    (90., "square"),
-                    (120., "trine"),
-                    (180., "opposition"),
-                ]
-                .iter()
-                .enumerate()
-                {
+                for (n, (angle, kind)) in ASPECTS.iter().enumerate() {
                     let orb = (distance - angle).abs();
                     if orb <= i.orbs[n] {
                         aspects.push(Aspect {
@@ -243,6 +241,104 @@ pub fn chart(i: &Input) -> Result<Chart, String> {
         provenance: serde_json::json!({"backend":BACKEND_VERSION,"frame":"apparent geocentric true ecliptic/equinox of date","zodiac":"tropical","houses":"whole-sign","deltaT":"Espenak-Meeus backend default","utPolicy":"UTC-as-UT1","ttDays":sun.tt_days,"speed":"central difference +/-0.005 days","timezoneDatabase":chrono_tz::IANA_TZDB_VERSION,"settings":i,"uncertaintyPolicy":"midpoint with 15-minute sampled signs; no interval angles/aspects"}),
     })
 }
+/// Validate serialized facts without rerunning the ephemeris or replacing any position.
+pub fn validate_chart(c: &Chart) -> Result<(), String> {
+    let invalid = || "INVALID_CHART".to_string();
+    if c.schema_version != 1 || c.engine_version != env!("CARGO_PKG_VERSION") {
+        return Err("INCOMPATIBLE_CHART".into());
+    }
+    let i: Input =
+        serde_json::from_value(c.provenance.get("settings").cloned().ok_or_else(invalid)?)
+            .map_err(|_| invalid())?;
+    let (start, end) = resolve(&i)?;
+    let uncertain = start != end;
+    if c.interval != [start.to_rfc3339(), end.to_rfc3339()]
+        || c.bodies.len() != 10
+        || c.aspects.len() > 225
+        || c.warnings.len() > 32
+        || c.provenance.get("zodiac").and_then(|v| v.as_str()) != Some("tropical")
+        || c.provenance.get("houses").and_then(|v| v.as_str()) != Some("whole-sign")
+        || c.provenance.get("backend").and_then(|v| v.as_str()) != Some(BACKEND_VERSION)
+    {
+        return Err(invalid());
+    }
+    let supports_houses = !uncertain && i.latitude.abs() < 66.;
+    if c.angles.is_some() != supports_houses || c.houses.is_some() != supports_houses {
+        return Err(invalid());
+    }
+    let mut first_house = None;
+    if let (Some(a), Some(h)) = (&c.angles, &c.houses) {
+        if ![a.asc, a.mc]
+            .iter()
+            .all(|v| v.is_finite() && (0.0..360.0).contains(v))
+            || h.len() != 12
+        {
+            return Err(invalid());
+        }
+        let first = (a.asc / 30.).floor() * 30.;
+        if h.iter()
+            .enumerate()
+            .any(|(n, v)| !v.is_finite() || delta(*v, first + n as f64 * 30.).abs() > 1e-8)
+        {
+            return Err(invalid());
+        }
+        first_house = Some(first);
+    }
+    for (n, b) in c.bodies.iter().enumerate() {
+        if b.id != BODIES[n]
+            || !b.longitude.is_finite()
+            || !(0.0..360.0).contains(&b.longitude)
+            || !b.latitude.is_finite()
+            || b.latitude.abs() > 90.
+            || !b.speed.is_finite()
+            || b.sign != (b.longitude / 30.).floor() as u32
+            || !b.degree.is_finite()
+            || (b.degree - b.longitude % 30.).abs() > 1e-8
+            || b.meaning_ref != format!("body.{}", b.id)
+            || b.possible_signs.is_empty()
+            || b.possible_signs.len() > 12
+            || !b.possible_signs.contains(&b.sign)
+            || b.possible_signs.iter().any(|s| *s >= 12)
+            || b.possible_signs.windows(2).any(|w| w[0] >= w[1])
+            || (!uncertain && b.possible_signs != [b.sign])
+            || b.house != first_house.map(|h| (norm(b.longitude - h) / 30.).floor() as u32 + 1)
+        {
+            return Err(invalid());
+        }
+    }
+    let mut expected = Vec::new();
+    if !uncertain {
+        for a in 0..10 {
+            for b in a + 1..10 {
+                let distance = delta(c.bodies[a].longitude, c.bodies[b].longitude).abs();
+                for (n, (angle, kind)) in ASPECTS.iter().enumerate() {
+                    let orb = (distance - angle).abs();
+                    if orb <= i.orbs[n] {
+                        expected.push((a, b, *angle, *kind, orb));
+                    }
+                }
+            }
+        }
+    }
+    if c.aspects.len() != expected.len() {
+        return Err(invalid());
+    }
+    for (actual, (a, b, angle, kind, orb)) in c.aspects.iter().zip(expected) {
+        if actual.a != BODIES[a]
+            || actual.b != BODIES[b]
+            || actual.kind != kind
+            || !actual.angle.is_finite()
+            || (actual.angle - angle).abs() > 1e-8
+            || !actual.orb.is_finite()
+            || (actual.orb - orb).abs() > 1e-8
+            || actual.meaning_ref != format!("aspect.{kind}")
+        {
+            return Err(invalid());
+        }
+    }
+    Ok(())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -313,6 +409,61 @@ mod tests {
         i.date = "1950-01-01".into();
         i.timezone = "Asia/Seoul".into();
         assert_eq!(resolve(&i).unwrap().0.hour(), 3);
+    }
+    #[test]
+    fn saved_facts_are_validated_without_recalculation() {
+        let original = chart(&input()).unwrap();
+        validate_chart(&original).unwrap();
+        let mut altered: Chart =
+            serde_json::from_value(serde_json::to_value(&original).unwrap()).unwrap();
+        altered.bodies[0].sign = (altered.bodies[0].sign + 1) % 12;
+        assert!(validate_chart(&altered).is_err());
+        altered = serde_json::from_value(serde_json::to_value(&original).unwrap()).unwrap();
+        altered.aspects.clear();
+        assert!(validate_chart(&altered).is_err());
+        altered = serde_json::from_value(serde_json::to_value(&original).unwrap()).unwrap();
+        altered.houses.as_mut().unwrap()[0] += 0.1;
+        assert!(validate_chart(&altered).is_err());
+        altered = serde_json::from_value(serde_json::to_value(&original).unwrap()).unwrap();
+        altered.bodies[0].speed = f64::NAN;
+        assert!(validate_chart(&altered).is_err());
+    }
+    #[test]
+    fn approximate_and_polar_keep_distinct_capabilities() {
+        let mut i = input();
+        i.accuracy = "approximate".into();
+        i.uncertainty_minutes = Some(60);
+        let c = chart(&i).unwrap();
+        validate_chart(&c).unwrap();
+        assert!(c.angles.is_none() && c.houses.is_none() && c.aspects.is_empty());
+        assert!(c.bodies.iter().all(|b| b.house.is_none()));
+        i.accuracy = "exact".into();
+        i.latitude = 66.;
+        let c = chart(&i).unwrap();
+        validate_chart(&c).unwrap();
+        assert!(c.angles.is_none() && c.houses.is_none());
+        assert!(!c.aspects.is_empty());
+        i.latitude = 65.999;
+        assert!(chart(&i).unwrap().angles.is_some());
+    }
+    #[test]
+    fn historical_half_hour_and_skipped_day_are_explicit() {
+        let mut i = input();
+        i.date = "1955-01-01".into();
+        i.timezone = "Asia/Seoul".into();
+        let t = resolve(&i).unwrap().0;
+        assert_eq!((t.hour(), t.minute()), (3, 30));
+        i.date = "2011-12-30".into();
+        i.timezone = "Pacific/Apia".into();
+        i.accuracy = "unknown".into();
+        assert_eq!(resolve(&i).unwrap_err(), "NONEXISTENT_LOCAL_TIME");
+        i.date = "1899-12-31".into();
+        assert_eq!(resolve(&i).unwrap_err(), "UNSUPPORTED_DATE");
+        i.date = "2101-01-01".into();
+        assert_eq!(resolve(&i).unwrap_err(), "UNSUPPORTED_DATE");
+        i.date = "2000-01-01".into();
+        i.latitude = 90.001;
+        assert!(resolve(&i).is_err());
     }
     use chrono::Timelike;
 }
