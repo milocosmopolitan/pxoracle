@@ -43,3 +43,9 @@ Run the six AGENTS gates, then serve `apps/web/out` on 4180 and `apps/web/storyb
 ## Limits
 
 English only; 12 symbolic themes and 21 relationships, not every interpretive tradition. Human editorial sign-off is pending. This epic's local browser qualification is Chromium desktop and emulated mobile, not a physical phone or fresh Safari/Firefox qualification. No new frame-rate, cloth-performance or artwork-quality claim is made. Existing Storybook large-chunk/use-client warnings and upstream C/example-name warnings remain visible; they do not fail the required builds.
+
+## CI execution boundary
+
+PR #27 run `38120393533` exceeded the existing 25-minute job limit during its serial browser matrix (GitHub check annotation confirmed the timeout). The workflow now builds/tests once, uploads the same static app and Storybook, and runs Chrome, Firefox, WebKit and mobile Chromium in separate jobs with `fail-fast: false`. Storybook and actual Safari retain separate jobs. No browser or assertion is removed. This avoids letting one slow browser consume the whole qualification budget.
+
+The focused local production suite covered 12 desktop/mobile scenarios: eight existing tarot/fallback scenarios passed, and all four structured-reading/legacy scenarios passed on the final rerun. The earlier restore comparison was corrected to compare visible text consistently, instead of comparing `innerText` with hidden `textContent`.
