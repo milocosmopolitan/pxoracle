@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NatalInput",
+  "description": "Extracted facts only. No date, coordinates, timezone, name, notes or hidden state.",
+  "type": "object",
+  "properties": {
+    "ascendant": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "format": "double"
+    },
+    "aspects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NatalAspect"
+      },
+      "maxItems": 225
+    },
+    "bodies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NatalBody"
+      },
+      "maxItems": 10,
+      "minItems": 10
+    },
+    "certainty": {
+      "$ref": "#/$defs/Certainty"
+    },
+    "orbs": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "format": "double"
+      },
+      "maxItems": 5,
+      "minItems": 5
+    },
+    "polar": {
+      "type": "boolean"
+    },
+    "versions": {
+      "$ref": "#/$defs/NatalVersions"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "versions",
+    "certainty",
+    "polar",
+    "bodies",
+    "aspects",
+    "orbs"
+  ],
+  "$defs": {
+    "Certainty": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "sampled"
+      ]
+    },
+    "NatalAspect": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "orb": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "a",
+        "b",
+        "kind",
+        "orb"
+      ]
+    },
+    "NatalBody": {
+      "type": "object",
+      "properties": {
+        "house": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        },
+        "id": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "possibleSigns": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0
+          },
+          "maxItems": 12,
+          "minItems": 1
+        },
+        "speed": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "longitude",
+        "speed",
+        "possibleSigns"
+      ]
+    },
+    "NatalVersions": {
+      "type": "object",
+      "properties": {
+        "calculation": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "interpretation": {
+          "type": "string"
+        },
+        "rules": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "integer",
+          "format": "uint32",
+          "const": 1,
+          "minimum": 0
+        },
+        "semantics": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "calculation",
+        "interpretation",
+        "semantics",
+        "rules",
+        "content"
+      ]
+    }
+  }
+}

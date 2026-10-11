@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NatalRules",
+  "type": "object",
+  "properties": {
+    "aspectWeights": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "format": "uint32",
+        "minimum": 0
+      }
+    },
+    "bodyWeights": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "format": "uint32",
+        "minimum": 0
+      }
+    },
+    "noAspectsRef": {
+      "type": "string"
+    },
+    "overviewRef": {
+      "type": "string"
+    },
+    "polarRef": {
+      "type": "string"
+    },
+    "sampledRef": {
+      "type": "string"
+    },
+    "themeRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/NatalThemeRule"
+      }
+    },
+    "topicRefs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "versions": {
+      "$ref": "#/$defs/NatalVersions"
+    },
+    "weakRef": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "versions",
+    "bodyWeights",
+    "aspectWeights",
+    "themeRules",
+    "overviewRef",
+    "weakRef",
+    "sampledRef",
+    "polarRef",
+    "noAspectsRef",
+    "topicRefs"
+  ],
+  "$defs": {
+    "NatalThemeRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/ThemeRelation"
+        },
+        "left": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "reference": {
+          "type": "string"
+        },
+        "right": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "left",
+        "right",
+        "priority",
+        "reference"
+      ]
+    },
+    "NatalVersions": {
+      "type": "object",
+      "properties": {
+        "calculation": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "interpretation": {
+          "type": "string"
+        },
+        "rules": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "integer",
+          "format": "uint32",
+          "const": 1,
+          "minimum": 0
+        },
+        "semantics": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "calculation",
+        "interpretation",
+        "semantics",
+        "rules",
+        "content"
+      ]
+    },
+    "ThemeRelation": {
+      "type": "string",
+      "enum": [
+        "repetition",
+        "complement",
+        "tension"
+      ]
+    }
+  }
+}

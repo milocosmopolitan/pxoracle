@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""Deterministic, offline transformation of the attributed, pinned GeoNames subset."""
+import gzip
+import hashlib
+import json
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "content/astrology/atlas"
+PUBLIC = ROOT / "apps/web/public/content/atlas"
+provenance = json.loads((SOURCE / "provenance.json").read_text())
+for name, expected in provenance["snapshotSha256"].items():
+    assert hashlib.sha256((SOURCE / name).read_bytes()).hexdigest() == expected, name
+admin = {r[0]: r[1] for line in (SOURCE / "source-admin1.tsv").read_text().splitlines() if (r := line.split("\t"))}
+rows = [line.split("\t") for line in gzip.decompress((SOURCE / "source-US-KR.tsv.gz").read_bytes()).decode().splitlines()]
+manifest = {"version": provenance["version"], "license": "CC-BY-4.0", "attribution": "GeoNames", "countries": {}}
+PUBLIC.mkdir(parents=True, exist_ok=True)
+for country, label in [("US", "United States"), ("KR", "South Korea")]:
+    cities = []
+    for r in rows:
+        if r[8] != country:
+            continue
+        assert r[17] and "/" in r[17], "Missing explicit IANA zone"
+        aliases = sorted(set([r[2]] + r[3].split(",")) - {"", r[1]})
+        cities.append([r[0], r[1], admin.get(country + "." + r[10], r[10]),
+                       float(r[4]), float(r[5]), r[17], aliases])
+    cities.sort(key=lambda r: int(r[0]))
+    name = country + "." + provenance["version"] + ".json"
+    data = json.dumps({"version": provenance["version"], "country": country, "cities": cities},
+                      ensure_ascii=False, separators=(",", ":")).encode()
+    (PUBLIC / name).write_bytes(data)
+    manifest["countries"][country] = {"label": label, "file": name, "count": len(cities), "bytes": len(data),
+                                     "gzipBytes": len(gzip.compress(data, mtime=0)), "sha256": hashlib.sha256(data).hexdigest()}
+    print(country, len(cities), "cities;", len(data), "bytes;", manifest["countries"][country]["gzipBytes"], "gzip")
+(PUBLIC / "manifest.1.json").write_text(json.dumps(manifest, indent=2) + "\n")
+(SOURCE / "manifest.1.json").write_text(json.dumps(manifest, indent=2) + "\n")
+(PUBLIC / "GEONAMES-LICENSE.txt").write_bytes((SOURCE / "GEONAMES-LICENSE.txt").read_bytes())

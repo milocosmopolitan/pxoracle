@@ -129,6 +129,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "pxoracle-natal-reading"
+version = "0.1.0"
+dependencies = [
+ "schemars",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "pxoracle-tarot"
 version = "0.1.0"
 dependencies = [
