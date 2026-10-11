@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import { createStudyGlobe } from "./study-globe";
+import { createStudyProps } from "./study-props";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import type { SceneFactory } from "@pxoracle/scene-runtime";
 import type { TarotView } from "@pxoracle/contracts";
@@ -292,34 +294,17 @@ export const createScene: SceneFactory = async (leases, signal) => {
       pixelMaterial(0x171919, owner),
       base.scene,
     );
-    const ambient = new THREE.HemisphereLight(0xd2cfdf, 0x171324, 0.7);
-    const warm = new THREE.DirectionalLight(0xffdeb7, 1.25);
-    warm.position.set(-10, 12, 7);
-    warm.target.position.set(-3, -1, 0);
-    warm.castShadow = true;
-    warm.shadow.mapSize.set(1024, 1024);
-    Object.assign(warm.shadow.camera, {
-      left: -11,
-      right: 11,
-      top: 11,
-      bottom: -11,
-      near: 0.5,
-      far: 45,
-    });
-    warm.shadow.bias = -0.0003;
-    warm.shadow.normalBias = 0.008;
-    releases.push(() => warm.shadow.dispose());
-    base.scene.add(warm.target);
-    const rim = new THREE.DirectionalLight(0x777acb, 0.7);
+    const props = await createStudyProps(leases, signal, true);
+    releases.push(props.dispose);
+    base.scene.add(props.group);
+    const globe = await createStudyGlobe(leases, signal, true, "room");
+    releases.push(globe.dispose);
+    base.scene.add(globe.group);
+    const rim = new THREE.DirectionalLight(0x777acb, 0.35);
     rim.position.set(8, 5, -4);
-    const deskGlow = new THREE.PointLight(0xffb978, 42, 23, 2);
-    deskGlow.position.set(-8, 3.8, 1.5);
-    const windowGlow = new THREE.PointLight(0x7585bf, 28, 25, 2);
+    const windowGlow = new THREE.PointLight(0x7585bf, 18, 25, 2);
     windowGlow.position.set(5, 4, -5);
-    // Match the portrait's amber light along the screen-left shoulder and lapel.
-    const shoulderGlow = new THREE.PointLight(0xffcb86, 9, 9, 2);
-    shoulderGlow.position.set(-6, 3.1, -1.2);
-    base.scene.add(ambient, warm, rim, deskGlow, windowGlow, shoulderGlow);
+    base.scene.add(rim, windowGlow);
     const textures = {
       skin: await acquire("/art/hand-mesh/skin-albedo.png"),
       cloth: await acquire("/art/hand-mesh/cloth-albedo.png"),
@@ -480,6 +465,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
     const ray = new THREE.Raycaster();
     return {
       ...base,
+      setShadows(enabled) { props.lamp.setShadows(enabled); },
       camera,
       render(renderer) {
         pixelPass.render(renderer, base.scene, camera);
@@ -525,6 +511,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
           });
       },
       update(time, data, reduced) {
+        props.update(time, reduced);
         const assetsChanged = loadDirty;
         loadDirty = false;
         const view = data.tarot;

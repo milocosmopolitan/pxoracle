@@ -5,6 +5,16 @@ const config: StorybookConfig = {
   framework: "@storybook/react-vite",
   staticDirs: ["../public"],
   viteFinal: async (config) => {
+    // Vite's bundled watcher selects native FSEvents before reading this env flag.
+    // Pass the option before construction so CI/worktree polling actually takes effect.
+    if (process.env.CHOKIDAR_USEPOLLING === "true") {
+      config.server ??= {};
+      config.server.watch = {
+        ...config.server.watch,
+        usePolling: true,
+        interval: Number(process.env.CHOKIDAR_INTERVAL) || 100,
+      };
+    }
     // Storybook staticDirs owns copying/serving assets; avoid Vite copying them concurrently.
     config.publicDir = false;
     config.define = { "process.env": "{}", ...config.define };
@@ -14,6 +24,8 @@ const config: StorybookConfig = {
     config.resolve ??= {};
     config.resolve.alias = {
       ...(config.resolve.alias as Record<string, string>),
+      "@pxoracle/contracts/globe-geography": fileURLToPath(new URL("../../../packages/contracts/src/globe-geography.ts", import.meta.url)),
+      "@pxoracle/contracts/globe-view": fileURLToPath(new URL("../../../packages/contracts/src/globe-view.ts", import.meta.url)),
       "@pxoracle/contracts/atlas": fileURLToPath(new URL("../../../packages/contracts/src/atlas.ts", import.meta.url)),
       "@pxoracle/contracts": fileURLToPath(
         new URL("../../../packages/contracts/src/index.ts", import.meta.url),

@@ -4,6 +4,11 @@ import type {
   AstrologySelection,
   AstrologyView,
 } from "@pxoracle/contracts/astrology-view";
+import { createStudyProps } from "./study-props";
+import { createStudyGlobe, createStudyTable } from "./study-globe";
+import { globeCountries } from "@pxoracle/contracts/globe-geography";
+import { globeShot } from "./globe-camera";
+import type { GlobeView } from "@pxoracle/contracts/globe-view";
 import { composition } from "./composition";
 import { studyLayers } from "./study";
 import { layoutMarkers } from "./astrology-layout";
@@ -259,6 +264,26 @@ export const createScene: SceneFactory = async (leases, signal) => {
       );
   }
   try {
+    const props = await createStudyProps(leases, signal);
+    staticResources.push(props.dispose);
+    base.scene.add(props.group);
+    const globe = await createStudyGlobe(leases, signal);
+    staticResources.push(globe.dispose);
+    base.scene.add(globe.group);
+    const desk = await createStudyTable(leases, signal);
+    staticResources.push(desk.dispose);
+    base.scene.add(desk.group);
+    let globeView: GlobeView | undefined;
+    let lastGlobeTime = 0;
+    let globeMoving = false;
+    let orbitYaw = 0, orbitPitch = 0, zoomOut = 1, navigationKey = "", adjustmentRevision = -1;
+    function adjust(yaw: number, pitch: number, zoom: number) {
+      orbitYaw = THREE.MathUtils.clamp(orbitYaw + yaw, -25, 25);
+      orbitPitch = THREE.MathUtils.clamp(orbitPitch + pitch, -15, 15);
+      zoomOut = THREE.MathUtils.clamp(zoomOut + zoom, 1, 1.4);
+      dirty = true;
+    }
+    const globeCenter = globe.group.localToWorld(globe.center.clone());
     mesh(
       new THREE.CircleGeometry(0.91, 96),
       mat(0x101528, 0.77),
@@ -310,6 +335,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
       ).position.copy(point(sign * 30 + 15, 0.79));
     }
     return {
+      setShadows(enabled) { props.lamp.setShadows(enabled); },
       scene: base.scene,
       camera,
       enter() {
@@ -329,9 +355,32 @@ export const createScene: SceneFactory = async (leases, signal) => {
         dirty = true;
       },
       needsRender() {
-        return moving || dirty;
+        const fixedReview = (globeView?.reviewProgress ?? current?.reviewProgress) !== undefined;
+        return (moving && !fixedReview) || globeMoving || dirty;
+      },
+      gesture(event) {
+        if(!globeView || globeView.phase === "room" || globeView.phase === "crystal" || dead)return false;
+        adjust(-event.dx * 100, event.dy * 70, event.zoom);
+        return true;
       },
       pointer(event) {
+        if (!dead && !signal.aborted && globeView && globeView.phase !== "crystal" && event.type === "select" && !moving) {
+          ray.setFromCamera(new THREE.Vector2(event.x, event.y), camera);
+          const hit = ray.intersectObject(globe.earth, false)[0];
+          if (hit) {
+            if (globeView.phase === "room") globeView.onIntent?.({type:"open"});
+            else {
+              const country = globe.pickCountry(hit.point);
+              if (country) {
+                if (globeView.phase === "overview") {
+                  const region = globeCountries.find(c => c.code === country)?.regions[0];
+                  if (region) globeView.onIntent?.({type:"region",region});
+                } else globeView.onIntent?.({type:"country", country});
+              }
+            }
+          }
+          return;
+        }
         if (dead || signal.aborted || moving || current?.phase !== "chart")
           return;
         const x = (event.x + 1) / 2,
@@ -372,6 +421,9 @@ export const createScene: SceneFactory = async (leases, signal) => {
       update(time, data, reduced) {
         if (dead || signal.aborted) return;
         base.update(time, {}, reduced);
+        props.update(time, reduced);
+        globeView = data.globe;
+        const browsing = globeView && globeView.phase !== "crystal" ? globeView : undefined;
         const view: AstrologyView = data.astrology ?? {
           phase: "entry",
           revision: 0,
@@ -392,8 +444,18 @@ export const createScene: SceneFactory = async (leases, signal) => {
           rebuild(view);
           dataKey = nextData;
         }
-        root.visible = view.phase === "chart";
+        root.visible = view.phase === "chart" && !browsing;
+        const nextNavigation = browsing ? `${browsing.phase}:${browsing.region}:${browsing.country}` : "crystal";
+        if(nextNavigation !== navigationKey) {
+          navigationKey=nextNavigation; orbitYaw=0;orbitPitch=0;zoomOut=1;
+        }
+        if(browsing?.adjustment && adjustmentRevision !== browsing.revision) {
+          adjustmentRevision=browsing.revision;
+          adjust(browsing.adjustment.yaw ?? 0,browsing.adjustment.pitch ?? 0,browsing.adjustment.zoom ?? 0);
+        }
         const nextKey = JSON.stringify([
+          orbitYaw, orbitPitch, zoomOut,
+          browsing ? globeView : null,
           view.phase,
           view.selection,
           view.viewport,
@@ -404,7 +466,14 @@ export const createScene: SceneFactory = async (leases, signal) => {
         if (key !== nextKey) {
           fromPosition.copy(position);
           fromTarget.copy(target);
-          chooseShot(view);
+          if (browsing) {
+            const focus = browsing.country ? globe.focusCountry(browsing.country) : browsing.region ? globe.focusRegion(browsing.region) : null;
+            globe.rotateTo(THREE.MathUtils.clamp((focus?.latitude ?? 25) + orbitPitch, -85, 85), (focus?.longitude ?? 20) + orbitYaw);
+            if (browsing.country) globe.highlightCountry(browsing.country);
+            else globe.highlightRegion(browsing.region);
+            const shot = globeShot(browsing, focus, globeCenter, camera);
+            toPosition.copy(shot.position).sub(shot.target).multiplyScalar(zoomOut).add(shot.target); toTarget.copy(shot.target);
+          } else chooseShot(view);
           start = time;
           key = nextKey;
           moving = true;
@@ -413,9 +482,13 @@ export const createScene: SceneFactory = async (leases, signal) => {
             fromTarget.copy(toTarget);
           }
         }
+        const dt = Math.min(.1, Math.max(0, time - lastGlobeTime));
+        lastGlobeTime = time;
+        globeMoving = !!globe.update(dt, reduced);
+        const viewport = browsing ? browsing.viewport : view.viewport;
         const duration = view.phase === "entry" || !view.selection ? 1.6 : 0.7,
           t =
-            view.reviewProgress ??
+            browsing?.reviewProgress ?? view.reviewProgress ??
             (reduced ? 1 : Math.min(1, (time - start) / duration)),
           ease = t * t * (3 - 2 * t);
         position.lerpVectors(fromPosition, toPosition, ease);
@@ -425,9 +498,9 @@ export const createScene: SceneFactory = async (leases, signal) => {
         camera.updateProjectionMatrix();
         // Off-axis projection focuses within the actual region left clear by the DOM panel.
         camera.projectionMatrix.elements[8] +=
-          1 - 2 * (view.viewport.left + view.viewport.width / 2);
+          1 - 2 * (viewport.left + viewport.width / 2);
         camera.projectionMatrix.elements[9] +=
-          2 * (view.viewport.top + view.viewport.height / 2) - 1;
+          2 * (viewport.top + viewport.height / 2) - 1;
         camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
         camera.updateMatrixWorld();
         root.updateMatrixWorld(true);

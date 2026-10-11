@@ -111,13 +111,14 @@ function SceneBridge({
   const chart = useOracle((s) => s.chart),
     selectedBody = useOracle((s) => s.selectedBody),
     tarotView = useOracle((s) => s.tarotView),
-    astrologyView = useOracle((s) => s.astrologyView);
+    astrologyView = useOracle((s) => s.astrologyView),
+    globeView = useOracle(s => s.globeView);
   return (
     <SceneCanvas
       embedded
       route={route}
       frozen={frozen}
-      data={{ bodies: chart?.bodies, selectedBody, tarot: tarotView, astrology: astrologyView }}
+      data={{ globe: globeView, bodies: chart?.bodies, selectedBody, tarot: tarotView, astrology: astrologyView }}
     />
   );
 }

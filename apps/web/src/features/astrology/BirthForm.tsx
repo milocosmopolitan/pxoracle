@@ -1,34 +1,42 @@
 "use client";
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState, type FormEvent } from "react";
 import type { BirthInput } from "@pxoracle/contracts";
 import type {
   AtlasCountry,
   Birthplace,
   PlaceProvenance,
 } from "@pxoracle/contracts/atlas";
+import { useOracle, useOracleStore } from "../../state/store";
+import { globeCountries } from "@pxoracle/contracts/globe-geography";
+import { GlobeChooser } from "./GlobeChooser";
 import { COUNTRIES, COUNTRY_OPTIONS, ATLAS_CITY_COUNT, loadCities, searchCities } from "./atlas";
 
 export function BirthForm({
   initial,
+  preferAtlas = false,
   initialPlace,
   busy,
   error,
   onSubmit,
 }: {
   initial?: BirthInput | null;
+  preferAtlas?: boolean;
   initialPlace?: PlaceProvenance | null;
   busy: boolean;
   error: string;
   onSubmit: (input: BirthInput, place: PlaceProvenance) => void;
 }) {
   const [ready, setReady] = useState(false);
-  const [country, setCountry] = useState<AtlasCountry | "">("");
+  const navigation = useOracle(s => s.birthplace);
+  const store = useOracleStore();
+  const country = navigation.country ?? "";
+  const chosen = navigation.candidate;
+  const setChosen = (city: Birthplace | null) => city ? store.getState().chooseBirthplace(city, navigation.revision) : store.getState().clearBirthplaceCandidate();
   const [cities, setCities] = useState<Birthplace[]>([]);
   const [query, setQuery] = useState("");
   const [atlasStatus, setAtlasStatus] = useState("idle");
   const [attempt, setAttempt] = useState(0);
-  const [chosen, setChosen] = useState<Birthplace | null>(null);
-  const [manual, setManual] = useState(!!initial);
+  const [manual, setManual] = useState(!!initial && !preferAtlas);
   const [accuracy, setAccuracy] = useState<BirthInput["accuracy"]>(
     initial?.accuracy ?? "exact",
   );
@@ -38,6 +46,16 @@ export function BirthForm({
     longitude: initial ? String(initial.longitude) : "",
   });
   useEffect(() => setReady(true), []);
+  // Clear the old country before its replacement input can receive typing.
+  useLayoutEffect(() => {
+    setQuery("");
+    setCoordinates({ timezone: "", latitude: "", longitude: "" });
+    setCities([]);
+    setAtlasStatus("idle");
+  }, [country]);
+  useEffect(() => {
+    if (initial) setCoordinates({timezone: initial.timezone, latitude: String(initial.latitude), longitude: String(initial.longitude)});
+  }, [initial]);
   useEffect(() => {
     if (!country || manual) return;
     const abort = new AbortController();
@@ -68,16 +86,18 @@ export function BirthForm({
   }
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!manual && !chosen) return;
+    if (!manual && (!chosen || chosen.country !== country)) return;
     const data = new FormData(event.currentTarget);
+    // Atlas provenance and coordinates must come from the same confirmed record.
+    const location = manual ? coordinates : chosen!;
     onSubmit(
       {
         date: String(data.get("date")),
         time: accuracy === "unknown" ? null : String(data.get("time")),
         accuracy,
-        ...coordinates,
-        latitude: Number(coordinates.latitude),
-        longitude: Number(coordinates.longitude),
+        timezone: location.timezone,
+        latitude: Number(location.latitude),
+        longitude: Number(location.longitude),
         uncertaintyMinutes:
           accuracy === "approximate" ? Number(data.get("uncertainty")) : null,
         fold: (data.get("fold") || null) as BirthInput["fold"],
@@ -122,26 +142,31 @@ export function BirthForm({
           <button
             type="button"
             aria-pressed={manual}
-            onClick={() => setManual(true)}
+            onClick={() => {
+              if (!manual && chosen) setCoordinates({ timezone: chosen.timezone, latitude: String(chosen.latitude), longitude: String(chosen.longitude) });
+              setManual(true);
+            }}
           >
             Enter or adjust coordinates
           </button>
         </div>
         {!manual ? (
           <>
+            <GlobeChooser />
             <label>
               Birth country
               <select
                 value={country}
                 onChange={(event) => {
-                  setCountry(event.target.value as AtlasCountry | "");
+                  if (event.target.value) store.getState().navigateBirthplace({ type: "country", country: event.target.value });
+                  else store.getState().navigateBirthplace({ type: "region", region: navigation.region });
                   setChosen(null);
                   setQuery("");
                 }}
                 required
               >
                 <option value="">Choose a country</option>
-                {COUNTRY_OPTIONS.map(([code, label]) => (
+                {COUNTRY_OPTIONS.filter(([code]) => !navigation.region || globeCountries.find(c => c.code === code)?.regions.includes(navigation.region)).map(([code, label]) => (
                   <option key={code} value={code}>{label}</option>
                 ))}
               </select>

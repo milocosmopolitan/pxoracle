@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-11",
+  "baseline": "2482c84ef91fcc9643247493629ebb01f6c68ada",
+  "checks": [
+    {
+      "command": "cargo test --locked",
+      "result": "passed",
+      "tests": 35,
+      "suites": 19
+    },
+    {
+      "command": "npm run wasm",
+      "result": "passed",
+      "toolchain": "isolated Emscripten4.0.10; shared6.0.12 failed link and was not changed"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "passed"
+    },
+    {
+      "command": "npm run build",
+      "result": "passed",
+      "output": "Next static export / /astrology/ /tarot/ 404"
+    },
+    {
+      "command": "npm test",
+      "result": "passed",
+      "tests": 90,
+      "durationMs": 27444.545875,
+      "revision": "includes bounded presentation follow-up and fixed camera-review idle behavior"
+    },
+    {
+      "command": "npm run build-storybook",
+      "result": "passed"
+    },
+    {
+      "command": "node scripts/check-boundaries.mjs",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    },
+    {
+      "command": "Playwright globe-lighting",
+      "result": "passed",
+      "tests": 24,
+      "projects": [
+        "chrome",
+        "firefox",
+        "webkit",
+        "mobile-chromium-emulation"
+      ]
+    },
+    {
+      "command": "Playwright natal chrome",
+      "result": "passed",
+      "tests": 9
+    },
+    {
+      "command": "Playwright birthplace-regression chrome",
+      "result": "passed",
+      "tests": 3
+    },
+    {
+      "command": "Playwright app/reading/tarot-table/tarot-fallback chrome",
+      "result": "13 passed initially; stale-build resource failure corrected; final targeted allocation rerun passed",
+      "tests": 14
+    },
+    {
+      "command": "Playwright Storybook natal/stories",
+      "result": "3 passed initially; HMR watcher configuration fixed; unchanged final HMR rerun passed",
+      "tests": 4
+    },
+    {
+      "command": "Playwright Storybook same-scene camera stories",
+      "result": "passed after splitting independent cases; assertions retained",
+      "tests": 8,
+      "durationSeconds": 46.349,
+      "motion": "7 normal-motion, 1 reduced-motion"
+    },
+    {
+      "command": "Playwright Storybook birthplace camera midpoint",
+      "result": "passed; stable actual intermediate camera frame differs from completed approach",
+      "tests": 1,
+      "durationSeconds": 10.3
+    }
+  ],
+  "physicalMobile": "not tested",
+  "nativeSafari": "passed on actual macOS Safari in CI38173313664 for a3b301b",
+  "ci": "https://github.com/milocosmopolitan/pxoracle/actions/runs/38173313664",
+  "ciStatus": "a3b301b: all jobs passed except one WebKit stale presentation check; bounded-frame repair passes local WebKit3/3, hosted confirmation follows on PR",
+  "gpuBudget": "tarot p95 6.983ms exceeds internally chosen provisional4ms goal; disclosed limitation, not an original numeric issue acceptance criterion",
+  "webkitPresentation": "3/3 local strict pixel/revision checks pass; two zoom frames followed by zero draws over500ms",
+  "citySelectionCost": "final scheduling revision: 325 cumulative draws before/after; identical canvas, camera revision, pixels and resource counts; no geographic requests",
+  "schemaRegeneration": "not required; RustDTOunchanged",
+  "desktopGPU": "Apple M4 Metal measured with actual timer queries; performance-hardware.json"
+}

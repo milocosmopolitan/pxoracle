@@ -1,0 +1,56 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import * as THREE from 'three';
+import {TextureLeases} from '../packages/scene-runtime/src/index.ts';
+import {createScene} from '../packages/scenes/src/astrology.ts';
+
+test('production scene city-independent view stays still; retargeting is continuous and props stay fixed',async()=>{
+  const oldFetch=globalThis.fetch, oldDocument=globalThis.document, oldLoad=THREE.TextureLoader.prototype.loadAsync;
+  globalThis.fetch=async url=>new Response(await readFile(new URL('../apps/web/public'+url,import.meta.url)));
+  globalThis.document={createElement:()=>({width:0,height:0,getContext:()=>({fillText(){}})})};
+  THREE.TextureLoader.prototype.loadAsync=async()=>new THREE.Texture();
+  const leases=new TextureLeases();let scene;
+  try {
+    scene=await createScene(leases,new AbortController().signal);scene.resize(1440,1000);scene.enter();
+    const globe={phase:'country',country:'SG',region:'asia',revision:3,viewport:{left:0,top:.15,width:.65,height:.75}};
+    const astrology={phase:'entry',revision:1,bodies:[],houses:null,aspects:[],selection:null,viewport:globe.viewport};
+    scene.update(1,{globe,astrology},true);scene.scene.updateMatrixWorld(true);
+    const pivot=scene.scene.getObjectByName('globe-geographic-pivot');
+    const camera=scene.camera.matrixWorld.toArray(),projection=scene.camera.projectionMatrix.toArray(),rotation=pivot.quaternion.toArray();
+    const lamp=scene.scene.getObjectByName('lamp-primary-warm-shadow');
+    const anchor=lamp.getWorldPosition(new THREE.Vector3()).toArray();
+    scene.update(10,{globe:{...globe},astrology},true);
+    assert.deepEqual(scene.camera.matrixWorld.toArray(),camera);
+    assert.deepEqual(scene.camera.projectionMatrix.toArray(),projection);
+    assert.deepEqual(pivot.quaternion.toArray(),rotation);
+    const center=pivot.getWorldPosition(new THREE.Vector3());
+    const originalDistance=scene.camera.position.distanceTo(center);
+    const orientation=scene.camera.quaternion.clone();
+    const zoomed={...globe,revision:4,adjustment:{zoom:.12}};
+    scene.update(10.1,{globe:zoomed,astrology},true);
+    assert.ok(Math.abs(scene.camera.position.distanceTo(center)/originalDistance-1.12)<1e-12,'zoom increases camera distance by its bounded factor');
+    assert.ok(scene.camera.quaternion.angleTo(orientation)<1e-7,'zoom preserves camera orientation');
+    assert.deepEqual(pivot.quaternion.toArray(),rotation,'zoom does not rotate the globe');
+    assert.deepEqual(scene.camera.projectionMatrix.toArray(),projection,'zoom moves the camera rather than changing its lens');
+    const zoomedMatrix=scene.camera.matrixWorld.toArray();
+    assert.notDeepEqual(zoomedMatrix,camera,'zoom produces a distinct rendered camera transform');
+    scene.update(10.2,{globe:{...zoomed},astrology},true);
+    assert.deepEqual(scene.camera.matrixWorld.toArray(),zoomedMatrix,'a presentation follow-up must not apply the same adjustment twice');
+    const before=scene.camera.position.clone();
+    scene.update(11,{globe:{...globe,country:'RU',revision:5},astrology},false);
+    assert.ok(scene.camera.position.distanceTo(before)<1e-12,'retarget begins at current camera');
+    scene.update(11.1,{globe:{...globe,country:'FJ',revision:6},astrology},false);
+    scene.update(12,{globe:{...globe,country:'FJ',revision:6},astrology},true);
+    assert.deepEqual(lamp.getWorldPosition(new THREE.Vector3()).toArray(),anchor);
+    const point=scene.scene.getObjectByName('globe-elevation-surface').localToWorld(new THREE.Vector3(0,0,.91));
+    assert.ok(Number.isFinite(point.x));
+    const fixedReview={...globe,revision:7,reviewProgress:.5};
+    scene.update(20,{globe:fixedReview,astrology},true);
+    const reviewMatrix=scene.camera.matrixWorld.toArray();
+    scene.update(21,{globe:{...fixedReview},astrology},true);
+    assert.deepEqual(scene.camera.matrixWorld.toArray(),reviewMatrix,'fixed review progress preserves the authored inspection frame');
+    assert.equal(scene.needsRender(),false,'fixed review frames settle instead of redrawing indefinitely');
+    scene.dispose();scene.dispose();assert.equal(leases.count,0);
+  }finally{scene?.dispose();globalThis.fetch=oldFetch;globalThis.document=oldDocument;THREE.TextureLoader.prototype.loadAsync=oldLoad;}
+});

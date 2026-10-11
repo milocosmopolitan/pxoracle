@@ -31,3 +31,5 @@ Exhaustive reading export: [ADR 006](006-exhaustive-reading-export.md).
 Local city input, natal interpretation and crystal exploration: [ADR 007](007-local-natal-readings.md).
 
 Context-sensitive tarot editorial release: [ADR 008](008-contextual-tarot-editorial.md).
+
+Country-framed globe and prop-owned lighting: [ADR 009](009-globe-and-prop-lighting.md).

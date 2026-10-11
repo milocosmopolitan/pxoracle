@@ -1,11 +1,14 @@
 "use client";
 import {useEffect} from "react";
-import {usePathname} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {useOracle} from "../state/store";
 import type {RouteScene} from "@pxoracle/contracts";
 import {SceneCanvas} from "./SceneCanvas";
 export default function SceneHost() {
   const path = usePathname();
+  const router = useRouter();
+  const requestGlobeEntry = useOracle(s => s.requestGlobeEntry);
+  const globeView = useOracle(s => s.globeView);
   const setSceneReady = useOracle((s) => s.setSceneReady);
   const setEntrance = useOracle((s) => s.setEntrance);
   const tarotView = useOracle((s) => s.tarotView);
@@ -30,6 +33,7 @@ export default function SceneHost() {
         if (status && status !== "Preparing the room…") setEntrance("entered");
       }}
       data={{
+        globe: route === "landing" ? { phase: "room", region: null, country: null, revision: 0, viewport: {left:0,top:0,width:1,height:1}, onIntent: () => { requestGlobeEntry(); router.push("/astrology/"); } } : route === "astrology" ? globeView : undefined,
         tarot: route === "tarot" ? tarotView : undefined,
         astrology: route === "astrology" ? astrologyView : undefined,
       }}

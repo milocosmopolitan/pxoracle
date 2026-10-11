@@ -18,6 +18,7 @@ const fixture = (name = "exact") => fixtures.find((f) => f.name === name)!;
 const meta = {
   title: "PXOracle/Natal reading",
   parameters: { layout: "fullscreen" },
+  decorators: [(Story) => <StateProvider><Story /></StateProvider>],
 } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -292,6 +293,7 @@ function Seeded({
   const store = useOracleStore();
   const f = fixture();
   const view = useOracle((s) => s.astrologyView);
+  const globe = useOracle(s => s.globeView);
   const [seeded, setSeeded] = useState(false);
   useEffect(() => {
     store.getState().setChart(f.chart as Chart);
@@ -335,7 +337,7 @@ function Seeded({
       >
         STORYBOOK · Synthetic chart · Mock interpretation transport
       </p>
-      <SceneCanvas route="astrology" data={{ astrology: view }} />
+      <SceneCanvas route="astrology" data={{ astrology: view, globe }} />
       <Astrology engine={engine} />
     </>
   );

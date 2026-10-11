@@ -13,6 +13,7 @@ test("articulated hand replay and fixed carry use production meshes without WASM
   await page.goto(
     "/iframe.html?id=pxoracle-tarot-table--hand-pick-place-flip&viewMode=story",
   );
+  await expect(page.locator('.scene-host[data-route="tarot"]')).toHaveAttribute("data-ready", "true", { timeout: 60000 });
   await expect(page.locator(".scene-status")).toHaveCount(0, { timeout: 45000 });
   await expect(page.getByText(/No WASM · reading/)).toBeVisible({
     timeout: 60000,
@@ -28,6 +29,7 @@ test("articulated hand replay and fixed carry use production meshes without WASM
     "/iframe.html?id=pxoracle-tarot-table--frame-carry&viewMode=story",
   );
   await expect(page.locator("canvas")).toHaveCount(1);
+  await expect(page.locator('.scene-host[data-route="tarot"]')).toHaveAttribute("data-ready", "true", { timeout: 60000 });
   await expect(page.locator(".scene-status")).toHaveCount(0, {
     timeout: 45000,
   });
@@ -71,6 +73,7 @@ for (const story of [
     await expect(
       page.getByText(/STORYBOOK · Synthetic fixed cards/),
     ).toBeVisible();
+    await expect(page.locator('.scene-host[data-route="tarot"]')).toHaveAttribute("data-ready", "true", { timeout: 60000 });
     await expect(page.locator(".scene-status")).toHaveCount(0, {
       timeout: 60000,
     });
@@ -81,6 +84,7 @@ for (const story of [
       });
     }
     if (story === "camera-transition") {
+      const canvasBounds = await page.locator("canvas").boundingBox();
       await page.screenshot({
         path: "docs/validation/tarot-table-v2/conversation.png",
       });
@@ -88,17 +92,15 @@ for (const story of [
         await page
           .getByRole("button", { name: "Conversation / table" })
           .click();
-        const canvasBounds = await page.locator("canvas").boundingBox();
-        await page.waitForTimeout(1100);
-        await page.screenshot({
-          path: "docs/validation/tarot-table-v2/approach.png",
-        });
         await expect(page.getByText(/No WASM · selecting/)).toBeVisible({
           timeout: 60000,
         });
         expect(await page.locator("canvas").boundingBox()).toEqual(
           canvasBounds,
         );
+        if (i === 0) await page.screenshot({
+          path: "docs/validation/tarot-table-v2/approach.png",
+        });
         await page
           .getByRole("button", { name: "Conversation / table" })
           .click();

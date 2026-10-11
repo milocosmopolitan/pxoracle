@@ -1,0 +1,861 @@
+{
+  "config": {
+    "configFile": "<workspace>/playwright.config.ts",
+    "rootDir": "<workspace>/tests/browser",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "<workspace>/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "<workspace>/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "<workspace>/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "<workspace>/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "<workspace>/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "<workspace>/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "<workspace>/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium-emulation",
+        "name": "mobile-chromium-emulation",
+        "testDir": "<workspace>/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": {
+      "command": "python3 -m http.server 4173 --directory apps/web/out",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "globe-lighting.spec.ts",
+      "file": "globe-lighting.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "region/country/city keeps the country frame and only loads selected atlas shards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6674,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:23:22.296Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "country-before-city",
+                      "contentType": "image/png",
+                      "sha256": "ac13361b450011b21fe7d6f546a92067bbabd3d8c41fe5fdea65271fedf5c5db",
+                      "byteLength": 483482,
+                      "path": "city-camera-before.png"
+                    },
+                    {
+                      "name": "country-after-city",
+                      "contentType": "image/png",
+                      "sha256": "ac13361b450011b21fe7d6f546a92067bbabd3d8c41fe5fdea65271fedf5c5db",
+                      "byteLength": 483482,
+                      "path": "city-camera-after.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-6d195b6b0760189423e3",
+          "file": "globe-lighting.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "country changes invalidate the city and timezone while manual entry remains local",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3433,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:23:30.116Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-992e0fbb5e63539f9757",
+          "file": "globe-lighting.spec.ts",
+          "line": 61,
+          "column": 5
+        },
+        {
+          "title": "large and tiny countries and dateline islands retain finite visible frames",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14865,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:23:33.568Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-ba7f2a7d7b9121c73288",
+          "file": "globe-lighting.spec.ts",
+          "line": 82,
+          "column": 5
+        },
+        {
+          "title": "asset retry restores the scene and city search survives WebGL unavailability",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5553,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:23:48.467Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-2168610770aca1c3f794",
+          "file": "globe-lighting.spec.ts",
+          "line": 99,
+          "column": 5
+        },
+        {
+          "title": "keyboard rotation and zoom controls visibly adjust a country view",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5432,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:23:54.085Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-1e6c3b22857924bb980e",
+          "file": "globe-lighting.spec.ts",
+          "line": 122,
+          "column": 5
+        },
+        {
+          "title": "region/country/city keeps the country frame and only loads selected atlas shards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9927,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:24:12.255Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "country-before-city",
+                      "contentType": "image/png",
+                      "sha256": "3918bd79d7011dceffd59000f6ee585f5a91f8954d24b89fd53eeeb891504419",
+                      "byteLength": 576900
+                    },
+                    {
+                      "name": "country-after-city",
+                      "contentType": "image/png",
+                      "sha256": "3918bd79d7011dceffd59000f6ee585f5a91f8954d24b89fd53eeeb891504419",
+                      "byteLength": 576900
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-94bb7059dfbca24d31a4",
+          "file": "globe-lighting.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "country changes invalidate the city and timezone while manual entry remains local",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4253,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:24:24.681Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-bef97ccea898ab9a148d",
+          "file": "globe-lighting.spec.ts",
+          "line": 61,
+          "column": 5
+        },
+        {
+          "title": "large and tiny countries and dateline islands retain finite visible frames",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8934,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:24:28.950Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-6f23e6bc3da57798e61d",
+          "file": "globe-lighting.spec.ts",
+          "line": 82,
+          "column": 5
+        },
+        {
+          "title": "asset retry restores the scene and city search survives WebGL unavailability",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:24:37.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-3d46c3a6ecda192daf3f",
+          "file": "globe-lighting.spec.ts",
+          "line": 99,
+          "column": 5
+        },
+        {
+          "title": "keyboard rotation and zoom controls visibly adjust a country view",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:24:42.422Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-9d049aa7ec2dd3290ad2",
+          "file": "globe-lighting.spec.ts",
+          "line": 122,
+          "column": 5
+        },
+        {
+          "title": "region/country/city keeps the country frame and only loads selected atlas shards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7349,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:24:53.211Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "country-before-city",
+                      "contentType": "image/png",
+                      "sha256": "fa15a7e0785bdc923d1da552c19eb19923258943421c3cf7bef051f33c96adcb",
+                      "byteLength": 2066475
+                    },
+                    {
+                      "name": "country-after-city",
+                      "contentType": "image/png",
+                      "sha256": "fa15a7e0785bdc923d1da552c19eb19923258943421c3cf7bef051f33c96adcb",
+                      "byteLength": 2066475
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-cb19233aa6efbb47c153",
+          "file": "globe-lighting.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "country changes invalidate the city and timezone while manual entry remains local",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4300,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:25:01.879Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-9fe509e6301ec8344fd1",
+          "file": "globe-lighting.spec.ts",
+          "line": 61,
+          "column": 5
+        },
+        {
+          "title": "large and tiny countries and dateline islands retain finite visible frames",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7467,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:25:06.213Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-8291b93c4fd736d21c3d",
+          "file": "globe-lighting.spec.ts",
+          "line": 82,
+          "column": 5
+        },
+        {
+          "title": "asset retry restores the scene and city search survives WebGL unavailability",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3531,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:25:13.694Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-ab006efe6b5e7165ecac",
+          "file": "globe-lighting.spec.ts",
+          "line": 99,
+          "column": 5
+        },
+        {
+          "title": "keyboard rotation and zoom controls visibly adjust a country view",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6426,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:25:17.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-c6489f1ffbb81e527ad3",
+          "file": "globe-lighting.spec.ts",
+          "line": 122,
+          "column": 5
+        },
+        {
+          "title": "region/country/city keeps the country frame and only loads selected atlas shards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium-emulation",
+              "projectName": "mobile-chromium-emulation",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18973,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:25:25.572Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "country-before-city",
+                      "contentType": "image/png",
+                      "sha256": "d87666f262a2487bd4e3572101552ef83e3e0158a7b69fcd9e5bca53bd7ce579",
+                      "byteLength": 842506
+                    },
+                    {
+                      "name": "country-after-city",
+                      "contentType": "image/png",
+                      "sha256": "d87666f262a2487bd4e3572101552ef83e3e0158a7b69fcd9e5bca53bd7ce579",
+                      "byteLength": 842506
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-86781eabebc0243a4125",
+          "file": "globe-lighting.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "country changes invalidate the city and timezone while manual entry remains local",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium-emulation",
+              "projectName": "mobile-chromium-emulation",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11973,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:25:45.322Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-e25ef15fa3e5674a8e4f",
+          "file": "globe-lighting.spec.ts",
+          "line": 61,
+          "column": 5
+        },
+        {
+          "title": "large and tiny countries and dateline islands retain finite visible frames",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium-emulation",
+              "projectName": "mobile-chromium-emulation",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 38288,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:25:57.325Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-5830e7325f18d425e89b",
+          "file": "globe-lighting.spec.ts",
+          "line": 82,
+          "column": 5
+        },
+        {
+          "title": "asset retry restores the scene and city search survives WebGL unavailability",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium-emulation",
+              "projectName": "mobile-chromium-emulation",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8291,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:26:35.639Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-f3449120475935ddfd35",
+          "file": "globe-lighting.spec.ts",
+          "line": 99,
+          "column": 5
+        },
+        {
+          "title": "keyboard rotation and zoom controls visibly adjust a country view",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium-emulation",
+              "projectName": "mobile-chromium-emulation",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12051,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-11T19:26:43.960Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d7b7136dd066a4141e5-91df9c41ee929ac278e6",
+          "file": "globe-lighting.spec.ts",
+          "line": 122,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-11T19:23:21.075Z",
+    "duration": 216685.909,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "artifactPolicy": "Inline screenshot bodies omitted after capture; SHA-256 and byte length retained for all 8 city invariance images. First Chrome before/after pair saved beside this report."
+}

@@ -1,0 +1,9154 @@
+{
+  "recordedAt": "2026-10-11T20:30:33.972Z",
+  "method": "Actual production tarot selection. Same Metal browser,60interleaved iterations of full-rig/no-shadow/candle-hidden. Separate non-nested GPUqueries per renderer.render stage; summed stage durations exclude JS/interstage overhead.60warmup frames beforefirstrecord. Shadow maps retained duringtemporaryofftoggle. No production quality changes.",
+  "device": {
+    "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "viewport": [
+      1280,
+      720
+    ],
+    "dpr": 1
+  },
+  "data": {
+    "full-rig": [
+      {
+        "iteration": 0,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.472749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.20675
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.631083
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.191958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 1.501749
+          }
+        ],
+        "totalMs": 9.004289,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 35
+      },
+      {
+        "iteration": 1,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 6.013833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.243
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.297541
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.588166
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 5.977374
+          }
+        ],
+        "totalMs": 22.119914,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 2,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.26525
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.323249
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.586375
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.136916
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.816374
+          }
+        ],
+        "totalMs": 13.128164,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 3,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.214791
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.304749
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.8445
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.099208
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.806208
+          }
+        ],
+        "totalMs": 13.269456,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 4,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.388125
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.338916
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.691875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.863249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.511625
+          }
+        ],
+        "totalMs": 12.79379,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 5,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.323
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.995624
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.435249
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.964458
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.486958
+          }
+        ],
+        "totalMs": 12.205289,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 6,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.819041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.675708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.406666
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.969625
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 5.834291
+          }
+        ],
+        "totalMs": 12.705331000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 7,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.319583
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.153666
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.933749
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.611833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.361208
+          }
+        ],
+        "totalMs": 14.380039,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 8,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.476166
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.313166
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.857499
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.897833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.339166
+          }
+        ],
+        "totalMs": 12.88383,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 9,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.211291
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.673583
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.850083
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.057958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.285999
+          }
+        ],
+        "totalMs": 10.078914,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 10,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.989875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.946916
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.330791
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.642499
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 5.895833
+          }
+        ],
+        "totalMs": 16.805913999999998,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 11,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.329583
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 4.533541
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.867666
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.222999
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 1.952916
+          }
+        ],
+        "totalMs": 10.906704999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 12,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.283333
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.329041
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.754708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.790624
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.433416
+          }
+        ],
+        "totalMs": 12.591122000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 13,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.326416
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.240583
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.771
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.8085
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.463999
+          }
+        ],
+        "totalMs": 12.610498,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 14,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.330208
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.285166
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.032416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.548833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.045166
+          }
+        ],
+        "totalMs": 14.241789,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 15,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.257708
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.322125
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.853541
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.7035
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 5.224708
+          }
+        ],
+        "totalMs": 14.361582,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 16,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.260499
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.301749
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.80475
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.752958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.4345
+          }
+        ],
+        "totalMs": 12.554456,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 17,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.24725
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.144499
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.927833
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.055083
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.105124
+          }
+        ],
+        "totalMs": 12.479789,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 18,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.237166
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.262875
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.047625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.5145
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.081125
+          }
+        ],
+        "totalMs": 14.143291000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 19,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.326541
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.274791
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.612416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.801291
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.361874
+          }
+        ],
+        "totalMs": 12.376913,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 20,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.251208
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.306375
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.651208
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.735166
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.446625
+          }
+        ],
+        "totalMs": 12.390581999999998,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 21,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.234
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.274624
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.2365
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.528875
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.22875
+          }
+        ],
+        "totalMs": 14.502749,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 22,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.262916
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.120374
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.955416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.367041
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.078958
+          }
+        ],
+        "totalMs": 13.784705,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 23,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.269083
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.279708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.32925
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.514166
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.875291
+          }
+        ],
+        "totalMs": 14.267498,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 24,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.235999
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.281
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.188999
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.30475
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.661375
+          }
+        ],
+        "totalMs": 13.672123,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 25,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.297
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.332375
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.850583
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.07075
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.576416
+          }
+        ],
+        "totalMs": 13.127124,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 26,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.38
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.290083
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.341416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.460791
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.185999
+          }
+        ],
+        "totalMs": 14.658289,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 27,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.265416
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.292249
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.731874
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.767833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.444416
+          }
+        ],
+        "totalMs": 12.501788000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 28,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.221249
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.278875
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.81775
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.024791
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.53575
+          }
+        ],
+        "totalMs": 12.878415,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 29,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.211666
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.288249
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.83725
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.022583
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.4365
+          }
+        ],
+        "totalMs": 12.796247999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 30,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.219874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.2945
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.632041
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.906666
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.302749
+          }
+        ],
+        "totalMs": 12.355830000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 31,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.308833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.326874
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.855999
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.842208
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.506083
+          }
+        ],
+        "totalMs": 12.839997,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 32,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.306499
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.208625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.548499
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.615833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.363625
+          }
+        ],
+        "totalMs": 12.043081,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 33,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.242625
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.276
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.823874
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.06875
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.486083
+          }
+        ],
+        "totalMs": 12.897331999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 34,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.190125
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.745458
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.613625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.464374
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.994124
+          }
+        ],
+        "totalMs": 13.007705999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 35,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.24175
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.305375
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.566916
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.859875
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.296875
+          }
+        ],
+        "totalMs": 12.270791000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 36,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.265375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.294624
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.662291
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.775958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.328
+          }
+        ],
+        "totalMs": 12.326248,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 37,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.332041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.300833
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.684874
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.601291
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.341416
+          }
+        ],
+        "totalMs": 12.260455,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 38,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.434958
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.297833
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.840166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.968375
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.490375
+          }
+        ],
+        "totalMs": 13.031707,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 39,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.305833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.294083
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.783208
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.033624
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.460333
+          }
+        ],
+        "totalMs": 12.877081,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 40,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.190999
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.25275
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.044125
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.51775
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.997
+          }
+        ],
+        "totalMs": 14.002623999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 41,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.198624
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.308499
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.81
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.087749
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.573666
+          }
+        ],
+        "totalMs": 12.978538,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 42,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.21675
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.312958
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.398208
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.568916
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.797375
+          }
+        ],
+        "totalMs": 13.294207,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 43,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.326041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.286791
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.834708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.906541
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.432291
+          }
+        ],
+        "totalMs": 12.786372,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 44,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.683041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 4.684249
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.727791
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 5.207208
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 7.233999
+          }
+        ],
+        "totalMs": 22.536288,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 45,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.244708
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.2815
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.636374
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.755374
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.293374
+          }
+        ],
+        "totalMs": 12.21133,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 46,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.205666
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.278708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.8205
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.078791
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.460333
+          }
+        ],
+        "totalMs": 12.843998000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 47,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.308916
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.277375
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.366874
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.585333
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.3775
+          }
+        ],
+        "totalMs": 14.915998000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 48,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.255
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.298999
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.054166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.523333
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.028625
+          }
+        ],
+        "totalMs": 14.160123,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 49,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.21725
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.276458
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.6355
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.750583
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.283833
+          }
+        ],
+        "totalMs": 12.163623999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 50,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.206041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.276291
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.826874
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.053958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.551666
+          }
+        ],
+        "totalMs": 12.914829999999998,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 51,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.311708
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.245166
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.592333
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.679625
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.252249
+          }
+        ],
+        "totalMs": 12.081081000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 52,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.333208
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.272625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.325333
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.436083
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.122625
+          }
+        ],
+        "totalMs": 14.489874,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 53,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.235249
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.293124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.809625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.065249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.492958
+          }
+        ],
+        "totalMs": 12.896205,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 54,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.224041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.205666
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.189374
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.418749
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.080124
+          }
+        ],
+        "totalMs": 14.117954,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 55,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.285375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.321374
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.836166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.745666
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.369833
+          }
+        ],
+        "totalMs": 12.558413999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 56,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.250958
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.319374
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.381916
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.27325
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.552416
+          }
+        ],
+        "totalMs": 12.777913999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 57,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.295874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.295124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.82725
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.952541
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.47275
+          }
+        ],
+        "totalMs": 12.843539,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 58,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.275958
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.913125
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.850375
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.679249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.884916
+          }
+        ],
+        "totalMs": 12.603622999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      },
+      {
+        "iteration": 59,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.265499
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.308333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.850708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.096833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.808875
+          }
+        ],
+        "totalMs": 13.330248000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 222,
+        "triangles": 175140,
+        "programs": 63
+      }
+    ],
+    "no-shadow": [
+      {
+        "iteration": 0,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.038125
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.101666
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.95025
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.365166
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 2.927875
+          }
+        ],
+        "totalMs": 10.383082,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 48
+      },
+      {
+        "iteration": 1,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.029791
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 4.487625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.789708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 4.444083
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 6.304333
+          }
+        ],
+        "totalMs": 18.05554,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 2,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.042916
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.580916
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.036541
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.265791
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 2.936083
+          }
+        ],
+        "totalMs": 9.862247,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 3,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.272875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.050583
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.088958
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.892958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.551499
+          }
+        ],
+        "totalMs": 14.856873,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 4,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.183791
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.043124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.020208
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.204125
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 2.459875
+          }
+        ],
+        "totalMs": 10.911123,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 5,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.318
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.225583
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.397958
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.743958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.356999
+          }
+        ],
+        "totalMs": 12.042498,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 6,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.083999
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.138416
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.66725
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.5785
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.295374
+          }
+        ],
+        "totalMs": 11.763539,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 7,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.139916
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.760333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.233499
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.827458
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.584541
+          }
+        ],
+        "totalMs": 11.545747,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 8,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.418374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.066958
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.713375
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.359791
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.815041
+          }
+        ],
+        "totalMs": 13.373539000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 9,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.472749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.989208
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.553416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.295125
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.90625
+          }
+        ],
+        "totalMs": 13.216748,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 10,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.561874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.052875
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.092166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.764333
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.290249
+          }
+        ],
+        "totalMs": 14.761497000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 11,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.228666
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 4.454124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.947374
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.302833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 2.111499
+          }
+        ],
+        "totalMs": 11.044496,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 12,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.379333
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.996125
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.489875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.798916
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 5.153958
+          }
+        ],
+        "totalMs": 14.818207000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 13,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.081458
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.046958
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.995374
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.87025
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.38025
+          }
+        ],
+        "totalMs": 14.37429,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 14,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.177374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.137583
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.079416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.456624
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.122708
+          }
+        ],
+        "totalMs": 13.973704999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 15,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.079958
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.0505
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.901041
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.600791
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.179166
+          }
+        ],
+        "totalMs": 13.811456000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 16,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.362374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.528999
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.711708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.245875
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.596041
+          }
+        ],
+        "totalMs": 14.444996999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 17,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.279458
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.152
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.096791
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.469958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.553624
+          }
+        ],
+        "totalMs": 13.551831,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 18,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.123416
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.159499
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.111833
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.487208
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.935124
+          }
+        ],
+        "totalMs": 13.817079999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 19,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.099541
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.137666
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.656083
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.636749
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.240874
+          }
+        ],
+        "totalMs": 11.770913,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 20,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.122249
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.034624
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.019124
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.960541
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.653583
+          }
+        ],
+        "totalMs": 12.790121000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 21,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.220291
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.143124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.809624
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.920416
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.626125
+          }
+        ],
+        "totalMs": 12.71958,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 22,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.083458
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.082874
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.003833
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.647749
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.294875
+          }
+        ],
+        "totalMs": 12.112789,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 23,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.104041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.119916
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.694874
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.627833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.26075
+          }
+        ],
+        "totalMs": 11.807414000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 24,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.195749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.115625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.152708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.471166
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.045958
+          }
+        ],
+        "totalMs": 13.981206,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 25,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.049958
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.084958
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.124749
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.48
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.215375
+          }
+        ],
+        "totalMs": 13.95504,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 26,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.132124
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.081291
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.000875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.887999
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.381416
+          }
+        ],
+        "totalMs": 14.483705,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 27,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.06325
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.492708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.303124
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.184625
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.045291
+          }
+        ],
+        "totalMs": 12.088998,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 28,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.212375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.113833
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.970624
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.469416
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.881874
+          }
+        ],
+        "totalMs": 13.648122,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 29,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.132791
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.157999
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.481624
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.544124
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.056999
+          }
+        ],
+        "totalMs": 11.373536999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 30,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.089375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.127791
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.717458
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.614625
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.225749
+          }
+        ],
+        "totalMs": 11.774998,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 31,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.345583
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.050375
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.922208
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.514291
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.07
+          }
+        ],
+        "totalMs": 13.902457,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 32,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.080333
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.956
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.777124
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.366249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.020499
+          }
+        ],
+        "totalMs": 13.200205,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 33,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.069249
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.065291
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.0355
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.507291
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 5.150625
+          }
+        ],
+        "totalMs": 14.827956,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 34,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.07125
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.122916
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.856583
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.467083
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.093333
+          }
+        ],
+        "totalMs": 13.611165,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 35,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.258374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.158958
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.668458
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.661249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.258124
+          }
+        ],
+        "totalMs": 12.005163,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 36,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.157624
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.147208
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.788874
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.991666
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.708624
+          }
+        ],
+        "totalMs": 12.793996,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 37,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.041666
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.102916
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.709166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.629333
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.297958
+          }
+        ],
+        "totalMs": 11.781039,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 38,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.177916
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.032999
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.972583
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.816916
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.449874
+          }
+        ],
+        "totalMs": 14.450288,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 39,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.069041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.107999
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.756833
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.641083
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.286374
+          }
+        ],
+        "totalMs": 11.86133,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 40,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.045
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.143874
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.784375
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.975249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.667666
+          }
+        ],
+        "totalMs": 12.616164,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 41,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.084625
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.049708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.085416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.584249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.138916
+          }
+        ],
+        "totalMs": 13.942914,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 42,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.088374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.176124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.80475
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.481041
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.218541
+          }
+        ],
+        "totalMs": 11.76883,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 43,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.121874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.169166
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.758875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.53425
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.272624
+          }
+        ],
+        "totalMs": 11.856789000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 44,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.061875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.049333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.009708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.400124
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.95775
+          }
+        ],
+        "totalMs": 13.47879,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 45,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.138749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.173625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.625416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.647249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.316
+          }
+        ],
+        "totalMs": 11.901039,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 46,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.126916
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.09675
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.022625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.995208
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.681666
+          }
+        ],
+        "totalMs": 12.923165,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 47,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.076374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.049708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.993791
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.607374
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.175791
+          }
+        ],
+        "totalMs": 13.903038,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 48,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.079
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.109208
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.60925
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.599666
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.231583
+          }
+        ],
+        "totalMs": 11.628707,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 49,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.096749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.115458
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.098124
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.282708
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.978458
+          }
+        ],
+        "totalMs": 13.571496999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 50,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.06875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.049124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.984999
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.728
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.167624
+          }
+        ],
+        "totalMs": 13.998497,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 51,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.068874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.052291
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.100875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.298749
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.000541
+          }
+        ],
+        "totalMs": 13.52133,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 52,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.508833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 4.140583
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.931458
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.879291
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 5.133541
+          }
+        ],
+        "totalMs": 16.593706,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 53,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.22025
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.920125
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.977124
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.967249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.748458
+          }
+        ],
+        "totalMs": 12.833206,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 54,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.039708
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.974791
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.910083
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.298749
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.975083
+          }
+        ],
+        "totalMs": 13.198414000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 55,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.077208
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.044541
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.085166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.6105
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.211749
+          }
+        ],
+        "totalMs": 14.029164000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 56,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.072
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.036541
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.067541
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.595333
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.152375
+          }
+        ],
+        "totalMs": 13.92379,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 57,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.545166
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.572458
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.199583
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.931624
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.615583
+          }
+        ],
+        "totalMs": 13.864414,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 58,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.066124
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.105249
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.723999
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.587625
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.240666
+          }
+        ],
+        "totalMs": 11.723663,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      },
+      {
+        "iteration": 59,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.150666
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.040208
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.085333
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.604875
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.152625
+          }
+        ],
+        "totalMs": 14.033707,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 195,
+        "triangles": 156054,
+        "programs": 63
+      }
+    ],
+    "candle-hidden": [
+      {
+        "iteration": 0,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 109.600583
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.721541
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.719541
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.580916
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.012124
+          }
+        ],
+        "totalMs": 119.63470500000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 61
+      },
+      {
+        "iteration": 1,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.017124
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.776833
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.453374
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.23075
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.549416
+          }
+        ],
+        "totalMs": 12.027497,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 2,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.231374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.549499
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.370999
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.176624
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.586833
+          }
+        ],
+        "totalMs": 11.915329,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 3,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.156874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.807166
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.896624
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.495374
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.365583
+          }
+        ],
+        "totalMs": 11.721620999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 4,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.082416
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.805708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.636625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.617374
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.317916
+          }
+        ],
+        "totalMs": 11.460039,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 5,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.081958
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.671249
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.7425
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.365583
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.285041
+          }
+        ],
+        "totalMs": 11.146331,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 6,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.333374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.879083
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.493875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.299125
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.012583
+          }
+        ],
+        "totalMs": 11.018040000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 7,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.076333
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.803333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.905958
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.474749
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.382666
+          }
+        ],
+        "totalMs": 11.643039000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 8,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.087374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.416666
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.632416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.785625
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 2.037875
+          }
+        ],
+        "totalMs": 7.959956,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 9,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.370666
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.232125
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.666208
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.716999
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 2.456999
+          }
+        ],
+        "totalMs": 8.442997,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 10,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.262916
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.791
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.486624
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.085125
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 2.419708
+          }
+        ],
+        "totalMs": 10.045373,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 11,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.401499
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.022624
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.937124
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.898
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.398291
+          }
+        ],
+        "totalMs": 12.657538,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 12,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.113124
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.822416
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.854624
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.163999
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.613166
+          }
+        ],
+        "totalMs": 12.567328999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 13,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.132208
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.890249
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.571916
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.281249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.81625
+          }
+        ],
+        "totalMs": 10.691872,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 14,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.0755
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.814416
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.722249
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.673166
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.084874
+          }
+        ],
+        "totalMs": 11.370205,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 15,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.168749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.834833
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.781749
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.397958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.141124
+          }
+        ],
+        "totalMs": 11.324413,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 16,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.159375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.826291
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.683875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.264583
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.002
+          }
+        ],
+        "totalMs": 10.936124,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 17,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.121625
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.827
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.479749
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.450041
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.963958
+          }
+        ],
+        "totalMs": 10.842373,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 18,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.117875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.846916
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.805083
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.248624
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.143374
+          }
+        ],
+        "totalMs": 11.161871999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 19,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.609874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 3.126333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 3.20175
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.750291
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.693625
+          }
+        ],
+        "totalMs": 13.381873000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 20,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.099875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.816166
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.840666
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.366124
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.006291
+          }
+        ],
+        "totalMs": 13.129122000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 21,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.125833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.810416
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.887499
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.3865
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.295499
+          }
+        ],
+        "totalMs": 11.505747,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 22,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.127375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.784708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.843375
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.171916
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.775333
+          }
+        ],
+        "totalMs": 12.702707,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 23,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.102416
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.824625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.710708
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.277208
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.054916
+          }
+        ],
+        "totalMs": 10.969873,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 24,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.061624
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.783083
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.814624
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.328499
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.007874
+          }
+        ],
+        "totalMs": 12.995704,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 25,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.067375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.814749
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.863958
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.469083
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.367124
+          }
+        ],
+        "totalMs": 11.582289,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 26,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.177249
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.820499
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.849791
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.391375
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.153291
+          }
+        ],
+        "totalMs": 11.392205,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 27,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.154624
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.806999
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.71375
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.560333
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.111458
+          }
+        ],
+        "totalMs": 11.347164,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 28,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.071375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.812666
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.882
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.468499
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.138249
+          }
+        ],
+        "totalMs": 11.372789,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 29,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.1185
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.710125
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.412499
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.373374
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.074291
+          }
+        ],
+        "totalMs": 10.688789,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 30,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.10025
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.775958
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.730791
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.212249
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.9095
+          }
+        ],
+        "totalMs": 12.728748,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 31,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.096416
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.831874
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.547416
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.282541
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.084041
+          }
+        ],
+        "totalMs": 10.842288,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 32,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.140624
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.811374
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.528249
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.544416
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.134791
+          }
+        ],
+        "totalMs": 11.159454,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 33,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.094666
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.791791
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.884166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.162499
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.467666
+          }
+        ],
+        "totalMs": 12.400788,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 34,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.119374
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.86725
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.755541
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.274458
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.032124
+          }
+        ],
+        "totalMs": 11.048746999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 35,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.104749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.81425
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.89975
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.189374
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.986999
+          }
+        ],
+        "totalMs": 12.995122000000002,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 36,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.120375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.809124
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.717333
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.691874
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.405624
+          }
+        ],
+        "totalMs": 11.744330000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 37,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.158999
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.780874
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.695999
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.359708
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.922583
+          }
+        ],
+        "totalMs": 10.918162999999998,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 38,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.064083
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.801333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.489249
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.26225
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.025416
+          }
+        ],
+        "totalMs": 10.642330999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 39,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.179208
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.784875
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.681791
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.398708
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.947749
+          }
+        ],
+        "totalMs": 10.992331,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 40,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.052375
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.794333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.698625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.365499
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.975749
+          }
+        ],
+        "totalMs": 10.886581,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 41,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.061999
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.808583
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.860625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.501
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.349624
+          }
+        ],
+        "totalMs": 11.581831000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 42,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.094166
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.835625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.87225
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.1595
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.84725
+          }
+        ],
+        "totalMs": 12.808791,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 43,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.112125
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.822458
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.722458
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.263125
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.987374
+          }
+        ],
+        "totalMs": 10.907540000000001,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 44,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.124416
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.794499
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.873499
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.148916
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.926875
+          }
+        ],
+        "totalMs": 12.868205,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 45,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.060833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.803999
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.54875
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.523833
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.069416
+          }
+        ],
+        "totalMs": 11.006831,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 46,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.072625
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.814125
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.890166
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.524875
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.350166
+          }
+        ],
+        "totalMs": 11.651957,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 47,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.140833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.798625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.732083
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.281541
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.032583
+          }
+        ],
+        "totalMs": 12.985664999999997,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 48,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.10875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.816333
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.912916
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.158708
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.606333
+          }
+        ],
+        "totalMs": 12.60304,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 49,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.046041
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.805041
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.552041
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.412958
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.956291
+          }
+        ],
+        "totalMs": 10.772372,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 50,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.0595
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.7995
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.877249
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.485124
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.346499
+          }
+        ],
+        "totalMs": 11.567872,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 51,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.132125
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.76925
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.810041
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.193333
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.369333
+          }
+        ],
+        "totalMs": 12.274082,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 52,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.111166
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.805833
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.708458
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.563999
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.121124
+          }
+        ],
+        "totalMs": 11.31058,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 53,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.061708
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.813833
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.649666
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.398416
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.078874
+          }
+        ],
+        "totalMs": 11.002497,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 54,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.163874
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.805708
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.8935
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.19425
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.991166
+          }
+        ],
+        "totalMs": 13.048498,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 55,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.066875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.776624
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.843625
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.350666
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.942125
+          }
+        ],
+        "totalMs": 12.979914999999998,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 56,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.077875
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.828625
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.854124
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.375666
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.958625
+          }
+        ],
+        "totalMs": 13.094914999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 57,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.191833
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.811666
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.719541
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.4085
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.033624
+          }
+        ],
+        "totalMs": 11.165163999999999,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 58,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.130749
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.837375
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 0.736916
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.255624
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 4.006291
+          }
+        ],
+        "totalMs": 10.966955,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      },
+      {
+        "iteration": 59,
+        "valid": true,
+        "stages": [
+          {
+            "stage": "low",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 1.349333
+          },
+          {
+            "stage": "full",
+            "target": [
+              1280,
+              720
+            ],
+            "ms": 2.795458
+          },
+          {
+            "stage": "mask",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.847
+          },
+          {
+            "stage": "glow",
+            "target": [
+              640,
+              360
+            ],
+            "ms": 2.211583
+          },
+          {
+            "stage": "composite",
+            "target": null,
+            "ms": 3.574874
+          }
+        ],
+        "totalMs": 12.778248,
+        "textures": 17,
+        "geometries": 52,
+        "gpuTextures": 49,
+        "calls": 198,
+        "triangles": 114668,
+        "programs": 63
+      }
+    ]
+  },
+  "errors": [],
+  "afterDispose": {
+    "leases": 0,
+    "contextLost": true
+  },
+  "summary": {
+    "full-rig": {
+      "total": {
+        "samples": 60,
+        "median": 12.878415,
+        "p95": 14.915998000000002,
+        "max": 22.536288
+      },
+      "stages": {
+        "low": {
+          "samples": 60,
+          "median": 1.265499,
+          "p95": 1.989875,
+          "max": 6.013833
+        },
+        "full": {
+          "samples": 60,
+          "median": 3.290083,
+          "p95": 3.675708,
+          "max": 4.684249
+        },
+        "mask": {
+          "samples": 60,
+          "median": 0.850375,
+          "p95": 3.341416,
+          "max": 3.398208
+        },
+        "composite": {
+          "samples": 60,
+          "median": 4.432291,
+          "p95": 5.834291,
+          "max": 7.233999
+        },
+        "glow": {
+          "samples": 60,
+          "median": 2.755374,
+          "p95": 3.588166,
+          "max": 5.207208
+        }
+      },
+      "calls": 222,
+      "triangles": 175140
+    },
+    "no-shadow": {
+      "total": {
+        "samples": 60,
+        "median": 13.373539000000001,
+        "p95": 14.827956,
+        "max": 18.05554
+      },
+      "stages": {
+        "low": {
+          "samples": 60,
+          "median": 1.122249,
+          "p95": 1.561874,
+          "max": 3.545166
+        },
+        "full": {
+          "samples": 60,
+          "median": 3.084958,
+          "p95": 3.225583,
+          "max": 4.487625
+        },
+        "mask": {
+          "samples": 60,
+          "median": 2.901041,
+          "p95": 3.100875,
+          "max": 3.152708
+        },
+        "composite": {
+          "samples": 60,
+          "median": 4.152625,
+          "p95": 5.133541,
+          "max": 6.304333
+        },
+        "glow": {
+          "samples": 60,
+          "median": 2.53425,
+          "p95": 2.975249,
+          "max": 4.444083
+        }
+      },
+      "calls": 195,
+      "triangles": 156054
+    },
+    "candle-hidden": {
+      "total": {
+        "samples": 60,
+        "median": 11.460039,
+        "p95": 13.094914999999999,
+        "max": 119.63470500000001
+      },
+      "stages": {
+        "low": {
+          "samples": 60,
+          "median": 1.117875,
+          "p95": 1.370666,
+          "max": 109.600583
+        },
+        "full": {
+          "samples": 60,
+          "median": 2.808583,
+          "p95": 2.879083,
+          "max": 3.126333
+        },
+        "mask": {
+          "samples": 60,
+          "median": 2.719541,
+          "p95": 2.89975,
+          "max": 3.20175
+        },
+        "composite": {
+          "samples": 60,
+          "median": 4.012583,
+          "p95": 4.382666,
+          "max": 4.693625
+        },
+        "glow": {
+          "samples": 60,
+          "median": 2.255624,
+          "p95": 2.617374,
+          "max": 2.898
+        }
+      },
+      "calls": 198,
+      "triangles": 114668
+    }
+  },
+  "pageErrors": []
+}

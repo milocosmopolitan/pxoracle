@@ -20,6 +20,7 @@ interface Manifest {
   countries: Record<AtlasCountry, Shard>;
 }
 const cache = new Map<AtlasCountry, Birthplace[]>();
+const COUNTRY_CACHE_LIMIT = 4;
 let manifest: Manifest | undefined;
 const indexes = new WeakMap<
   Birthplace[],
@@ -152,7 +153,11 @@ export async function loadCities(
 ): Promise<Birthplace[]> {
   if (signal.aborted) throw new DOMException("Aborted", "AbortError");
   if (!Object.hasOwn(COUNTRIES, country)) throw new Error("ATLAS_INVALID");
-  if (cache.has(country)) return cache.get(country)!;
+  if (cache.has(country)) {
+    const cities = cache.get(country)!;
+    cache.delete(country); cache.set(country, cities);
+    return cities;
+  }
   if (!manifest) {
     const data = JSON.parse(
       new TextDecoder().decode(
@@ -200,5 +205,6 @@ export async function loadCities(
   if (signal.aborted) throw new DOMException("Aborted", "AbortError");
   indexCities(cities);
   cache.set(country, cities);
+  if (cache.size > COUNTRY_CACHE_LIMIT) cache.delete(cache.keys().next().value!);
   return cities;
 }

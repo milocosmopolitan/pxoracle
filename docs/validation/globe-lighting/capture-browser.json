@@ -1,0 +1,9 @@
+{
+  "origin": "http://127.0.0.1:4173",
+  "browser": "Chromium headless",
+  "desktop": "1440x1000",
+  "mobile": "390x844 touch viewport emulation, not a physical device",
+  "lightingComparison": "Production fixtures on versus shade emissive only (ambient/window remain) versus spotlight shadows disabled",
+  "tarot": "Production TarotTable story camera approach and return; synthetic cards, no WASM",
+  "errors": []
+}

@@ -1,0 +1,2289 @@
+{
+  "recordedAt": "2026-10-11T20:41:09.741Z",
+  "method": "Same production tarot factory, before differs only by importing exact old pixel-presentation source. One Metal renderer, paired60whole-frame GPUqueries pervariant perfixture,30pairedwarmupframes. Fixed1280x720DPR1 selection/reading/detail withsyntheticdisplay-onlycards. Screenshots from same actual renderframes.",
+  "result": {
+    "selection": {
+      "before": [
+        {
+          "iteration": 0,
+          "ms": 2.588458,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 1,
+          "ms": 3.710208,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 2,
+          "ms": 2.799041,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 3,
+          "ms": 3.329375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 4,
+          "ms": 6.588666,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 5,
+          "ms": 2.337374,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 6,
+          "ms": 2.394583,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 7,
+          "ms": 3.134083,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 8,
+          "ms": 2.671499,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 9,
+          "ms": 2.679249,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 10,
+          "ms": 3.312875,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 11,
+          "ms": 3.293208,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 12,
+          "ms": 3.640749,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 13,
+          "ms": 5.817624,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 14,
+          "ms": 5.843624,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 15,
+          "ms": 5.898416,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 16,
+          "ms": 5.985666,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 17,
+          "ms": 7.14475,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 18,
+          "ms": 2.346291,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 19,
+          "ms": 2.338416,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 20,
+          "ms": 2.557083,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 21,
+          "ms": 2.501958,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 22,
+          "ms": 2.949,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 23,
+          "ms": 4.807749,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 24,
+          "ms": 4.763916,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 25,
+          "ms": 7.476958,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 26,
+          "ms": 8.766083,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 27,
+          "ms": 8.575583,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 28,
+          "ms": 8.820124,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 29,
+          "ms": 6.209,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 30,
+          "ms": 6.125875,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 31,
+          "ms": 9.830625,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 32,
+          "ms": 9.712083,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 33,
+          "ms": 6.054416,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 34,
+          "ms": 6.141,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 35,
+          "ms": 5.930625,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 36,
+          "ms": 5.905624,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 37,
+          "ms": 5.856291,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 38,
+          "ms": 5.991375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 39,
+          "ms": 5.886916,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 40,
+          "ms": 5.841749,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 41,
+          "ms": 5.780624,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 42,
+          "ms": 5.846041,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 43,
+          "ms": 5.864999,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 44,
+          "ms": 8.825375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 45,
+          "ms": 8.676833,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 46,
+          "ms": 6.309916,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 47,
+          "ms": 6.085291,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 48,
+          "ms": 5.747125,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 49,
+          "ms": 6.124124,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 50,
+          "ms": 5.887999,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 51,
+          "ms": 5.794374,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 52,
+          "ms": 5.722,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 53,
+          "ms": 5.680083,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 54,
+          "ms": 5.712416,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 55,
+          "ms": 5.798083,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 56,
+          "ms": 5.711124,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 57,
+          "ms": 5.705666,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 58,
+          "ms": 5.743041,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 59,
+          "ms": 5.706166,
+          "calls": 222,
+          "triangles": 175140
+        }
+      ],
+      "after": [
+        {
+          "iteration": 0,
+          "ms": 1.751,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 1,
+          "ms": 2.04875,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 2,
+          "ms": 4.081666,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 3,
+          "ms": 4.526208,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 4,
+          "ms": 7.779625,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 5,
+          "ms": 1.799999,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 6,
+          "ms": 1.77025,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 7,
+          "ms": 2.091874,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 8,
+          "ms": 2.050624,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 9,
+          "ms": 2.230375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 10,
+          "ms": 2.437041,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 11,
+          "ms": 4.152458,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 12,
+          "ms": 5.569083,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 13,
+          "ms": 6.960124,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 14,
+          "ms": 6.877375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 15,
+          "ms": 6.76775,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 16,
+          "ms": 4.406625,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 17,
+          "ms": 2.801958,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 18,
+          "ms": 2.097875,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 19,
+          "ms": 2.037666,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 20,
+          "ms": 2.103916,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 21,
+          "ms": 2.021166,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 22,
+          "ms": 3.212374,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 23,
+          "ms": 2.795791,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 24,
+          "ms": 4.087041,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 25,
+          "ms": 5.245541,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 26,
+          "ms": 5.841749,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 27,
+          "ms": 4.990499,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 28,
+          "ms": 4.7655,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 29,
+          "ms": 7.336708,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 30,
+          "ms": 7.691374,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 31,
+          "ms": 7.333375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 32,
+          "ms": 7.463916,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 33,
+          "ms": 7.208666,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 34,
+          "ms": 7.155249,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 35,
+          "ms": 7.157249,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 36,
+          "ms": 7.36425,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 37,
+          "ms": 6.990833,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 38,
+          "ms": 6.930999,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 39,
+          "ms": 6.776124,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 40,
+          "ms": 6.931166,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 41,
+          "ms": 7.238749,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 42,
+          "ms": 6.898958,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 43,
+          "ms": 4.343499,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 44,
+          "ms": 7.414416,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 45,
+          "ms": 4.500749,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 46,
+          "ms": 4.249375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 47,
+          "ms": 6.818208,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 48,
+          "ms": 6.97325,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 49,
+          "ms": 6.791458,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 50,
+          "ms": 4.290333,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 51,
+          "ms": 6.303,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 52,
+          "ms": 6.803791,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 53,
+          "ms": 7.015374,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 54,
+          "ms": 6.889333,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 55,
+          "ms": 6.980999,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 56,
+          "ms": 6.814375,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 57,
+          "ms": 6.927374,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 58,
+          "ms": 6.833499,
+          "calls": 222,
+          "triangles": 175140
+        },
+        {
+          "iteration": 59,
+          "ms": 6.774291,
+          "calls": 222,
+          "triangles": 175140
+        }
+      ]
+    },
+    "reading": {
+      "before": [
+        {
+          "iteration": 0,
+          "ms": 2.174749,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 1,
+          "ms": 1.845166,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 2,
+          "ms": 3.092041,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 3,
+          "ms": 3.625374,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 4,
+          "ms": 2.336874,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 5,
+          "ms": 4.160291,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 6,
+          "ms": 4.415416,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 7,
+          "ms": 3.344499,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 8,
+          "ms": 4.266666,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 9,
+          "ms": 2.66225,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 10,
+          "ms": 2.586999,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 11,
+          "ms": 2.56225,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 12,
+          "ms": 2.721749,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 13,
+          "ms": 2.802791,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 14,
+          "ms": 3.919125,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 15,
+          "ms": 3.471625,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 16,
+          "ms": 6.009374,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 17,
+          "ms": 5.851499,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 18,
+          "ms": 2.371708,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 19,
+          "ms": 2.359458,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 20,
+          "ms": 2.431541,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 21,
+          "ms": 2.70175,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 22,
+          "ms": 4.201,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 23,
+          "ms": 4.918874,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 24,
+          "ms": 3.391999,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 25,
+          "ms": 7.19,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 26,
+          "ms": 8.7035,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 27,
+          "ms": 6.400875,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 28,
+          "ms": 8.606874,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 29,
+          "ms": 8.573249,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 30,
+          "ms": 6.377208,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 31,
+          "ms": 6.477958,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 32,
+          "ms": 6.082374,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 33,
+          "ms": 6.488,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 34,
+          "ms": 2.446458,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 35,
+          "ms": 2.366499,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 36,
+          "ms": 2.683583,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 37,
+          "ms": 2.815958,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 38,
+          "ms": 2.828916,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 39,
+          "ms": 3.795625,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 40,
+          "ms": 3.548541,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 41,
+          "ms": 6.682833,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 42,
+          "ms": 2.393708,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 43,
+          "ms": 2.352458,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 44,
+          "ms": 2.703874,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 45,
+          "ms": 2.835124,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 46,
+          "ms": 3.079041,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 47,
+          "ms": 4.894125,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 48,
+          "ms": 3.655625,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 49,
+          "ms": 7.162999,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 50,
+          "ms": 8.854,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 51,
+          "ms": 6.448166,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 52,
+          "ms": 2.376499,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 53,
+          "ms": 2.326208,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 54,
+          "ms": 2.877124,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 55,
+          "ms": 2.699499,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 56,
+          "ms": 3.530416,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 57,
+          "ms": 3.493374,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 58,
+          "ms": 5.300916,
+          "calls": 159,
+          "triangles": 49508
+        },
+        {
+          "iteration": 59,
+          "ms": 8.204083,
+          "calls": 159,
+          "triangles": 49508
+        }
+      ],
+      "after": [
+        {
+          "iteration": 0,
+          "ms": 1.634125,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 1,
+          "ms": 1.61975,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 2,
+          "ms": 1.794999,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 3,
+          "ms": 1.809375,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 4,
+          "ms": 3.457499,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 5,
+          "ms": 2.383791,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 6,
+          "ms": 3.503999,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 7,
+          "ms": 4.299875,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 8,
+          "ms": 6.686125,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 9,
+          "ms": 1.916124,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 10,
+          "ms": 1.945291,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 11,
+          "ms": 3.584583,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 12,
+          "ms": 2.1755,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 13,
+          "ms": 4.212458,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 14,
+          "ms": 2.624833,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 15,
+          "ms": 4.559666,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 16,
+          "ms": 7.311791,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 17,
+          "ms": 7.12125,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 18,
+          "ms": 2.066166,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 19,
+          "ms": 1.915124,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 20,
+          "ms": 2.259625,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 21,
+          "ms": 2.276708,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 22,
+          "ms": 2.716625,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 23,
+          "ms": 2.829458,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 24,
+          "ms": 2.846583,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 25,
+          "ms": 4.676666,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 26,
+          "ms": 4.636458,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 27,
+          "ms": 4.569833,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 28,
+          "ms": 4.743,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 29,
+          "ms": 4.534125,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 30,
+          "ms": 4.670833,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 31,
+          "ms": 4.512208,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 32,
+          "ms": 7.171374,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 33,
+          "ms": 7.189,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 34,
+          "ms": 3.309416,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 35,
+          "ms": 1.91675,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 36,
+          "ms": 2.162333,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 37,
+          "ms": 2.132749,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 38,
+          "ms": 2.686083,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 39,
+          "ms": 2.64275,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 40,
+          "ms": 4.446333,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 41,
+          "ms": 7.175083,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 42,
+          "ms": 1.922666,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 43,
+          "ms": 1.878249,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 44,
+          "ms": 2.103583,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 45,
+          "ms": 2.125666,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 46,
+          "ms": 2.667749,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 47,
+          "ms": 2.629624,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 48,
+          "ms": 3.1385,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 49,
+          "ms": 4.556249,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 50,
+          "ms": 4.663791,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 51,
+          "ms": 2.086333,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 52,
+          "ms": 1.908416,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 53,
+          "ms": 2.200499,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 54,
+          "ms": 2.215791,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 55,
+          "ms": 2.170375,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 56,
+          "ms": 2.64525,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 57,
+          "ms": 2.725374,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 58,
+          "ms": 4.704583,
+          "calls": 161,
+          "triangles": 49512
+        },
+        {
+          "iteration": 59,
+          "ms": 4.693374,
+          "calls": 161,
+          "triangles": 49512
+        }
+      ]
+    },
+    "detail": {
+      "before": [
+        {
+          "iteration": 0,
+          "ms": 1.395666,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 1,
+          "ms": 1.51075,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 2,
+          "ms": 1.518749,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 3,
+          "ms": 1.599958,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 4,
+          "ms": 1.714499,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 5,
+          "ms": 1.882916,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 6,
+          "ms": 2.078333,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 7,
+          "ms": 2.329749,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 8,
+          "ms": 2.891875,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 9,
+          "ms": 4.565624,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 10,
+          "ms": 5.423874,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 11,
+          "ms": 5.0825,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 12,
+          "ms": 5.005458,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 13,
+          "ms": 5.006333,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 14,
+          "ms": 4.9805,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 15,
+          "ms": 5.191999,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 16,
+          "ms": 5.09275,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 17,
+          "ms": 5.118374,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 18,
+          "ms": 5.028041,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 19,
+          "ms": 4.965416,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 20,
+          "ms": 7.582375,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 21,
+          "ms": 7.580958,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 22,
+          "ms": 7.436499,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 23,
+          "ms": 7.568708,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 24,
+          "ms": 7.258,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 25,
+          "ms": 1.996458,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 26,
+          "ms": 2.06175,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 27,
+          "ms": 2.380041,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 28,
+          "ms": 2.338833,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 29,
+          "ms": 2.947833,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 30,
+          "ms": 2.931999,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 31,
+          "ms": 5.313333,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 32,
+          "ms": 7.489125,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 33,
+          "ms": 2.115875,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 34,
+          "ms": 2.093124,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 35,
+          "ms": 2.443666,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 36,
+          "ms": 2.430541,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 37,
+          "ms": 2.929833,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 38,
+          "ms": 3.02425,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 39,
+          "ms": 3.516291,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 40,
+          "ms": 5.2705,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 41,
+          "ms": 5.095,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 42,
+          "ms": 5.220625,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 43,
+          "ms": 5.162666,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 44,
+          "ms": 5.126375,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 45,
+          "ms": 2.095875,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 46,
+          "ms": 2.113208,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 47,
+          "ms": 2.285624,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 48,
+          "ms": 2.31775,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 49,
+          "ms": 2.820249,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 50,
+          "ms": 2.775333,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 51,
+          "ms": 3.911625,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 52,
+          "ms": 7.559,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 53,
+          "ms": 7.62575,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 54,
+          "ms": 1.923208,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 55,
+          "ms": 1.956208,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 56,
+          "ms": 2.200625,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 57,
+          "ms": 2.22475,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 58,
+          "ms": 2.982291,
+          "calls": 157,
+          "triangles": 49412
+        },
+        {
+          "iteration": 59,
+          "ms": 2.760999,
+          "calls": 157,
+          "triangles": 49412
+        }
+      ],
+      "after": [
+        {
+          "iteration": 0,
+          "ms": 1.23075,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 1,
+          "ms": 1.262791,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 2,
+          "ms": 1.251166,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 3,
+          "ms": 1.367624,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 4,
+          "ms": 1.323,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 5,
+          "ms": 1.515999,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 6,
+          "ms": 1.686875,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 7,
+          "ms": 2.223375,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 8,
+          "ms": 2.078458,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 9,
+          "ms": 6.046416,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 10,
+          "ms": 7.439333,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 11,
+          "ms": 6.048833,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 12,
+          "ms": 6.061,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 13,
+          "ms": 6.040041,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 14,
+          "ms": 6.428,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 15,
+          "ms": 6.143749,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 16,
+          "ms": 6.210208,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 17,
+          "ms": 6.4155,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 18,
+          "ms": 6.277166,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 19,
+          "ms": 3.604249,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 20,
+          "ms": 4.034833,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 21,
+          "ms": 4.210124,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 22,
+          "ms": 3.533458,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 23,
+          "ms": 3.801875,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 24,
+          "ms": 1.781875,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 25,
+          "ms": 1.868,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 26,
+          "ms": 2.03075,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 27,
+          "ms": 2.378125,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 28,
+          "ms": 2.779958,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 29,
+          "ms": 3.046083,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 30,
+          "ms": 3.163125,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 31,
+          "ms": 5.324125,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 32,
+          "ms": 2.047291,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 33,
+          "ms": 1.882624,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 34,
+          "ms": 1.936208,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 35,
+          "ms": 1.827333,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 36,
+          "ms": 1.8295,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 37,
+          "ms": 2.185291,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 38,
+          "ms": 2.220999,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 39,
+          "ms": 5.856999,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 40,
+          "ms": 3.837999,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 41,
+          "ms": 6.480999,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 42,
+          "ms": 6.407708,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 43,
+          "ms": 3.856499,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 44,
+          "ms": 3.093708,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 45,
+          "ms": 1.643875,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 46,
+          "ms": 1.611083,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 47,
+          "ms": 1.853333,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 48,
+          "ms": 1.763291,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 49,
+          "ms": 1.988124,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 50,
+          "ms": 2.019833,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 51,
+          "ms": 3.473333,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 52,
+          "ms": 3.479124,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 53,
+          "ms": 1.45225,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 54,
+          "ms": 1.465749,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 55,
+          "ms": 1.726166,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 56,
+          "ms": 1.657874,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 57,
+          "ms": 1.928958,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 58,
+          "ms": 2.182374,
+          "calls": 159,
+          "triangles": 49416
+        },
+        {
+          "iteration": 59,
+          "ms": 2.977999,
+          "calls": 159,
+          "triangles": 49416
+        }
+      ]
+    }
+  },
+  "summary": {
+    "selection": {
+      "before": {
+        "samples": 60,
+        "median": 5.817624,
+        "p95": 8.820124,
+        "max": 9.830625,
+        "calls": 222,
+        "triangles": 175140
+      },
+      "after": {
+        "samples": 60,
+        "median": 6.76775,
+        "p95": 7.414416,
+        "max": 7.779625,
+        "calls": 222,
+        "triangles": 175140
+      }
+    },
+    "reading": {
+      "before": {
+        "samples": 60,
+        "median": 3.493374,
+        "p95": 8.573249,
+        "max": 8.854,
+        "calls": 159,
+        "triangles": 49508
+      },
+      "after": {
+        "samples": 60,
+        "median": 2.716625,
+        "p95": 7.171374,
+        "max": 7.311791,
+        "calls": 161,
+        "triangles": 49512
+      }
+    },
+    "detail": {
+      "before": {
+        "samples": 60,
+        "median": 2.947833,
+        "p95": 7.568708,
+        "max": 7.62575,
+        "calls": 157,
+        "triangles": 49412
+      },
+      "after": {
+        "samples": 60,
+        "median": 2.223375,
+        "p95": 6.4155,
+        "max": 7.439333,
+        "calls": 159,
+        "triangles": 49416
+      }
+    }
+  },
+  "afterDispose": {
+    "leases": 0,
+    "contextLost": true
+  },
+  "errors": [],
+  "imageDifferences": {
+    "selection": {
+      "meanAbsoluteChannelDifference": 0.07909288194444444,
+      "maxChannelDifference": 187,
+      "pixelsChanged": 2744,
+      "pixelsOver3": 1981,
+      "pixelsOver16": 1449,
+      "pixelsOver3Bounds": [
+        1181,
+        91,
+        1222,
+        151
+      ],
+      "outsideFlameROI": {
+        "excludedBounds": [
+          1170,
+          80,
+          1235,
+          165
+        ],
+        "maxChannelDifference": 1
+      }
+    },
+    "reading": {
+      "meanAbsoluteChannelDifference": 0.00038556134259259256,
+      "maxChannelDifference": 1,
+      "pixelsChanged": 1054,
+      "pixelsOver3": 0,
+      "pixelsOver16": 0,
+      "pixelsOver3Bounds": null
+    },
+    "detail": {
+      "meanAbsoluteChannelDifference": 0.0012901475694444445,
+      "maxChannelDifference": 1,
+      "pixelsChanged": 3527,
+      "pixelsOver3": 0,
+      "pixelsOver16": 0,
+      "pixelsOver3Bounds": null
+    }
+  },
+  "capability": {
+    "floatSupported": true,
+    "evidence": "Forced-fallback companion run queried the same Metal backend before overriding renderer.extensions.has; its afterDispose.floatSupported is true."
+  }
+}

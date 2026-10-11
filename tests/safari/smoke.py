@@ -42,7 +42,7 @@ try:
   wait(lambda:execute(f"return !!document.querySelector('[aria-label=\"Choose slot {slot}\"]:not(:disabled)')"));click(f'[aria-label="Choose slot {slot}"]')
  wait(lambda:execute("return document.querySelectorAll('.structured-reading .reading-card').length===3"));screenshot('tarot.png')
  visit('/astrology/');wait(lambda:execute("return !!document.querySelector('input[name=date]') && !document.querySelector('fieldset').disabled"))
- execute("const el=document.querySelector('form select'); Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(el,'KR'); el.dispatchEvent(new Event('change',{bubbles:true}));")
+ execute("const el=Array.from(document.querySelectorAll('form label')).find(label=>label.textContent.trim().startsWith('Birth country')).querySelector('select'); Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(el,'KR'); el.dispatchEvent(new Event('change',{bubbles:true}));")
  wait(lambda:execute("return !!document.querySelector('input[type=search]')"))
  execute("const el=document.querySelector('input[type=search]'); Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(el,'Seoul'); el.dispatchEvent(new Event('input',{bubbles:true}));")
  click('.city-results button')

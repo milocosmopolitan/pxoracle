@@ -6,7 +6,7 @@ import { TextureLeases } from "../packages/scene-runtime/src/index.ts";
 import { createScene } from "../packages/scenes/src/tarot.ts";
 const originalFetch = globalThis.fetch;
 globalThis.fetch = async (url, options) =>
-  String(url).startsWith("/art/hand-mesh/")
+  (String(url).startsWith("/art/hand-mesh/") || String(url).startsWith("/globe/"))
     ? new Response(
         await readFile(new URL("../apps/web/public" + url, import.meta.url)),
       )

@@ -1,0 +1,161 @@
+{
+  "recordedAt": "2026-10-11T20:46:40.576Z",
+  "method": "Actual production SceneRuntime.navigate defaults; no manual shadow overrides. Three real factories at 1280\u00d7720 DPR 1; settled astrology overview and tarot selection review; final 3D candle and front-right globe placement.",
+  "runs": [
+    {
+      "backend": "software",
+      "args": [],
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+      "maxTextureSize": 8192,
+      "policyStudyShadows": false,
+      "floatColorBufferSupported": true,
+      "scenes": [
+        {
+          "route": "landing",
+          "lamps": [
+            {
+              "castShadow": false,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": false
+            }
+          ],
+          "textures": 19,
+          "geometries": 55,
+          "gpuTextures": 25,
+          "calls": 55,
+          "triangles": 57546,
+          "programs": 11
+        },
+        {
+          "route": "astrology",
+          "lamps": [
+            {
+              "castShadow": false,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": false
+            }
+          ],
+          "textures": 21,
+          "geometries": 32,
+          "gpuTextures": 23,
+          "calls": 32,
+          "triangles": 171928,
+          "programs": 8
+        },
+        {
+          "route": "tarot",
+          "lamps": [
+            {
+              "castShadow": false,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": false
+            }
+          ],
+          "textures": 17,
+          "geometries": 52,
+          "gpuTextures": 51,
+          "calls": 195,
+          "triangles": 156054,
+          "programs": 30
+        }
+      ],
+      "errors": [],
+      "afterDispose": {
+        "leases": 0,
+        "contextLost": true
+      },
+      "pageErrors": []
+    },
+    {
+      "backend": "metal",
+      "args": [
+        "--use-angle=metal"
+      ],
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "maxTextureSize": 16384,
+      "policyStudyShadows": true,
+      "floatColorBufferSupported": true,
+      "scenes": [
+        {
+          "route": "landing",
+          "lamps": [
+            {
+              "castShadow": true,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": true
+            }
+          ],
+          "textures": 19,
+          "geometries": 55,
+          "gpuTextures": 27,
+          "calls": 63,
+          "triangles": 67018,
+          "programs": 12
+        },
+        {
+          "route": "astrology",
+          "lamps": [
+            {
+              "castShadow": true,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": true
+            }
+          ],
+          "textures": 21,
+          "geometries": 40,
+          "gpuTextures": 26,
+          "calls": 40,
+          "triangles": 181400,
+          "programs": 9
+        },
+        {
+          "route": "tarot",
+          "lamps": [
+            {
+              "castShadow": true,
+              "intensity": 24,
+              "mapSize": [
+                512,
+                512
+              ],
+              "allocated": true
+            }
+          ],
+          "textures": 17,
+          "geometries": 52,
+          "gpuTextures": 53,
+          "calls": 222,
+          "triangles": 175140,
+          "programs": 36
+        }
+      ],
+      "errors": [],
+      "afterDispose": {
+        "leases": 0,
+        "contextLost": true
+      },
+      "pageErrors": []
+    }
+  ],
+  "runtimeSchedulingNote": "Later scheduling-only fix adds one identical follow-up frame after on-demand invalidation, then idles; shadow capability selection is unchanged. Final region-chooser-performance.json rechecks city zero-draw/resource invariance against that export. This policy artifact was not rerun for scheduling alone."
+}

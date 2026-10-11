@@ -1,0 +1,116 @@
+{
+  "run": "https://github.com/milocosmopolitan/pxoracle/actions/runs/38175076210",
+  "job": 114576872568,
+  "commit": "4f2d167",
+  "environment": "Hosted Ubuntu Linux Playwright WebKit",
+  "keyboardResult": "passed native Enter revision, pixel change,500ms idle assertions",
+  "suiteResult": "29passed2skipped1failed; separate HTML fallback fast-input reset failure remains",
+  "diagnostics": [
+    {
+      "timeline": [
+        {
+          "stage": "country-settled",
+          "revision": "1",
+          "draws": 146
+        },
+        {
+          "stage": "east-accepted",
+          "revision": "2",
+          "draws": 146
+        },
+        {
+          "stage": "east-rendered",
+          "revision": "2",
+          "draws": 227
+        },
+        {
+          "stage": "zoom-accepted",
+          "revision": "3",
+          "draws": 227
+        },
+        {
+          "stage": "zoom-rendered",
+          "revision": "3",
+          "draws": 285
+        },
+        {
+          "stage": "west-rendered",
+          "revision": "4",
+          "draws": 372
+        },
+        {
+          "stage": "idle-confirmed",
+          "revision": "4",
+          "draws": 372
+        },
+        {
+          "stage": "finished",
+          "revision": "4",
+          "draws": 372
+        }
+      ],
+      "events": [
+        {
+          "event": "keydown",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "1",
+          "draws": 146
+        },
+        {
+          "event": "click",
+          "control": "Turn globe east",
+          "revision": "1",
+          "draws": 146
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 146
+        },
+        {
+          "event": "keydown",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 227
+        },
+        {
+          "event": "click",
+          "control": "Zoom globe out",
+          "revision": "2",
+          "draws": 227
+        },
+        {
+          "event": "keyup",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 227
+        },
+        {
+          "event": "keydown",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 285
+        },
+        {
+          "event": "click",
+          "control": "Turn globe west",
+          "revision": "3",
+          "draws": 285
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "4",
+          "draws": 285
+        }
+      ]
+    }
+  ]
+}

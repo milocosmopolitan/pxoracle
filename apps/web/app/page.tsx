@@ -34,7 +34,7 @@ export default function Home() {
             <span className="entry-icon">☾</span>
             <span>
               <strong>Look to the stars</strong>
-              <small>Explore the sky at your beginning</small>
+              <small>Choose your birthplace with the antique globe</small>
             </span>
             <span>↗</span>
           </Link>

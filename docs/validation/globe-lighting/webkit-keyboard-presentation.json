@@ -1,0 +1,327 @@
+{
+  "date": "2026-10-11T21:06:10.883157+00:00",
+  "environment": "Local macOS Playwright WebKit, not hosted Linux WebKit and not a physical mobile device",
+  "command": "npx playwright test tests/browser/globe-lighting.spec.ts --project=webkit --grep 'keyboard rotation' --repeat-each=3",
+  "result": "3/3 passed in15.1s",
+  "checks": "Native Enter increments public revision; east/zoom/west each visibly change stage; reduced-motion returns to zero additional draws across500ms after3RAF; bounded presentation follow-up enabled",
+  "runs": [
+    {
+      "timeline": [
+        {
+          "stage": "country-settled",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "stage": "east-accepted",
+          "revision": "2",
+          "draws": 211
+        },
+        {
+          "stage": "east-rendered",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "stage": "zoom-accepted",
+          "revision": "3",
+          "draws": 321
+        },
+        {
+          "stage": "zoom-rendered",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "stage": "west-rendered",
+          "revision": "4",
+          "draws": 437
+        },
+        {
+          "stage": "idle-confirmed",
+          "revision": "4",
+          "draws": 437
+        },
+        {
+          "stage": "finished",
+          "revision": "4",
+          "draws": 437
+        }
+      ],
+      "events": [
+        {
+          "event": "keydown",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "event": "click",
+          "control": "Turn globe east",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 211
+        },
+        {
+          "event": "keydown",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "event": "click",
+          "control": "Zoom globe out",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "event": "keyup",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 292
+        },
+        {
+          "event": "keydown",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "event": "click",
+          "control": "Turn globe west",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "4",
+          "draws": 350
+        }
+      ]
+    },
+    {
+      "timeline": [
+        {
+          "stage": "country-settled",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "stage": "east-accepted",
+          "revision": "2",
+          "draws": 265
+        },
+        {
+          "stage": "east-rendered",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "stage": "zoom-accepted",
+          "revision": "3",
+          "draws": 321
+        },
+        {
+          "stage": "zoom-rendered",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "stage": "west-rendered",
+          "revision": "4",
+          "draws": 437
+        },
+        {
+          "stage": "idle-confirmed",
+          "revision": "4",
+          "draws": 437
+        },
+        {
+          "stage": "finished",
+          "revision": "4",
+          "draws": 437
+        }
+      ],
+      "events": [
+        {
+          "event": "keydown",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "event": "click",
+          "control": "Turn globe east",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 211
+        },
+        {
+          "event": "keydown",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "event": "click",
+          "control": "Zoom globe out",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "event": "keyup",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 292
+        },
+        {
+          "event": "keydown",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "event": "click",
+          "control": "Turn globe west",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "4",
+          "draws": 350
+        }
+      ]
+    },
+    {
+      "timeline": [
+        {
+          "stage": "country-settled",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "stage": "east-accepted",
+          "revision": "2",
+          "draws": 238
+        },
+        {
+          "stage": "east-rendered",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "stage": "zoom-accepted",
+          "revision": "3",
+          "draws": 292
+        },
+        {
+          "stage": "zoom-rendered",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "stage": "west-rendered",
+          "revision": "4",
+          "draws": 437
+        },
+        {
+          "stage": "idle-confirmed",
+          "revision": "4",
+          "draws": 437
+        },
+        {
+          "stage": "finished",
+          "revision": "4",
+          "draws": 437
+        }
+      ],
+      "events": [
+        {
+          "event": "keydown",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "event": "click",
+          "control": "Turn globe east",
+          "revision": "1",
+          "draws": 211
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe east",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 238
+        },
+        {
+          "event": "keydown",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "event": "click",
+          "control": "Zoom globe out",
+          "revision": "2",
+          "draws": 292
+        },
+        {
+          "event": "keyup",
+          "control": "Zoom globe out",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 292
+        },
+        {
+          "event": "keydown",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "event": "click",
+          "control": "Turn globe west",
+          "revision": "3",
+          "draws": 350
+        },
+        {
+          "event": "keyup",
+          "control": "Turn globe west",
+          "key": "Enter",
+          "revision": "4",
+          "draws": 350
+        }
+      ]
+    }
+  ]
+}

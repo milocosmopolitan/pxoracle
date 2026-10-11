@@ -1,0 +1,61 @@
+# Original globe, geographic frame and data
+
+The assembly is authored in `packages/scenes/src/globe/index.ts`; no model, mesh or texture was purchased or extracted from the [CGTrader inspiration](https://www.cgtrader.com/3d-models/science/other/vintage-globe-50e9e62e-547f-42a1-aa50-09b2ae7a3028). The reference informed the turned pedestal, brass bearings and graduated meridian. The actual profiles, compass engraving, materials and cartographic layout are original repository work.
+
+## Reproduce and verify
+
+Run `python3 scripts/build-globe.py` with Python 3 and **Pillow 12.3.0**, then `node --import tsx --test tests/globe-geography.test.mjs`. Regeneration is completely offline from retained source snapshots. No workstation font is required: Pillow's bundled default font is used. Image grain uses a fixed random seed; output is PNG to avoid codec-dependent WebP encoders. Source and derived SHA256 values and byte sizes are in `content/astrology/globe/manifest.json`. Retained compressed ETOPO CSV is lossless, gzip timestamp zero.
+
+* [Natural Earth 5.1.2, 1:50m administrative country boundaries](https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson): public domain. Its polygons provide coastlines, holes, islands, decorative map printing, country outlines and country-only selection. Boundary semantics are de facto, not a sovereignty endorsement. [Natural Earth terms](https://www.naturalearthdata.com/about/terms-of-use/).
+* [NOAA NGDC ETOPO1 ice-surface elevation](https://coastwatch.pfeg.noaa.gov/erddap/info/etopo180/index.html): freely usable and redistributable, without warranty and not for legal use. Citation: Amante, C. and B. W. Eakins, *ETOPO1 1 Arc-Minute Global Relief Model*, NOAA Technical Memorandum NESDIS NGDC-24 (2009). The manifest pins the exact ERDDAP URL and downloaded hash. We retained every twentieth source grid node, a 1/3° global grid. This is real measured/modelled elevation, not procedural terrain. Original source WGS84, mean sea level, grid/node registered, ice surface.
+* Existing GeoNames atlas IDs, country names and continent metadata are reused under the repository's existing CC BY 4.0 provenance. No city dataset or saved city provenance is replaced. Country geography does not load cities.
+
+The reference screenshot inspected during development is not a runtime/source asset and is not needed for regeneration.
+
+## Alignment and navigation
+
+Degrees north/east are positive. Longitude is normalized to `[-180,180)`. Sphere-local Cartesian coordinates are `x = cos(latitude) sin(longitude)`, `y = sin(latitude)`, `z = cos(latitude) cos(longitude)`. The image longitude origin is west=-180 at its left edge, north at the top. Geometry UVs, printed map, elevation samples, border overlays and CPU country picking use exactly this convention. The sphere radius is **0.91 scene units**, its local center is **y=1.55**, and the meridian is tilted **23.4°**. Only the inner geographic pivot rotates; the wood, brass meridian and bearing assembly stay fixed.
+
+The camera receives only public regional/country focus bounds. Country bounds use the largest empty longitude gap, so Fiji and Russia frame across the dateline instead of spanning almost 360°. Angular radius is the greatest spherical distance of all outer-ring vertices from the chosen focus, including detached territories and islands. It does not assume the focus is land. The app enforces a minimum camera distance independently of country size. Small countries below **1.5°** angular radius have an additional **0.029 scene-unit** circular country halo; this is not a city marker. Cities never change this pivot or the camera.
+
+`pickCountry()` is country membership on the displaced CPU surface; it cannot return a birthplace or infer coordinates/timezones for the form. The authoritative HTML chooser remains usable when geometry is absent, tiny, disputed, or the coarse coast differs from a city coordinate. For example, 1:50m simplification excludes the exact waterfront Suva point from the land polygon, although an inland Fiji sample is correct. City selection never relies on this polygon predicate. It always comes from the existing country-specific GeoNames shard.
+
+## Regions, territories and gaps
+
+All **244** current GeoNames atlas entries are preserved. Seven navigation regions are Europe, Asia, Middle East, Africa, North America, South America and Oceania. The complete-country list includes every entry regardless of regional membership.
+
+GeoNames continent metadata supplies the normal geographic region, including territories by physical location rather than sovereign parent. The Middle East is an overlapping browsing region containing AE, BH, CY, EG, IL, IQ, IR, JO, KW, LB, OM, PS, QA, SA, SY, TR and YE. Russia, Türkiye, Kazakhstan, Georgia, Azerbaijan and Armenia appear in both Europe and Asia; Türkiye also appears in Middle East. Egypt appears in Africa and Middle East. Cyprus appears in Asia and Middle East. These are navigation conventions, not political claims.
+
+**234** atlas entries have 1:50m polygons. **BQ, CC, CX, GF, GI, GP, MQ, RE, SJ, YT** lack separately matched geometry in this snapshot. Their metadata explicitly reports `geometryStatus: missing`, their focus is null, and the HTML country/city route remains available without invented coordinates. Natural Earth's French overseas extents stay in France's original multipolygon; they are not silently assigned new sovereign IDs. Norway retains its Natural Earth extent; separately listed Svalbard/Jan Mayen remains a geometry gap. Antarctica has no current city-atlas entry and is decorative cartography only. Non-atlas geometries do not acquire invented selection IDs. Natural Earth's Kosovo maps to the atlas's existing XK; Somaliland geometry is joined to SO, Northern Cyprus to CY, and both joins are explicit pipeline mappings.
+
+## Actual relief and materials
+
+A fixed **360 × 180** mesh has **65,341 vertices / 128,880 triangles**. CPU vertices are displaced using bilinear elevation sampling, `max(0, elevationMetres) × 0.0000045`. Oceans remain at zero elevation, not bathymetric depressions. At 8,000m this adds 0.036 units, about 4% radius: intentionally exaggerated miniature relief. A 1081 × 541 relief bump texture supplements the physical mesh. The seams and polar normals are explicitly reconciled. Country exploration uses this fixed quality level, with no terrain streams, tiles, adaptive tessellation or city detail.
+
+The parchment map has subdued sea and land colors, topography-derived hill engraving, generated grain, country names, borders, graticules and an original compass rose. Metal uses an aged-brass roughness map; lathed walnut uses original procedural grain and thin brass inlays. Materials respond to scene lights and contain no baked replacement lights or scene-owned lamps. The meridian has a bevelled annular section, edge beads and 180 instanced graduations. Turned profiles close their caps and meet a saddle clear of the relief sphere.
+
+Each assembly owns geometry, materials and non-color texture clones; `TextureLeases` owns shared source textures. Promise settlement precedes cleanup, so late successful acquisitions are released after another asset fails. Fetches receive the cancellation signal; every post-await stage rejects abandoned preparation. Country/region highlight geometry is disposed on replacement. Teardown is idempotent. Source textures are never disposed or color-space-mutated by an assembly.
+
+## Visual evidence and limits
+
+`Room/Production Globe` Storybook front, side, rear and terrain stories all load `createGlobe`, with an isolated runtime and cleanup. The preview only supplies an inspection camera and lights; it contains no substitute globe. Geographic tests verify atlas coverage, region overlaps, coordinate alignment, Fiji bounds, Russia/Indonesia/Singapore/Greenland extents, polygon holes, sea-level clamp, raised Himalaya, outward normals and manifest integrity. Browser captures and integrated lamp/candle evidence belong to the combined epic validation report. Automated geographic tests do not establish device/browser qualification.
+
+### Captured evidence
+
+Headless Chromium 141 rendered the actual production module via Storybook, with no page errors: [front](../validation/globe-lighting/images/globe-front.png), [side](../validation/globe-lighting/images/globe-side.png), [rear](../validation/globe-lighting/images/globe-rear.png), [terrain](../validation/globe-lighting/images/globe-terrain.png). Visual review corrected the pedestal/sphere clearance, side-camera framing and collisions between long country labels. The latest map uses common names and skips colliding text rather than obscuring terrain or adjacent labels.
+
+Run `GLOBE_STORYBOOK=http://localhost:6008 node tests/globe-geography-browser.mjs` against a dev Storybook server for [the resource report](../validation/globe-lighting/globe-resources.json). Eight same-renderer cycles hold at **12 GPU geometries, 5 GPU textures, 12 draw calls, 156,768 triangles, 3 programs, 4 source texture leases**. Four competing preparations also remain bounded. Returning to an empty scene releases every globe geometry, material program and lease; the renderer retains **one Three.js r186 internal DFG lookup texture** after physical-material warmup. This is the renderer's `getDFGLUT()` resource, not a globe-owned allocation. Renderer teardown owns its context. The isolated preview has no shadow-casting light, so combined lamp shadow-pass costs must be measured separately.
+
+Reported preparation-to-first-render durations include an explicit 100ms observation delay, software/headless rendering and contention. They are diagnostic samples, not hardware performance promises. Physical mobile remains unqualified. The checked-in PNG and JSON downloads are approximately **5.3 MB raw / 4.0 MB gzip**; the manifest carries exact raw sizes for the final assets. HTTP gzip delivery depends on hosting configuration.
+
+
+### Room-quality optimization and buffer ownership
+
+`createGlobe(leases, signal, {quality: "room"})` keeps physical elevation while reducing room-scale cost. It uses **120 × 60** terrain segments (**7,381 vertices / 14,160 terrain triangles**), half-resolution turned/ring profiles, **26,112 total assembly triangles**, a **1024 × 512** map and **541 × 271** bump/elevation inputs. Elevation is a retained every-second-node subset of the exact same NOAA source; no synthetic terrain is substituted. Country polygons are not requested. Room downloads total **1,058,875 raw / 1,012,530 gzip bytes**. `{quality: "country"}` remains the default and uses **5,323,448 raw / 3,963,952 gzip bytes**. Country exploration remains a single bounded fixed-resolution level. Landing/tarot select room quality; astrology preparation selects country quality. The two branches reuse the same assembly authoring and ownership paths.
+
+These gzip figures use the Python generation pipeline. The independent Node gzip9
+measurement records **1,015,623 room / 3,972,650 country bytes** for the same raw
+assets. Compressor implementations account for the difference; neither figure
+claims an observed compressed HTTP transfer.
+
+`InstancedMesh.dispose()` explicitly releases the meridian-graduation instance buffer, in addition to geometry/material cleanup. A renderer.info-only measurement missed this allocation: the browser regression now instruments actual `createBuffer/deleteBuffer` on the isolated renderer's WebGL context and requires return to zero. The country framing quaternion is explicitly north-up (`qX(latitude) × qY(-longitude)`, compensated for the static mount); tests verify the geographic north tangent for Russia, Singapore and Fiji to prevent shortest-arc rotation from flipping southern-hemisphere labels.

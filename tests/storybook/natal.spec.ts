@@ -67,21 +67,22 @@ test("natal reports and retry stories use production components without WASM", a
   expect(requests.some((url) => url.includes("/engines/"))).toBe(false);
 });
 
-test("same-scene camera stories expose overview, body and relationship selection", async ({
-  page,
-}) => {
-  const errors: string[] = [];
-  page.on("pageerror", (e) => errors.push(e.message));
-  for (const name of [
-    "chart-overview",
-    "planet-detail",
-    "relationship-detail",
-    "camera-sequence",
-    "mobile-camera",
-    "reduced-motion",
-    "unknown-time-camera",
-    "crowded-markers",
-  ]) {
+// Each independent story gets its own context, diagnostics and timeout budget.
+// Combining eight software-rendered scenes exhausted the test during teardown.
+for (const name of [
+  "chart-overview",
+  "planet-detail",
+  "relationship-detail",
+  "camera-sequence",
+  "mobile-camera",
+  "reduced-motion",
+  "unknown-time-camera",
+  "crowded-markers",
+]) {
+  test(`same-scene camera story ${name} exposes overview, body and relationship selection`, async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(e.message));
+    await page.emulateMedia({ reducedMotion: name === "reduced-motion" ? "reduce" : "no-preference" });
     await page.setViewportSize(
       name === "mobile-camera"
         ? { width: 390, height: 844 }
@@ -91,8 +92,11 @@ test("same-scene camera stories expose overview, body and relationship selection
       `/iframe.html?id=pxoracle-natal-reading--${name}&viewMode=story`,
     );
     await expect(page.locator("canvas")).toHaveCount(1);
+    const scene = page.locator('.scene-host[data-route="astrology"]');
+    await expect(scene).toHaveAttribute("data-ready", "true", { timeout: 60000 });
     await expect(page.locator(".scene-status")).toHaveCount(0);
     await page.getByRole("button", { name: "Approach the crystal" }).click();
+    await expect(scene).toHaveAttribute("data-ready", "true", { timeout: 60000 });
     await expect(page.getByRole("status")).toHaveText("chart");
     await page.getByRole("button", { name: "Moon detail" }).click();
     await expect(page.getByRole("status")).toContainText("moon");
@@ -108,6 +112,6 @@ test("same-scene camera stories expose overview, body and relationship selection
       path: test.info().outputPath(`${name}.png`),
       scale: "css",
     });
-  }
-  expect(errors).toEqual([]);
-});
+    expect(errors).toEqual([]);
+  });
+}
