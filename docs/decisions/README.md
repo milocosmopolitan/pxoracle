@@ -23,3 +23,5 @@ Tarot table choreography: [ADR 002](002-tarot-table-choreography.md).
 Perspective camera and separate arm rig: [ADR 003](003-tarot-perspective-rig.md).
 
 Deterministic free readings: [ADR 004](004-deterministic-free-readings.md).
+
+Exhaustive reading export: [ADR 005](005-exhaustive-reading-export.md).

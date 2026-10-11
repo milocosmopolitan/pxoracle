@@ -103,3 +103,58 @@ export function validateReferences(plan: ReadingPlan, pack: ProsePack) {
     if (!pack.strings[`name.${c.cardId}`]) throw new Error("READING_CONTENT");
   });
 }
+export const ROLE_LABELS: Record<
+  ReadingPlan["positions"][number]["role"],
+  string
+> = {
+  visible: "Visible situation",
+  examination: "What to examine",
+  direction: "Helpful direction",
+  values: "What matters to you",
+  conditions: "Overlooked conditions",
+  checks: "Checks before deciding",
+  foundation: "Your foundation",
+  difficulty: "A difficulty to account for",
+  small_action: "A small action",
+};
+export const FALLBACK_RELATION_TEXT =
+  "No strong relationship rule connected these cards. Follow their positions in order without forcing a shared theme.";
+export const MAIN_CONNECTION_TEXT =
+  "This is the main connection described above.";
+/** The visible reading text. ReadingResult renders this shape and the offline CSV export serializes it. */
+export function composeReading(plan: ReadingPlan, pack: ProsePack) {
+  const text = (p: Phrase) => renderPhrase(p, pack);
+  const name = (i: number) => pack.strings[`name.${plan.cards[i].cardId}`];
+  return {
+    overall: plan.overall.map(text).join(" "),
+    fallbackText: plan.fallback ? FALLBACK_RELATION_TEXT : null,
+    relations: plan.fallback
+      ? []
+      : plan.relations.map((r) => ({
+          ruleId: r.ruleId,
+          kind: r.kind,
+          kindLabel: r.kind[0].toUpperCase() + r.kind.slice(1),
+          cardNames: r.cardIndices.map(name),
+          cardNumbers: r.cardIndices.map((i) => i + 1),
+          text: plan.overall.some((p) => p.reference === r.phrase.reference)
+            ? MAIN_CONNECTION_TEXT
+            : text(r.phrase),
+          fullText: text(r.phrase),
+        })),
+    action: text(plan.action),
+    question: text(plan.question),
+    positions: plan.positions.map((position) => {
+      const card = plan.cards[position.index];
+      return {
+        index: position.index,
+        role: position.role,
+        roleLabel: ROLE_LABELS[position.role],
+        lens: position.lens,
+        cardId: card.cardId,
+        cardName: name(position.index),
+        orientation: card.orientation,
+        paragraphs: position.phrases.map(text),
+      };
+    }),
+  };
+}
