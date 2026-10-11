@@ -1,4 +1,4 @@
-# ADR 005: Exhaustive three-card reading export
+# ADR 006: Exhaustive three-card reading export
 
 Status: Accepted (epic #51)
 
