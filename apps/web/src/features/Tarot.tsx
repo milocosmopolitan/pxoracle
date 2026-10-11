@@ -85,10 +85,18 @@ export default function Tarot({
   const view = useMemo(
     () => ({
       ...tarotView(session, p, art),
-      onIntent: (e: { type: "select" | "focus"; slot: number }) =>
-        e.type === "select"
-          ? void controller?.select(e.slot)
-          : controller?.focus(e.slot),
+      readingPanel: true,
+      readingFocus: p.readingFocus ?? null,
+      onIntent: (e: { type: "select" | "focus" | "inspect"; slot: number }) => {
+        if (e.type === "select") void controller?.select(e.slot);
+        else if (e.type === "focus") controller?.focus(e.slot);
+        else {
+          const index =
+            session?.selections.findIndex((card) => card.slot === e.slot) ?? -1;
+          if (index >= 0)
+            store.getState().setTarotPresentation({ readingFocus: index });
+        }
+      },
       onEvent: (e: Parameters<TarotController["event"]>[0]) => {
         void controller?.event(e);
       },
@@ -100,13 +108,25 @@ export default function Tarot({
   }, [view, store]);
   useEffect(() => {
     if (p.phase === "selecting" && document.activeElement === document.body)
-      document.querySelector<HTMLButtonElement>(".slot-controls button:not(:disabled)")?.focus({ preventScroll: true });
+      document
+        .querySelector<HTMLButtonElement>(
+          ".slot-controls button:not(:disabled)",
+        )
+        ?.focus({ preventScroll: true });
+  }, [p.phase]);
+  useEffect(() => {
+    // The form button may have scrolled the page. Keep the fixed table visible during choreography.
+    if (["approach", "dealing", "revealing"].includes(p.phase))
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [p.phase]);
   const active = !!session,
     selecting = p.phase === "selecting",
     reading = p.phase === "reading";
   return (
-    <div className={`tarot-layout ${active ? "table-reading" : ""}`}>
+    <div
+      data-phase={p.phase}
+      className={`tarot-layout ${active ? "table-reading" : ""}`}
+    >
       <div className="tarot-heading">
         <Link href="/" prefetch={false}>
           ← Back to the room
@@ -282,49 +302,79 @@ export default function Tarot({
             )}
             {reading && (
               <>
-                {question && <p className="question">“{question}”</p>}
-                <p className="reading-disclosure">
-                  These are card-based reflection prompts. Your question is not
-                  analyzed.
-                </p>
-                {session.selections.map((selected, i) => {
-                  const detail = content?.cards[selected.card.cardId];
-                  return (
-                    <article className="reading-card" key={selected.slot}>
-                      <p className="eyebrow">
-                        {i + 1} · {selected.positionId.replace("_", " ")}
-                      </p>
-                      <h3>{detail?.name ?? selected.card.cardId}</h3>
-                      <small>{selected.card.orientation}</small>
-                      <p>{detail?.[selected.card.orientation]}</p>
-                      <p className="prompt">
-                        {content?.positions[selected.positionId]}
-                      </p>
-                    </article>
-                  );
-                })}
-                <aside className="synthesis">
-                  <p className="eyebrow">BRINGING IT TOGETHER</p>
-                  {session.selections.map((s) => (
-                    <p key={s.slot}>
-                      <strong>{s.positionId.replace("_", " ")}: </strong>
-                      {content?.cards[s.card.cardId]?.theme} through{" "}
-                      {content?.cards[s.card.cardId]?.name} (
-                      {s.card.orientation}).
-                    </p>
+                <p>Choose an open card on the table to look closer.</p>
+                <div className="actions" aria-label="Reading camera">
+                  <button
+                    aria-pressed={p.readingFocus == null}
+                    onClick={() =>
+                      store
+                        .getState()
+                        .setTarotPresentation({ readingFocus: null })
+                    }
+                  >
+                    Show all cards
+                  </button>
+                  {session.selections.map((_, i) => (
+                    <button
+                      key={i}
+                      aria-pressed={p.readingFocus === i}
+                      onClick={() =>
+                        store
+                          .getState()
+                          .setTarotPresentation({ readingFocus: i })
+                      }
+                    >
+                      Look closer at card {i + 1}
+                    </button>
                   ))}
-                  <p>
-                    {session.spread === 3
-                      ? "Read the first card as the situation, the second as a lens to examine it, and the third as an action to try. Where do these perspectives agree or pull in different directions? Choose one concrete step you can revisit tomorrow."
-                      : "Choose one detail in this card that you can turn into a small action today. Return later to notice what changed."}
+                </div>
+                <details open className="reading-details">
+                  <summary>Card meanings and reflection</summary>
+                  {question && <p className="question">“{question}”</p>}
+                  <p className="reading-disclosure">
+                    These are card-based reflection prompts. Your question is
+                    not analyzed.
                   </p>
-                </aside>
+                  {session.selections.map((selected, i) => {
+                    const detail = content?.cards[selected.card.cardId];
+                    return (
+                      <article className="reading-card" key={selected.slot}>
+                        <p className="eyebrow">
+                          {i + 1} · {selected.positionId.replace("_", " ")}
+                        </p>
+                        <h3>{detail?.name ?? selected.card.cardId}</h3>
+                        <small>{selected.card.orientation}</small>
+                        <p>{detail?.[selected.card.orientation]}</p>
+                        <p className="prompt">
+                          {content?.positions[selected.positionId]}
+                        </p>
+                      </article>
+                    );
+                  })}
+                  <aside className="synthesis">
+                    <p className="eyebrow">BRINGING IT TOGETHER</p>
+                    {session.selections.map((s) => (
+                      <p key={s.slot}>
+                        <strong>{s.positionId.replace("_", " ")}: </strong>
+                        {content?.cards[s.card.cardId]?.theme} through{" "}
+                        {content?.cards[s.card.cardId]?.name} (
+                        {s.card.orientation}).
+                      </p>
+                    ))}
+                    <p>
+                      {session.spread === 3
+                        ? "Read the first card as the situation, the second as a lens to examine it, and the third as an action to try. Where do these perspectives agree or pull in different directions? Choose one concrete step you can revisit tomorrow."
+                        : "Choose one detail in this card that you can turn into a small action today. Return later to notice what changed."}
+                    </p>
+                  </aside>
+                </details>
               </>
             )}
             <div className="actions">
               <button
                 disabled={p.busy}
                 onClick={() => {
+                  store.getState().setTarotPresentation({ readingFocus: null });
                   controller?.reset();
                   setQuestion("");
                   setNotice("");

@@ -1,40 +1,48 @@
 import * as THREE from "three";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import type { SceneFactory } from "@pxoracle/scene-runtime";
 import type { TarotView } from "@pxoracle/contracts";
 import { composition } from "./composition";
 import { studyLayers } from "./study";
+import { frameTarot, frameReview, TarotCameraDirector } from "./tarot-camera";
+import { createArm, pixelMaterial, type HandPose } from "./tarot-rig";
+import { surfaceMaterial } from "./tarot-materials";
+import { createPixelPresentation } from "./tarot-pixels";
+import {
+  CARD_WIDTH,
+  CARD_HEIGHT,
+  CARD_THICKNESS,
+  CARD_GRIP_Y,
+  MAT_WIDTH,
+  MAT_DEPTH,
+  slotPosition,
+  spreadPosition,
+  readingPlacement,
+} from "./tarot-layout";
+export { slotPosition, spreadPosition } from "./tarot-layout";
 const ease = (x: number) => {
   x = Math.max(0, Math.min(1, x));
   return x * x * (3 - 2 * x);
 };
 const durations: Record<string, number> = {
-  approach: 1.4,
-  shuffle: 2.2,
+  approach: 2.4,
+  shuffle: 3.6,
   fan: 0.8,
-  dealing: 1.8,
-  revealing: 1.35,
+  dealing: 2.4,
+  revealing: 2.6,
 };
-export function slotPosition(slot: number, page: number, mobile: boolean) {
-  const n = slot - page * 12,
-    columns = mobile ? 4 : 6;
-  return new THREE.Vector3(
-    ((n % columns) - (columns - 1) / 2) * (mobile ? 1.35 : 1.45),
-    2.25 - Math.floor(n / columns) * 1.65,
-    0.045,
-  );
-}
-export function spreadPosition(index: number, count: number, mobile: boolean) {
-  return new THREE.Vector3(
-    (index - (count - 1) / 2) * 1.95,
-    mobile ? -3 : -2.1,
-    0.06,
-  );
-}
 export const createScene: SceneFactory = async (leases, signal) => {
   const base = await composition(
     leases,
     signal,
-    studyLayers("tarot").filter(([url]) => url !== "/art/three-cards.webp"),
+    studyLayers("tarot").filter(([url, , , , , crop]) =>
+      [
+        "/art/room.webp",
+        "/art/moon-frame.webp",
+        "/art/plant.webp",
+        "/art/cat-chair.webp",
+      ].includes(url),
+    ),
     "tarot",
   );
   const releases: (() => void)[] = [],
@@ -53,6 +61,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
   let tableauMix = 0;
   let cameraMix = 0,
     targetMix = 0,
+    approachStart = 0,
     lastTime = 0,
     loadGeneration = 0;
   const faceReleases = new Map<string, () => void>();
@@ -61,6 +70,31 @@ export const createScene: SceneFactory = async (leases, signal) => {
   const roomMeshes = base.scene.children.filter(
     (x) => x instanceof THREE.Mesh,
   ) as THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>[];
+  // Only the room and upper portrait remain billboards. The desk exists once, in world space.
+  for (const mesh of roomMeshes) {
+    if (mesh.renderOrder === 4) {
+      const uv = mesh.geometry.attributes.uv;
+      for (let i = 0; i < uv.count; i++)
+        uv.setY(
+          i,
+          1 - 0.5 + uv.getY(i) * (0.5 / 0.595) - (1 - 0.595) * (0.5 / 0.595),
+        );
+      mesh.geometry.scale(1, 0.5 / 0.595, 1);
+    }
+    if (mesh.renderOrder === 0) {
+      const uv = mesh.geometry.attributes.uv;
+      for (let i = 0; i < uv.count; i++) uv.setY(i, 0.24 + uv.getY(i) * 0.76);
+      mesh.geometry.scale(1, 0.76, 1);
+      mesh.position.set(-3, 2.34, -10);
+      mesh.scale.set(1.8, 1.8, 1);
+    } else if (mesh.renderOrder === 1) mesh.position.set(-8, 4, -9.8);
+    else if (mesh.renderOrder === 2) mesh.position.set(-10, -3.15, -8.5);
+    else if (mesh.renderOrder === 3) mesh.position.set(3, -0.8, -5.5);
+    else if (mesh.renderOrder === 4) {
+      mesh.position.set(-3, 1.5, -4.3);
+      mesh.scale.setScalar(1.3);
+    }
+  }
   const table = new THREE.Group();
   table.name = "tarot-table";
   table.position.set(-3, -1, 1);
@@ -68,14 +102,11 @@ export const createScene: SceneFactory = async (leases, signal) => {
   base.scene.add(table);
   const cardRoot = new THREE.Group();
   table.add(cardRoot);
-  const handAnchor = new THREE.Group();
-  handAnchor.name = "handAnchor";
-  table.add(handAnchor);
-  const otherHand = new THREE.Group();
-  table.add(otherHand);
-  const camera = base.camera as THREE.OrthographicCamera;
+  let handAnchor: THREE.Group, otherHand: THREE.Group;
+  const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+  const director = new TarotCameraDirector();
   const emit = (type: "done" | "ready" | "asset-error", view = current) => {
-    if (!view || dead || signal.aborted) return;
+    if (!view || view.reviewShot || dead || signal.aborted) return;
     queueMicrotask(() => {
       if (!dead && !signal.aborted && current?.revision === view.revision)
         view.onEvent?.({ type, revision: view.revision });
@@ -119,33 +150,164 @@ export const createScene: SceneFactory = async (leases, signal) => {
       releases.push(lease.release);
       return lease.texture;
     };
-    const surface = await acquire("/art/tarot-table/surface.png");
+    const torso = plane(
+      6.4,
+      8,
+      await acquire("/art/hand-mesh/oracle-front-v4.png"),
+    );
+    const obliqueTorso = await acquire("/art/hand-mesh/oracle-oblique-v4.png");
+    const torsoView = { value: 0 };
+    torso.material.onBeforeCompile = (shader) => {
+      shader.uniforms.obliqueTorso = { value: obliqueTorso };
+      shader.uniforms.torsoView = torsoView;
+      shader.fragmentShader = shader.fragmentShader.replace(
+        "#include <common>",
+        "#include <common>\nuniform sampler2D obliqueTorso; uniform float torsoView;",
+      );
+      shader.fragmentShader = shader.fragmentShader.replace(
+        "#include <map_fragment>",
+        "diffuseColor *= mix(texture2D(map, vMapUv), texture2D(obliqueTorso, vMapUv), torsoView);",
+      );
+    };
+    torso.material.customProgramCacheKey = () =>
+      "oracle-authored-view-plates-v4";
+    const torsoGeometry = new THREE.PlaneGeometry(6.4, 8, 1, 12);
+    geometries.push(torsoGeometry);
+    torso.geometry = torsoGeometry;
+    torso.name = "oracle-torso";
+    torso.position.set(-3, 1.05, -4.24);
+    torso.material.alphaTest = 0.5;
+    torso.material.depthWrite = true;
+    base.scene.add(torso);
+    const surface = await acquire("/art/hand-mesh/reading-mat.png");
     const back = await acquire("/art/tarot-table/back.png");
-    const handTexture = await acquire("/art/tarot-table/hand.png");
-    const surfaceMesh = plane(14, 10, surface);
-    surfaceMesh.renderOrder = 40;
-    table.add(surfaceMesh);
-    const sleeves: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>[] = [];
-    for (const [anchor, mirror] of [
-      [handAnchor, false],
-      [otherHand, true],
-    ] as const) {
-      const hand = plane(3.4, 4.25, handTexture);
-      hand.geometry.dispose();
-      hand.geometry = new THREE.PlaneGeometry(3.4, 4.25, 1, 2);
-      geometries.push(hand.geometry);
-      const sleeveUV = hand.geometry.attributes.uv;
-      const sleevePosition = hand.geometry.attributes.position;
-      for (let i = 2; i < 4; i++) { sleeveUV.setY(i, .66); sleevePosition.setY(i, .68); }
-      sleeves.push(hand);
-      hand.position.set(mirror ? 0.306 : -0.306, 1.19, 0.03);
-      hand.renderOrder = 90;
-      if (mirror) {
-        const uv = hand.geometry.attributes.uv;
-        for (let i = 0; i < uv.count; i++) uv.setX(i, 1 - uv.getX(i));
-      }
-      anchor.add(hand);
+    const owner = {
+      geometry: (g: THREE.BufferGeometry) => {
+        geometries.push(g);
+      },
+      material: (m: THREE.Material) => {
+        materials.push(m);
+      },
+      cleanup: (f: () => void) => {
+        releases.push(f);
+      },
+    };
+    const pixelPass = createPixelPresentation();
+    releases.push(() => pixelPass.dispose());
+    const walnut = await acquire("/art/hand-mesh/table-reference-albedo.png");
+    const wood = surfaceMaterial("wood", walnut, owner),
+      trim = surfaceMaterial("wood", walnut, owner);
+    trim.color.set(0xe0bc93);
+    wood.color.setRGB(0.62, 0.72, 0.82);
+    wood.normalScale.setScalar(0.22);
+    wood.roughness = 0.82;
+
+    function box(
+      name: string,
+      size: number[],
+      position: number[],
+      material: THREE.Material,
+      parent: THREE.Object3D = table,
+    ) {
+      const geometry =
+        name === "tabletop"
+          ? new RoundedBoxGeometry(size[0], size[1], size[2], 3, 0.075)
+          : new THREE.BoxGeometry(...(size as [number, number, number]));
+      geometries.push(geometry);
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.name = name;
+      mesh.receiveShadow = true;
+      mesh.castShadow = true;
+      mesh.position.set(...(position as [number, number, number]));
+      parent.add(mesh);
+      return mesh;
     }
+    box("tabletop", [14, 8.4, 0.32], [0, 0, -0.16], wood);
+    box("table-front-apron", [13.6, 0.18, 0.62], [0, -3.95, -0.55], trim);
+    box("table-back-apron", [13.6, 0.18, 0.62], [0, 3.95, -0.55], trim);
+    for (const x of [-6.15, 6.15]) {
+      box("table-side-apron", [0.18, 7.8, 0.62], [x, 0, -0.55], trim);
+      for (const y of [-3.4, 3.4])
+        box("table-leg", [0.45, 0.45, 3.35], [x, y, -2.0], wood);
+    }
+    const mat = plane(MAT_WIDTH, MAT_DEPTH, surface);
+    const matMaterial = surfaceMaterial("cloth", surface, owner);
+    matMaterial.color.set(0xffffff);
+    matMaterial.transparent = true;
+    matMaterial.alphaTest = 0.5;
+    const matMesh = mat as unknown as THREE.Mesh<
+      THREE.PlaneGeometry,
+      THREE.Material
+    >;
+    matMesh.material = matMaterial;
+    mat.name = "reading-mat";
+    mat.position.z = 0.035;
+    mat.material.depthWrite = true;
+    mat.renderOrder = 0;
+    mat.receiveShadow = true;
+    table.add(mat);
+    const floorMaterial = surfaceMaterial(
+      "wood",
+      await acquire("/art/hand-mesh/floor-reference-albedo.png"),
+      owner,
+    );
+    floorMaterial.normalScale.setScalar(0.18);
+    floorMaterial.roughness = 0.7;
+    for (const texture of [
+      floorMaterial.map,
+      floorMaterial.normalMap,
+      floorMaterial.roughnessMap,
+    ])
+      texture?.repeat.set(6, 6);
+
+    box(
+      "continuous-room-floor",
+      [80, 0.18, 80],
+      [-3, -4.5, 1],
+      floorMaterial,
+      base.scene,
+    );
+    box(
+      "rear-wall",
+      [80, 35, 0.2],
+      [-3, 10, -12],
+      pixelMaterial(0x171919, owner),
+      base.scene,
+    );
+    const ambient = new THREE.HemisphereLight(0xd2cfdf, 0x171324, 0.9);
+    const warm = new THREE.DirectionalLight(0xffdeb7, 1.5);
+    warm.position.set(-10, 12, 7);
+    warm.target.position.set(-3, -1, 0);
+    warm.castShadow = true;
+    warm.shadow.mapSize.set(1024, 1024);
+    Object.assign(warm.shadow.camera, {
+      left: -11,
+      right: 11,
+      top: 11,
+      bottom: -11,
+      near: 0.5,
+      far: 45,
+    });
+    warm.shadow.bias = -0.0003;
+    warm.shadow.normalBias = 0.025;
+    releases.push(() => warm.shadow.dispose());
+    base.scene.add(warm.target);
+    const rim = new THREE.DirectionalLight(0x777acb, 0.7);
+    rim.position.set(8, 5, -4);
+    const deskGlow = new THREE.PointLight(0xffb978, 70, 23, 2);
+    deskGlow.position.set(-8, 3.8, 1.5);
+    const windowGlow = new THREE.PointLight(0x7585bf, 28, 25, 2);
+    windowGlow.position.set(5, 4, -5);
+    base.scene.add(ambient, warm, rim, deskGlow, windowGlow);
+    const textures = {
+      skin: await acquire("/art/hand-mesh/skin-albedo.png"),
+      cloth: await acquire("/art/hand-mesh/cloth-albedo.png"),
+    };
+    const rightArm = await createArm("right", owner, signal, textures);
+    const leftArm = await createArm("left", owner, signal, textures);
+    table.add(rightArm.root, leftArm.root);
+    handAnchor = rightArm.handAnchor;
+    otherHand = leftArm.handAnchor;
     type CardMesh = {
       group: THREE.Group;
       flip: THREE.Group;
@@ -163,16 +325,30 @@ export const createScene: SceneFactory = async (leases, signal) => {
       group.add(flip);
       flip.add(orientation);
       cardRoot.add(group);
-      const backMesh = plane(0.94, 1.42, back);
+      const backMesh = plane(CARD_WIDTH, CARD_HEIGHT, back);
       backMesh.renderOrder = 60;
-      const front = plane(0.94, 1.42, undefined, 0xd2bd91);
+      backMesh.position.z = CARD_THICKNESS / 2 + 0.004;
+      const paper = new THREE.Mesh(
+        new THREE.BoxGeometry(CARD_WIDTH, CARD_HEIGHT, CARD_THICKNESS),
+        new THREE.MeshBasicMaterial({ color: 0x857552 }),
+      );
+      geometries.push(paper.geometry);
+      materials.push(paper.material);
+      paper.renderOrder = 58;
+      orientation.add(paper);
+      const front = plane(CARD_WIDTH, CARD_HEIGHT, undefined, 0xd2bd91);
       front.rotation.y = Math.PI;
-      front.position.z = -0.006;
+      front.position.z = -CARD_THICKNESS / 2 - 0.004;
       front.renderOrder = 60;
       orientation.add(backMesh, front);
       cards.push({ group, flip, front, back: backMesh, slot: -1 });
     }
-    const halo = plane(1.06, 1.54, undefined, 0xe6c382);
+    const halo = plane(
+      CARD_WIDTH + 0.1,
+      CARD_HEIGHT + 0.1,
+      undefined,
+      0xe6c382,
+    );
     halo.material.opacity = 0.65;
     halo.renderOrder = 55;
     cardRoot.add(halo);
@@ -224,6 +400,9 @@ export const createScene: SceneFactory = async (leases, signal) => {
     return {
       ...base,
       camera,
+      render(renderer) {
+        pixelPass.render(renderer, base.scene, camera);
+      },
       needsRender: () => loadDirty,
       dispose,
       exit() {
@@ -234,10 +413,26 @@ export const createScene: SceneFactory = async (leases, signal) => {
       resize(w, h) {
         width = w;
         height = h;
-        mobile = w < 600;
+        pixelPass.resize(w, h);
+        mobile = w < 760;
         base.resize?.(w, h);
       },
       pointer(event) {
+        if (current?.phase === "reading") {
+          if (event.type !== "select") return;
+          ray.setFromCamera(new THREE.Vector2(event.x, event.y), camera);
+          const hit = ray.intersectObjects(
+            cards
+              .slice(12)
+              .filter((c) => c.group.visible && !!c.front.material.map)
+              .map((c) => c.front),
+            false,
+          )[0];
+          const picked = cards.find((c) => c.front === hit?.object);
+          if (picked)
+            current.onIntent?.({ type: "inspect", slot: picked.slot });
+          return;
+        }
         if (current?.phase !== "selecting") return;
         ray.setFromCamera(new THREE.Vector2(event.x, event.y), camera);
         const hit = ray.intersectObjects(
@@ -260,8 +455,8 @@ export const createScene: SceneFactory = async (leases, signal) => {
         const view = data.tarot;
         base.update(time, data, reduced);
         if (!view) {
-          table.visible = false;
-          roomMeshes.forEach((m) => (m.material.opacity = 1));
+          table.visible = true;
+          frameTarot(camera, width, height, 0, 0);
           return;
         }
         current = view;
@@ -275,6 +470,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
         if (changed) {
           revision = view.revision;
           started = time;
+          approachStart = cameraMix;
           sent = false;
           // A recreated scene restores the settled table immediately unless entering from the conversation.
           if (
@@ -296,7 +492,13 @@ export const createScene: SceneFactory = async (leases, signal) => {
         lastTime = time;
         cameraMix = reduced
           ? targetMix
-          : THREE.MathUtils.damp(cameraMix, targetMix, 3.7, dt);
+          : view.phase === "approach"
+            ? THREE.MathUtils.lerp(
+                approachStart,
+                1,
+                ease((time - started) / durations.approach),
+              )
+            : THREE.MathUtils.damp(cameraMix, targetMix, 3.7, dt);
         const gathered = ["preparing", "revealing", "reading"].includes(
           view.phase,
         );
@@ -307,36 +509,36 @@ export const createScene: SceneFactory = async (leases, signal) => {
               : 0
             : THREE.MathUtils.damp(tableauMix, gathered ? 1 : 0, 4, dt);
         const mix = ease(cameraMix);
-        roomMeshes.forEach((m) => (m.material.opacity = 1 - ease(mix * 1.5)));
-        table.visible = mix > 0.015;
-        surfaceMesh.material.opacity = ease(mix * 1.7);
-        const aspect = width / Math.max(1, height);
-        const roomHalf = Math.max(5.2, 5 * aspect),
-          closeHalf = mobile ? 3.8 : 6.1;
-        const half = THREE.MathUtils.lerp(roomHalf, closeHalf, mix);
-        const roomCenter = aspect < 1.45 ? -3 : 0;
-        camera.left = -half;
-        camera.right = half;
-        camera.top = half / aspect;
-        camera.bottom = -half / aspect;
-        camera.position.set(
-          THREE.MathUtils.lerp(roomCenter, -3, mix),
-          THREE.MathUtils.lerp(0, 9, mix),
-          THREE.MathUtils.lerp(20, 10, mix),
-        );
-        camera.lookAt(
-          THREE.MathUtils.lerp(roomCenter, -3, mix),
-          THREE.MathUtils.lerp(0, -1, mix),
-          mix,
-        );
-        camera.zoom = 1;
-        camera.updateProjectionMatrix();
+        table.visible = true;
+        director.update(camera, time, width, height, view, reduced);
+        if (view.cameraProfile)
+          frameTarot(
+            camera,
+            width,
+            height,
+            mix,
+            tableauMix,
+            view.cameraProfile,
+          );
+        if (view.reviewShot)
+          frameReview(camera, width, height, view.reviewShot, view.spread);
         const duration = durations[view.phase] ?? 0,
-          progress = reduced
-            ? 1
-            : Math.min(1, (time - started) / (duration || 1));
-        handAnchor.position.set(-2.7, 3.65, 0.16);
-        otherHand.position.set(2.7, 3.65, 0.16);
+          progress =
+            view.reviewProgress ??
+            (reduced ? 1 : Math.min(1, (time - started) / (duration || 1)));
+        const atTable = !["conversation", "approach", "shuffle"].includes(
+          view.phase,
+        );
+        handAnchor.position.set(-1.75, 3.35, 0.3);
+        otherHand.position.set(1.75, 3.35, 0.3);
+        let rightPose: HandPose = "rest",
+          leftPose: HandPose = "rest",
+          rightHeld = false,
+          leftHeld = false,
+          rightTurn = 0,
+          leftTurn = 0,
+          rightActive = false,
+          leftActive = false;
         handAnchor.visible = otherHand.visible = table.visible;
         halo.visible = false;
         for (const card of cards) {
@@ -379,13 +581,14 @@ export const createScene: SceneFactory = async (leases, signal) => {
           card.group.visible = true;
           card.group.rotation.set(0, 0, 0);
           card.slot = selected.slot;
-          card.group.scale.setScalar(
-            view.phase === "dealing" && view.index === i
-              ? 1 + 0.25 * ease((progress - 0.8) / 0.2)
-              : 1.25 + 0.5 * tableauMix,
-          );
           const target = spreadPosition(i, view.spread, mobile);
-          target.y = THREE.MathUtils.lerp(target.y, -0.35, tableauMix);
+          const placement = readingPlacement(selected.slot, i);
+          target.y = THREE.MathUtils.lerp(
+            target.y,
+            -0.35 + placement.y,
+            tableauMix,
+          );
+          card.group.rotation.z = placement.angle * tableauMix;
           card.group.position.copy(target);
           const texture = selected.face && loaded.get(selected.face);
           if (texture && card.front.material.map !== texture) {
@@ -395,100 +598,308 @@ export const createScene: SceneFactory = async (leases, signal) => {
           }
           card.flip.children[0].rotation.z = selected.reversed ? Math.PI : 0;
           card.flip.rotation.y = selected.revealed && texture ? Math.PI : 0;
+          const useLeft =
+            (view.phase === "dealing" && (!mobile || Math.abs(target.x) < 0.1)
+              ? slotPosition(selected.slot, view.page, mobile).x
+              : target.x) > 0;
+          if (
+            ["dealing", "revealing"].includes(view.phase) &&
+            view.index === i
+          ) {
+            if (useLeft) leftActive = true;
+            else rightActive = true;
+          }
+          const activeHand = useLeft ? otherHand : handAnchor;
+          const restHand = new THREE.Vector3(useLeft ? 1.75 : -1.75, 3.35, 0.3);
           if (view.phase === "revealing" && view.index === i) {
+            // Roll to the card's balance point, then open the fingers while it settles.
+            // A person does not keep twisting the same grip through a full 180 degrees.
+            const release = ease((progress - 0.53) / 0.27);
+            const pose =
+              progress < 0.16 ? "rest" : progress > 0.53 ? "release" : "pinch";
+            if (useLeft) {
+              leftPose = pose;
+              leftHeld = progress >= 0.16 && progress <= 0.53;
+            } else {
+              rightPose = pose;
+              rightHeld = progress >= 0.16 && progress <= 0.53;
+            }
             const turn = ease((progress - 0.2) / 0.6);
-            card.flip.rotation.y = turn * Math.PI;
-            card.group.position.z += Math.sin(turn * Math.PI) * 0.3;
+            const flipAngle = turn * Math.PI * (useLeft ? -1 : 1);
+            card.flip.rotation.y = flipAngle;
+            const wristTurn =
+              THREE.MathUtils.clamp(
+                flipAngle,
+                -Math.PI * 0.55,
+                Math.PI * 0.55,
+              ) *
+              (1 - release);
+            if (useLeft) leftTurn = wristTurn;
+            else rightTurn = wristTurn;
+            const halfWidth = CARD_WIDTH / 2;
+            card.group.position.z +=
+              Math.sin(turn * Math.PI) * (halfWidth + 0.08);
+            const gripTurn = Math.min(turn, 0.55);
             const edge = target
               .clone()
               .add(
                 new THREE.Vector3(
-                  0.47 * card.group.scale.x * Math.cos(turn * Math.PI),
+                  (useLeft ? 1 : -1) * halfWidth * Math.cos(gripTurn * Math.PI),
                   0.25,
-                  0.28 + Math.sin(turn * Math.PI) * 0.35,
+                  Math.sin(gripTurn * Math.PI) * (halfWidth * 2 + 0.08) + 0.04,
                 ),
               );
             if (progress < 0.2)
-              handAnchor.position.lerpVectors(
-                new THREE.Vector3(-2.7, 3.65, 0.16),
+              activeHand.position.lerpVectors(
+                restHand,
                 edge,
                 ease(progress / 0.2),
               );
-            else if (progress > 0.8)
-              handAnchor.position.lerpVectors(
-                edge,
-                new THREE.Vector3(-2.7, 3.65, 0.16),
-                ease((progress - 0.8) / 0.2),
-              );
-            else handAnchor.position.copy(edge);
+            else activeHand.position.lerpVectors(edge, restHand, release);
           }
           if (view.phase === "dealing" && view.index === i) {
+            if (useLeft)
+              leftPose =
+                progress < 0.15 ? "rest" : progress > 0.8 ? "release" : "pinch";
+            else
+              rightPose =
+                progress < 0.15 ? "rest" : progress > 0.8 ? "release" : "pinch";
+            if (useLeft) leftHeld = progress >= 0.22 && progress < 0.8;
+            else rightHeld = progress >= 0.22 && progress < 0.8;
             const source = slotPosition(selected.slot, view.page, mobile);
-            const grip = source.clone().add(new THREE.Vector3(0, 0.6, 0.13));
+            const grip = source
+              .clone()
+              .add(new THREE.Vector3(0, CARD_GRIP_Y, 0.13));
             if (progress < 0.22) {
-              handAnchor.position.lerpVectors(
-                new THREE.Vector3(-2.7, 3.65, 0.16),
+              activeHand.position.lerpVectors(
+                restHand,
                 grip,
                 ease(progress / 0.22),
               );
               card.group.position.copy(source);
             } else if (progress < 0.8) {
               const t = ease((progress - 0.22) / 0.58);
-              handAnchor.position.lerpVectors(
+              activeHand.position.lerpVectors(
                 grip,
-                target.clone().add(new THREE.Vector3(0, 0.6, 0.13)),
+                target.clone().add(new THREE.Vector3(0, CARD_GRIP_Y, 0.13)),
                 t,
               );
-              handAnchor.position.z += Math.sin(t * Math.PI) * 0.65;
+              activeHand.position.z += Math.sin(t * Math.PI) * 0.65;
               table.updateMatrixWorld(true);
-              handAnchor.attach(card.group);
-              card.group.position.set(0, -0.6, -0.13);
+              activeHand.attach(card.group);
+              card.group.position.set(0, -CARD_GRIP_Y, -0.13);
             } else {
               // attach() preserves the world transform when ownership returns to the table.
               cardRoot.attach(card.group);
               card.group.position.copy(target);
-              handAnchor.position.lerpVectors(
-                target.clone().add(new THREE.Vector3(0, 0.6, 0.13)),
-                new THREE.Vector3(-2.7, 3.65, 0.16),
+              activeHand.position.lerpVectors(
+                target.clone().add(new THREE.Vector3(0, CARD_GRIP_Y, 0.13)),
+                restHand,
                 ease((progress - 0.8) / 0.2),
               );
             }
           }
         });
-        if (view.phase === "approach" || view.phase === "shuffle") {
+        if (["conversation", "approach", "shuffle"].includes(view.phase)) {
+          rightActive = leftActive = true;
+          const settling =
+            view.phase === "shuffle" ? ease((progress - 0.84) / 0.16) : 0;
+          const liftDeck =
+            view.phase === "shuffle"
+              ? 1 - settling
+              : view.phase === "approach"
+                ? ease((progress - 0.6) / 0.4)
+                : 0;
+          const deck = new THREE.Vector3(
+            (0.25 +
+              (view.phase === "shuffle"
+                ? Math.sin(progress * Math.PI * 8) * 0.1
+                : 0)) *
+              (1 - settling),
+            1.4 + 0.1 * settling,
+            0.08 + 0.92 * liftDeck,
+          );
+          const shuffling = view.phase === "shuffle";
+          const cycle =
+            view.reviewProgress !== undefined
+              ? (progress * 4) % 1
+              : reduced
+                ? 1
+                : (progress * 4) % 1;
+          const travel =
+            (cycle < 0.55
+              ? ease(cycle / 0.55)
+              : 1 - ease((cycle - 0.55) / 0.45)) *
+            (1 - settling);
+          deck.x += travel * 0.38;
+          deck.y += travel * 0.1;
+          deck.z += travel * 0.08;
+          otherHand.position
+            .copy(deck)
+            .add(new THREE.Vector3(0, CARD_GRIP_Y, 0.15));
+          handAnchor.position
+            .copy(otherHand.position)
+            .add(
+              new THREE.Vector3(
+                shuffling
+                  ? -travel * 1.05
+                  : -0.85 * (1 - ease((progress - 0.8) / 0.2)),
+                shuffling
+                  ? -travel * 0.3
+                  : 0.15 * (1 - ease((progress - 0.8) / 0.2)),
+                shuffling
+                  ? (0.28 + Math.sin(cycle * Math.PI) * 0.55) * (1 - settling)
+                  : 0.22 + 0.06 * ease((progress - 0.8) / 0.2),
+              ),
+            );
+          leftPose =
+            shuffling && progress > 0.9
+              ? "release"
+              : liftDeck > 0
+                ? "support"
+                : "rest";
+          rightPose = shuffling
+            ? progress > 0.84 || cycle > 0.86
+              ? "release"
+              : "packet"
+            : liftDeck > 0
+              ? "packet"
+              : "rest";
+          leftHeld = shuffling;
+          rightHeld = shuffling && cycle <= 0.86;
           for (let i = 0; i < 8; i++) {
             const card = cards[i];
             card.group.visible = true;
-            const side = i % 2 ? 1 : -1;
-            const wave =
-              view.phase === "shuffle" && !reduced
-                ? Math.sin(progress * Math.PI * 6)
-                : 0;
-            card.group.position.set(
-              side * (0.5 + Math.abs(wave) * 0.5),
-              1.3 + i * 0.014,
-              0.08 + i * 0.016,
-            );
-            card.group.rotation.z = side * wave * 0.15;
+            card.group.rotation.set(0, 0, 0);
+            card.group.position
+              .copy(deck)
+              .add(new THREE.Vector3(0, 0, i * CARD_THICKNESS));
+            if (shuffling && i >= 4) {
+              table.updateMatrixWorld(true);
+              handAnchor.attach(card.group);
+              card.group.position.set(
+                0,
+                -CARD_GRIP_Y,
+                -0.13 + (i - 4) * CARD_THICKNESS,
+              );
+            }
           }
-          handAnchor.position.set(
-            -0.55 - Math.abs(Math.sin(progress * Math.PI * 6)) * 0.5,
-            1.95,
-            0.35,
-          );
-          otherHand.position.set(
-            0.55 + Math.abs(Math.sin(progress * Math.PI * 6)) * 0.5,
-            1.95,
-            0.35,
-          );
+          if (view.phase === "approach") {
+            handAnchor.position.lerpVectors(
+              new THREE.Vector3(-1.65, 2.25, 0.3),
+              handAnchor.position.clone(),
+              ease(progress / 0.6),
+            );
+            otherHand.position.lerpVectors(
+              new THREE.Vector3(1.65, 2.25, 0.3),
+              otherHand.position.clone(),
+              ease(progress / 0.6),
+            );
+          }
+          if (view.phase === "conversation") {
+            handAnchor.position.set(-1.65, 2.25, 0.3);
+            otherHand.position.set(1.65, 2.25, 0.3);
+          }
         }
-        for (const sleeve of sleeves) {
-          const positions = sleeve.geometry.attributes.position;
-          const rear = Math.max(2.125, 7 - sleeve.parent!.position.y - sleeve.position.y);
-          positions.setY(0, rear); positions.setY(1, rear); positions.needsUpdate = true;
-          sleeve.geometry.computeBoundingSphere();
+        // Both shoulders and the torso lean together when reaching toward the visitor.
+        if (view.phase === "fan") {
+          rightActive = leftActive = true;
+          const start = new THREE.Vector3(0, 1.5 + CARD_GRIP_Y, 0.23);
+          handAnchor.position.lerpVectors(
+            start,
+            new THREE.Vector3(-1.75, 3.35, 0.3),
+            ease(progress),
+          );
+          otherHand.position.lerpVectors(
+            start,
+            new THREE.Vector3(1.75, 3.35, 0.3),
+            ease(progress),
+          );
+          rightPose = leftPose = "release";
         }
-        if (duration && progress >= 1 && !sent) {
+        const lean = Math.min(
+          2.0,
+          Math.max(
+            0,
+            2.4 - Math.min(handAnchor.position.y, otherHand.position.y),
+          ),
+        );
+        const lateral = THREE.MathUtils.clamp(
+          (rightActive && !leftActive
+            ? handAnchor.position.x
+            : leftActive && !rightActive
+              ? otherHand.position.x
+              : 0) * 0.45,
+          -1.2,
+          1.2,
+        );
+        if (!rightActive) handAnchor.position.x += lateral;
+        if (!leftActive) otherHand.position.x += lateral;
+        if (!rightActive) handAnchor.position.y -= lean * 0.8;
+        if (!leftActive) otherHand.position.y -= lean * 0.8;
+        const cameraDirection = camera.getWorldDirection(new THREE.Vector3());
+        const elevated = ease((Math.asin(-cameraDirection.y) - 0.25) / 0.4);
+        torsoView.value = elevated;
+        torso.rotation.x = 0;
+        const shoulderAnchor = new THREE.Vector3(
+          -3 + lateral,
+          1.3,
+          -4.25 + lean,
+        );
+        torso.position
+          .copy(shoulderAnchor)
+          .sub(new THREE.Vector3(0, 0.96, 0).applyQuaternion(torso.quaternion));
+        torso.position.z += 0.32;
+        // The hips stay behind the table while the upper body reaches forward.
+        const bodyVertices = torso.geometry.attributes.position;
+        for (let i = 0; i < bodyVertices.count; i++)
+          bodyVertices.setZ(
+            i,
+            -lean * (1 - ease((bodyVertices.getY(i) + 2) / 3)),
+          );
+        bodyVertices.needsUpdate = true;
+        torso.updateMatrixWorld(true);
+        table.updateMatrixWorld(true);
+        const attachment = (side: number) => {
+          // UV landmarks track the authored shoulder opening in both portrait plates.
+          const y =
+            8 * (0.5 - THREE.MathUtils.lerp(530 / 1402, 560 / 1402, elevated));
+          const point = new THREE.Vector3(
+            side * THREE.MathUtils.lerp(1.25, 1.42, elevated),
+            y,
+            -0.32 - lean * (1 - ease((y + 2) / 3)),
+          );
+          return table.worldToLocal(torso.localToWorld(point));
+        };
+        torso.userData.shoulders = [
+          attachment(-1).toArray(),
+          attachment(1).toArray(),
+        ];
+        rightArm.update(
+          handAnchor.position.clone(),
+          view.handPose ?? rightPose,
+          rightHeld,
+          lean,
+          rightTurn,
+          reduced || view.reviewProgress !== undefined
+            ? 1
+            : Math.min(1, dt * 18),
+          lateral,
+          attachment(-1),
+        );
+        leftArm.update(
+          otherHand.position.clone(),
+          view.handPose ?? leftPose,
+          leftHeld,
+          lean,
+          leftTurn,
+          reduced || view.reviewProgress !== undefined
+            ? 1
+            : Math.min(1, dt * 18),
+          lateral,
+          attachment(1),
+        );
+        if (!view.reviewShot && duration && progress >= 1 && !sent) {
           sent = true;
           emit("done", view);
         }

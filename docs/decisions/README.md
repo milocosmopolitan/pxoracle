@@ -19,3 +19,5 @@
 No library/source license is silently applied to the supplied art. No actual AWS account changes are part of the deployment configuration.
 
 Tarot table choreography: [ADR 002](002-tarot-table-choreography.md).
+
+Perspective camera and separate arm rig: [ADR 003](003-tarot-perspective-rig.md).

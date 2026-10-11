@@ -89,6 +89,7 @@ export type TarotPhase =
   | "revealing"
   | "reading";
 export interface TarotPresentation {
+  readingFocus?: number | null;
   phase: TarotPhase;
   revision: number;
   page: number;
@@ -100,6 +101,13 @@ export interface TarotPresentation {
 }
 /** Presentation only: no hidden card identities, shuffled order, seed, or question. */
 export interface TarotView {
+  /** Review-only fixed camera and timeline samples; no engine state. */
+  reviewShot?: "shuffle" | "selection" | "reveal" | "reading" | "detail";
+  reviewProgress?: number;
+  cameraProfile?: "A" | "B" | "C";
+  handPose?: "rest" | "support" | "packet" | "pinch" | "release";
+  readingPanel?: boolean;
+  readingFocus?: number | null;
   phase: TarotPhase;
   revision: number;
   page: number;
@@ -113,7 +121,10 @@ export interface TarotView {
     reversed: boolean;
     face?: string;
   }[];
-  onIntent?: (intent: { type: "select" | "focus"; slot: number }) => void;
+  onIntent?: (intent: {
+    type: "select" | "focus" | "inspect";
+    slot: number;
+  }) => void;
   onEvent?: (event: {
     type: "done" | "ready" | "asset-error";
     revision: number;

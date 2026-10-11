@@ -4,6 +4,10 @@ import { SceneCanvas } from "../runtime/SceneCanvas";
 import type { TarotView, TarotPhase } from "@pxoracle/contracts";
 import manifest from "../../public/art/manifest.json";
 function TableStory({
+  cameraProfile,
+  handPose,
+  reviewShot,
+  reviewProgress,
   phase = "dealing",
   reversed = false,
   reduced = false,
@@ -11,6 +15,10 @@ function TableStory({
   three = false,
   failed = false,
 }: {
+  cameraProfile?: "A" | "B" | "C";
+  handPose?: TarotView["handPose"];
+  reviewShot?: TarotView["reviewShot"];
+  reviewProgress?: number;
   phase: TarotPhase;
   reversed: boolean;
   reduced: boolean;
@@ -21,13 +29,21 @@ function TableStory({
   const [revision, setRevision] = useState(1),
     [stage, setStage] = useState(phase),
     [error, setError] = useState(false),
-    [retry, setRetry] = useState(0);
+    [retry, setRetry] = useState(0),
+    [selectedSlot, setSelectedSlot] = useState(4),
+    [focusedSlot, setFocusedSlot] = useState(4),
+    [readingFocus, setReadingFocus] = useState<number | null>(null);
   const count = three ? 3 : 1;
   const view: TarotView = {
+    readingFocus,
+    cameraProfile,
+    handPose,
+    reviewShot,
+    reviewProgress,
     phase: stage,
     revision,
     page: 0,
-    focus: 4,
+    focus: focusedSlot,
     index: 0,
     attempt: retry,
     spread: count,
@@ -41,7 +57,7 @@ function TableStory({
           : count,
       )
       .map((id, i) => ({
-        slot: i + 4,
+        slot: i + selectedSlot,
         revealed: stage === "reading" || stage === "revealing",
         reversed: reversed || i === 1,
         face:
@@ -50,6 +66,7 @@ function TableStory({
             : manifest.cards[id as keyof typeof manifest.cards].url,
       })),
     onEvent: (event) => {
+      if (reviewShot) return;
       if (event.type === "asset-error") {
         setError(true);
         return;
@@ -68,10 +85,14 @@ function TableStory({
       }
     },
     onIntent: (event) => {
+      if (reviewShot) return;
       if (event.type === "select") {
+        setSelectedSlot(event.slot);
         setStage("dealing");
         setRevision((n) => n + 1);
-      }
+      } else if (event.type === "inspect")
+        setReadingFocus(event.slot - selectedSlot);
+      else setFocusedSlot(event.slot);
     },
   };
   return (
@@ -79,16 +100,17 @@ function TableStory({
       style={{
         width,
         maxWidth: "100%",
-        height: 800,
+        height: "min(800px, 100svh)",
         position: "relative",
         overflow: "hidden",
       }}
+      data-review={reviewShot || undefined}
       className="tarot-story"
     >
       <SceneCanvas
         route="tarot"
         embedded
-        frozen={reduced}
+        frozen={reduced || !!reviewShot}
         data={{ tarot: view }}
       />
       <div
@@ -101,9 +123,16 @@ function TableStory({
           padding: 12,
         }}
       >
-        <p>STORYBOOK · Synthetic fixed cards · No WASM · {stage}</p>
+        <p>
+          STORYBOOK · Synthetic fixed cards · No WASM · {stage}
+          {reviewShot ? " · FIXED FRAME FOR REVIEW" : ""}
+        </p>
+        {stage === "reading" && !reviewShot && (
+          <button onClick={() => setReadingFocus(null)}>Show all cards</button>
+        )}
         <button
           onClick={() => {
+            setReadingFocus(null);
             setStage(phase);
             setRevision((n) => n + 1);
           }}
@@ -163,3 +192,55 @@ export const LoadingFailure: Story = {
 };
 export const Restored: Story = { args: { phase: "reading", three: true } };
 export const ReducedMotion: Story = { args: { reduced: true } };
+
+export const CameraA: Story = {
+  args: { phase: "selecting", cameraProfile: "A" },
+};
+export const CameraB: Story = {
+  args: { phase: "selecting", cameraProfile: "B" },
+};
+export const CameraC: Story = {
+  args: { phase: "selecting", cameraProfile: "C" },
+};
+
+export const RestHands: Story = {
+  args: { phase: "selecting", handPose: "rest" },
+};
+export const SupportHands: Story = {
+  args: { phase: "selecting", handPose: "support" },
+};
+export const PacketHands: Story = {
+  args: { phase: "selecting", handPose: "packet" },
+};
+export const PinchHands: Story = {
+  args: { phase: "selecting", handPose: "pinch" },
+};
+export const ReleaseHands: Story = {
+  args: { phase: "selecting", handPose: "release" },
+};
+
+export const FrameShuffle: Story = {
+  args: { phase: "shuffle", reviewShot: "shuffle", reviewProgress: 0.08 },
+};
+export const FrameSelection: Story = {
+  args: { phase: "selecting", reviewShot: "selection", reviewProgress: 1 },
+};
+export const FrameReveal: Story = {
+  args: { phase: "revealing", reviewShot: "reveal", reviewProgress: 0.48 },
+};
+export const FrameCarry: Story = {
+  args: { phase: "dealing", reviewShot: "selection", reviewProgress: 0.5 },
+};
+export const FrameReading: Story = {
+  args: {
+    phase: "reading",
+    reviewShot: "reading",
+    reviewProgress: 1,
+    three: true,
+  },
+};
+export const FrameDetail: Story = {
+  args: { phase: "reading", reviewShot: "detail", reviewProgress: 1 },
+};
+
+export const FullCameraSequence: Story = { args: { phase: "conversation" } };

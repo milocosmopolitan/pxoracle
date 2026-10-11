@@ -74,7 +74,7 @@ export function SceneCanvas({
   }, [data, frozen]);
   return (
     <>
-    <div data-table={route === "tarot" && data.tarot && data.tarot.phase !== "conversation" ? "active" : undefined} className="scene-host" style={embedded?{position:"absolute"}:undefined}>
+    <div data-route={route} data-table={route === "tarot" && data.tarot && data.tarot.phase !== "conversation" ? "active" : undefined} className="scene-host" style={embedded?{position:"absolute"}:undefined}>
       <canvas ref={canvas} aria-hidden="true" />
       <div className="scene-shade" />
     </div>

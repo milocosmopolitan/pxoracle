@@ -1,6 +1,6 @@
 # ADR 002: engine-confirmed tarot table choreography
 
-Status: accepted implementation, 2026-10-10.
+Status: accepted implementation, 2026-10-10. Rendering/character details are superseded by [ADR 003](003-tarot-perspective-rig.md); controller, engine and privacy boundaries remain in force.
 
 ## Decision
 

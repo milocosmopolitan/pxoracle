@@ -794,7 +794,7 @@ body:has(.table-reading) main { pointer-events: none; }
 .table-reading .tarot-heading { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .tarot-layout.table-reading { display: block; padding: 24px; margin: 0 0 0 auto; width: 380px; }
 .table-reading .tarot-panel { width: 100%; max-width: none; padding: 24px; pointer-events: auto; }
-.scene-host[data-table="active"] { right: 380px; height: 100svh; position: fixed; }
+.scene-host[data-route="tarot"] { inset: 98px 0 0; height: calc(100svh - 98px); position: fixed; }
 .scene-host[data-table="active"] .scene-shade { background: linear-gradient(0deg,#0a101055,transparent 20%); }
 .slot-controls { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin: 18px 0; }
 .slot-controls button { min-width: 44px; min-height: 44px; padding: 7px; }
@@ -803,13 +803,27 @@ body:has(.table-reading) main { pointer-events: none; }
 .reading-card h3 { margin: 4px 0; }
 .reading-disclosure { color: var(--muted); font-size: 12px; }
 .motion-controls { margin: 16px 0; font-size: 12px; }
-.tarot-story .scene-host[data-table="active"] { inset: 0; height: 100%; width: 100%; position: absolute; }
+.tarot-story .scene-host[data-route="tarot"] { inset: 0; height: 100%; width: 100%; position: absolute; }
 @media (max-width: 760px) {
-  .scene-host[data-table="active"] { inset: 70px 0 auto; height: 56svh; width: 100%; position: fixed; }
-  .tarot-layout.table-reading { padding: 12px; width: 100%; padding-top: 56svh; }
+  .scene-host[data-route="tarot"] { inset: 70px 0 auto; height: 64svh; width: 100%; position: fixed; }
+  .tarot-layout.table-reading { padding: 12px; width: 100%; padding-top: 64svh; }
   .table-reading .tarot-panel { padding: 20px; }
-  .tarot-story .scene-host[data-table="active"] { inset: 0; height: 100%; }
+  .tarot-story .scene-host[data-route="tarot"] { inset: 0; height: 100%; }
 }
 
-.scene-host { transition: right 1.2s ease, height 1.2s ease, top 1.2s ease; }
+.scene-host { transition: none; }
 @media (prefers-reduced-motion: reduce) { .scene-host { transition: none; } }
+
+.reading-details summary { cursor: pointer; color: var(--gold); padding: 12px 0; }
+@media (min-width: 761px) {
+  .table-reading:not([data-phase="reading"]) { width: min(720px, 100%); padding: 0 16px; margin: calc(100svh - 220px) auto 0; }
+  .table-reading:not([data-phase="reading"]) .tarot-panel { padding: 12px 20px; background: #101a19ed; }
+  .table-reading:not([data-phase="reading"]) .panel-heading h2 { font-size: 18px; margin: 0; }
+  .table-reading:not([data-phase="reading"]) .slot-controls { grid-template-columns: repeat(12,1fr); gap: 4px; margin: 8px 0; }
+  .table-reading:not([data-phase="reading"]) .tarot-panel p { margin: 4px 0; }
+}
+
+@media (max-width: 760px) {
+  .tarot-story[data-review] { height: 70svh !important; overflow: visible !important; }
+  .tarot-story[data-review] > div:last-child:not(.scene-host) { top: 100%; bottom: auto !important; left: 0 !important; width: 100%; font-size: 12px; }
+}

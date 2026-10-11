@@ -4,6 +4,7 @@ export interface SceneInstance {
   scene: THREE.Scene;
   camera: THREE.Camera;
   needsRender?(): boolean;
+  render?(renderer: THREE.WebGLRenderer): void;
   pointer?(event: { type: "focus" | "select"; x: number; y: number }): void;
   enter(): void;
   resize?(width: number, height: number): void;
@@ -180,7 +181,8 @@ export class SceneRuntime {
         this.data,
         this.frozen || this.reduced.matches,
       );
-      this.renderer.render(this.active.scene, this.active.camera);
+      if (this.active.render) this.active.render(this.renderer);
+      else this.renderer.render(this.active.scene, this.active.camera);
       this.canvas.style.opacity = reduced
         ? "1"
         : String(Math.min(1, (now - this.entered) / 550));

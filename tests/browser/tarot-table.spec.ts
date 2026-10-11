@@ -1,7 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { graphicsAvailable } from "./tarot-support";
 test.beforeEach(async ({ page }) => {
-  test.skip(!(await graphicsAvailable(page)), "Mesh tests require WebGL2; app.spec exercises the explicit HTML fallback.");
+  test.skip(
+    !(await graphicsAvailable(page)),
+    "Mesh tests require WebGL2; app.spec exercises the explicit HTML fallback.",
+  );
 });
 
 test("real tarot: sequential reveal, bounded face loading, same-card retry and restore", async ({
@@ -18,7 +21,7 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
   await page.getByRole("button", { name: "Shuffle the deck" }).click();
   await expect(
     page.getByRole("button", { name: "Choose slot 1", exact: true }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 45000 });
   expect(faces).toHaveLength(0);
   await page.getByRole("button", { name: "Shuffle again" }).click();
   await page
@@ -39,9 +42,11 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
   const saved = await page.evaluate(() =>
     localStorage.getItem("pxoracle.tarot.v1"),
   );
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.waitForTimeout(1000);
   await page.screenshot({
     path: test.info().outputPath("reading.png"),
-    fullPage: true,
+    fullPage: false,
   });
   await page.reload();
   await page.getByRole("button", { name: "Resume a saved reading" }).click();
@@ -59,13 +64,14 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
 
 test("standard motion camera, keyboard highlight, route cancellation and three-card reading", async ({
   page,
+  isMobile,
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/tarot/");
   await page.getByRole("button", { name: "Shuffle the deck" }).click();
   await expect(
     page.getByRole("button", { name: "Choose slot 1", exact: true }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 45000 });
   const first = page.getByRole("button", {
     name: "Choose slot 1",
     exact: true,
@@ -93,9 +99,33 @@ test("standard motion camera, keyboard highlight, route cancellation and three-c
   ).toBeVisible({ timeout: 20000 });
   await expect(page.locator(".reading-card")).toHaveCount(3);
   await expect(page.locator("canvas")).toHaveCount(1);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.waitForTimeout(1000);
+  const bounds = (await page.locator("canvas").boundingBox())!;
+  const cardX = bounds.x + (bounds.width - (isMobile ? 0 : 380)) / 2;
+  const cardY = bounds.y + bounds.height / 2;
+  if (isMobile) await page.touchscreen.tap(cardX, cardY);
+  else await page.mouse.click(cardX, cardY);
+  await expect(page.getByRole("button", { name: "Look closer at card 2", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Show all cards", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Look closer at card 2", exact: true })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Look closer at card 2", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  expect(await page.locator("canvas").boundingBox()).toEqual(bounds);
+  await page
+    .getByRole("button", { name: "Show all cards", exact: true })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Show all cards", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.waitForTimeout(1000);
   await page.screenshot({
     path: test.info().outputPath("three-card-reading.png"),
-    fullPage: true,
+    fullPage: false,
   });
   await page.getByRole("button", { name: "New reading" }).click();
   await expect(
@@ -111,10 +141,10 @@ test("Mesh picking ignores a drag and accepts a click or touch", async ({
   await page.getByRole("button", { name: "Shuffle the deck" }).click();
   await expect(
     page.getByRole("button", { name: "Choose slot 1", exact: true }),
-  ).toBeVisible({ timeout: 20000 });
+  ).toBeVisible({ timeout: 45000 });
   const box = (await page.locator("canvas").boundingBox())!;
-  const x = box.x + box.width * (isMobile ? 0.24 : 0.2),
-    y = box.y + box.height * 0.34;
+  const x = box.x + box.width * (isMobile ? 0.24 : 0.3),
+    y = box.y + box.height * (isMobile ? 0.34 : 0.3);
   await page.mouse.move(x, y);
   await page.mouse.down();
   await page.mouse.move(x + 80, y + 40, { steps: 5 });

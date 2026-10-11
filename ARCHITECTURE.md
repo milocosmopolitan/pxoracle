@@ -204,3 +204,5 @@ Every ADR records context, decision, alternatives, consequences, validation evid
 ## Implemented tarot choreography
 
 See [ADR 002](docs/decisions/002-tarot-table-choreography.md) for the engine-confirmed controller, minimal `TarotView`, Mesh picking, hand anchors, camera transition, restoration, and texture lifetime contract. Frame coordinates remain scene-local; questions never enter scene or engine requests. The authored English reflection pack does not analyze questions.
+
+See [ADR 003](docs/decisions/003-tarot-perspective-rig.md) for articulated arms, authored camera-view torso plates, PBR materials and Scene-owned selective pixel compositing. The optional render hook preserves runtime renderer ownership and existing scene isolation.
