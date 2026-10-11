@@ -32,8 +32,9 @@ The captures use desktop browsers and viewport/device emulation, not physical ph
 
 ## Verification ledger
 
-The implementation checkpoint passed Cargo tests, Emscripten WASM builds, TypeScript,
-static Next export, 55 Node tests and Storybook build. Native/WASM plans match exactly
+After integration with main PR #60, 33 native tests and 61 Node tests pass, alongside
+Emscripten WASM builds, TypeScript, schema regeneration, ownership checks and static
+Next export. The Storybook build also passes. Native/WASM plans match exactly
 for nine fixtures; floating chart values use the established 1e-8° tolerance.
 All 252 placements and 214 witnessed aspect keys are selectable, and every one of
 493 sentence references resolves. Worker tests check concurrent installation,

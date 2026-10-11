@@ -1,6 +1,6 @@
 # Natal scene and controller contract
 
-`AstrologyView` contains phase (`entry`/`chart`), revision, ten `{id, longitude}`
+`AstrologyView` contains phase (`entry`/`chart`), camera-request revision, ten `{id, longitude}`
 display bodies, supported Whole Sign boundaries and aspect pairs, a body/pair/null
 selection, normalized usable viewport, and intent/readiness callbacks. No birth
 date, location, notes, rule pack or full engine session enters Three.js. DOM and
@@ -39,3 +39,8 @@ Stories live under `PXOracle/Natal reading`: camera sequence, fixed overview/bod
 relationship views, mobile, reduced motion, unknown-time and crowded markers, plus
 input/report/legacy/error states. Ordinary stories use labeled synthetic fixtures and
 mock transport, not real WASM. Actual app browser tests exercise real Worker/WASM.
+
+Every camera intent increments a request revision, including a quick select/clear pair
+that React coalesces before the next frame. Readiness acknowledgments must match that
+revision. This prevents a stale callback or an unchanged target from leaving the HTML
+exploration region permanently busy.

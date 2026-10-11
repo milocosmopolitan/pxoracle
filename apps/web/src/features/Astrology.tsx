@@ -26,7 +26,10 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
   const controller = useNatal(engine);
   const [full, setFull] = useState(false);
   const [sceneSettled, setSceneSettled] = useState(false);
-  const onSettled = useCallback(() => setSceneSettled(true), []);
+  const cameraRequest = useRef(0);
+  const onSettled = useCallback((revision: number) => {
+    if (revision === cameraRequest.current) setSceneSettled(true);
+  }, []);
   const stage = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -104,11 +107,10 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
   }, []);
   useEffect(() => {
     setSceneSettled(false);
-  }, [chart, natal.selection, viewport]);
-  useEffect(() => {
+    const revision = ++cameraRequest.current;
     store.getState().setAstrologyView({
       phase: chart ? "chart" : "entry",
-      revision: natal.revision,
+      revision,
       bodies:
         chart?.bodies.map(({ id, longitude }) => ({ id, longitude })) ?? [],
       houses: chart?.houses ?? null,

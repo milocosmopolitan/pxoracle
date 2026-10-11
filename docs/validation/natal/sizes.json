@@ -9,8 +9,9 @@
   "tarot": {
     "deployedMainBytes": 499855,
     "deployedMainGzip": 141342,
-    "branchBytes": 499810,
-    "branchGzip": 141476,
+    "branchBytes": 499868,
+    "branchGzip": 141233,
     "byteIdentical": false
-  }
+  },
+  "note": "Deployed PR59 Linux artifacts versus current macOS build including main PR60; gzip level 9, mtime 0. Not a controlled compiler-size comparison."
 }
