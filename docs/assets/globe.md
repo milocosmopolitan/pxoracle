@@ -53,4 +53,9 @@ Reported preparation-to-first-render durations include an explicit 100ms observa
 
 `createGlobe(leases, signal, {quality: "room"})` keeps physical elevation while reducing room-scale cost. It uses **120 × 60** terrain segments (**7,381 vertices / 14,160 terrain triangles**), half-resolution turned/ring profiles, **26,112 total assembly triangles**, a **1024 × 512** map and **541 × 271** bump/elevation inputs. Elevation is a retained every-second-node subset of the exact same NOAA source; no synthetic terrain is substituted. Country polygons are not requested. Room downloads total **1,058,875 raw / 1,012,530 gzip bytes**. `{quality: "country"}` remains the default and uses **5,323,448 raw / 3,963,952 gzip bytes**. Country exploration remains a single bounded fixed-resolution level. Landing/tarot select room quality; astrology preparation selects country quality. The two branches reuse the same assembly authoring and ownership paths.
 
+These gzip figures use the Python generation pipeline. The independent Node gzip9
+measurement records **1,015,623 room / 3,972,650 country bytes** for the same raw
+assets. Compressor implementations account for the difference; neither figure
+claims an observed compressed HTTP transfer.
+
 `InstancedMesh.dispose()` explicitly releases the meridian-graduation instance buffer, in addition to geometry/material cleanup. A renderer.info-only measurement missed this allocation: the browser regression now instruments actual `createBuffer/deleteBuffer` on the isolated renderer's WebGL context and requires return to zero. The country framing quaternion is explicitly north-up (`qX(latitude) × qY(-longitude)`, compensated for the static mount); tests verify the geographic north tangent for Russia, Singapore and Fiji to prevent shortest-arc rotation from flipping southern-hemisphere labels.

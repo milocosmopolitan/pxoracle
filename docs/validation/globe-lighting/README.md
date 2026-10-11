@@ -114,7 +114,13 @@ The final images were inspected directly, not inferred from passing Node tests.
   frame for on-demand updates, then returns to idle. Local WebKit passes3/3 with
  58 draws for zoom and no further draws over500ms. Fixed review frames also stop
   requesting unnecessary renders. [Regression evidence](webkit-keyboard-presentation.json).
-  Hosted confirmation of this fix is tracked by the latest PR workflow.
+  Hosted run [38175076210](https://github.com/milocosmopolitan/pxoracle/actions/runs/38175076210)
+  on `4f2d167` confirms the keyboard/presentation repair, including the500ms idle
+  assertion. Its separate fast-input HTML fallback test failed when a passive
+  country reset erased newly typed text. The narrow layout-effect reset repair
+  passes **6/6 local WebKit checks in13.4s**, three repeats each of fallback retry
+  and country/manual invalidation. Hosted confirmation of that search repair is
+  pending. [Diagnosis and raw hosted keyboard evidence](webkit-presentation-and-search.md).
 
 A failed first attempt is recorded above rather than hidden. Subsequent targeted
 reruns verify the repaired boundary; Node tests are not presented as browser coverage.
@@ -215,9 +221,9 @@ Implementation map, with final issue disposition pending the current PR checks:
 
 Both epics are implemented, including the subsequent placement and candle-mesh revision.
 The implementation map is subject to the latest PR workflow and issue comments.
-The completed source workflow passed all jobs except the single WebKit presentation
-regression described above; its bounded-frame repair has local evidence and awaits
-hosted confirmation. Verification issues and parent epics stay open until required
+The `4f2d167` workflow confirms the WebKit presentation repair but exposed a separate
+fast-input fallback regression. Its country-reset repair has local6/6 WebKit evidence
+and awaits hosted confirmation; see the linked diagnosis above. Verification issues and parent epics stay open until required
 gates pass. The measured tarot fixture exceeds the internally chosen provisional4ms
 GPU p95 goal; that goal is not an original numeric issue acceptance criterion and
 is retained as an explicit performance limitation, never represented as passing.

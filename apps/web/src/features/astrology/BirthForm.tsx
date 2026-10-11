@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState, type FormEvent } from "react";
 import type { BirthInput } from "@pxoracle/contracts";
 import type {
   AtlasCountry,
@@ -46,7 +46,8 @@ export function BirthForm({
     longitude: initial ? String(initial.longitude) : "",
   });
   useEffect(() => setReady(true), []);
-  useEffect(() => {
+  // Clear the old country before its replacement input can receive typing.
+  useLayoutEffect(() => {
     setQuery("");
     setCoordinates({ timezone: "", latitude: "", longitude: "" });
     setCities([]);

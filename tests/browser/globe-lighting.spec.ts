@@ -130,8 +130,12 @@ test("asset retry restores the scene and city search survives WebGL unavailabili
   await page.goto("/astrology/");
   await expect(page.getByText("Your browser cannot start WebGL. All reading controls remain available.")).toBeVisible();
   await page.getByLabel("Birth country").selectOption("SG");
-  await page.getByLabel("Birth city", { exact: true }).fill("Singapore");
+  const citySearch = page.getByLabel("Birth city", { exact: true });
+  // Type immediately after country commit; a delayed reset must never erase fresh input.
+  await citySearch.fill("Singapore");
+  await expect(citySearch).toHaveValue("Singapore");
   await expect(page.getByRole("button", { name: /Singapore.*Asia\/Singapore/ }).first()).toBeVisible();
+  await expect(citySearch).toHaveValue("Singapore");
 });
 
 test("keyboard rotation and zoom controls visibly adjust a country view", async ({ page }) => {
