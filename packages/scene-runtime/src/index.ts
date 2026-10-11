@@ -82,6 +82,7 @@ export class SceneRuntime {
   private reduced: MediaQueryList;
   private viewData: ViewData = {};
   private dirty = true;
+  private presentationPending = false;
   private lastRender = -Infinity;
   private lastReduced = false;
   private isFrozen = false;
@@ -194,12 +195,16 @@ export class SceneRuntime {
     const reduced = this.frozen || this.reduced.matches;
     if (reduced !== this.lastReduced) this.dirty = true;
     this.lastReduced = reduced;
+    const invalidated = this.dirty || !!this.active?.needsRender?.();
     if (
       this.active &&
-      (this.dirty ||
-        this.active.needsRender?.() ||
+      (invalidated ||
+        this.presentationPending ||
         (!reduced && now - this.lastRender >= 1000 / 30))
     ) {
+      // WebKit's software compositor can retain the previous canvas after a lone draw.
+      // Present one identical follow-up frame after invalidation, then return to idle.
+      this.presentationPending = reduced && invalidated;
       this.dirty = false;
       this.lastRender = now;
       this.active.update(
@@ -223,6 +228,7 @@ export class SceneRuntime {
   cancelPreparation() {
     this.acceptingInput = false;
     this.firstFramePending = false;
+    this.presentationPending = false;
     this.down = null;
     ++this.generation;
     this.abort?.abort();
@@ -230,6 +236,7 @@ export class SceneRuntime {
   async navigate(factory: SceneFactory) {
     this.acceptingInput = false;
     this.firstFramePending = false;
+    this.presentationPending = false;
     const generation = ++this.generation;
     this.abort?.abort();
     this.abort = new AbortController();

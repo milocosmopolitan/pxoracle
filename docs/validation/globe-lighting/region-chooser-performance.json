@@ -1,0 +1,363 @@
+{
+  "recordedAt": "2026-10-11T21:06:12.290Z",
+  "method": "Actual final static app with synthetic public SG/Singapore chooser input, then production astrology factory region fixture; real Metal Chromium,1280x720DPR1,reduced motion. No birth/date input, external query, production changes or substitute scene.",
+  "chooser": {
+    "regionGeographicPayload": {
+      "method": "Observed public request paths; raw and independent gzip9 bytes of corresponding repository runtime files, not measured CDN transfer.",
+      "files": [
+        {
+          "path": "/globe/parchment.png",
+          "rawBytes": 1955644,
+          "gzip9Bytes": 1954937
+        },
+        {
+          "path": "/globe/relief-bump.png",
+          "rawBytes": 288316,
+          "gzip9Bytes": 288424
+        },
+        {
+          "path": "/globe/walnut.png",
+          "rawBytes": 56718,
+          "gzip9Bytes": 56756
+        },
+        {
+          "path": "/globe/brass-roughness.png",
+          "rawBytes": 46505,
+          "gzip9Bytes": 46538
+        },
+        {
+          "path": "/globe/elevation.i16",
+          "rawBytes": 1169642,
+          "gzip9Bytes": 975510
+        },
+        {
+          "path": "/globe/geography.json",
+          "rawBytes": 1806623,
+          "gzip9Bytes": 650485
+        }
+      ],
+      "rawBytes": 5323448,
+      "gzip9Bytes": 3972650
+    },
+    "device": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1
+    },
+    "region": {
+      "gpu": {
+        "Texture": {
+          "created": 33,
+          "deleted": 0,
+          "live": 33
+        },
+        "Framebuffer": {
+          "created": 4,
+          "deleted": 0,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 227,
+          "deleted": 0,
+          "live": 227
+        },
+        "Program": {
+          "created": 13,
+          "deleted": 0,
+          "live": 13
+        },
+        "Shader": {
+          "created": 26,
+          "deleted": 26,
+          "live": 0
+        }
+      },
+      "totalDraws": 244,
+      "lastRenderedFrame": {
+        "calls": 38,
+        "triangles": 179860
+      },
+      "cameraRevision": "2",
+      "domElements": 156,
+      "canvasCount": 1,
+      "canvasSame": null
+    },
+    "before": {
+      "gpu": {
+        "Texture": {
+          "created": 33,
+          "deleted": 0,
+          "live": 33
+        },
+        "Framebuffer": {
+          "created": 4,
+          "deleted": 0,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 228,
+          "deleted": 1,
+          "live": 227
+        },
+        "Program": {
+          "created": 13,
+          "deleted": 0,
+          "live": 13
+        },
+        "Shader": {
+          "created": 26,
+          "deleted": 26,
+          "live": 0
+        }
+      },
+      "totalDraws": 325,
+      "lastRenderedFrame": {
+        "calls": 27,
+        "triangles": 158404
+      },
+      "cameraRevision": "3",
+      "domElements": 310,
+      "canvasCount": 1,
+      "canvasSame": true
+    },
+    "after": {
+      "gpu": {
+        "Texture": {
+          "created": 33,
+          "deleted": 0,
+          "live": 33
+        },
+        "Framebuffer": {
+          "created": 4,
+          "deleted": 0,
+          "live": 4
+        },
+        "Buffer": {
+          "created": 228,
+          "deleted": 1,
+          "live": 227
+        },
+        "Program": {
+          "created": 13,
+          "deleted": 0,
+          "live": 13
+        },
+        "Shader": {
+          "created": 26,
+          "deleted": 26,
+          "live": 0
+        }
+      },
+      "totalDraws": 325,
+      "lastRenderedFrame": {
+        "calls": 27,
+        "triangles": 158404
+      },
+      "cameraRevision": "3",
+      "domElements": 162,
+      "canvasCount": 1,
+      "canvasSame": true
+    },
+    "sameScenePixels": true,
+    "newPublicRequestsAfterCity": [],
+    "beforeCountryRequests": [
+      "/globe/parchment.png",
+      "/globe/relief-bump.png",
+      "/globe/walnut.png",
+      "/globe/brass-roughness.png",
+      "/globe/elevation.i16",
+      "/globe/geography.json"
+    ],
+    "allPublicRequests": [
+      "/globe/parchment.png",
+      "/globe/relief-bump.png",
+      "/globe/walnut.png",
+      "/globe/brass-roughness.png",
+      "/globe/elevation.i16",
+      "/globe/geography.json",
+      "/content/atlas/manifest.geonames-world.2026-10-11.json",
+      "/content/atlas/SG.geonames-world.2026-10-11.json"
+    ],
+    "shards": [
+      {
+        "path": "/content/atlas/SG.geonames-world.2026-10-11.json",
+        "rawBytes": 10870,
+        "gzip9Bytes": 4283,
+        "contentEncoding": "none"
+      }
+    ],
+    "domTiming": {
+      "searchToVisibleMs": 13.656416000000036,
+      "selectToConfirmationMs": 3.474749999999858,
+      "method": "Node wall clock around Playwright fill/wait and keyboard/confirmation; includes automation overhead, not pure handler latency."
+    }
+  },
+  "regionFixture": {
+    "frames": [
+      {
+        "phase": "overview",
+        "region": null,
+        "country": null,
+        "textures": 21,
+        "geometries": 40,
+        "gpuTextures": 24,
+        "calls": 40,
+        "triangles": 181400,
+        "programs": 9,
+        "gpu": {
+          "Texture": {
+            "created": 28,
+            "deleted": 0,
+            "live": 28
+          },
+          "Framebuffer": {
+            "created": 4,
+            "deleted": 0,
+            "live": 4
+          },
+          "Buffer": {
+            "created": 158,
+            "deleted": 0,
+            "live": 158
+          },
+          "Program": {
+            "created": 9,
+            "deleted": 0,
+            "live": 9
+          },
+          "Shader": {
+            "created": 18,
+            "deleted": 18,
+            "live": 0
+          }
+        }
+      },
+      {
+        "phase": "region",
+        "region": "asia",
+        "country": null,
+        "textures": 21,
+        "geometries": 41,
+        "gpuTextures": 24,
+        "calls": 33,
+        "triangles": 170260,
+        "programs": 10,
+        "gpu": {
+          "Texture": {
+            "created": 28,
+            "deleted": 0,
+            "live": 28
+          },
+          "Framebuffer": {
+            "created": 4,
+            "deleted": 0,
+            "live": 4
+          },
+          "Buffer": {
+            "created": 159,
+            "deleted": 0,
+            "live": 159
+          },
+          "Program": {
+            "created": 10,
+            "deleted": 0,
+            "live": 10
+          },
+          "Shader": {
+            "created": 20,
+            "deleted": 20,
+            "live": 0
+          }
+        }
+      },
+      {
+        "phase": "country",
+        "region": "asia",
+        "country": "SG",
+        "textures": 21,
+        "geometries": 41,
+        "gpuTextures": 24,
+        "calls": 30,
+        "triangles": 168774,
+        "programs": 10,
+        "gpu": {
+          "Texture": {
+            "created": 28,
+            "deleted": 0,
+            "live": 28
+          },
+          "Framebuffer": {
+            "created": 4,
+            "deleted": 0,
+            "live": 4
+          },
+          "Buffer": {
+            "created": 160,
+            "deleted": 1,
+            "live": 159
+          },
+          "Program": {
+            "created": 10,
+            "deleted": 0,
+            "live": 10
+          },
+          "Shader": {
+            "created": 20,
+            "deleted": 20,
+            "live": 0
+          }
+        }
+      }
+    ],
+    "failures": [],
+    "afterDispose": {
+      "leases": 0,
+      "contextLost": true,
+      "gpu": {
+        "Texture": {
+          "created": 28,
+          "deleted": 7,
+          "live": 21
+        },
+        "Framebuffer": {
+          "created": 4,
+          "deleted": 1,
+          "live": 3
+        },
+        "Buffer": {
+          "created": 160,
+          "deleted": 160,
+          "live": 0
+        },
+        "Program": {
+          "created": 10,
+          "deleted": 9,
+          "live": 1
+        },
+        "Shader": {
+          "created": 20,
+          "deleted": 20,
+          "live": 0
+        }
+      }
+    }
+  },
+  "invariants": {
+    "noAtlasBeforeCountry": true,
+    "onlySelectedCountryShard": true,
+    "sameCanvas": true,
+    "sameCameraRevision": true,
+    "samePixels": true,
+    "noNewGeographicRequests": true,
+    "sameLastFrameDraws": true,
+    "sameLastFrameTriangles": true,
+    "sameLiveGpuResources": true,
+    "noAdditionalDraws": true
+  },
+  "errors": [],
+  "runtimeScheduling": "Repeated against final export after bounded one-follow-up-frame invalidation presentation and fixed-review idle correction. City selection still triggers no rendering."
+}

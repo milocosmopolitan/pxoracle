@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-11T20:46:40.576Z",
-  "method": "Actual production SceneRuntime.navigate defaults; no manual shadow overrides. Three real factories at 1280×720 DPR 1; settled astrology overview and tarot selection review; final 3D candle and front-right globe placement.",
+  "method": "Actual production SceneRuntime.navigate defaults; no manual shadow overrides. Three real factories at 1280\u00d7720 DPR 1; settled astrology overview and tarot selection review; final 3D candle and front-right globe placement.",
   "runs": [
     {
       "backend": "software",
@@ -156,5 +156,6 @@
       },
       "pageErrors": []
     }
-  ]
+  ],
+  "runtimeSchedulingNote": "Later scheduling-only fix adds one identical follow-up frame after on-demand invalidation, then idles; shadow capability selection is unchanged. Final region-chooser-performance.json rechecks city zero-draw/resource invariance against that export. This policy artifact was not rerun for scheduling alone."
 }

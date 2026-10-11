@@ -207,7 +207,17 @@ test("keyboard rotation and zoom controls visibly adjust a country view", async 
     expect(zoomed.equals(turned)).toBe(false);
     await expect(page.getByLabel("Birth country")).toHaveValue("SG");
     await pressControl("Turn globe west");
+    await stableStage(page, zoomed);
+    await checkpoint("west-rendered");
     await expect(page.getByRole("button", { name: "Zoom globe in" })).toBeEnabled();
+    // Reduced motion must return to idle after the bounded presentation follow-up.
+    const drawsAtRest = await page.evaluate(async () => {
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      return (window as Window & { __globeKeyboard?: { draws: number } }).__globeKeyboard?.draws;
+    });
+    await page.waitForTimeout(500);
+    expect(await page.evaluate(() => (window as Window & { __globeKeyboard?: { draws: number } }).__globeKeyboard?.draws)).toBe(drawsAtRest);
+    await checkpoint("idle-confirmed");
   } finally {
     await checkpoint("finished");
     const events = await page.evaluate(() => (window as Window & { __globeKeyboard?: { events: unknown[] } }).__globeKeyboard?.events ?? []);

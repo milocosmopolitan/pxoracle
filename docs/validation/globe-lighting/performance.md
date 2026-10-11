@@ -70,6 +70,20 @@ Runtime disables lamp shadows for SwiftShader, llvmpipe, softpipe or Software Ra
 
 Software reports max texture size 8192; Metal reports 16384. Both default-policy probes have zero page/preparation errors, zero remaining leases and confirmed context loss. A fresh default-off scene can retain fewer textures than an on-then-off scene because caster-only resources were never uploaded. The sub-512 branch is unit-tested, not physically measured.
 
+A subsequent runtime presentation fix submits one identical follow-up frame after an on-demand invalidation, then returns to idle; fixed camera-review frames no longer request continuous rendering. Individual scene geometry, materials, lights and per-frame draw cost are unchanged. The short region/chooser probe below was repeated against that final export: city selection still triggers zero additional draws with identical pixels/resources. The 60-sample GPU and seven-cycle artifacts predate this scheduling-only fix and are not presented as a fresh whole-runtime rerun; resource-cycle verification of that runtime revision is tracked separately in the final CI results.
+
+## Region and HTML chooser baseline
+
+[Final supplemental raw measurement](region-chooser-performance.json), reproduced with `node scripts/measure-globe-chooser.mjs`, closes the explicit region/HTML-chooser measurement scope. It uses the final static production app at localhost:4173 and the production astrology factory through Storybook, actual Metal Chromium, 1280×720 DPR 1, reduced motion. Inputs are public synthetic Singapore/Singapore; no date or private birth record is entered.
+
+The actual app's settled Asia frame submitted **38 calls / 179,860 triangles**. Its Singapore HTML chooser submitted **27 calls / 158,404 triangles** before and after city selection. Selection triggered **zero additional WebGL draws** (cumulative325→325), preserved the same canvas object and camera revision3, and produced **pixel-identical scene captures**. Live GL resources remained exactly **227 buffers,33 textures,4 framebuffers,13 programs**. No new geographic request occurred after city selection.
+
+Before country selection, the observed six globe asset paths totaled **5,323,448 raw / 3,972,650 independent gzip9 bytes**; no city shard was requested. Choosing Singapore loaded only `/content/atlas/SG.geonames-world.2026-10-11.json`, **10,870 raw / 4,283 gzip9 bytes**. The local server served that shard without Content-Encoding; gzip is a declared compression equivalent, not a claimed network transfer. Region asset sizes come from the corresponding runtime files for observed request paths. Typing/selecting a city added no terrain or geographic-detail payload.
+
+DOM element count fell from310 with results to162 after selection. Fill-to-visible-results took13.66ms and Enter-to-confirmation3.47ms, measured from the Playwright driver and including automation overhead. These single samples are not pure event-handler timings or a latency budget.
+
+The separate sequential production-factory fixture measured overview→Asia→Singapore with a full normalized camera viewport: Asia **33 calls /170,260 triangles /41 renderer geometries /24 renderer textures /159 live GL buffers**. Singapore retained41 geometries because resources uploaded in earlier views remain owned by the same assembly; it replaced and disposed the region highlight buffer. All160 created buffers were deleted on final teardown, texture leases returned to0 and context loss was confirmed. App and isolated-factory counts differ because the app supplies its real layout/view data and upload history; neither set substitutes for the other. Both runs had zero page/preparation errors.
+
 ## Downloads and historical comparisons
 
 Nine globe files total **6,279,100 raw bytes / 4,884,979 gzip bytes**. Room tier plus shared material assets: **1,058,875 / 1,015,623**; country tier plus shared assets: **5,323,448 / 3,972,650**. Room does not request country polygons. Gzip is independent local level-9 compression, not CDN transfer measurement; shared assets must not be counted twice.

@@ -355,7 +355,8 @@ export const createScene: SceneFactory = async (leases, signal) => {
         dirty = true;
       },
       needsRender() {
-        return moving || globeMoving || dirty;
+        const fixedReview = (globeView?.reviewProgress ?? current?.reviewProgress) !== undefined;
+        return (moving && !fixedReview) || globeMoving || dirty;
       },
       gesture(event) {
         if(!globeView || globeView.phase === "room" || globeView.phase === "crystal" || dead)return false;

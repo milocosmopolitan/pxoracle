@@ -72,7 +72,7 @@ The final images were inspected directly, not inferred from passing Node tests.
   changing the shared SDK. Native/WASM parity passes in the Node suite.
 - `npm run typecheck`, `npm run build`, `npm run build-storybook`: passed.
   Next output contains static `/`, `/astrology/`, `/tarot/` and404 routes.
-- `npm test`: **90/90 passed** on the final mesh/glow implementation (78.89s), including geography alignment, state invalidation,
+- `npm test`: **90/90 passed** with the bounded presentation repair (27.44s), including geography alignment, state invalidation,
   exact city-camera invariance, lamp/candle cleanup and existing native/WASM/saves.
 - `node scripts/check-boundaries.mjs` and `git diff --check`: passed.
 - Globe functional suite: **20/20** across desktop Chrome, Firefox, Playwright WebKit
@@ -107,7 +107,14 @@ The final images were inspected directly, not inferred from passing Node tests.
 - Source commit `a3b301b979e186cbb74a5bb167880826f7c314cd` passes CI's native/WASM,
   static build,90-test Node suite, Storybook build and actual macOS Safari smoke.
   [Workflow](https://github.com/milocosmopolitan/pxoracle/actions/runs/38173313664).
-  Remaining browser/Storybook jobs are pending; this does not claim a green workflow.
+  That workflow passed Chrome, Firefox fallback, mobile emulation and25 Storybook
+  checks; WebKit had29 passes,2 skips and one visibly stale keyboard-zoom frame.
+  The public diagnostics showed revision acceptance and29 WebGL draws despite an
+  unchanged image. The runtime now schedules one bounded follow-up presentation
+  frame for on-demand updates, then returns to idle. Local WebKit passes3/3 with
+ 58 draws for zoom and no further draws over500ms. Fixed review frames also stop
+  requesting unnecessary renders. [Regression evidence](webkit-keyboard-presentation.json).
+  Hosted confirmation of this fix is tracked by the latest PR workflow.
 
 A failed first attempt is recorded above rather than hidden. Subsequent targeted
 reruns verify the repaired boundary; Node tests are not presented as browser coverage.
@@ -116,6 +123,10 @@ Latest browser capture records [zero page errors](capture-browser.json).
 ## Measured cost and optimization
 
 [Full methods/raw results](performance.md), [JSON](performance.json).
+The supplemental [region and HTML chooser probe](region-chooser-performance.json)
+measures the previously missing stages: city selection preserves exact scene pixels,
+camera revision and live resources, with zero new draws or geographic requests.
+The selected Singapore shard is10,870 raw /4,283 gzip-equivalent bytes.
 One persistent renderer completed seven overview→Fiji→tarot→room cycles with exactly
 **218 live GL buffers** at every room return after the candle-mesh revision.
 All4,826 buffers created in the Metal run were deleted on teardown; leases returned
@@ -203,12 +214,13 @@ Implementation map, with final issue disposition pending the current PR checks:
   camera videos, reduced motion and actual GPU/shadow/lifecycle measurements.
 
 Both epics are implemented, including the subsequent placement and candle-mesh revision.
-Qualification is still in progress. The latest completed CI passed verification,
-infrastructure, Chrome, Firefox fallback, mobile emulation and native macOS Safari;
-WebKit's keyboard zoom check and a combined eight-scene Storybook timeout failed.
-The next run includes public input/render diagnostics and independent Storybook cases.
-The measured tarot fixture also exceeds the provisional4ms GPU p95 target; this is
-not represented as passing. Verification issues and parent epics remain open.
+The implementation map is subject to the latest PR workflow and issue comments.
+The completed source workflow passed all jobs except the single WebKit presentation
+regression described above; its bounded-frame repair has local evidence and awaits
+hosted confirmation. Verification issues and parent epics stay open until required
+gates pass. The measured tarot fixture exceeds the internally chosen provisional4ms
+GPU p95 goal; that goal is not an original numeric issue acceptance criterion and
+is retained as an explicit performance limitation, never represented as passing.
 No result here qualifies a physical mobile device or sustained thermal performance.
 Native Safari results must be read from the PR workflow, not inferred from WebKit.
 The desktop budget and software fallback are scoped to the documented measured
