@@ -66,7 +66,7 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
     page.getByRole("heading", { name: "Your celestial map" }),
   ).toBeVisible({ timeout: 20000 });
   await expect(
-    page.getByRole("button", { name: /sun.*Capricorn/i }),
+    page.locator(".planets").getByRole("button", { name: /sun.*Capricorn/i }),
   ).toBeVisible({ timeout: 20000 });
   expect(wasm.some((x) => x.includes("/astrology/"))).toBeTruthy();
   expect(wasm.some((x) => x.includes("/tarot/"))).toBeFalsy();
@@ -76,7 +76,7 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   await page.reload();
   const beforeRestore=wasm.length;
   await page.getByRole('button',{name:'Open saved chart'}).click();
-  await expect(page.getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible({ timeout: 20000 });
+  await expect(page.locator('.planets').getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible({ timeout: 20000 });
   expect(wasm.length).toBe(beforeRestore + 1); // The isolated Worker validates restored facts; it does not recalculate them.
   await page.getByRole('button',{name:'Edit details'}).click();
   await page.getByLabel('Time accuracy').selectOption('unknown');

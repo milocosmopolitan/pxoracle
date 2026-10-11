@@ -1,0 +1,95 @@
+{
+ "range": [
+  1000000,
+  1080000
+ ],
+ "cases": 80000,
+ "deckSize": 78,
+ "jobs": 4,
+ "chunkSize": 10000,
+ "host": {
+  "cpus": 10
+ },
+ "renderSeconds": 50.117,
+ "assembleSeconds": 2.602,
+ "casesPerSecond": 1596.2647405072132,
+ "gzBytesPerCase": 999.0903625,
+ "rawBytesPerCase": 24088.93585,
+ "rawBytes": 1927114868,
+ "gzBytes": 79927229,
+ "tempChunkBytes": 83136512,
+ "peakRssBytes": {
+  "total": 416677888,
+  "workerAvg": 100777984,
+  "rustTotal": 16400384
+ },
+ "estimatedFull": {
+  "renderSeconds": 2287.6205351999997,
+  "assembledGzBytes": 3648326324.0424,
+  "rawBytesUncompressed": 87964314418.7808,
+  "peakDiskBytesWithChunksAndAssembled": 7296652648.0848,
+  "note": "extrapolation assumes the sampled range is representative of text length and compressibility and that machine load stays comparable"
+ },
+ "files": {
+  "relationships-present": {
+   "rows": 80000,
+   "bytes": 6722503,
+   "rawBytes": 162557107
+  },
+  "relationships-crossroads": {
+   "rows": 80000,
+   "bytes": 6824823,
+   "rawBytes": 164594043
+  },
+  "relationships-action": {
+   "rows": 80000,
+   "bytes": 6741960,
+   "rawBytes": 163188007
+  },
+  "work-present": {
+   "rows": 80000,
+   "bytes": 6586240,
+   "rawBytes": 159085119
+  },
+  "work-crossroads": {
+   "rows": 80000,
+   "bytes": 6710768,
+   "rawBytes": 161122055
+  },
+  "work-action": {
+   "rows": 80000,
+   "bytes": 6617711,
+   "rawBytes": 159716019
+  },
+  "creativity-present": {
+   "rows": 80000,
+   "bytes": 6592617,
+   "rawBytes": 158646615
+  },
+  "creativity-crossroads": {
+   "rows": 80000,
+   "bytes": 6697705,
+   "rawBytes": 160683551
+  },
+  "creativity-action": {
+   "rows": 80000,
+   "bytes": 6605037,
+   "rawBytes": 159277515
+  },
+  "growth-present": {
+   "rows": 80000,
+   "bytes": 6568071,
+   "rawBytes": 158525667
+  },
+  "growth-crossroads": {
+   "rows": 80000,
+   "bytes": 6679704,
+   "rawBytes": 160562603
+  },
+  "growth-action": {
+   "rows": 80000,
+   "bytes": 6580090,
+   "rawBytes": 159156567
+  }
+ }
+}

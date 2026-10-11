@@ -5,7 +5,7 @@ Status: implemented for #38–#49, pending PR review. Qualification evidence is 
 
 ## Integration and ownership
 
-Base: main `6d57488`, including the accepted tarot scene/reading and manual deployment, immutable OIDC and birth-form hydration fixes.
+Base: main `1a58f4c`, preserving reading-export PR #60 alongside the accepted tarot scene/reading and manual deployment, immutable OIDC and birth-form hydration fixes.
 User edits in the original worktree remain separate. No tarot DTO, hand, camera,
 artwork or interpretation rule is repurposed for astrology.
 
