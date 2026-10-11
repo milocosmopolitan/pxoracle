@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 const semantics = JSON.parse(
-  readFileSync("content/tarot/reading/semantics.1.json"),
+  readFileSync("content/tarot/reading/semantics.2.json"),
 );
 const positions = ["situation", "examination", "next_action"];
 const input = (
@@ -73,8 +73,8 @@ const plans = JSON.parse(
       "--example",
       "evaluate",
       "--",
-      "content/tarot/reading/semantics.1.json",
-      "content/tarot/reading/rules.1.json",
+      "content/tarot/reading/semantics.2.json",
+      "content/tarot/reading/rules.2.json",
       "/tmp/pxoracle-reading-inputs.json",
     ],
     { encoding: "utf8" },

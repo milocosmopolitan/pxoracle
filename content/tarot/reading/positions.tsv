@@ -1,0 +1,10 @@
+# role|orientation-specific field|frame
+visible|resource|A resource to notice in the situation: {0}.
+examination|difficulty|Look more closely at {0}.
+direction|action|One possible direction from this card: {0}
+values|resource|Consider how much you value {0}.
+conditions|difficulty|An overlooked condition to check is {0}.
+checks|question|Before choosing, use this card to ask: {0}
+foundation|resource|Build on {0}.
+difficulty|difficulty|Watch for {0} when deciding what is manageable.
+small_action|action|A possible small step: {0}

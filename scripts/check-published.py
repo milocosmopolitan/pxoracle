@@ -21,7 +21,7 @@ def check(base, release):
         assert mime == "application/wasm" and body[:4] == b"\0asm", feature
         mime, body = get(f"/engines/{feature}/worker.mjs")
         assert mime in ["text/javascript", "application/javascript"] and b"<!DOCTYPE" not in body
-    for name in ["semantics.1", "rules.1", "reading.en.1"]:
+    for name in ["semantics.2", "rules.2", "reading.en.1.1"]:
         mime, body = get(f"/content/reading/{name}.json")
         assert mime == "application/json" and isinstance(json.loads(body), dict), name
     try:

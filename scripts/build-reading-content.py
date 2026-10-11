@@ -10,20 +10,19 @@ def rows(name, n):
         assert len(cells)==n, (name,cells[0],len(cells))
         result.append(cells)
     return result
-versions=dict(schema=1,engine='reading.1',semantics='semantics.1',rules='rules.1',content='reading.en.1')
+versions=dict(schema=1,engine='reading.2',semantics='semantics.2',rules='rules.2',content='reading.en.1.1')
 old=json.loads((root/'content/tarot/en.v1.json').read_text())
 topics=['relationships','work','creativity','growth']
 roles=['visible','examination','direction','values','conditions','checks','foundation','difficulty','small_action']
 strings={};meanings={};rules=[]
-scopes=['Within a relationship','In your work or career','For a creative project','In your personal growth']
+intents=['present','crossroads','action']
 themes=rows('themes.tsv',7)
 for theme,*parts in themes:
     for i,topic in enumerate(topics):
         strings[f'topic.{theme}.{topic}']=parts[i]
-        strings[f'action.repeat.{theme}.{topic}']=scopes[i]+', '+parts[4]
-        strings[f'question.repeat.{theme}.{topic}']=scopes[i]+', '+parts[5][0].lower()+parts[5][1:]
-for theme,*parts in rows('roles.tsv',10):
-    for role,text in zip(roles,parts):strings[f'role.{theme}.{role}']=text
+
+position_frames={role:(field,text) for role,field,text in rows('positions.tsv',3)}
+assert set(position_frames)==set(roles)
 for id,up,rev,lens,*parts in rows('cards.tsv',12):
     assert id in old['cards'] and len(parts)==8
     strings[f'name.{id}']=old['cards'][id]['name']
@@ -31,7 +30,9 @@ for id,up,rev,lens,*parts in rows('cards.tsv',12):
         key=f'{id}.{orientation}';tags=themes_text.split(',')
         strings[f'{key}.core']=old['cards'][id][orientation]
         for field,text in zip(['resource','difficulty','action','question'],parts[offset:offset+4]):strings[f'{key}.{field}']=text
-        meanings[key]=dict(themes=tags,lens='direct' if orientation=='upright' else lens,coreRef=f'{key}.core',resourceRef=f'{key}.resource',difficultyRef=f'{key}.difficulty',actionRef=f'{key}.action',questionRef=f'{key}.question',topicRefs={t:f'topic.{tags[0]}.{t}' for t in topics},roleRefs={r:f'role.{tags[0]}.{r}' for r in roles})
+        for role,(field,frame) in position_frames.items():
+            strings[f'{key}.role.{role}']=frame.replace('{0}', strings[f'{key}.{field}'])
+        meanings[key]=dict(themes=tags,lens='direct' if orientation=='upright' else lens,coreRef=f'{key}.core',resourceRef=f'{key}.resource',difficultyRef=f'{key}.difficulty',actionRef=f'{key}.action',questionRef=f'{key}.question',topicRefs={t:f'topic.{tags[0]}.{t}' for t in topics},roleRefs={r:f'{key}.role.{r}' for r in roles})
 repeat={
 'expansion':'Several cards return to opening possibilities. Keep exploration small enough to learn from rather than treating every invitation as a commitment.',
 'boundaries':'Limits recur across the cards. Naming what a boundary protects is more useful than simply making it stricter.',
@@ -47,21 +48,41 @@ repeat={
 'release':'Letting go recurs across the cards. A deliberate small ending can free attention without denying the value of what came before.'}
 for theme,text in repeat.items():
     id=f'repetition.{theme}';strings[f'relation.{id}']=text
-    rules.append(dict(id=id,kind='repetition',left=theme,right=theme,priority=40,relationRef=f'relation.{id}',actionRefs={t:f'action.repeat.{theme}.{t}' for t in topics},questionRefs={t:f'question.repeat.{theme}.{t}' for t in topics}))
+    rules.append(dict(id=id,kind='repetition',left=theme,right=theme,priority=40,relationRef=f'relation.{id}',actionRefs={},questionRefs={}))
 for id,kind,left,right,priority,relation,action,question in rows('relations.tsv',8):
     strings[f'relation.{id}']=relation
-    for i,t in enumerate(topics):
-        strings[f'action.{id}.{t}']=scopes[i]+', '+action
-        strings[f'question.{id}.{t}']=scopes[i]+', '+question[0].lower()+question[1:]
-    rules.append(dict(id=id,kind=kind,left=left,right=right,priority=int(priority),relationRef=f'relation.{id}',actionRefs={t:f'action.{id}.{t}' for t in topics},questionRefs={t:f'question.{id}.{t}' for t in topics}))
+    rules.append(dict(id=id,kind=kind,left=left,right=right,priority=int(priority),relationRef=f'relation.{id}',actionRefs={},questionRefs={}))
+# Advice is authored per rule, topic and intent, and Rust selects the reference.
+rule_ids={r['id'] for r in rules}
+by_id={r['id']:r for r in rules}
+for topic in topics:
+    seen=set()
+    for rule,intent,action,question in rows(f'advice-{topic}.tsv',4):
+        assert rule in rule_ids and intent in intents and (rule,intent) not in seen
+        assert action.strip() and question.strip() and question.endswith('?')
+        seen.add((rule,intent))
+        for part,text in [('action',action),('question',question)]:
+            ref=f'{part}.{rule}.{topic}.{intent}'
+            strings[ref]=text
+            by_id[rule][part+'Refs'].setdefault(topic,{})[intent]=ref
+    assert seen=={(rule,intent) for rule in rule_ids for intent in intents}, topic
+for topic,intent,action,question in rows('fallback.tsv',4):
+    assert topic in topics and intent in intents
+    for part,text in [('action',action),('question',question)]:
+        ref=f'fallback.{topic}.{intent}.{part}'
+        assert ref not in strings and text.count('{0}')==1
+        strings[ref]=text
+assert sum(k.startswith('fallback.') for k in strings)==24
+strings['evidence.2']='{0} and {1}: {2}'
+strings['evidence.3']='{0}, {1} and {2}: {3}'
 flows={
-'present':['To understand the present, start with the conditions rather than a prediction. {0}','The first perspective offers {0}.','The second asks you to examine {0}.','For a helpful direction: {0}','The cards do not establish a strong shared relationship under these rules. Use their sequence as a resource to notice, a difficulty to examine and a direction to consider; they need not tell one hidden story.'],
-'crossroads':['This spread examines the basis of a choice; it does not choose an outcome for you. {0}','In weighing your values, consider {0}.','Among the less visible conditions, examine {0}.','Before deciding: {0}','No strong relationship is supported here. Keep the three checks distinct: what you value, what a choice may conceal and what needs checking before commitment.'],
-'action':['For a next step, work at the scale of an experiment rather than a promised outcome. {0}','Your starting resource is {0}.','The difficulty to account for is {0}.','Keep the next move bounded: {0}','No strong shared relationship is supported. Begin with the available resource, allow for the difficulty and test a small action without treating the cards as a prediction.']}
+'present':['To understand the present, start with the conditions rather than a prediction. {0}','{0} offers a resource to notice: {1}.','{0} asks you to examine {1}.','{0}: {1}','These rules find no strong shared theme among these cards. Use their sequence as a resource to notice, a difficulty to examine and a direction to consider; they need not tell one hidden story.'],
+'crossroads':['This spread examines the basis of a choice; it does not choose an outcome for you. {0}','With {0}, consider the value of {1}.','{0} brings a possible overlooked condition into view: {1}.','{0}: {1}','These rules find no strong shared theme among these cards. Keep the three checks distinct: what you value, what a choice may conceal and what needs checking before commitment.'],
+'action':['For a next step, work at the scale of an experiment rather than a promised outcome. {0}','{0} points to a starting resource: {1}.','With {0}, account for {1}.','{0}: {1}','These rules find no strong shared theme among these cards. Begin with the available resource, allow for the difficulty and test a small action without treating the cards as a prediction.']}
 for intent,parts in flows.items():
     for part,text in zip(['opening','first','second','third','fallback'],parts):strings[f'flow.{intent}.{part}']=text
 assert len(meanings)==156
-outputs={'semantics.1.json':dict(versions=versions,meanings=meanings,referenceIds=sorted(strings)), 'rules.1.json':dict(versions=versions,rules=rules),'reading.en.1.json':dict(schemaVersion=1,version='reading.en.1',locale='en',strings=strings)}
+outputs={'semantics.2.json':dict(versions=versions,meanings=meanings,referenceIds=sorted(strings)), 'rules.2.json':dict(versions=versions,rules=rules),'reading.en.1.1.json':dict(schemaVersion=1,version='reading.en.1.1',locale='en',strings=strings)}
 for name,data in outputs.items():
     text=json.dumps(data,ensure_ascii=False,indent=2)+'\n'
     for path in [source/name,root/'apps/web/public/content/reading'/name]:

@@ -2,9 +2,9 @@ use pxoracle_tarot_reading::*;
 fn packs() -> (SemanticPack, RulePack) {
     let base = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../content/tarot/reading");
     (
-        serde_json::from_str(&std::fs::read_to_string(base.join("semantics.1.json")).unwrap())
+        serde_json::from_str(&std::fs::read_to_string(base.join("semantics.2.json")).unwrap())
             .unwrap(),
-        serde_json::from_str(&std::fs::read_to_string(base.join("rules.1.json")).unwrap()).unwrap(),
+        serde_json::from_str(&std::fs::read_to_string(base.join("rules.2.json")).unwrap()).unwrap(),
     )
 }
 fn input(ids: [&str; 3]) -> ReadingInput {
@@ -90,6 +90,9 @@ fn rejection_preserves_bounded_contract() {
     let mut missing = s.clone();
     missing.meanings.remove("major.00.upright");
     assert!(Interpreter::new(missing, r.clone()).is_err());
+    let mut missing_name = s.clone();
+    missing_name.reference_ids.retain(|r| r != "name.major.00");
+    assert!(Interpreter::new(missing_name, r.clone()).is_err());
     let mut broken = s;
     broken
         .meanings
@@ -173,4 +176,72 @@ fn the_same_card_changes_role_when_its_position_changes() {
     );
     assert_ne!(first.overall, last.overall);
     assert_eq!(last.positions[2].phrases[0].card_indices, vec![2]);
+}
+
+#[test]
+fn relation_advice_dispatches_all_intents_and_incomplete_maps_fail() {
+    let (s, r) = packs();
+    let engine = Interpreter::new(s.clone(), r.clone()).unwrap();
+    for topic in TOPICS {
+        for intent in INTENTS {
+            let mut value = input(["major.00", "major.04", "major.14"]);
+            value.context = Context { topic, intent };
+            let plan = engine.interpret(value).unwrap();
+            let primary = &plan.relations[0];
+            let rule = r.rules.iter().find(|r| r.id == primary.rule_id).unwrap();
+            assert_eq!(plan.action.reference, rule.action_refs[&topic][&intent]);
+            assert_eq!(plan.question.reference, rule.question_refs[&topic][&intent]);
+            assert_eq!(primary.phrase.arguments.last(), Some(&rule.relation_ref));
+            assert_eq!(
+                primary.phrase.arguments.len(),
+                primary.card_indices.len() + 1
+            );
+        }
+    }
+    let mut missing = r.clone();
+    missing.rules[0]
+        .action_refs
+        .get_mut(&Topic::Work)
+        .unwrap()
+        .remove(&Intent::Crossroads);
+    assert!(Interpreter::new(s.clone(), missing).is_err());
+    let mut broken = r;
+    broken.rules[0]
+        .question_refs
+        .get_mut(&Topic::Growth)
+        .unwrap()
+        .insert(Intent::Action, "absent".into());
+    assert!(Interpreter::new(s, broken).is_err());
+}
+
+#[test]
+fn fallback_keeps_the_third_orientation_and_explicit_context() {
+    let (s, r) = packs();
+    let engine = Interpreter::new(s.clone(), r).unwrap();
+    for topic in TOPICS {
+        for intent in INTENTS {
+            // Original review case 4935: all reversed Fool, Hermit and Wheel.
+            let mut value = input(["major.00", "major.09", "major.10"]);
+            for c in &mut value.cards {
+                c.orientation = Orientation::Reversed;
+            }
+            value.context = Context { topic, intent };
+            let plan = engine.interpret(value).unwrap();
+            assert!(plan.fallback);
+            assert_eq!(
+                plan.action.arguments,
+                vec![s.meanings["major.10.reversed"].action_ref.clone()]
+            );
+            assert_eq!(
+                plan.question.arguments,
+                vec![s.meanings["major.10.reversed"].question_ref.clone()]
+            );
+            assert_eq!(plan.action.card_indices, vec![2]);
+            assert!(plan.action.reference.starts_with("fallback."));
+            assert_eq!(
+                plan.positions[1].phrases[1].reference,
+                s.meanings["major.09.reversed"].role_refs[&roles(intent)[1]]
+            );
+        }
+    }
 }

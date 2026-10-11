@@ -10,7 +10,7 @@ import {
 import type { Context, ReadingPlan } from "@pxoracle/contracts/reading";
 import type { ProsePack } from "../features/tarot/reading";
 import fixtures from "../../../../tests/fixtures/readings.json";
-import prose from "../../../../content/tarot/reading/reading.en.1.json";
+import prose from "../../../../content/tarot/reading/reading.en.1.1.json";
 const meta = {
   title: "PXOracle/Free reading",
   parameters: { layout: "padded" },

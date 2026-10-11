@@ -85,8 +85,8 @@ class PublishTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Incomplete"):
                 publish.validate_export(out)
             for name in ["index.html", "404.html", "tarot/index.html", "astrology/index.html",
-                         "content/reading/semantics.1.json", "content/reading/rules.1.json",
-                         "content/reading/reading.en.1.json", "_next/static/test.js"]:
+                         "content/reading/semantics.2.json", "content/reading/rules.2.json",
+                         "content/reading/reading.en.1.1.json", "_next/static/test.js"]:
                 path = out / name
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text("fixture")

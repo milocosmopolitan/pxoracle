@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-11T18:32:42.949090+00:00",
+  "sourceRevision": "92d7861",
+  "sourceState": "uncommitted isolated editorial worktree; see delta.json source hashes",
+  "humanEditorialApproval": false,
+  "checks": [
+    {
+      "command": "cargo test --locked",
+      "result": "pass",
+      "nativeTests": 35,
+      "log": "pxoracle-editorial-cargo-final.log"
+    },
+    {
+      "command": "npm run wasm (Emscripten 4.0.10)",
+      "result": "pass",
+      "log": "pxoracle-editorial-wasm-final.log"
+    },
+    {
+      "command": "bash scripts/generate-schemas.sh",
+      "result": "pass",
+      "note": "Rust-owned schemas and TypeScript generated after nested map/version changes"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "pass",
+      "log": "pxoracle-editorial-typecheck-final.log"
+    },
+    {
+      "command": "npm run build",
+      "result": "pass",
+      "note": "Final WASM copied into static export",
+      "log": "pxoracle-editorial-build-final.log"
+    },
+    {
+      "command": "npm test",
+      "result": "pass",
+      "tests": 66,
+      "log": "pxoracle-editorial-npm-test-final.log"
+    },
+    {
+      "command": "node --import tsx --test tests/reading.test.mjs",
+      "result": "pass",
+      "tests": 7,
+      "note": "Rechecked changed boundary after final install-time name-reference guard; 174 native/WASM parity inputs",
+      "log": "pxoracle-editorial-reading-final.log"
+    },
+    {
+      "command": "npm run build-storybook",
+      "result": "pass",
+      "log": "pxoracle-editorial-storybook.log"
+    },
+    {
+      "command": "python3 scripts/build-reading-content.py --check",
+      "result": "pass",
+      "meanings": 156,
+      "rules": 21,
+      "references": 2876
+    },
+    {
+      "command": "python3 -m unittest discover -s .agents/skills/improve-tarot-readings/scripts -p 'test_*.py'",
+      "result": "pass",
+      "tests": 8
+    },
+    {
+      "command": "python3 -m unittest discover -s tests/deployment -v",
+      "result": "pass",
+      "tests": 8
+    },
+    {
+      "command": "node scripts/check-boundaries.mjs",
+      "result": "pass"
+    },
+    {
+      "command": "reading-export sample --start 0 --end 1000; reading-export validate",
+      "result": "pass",
+      "rows": 12000,
+      "scope": "partial-sample"
+    },
+    {
+      "command": "reading-export review --reviewer-copies",
+      "result": "pass",
+      "relationScanCases": 3651648,
+      "reviewCases": 2696,
+      "rows": 32352,
+      "reachableRules": 21,
+      "cardOrientationPositionCoverage": "468/468",
+      "note": "Relation scan plus representative text rendering, not full text export"
+    },
+    {
+      "command": "final native renderCases + production composeReading",
+      "result": "pass",
+      "matchedRows": 32352,
+      "note": "Byte-identical to independently reviewed final CSVs after final validation-only Rust change"
+    },
+    {
+      "command": "Playwright reading.spec.ts, Chrome and Pixel 7 Chromium emulation",
+      "result": "pass",
+      "tests": 6,
+      "log": "pxoracle-editorial-browser.log"
+    },
+    {
+      "command": "Playwright Storybook reading.spec.ts",
+      "result": "pass",
+      "tests": 1,
+      "storyStates": 11,
+      "log": "pxoracle-editorial-storybook-browser.log"
+    },
+    {
+      "command": "Playwright release-one migration with final WASM build, Chrome and Pixel 7 Chromium emulation",
+      "result": "pass",
+      "tests": 2,
+      "log": "pxoracle-editorial-browser-final.log",
+      "scope": "HTML reading/reinterpretation/save; no scene visual qualification"
+    },
+    {
+      "name": "Read-only technical subagent review",
+      "result": "pass-after-fix",
+      "finding": "Rust install must require every generated name.<cardId> argument reference",
+      "resolution": "Validate all78names at install; malformed-pack regression test passed"
+    }
+  ],
+  "initialFailedAttempts": [
+    {
+      "command": "npm run wasm",
+      "reason": "Local SDK6.0.12 failed C++ exception-symbol linking; corrected to pinned4.0.10 and rebuilt"
+    },
+    {
+      "command": "npm test",
+      "reason": "Launched before static build finished; missing out/index.html. Completed build then reran all66 successfully."
+    }
+  ],
+  "scopeLimits": [
+    "No physical mobile device or new Safari/Firefox qualification in this task.",
+    "Agent sample review is not human editorial approval.",
+    "Full43,819,776-row text export not regenerated."
+  ]
+}

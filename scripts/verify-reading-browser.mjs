@@ -68,7 +68,7 @@ try {
     false,
   );
   let fail = true;
-  await context.route("**/content/reading/rules.1.json", (route) =>
+  await context.route("**/content/reading/rules.2.json", (route) =>
     fail
       ? route.fulfill({ status: 503, body: "unavailable" })
       : route.continue(),
@@ -247,7 +247,7 @@ try {
     "390x844 mobile emulation: full draw/reveal/reading, no horizontal overflow",
   );
   // Reuse a real saved draw to test abandonment while prose is pending.
-  await context.unroute("**/content/reading/rules.1.json");
+  await context.unroute("**/content/reading/rules.2.json");
   await page.evaluate(
     (raw) => localStorage.setItem("pxoracle.tarot.v2", raw),
     saved,
@@ -260,7 +260,7 @@ try {
   const seen = new Promise((resolve) => {
     started = resolve;
   });
-  await context.route("**/content/reading/reading.en.1.json", async (route) => {
+  await context.route("**/content/reading/reading.en.1.1.json", async (route) => {
     started();
     await held;
     await route.continue().catch(() => {});
@@ -271,7 +271,7 @@ try {
   await page.getByRole("link", { name: "The room", exact: true }).click();
   await page.waitForURL(base + "/");
   release();
-  await context.unroute("**/content/reading/reading.en.1.json");
+  await context.unroute("**/content/reading/reading.en.1.1.json");
   await page.getByRole("link", { name: "Tarot", exact: true }).click();
   await page.getByRole("heading", { name: "The whole reading" }).waitFor();
   assert.equal(await page.locator(".structured-reading").innerText(), result);

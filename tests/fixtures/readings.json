@@ -4,10 +4,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -34,10 +34,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -74,7 +74,7 @@
               ]
             },
             {
-              "reference": "role.expansion.visible",
+              "reference": "major.00.upright.role.visible",
               "arguments": [],
               "cardIndices": [
                 0
@@ -102,7 +102,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.examination",
+              "reference": "major.04.upright.role.examination",
               "arguments": [],
               "cardIndices": [
                 1
@@ -130,7 +130,7 @@
               ]
             },
             {
-              "reference": "role.care.direction",
+              "reference": "major.14.upright.role.direction",
               "arguments": [],
               "cardIndices": [
                 2
@@ -159,6 +159,7 @@
         {
           "reference": "flow.present.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -168,6 +169,7 @@
         {
           "reference": "flow.present.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -177,15 +179,20 @@
         {
           "reference": "flow.present.third",
           "arguments": [
-            "role.care.direction"
+            "name.major.14",
+            "major.14.upright.role.direction"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -201,8 +208,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -217,8 +228,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -227,7 +242,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.relationships",
+        "reference": "action.tension.expansion-boundaries.relationships.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -235,7 +250,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.relationships",
+        "reference": "question.tension.expansion-boundaries.relationships.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -250,10 +265,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -280,10 +295,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -320,7 +335,7 @@
               ]
             },
             {
-              "reference": "role.expansion.values",
+              "reference": "major.00.upright.role.values",
               "arguments": [],
               "cardIndices": [
                 0
@@ -348,7 +363,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.conditions",
+              "reference": "major.04.upright.role.conditions",
               "arguments": [],
               "cardIndices": [
                 1
@@ -376,7 +391,7 @@
               ]
             },
             {
-              "reference": "role.care.checks",
+              "reference": "major.14.upright.role.checks",
               "arguments": [],
               "cardIndices": [
                 2
@@ -405,6 +420,7 @@
         {
           "reference": "flow.crossroads.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -414,6 +430,7 @@
         {
           "reference": "flow.crossroads.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -423,15 +440,20 @@
         {
           "reference": "flow.crossroads.third",
           "arguments": [
-            "role.care.checks"
+            "name.major.14",
+            "major.14.upright.role.checks"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -447,8 +469,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -463,8 +489,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -473,7 +503,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.relationships",
+        "reference": "action.tension.expansion-boundaries.relationships.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -481,7 +511,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.relationships",
+        "reference": "question.tension.expansion-boundaries.relationships.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -496,10 +526,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -526,10 +556,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -566,7 +596,7 @@
               ]
             },
             {
-              "reference": "role.expansion.foundation",
+              "reference": "major.00.upright.role.foundation",
               "arguments": [],
               "cardIndices": [
                 0
@@ -594,7 +624,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.difficulty",
+              "reference": "major.04.upright.role.difficulty",
               "arguments": [],
               "cardIndices": [
                 1
@@ -622,7 +652,7 @@
               ]
             },
             {
-              "reference": "role.care.small_action",
+              "reference": "major.14.upright.role.small_action",
               "arguments": [],
               "cardIndices": [
                 2
@@ -651,6 +681,7 @@
         {
           "reference": "flow.action.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -660,6 +691,7 @@
         {
           "reference": "flow.action.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -669,15 +701,20 @@
         {
           "reference": "flow.action.third",
           "arguments": [
-            "role.care.small_action"
+            "name.major.14",
+            "major.14.upright.role.small_action"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -693,8 +730,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -709,8 +750,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -719,7 +764,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.relationships",
+        "reference": "action.tension.expansion-boundaries.relationships.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -727,7 +772,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.relationships",
+        "reference": "question.tension.expansion-boundaries.relationships.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -742,10 +787,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -772,10 +817,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -812,7 +857,7 @@
               ]
             },
             {
-              "reference": "role.expansion.visible",
+              "reference": "major.00.upright.role.visible",
               "arguments": [],
               "cardIndices": [
                 0
@@ -840,7 +885,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.examination",
+              "reference": "major.04.upright.role.examination",
               "arguments": [],
               "cardIndices": [
                 1
@@ -868,7 +913,7 @@
               ]
             },
             {
-              "reference": "role.care.direction",
+              "reference": "major.14.upright.role.direction",
               "arguments": [],
               "cardIndices": [
                 2
@@ -897,6 +942,7 @@
         {
           "reference": "flow.present.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -906,6 +952,7 @@
         {
           "reference": "flow.present.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -915,15 +962,20 @@
         {
           "reference": "flow.present.third",
           "arguments": [
-            "role.care.direction"
+            "name.major.14",
+            "major.14.upright.role.direction"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -939,8 +991,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -955,8 +1011,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -965,7 +1025,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.work",
+        "reference": "action.tension.expansion-boundaries.work.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -973,7 +1033,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.work",
+        "reference": "question.tension.expansion-boundaries.work.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -988,10 +1048,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -1018,10 +1078,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -1058,7 +1118,7 @@
               ]
             },
             {
-              "reference": "role.expansion.values",
+              "reference": "major.00.upright.role.values",
               "arguments": [],
               "cardIndices": [
                 0
@@ -1086,7 +1146,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.conditions",
+              "reference": "major.04.upright.role.conditions",
               "arguments": [],
               "cardIndices": [
                 1
@@ -1114,7 +1174,7 @@
               ]
             },
             {
-              "reference": "role.care.checks",
+              "reference": "major.14.upright.role.checks",
               "arguments": [],
               "cardIndices": [
                 2
@@ -1143,6 +1203,7 @@
         {
           "reference": "flow.crossroads.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -1152,6 +1213,7 @@
         {
           "reference": "flow.crossroads.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -1161,15 +1223,20 @@
         {
           "reference": "flow.crossroads.third",
           "arguments": [
-            "role.care.checks"
+            "name.major.14",
+            "major.14.upright.role.checks"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -1185,8 +1252,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -1201,8 +1272,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -1211,7 +1286,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.work",
+        "reference": "action.tension.expansion-boundaries.work.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1219,7 +1294,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.work",
+        "reference": "question.tension.expansion-boundaries.work.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1234,10 +1309,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -1264,10 +1339,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -1304,7 +1379,7 @@
               ]
             },
             {
-              "reference": "role.expansion.foundation",
+              "reference": "major.00.upright.role.foundation",
               "arguments": [],
               "cardIndices": [
                 0
@@ -1332,7 +1407,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.difficulty",
+              "reference": "major.04.upright.role.difficulty",
               "arguments": [],
               "cardIndices": [
                 1
@@ -1360,7 +1435,7 @@
               ]
             },
             {
-              "reference": "role.care.small_action",
+              "reference": "major.14.upright.role.small_action",
               "arguments": [],
               "cardIndices": [
                 2
@@ -1389,6 +1464,7 @@
         {
           "reference": "flow.action.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -1398,6 +1474,7 @@
         {
           "reference": "flow.action.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -1407,15 +1484,20 @@
         {
           "reference": "flow.action.third",
           "arguments": [
-            "role.care.small_action"
+            "name.major.14",
+            "major.14.upright.role.small_action"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -1431,8 +1513,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -1447,8 +1533,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -1457,7 +1547,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.work",
+        "reference": "action.tension.expansion-boundaries.work.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1465,7 +1555,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.work",
+        "reference": "question.tension.expansion-boundaries.work.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1480,10 +1570,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -1510,10 +1600,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -1550,7 +1640,7 @@
               ]
             },
             {
-              "reference": "role.expansion.visible",
+              "reference": "major.00.upright.role.visible",
               "arguments": [],
               "cardIndices": [
                 0
@@ -1578,7 +1668,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.examination",
+              "reference": "major.04.upright.role.examination",
               "arguments": [],
               "cardIndices": [
                 1
@@ -1606,7 +1696,7 @@
               ]
             },
             {
-              "reference": "role.care.direction",
+              "reference": "major.14.upright.role.direction",
               "arguments": [],
               "cardIndices": [
                 2
@@ -1635,6 +1725,7 @@
         {
           "reference": "flow.present.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -1644,6 +1735,7 @@
         {
           "reference": "flow.present.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -1653,15 +1745,20 @@
         {
           "reference": "flow.present.third",
           "arguments": [
-            "role.care.direction"
+            "name.major.14",
+            "major.14.upright.role.direction"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -1677,8 +1774,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -1693,8 +1794,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -1703,7 +1808,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.creativity",
+        "reference": "action.tension.expansion-boundaries.creativity.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1711,7 +1816,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.creativity",
+        "reference": "question.tension.expansion-boundaries.creativity.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1726,10 +1831,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -1756,10 +1861,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -1796,7 +1901,7 @@
               ]
             },
             {
-              "reference": "role.expansion.values",
+              "reference": "major.00.upright.role.values",
               "arguments": [],
               "cardIndices": [
                 0
@@ -1824,7 +1929,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.conditions",
+              "reference": "major.04.upright.role.conditions",
               "arguments": [],
               "cardIndices": [
                 1
@@ -1852,7 +1957,7 @@
               ]
             },
             {
-              "reference": "role.care.checks",
+              "reference": "major.14.upright.role.checks",
               "arguments": [],
               "cardIndices": [
                 2
@@ -1881,6 +1986,7 @@
         {
           "reference": "flow.crossroads.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -1890,6 +1996,7 @@
         {
           "reference": "flow.crossroads.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -1899,15 +2006,20 @@
         {
           "reference": "flow.crossroads.third",
           "arguments": [
-            "role.care.checks"
+            "name.major.14",
+            "major.14.upright.role.checks"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -1923,8 +2035,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -1939,8 +2055,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -1949,7 +2069,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.creativity",
+        "reference": "action.tension.expansion-boundaries.creativity.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1957,7 +2077,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.creativity",
+        "reference": "question.tension.expansion-boundaries.creativity.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -1972,10 +2092,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -2002,10 +2122,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -2042,7 +2162,7 @@
               ]
             },
             {
-              "reference": "role.expansion.foundation",
+              "reference": "major.00.upright.role.foundation",
               "arguments": [],
               "cardIndices": [
                 0
@@ -2070,7 +2190,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.difficulty",
+              "reference": "major.04.upright.role.difficulty",
               "arguments": [],
               "cardIndices": [
                 1
@@ -2098,7 +2218,7 @@
               ]
             },
             {
-              "reference": "role.care.small_action",
+              "reference": "major.14.upright.role.small_action",
               "arguments": [],
               "cardIndices": [
                 2
@@ -2127,6 +2247,7 @@
         {
           "reference": "flow.action.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -2136,6 +2257,7 @@
         {
           "reference": "flow.action.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -2145,15 +2267,20 @@
         {
           "reference": "flow.action.third",
           "arguments": [
-            "role.care.small_action"
+            "name.major.14",
+            "major.14.upright.role.small_action"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -2169,8 +2296,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -2185,8 +2316,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -2195,7 +2330,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.creativity",
+        "reference": "action.tension.expansion-boundaries.creativity.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2203,7 +2338,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.creativity",
+        "reference": "question.tension.expansion-boundaries.creativity.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2218,10 +2353,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -2248,10 +2383,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -2288,7 +2423,7 @@
               ]
             },
             {
-              "reference": "role.expansion.visible",
+              "reference": "major.00.upright.role.visible",
               "arguments": [],
               "cardIndices": [
                 0
@@ -2316,7 +2451,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.examination",
+              "reference": "major.04.upright.role.examination",
               "arguments": [],
               "cardIndices": [
                 1
@@ -2344,7 +2479,7 @@
               ]
             },
             {
-              "reference": "role.care.direction",
+              "reference": "major.14.upright.role.direction",
               "arguments": [],
               "cardIndices": [
                 2
@@ -2373,6 +2508,7 @@
         {
           "reference": "flow.present.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -2382,6 +2518,7 @@
         {
           "reference": "flow.present.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -2391,15 +2528,20 @@
         {
           "reference": "flow.present.third",
           "arguments": [
-            "role.care.direction"
+            "name.major.14",
+            "major.14.upright.role.direction"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -2415,8 +2557,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -2431,8 +2577,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -2441,7 +2591,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.growth",
+        "reference": "action.tension.expansion-boundaries.growth.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2449,7 +2599,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.growth",
+        "reference": "question.tension.expansion-boundaries.growth.present",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2464,10 +2614,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -2494,10 +2644,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -2534,7 +2684,7 @@
               ]
             },
             {
-              "reference": "role.expansion.values",
+              "reference": "major.00.upright.role.values",
               "arguments": [],
               "cardIndices": [
                 0
@@ -2562,7 +2712,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.conditions",
+              "reference": "major.04.upright.role.conditions",
               "arguments": [],
               "cardIndices": [
                 1
@@ -2590,7 +2740,7 @@
               ]
             },
             {
-              "reference": "role.care.checks",
+              "reference": "major.14.upright.role.checks",
               "arguments": [],
               "cardIndices": [
                 2
@@ -2619,6 +2769,7 @@
         {
           "reference": "flow.crossroads.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -2628,6 +2779,7 @@
         {
           "reference": "flow.crossroads.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -2637,15 +2789,20 @@
         {
           "reference": "flow.crossroads.third",
           "arguments": [
-            "role.care.checks"
+            "name.major.14",
+            "major.14.upright.role.checks"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -2661,8 +2818,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -2677,8 +2838,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -2687,7 +2852,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.growth",
+        "reference": "action.tension.expansion-boundaries.growth.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2695,7 +2860,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.growth",
+        "reference": "question.tension.expansion-boundaries.growth.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2710,10 +2875,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -2740,10 +2905,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -2780,7 +2945,7 @@
               ]
             },
             {
-              "reference": "role.expansion.foundation",
+              "reference": "major.00.upright.role.foundation",
               "arguments": [],
               "cardIndices": [
                 0
@@ -2808,7 +2973,7 @@
               ]
             },
             {
-              "reference": "role.boundaries.difficulty",
+              "reference": "major.04.upright.role.difficulty",
               "arguments": [],
               "cardIndices": [
                 1
@@ -2836,7 +3001,7 @@
               ]
             },
             {
-              "reference": "role.care.small_action",
+              "reference": "major.14.upright.role.small_action",
               "arguments": [],
               "cardIndices": [
                 2
@@ -2865,6 +3030,7 @@
         {
           "reference": "flow.action.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -2874,6 +3040,7 @@
         {
           "reference": "flow.action.second",
           "arguments": [
+            "name.major.04",
             "major.04.upright.difficulty"
           ],
           "cardIndices": [
@@ -2883,15 +3050,20 @@
         {
           "reference": "flow.action.third",
           "arguments": [
-            "role.care.small_action"
+            "name.major.14",
+            "major.14.upright.role.small_action"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.expansion-boundaries",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.00",
+            "name.major.04",
+            "relation.tension.expansion-boundaries"
+          ],
           "cardIndices": [
             0,
             1
@@ -2907,8 +3079,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.tension.expansion-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.00",
+              "name.major.04",
+              "relation.tension.expansion-boundaries"
+            ],
             "cardIndices": [
               0,
               1
@@ -2923,8 +3099,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.care-boundaries",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.04",
+              "name.major.14",
+              "relation.tension.care-boundaries"
+            ],
             "cardIndices": [
               1,
               2
@@ -2933,7 +3113,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.expansion-boundaries.growth",
+        "reference": "action.tension.expansion-boundaries.growth.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2941,7 +3121,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.expansion-boundaries.growth",
+        "reference": "question.tension.expansion-boundaries.growth.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -2956,10 +3136,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -2986,10 +3166,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "growth",
@@ -3026,7 +3206,7 @@
               ]
             },
             {
-              "reference": "role.connection.foundation",
+              "reference": "major.09.reversed.role.foundation",
               "arguments": [],
               "cardIndices": [
                 0
@@ -3054,7 +3234,7 @@
               ]
             },
             {
-              "reference": "role.care.difficulty",
+              "reference": "swords.09.reversed.role.difficulty",
               "arguments": [],
               "cardIndices": [
                 1
@@ -3082,7 +3262,7 @@
               ]
             },
             {
-              "reference": "role.care.small_action",
+              "reference": "pentacles.05.reversed.role.small_action",
               "arguments": [],
               "cardIndices": [
                 2
@@ -3111,6 +3291,7 @@
         {
           "reference": "flow.action.first",
           "arguments": [
+            "name.major.09",
             "major.09.reversed.resource"
           ],
           "cardIndices": [
@@ -3120,6 +3301,7 @@
         {
           "reference": "flow.action.second",
           "arguments": [
+            "name.swords.09",
             "swords.09.reversed.difficulty"
           ],
           "cardIndices": [
@@ -3129,15 +3311,20 @@
         {
           "reference": "flow.action.third",
           "arguments": [
-            "role.care.small_action"
+            "name.pentacles.05",
+            "pentacles.05.reversed.role.small_action"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.repetition.care",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.swords.09",
+            "name.pentacles.05",
+            "relation.repetition.care"
+          ],
           "cardIndices": [
             1,
             2
@@ -3153,8 +3340,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.repetition.care",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.swords.09",
+              "name.pentacles.05",
+              "relation.repetition.care"
+            ],
             "cardIndices": [
               1,
               2
@@ -3163,7 +3354,7 @@
         }
       ],
       "action": {
-        "reference": "action.repeat.care.growth",
+        "reference": "action.repetition.care.growth.action",
         "arguments": [],
         "cardIndices": [
           1,
@@ -3171,7 +3362,7 @@
         ]
       },
       "question": {
-        "reference": "question.repeat.care.growth",
+        "reference": "question.repetition.care.growth.action",
         "arguments": [],
         "cardIndices": [
           1,
@@ -3186,10 +3377,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -3216,10 +3407,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -3256,7 +3447,7 @@
               ]
             },
             {
-              "reference": "role.expansion.visible",
+              "reference": "major.00.upright.role.visible",
               "arguments": [],
               "cardIndices": [
                 0
@@ -3284,7 +3475,7 @@
               ]
             },
             {
-              "reference": "role.effort.examination",
+              "reference": "major.01.upright.role.examination",
               "arguments": [],
               "cardIndices": [
                 1
@@ -3312,7 +3503,7 @@
               ]
             },
             {
-              "reference": "role.connection.direction",
+              "reference": "major.06.upright.role.direction",
               "arguments": [],
               "cardIndices": [
                 2
@@ -3341,6 +3532,7 @@
         {
           "reference": "flow.present.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -3350,6 +3542,7 @@
         {
           "reference": "flow.present.second",
           "arguments": [
+            "name.major.01",
             "major.01.upright.difficulty"
           ],
           "cardIndices": [
@@ -3359,15 +3552,20 @@
         {
           "reference": "flow.present.third",
           "arguments": [
-            "role.connection.direction"
+            "name.major.06",
+            "major.06.upright.role.direction"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.repetition.clarity",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.01",
+            "name.major.06",
+            "relation.repetition.clarity"
+          ],
           "cardIndices": [
             1,
             2
@@ -3383,8 +3581,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.repetition.clarity",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.01",
+              "name.major.06",
+              "relation.repetition.clarity"
+            ],
             "cardIndices": [
               1,
               2
@@ -3393,7 +3595,7 @@
         }
       ],
       "action": {
-        "reference": "action.repeat.clarity.relationships",
+        "reference": "action.repetition.clarity.relationships.present",
         "arguments": [],
         "cardIndices": [
           1,
@@ -3401,7 +3603,7 @@
         ]
       },
       "question": {
-        "reference": "question.repeat.clarity.relationships",
+        "reference": "question.repetition.clarity.relationships.present",
         "arguments": [],
         "cardIndices": [
           1,
@@ -3416,10 +3618,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -3446,10 +3648,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -3486,7 +3688,7 @@
               ]
             },
             {
-              "reference": "role.expansion.visible",
+              "reference": "major.00.upright.role.visible",
               "arguments": [],
               "cardIndices": [
                 0
@@ -3514,7 +3716,7 @@
               ]
             },
             {
-              "reference": "role.effort.examination",
+              "reference": "major.01.upright.role.examination",
               "arguments": [],
               "cardIndices": [
                 1
@@ -3542,7 +3744,7 @@
               ]
             },
             {
-              "reference": "role.effort.direction",
+              "reference": "major.07.upright.role.direction",
               "arguments": [],
               "cardIndices": [
                 2
@@ -3571,6 +3773,7 @@
         {
           "reference": "flow.present.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -3580,6 +3783,7 @@
         {
           "reference": "flow.present.second",
           "arguments": [
+            "name.major.01",
             "major.01.upright.difficulty"
           ],
           "cardIndices": [
@@ -3589,15 +3793,20 @@
         {
           "reference": "flow.present.third",
           "arguments": [
-            "role.effort.direction"
+            "name.major.07",
+            "major.07.upright.role.direction"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.complement.clarity-effort",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.01",
+            "name.major.07",
+            "relation.complement.clarity-effort"
+          ],
           "cardIndices": [
             1,
             2
@@ -3613,8 +3822,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.complement.clarity-effort",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.01",
+              "name.major.07",
+              "relation.complement.clarity-effort"
+            ],
             "cardIndices": [
               1,
               2
@@ -3629,8 +3842,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.repetition.clarity",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.01",
+              "name.major.07",
+              "relation.repetition.clarity"
+            ],
             "cardIndices": [
               1,
               2
@@ -3639,7 +3856,7 @@
         }
       ],
       "action": {
-        "reference": "action.complement.clarity-effort.relationships",
+        "reference": "action.complement.clarity-effort.relationships.present",
         "arguments": [],
         "cardIndices": [
           1,
@@ -3647,7 +3864,7 @@
         ]
       },
       "question": {
-        "reference": "question.complement.clarity-effort.relationships",
+        "reference": "question.complement.clarity-effort.relationships.present",
         "arguments": [],
         "cardIndices": [
           1,
@@ -3662,10 +3879,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -3692,10 +3909,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "relationships",
@@ -3732,7 +3949,7 @@
               ]
             },
             {
-              "reference": "role.expansion.visible",
+              "reference": "major.00.upright.role.visible",
               "arguments": [],
               "cardIndices": [
                 0
@@ -3760,7 +3977,7 @@
               ]
             },
             {
-              "reference": "role.effort.examination",
+              "reference": "major.01.upright.role.examination",
               "arguments": [],
               "cardIndices": [
                 1
@@ -3788,7 +4005,7 @@
               ]
             },
             {
-              "reference": "role.connection.direction",
+              "reference": "cups.01.upright.role.direction",
               "arguments": [],
               "cardIndices": [
                 2
@@ -3817,6 +4034,7 @@
         {
           "reference": "flow.present.first",
           "arguments": [
+            "name.major.00",
             "major.00.upright.resource"
           ],
           "cardIndices": [
@@ -3826,6 +4044,7 @@
         {
           "reference": "flow.present.second",
           "arguments": [
+            "name.major.01",
             "major.01.upright.difficulty"
           ],
           "cardIndices": [
@@ -3835,7 +4054,8 @@
         {
           "reference": "flow.present.third",
           "arguments": [
-            "role.connection.direction"
+            "name.cups.01",
+            "cups.01.upright.role.direction"
           ],
           "cardIndices": [
             2
@@ -3853,15 +4073,19 @@
       ],
       "relations": [],
       "action": {
-        "reference": "cups.01.upright.action",
-        "arguments": [],
+        "reference": "fallback.relationships.present.action",
+        "arguments": [
+          "cups.01.upright.action"
+        ],
         "cardIndices": [
           2
         ]
       },
       "question": {
-        "reference": "cups.01.upright.question",
-        "arguments": [],
+        "reference": "fallback.relationships.present.question",
+        "arguments": [
+          "cups.01.upright.question"
+        ],
         "cardIndices": [
           2
         ]
@@ -3874,10 +4098,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -3904,10 +4128,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "work",
@@ -3944,7 +4168,7 @@
               ]
             },
             {
-              "reference": "role.clarity.values",
+              "reference": "wands.14.upright.role.values",
               "arguments": [],
               "cardIndices": [
                 0
@@ -3972,7 +4196,7 @@
               ]
             },
             {
-              "reference": "role.connection.conditions",
+              "reference": "cups.12.upright.role.conditions",
               "arguments": [],
               "cardIndices": [
                 1
@@ -4000,7 +4224,7 @@
               ]
             },
             {
-              "reference": "role.effort.checks",
+              "reference": "pentacles.11.upright.role.checks",
               "arguments": [],
               "cardIndices": [
                 2
@@ -4029,6 +4253,7 @@
         {
           "reference": "flow.crossroads.first",
           "arguments": [
+            "name.wands.14",
             "wands.14.upright.resource"
           ],
           "cardIndices": [
@@ -4038,6 +4263,7 @@
         {
           "reference": "flow.crossroads.second",
           "arguments": [
+            "name.cups.12",
             "cups.12.upright.difficulty"
           ],
           "cardIndices": [
@@ -4047,15 +4273,20 @@
         {
           "reference": "flow.crossroads.third",
           "arguments": [
-            "role.effort.checks"
+            "name.pentacles.11",
+            "pentacles.11.upright.role.checks"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.complement.clarity-effort",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.wands.14",
+            "name.pentacles.11",
+            "relation.complement.clarity-effort"
+          ],
           "cardIndices": [
             0,
             2
@@ -4071,8 +4302,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.complement.clarity-effort",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.wands.14",
+              "name.pentacles.11",
+              "relation.complement.clarity-effort"
+            ],
             "cardIndices": [
               0,
               2
@@ -4087,8 +4322,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.repetition.effort",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.wands.14",
+              "name.pentacles.11",
+              "relation.repetition.effort"
+            ],
             "cardIndices": [
               0,
               2
@@ -4097,7 +4336,7 @@
         }
       ],
       "action": {
-        "reference": "action.complement.clarity-effort.work",
+        "reference": "action.complement.clarity-effort.work.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -4105,7 +4344,7 @@
         ]
       },
       "question": {
-        "reference": "question.complement.clarity-effort.work",
+        "reference": "question.complement.clarity-effort.work.crossroads",
         "arguments": [],
         "cardIndices": [
           0,
@@ -4120,10 +4359,10 @@
     "input": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -4150,10 +4389,10 @@
     "plan": {
       "versions": {
         "schema": 1,
-        "engine": "reading.1",
-        "semantics": "semantics.1",
-        "rules": "rules.1",
-        "content": "reading.en.1"
+        "engine": "reading.2",
+        "semantics": "semantics.2",
+        "rules": "rules.2",
+        "content": "reading.en.1.1"
       },
       "context": {
         "topic": "creativity",
@@ -4190,7 +4429,7 @@
               ]
             },
             {
-              "reference": "role.change.foundation",
+              "reference": "major.16.upright.role.foundation",
               "arguments": [],
               "cardIndices": [
                 0
@@ -4218,7 +4457,7 @@
               ]
             },
             {
-              "reference": "role.rest.difficulty",
+              "reference": "swords.04.reversed.role.difficulty",
               "arguments": [],
               "cardIndices": [
                 1
@@ -4246,7 +4485,7 @@
               ]
             },
             {
-              "reference": "role.care.small_action",
+              "reference": "cups.06.upright.role.small_action",
               "arguments": [],
               "cardIndices": [
                 2
@@ -4275,6 +4514,7 @@
         {
           "reference": "flow.action.first",
           "arguments": [
+            "name.major.16",
             "major.16.upright.resource"
           ],
           "cardIndices": [
@@ -4284,6 +4524,7 @@
         {
           "reference": "flow.action.second",
           "arguments": [
+            "name.swords.04",
             "swords.04.reversed.difficulty"
           ],
           "cardIndices": [
@@ -4293,15 +4534,20 @@
         {
           "reference": "flow.action.third",
           "arguments": [
-            "role.care.small_action"
+            "name.cups.06",
+            "cups.06.upright.role.small_action"
           ],
           "cardIndices": [
             2
           ]
         },
         {
-          "reference": "relation.tension.change-stability",
-          "arguments": [],
+          "reference": "evidence.2",
+          "arguments": [
+            "name.major.16",
+            "name.cups.06",
+            "relation.tension.change-stability"
+          ],
           "cardIndices": [
             0,
             2
@@ -4317,8 +4563,12 @@
             2
           ],
           "phrase": {
-            "reference": "relation.tension.change-stability",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.16",
+              "name.cups.06",
+              "relation.tension.change-stability"
+            ],
             "cardIndices": [
               0,
               2
@@ -4333,8 +4583,12 @@
             1
           ],
           "phrase": {
-            "reference": "relation.complement.clarity-effort",
-            "arguments": [],
+            "reference": "evidence.2",
+            "arguments": [
+              "name.major.16",
+              "name.swords.04",
+              "relation.complement.clarity-effort"
+            ],
             "cardIndices": [
               0,
               1
@@ -4343,7 +4597,7 @@
         }
       ],
       "action": {
-        "reference": "action.tension.change-stability.creativity",
+        "reference": "action.tension.change-stability.creativity.action",
         "arguments": [],
         "cardIndices": [
           0,
@@ -4351,7 +4605,7 @@
         ]
       },
       "question": {
-        "reference": "question.tension.change-stability.creativity",
+        "reference": "question.tension.change-stability.creativity.action",
         "arguments": [],
         "cardIndices": [
           0,

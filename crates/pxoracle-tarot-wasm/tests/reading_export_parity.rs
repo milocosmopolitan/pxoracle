@@ -6,7 +6,7 @@ fn dispatch_matches_batch_interpretation() {
     let base = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../content/tarot/reading");
     let read = |n: &str| std::fs::read_to_string(base.join(n)).unwrap();
     let (semantics, rules): (serde_json::Value, serde_json::Value) =
-        (serde_json::from_str(&read("semantics.1.json")).unwrap(), serde_json::from_str(&read("rules.1.json")).unwrap());
+        (serde_json::from_str(&read("semantics.2.json")).unwrap(), serde_json::from_str(&read("rules.2.json")).unwrap());
     let init = serde_json::json!({"op":"readingInitialize","semantics":semantics,"rules":rules});
     pxoracle_tarot_wasm::dispatch(&init.to_string()).unwrap();
     let engine = Interpreter::new(serde_json::from_value(semantics).unwrap(), serde_json::from_value(rules).unwrap()).unwrap();

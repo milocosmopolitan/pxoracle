@@ -8,10 +8,10 @@ import type {
 import type { TarotSession } from "@pxoracle/contracts";
 export const READING_VERSIONS: Versions = {
   schema: 1,
-  engine: "reading.1",
-  semantics: "semantics.1",
-  rules: "rules.1",
-  content: "reading.en.1",
+  engine: "reading.2",
+  semantics: "semantics.2",
+  rules: "rules.2",
+  content: "reading.en.1.1",
 };
 export const TOPICS = {
   relationships: "Relationships",
@@ -72,7 +72,7 @@ export async function loadProse(
   signal: AbortSignal,
 ): Promise<ProsePack> {
   if (!currentVersions(versions)) throw new Error("READING_VERSION");
-  const response = await fetch("/content/reading/reading.en.1.json", {
+  const response = await fetch("/content/reading/reading.en.1.1.json", {
     signal,
   });
   if (!response.ok) throw new Error("READING_CONTENT");
@@ -136,7 +136,7 @@ export function composeReading(plan: ReadingPlan, pack: ProsePack) {
           kindLabel: r.kind[0].toUpperCase() + r.kind.slice(1),
           cardNames: r.cardIndices.map(name),
           cardNumbers: r.cardIndices.map((i) => i + 1),
-          text: plan.overall.some((p) => p.reference === r.phrase.reference)
+          text: plan.overall.some((p) => p.reference === r.phrase.reference && p.arguments.join("\0") === r.phrase.arguments.join("\0"))
             ? MAIN_CONNECTION_TEXT
             : text(r.phrase),
           fullText: text(r.phrase),

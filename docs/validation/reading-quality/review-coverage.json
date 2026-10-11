@@ -1,0 +1,128 @@
+{
+  "deckSize": 78,
+  "scannedCases": 3651648,
+  "signatures": 2139,
+  "selectedCases": 2696,
+  "rules": {
+    "repetition.expansion": {
+      "any": 79928,
+      "primary": 21046,
+      "signatures": 25
+    },
+    "repetition.boundaries": {
+      "any": 453027,
+      "primary": 119271,
+      "signatures": 121
+    },
+    "repetition.connection": {
+      "any": 135137,
+      "primary": 39986,
+      "signatures": 57
+    },
+    "repetition.solitude": {
+      "any": 34830,
+      "primary": 7212,
+      "signatures": 25
+    },
+    "repetition.clarity": {
+      "any": 616897,
+      "primary": 159745,
+      "signatures": 90
+    },
+    "repetition.uncertainty": {
+      "any": 40854,
+      "primary": 6758,
+      "signatures": 4
+    },
+    "repetition.change": {
+      "any": 124609,
+      "primary": 34977,
+      "signatures": 63
+    },
+    "repetition.stability": {
+      "any": 138799,
+      "primary": 25903,
+      "signatures": 4
+    },
+    "repetition.effort": {
+      "any": 74017,
+      "primary": 19190,
+      "signatures": 40
+    },
+    "repetition.rest": {
+      "any": 84487,
+      "primary": 15390,
+      "signatures": 31
+    },
+    "repetition.care": {
+      "any": 563335,
+      "primary": 214223,
+      "signatures": 137
+    },
+    "repetition.release": {
+      "any": 39691,
+      "primary": 8651,
+      "signatures": 10
+    },
+    "tension.expansion-boundaries": {
+      "any": 543762,
+      "primary": 514230,
+      "signatures": 205
+    },
+    "tension.connection-solitude": {
+      "any": 229296,
+      "primary": 162438,
+      "signatures": 151
+    },
+    "tension.change-stability": {
+      "any": 388950,
+      "primary": 284736,
+      "signatures": 212
+    },
+    "tension.effort-rest": {
+      "any": 296322,
+      "primary": 296322,
+      "signatures": 247
+    },
+    "tension.clarity-uncertainty": {
+      "any": 536514,
+      "primary": 298908,
+      "signatures": 178
+    },
+    "tension.care-boundaries": {
+      "any": 1284246,
+      "primary": 960480,
+      "signatures": 208
+    },
+    "complement.clarity-effort": {
+      "any": 349391,
+      "primary": 158173,
+      "signatures": 137
+    },
+    "complement.care-connection": {
+      "any": 385286,
+      "primary": 184929,
+      "signatures": 113
+    },
+    "complement.release-change": {
+      "any": 100488,
+      "primary": 44079,
+      "signatures": 80
+    }
+  },
+  "unreachableRules": [],
+  "rulesNeverPrimary": [],
+  "classCaseCounts": {
+    "repetition": 672352,
+    "complement": 387181,
+    "tension": 2517114,
+    "ties": 356726,
+    "priorityConflicts": 2566493,
+    "singles": 653428,
+    "fallback": 75001
+  },
+  "cardOrientationPositionCombos": 468,
+  "cardOrientationPositionCovered": 468,
+  "cardOrientationPositionRequired": 468,
+  "reachabilityScope": "complete-enumeration"
+}

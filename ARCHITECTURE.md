@@ -229,3 +229,5 @@ separate. See [validation](docs/validation/natal/README.md).
 [ADR 005](docs/decisions/005-manual-static-publishing.md) defines a manually dispatched main-only workflow, GitHub OIDC, private S3/CloudFront hosting and complete-release staging. Both WASM engines rebuild before export; publishing does not add an application server or interpretation service.
 
 [ADR 006](docs/decisions/006-exhaustive-reading-export.md) adds an offline exhaustive export of every three-card reading (43,819,776 rows). It reuses the production Rust interpreter (via the `reading-export` example) and the shared `composeReading`/`renderPhrase` formatter, stays out of CI and public assets, and is operated with `npm run reading-export` as described in [docs/reading-export.md](docs/reading-export.md).
+
+[ADR 008](docs/decisions/008-contextual-tarot-editorial.md) records release-2 topic/intent advice selection, orientation-grounded position text, immutable pack compatibility and matched production editorial evidence.

@@ -71,6 +71,7 @@ pub const TOPICS: [Topic; 4] = [
     Topic::Creativity,
     Topic::Growth,
 ];
+pub const INTENTS: [Intent; 3] = [Intent::Present, Intent::Crossroads, Intent::Action];
 pub const ROLES: [Role; 9] = [
     Role::Visible,
     Role::Examination,
@@ -87,23 +88,23 @@ pub const ROLES: [Role; 9] = [
 pub struct Versions {
     #[schemars(extend("const" = 1))]
     pub schema: u32,
-    #[schemars(extend("const" = "reading.1"))]
+    #[schemars(extend("const" = "reading.2"))]
     pub engine: String,
-    #[schemars(extend("const" = "semantics.1"))]
+    #[schemars(extend("const" = "semantics.2"))]
     pub semantics: String,
-    #[schemars(extend("const" = "rules.1"))]
+    #[schemars(extend("const" = "rules.2"))]
     pub rules: String,
-    #[schemars(extend("const" = "reading.en.1"))]
+    #[schemars(extend("const" = "reading.en.1.1"))]
     pub content: String,
 }
 impl Default for Versions {
     fn default() -> Self {
         Self {
             schema: 1,
-            engine: "reading.1".into(),
-            semantics: "semantics.1".into(),
-            rules: "rules.1".into(),
-            content: "reading.en.1".into(),
+            engine: "reading.2".into(),
+            semantics: "semantics.2".into(),
+            rules: "rules.2".into(),
+            content: "reading.en.1.1".into(),
         }
     }
 }
@@ -158,8 +159,8 @@ pub struct Rule {
     pub right: Theme,
     pub priority: u8,
     pub relation_ref: String,
-    pub action_refs: BTreeMap<Topic, String>,
-    pub question_refs: BTreeMap<Topic, String>,
+    pub action_refs: BTreeMap<Topic, BTreeMap<Intent, String>>,
+    pub question_refs: BTreeMap<Topic, BTreeMap<Intent, String>>,
 }
 #[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
@@ -268,6 +269,10 @@ impl Interpreter {
             return Err("READING_PACK".into());
         }
         let check = |r: &String| refs.contains(r);
+        // Names are generated Phrase arguments, so install-time validation must include them.
+        if card_ids().iter().any(|id| !check(&format!("name.{id}"))) {
+            return Err("READING_PACK".into());
+        }
         for (id, m) in &semantics.meanings {
             if m.themes.is_empty()
                 || m.themes.len() > 3
@@ -310,7 +315,10 @@ impl Interpreter {
                 || r.action_refs
                     .values()
                     .chain(r.question_refs.values())
-                    .any(|s| !check(s))
+                    .any(|by_intent| {
+                        by_intent.len() != 3
+                            || !INTENTS.iter().all(|i| by_intent.get(i).is_some_and(&check))
+                    })
             {
                 return Err("READING_PACK".into());
             }
@@ -319,6 +327,20 @@ impl Interpreter {
             for part in ["opening", "first", "second", "third", "fallback"] {
                 if !check(&format!("flow.{intent}.{part}")) {
                     return Err("READING_PACK".into());
+                }
+            }
+        }
+        for count in [2, 3] {
+            if !check(&format!("evidence.{count}")) {
+                return Err("READING_PACK".into());
+            }
+        }
+        for topic in ["relationships", "work", "creativity", "growth"] {
+            for intent in ["present", "crossroads", "action"] {
+                for part in ["action", "question"] {
+                    if !check(&format!("fallback.{topic}.{intent}.{part}")) {
+                        return Err("READING_PACK".into());
+                    }
                 }
             }
         }
@@ -392,33 +414,84 @@ impl Interpreter {
                 rule_id: r.id.clone(),
                 kind: r.kind,
                 card_indices: indices.clone(),
-                phrase: phrase(&r.relation_ref, vec![], indices.clone()),
+                phrase: phrase(
+                    &format!("evidence.{}", indices.len()),
+                    indices
+                        .iter()
+                        .map(|i| format!("name.{}", input.cards[*i].card_id))
+                        .chain(std::iter::once(r.relation_ref.clone()))
+                        .collect(),
+                    indices.clone(),
+                ),
             })
             .collect();
-        let (action, question) = if let Some((r, indices)) = candidates.first() {
-            (
-                phrase(&r.action_refs[&topic], vec![], indices.clone()),
-                phrase(&r.question_refs[&topic], vec![], indices.clone()),
-            )
-        } else {
-            (
-                phrase(&m[2].action_ref, vec![], vec![2]),
-                phrase(&m[2].question_ref, vec![], vec![2]),
-            )
-        };
         let intent = match input.context.intent {
             Intent::Present => "present",
             Intent::Crossroads => "crossroads",
             Intent::Action => "action",
+        };
+        let topic_id = match topic {
+            Topic::Relationships => "relationships",
+            Topic::Work => "work",
+            Topic::Creativity => "creativity",
+            Topic::Growth => "growth",
+        };
+        let (action, question) = if let Some((r, indices)) = candidates.first() {
+            (
+                phrase(
+                    &r.action_refs[&topic][&input.context.intent],
+                    vec![],
+                    indices.clone(),
+                ),
+                phrase(
+                    &r.question_refs[&topic][&input.context.intent],
+                    vec![],
+                    indices.clone(),
+                ),
+            )
+        } else {
+            (
+                phrase(
+                    &format!("fallback.{topic_id}.{intent}.action"),
+                    vec![m[2].action_ref.clone()],
+                    vec![2],
+                ),
+                phrase(
+                    &format!("fallback.{topic_id}.{intent}.question"),
+                    vec![m[2].question_ref.clone()],
+                    vec![2],
+                ),
+            )
         };
         let flow = |part: &str, args: Vec<String>, indices| {
             phrase(&format!("flow.{intent}.{part}"), args, indices)
         };
         let mut overall = vec![
             flow("opening", vec![m[0].topic_refs[&topic].clone()], vec![0]),
-            flow("first", vec![m[0].resource_ref.clone()], vec![0]),
-            flow("second", vec![m[1].difficulty_ref.clone()], vec![1]),
-            flow("third", vec![m[2].role_refs[&mapped[2]].clone()], vec![2]),
+            flow(
+                "first",
+                vec![
+                    format!("name.{}", input.cards[0].card_id),
+                    m[0].resource_ref.clone(),
+                ],
+                vec![0],
+            ),
+            flow(
+                "second",
+                vec![
+                    format!("name.{}", input.cards[1].card_id),
+                    m[1].difficulty_ref.clone(),
+                ],
+                vec![1],
+            ),
+            flow(
+                "third",
+                vec![
+                    format!("name.{}", input.cards[2].card_id),
+                    m[2].role_refs[&mapped[2]].clone(),
+                ],
+                vec![2],
+            ),
         ];
         overall.push(
             relations

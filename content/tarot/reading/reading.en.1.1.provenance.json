@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "reading.en.1.1",
+  "locale": "en",
+  "referenceCount": 2876,
+  "sha256": "e41956bbf1f152d863795ccaa433d9b8c3e0d3576a7ed6b757b993c55072185f",
+  "createdAt": "2026-10-11T18:41:31.594733+00:00",
+  "sourceRevision": "92d7861",
+  "authoredSourceWorktree": "/Users/minhokang/Work/projects/px-oracle/pxoracle-editorial",
+  "reviewedSourcePack": "/Users/minhokang/Work/projects/px-oracle/pxoracle-editorial/content/tarot/reading/reading.en.2.json",
+  "reviewedSourceSha256": "0cdf8f46ebaf3ed4c482a9eac0d1f2be9cd3c89e8b55583bc67271b304e288a6",
+  "changeFromReviewedPack": "Content version identifier only; all reviewed English strings are unchanged.",
+  "editorialEvidence": "/Users/minhokang/Work/projects/px-oracle/pxoracle-editorial/docs/validation/reading-quality/README.md",
+  "compatibility": {
+    "referenceContract": "reading.2 / semantics.2 / rules.2 / reading.en.1.1",
+    "activeInCurrentMain": true,
+    "integrationEvidence": "docs/validation/reading-quality/integration-1.1.md",
+    "activationPolicy": "New readings use this tuple. Old saved readings require explicit reinterpretation; storage changes only on Save."
+  },
+  "checks": {
+    "referenceCoverage": "pass",
+    "all252TopicIntentAdvicePairs": "pass",
+    "sourcePublicEquality": "pass",
+    "oldReleaseUnchanged": "pass",
+    "reviewedStringEquality": "pass"
+  },
+  "humanEditorialApproval": false
+}

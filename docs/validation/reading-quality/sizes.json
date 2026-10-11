@@ -1,0 +1,18 @@
+{
+  "semantics.2.json": {
+    "bytes": 292050,
+    "gzipBytes": 19156
+  },
+  "rules.2.json": {
+    "bytes": 47938,
+    "gzipBytes": 2599
+  },
+  "reading.en.2.json": {
+    "bytes": 348153,
+    "gzipBytes": 53193
+  },
+  "tarotWasm": {
+    "bytes": 517771,
+    "gzipBytes": 145466
+  }
+}

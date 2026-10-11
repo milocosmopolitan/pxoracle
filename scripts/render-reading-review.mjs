@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { gzipSync } from "node:zlib";
 import reading from "../apps/web/src/features/tarot/reading.ts";
 const pack = JSON.parse(
-    readFileSync("content/tarot/reading/reading.en.1.json"),
+    readFileSync("content/tarot/reading/reading.en.1.1.json"),
   ),
   fixtures = JSON.parse(readFileSync("tests/fixtures/readings.json"));
 const text = (p) => reading.renderPhrase(p, pack);
@@ -20,7 +20,7 @@ const paths = [
   "apps/web/public/engines/tarot/engine.wasm",
   "apps/web/public/engines/tarot/engine.mjs",
   "apps/web/public/engines/tarot/worker.mjs",
-  ...["semantics.1", "rules.1", "reading.en.1"].map(
+  ...["semantics.2", "rules.2", "reading.en.1.1"].map(
     (n) => `apps/web/public/content/reading/${n}.json`,
   ),
 ];

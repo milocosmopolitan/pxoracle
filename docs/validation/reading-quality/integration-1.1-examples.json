@@ -1,0 +1,1597 @@
+[
+  {
+    "label": "relationships-present",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "To understand the present, start with the conditions rather than a prediction. Connection may benefit from an invitation that leaves room for either person to decline. The Fool offers a resource to notice: curiosity before a route is settled. The Emperor asks you to examine a rule becoming more important than its purpose. Temperance: One possible direction from this card: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Notice one invitation you want to make and one limit that would keep it voluntary for both people.",
+      "question": "Where could there be more openness without giving up the right to decline?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "roleLabel": "Visible situation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "A resource to notice in the situation: curiosity before a route is settled.",
+            "Connection may benefit from an invitation that leaves room for either person to decline."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "roleLabel": "What to examine",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Look more closely at a rule becoming more important than its purpose.",
+            "A clear limit can protect the conditions for freely chosen closeness."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "roleLabel": "Helpful direction",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "One possible direction from this card: Change one small proportion in your routine and observe it.",
+            "Ask what support is wanted instead of assuming that caring means taking over."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "relationships-crossroads",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "This spread examines the basis of a choice; it does not choose an outcome for you. Connection may benefit from an invitation that leaves room for either person to decline. With The Fool, consider the value of curiosity before a route is settled. The Emperor brings a possible overlooked condition into view: a rule becoming more important than its purpose. Temperance: Before choosing, use this card to ask: What combination works better in moderation? The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Compare how each option handles both a request for closeness and a request for space; mark what has not been discussed.",
+      "question": "Which limits need to be understood before either choice could be made freely?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "roleLabel": "What matters to you",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Consider how much you value curiosity before a route is settled.",
+            "Connection may benefit from an invitation that leaves room for either person to decline."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "roleLabel": "Overlooked conditions",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "An overlooked condition to check is a rule becoming more important than its purpose.",
+            "A clear limit can protect the conditions for freely chosen closeness."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "roleLabel": "Checks before deciding",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "Before choosing, use this card to ask: What combination works better in moderation?",
+            "Ask what support is wanted instead of assuming that caring means taking over."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "relationships-action",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "For a next step, work at the scale of an experiment rather than a promised outcome. Connection may benefit from an invitation that leaves room for either person to decline. The Fool points to a starting resource: curiosity before a route is settled. With The Emperor, account for a rule becoming more important than its purpose. Temperance: A possible small step: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Make one modest invitation with a clear scope and an easy way to decline; change your own action rather than testing the person.",
+      "question": "What could you offer without treating acceptance as proof of how they feel?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "roleLabel": "Your foundation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Build on curiosity before a route is settled.",
+            "Connection may benefit from an invitation that leaves room for either person to decline."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "roleLabel": "A difficulty to account for",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Watch for a rule becoming more important than its purpose when deciding what is manageable.",
+            "A clear limit can protect the conditions for freely chosen closeness."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "roleLabel": "A small action",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "A possible small step: Change one small proportion in your routine and observe it.",
+            "Ask what support is wanted instead of assuming that caring means taking over."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "work-present",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "To understand the present, start with the conditions rather than a prediction. An opportunity is more useful when its first practical test is clear. The Fool offers a resource to notice: curiosity before a route is settled. The Emperor asks you to examine a rule becoming more important than its purpose. Temperance: One possible direction from this card: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Name one opportunity that interests you and the existing commitment that limits the time you can give it.",
+      "question": "What makes this opportunity workable at your current capacity?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "roleLabel": "Visible situation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "A resource to notice in the situation: curiosity before a route is settled.",
+            "An opportunity is more useful when its first practical test is clear."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "roleLabel": "What to examine",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Look more closely at a rule becoming more important than its purpose.",
+            "Responsibilities need an owner and a limit, not just a willing person."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "roleLabel": "Helpful direction",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "One possible direction from this card: Change one small proportion in your routine and observe it.",
+            "Consider the conditions people need to do the work, including your own."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "work-crossroads",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "This spread examines the basis of a choice; it does not choose an outcome for you. An opportunity is more useful when its first practical test is clear. With The Fool, consider the value of curiosity before a route is settled. The Emperor brings a possible overlooked condition into view: a rule becoming more important than its purpose. Temperance: Before choosing, use this card to ask: What combination works better in moderation? The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Compare the options using one concrete limit, such as available hours, alongside one opportunity to learn.",
+      "question": "Which trade-off can you explain without assuming extra capacity will appear?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "roleLabel": "What matters to you",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Consider how much you value curiosity before a route is settled.",
+            "An opportunity is more useful when its first practical test is clear."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "roleLabel": "Overlooked conditions",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "An overlooked condition to check is a rule becoming more important than its purpose.",
+            "Responsibilities need an owner and a limit, not just a willing person."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "roleLabel": "Checks before deciding",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "Before choosing, use this card to ask: What combination works better in moderation?",
+            "Consider the conditions people need to do the work, including your own."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "work-action",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "For a next step, work at the scale of an experiment rather than a promised outcome. An opportunity is more useful when its first practical test is clear. The Fool points to a starting resource: curiosity before a route is settled. With The Emperor, account for a rule becoming more important than its purpose. Temperance: A possible small step: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Propose a small trial of one work idea with a time limit and a clear point to review it before taking on more.",
+      "question": "What observation would justify extending the trial or stopping it?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "roleLabel": "Your foundation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Build on curiosity before a route is settled.",
+            "An opportunity is more useful when its first practical test is clear."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "roleLabel": "A difficulty to account for",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Watch for a rule becoming more important than its purpose when deciding what is manageable.",
+            "Responsibilities need an owner and a limit, not just a willing person."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "roleLabel": "A small action",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "A possible small step: Change one small proportion in your routine and observe it.",
+            "Consider the conditions people need to do the work, including your own."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "creativity-present",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "To understand the present, start with the conditions rather than a prediction. An exploratory draft can reveal more than extending the plan. The Fool offers a resource to notice: curiosity before a route is settled. The Emperor asks you to examine a rule becoming more important than its purpose. Temperance: One possible direction from this card: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Look at one new idea beside the current scope of the project. Name what it could open up and what extra attention or material it would require.",
+      "question": "Is this possibility helping the piece develop, or making its limits harder to see?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "roleLabel": "Visible situation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "A resource to notice in the situation: curiosity before a route is settled.",
+            "An exploratory draft can reveal more than extending the plan."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "roleLabel": "What to examine",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Look more closely at a rule becoming more important than its purpose.",
+            "Constraints can protect the attention a project needs."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "roleLabel": "Helpful direction",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "One possible direction from this card: Change one small proportion in your routine and observe it.",
+            "Tend the materials, attention and encouragement that let a project continue."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "creativity-crossroads",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "This spread examines the basis of a choice; it does not choose an outcome for you. An exploratory draft can reveal more than extending the plan. With The Fool, consider the value of curiosity before a route is settled. The Emperor brings a possible overlooked condition into view: a rule becoming more important than its purpose. Temperance: Before choosing, use this card to ask: What combination works better in moderation? The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Compare a wider and a narrower version of the project. Give each a trial size and a stopping point before deciding which to pursue.",
+      "question": "What could you explore in each version without committing resources you need to protect?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "roleLabel": "What matters to you",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Consider how much you value curiosity before a route is settled.",
+            "An exploratory draft can reveal more than extending the plan."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "roleLabel": "Overlooked conditions",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "An overlooked condition to check is a rule becoming more important than its purpose.",
+            "Constraints can protect the attention a project needs."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "roleLabel": "Checks before deciding",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "Before choosing, use this card to ask: What combination works better in moderation?",
+            "Tend the materials, attention and encouragement that let a project continue."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "creativity-action",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "For a next step, work at the scale of an experiment rather than a promised outcome. An exploratory draft can reveal more than extending the plan. The Fool points to a starting resource: curiosity before a route is settled. With The Emperor, account for a rule becoming more important than its purpose. Temperance: A possible small step: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Try one new detail in a copy of the draft for ten minutes. Stop to review before allowing it to expand the rest of the project.",
+      "question": "Did this opening earn a place in the work within the limit you set?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "roleLabel": "Your foundation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Build on curiosity before a route is settled.",
+            "An exploratory draft can reveal more than extending the plan."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "roleLabel": "A difficulty to account for",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Watch for a rule becoming more important than its purpose when deciding what is manageable.",
+            "Constraints can protect the attention a project needs."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "roleLabel": "A small action",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "A possible small step: Change one small proportion in your routine and observe it.",
+            "Tend the materials, attention and encouragement that let a project continue."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "growth-present",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "To understand the present, start with the conditions rather than a prediction. A new experience can test a belief without requiring a new identity. The Fool offers a resource to notice: curiosity before a route is settled. The Emperor asks you to examine a rule becoming more important than its purpose. Temperance: One possible direction from this card: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Notice one experience you want to try and the time, energy, or privacy you need to protect around it.",
+      "question": "Where does curiosity feel useful, and where does it become pressure to exceed your limits?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "roleLabel": "Visible situation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "A resource to notice in the situation: curiosity before a route is settled.",
+            "A new experience can test a belief without requiring a new identity."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "roleLabel": "What to examine",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Look more closely at a rule becoming more important than its purpose.",
+            "A limit can express care for your capacity rather than rejection of growth."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "roleLabel": "Helpful direction",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "One possible direction from this card: Change one small proportion in your routine and observe it.",
+            "Your ordinary needs belong inside the plan for growth."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "growth-crossroads",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "This spread examines the basis of a choice; it does not choose an outcome for you. A new experience can test a belief without requiring a new identity. With The Fool, consider the value of curiosity before a route is settled. The Emperor brings a possible overlooked condition into view: a rule becoming more important than its purpose. Temperance: Before choosing, use this card to ask: What combination works better in moderation? The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Compare the choices by what each lets you explore and what personal limit each asks you to stretch.",
+      "question": "Which stretch is worth choosing, and which would ask you to ignore a real need?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "roleLabel": "What matters to you",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Consider how much you value curiosity before a route is settled.",
+            "A new experience can test a belief without requiring a new identity."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "roleLabel": "Overlooked conditions",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "An overlooked condition to check is a rule becoming more important than its purpose.",
+            "A limit can express care for your capacity rather than rejection of growth."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "roleLabel": "Checks before deciding",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "Before choosing, use this card to ask: What combination works better in moderation?",
+            "Your ordinary needs belong inside the plan for growth."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "growth-action",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "For a next step, work at the scale of an experiment rather than a promised outcome. A new experience can test a belief without requiring a new identity. The Fool points to a starting resource: curiosity before a route is settled. With The Emperor, account for a rule becoming more important than its purpose. Temperance: A possible small step: Change one small proportion in your routine and observe it. The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.expansion-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Fool",
+            "The Emperor"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Fool and The Emperor: The wish to widen possibilities meets a need to protect capacity. Neither has to cancel the other: a bounded experiment lets openness and a clear limit coexist."
+        },
+        {
+          "ruleId": "tension.care-boundaries",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Emperor",
+            "Temperance"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb.",
+          "fullText": "The Emperor and Temperance: Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity, rather than measured by how much the giver can absorb."
+        }
+      ],
+      "action": "Try one small, reversible variation in a familiar habit, deciding beforehand when you will stop or reconsider.",
+      "question": "What could you learn without turning the experiment into a promise to change yourself?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "roleLabel": "Your foundation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "Build on curiosity before a route is settled.",
+            "A new experience can test a belief without requiring a new identity."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "roleLabel": "A difficulty to account for",
+          "lens": "direct",
+          "cardId": "major.04",
+          "cardName": "The Emperor",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make responsibilities and limits clear enough to support steady progress.",
+            "Watch for a rule becoming more important than its purpose when deciding what is manageable.",
+            "A limit can express care for your capacity rather than rejection of growth."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "roleLabel": "A small action",
+          "lens": "direct",
+          "cardId": "major.14",
+          "cardName": "Temperance",
+          "orientation": "upright",
+          "paragraphs": [
+            "Combine differences slowly and observe which rhythm you can sustain.",
+            "A possible small step: Change one small proportion in your routine and observe it.",
+            "Your ordinary needs belong inside the plan for growth."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "all-reversed",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "For a next step, work at the scale of an experiment rather than a promised outcome. Support can be accepted without handing over your judgment. The Hermit points to a starting resource: recognition of when solitude needs a door. With Nine of Swords, account for judging yourself for still feeling worried. Five of Pentacles: A possible small step: Follow up on one concrete offer of assistance. Nine of Swords and Five of Pentacles: Care recurs across the cards. Translate concern into one specific form of support that includes the capacity of the person providing it.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "repetition.care",
+          "kind": "repetition",
+          "kindLabel": "Repetition",
+          "cardNames": [
+            "Nine of Swords",
+            "Five of Pentacles"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "Nine of Swords and Five of Pentacles: Care recurs across the cards. Translate concern into one specific form of support that includes the capacity of the person providing it."
+        }
+      ],
+      "action": "Meet one small need using a resource already available, or ask for a specific form of help.",
+      "question": "What becomes more manageable when this need receives attention rather than criticism?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "roleLabel": "Your foundation",
+          "lens": "excess",
+          "cardId": "major.09",
+          "cardName": "The Hermit",
+          "orientation": "reversed",
+          "paragraphs": [
+            "Reflection may be becoming isolation; share one unfinished thought with someone trusted.",
+            "Build on recognition of when solitude needs a door.",
+            "Support can be accepted without handing over your judgment."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "roleLabel": "A difficulty to account for",
+          "lens": "restoration",
+          "cardId": "swords.09",
+          "cardName": "Nine of Swords",
+          "orientation": "reversed",
+          "paragraphs": [
+            "Notice support that helps distress ease without demanding immediate relief.",
+            "Watch for judging yourself for still feeling worried when deciding what is manageable.",
+            "Your ordinary needs belong inside the plan for growth."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "roleLabel": "A small action",
+          "lens": "restoration",
+          "cardId": "pentacles.05",
+          "cardName": "Five of Pentacles",
+          "orientation": "reversed",
+          "paragraphs": [
+            "Accept available support as a practical step without making it a measure of worth.",
+            "A possible small step: Follow up on one concrete offer of assistance.",
+            "Your ordinary needs belong inside the plan for growth."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "repetition",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "To understand the present, start with the conditions rather than a prediction. Connection may benefit from an invitation that leaves room for either person to decline. The Fool offers a resource to notice: curiosity before a route is settled. The Magician asks you to examine scattering skill across too many promises. The Lovers: One possible direction from this card: Name one value that a shared choice must respect. The Magician and The Lovers: Several cards ask for distinctions that can be checked. Separate observation from interpretation before building a larger conclusion.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "repetition.clarity",
+          "kind": "repetition",
+          "kindLabel": "Repetition",
+          "cardNames": [
+            "The Magician",
+            "The Lovers"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Magician and The Lovers: Several cards ask for distinctions that can be checked. Separate observation from interpretation before building a larger conclusion."
+        }
+      ],
+      "action": "Write one thing the person actually said beside the meaning you added to it.",
+      "question": "Which part of your understanding comes from the exchange, and which part is an inference?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "roleLabel": "Visible situation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "A resource to notice in the situation: curiosity before a route is settled.",
+            "Connection may benefit from an invitation that leaves room for either person to decline."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "roleLabel": "What to examine",
+          "lens": "direct",
+          "cardId": "major.01",
+          "cardName": "The Magician",
+          "orientation": "upright",
+          "paragraphs": [
+            "Bring the skills and tools you already have into one deliberate action.",
+            "Look more closely at scattering skill across too many promises.",
+            "Choose an action that supports connection without trying to control the response."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "roleLabel": "Helpful direction",
+          "lens": "direct",
+          "cardId": "major.06",
+          "cardName": "The Lovers",
+          "orientation": "upright",
+          "paragraphs": [
+            "Name the values a choice must honor, then compare them with your actions.",
+            "One possible direction from this card: Name one value that a shared choice must respect.",
+            "Look for reciprocity in actual exchanges rather than assuming shared intentions."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "complement",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "To understand the present, start with the conditions rather than a prediction. Connection may benefit from an invitation that leaves room for either person to decline. The Fool offers a resource to notice: curiosity before a route is settled. The Magician asks you to examine scattering skill across too many promises. The Chariot: One possible direction from this card: Choose one destination for today's effort and omit a competing task. The Magician and The Chariot: A concern with clarity appears before a concern with effort. This is a possible sequence, not proof that the first issue is resolved: check the distinction before building more work on it.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "complement.clarity-effort",
+          "kind": "complement",
+          "kindLabel": "Complement",
+          "cardNames": [
+            "The Magician",
+            "The Chariot"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Magician and The Chariot: A concern with clarity appears before a concern with effort. This is a possible sequence, not proof that the first issue is resolved: check the distinction before building more work on it."
+        },
+        {
+          "ruleId": "repetition.clarity",
+          "kind": "repetition",
+          "kindLabel": "Repetition",
+          "cardNames": [
+            "The Magician",
+            "The Chariot"
+          ],
+          "cardNumbers": [
+            2,
+            3
+          ],
+          "text": "The Magician and The Chariot: Several cards ask for distinctions that can be checked. Separate observation from interpretation before building a larger conclusion.",
+          "fullText": "The Magician and The Chariot: Several cards ask for distinctions that can be checked. Separate observation from interpretation before building a larger conclusion."
+        }
+      ],
+      "action": "Notice whether your effort toward the relationship addresses a need that has actually been named.",
+      "question": "What becomes simpler when you distinguish the agreed need from the response you hope to obtain?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "roleLabel": "Visible situation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "A resource to notice in the situation: curiosity before a route is settled.",
+            "Connection may benefit from an invitation that leaves room for either person to decline."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "roleLabel": "What to examine",
+          "lens": "direct",
+          "cardId": "major.01",
+          "cardName": "The Magician",
+          "orientation": "upright",
+          "paragraphs": [
+            "Bring the skills and tools you already have into one deliberate action.",
+            "Look more closely at scattering skill across too many promises.",
+            "Choose an action that supports connection without trying to control the response."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "roleLabel": "Helpful direction",
+          "lens": "direct",
+          "cardId": "major.07",
+          "cardName": "The Chariot",
+          "orientation": "upright",
+          "paragraphs": [
+            "Choose a direction and coordinate the effort that will carry you toward it.",
+            "One possible direction from this card: Choose one destination for today's effort and omit a competing task.",
+            "Choose an action that supports connection without trying to control the response."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "fallback",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "To understand the present, start with the conditions rather than a prediction. Connection may benefit from an invitation that leaves room for either person to decline. The Fool offers a resource to notice: curiosity before a route is settled. The Magician asks you to examine scattering skill across too many promises. Ace of Cups: One possible direction from this card: Name one feeling without immediately explaining or acting on it. These rules find no strong shared theme among these cards. Use their sequence as a resource to notice, a difficulty to examine and a direction to consider; they need not tell one hidden story.",
+      "fallbackText": "No strong relationship rule connected these cards. Follow their positions in order without forcing a shared theme.",
+      "relations": [],
+      "action": "Name one feeling without immediately explaining or acting on it. Relate what you notice to one recent exchange, without guessing the other person's feelings.",
+      "question": "What is asking for gentle attention before a decision? Consider a recent exchange you can describe from your own experience.",
+      "positions": [
+        {
+          "index": 0,
+          "role": "visible",
+          "roleLabel": "Visible situation",
+          "lens": "direct",
+          "cardId": "major.00",
+          "cardName": "The Fool",
+          "orientation": "upright",
+          "paragraphs": [
+            "Begin with curiosity and one small, reversible step.",
+            "A resource to notice in the situation: curiosity before a route is settled.",
+            "Connection may benefit from an invitation that leaves room for either person to decline."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "examination",
+          "roleLabel": "What to examine",
+          "lens": "direct",
+          "cardId": "major.01",
+          "cardName": "The Magician",
+          "orientation": "upright",
+          "paragraphs": [
+            "Bring the skills and tools you already have into one deliberate action.",
+            "Look more closely at scattering skill across too many promises.",
+            "Choose an action that supports connection without trying to control the response."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "direction",
+          "roleLabel": "Helpful direction",
+          "lens": "direct",
+          "cardId": "cups.01",
+          "cardName": "Ace of Cups",
+          "orientation": "upright",
+          "paragraphs": [
+            "Make room for a new feeling or an offered kindness; receiving is also an action.",
+            "One possible direction from this card: Name one feeling without immediately explaining or acting on it.",
+            "Look for reciprocity in actual exchanges rather than assuming shared intentions."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "court-and-minor",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "This spread examines the basis of a choice; it does not choose an outcome for you. Make the criterion for a decision visible so it can be checked. With King of Wands, consider the value of a direction broad enough to organize initiative. Knight of Cups brings a possible overlooked condition into view: confusing an appealing gesture with dependable follow-through. Page of Pentacles: Before choosing, use this card to ask: What small practice would make an interest more concrete? King of Wands and Page of Pentacles: A concern with clarity appears before a concern with effort. This is a possible sequence, not proof that the first issue is resolved: check the distinction before building more work on it.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "complement.clarity-effort",
+          "kind": "complement",
+          "kindLabel": "Complement",
+          "cardNames": [
+            "King of Wands",
+            "Page of Pentacles"
+          ],
+          "cardNumbers": [
+            1,
+            3
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "King of Wands and Page of Pentacles: A concern with clarity appears before a concern with effort. This is a possible sequence, not proof that the first issue is resolved: check the distinction before building more work on it."
+        },
+        {
+          "ruleId": "repetition.effort",
+          "kind": "repetition",
+          "kindLabel": "Repetition",
+          "cardNames": [
+            "King of Wands",
+            "Page of Pentacles"
+          ],
+          "cardNumbers": [
+            1,
+            3
+          ],
+          "text": "King of Wands and Page of Pentacles: Directed effort recurs across the cards. Give it a bounded purpose and feedback so persistence does not become a test of endurance.",
+          "fullText": "King of Wands and Page of Pentacles: Directed effort recurs across the cards. Give it a bounded purpose and feedback so persistence does not become a test of endurance."
+        }
+      ],
+      "action": "Define one observable result that would help compare your options, then check the time or skill needed to test it.",
+      "question": "What could a modest test tell you that another round of speculation cannot?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "values",
+          "roleLabel": "What matters to you",
+          "lens": "direct",
+          "cardId": "wands.14",
+          "cardName": "King of Wands",
+          "orientation": "upright",
+          "paragraphs": [
+            "Give effort a purpose that others can understand and help shape.",
+            "Consider how much you value a direction broad enough to organize initiative.",
+            "Make the criterion for a decision visible so it can be checked."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "conditions",
+          "roleLabel": "Overlooked conditions",
+          "lens": "direct",
+          "cardId": "cups.12",
+          "cardName": "Knight of Cups",
+          "orientation": "upright",
+          "paragraphs": [
+            "Support a heartfelt invitation with an action that makes it tangible.",
+            "An overlooked condition to check is confusing an appealing gesture with dependable follow-through.",
+            "A handoff or conversation may matter more than another solitary effort."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "checks",
+          "roleLabel": "Checks before deciding",
+          "lens": "direct",
+          "cardId": "pentacles.11",
+          "cardName": "Page of Pentacles",
+          "orientation": "upright",
+          "paragraphs": [
+            "Approach a practical skill as a learner with a modest plan and regular attention.",
+            "Before choosing, use this card to ask: What small practice would make an interest more concrete?",
+            "A bounded task with feedback is more useful than proving how hard you can work."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "mixed-orientations",
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.1.1"
+    },
+    "reading": {
+      "overall": "For a next step, work at the scale of an experiment rather than a promised outcome. A revision can preserve an idea's purpose while changing its form. The Tower points to a starting resource: information exposed when an assumption fails. With Four of Swords, account for returning to the same load without changing its conditions. Six of Cups: A possible small step: Recover one helpful practice from an earlier time and adapt it. The Tower and Six of Cups: An impulse to revise meets a need for continuity. Preserve one working support while testing a change elsewhere, so revision does not require abandoning every foundation.",
+      "fallbackText": null,
+      "relations": [
+        {
+          "ruleId": "tension.change-stability",
+          "kind": "tension",
+          "kindLabel": "Tension",
+          "cardNames": [
+            "The Tower",
+            "Six of Cups"
+          ],
+          "cardNumbers": [
+            1,
+            3
+          ],
+          "text": "This is the main connection described above.",
+          "fullText": "The Tower and Six of Cups: An impulse to revise meets a need for continuity. Preserve one working support while testing a change elsewhere, so revision does not require abandoning every foundation."
+        },
+        {
+          "ruleId": "complement.clarity-effort",
+          "kind": "complement",
+          "kindLabel": "Complement",
+          "cardNames": [
+            "The Tower",
+            "Four of Swords"
+          ],
+          "cardNumbers": [
+            1,
+            2
+          ],
+          "text": "The Tower and Four of Swords: A concern with clarity appears before a concern with effort. This is a possible sequence, not proof that the first issue is resolved: check the distinction before building more work on it.",
+          "fullText": "The Tower and Four of Swords: A concern with clarity appears before a concern with effort. This is a possible sequence, not proof that the first issue is resolved: check the distinction before building more work on it."
+        }
+      ],
+      "action": "Save the draft and change one small section while leaving its strongest supporting element intact. Review the result before altering anything else.",
+      "question": "What improved because it changed, and what helped because it stayed steady?",
+      "positions": [
+        {
+          "index": 0,
+          "role": "foundation",
+          "roleLabel": "Your foundation",
+          "lens": "direct",
+          "cardId": "major.16",
+          "cardName": "The Tower",
+          "orientation": "upright",
+          "paragraphs": [
+            "A disrupted assumption reveals what needs support before it can be rebuilt.",
+            "Build on information exposed when an assumption fails.",
+            "A revision can preserve an idea's purpose while changing its form."
+          ]
+        },
+        {
+          "index": 1,
+          "role": "difficulty",
+          "roleLabel": "A difficulty to account for",
+          "lens": "review",
+          "cardId": "swords.04",
+          "cardName": "Four of Swords",
+          "orientation": "reversed",
+          "paragraphs": [
+            "Re-enter a demanding situation gradually and keep a restorative practice.",
+            "Watch for returning to the same load without changing its conditions when deciding what is manageable.",
+            "Space away from a draft can restore the ability to see it clearly."
+          ]
+        },
+        {
+          "index": 2,
+          "role": "small_action",
+          "roleLabel": "A small action",
+          "lens": "direct",
+          "cardId": "cups.06",
+          "cardName": "Six of Cups",
+          "orientation": "upright",
+          "paragraphs": [
+            "Carry a useful tenderness or forgotten interest forward from a memory.",
+            "A possible small step: Recover one helpful practice from an earlier time and adapt it.",
+            "Tend the materials, attention and encouragement that let a project continue."
+          ]
+        }
+      ]
+    }
+  }
+]

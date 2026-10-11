@@ -1,0 +1,1103 @@
+{
+  "versions": {
+    "schema": 1,
+    "engine": "reading.2",
+    "semantics": "semantics.2",
+    "rules": "rules.2",
+    "content": "reading.en.1.1"
+  },
+  "rules": [
+    {
+      "id": "repetition.expansion",
+      "kind": "repetition",
+      "left": "expansion",
+      "right": "expansion",
+      "priority": 40,
+      "relationRef": "relation.repetition.expansion",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.expansion.relationships.present",
+          "crossroads": "action.repetition.expansion.relationships.crossroads",
+          "action": "action.repetition.expansion.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.expansion.work.present",
+          "crossroads": "action.repetition.expansion.work.crossroads",
+          "action": "action.repetition.expansion.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.expansion.creativity.present",
+          "crossroads": "action.repetition.expansion.creativity.crossroads",
+          "action": "action.repetition.expansion.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.expansion.growth.present",
+          "crossroads": "action.repetition.expansion.growth.crossroads",
+          "action": "action.repetition.expansion.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.expansion.relationships.present",
+          "crossroads": "question.repetition.expansion.relationships.crossroads",
+          "action": "question.repetition.expansion.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.expansion.work.present",
+          "crossroads": "question.repetition.expansion.work.crossroads",
+          "action": "question.repetition.expansion.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.expansion.creativity.present",
+          "crossroads": "question.repetition.expansion.creativity.crossroads",
+          "action": "question.repetition.expansion.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.expansion.growth.present",
+          "crossroads": "question.repetition.expansion.growth.crossroads",
+          "action": "question.repetition.expansion.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.boundaries",
+      "kind": "repetition",
+      "left": "boundaries",
+      "right": "boundaries",
+      "priority": 40,
+      "relationRef": "relation.repetition.boundaries",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.boundaries.relationships.present",
+          "crossroads": "action.repetition.boundaries.relationships.crossroads",
+          "action": "action.repetition.boundaries.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.boundaries.work.present",
+          "crossroads": "action.repetition.boundaries.work.crossroads",
+          "action": "action.repetition.boundaries.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.boundaries.creativity.present",
+          "crossroads": "action.repetition.boundaries.creativity.crossroads",
+          "action": "action.repetition.boundaries.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.boundaries.growth.present",
+          "crossroads": "action.repetition.boundaries.growth.crossroads",
+          "action": "action.repetition.boundaries.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.boundaries.relationships.present",
+          "crossroads": "question.repetition.boundaries.relationships.crossroads",
+          "action": "question.repetition.boundaries.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.boundaries.work.present",
+          "crossroads": "question.repetition.boundaries.work.crossroads",
+          "action": "question.repetition.boundaries.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.boundaries.creativity.present",
+          "crossroads": "question.repetition.boundaries.creativity.crossroads",
+          "action": "question.repetition.boundaries.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.boundaries.growth.present",
+          "crossroads": "question.repetition.boundaries.growth.crossroads",
+          "action": "question.repetition.boundaries.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.connection",
+      "kind": "repetition",
+      "left": "connection",
+      "right": "connection",
+      "priority": 40,
+      "relationRef": "relation.repetition.connection",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.connection.relationships.present",
+          "crossroads": "action.repetition.connection.relationships.crossroads",
+          "action": "action.repetition.connection.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.connection.work.present",
+          "crossroads": "action.repetition.connection.work.crossroads",
+          "action": "action.repetition.connection.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.connection.creativity.present",
+          "crossroads": "action.repetition.connection.creativity.crossroads",
+          "action": "action.repetition.connection.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.connection.growth.present",
+          "crossroads": "action.repetition.connection.growth.crossroads",
+          "action": "action.repetition.connection.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.connection.relationships.present",
+          "crossroads": "question.repetition.connection.relationships.crossroads",
+          "action": "question.repetition.connection.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.connection.work.present",
+          "crossroads": "question.repetition.connection.work.crossroads",
+          "action": "question.repetition.connection.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.connection.creativity.present",
+          "crossroads": "question.repetition.connection.creativity.crossroads",
+          "action": "question.repetition.connection.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.connection.growth.present",
+          "crossroads": "question.repetition.connection.growth.crossroads",
+          "action": "question.repetition.connection.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.solitude",
+      "kind": "repetition",
+      "left": "solitude",
+      "right": "solitude",
+      "priority": 40,
+      "relationRef": "relation.repetition.solitude",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.solitude.relationships.present",
+          "crossroads": "action.repetition.solitude.relationships.crossroads",
+          "action": "action.repetition.solitude.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.solitude.work.present",
+          "crossroads": "action.repetition.solitude.work.crossroads",
+          "action": "action.repetition.solitude.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.solitude.creativity.present",
+          "crossroads": "action.repetition.solitude.creativity.crossroads",
+          "action": "action.repetition.solitude.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.solitude.growth.present",
+          "crossroads": "action.repetition.solitude.growth.crossroads",
+          "action": "action.repetition.solitude.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.solitude.relationships.present",
+          "crossroads": "question.repetition.solitude.relationships.crossroads",
+          "action": "question.repetition.solitude.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.solitude.work.present",
+          "crossroads": "question.repetition.solitude.work.crossroads",
+          "action": "question.repetition.solitude.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.solitude.creativity.present",
+          "crossroads": "question.repetition.solitude.creativity.crossroads",
+          "action": "question.repetition.solitude.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.solitude.growth.present",
+          "crossroads": "question.repetition.solitude.growth.crossroads",
+          "action": "question.repetition.solitude.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.clarity",
+      "kind": "repetition",
+      "left": "clarity",
+      "right": "clarity",
+      "priority": 40,
+      "relationRef": "relation.repetition.clarity",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.clarity.relationships.present",
+          "crossroads": "action.repetition.clarity.relationships.crossroads",
+          "action": "action.repetition.clarity.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.clarity.work.present",
+          "crossroads": "action.repetition.clarity.work.crossroads",
+          "action": "action.repetition.clarity.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.clarity.creativity.present",
+          "crossroads": "action.repetition.clarity.creativity.crossroads",
+          "action": "action.repetition.clarity.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.clarity.growth.present",
+          "crossroads": "action.repetition.clarity.growth.crossroads",
+          "action": "action.repetition.clarity.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.clarity.relationships.present",
+          "crossroads": "question.repetition.clarity.relationships.crossroads",
+          "action": "question.repetition.clarity.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.clarity.work.present",
+          "crossroads": "question.repetition.clarity.work.crossroads",
+          "action": "question.repetition.clarity.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.clarity.creativity.present",
+          "crossroads": "question.repetition.clarity.creativity.crossroads",
+          "action": "question.repetition.clarity.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.clarity.growth.present",
+          "crossroads": "question.repetition.clarity.growth.crossroads",
+          "action": "question.repetition.clarity.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.uncertainty",
+      "kind": "repetition",
+      "left": "uncertainty",
+      "right": "uncertainty",
+      "priority": 40,
+      "relationRef": "relation.repetition.uncertainty",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.uncertainty.relationships.present",
+          "crossroads": "action.repetition.uncertainty.relationships.crossroads",
+          "action": "action.repetition.uncertainty.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.uncertainty.work.present",
+          "crossroads": "action.repetition.uncertainty.work.crossroads",
+          "action": "action.repetition.uncertainty.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.uncertainty.creativity.present",
+          "crossroads": "action.repetition.uncertainty.creativity.crossroads",
+          "action": "action.repetition.uncertainty.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.uncertainty.growth.present",
+          "crossroads": "action.repetition.uncertainty.growth.crossroads",
+          "action": "action.repetition.uncertainty.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.uncertainty.relationships.present",
+          "crossroads": "question.repetition.uncertainty.relationships.crossroads",
+          "action": "question.repetition.uncertainty.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.uncertainty.work.present",
+          "crossroads": "question.repetition.uncertainty.work.crossroads",
+          "action": "question.repetition.uncertainty.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.uncertainty.creativity.present",
+          "crossroads": "question.repetition.uncertainty.creativity.crossroads",
+          "action": "question.repetition.uncertainty.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.uncertainty.growth.present",
+          "crossroads": "question.repetition.uncertainty.growth.crossroads",
+          "action": "question.repetition.uncertainty.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.change",
+      "kind": "repetition",
+      "left": "change",
+      "right": "change",
+      "priority": 40,
+      "relationRef": "relation.repetition.change",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.change.relationships.present",
+          "crossroads": "action.repetition.change.relationships.crossroads",
+          "action": "action.repetition.change.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.change.work.present",
+          "crossroads": "action.repetition.change.work.crossroads",
+          "action": "action.repetition.change.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.change.creativity.present",
+          "crossroads": "action.repetition.change.creativity.crossroads",
+          "action": "action.repetition.change.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.change.growth.present",
+          "crossroads": "action.repetition.change.growth.crossroads",
+          "action": "action.repetition.change.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.change.relationships.present",
+          "crossroads": "question.repetition.change.relationships.crossroads",
+          "action": "question.repetition.change.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.change.work.present",
+          "crossroads": "question.repetition.change.work.crossroads",
+          "action": "question.repetition.change.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.change.creativity.present",
+          "crossroads": "question.repetition.change.creativity.crossroads",
+          "action": "question.repetition.change.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.change.growth.present",
+          "crossroads": "question.repetition.change.growth.crossroads",
+          "action": "question.repetition.change.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.stability",
+      "kind": "repetition",
+      "left": "stability",
+      "right": "stability",
+      "priority": 40,
+      "relationRef": "relation.repetition.stability",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.stability.relationships.present",
+          "crossroads": "action.repetition.stability.relationships.crossroads",
+          "action": "action.repetition.stability.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.stability.work.present",
+          "crossroads": "action.repetition.stability.work.crossroads",
+          "action": "action.repetition.stability.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.stability.creativity.present",
+          "crossroads": "action.repetition.stability.creativity.crossroads",
+          "action": "action.repetition.stability.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.stability.growth.present",
+          "crossroads": "action.repetition.stability.growth.crossroads",
+          "action": "action.repetition.stability.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.stability.relationships.present",
+          "crossroads": "question.repetition.stability.relationships.crossroads",
+          "action": "question.repetition.stability.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.stability.work.present",
+          "crossroads": "question.repetition.stability.work.crossroads",
+          "action": "question.repetition.stability.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.stability.creativity.present",
+          "crossroads": "question.repetition.stability.creativity.crossroads",
+          "action": "question.repetition.stability.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.stability.growth.present",
+          "crossroads": "question.repetition.stability.growth.crossroads",
+          "action": "question.repetition.stability.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.effort",
+      "kind": "repetition",
+      "left": "effort",
+      "right": "effort",
+      "priority": 40,
+      "relationRef": "relation.repetition.effort",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.effort.relationships.present",
+          "crossroads": "action.repetition.effort.relationships.crossroads",
+          "action": "action.repetition.effort.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.effort.work.present",
+          "crossroads": "action.repetition.effort.work.crossroads",
+          "action": "action.repetition.effort.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.effort.creativity.present",
+          "crossroads": "action.repetition.effort.creativity.crossroads",
+          "action": "action.repetition.effort.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.effort.growth.present",
+          "crossroads": "action.repetition.effort.growth.crossroads",
+          "action": "action.repetition.effort.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.effort.relationships.present",
+          "crossroads": "question.repetition.effort.relationships.crossroads",
+          "action": "question.repetition.effort.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.effort.work.present",
+          "crossroads": "question.repetition.effort.work.crossroads",
+          "action": "question.repetition.effort.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.effort.creativity.present",
+          "crossroads": "question.repetition.effort.creativity.crossroads",
+          "action": "question.repetition.effort.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.effort.growth.present",
+          "crossroads": "question.repetition.effort.growth.crossroads",
+          "action": "question.repetition.effort.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.rest",
+      "kind": "repetition",
+      "left": "rest",
+      "right": "rest",
+      "priority": 40,
+      "relationRef": "relation.repetition.rest",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.rest.relationships.present",
+          "crossroads": "action.repetition.rest.relationships.crossroads",
+          "action": "action.repetition.rest.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.rest.work.present",
+          "crossroads": "action.repetition.rest.work.crossroads",
+          "action": "action.repetition.rest.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.rest.creativity.present",
+          "crossroads": "action.repetition.rest.creativity.crossroads",
+          "action": "action.repetition.rest.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.rest.growth.present",
+          "crossroads": "action.repetition.rest.growth.crossroads",
+          "action": "action.repetition.rest.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.rest.relationships.present",
+          "crossroads": "question.repetition.rest.relationships.crossroads",
+          "action": "question.repetition.rest.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.rest.work.present",
+          "crossroads": "question.repetition.rest.work.crossroads",
+          "action": "question.repetition.rest.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.rest.creativity.present",
+          "crossroads": "question.repetition.rest.creativity.crossroads",
+          "action": "question.repetition.rest.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.rest.growth.present",
+          "crossroads": "question.repetition.rest.growth.crossroads",
+          "action": "question.repetition.rest.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.care",
+      "kind": "repetition",
+      "left": "care",
+      "right": "care",
+      "priority": 40,
+      "relationRef": "relation.repetition.care",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.care.relationships.present",
+          "crossroads": "action.repetition.care.relationships.crossroads",
+          "action": "action.repetition.care.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.care.work.present",
+          "crossroads": "action.repetition.care.work.crossroads",
+          "action": "action.repetition.care.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.care.creativity.present",
+          "crossroads": "action.repetition.care.creativity.crossroads",
+          "action": "action.repetition.care.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.care.growth.present",
+          "crossroads": "action.repetition.care.growth.crossroads",
+          "action": "action.repetition.care.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.care.relationships.present",
+          "crossroads": "question.repetition.care.relationships.crossroads",
+          "action": "question.repetition.care.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.care.work.present",
+          "crossroads": "question.repetition.care.work.crossroads",
+          "action": "question.repetition.care.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.care.creativity.present",
+          "crossroads": "question.repetition.care.creativity.crossroads",
+          "action": "question.repetition.care.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.care.growth.present",
+          "crossroads": "question.repetition.care.growth.crossroads",
+          "action": "question.repetition.care.growth.action"
+        }
+      }
+    },
+    {
+      "id": "repetition.release",
+      "kind": "repetition",
+      "left": "release",
+      "right": "release",
+      "priority": 40,
+      "relationRef": "relation.repetition.release",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.repetition.release.relationships.present",
+          "crossroads": "action.repetition.release.relationships.crossroads",
+          "action": "action.repetition.release.relationships.action"
+        },
+        "work": {
+          "present": "action.repetition.release.work.present",
+          "crossroads": "action.repetition.release.work.crossroads",
+          "action": "action.repetition.release.work.action"
+        },
+        "creativity": {
+          "present": "action.repetition.release.creativity.present",
+          "crossroads": "action.repetition.release.creativity.crossroads",
+          "action": "action.repetition.release.creativity.action"
+        },
+        "growth": {
+          "present": "action.repetition.release.growth.present",
+          "crossroads": "action.repetition.release.growth.crossroads",
+          "action": "action.repetition.release.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.repetition.release.relationships.present",
+          "crossroads": "question.repetition.release.relationships.crossroads",
+          "action": "question.repetition.release.relationships.action"
+        },
+        "work": {
+          "present": "question.repetition.release.work.present",
+          "crossroads": "question.repetition.release.work.crossroads",
+          "action": "question.repetition.release.work.action"
+        },
+        "creativity": {
+          "present": "question.repetition.release.creativity.present",
+          "crossroads": "question.repetition.release.creativity.crossroads",
+          "action": "question.repetition.release.creativity.action"
+        },
+        "growth": {
+          "present": "question.repetition.release.growth.present",
+          "crossroads": "question.repetition.release.growth.crossroads",
+          "action": "question.repetition.release.growth.action"
+        }
+      }
+    },
+    {
+      "id": "tension.expansion-boundaries",
+      "kind": "tension",
+      "left": "expansion",
+      "right": "boundaries",
+      "priority": 90,
+      "relationRef": "relation.tension.expansion-boundaries",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.tension.expansion-boundaries.relationships.present",
+          "crossroads": "action.tension.expansion-boundaries.relationships.crossroads",
+          "action": "action.tension.expansion-boundaries.relationships.action"
+        },
+        "work": {
+          "present": "action.tension.expansion-boundaries.work.present",
+          "crossroads": "action.tension.expansion-boundaries.work.crossroads",
+          "action": "action.tension.expansion-boundaries.work.action"
+        },
+        "creativity": {
+          "present": "action.tension.expansion-boundaries.creativity.present",
+          "crossroads": "action.tension.expansion-boundaries.creativity.crossroads",
+          "action": "action.tension.expansion-boundaries.creativity.action"
+        },
+        "growth": {
+          "present": "action.tension.expansion-boundaries.growth.present",
+          "crossroads": "action.tension.expansion-boundaries.growth.crossroads",
+          "action": "action.tension.expansion-boundaries.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.tension.expansion-boundaries.relationships.present",
+          "crossroads": "question.tension.expansion-boundaries.relationships.crossroads",
+          "action": "question.tension.expansion-boundaries.relationships.action"
+        },
+        "work": {
+          "present": "question.tension.expansion-boundaries.work.present",
+          "crossroads": "question.tension.expansion-boundaries.work.crossroads",
+          "action": "question.tension.expansion-boundaries.work.action"
+        },
+        "creativity": {
+          "present": "question.tension.expansion-boundaries.creativity.present",
+          "crossroads": "question.tension.expansion-boundaries.creativity.crossroads",
+          "action": "question.tension.expansion-boundaries.creativity.action"
+        },
+        "growth": {
+          "present": "question.tension.expansion-boundaries.growth.present",
+          "crossroads": "question.tension.expansion-boundaries.growth.crossroads",
+          "action": "question.tension.expansion-boundaries.growth.action"
+        }
+      }
+    },
+    {
+      "id": "tension.connection-solitude",
+      "kind": "tension",
+      "left": "connection",
+      "right": "solitude",
+      "priority": 85,
+      "relationRef": "relation.tension.connection-solitude",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.tension.connection-solitude.relationships.present",
+          "crossroads": "action.tension.connection-solitude.relationships.crossroads",
+          "action": "action.tension.connection-solitude.relationships.action"
+        },
+        "work": {
+          "present": "action.tension.connection-solitude.work.present",
+          "crossroads": "action.tension.connection-solitude.work.crossroads",
+          "action": "action.tension.connection-solitude.work.action"
+        },
+        "creativity": {
+          "present": "action.tension.connection-solitude.creativity.present",
+          "crossroads": "action.tension.connection-solitude.creativity.crossroads",
+          "action": "action.tension.connection-solitude.creativity.action"
+        },
+        "growth": {
+          "present": "action.tension.connection-solitude.growth.present",
+          "crossroads": "action.tension.connection-solitude.growth.crossroads",
+          "action": "action.tension.connection-solitude.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.tension.connection-solitude.relationships.present",
+          "crossroads": "question.tension.connection-solitude.relationships.crossroads",
+          "action": "question.tension.connection-solitude.relationships.action"
+        },
+        "work": {
+          "present": "question.tension.connection-solitude.work.present",
+          "crossroads": "question.tension.connection-solitude.work.crossroads",
+          "action": "question.tension.connection-solitude.work.action"
+        },
+        "creativity": {
+          "present": "question.tension.connection-solitude.creativity.present",
+          "crossroads": "question.tension.connection-solitude.creativity.crossroads",
+          "action": "question.tension.connection-solitude.creativity.action"
+        },
+        "growth": {
+          "present": "question.tension.connection-solitude.growth.present",
+          "crossroads": "question.tension.connection-solitude.growth.crossroads",
+          "action": "question.tension.connection-solitude.growth.action"
+        }
+      }
+    },
+    {
+      "id": "tension.change-stability",
+      "kind": "tension",
+      "left": "change",
+      "right": "stability",
+      "priority": 85,
+      "relationRef": "relation.tension.change-stability",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.tension.change-stability.relationships.present",
+          "crossroads": "action.tension.change-stability.relationships.crossroads",
+          "action": "action.tension.change-stability.relationships.action"
+        },
+        "work": {
+          "present": "action.tension.change-stability.work.present",
+          "crossroads": "action.tension.change-stability.work.crossroads",
+          "action": "action.tension.change-stability.work.action"
+        },
+        "creativity": {
+          "present": "action.tension.change-stability.creativity.present",
+          "crossroads": "action.tension.change-stability.creativity.crossroads",
+          "action": "action.tension.change-stability.creativity.action"
+        },
+        "growth": {
+          "present": "action.tension.change-stability.growth.present",
+          "crossroads": "action.tension.change-stability.growth.crossroads",
+          "action": "action.tension.change-stability.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.tension.change-stability.relationships.present",
+          "crossroads": "question.tension.change-stability.relationships.crossroads",
+          "action": "question.tension.change-stability.relationships.action"
+        },
+        "work": {
+          "present": "question.tension.change-stability.work.present",
+          "crossroads": "question.tension.change-stability.work.crossroads",
+          "action": "question.tension.change-stability.work.action"
+        },
+        "creativity": {
+          "present": "question.tension.change-stability.creativity.present",
+          "crossroads": "question.tension.change-stability.creativity.crossroads",
+          "action": "question.tension.change-stability.creativity.action"
+        },
+        "growth": {
+          "present": "question.tension.change-stability.growth.present",
+          "crossroads": "question.tension.change-stability.growth.crossroads",
+          "action": "question.tension.change-stability.growth.action"
+        }
+      }
+    },
+    {
+      "id": "tension.effort-rest",
+      "kind": "tension",
+      "left": "effort",
+      "right": "rest",
+      "priority": 90,
+      "relationRef": "relation.tension.effort-rest",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.tension.effort-rest.relationships.present",
+          "crossroads": "action.tension.effort-rest.relationships.crossroads",
+          "action": "action.tension.effort-rest.relationships.action"
+        },
+        "work": {
+          "present": "action.tension.effort-rest.work.present",
+          "crossroads": "action.tension.effort-rest.work.crossroads",
+          "action": "action.tension.effort-rest.work.action"
+        },
+        "creativity": {
+          "present": "action.tension.effort-rest.creativity.present",
+          "crossroads": "action.tension.effort-rest.creativity.crossroads",
+          "action": "action.tension.effort-rest.creativity.action"
+        },
+        "growth": {
+          "present": "action.tension.effort-rest.growth.present",
+          "crossroads": "action.tension.effort-rest.growth.crossroads",
+          "action": "action.tension.effort-rest.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.tension.effort-rest.relationships.present",
+          "crossroads": "question.tension.effort-rest.relationships.crossroads",
+          "action": "question.tension.effort-rest.relationships.action"
+        },
+        "work": {
+          "present": "question.tension.effort-rest.work.present",
+          "crossroads": "question.tension.effort-rest.work.crossroads",
+          "action": "question.tension.effort-rest.work.action"
+        },
+        "creativity": {
+          "present": "question.tension.effort-rest.creativity.present",
+          "crossroads": "question.tension.effort-rest.creativity.crossroads",
+          "action": "question.tension.effort-rest.creativity.action"
+        },
+        "growth": {
+          "present": "question.tension.effort-rest.growth.present",
+          "crossroads": "question.tension.effort-rest.growth.crossroads",
+          "action": "question.tension.effort-rest.growth.action"
+        }
+      }
+    },
+    {
+      "id": "tension.clarity-uncertainty",
+      "kind": "tension",
+      "left": "clarity",
+      "right": "uncertainty",
+      "priority": 80,
+      "relationRef": "relation.tension.clarity-uncertainty",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.tension.clarity-uncertainty.relationships.present",
+          "crossroads": "action.tension.clarity-uncertainty.relationships.crossroads",
+          "action": "action.tension.clarity-uncertainty.relationships.action"
+        },
+        "work": {
+          "present": "action.tension.clarity-uncertainty.work.present",
+          "crossroads": "action.tension.clarity-uncertainty.work.crossroads",
+          "action": "action.tension.clarity-uncertainty.work.action"
+        },
+        "creativity": {
+          "present": "action.tension.clarity-uncertainty.creativity.present",
+          "crossroads": "action.tension.clarity-uncertainty.creativity.crossroads",
+          "action": "action.tension.clarity-uncertainty.creativity.action"
+        },
+        "growth": {
+          "present": "action.tension.clarity-uncertainty.growth.present",
+          "crossroads": "action.tension.clarity-uncertainty.growth.crossroads",
+          "action": "action.tension.clarity-uncertainty.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.tension.clarity-uncertainty.relationships.present",
+          "crossroads": "question.tension.clarity-uncertainty.relationships.crossroads",
+          "action": "question.tension.clarity-uncertainty.relationships.action"
+        },
+        "work": {
+          "present": "question.tension.clarity-uncertainty.work.present",
+          "crossroads": "question.tension.clarity-uncertainty.work.crossroads",
+          "action": "question.tension.clarity-uncertainty.work.action"
+        },
+        "creativity": {
+          "present": "question.tension.clarity-uncertainty.creativity.present",
+          "crossroads": "question.tension.clarity-uncertainty.creativity.crossroads",
+          "action": "question.tension.clarity-uncertainty.creativity.action"
+        },
+        "growth": {
+          "present": "question.tension.clarity-uncertainty.growth.present",
+          "crossroads": "question.tension.clarity-uncertainty.growth.crossroads",
+          "action": "question.tension.clarity-uncertainty.growth.action"
+        }
+      }
+    },
+    {
+      "id": "tension.care-boundaries",
+      "kind": "tension",
+      "left": "care",
+      "right": "boundaries",
+      "priority": 88,
+      "relationRef": "relation.tension.care-boundaries",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.tension.care-boundaries.relationships.present",
+          "crossroads": "action.tension.care-boundaries.relationships.crossroads",
+          "action": "action.tension.care-boundaries.relationships.action"
+        },
+        "work": {
+          "present": "action.tension.care-boundaries.work.present",
+          "crossroads": "action.tension.care-boundaries.work.crossroads",
+          "action": "action.tension.care-boundaries.work.action"
+        },
+        "creativity": {
+          "present": "action.tension.care-boundaries.creativity.present",
+          "crossroads": "action.tension.care-boundaries.creativity.crossroads",
+          "action": "action.tension.care-boundaries.creativity.action"
+        },
+        "growth": {
+          "present": "action.tension.care-boundaries.growth.present",
+          "crossroads": "action.tension.care-boundaries.growth.crossroads",
+          "action": "action.tension.care-boundaries.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.tension.care-boundaries.relationships.present",
+          "crossroads": "question.tension.care-boundaries.relationships.crossroads",
+          "action": "question.tension.care-boundaries.relationships.action"
+        },
+        "work": {
+          "present": "question.tension.care-boundaries.work.present",
+          "crossroads": "question.tension.care-boundaries.work.crossroads",
+          "action": "question.tension.care-boundaries.work.action"
+        },
+        "creativity": {
+          "present": "question.tension.care-boundaries.creativity.present",
+          "crossroads": "question.tension.care-boundaries.creativity.crossroads",
+          "action": "question.tension.care-boundaries.creativity.action"
+        },
+        "growth": {
+          "present": "question.tension.care-boundaries.growth.present",
+          "crossroads": "question.tension.care-boundaries.growth.crossroads",
+          "action": "question.tension.care-boundaries.growth.action"
+        }
+      }
+    },
+    {
+      "id": "complement.clarity-effort",
+      "kind": "complement",
+      "left": "clarity",
+      "right": "effort",
+      "priority": 65,
+      "relationRef": "relation.complement.clarity-effort",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.complement.clarity-effort.relationships.present",
+          "crossroads": "action.complement.clarity-effort.relationships.crossroads",
+          "action": "action.complement.clarity-effort.relationships.action"
+        },
+        "work": {
+          "present": "action.complement.clarity-effort.work.present",
+          "crossroads": "action.complement.clarity-effort.work.crossroads",
+          "action": "action.complement.clarity-effort.work.action"
+        },
+        "creativity": {
+          "present": "action.complement.clarity-effort.creativity.present",
+          "crossroads": "action.complement.clarity-effort.creativity.crossroads",
+          "action": "action.complement.clarity-effort.creativity.action"
+        },
+        "growth": {
+          "present": "action.complement.clarity-effort.growth.present",
+          "crossroads": "action.complement.clarity-effort.growth.crossroads",
+          "action": "action.complement.clarity-effort.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.complement.clarity-effort.relationships.present",
+          "crossroads": "question.complement.clarity-effort.relationships.crossroads",
+          "action": "question.complement.clarity-effort.relationships.action"
+        },
+        "work": {
+          "present": "question.complement.clarity-effort.work.present",
+          "crossroads": "question.complement.clarity-effort.work.crossroads",
+          "action": "question.complement.clarity-effort.work.action"
+        },
+        "creativity": {
+          "present": "question.complement.clarity-effort.creativity.present",
+          "crossroads": "question.complement.clarity-effort.creativity.crossroads",
+          "action": "question.complement.clarity-effort.creativity.action"
+        },
+        "growth": {
+          "present": "question.complement.clarity-effort.growth.present",
+          "crossroads": "question.complement.clarity-effort.growth.crossroads",
+          "action": "question.complement.clarity-effort.growth.action"
+        }
+      }
+    },
+    {
+      "id": "complement.care-connection",
+      "kind": "complement",
+      "left": "care",
+      "right": "connection",
+      "priority": 65,
+      "relationRef": "relation.complement.care-connection",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.complement.care-connection.relationships.present",
+          "crossroads": "action.complement.care-connection.relationships.crossroads",
+          "action": "action.complement.care-connection.relationships.action"
+        },
+        "work": {
+          "present": "action.complement.care-connection.work.present",
+          "crossroads": "action.complement.care-connection.work.crossroads",
+          "action": "action.complement.care-connection.work.action"
+        },
+        "creativity": {
+          "present": "action.complement.care-connection.creativity.present",
+          "crossroads": "action.complement.care-connection.creativity.crossroads",
+          "action": "action.complement.care-connection.creativity.action"
+        },
+        "growth": {
+          "present": "action.complement.care-connection.growth.present",
+          "crossroads": "action.complement.care-connection.growth.crossroads",
+          "action": "action.complement.care-connection.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.complement.care-connection.relationships.present",
+          "crossroads": "question.complement.care-connection.relationships.crossroads",
+          "action": "question.complement.care-connection.relationships.action"
+        },
+        "work": {
+          "present": "question.complement.care-connection.work.present",
+          "crossroads": "question.complement.care-connection.work.crossroads",
+          "action": "question.complement.care-connection.work.action"
+        },
+        "creativity": {
+          "present": "question.complement.care-connection.creativity.present",
+          "crossroads": "question.complement.care-connection.creativity.crossroads",
+          "action": "question.complement.care-connection.creativity.action"
+        },
+        "growth": {
+          "present": "question.complement.care-connection.growth.present",
+          "crossroads": "question.complement.care-connection.growth.crossroads",
+          "action": "question.complement.care-connection.growth.action"
+        }
+      }
+    },
+    {
+      "id": "complement.release-change",
+      "kind": "complement",
+      "left": "release",
+      "right": "change",
+      "priority": 65,
+      "relationRef": "relation.complement.release-change",
+      "actionRefs": {
+        "relationships": {
+          "present": "action.complement.release-change.relationships.present",
+          "crossroads": "action.complement.release-change.relationships.crossroads",
+          "action": "action.complement.release-change.relationships.action"
+        },
+        "work": {
+          "present": "action.complement.release-change.work.present",
+          "crossroads": "action.complement.release-change.work.crossroads",
+          "action": "action.complement.release-change.work.action"
+        },
+        "creativity": {
+          "present": "action.complement.release-change.creativity.present",
+          "crossroads": "action.complement.release-change.creativity.crossroads",
+          "action": "action.complement.release-change.creativity.action"
+        },
+        "growth": {
+          "present": "action.complement.release-change.growth.present",
+          "crossroads": "action.complement.release-change.growth.crossroads",
+          "action": "action.complement.release-change.growth.action"
+        }
+      },
+      "questionRefs": {
+        "relationships": {
+          "present": "question.complement.release-change.relationships.present",
+          "crossroads": "question.complement.release-change.relationships.crossroads",
+          "action": "question.complement.release-change.relationships.action"
+        },
+        "work": {
+          "present": "question.complement.release-change.work.present",
+          "crossroads": "question.complement.release-change.work.crossroads",
+          "action": "question.complement.release-change.work.action"
+        },
+        "creativity": {
+          "present": "question.complement.release-change.creativity.present",
+          "crossroads": "question.complement.release-change.creativity.crossroads",
+          "action": "question.complement.release-change.creativity.action"
+        },
+        "growth": {
+          "present": "question.complement.release-change.growth.present",
+          "crossroads": "question.complement.release-change.growth.crossroads",
+          "action": "question.complement.release-change.growth.action"
+        }
+      }
+    }
+  ]
+}

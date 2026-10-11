@@ -18,7 +18,7 @@ TypeScript loads the English prose pack and substitutes only the references and 
 
 ## Version and contract policy
 
-Current tuple: schema `1`, engine `reading.1`, semantics `semantics.1`, rules `rules.1`, content `reading.en.1`. These are independent of the draw session's engine and `en.v1` versions. Generated JSON Schema and TypeScript declarations come from Rust DTOs. JSON Schema checks structural bounds, known enums, version constants and card ID syntax; Rust additionally checks uniqueness, complete packs and exact position order.
+Initial release tuple (superseded for new interpretations by ADR 008): schema `1`, engine `reading.1`, semantics `semantics.1`, rules `rules.1`, content `reading.en.1`. These are independent of the draw session's engine and `en.v1` versions. Generated JSON Schema and TypeScript declarations come from Rust DTOs. JSON Schema checks structural bounds, known enums, version constants and card ID syntax; Rust additionally checks uniqueness, complete packs and exact position order.
 
 Intent roles map onto the three old position IDs in order:
 

@@ -23,8 +23,8 @@ def aws(*args):
 
 def validate_export(out):
     for name in ["index.html", "404.html", "tarot/index.html", "astrology/index.html",
-                 "content/reading/semantics.1.json", "content/reading/rules.1.json",
-                 "content/reading/reading.en.1.json"]:
+                 "content/reading/semantics.2.json", "content/reading/rules.2.json",
+                 "content/reading/reading.en.1.1.json"]:
         if not (out / name).is_file():
             raise ValueError(f"Incomplete static export: {name}")
     for feature in ["tarot", "astrology"]:

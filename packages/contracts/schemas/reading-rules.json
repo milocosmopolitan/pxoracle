@@ -33,7 +33,10 @@
         "actionRefs": {
           "type": "object",
           "additionalProperties": {
-            "type": "string"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "id": {
@@ -54,7 +57,10 @@
         "questionRefs": {
           "type": "object",
           "additionalProperties": {
-            "type": "string"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "relationRef": {
@@ -98,15 +104,15 @@
       "properties": {
         "content": {
           "type": "string",
-          "const": "reading.en.1"
+          "const": "reading.en.1.1"
         },
         "engine": {
           "type": "string",
-          "const": "reading.1"
+          "const": "reading.2"
         },
         "rules": {
           "type": "string",
-          "const": "rules.1"
+          "const": "rules.2"
         },
         "schema": {
           "type": "integer",
@@ -116,7 +122,7 @@
         },
         "semantics": {
           "type": "string",
-          "const": "semantics.1"
+          "const": "semantics.2"
         }
       },
       "additionalProperties": false,

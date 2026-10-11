@@ -163,11 +163,11 @@ export function buildContentInventory(packs) {
   }
   for (const rule of packs.rules.rules) {
     touch(rule.relationRef, "overall_text;relation_text", `relation-${rule.kind}`);
-    for (const r of Object.values(rule.actionRefs)) touch(r, "action_text", `rule-action-${rule.kind}`);
-    for (const r of Object.values(rule.questionRefs)) touch(r, "question_text", `rule-question-${rule.kind}`);
+    for (const r of Object.values(rule.actionRefs).flatMap(Object.values)) touch(r, "action_text", `rule-action-${rule.kind}`);
+    for (const r of Object.values(rule.questionRefs).flatMap(Object.values)) touch(r, "question_text", `rule-question-${rule.kind}`);
   }
   for (const id of Object.keys(strings)) {
-    if (id.startsWith("flow.")) touch(id, "overall_text", "flow-template");
+    if (/^(flow|evidence|fallback)\./.test(id)) touch(id, "overall_text", "flow-template");
     if (id.startsWith("name.")) touch(id, "card_N_name", "card-name");
   }
   const header = ["string_id", "text", "usage_category", "output_columns", "reference_count", "content_version", "semantics_version", "rules_version"];

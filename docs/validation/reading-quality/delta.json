@@ -1,0 +1,1272 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "92d7861",
+  "sourceState": "Uncommitted source on feat/tarot-editorial-quality; final production rerender identity/hashes recorded.",
+  "request": "Analyze 12 review CSVs with topic subagents, improve production sources, rerender and report before/after and remaining issues.",
+  "originalExportRevision": "1b53168fb3ed7fd1dbf73cd7d29b37b0f89eb3a3",
+  "beforeVersions": {
+    "engine_version": "reading.1",
+    "semantics_version": "semantics.1",
+    "rules_version": "rules.1",
+    "content_version": "reading.en.1",
+    "export_schema_version": "reading-export.v1"
+  },
+  "afterVersions": {
+    "engine_version": "reading.2",
+    "semantics_version": "semantics.2",
+    "rules_version": "rules.2",
+    "content_version": "reading.en.2",
+    "export_schema_version": "reading-export.v1"
+  },
+  "coverage": {
+    "contexts": [
+      [
+        "creativity",
+        "action"
+      ],
+      [
+        "creativity",
+        "crossroads"
+      ],
+      [
+        "creativity",
+        "present"
+      ],
+      [
+        "growth",
+        "action"
+      ],
+      [
+        "growth",
+        "crossroads"
+      ],
+      [
+        "growth",
+        "present"
+      ],
+      [
+        "relationships",
+        "action"
+      ],
+      [
+        "relationships",
+        "crossroads"
+      ],
+      [
+        "relationships",
+        "present"
+      ],
+      [
+        "work",
+        "action"
+      ],
+      [
+        "work",
+        "crossroads"
+      ],
+      [
+        "work",
+        "present"
+      ]
+    ],
+    "casesPerContext": 2696,
+    "pairedRows": 32352,
+    "topicReviewerAnchorCases": 28,
+    "topicReviewerRows": 336,
+    "independentExtraAdviceRows": 132,
+    "limitations": [
+      "Representative review set, not exhaustive text review.",
+      "Lexical equality is diagnostic, not a semantic quality score.",
+      "Agent review is not human editorial approval."
+    ]
+  },
+  "inputHashes": {
+    "creativity-action-review.csv": "cbc36517811504644dda4126546de1d39554733e81f6c4e28c792932ef1545fe",
+    "creativity-crossroads-review.csv": "3a24ab87acffb738d71673a6b22ac6b844402b760f20212844336a59cf8015ce",
+    "creativity-present-review.csv": "0bf0dd3458a546534be90ac63359c80a255f92fd811d6fa83ed87b99423daf6e",
+    "growth-action-review.csv": "c748026bc48d7a64e5aa6cf478c6d27115c0b9e8e32a29ebf0606122150dcea8",
+    "growth-crossroads-review.csv": "27a5d5146e5810a757515d96f9d6d9c6a2a10c4d417760f4098f3c0b836e6fb4",
+    "growth-present-review.csv": "4d000ab14d0a83def8c3e1521aa3dd219f3cc375ef91d60619def17f327cc712",
+    "relationships-action-review.csv": "e64cb27c844c16491b7684be123c5c0b6dd50c33261c0755f368253aa99c1f3e",
+    "relationships-crossroads-review.csv": "177267fd3766326f6ffb1d9dfca4edb85957b2ac788b666bba55d37a8a64bf06",
+    "relationships-present-review.csv": "17f93fe756845ad46d3f46ea8a7afd85a9ce8ebea376e4c9f724aab5fee11fe9",
+    "work-action-review.csv": "dcb5501ea0b2ef95ecddb03ec63359913892ba5bfd106f423f4021efd8a7493c",
+    "work-crossroads-review.csv": "5c10cc115aea30d4aa8a398d07819c1497533de83285aea3f1480d0f2130bba2",
+    "work-present-review.csv": "d9048cfb4f6f3c3163f814484dbb56dedaa4ed1b575c178a1550e74a4adece07"
+  },
+  "outputHashes": {
+    "creativity-action-review.csv": "15b4603f3683a1ede02584284204029b1b6839e36a21bdad89634cfa065c8940",
+    "creativity-crossroads-review.csv": "1b917751e63e18b08eb4c8edfb468ab19d951bab4bc6c037805274c31fde1684",
+    "creativity-present-review.csv": "779ac4241ee45da449a93a8320d29247978a206ffee56577e6c5cd11e2205cac",
+    "growth-action-review.csv": "e9c96188916677d55d63a4698389b7bf9992d40f5567e1ceab9b03539347d64f",
+    "growth-crossroads-review.csv": "2e77e3b814bd8fa31724dfd6ddf22d39702fc390618a893e05910c28dda3d152",
+    "growth-present-review.csv": "dd55f6b0e5fc6dd4623a39dec5c070d86dd4a0e4fdf9c38250be925ea0d07598",
+    "relationships-action-review.csv": "1cf6d70f6a43ef06c3161609e18782bab2e42abb46a9c1ddc7f949f382368361",
+    "relationships-crossroads-review.csv": "aaf83ff52eac538a1d17cc193e66f8f088e72785e933f5b372690f61495fdfb6",
+    "relationships-present-review.csv": "29dd684a80adf696b1d48e3db7461f11c1ed46b6b81db50bce0f2f8d35df0808",
+    "work-action-review.csv": "638f122388ffcc133bcf1a85ba6a52a48027ae69ccc4e1f483f9f9201825e17b",
+    "work-crossroads-review.csv": "9568fb935af2d10792bb790c0cf10ddccb1e0845169824777259dce45a86a359",
+    "work-present-review.csv": "a5a5a20ed7db5a6399255b5b273e818f0a69d5edaa2051a3307e688ce1597d6c"
+  },
+  "sourceHashes": {
+    "content/tarot/reading/advice-creativity.tsv": "937d0e9ea62ee3189728ce3148a93898dd43187d197eefe3a1b2326f39883d16",
+    "content/tarot/reading/advice-growth.tsv": "62a7ee9f9dbeeb991f60d1c0ed8c930844f653d4ac133ffd9eba72ab3f23f557",
+    "content/tarot/reading/advice-relationships.tsv": "4f292153034e0239e23a12fa9e8461ec9d44f8d2fbee92886e5d47f5761ad91e",
+    "content/tarot/reading/advice-work.tsv": "244411f57a940a61373c34b1c20b71c977a957717e868d3bd72678c08b164718",
+    "content/tarot/reading/cards.tsv": "ff5591321c688562abacc00aa4be3b5d67cae5e90b0be7d3d5391b1c51de06c5",
+    "content/tarot/reading/fallback.tsv": "fb684d6290d3216840bd140ea262fda5e7311a187daaeb271fa27ea15648ebeb",
+    "content/tarot/reading/positions.tsv": "3f6b98aa602ff51054b1a2c1cdd2da5143a2573fee9c8f472b801303187a8a34",
+    "content/tarot/reading/reading.en.1.json": "ea929ef93f75ec25f8e13576cac4b95f8c74c5a7d848169c6ad98df362f44c93",
+    "content/tarot/reading/reading.en.2.json": "0cdf8f46ebaf3ed4c482a9eac0d1f2be9cd3c89e8b55583bc67271b304e288a6",
+    "content/tarot/reading/relations.tsv": "2aff7a476495281e0ace1d2f974eac26c483b11cda501513db3d0bea3ae0e598",
+    "content/tarot/reading/roles.tsv": "f064b3d1e94c68d82f3ad65d147613948b175f0859df5197bae9ac0280449c7a",
+    "content/tarot/reading/rules.1.json": "fb6f82b5f1addd75e30fcdfe550e2a97e9af5d88bc844d49c8628120f5351101",
+    "content/tarot/reading/rules.2.json": "9b6629dac485f0f92fb23ae06da1fa4d0d0f31cdcd07a2792f8940a4183e7c09",
+    "content/tarot/reading/semantics.1.json": "0fd3eccd96f746b5baeca122a19d0c4ed2ef62c30dd096c7dec9f642e0ccd4e1",
+    "content/tarot/reading/semantics.2.json": "a25c5437ec899a32e6988d711e92ccad12cac18575fe67ff3992c2cecc304e52",
+    "content/tarot/reading/themes.tsv": "4fd1f153d3f257368152431edb0be60f5187c6bdab77120fd3b405b091c91f69",
+    "crates/pxoracle-tarot-reading/src/lib.rs": "738743888e50f9cf591460546cb3041b671cdb1f20670870dd9e4734680f729a",
+    "scripts/build-reading-content.py": "ddb743be09d34accf26d3a5f1c8c3d3a40ad9a3b2c75eb87846b881f6ad6c09a",
+    "scripts/worker.mjs": "357f937373808eed093e3653f6709e246dd2dd410dadda53fb3546bf60f50b4c",
+    "apps/web/src/features/tarot/reading.ts": "04479b483ff69afeb789660e64ed959b15dcb29fa410be5ba19e5b01a68c7341",
+    "scripts/reading-export/common.mjs": "774a35ca35e0566912762f8b271acea5258eff15900517959465369a0ce0f4a1",
+    "scripts/reading-export/review.mjs": "336b2a3cddeeb5a095a2f319f8131e23f26dbde8df7c31d81dbab31730fbb55c"
+  },
+  "changes": {
+    "creativity-action-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "creativity-crossroads-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "creativity-present-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "growth-action-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "growth-crossroads-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "growth-present-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "relationships-action-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "relationships-crossroads-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "relationships-present-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "work-action-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "work-crossroads-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    },
+    "work-present-review": {
+      "overall_text": 2696,
+      "action_text": 2696,
+      "question_text": 2696,
+      "position_1_text": 2696,
+      "position_2_text": 2696,
+      "position_3_text": 2696
+    }
+  },
+  "comparisons": {
+    "before": [
+      {
+        "axis": "intents",
+        "group": "relationships",
+        "contexts": [
+          [
+            "relationships",
+            "present"
+          ],
+          [
+            "relationships",
+            "crossroads"
+          ],
+          [
+            "relationships",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "question_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "intents",
+        "group": "work",
+        "contexts": [
+          [
+            "work",
+            "present"
+          ],
+          [
+            "work",
+            "crossroads"
+          ],
+          [
+            "work",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "question_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "intents",
+        "group": "creativity",
+        "contexts": [
+          [
+            "creativity",
+            "present"
+          ],
+          [
+            "creativity",
+            "crossroads"
+          ],
+          [
+            "creativity",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "question_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "intents",
+        "group": "growth",
+        "contexts": [
+          [
+            "growth",
+            "present"
+          ],
+          [
+            "growth",
+            "crossroads"
+          ],
+          [
+            "growth",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "question_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "topics",
+        "group": "present",
+        "contexts": [
+          [
+            "relationships",
+            "present"
+          ],
+          [
+            "work",
+            "present"
+          ],
+          [
+            "creativity",
+            "present"
+          ],
+          [
+            "growth",
+            "present"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 10,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "question_text": {
+            "identicalCases": 10,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "topics",
+        "group": "crossroads",
+        "contexts": [
+          [
+            "relationships",
+            "crossroads"
+          ],
+          [
+            "work",
+            "crossroads"
+          ],
+          [
+            "creativity",
+            "crossroads"
+          ],
+          [
+            "growth",
+            "crossroads"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 10,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "question_text": {
+            "identicalCases": 10,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "topics",
+        "group": "action",
+        "contexts": [
+          [
+            "relationships",
+            "action"
+          ],
+          [
+            "work",
+            "action"
+          ],
+          [
+            "creativity",
+            "action"
+          ],
+          [
+            "growth",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 10,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "question_text": {
+            "identicalCases": 10,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      }
+    ],
+    "after": [
+      {
+        "axis": "intents",
+        "group": "relationships",
+        "contexts": [
+          [
+            "relationships",
+            "present"
+          ],
+          [
+            "relationships",
+            "crossroads"
+          ],
+          [
+            "relationships",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "question_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "intents",
+        "group": "work",
+        "contexts": [
+          [
+            "work",
+            "present"
+          ],
+          [
+            "work",
+            "crossroads"
+          ],
+          [
+            "work",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "question_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "intents",
+        "group": "creativity",
+        "contexts": [
+          [
+            "creativity",
+            "present"
+          ],
+          [
+            "creativity",
+            "crossroads"
+          ],
+          [
+            "creativity",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "question_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "intents",
+        "group": "growth",
+        "contexts": [
+          [
+            "growth",
+            "present"
+          ],
+          [
+            "growth",
+            "crossroads"
+          ],
+          [
+            "growth",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "question_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "topics",
+        "group": "present",
+        "contexts": [
+          [
+            "relationships",
+            "present"
+          ],
+          [
+            "work",
+            "present"
+          ],
+          [
+            "creativity",
+            "present"
+          ],
+          [
+            "growth",
+            "present"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "question_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "topics",
+        "group": "crossroads",
+        "contexts": [
+          [
+            "relationships",
+            "crossroads"
+          ],
+          [
+            "work",
+            "crossroads"
+          ],
+          [
+            "creativity",
+            "crossroads"
+          ],
+          [
+            "growth",
+            "crossroads"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "question_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      },
+      {
+        "axis": "topics",
+        "group": "action",
+        "contexts": [
+          [
+            "relationships",
+            "action"
+          ],
+          [
+            "work",
+            "action"
+          ],
+          [
+            "creativity",
+            "action"
+          ],
+          [
+            "growth",
+            "action"
+          ]
+        ],
+        "completeAxis": true,
+        "comparedCases": 2696,
+        "sections": {
+          "overall_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "relation_text": {
+            "identicalCases": 2696,
+            "normalizedIdenticalCases": 2696,
+            "exampleCaseIds": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "action_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "question_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_1_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_2_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          },
+          "position_3_text": {
+            "identicalCases": 0,
+            "normalizedIdenticalCases": 0,
+            "exampleCaseIds": []
+          }
+        }
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "original CSV versus unmodified current production rerender",
+      "status": "pass",
+      "rows": 32352
+    },
+    {
+      "name": "card/orientation/context/role/lens/rule/fallback/core preservation",
+      "status": "pass",
+      "rows": 32352
+    }
+  ],
+  "humanEditorialApproval": false,
+  "finalProductionVerification": {
+    "rows": 32352,
+    "versions": {
+      "schema": 1,
+      "engine": "reading.2",
+      "semantics": "semantics.2",
+      "rules": "rules.2",
+      "content": "reading.en.2"
+    },
+    "packHashes": {
+      "semantics": "a25c5437ec899a32e6988d711e92ccad12cac18575fe67ff3992c2cecc304e52",
+      "rules": "9b6629dac485f0f92fb23ae06da1fa4d0d0f31cdcd07a2792f8940a4183e7c09",
+      "prose": "0cdf8f46ebaf3ed4c482a9eac0d1f2be9cd3c89e8b55583bc67271b304e288a6"
+    },
+    "outputHashes": {
+      "relationships-present": "29dd684a80adf696b1d48e3db7461f11c1ed46b6b81db50bce0f2f8d35df0808",
+      "relationships-crossroads": "aaf83ff52eac538a1d17cc193e66f8f088e72785e933f5b372690f61495fdfb6",
+      "relationships-action": "1cf6d70f6a43ef06c3161609e18782bab2e42abb46a9c1ddc7f949f382368361",
+      "work-present": "a5a5a20ed7db5a6399255b5b273e818f0a69d5edaa2051a3307e688ce1597d6c",
+      "work-crossroads": "9568fb935af2d10792bb790c0cf10ddccb1e0845169824777259dce45a86a359",
+      "work-action": "638f122388ffcc133bcf1a85ba6a52a48027ae69ccc4e1f483f9f9201825e17b",
+      "creativity-present": "779ac4241ee45da449a93a8320d29247978a206ffee56577e6c5cd11e2205cac",
+      "creativity-crossroads": "1b917751e63e18b08eb4c8edfb468ab19d951bab4bc6c037805274c31fde1684",
+      "creativity-action": "15b4603f3683a1ede02584284204029b1b6839e36a21bdad89634cfa065c8940",
+      "growth-present": "dd55f6b0e5fc6dd4623a39dec5c070d86dd4a0e4fdf9c38250be925ea0d07598",
+      "growth-crossroads": "2e77e3b814bd8fa31724dfd6ddf22d39702fc390618a893e05910c28dda3d152",
+      "growth-action": "e9c96188916677d55d63a4698389b7bf9992d40f5567e1ceab9b03539347d64f"
+    },
+    "allRowsMatchIndependentlyReviewedFinalOutputs": true
+  }
+}

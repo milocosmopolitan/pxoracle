@@ -1,0 +1,65 @@
+{
+  "versions": {
+    "schema": 1,
+    "engine": "reading.2",
+    "semantics": "semantics.2",
+    "rules": "rules.2",
+    "content": "reading.en.1.1"
+  },
+  "artifacts": [
+    {
+      "path": "apps/web/public/content/reading/semantics.2.json",
+      "bytes": 292052,
+      "gzipBytes": 19159,
+      "sha256": "5e160ff684119a3a325c714beffe459ed2c8ed5d8cdac18c3ed4b04224a43eda"
+    },
+    {
+      "path": "apps/web/public/content/reading/rules.2.json",
+      "bytes": 47940,
+      "gzipBytes": 2602,
+      "sha256": "37fb6691c0cc1e8397615d03bc76ed4bc6a18c0f466f129240e0a3812e302613"
+    },
+    {
+      "path": "apps/web/public/content/reading/reading.en.1.1.json",
+      "bytes": 348155,
+      "gzipBytes": 53194,
+      "sha256": "e41956bbf1f152d863795ccaa433d9b8c3e0d3576a7ed6b757b993c55072185f"
+    },
+    {
+      "path": "apps/web/public/engines/tarot/engine.wasm",
+      "bytes": 517771,
+      "gzipBytes": 145463,
+      "sha256": "e35a3e8090d2d241b8bc1079740b6d6c4b0a20ab2dfe74b715794ffa680aade4"
+    }
+  ],
+  "humanEditorialApproval": false,
+  "checks": {
+    "nativeTests": 35,
+    "nodeTests": 66,
+    "nativeWasmParityInputs": 174,
+    "storybookStates": 11,
+    "deploymentTests": 8,
+    "wasm": "pass",
+    "schemaGeneration": "pass",
+    "packFreshness": "pass",
+    "typecheck": "pass",
+    "staticExport": "pass",
+    "storybookBuild": "pass",
+    "reviewedStringsAndSymbolicDataPreserved": true,
+    "oldReleaseByteIdentical": true,
+    "browser": {
+      "baseURL": "http://localhost:3000",
+      "passed": 6,
+      "projects": [
+        "Chrome desktop",
+        "Pixel 7 Chromium emulation"
+      ],
+      "flows": [
+        "draw/reveal/content failure/retry/save/restore",
+        "legacy perspective and malformed-save handling",
+        "old interpretation explicit regeneration and save"
+      ],
+      "physicalMobile": false
+    }
+  }
+}

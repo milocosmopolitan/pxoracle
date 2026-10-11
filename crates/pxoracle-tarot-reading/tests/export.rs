@@ -3,8 +3,8 @@ use pxoracle_tarot_reading::*;
 fn packs() -> (SemanticPack, RulePack) {
     let base = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../content/tarot/reading");
     (
-        serde_json::from_str(&std::fs::read_to_string(base.join("semantics.1.json")).unwrap()).unwrap(),
-        serde_json::from_str(&std::fs::read_to_string(base.join("rules.1.json")).unwrap()).unwrap(),
+        serde_json::from_str(&std::fs::read_to_string(base.join("semantics.2.json")).unwrap()).unwrap(),
+        serde_json::from_str(&std::fs::read_to_string(base.join("rules.2.json")).unwrap()).unwrap(),
     )
 }
 #[test]

@@ -29,10 +29,10 @@ let readingReady;
 async function prepareReading(mod, versions) {
   const expected = {
     schema: 1,
-    engine: "reading.1",
-    semantics: "semantics.1",
-    rules: "rules.1",
-    content: "reading.en.1",
+    engine: "reading.2",
+    semantics: "semantics.2",
+    rules: "rules.2",
+    content: "reading.en.1.1",
   };
   if (
     !versions ||
@@ -42,7 +42,7 @@ async function prepareReading(mod, versions) {
     throw new Error("READING_VERSION");
   if (!readingReady)
     readingReady = Promise.all(
-      ["semantics.1", "rules.1"].map(async (name) => {
+      ["semantics.2", "rules.2"].map(async (name) => {
         const response = await fetch(`/content/reading/${name}.json`);
         if (!response.ok) throw new Error("READING_PACK_FAILED");
         const text = await response.text();

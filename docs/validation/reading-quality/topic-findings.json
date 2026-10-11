@@ -1,0 +1,1510 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "92d7861",
+  "versions": {
+    "engine_version": "reading.1",
+    "semantics_version": "semantics.1",
+    "rules_version": "rules.1",
+    "content_version": "reading.en.1",
+    "export_schema_version": "reading-export.v1"
+  },
+  "inputHashes": {
+    "creativity-action-review.csv": "cbc36517811504644dda4126546de1d39554733e81f6c4e28c792932ef1545fe",
+    "creativity-crossroads-review.csv": "3a24ab87acffb738d71673a6b22ac6b844402b760f20212844336a59cf8015ce",
+    "creativity-present-review.csv": "0bf0dd3458a546534be90ac63359c80a255f92fd811d6fa83ed87b99423daf6e",
+    "growth-action-review.csv": "c748026bc48d7a64e5aa6cf478c6d27115c0b9e8e32a29ebf0606122150dcea8",
+    "growth-crossroads-review.csv": "27a5d5146e5810a757515d96f9d6d9c6a2a10c4d417760f4098f3c0b836e6fb4",
+    "growth-present-review.csv": "4d000ab14d0a83def8c3e1521aa3dd219f3cc375ef91d60619def17f327cc712",
+    "relationships-action-review.csv": "e64cb27c844c16491b7684be123c5c0b6dd50c33261c0755f368253aa99c1f3e",
+    "relationships-crossroads-review.csv": "177267fd3766326f6ffb1d9dfca4edb85957b2ac788b666bba55d37a8a64bf06",
+    "relationships-present-review.csv": "17f93fe756845ad46d3f46ea8a7afd85a9ce8ebea376e4c9f724aab5fee11fe9",
+    "work-action-review.csv": "dcb5501ea0b2ef95ecddb03ec63359913892ba5bfd106f423f4021efd8a7493c",
+    "work-crossroads-review.csv": "5c10cc115aea30d4aa8a398d07819c1497533de83285aea3f1480d0f2130bba2",
+    "work-present-review.csv": "d9048cfb4f6f3c3163f814484dbb56dedaa4ed1b575c178a1550e74a4adece07"
+  },
+  "coverage": {
+    "contexts": [
+      [
+        "creativity",
+        "action"
+      ],
+      [
+        "creativity",
+        "crossroads"
+      ],
+      [
+        "creativity",
+        "present"
+      ],
+      [
+        "growth",
+        "action"
+      ],
+      [
+        "growth",
+        "crossroads"
+      ],
+      [
+        "growth",
+        "present"
+      ],
+      [
+        "relationships",
+        "action"
+      ],
+      [
+        "relationships",
+        "crossroads"
+      ],
+      [
+        "relationships",
+        "present"
+      ],
+      [
+        "work",
+        "action"
+      ],
+      [
+        "work",
+        "crossroads"
+      ],
+      [
+        "work",
+        "present"
+      ]
+    ],
+    "casesPerContext": 2696,
+    "pairedRows": 32352,
+    "topicReviewerAnchorCases": 28,
+    "topicReviewerRows": 336,
+    "independentExtraAdviceRows": 132,
+    "limitations": [
+      "Representative review set, not exhaustive text review.",
+      "Lexical equality is diagnostic, not a semantic quality score.",
+      "Agent review is not human editorial approval."
+    ]
+  },
+  "findings": [
+    {
+      "id": "REL-01",
+      "severity": "high",
+      "dimension": "intent",
+      "topic": "relationships",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "0",
+        "4",
+        "40",
+        "4351",
+        "917434"
+      ],
+      "section": "action/question",
+      "before": [
+        "Within a relationship, write one established fact beside one open question and identify a way to check that question."
+      ],
+      "explanation": "All 28 aligned cases have identical action and question across all three intents. The selector uses topic only; a prose prefix cannot distinguish understanding, comparison, and experiment.",
+      "productionSource": {
+        "path": "crates/pxoracle-tarot-reading/src/lib.rs",
+        "referenceId": "r.action_refs[&topic] / r.question_refs[&topic]"
+      },
+      "proposedChange": {
+        "selection": "Add topic and intent dispatch in Rust, with authored external strings and strict coverage validation.",
+        "tension.clarity-uncertainty.relationships": {
+          "present": {
+            "action": "Write down one thing the person actually said and the meaning you added; mark what remains unconfirmed.",
+            "question": "Which part of your understanding comes from an exchange, and which part are you filling in?"
+          },
+          "crossroads": {
+            "action": "For each option, note one assumption about the other person that would change your choice; prepare a direct question rather than guessing.",
+            "question": "What do you need to clarify before either choice would be an informed commitment?"
+          },
+          "action": {
+            "action": "Choose one uncertain point and draft a direct, answerable question; leave room for the person to decline or need time.",
+            "question": "What could this conversation clarify without requiring a particular response?"
+          }
+        }
+      },
+      "rationale": "These are different tasks justified by intent and relationship uncertainty, not synonym variation.",
+      "verificationCases": [
+        "0",
+        "4",
+        "40",
+        "4351",
+        "917434"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-relationships.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "REL-02",
+      "severity": "high",
+      "dimension": "coherence",
+      "topic": "relationships",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "15",
+        "4351"
+      ],
+      "section": "action",
+      "before": [
+        "offer one specific form of support with an honest limit on its time or scope.",
+        "Reduce a demand that turns exhaustion into self-criticism and ask for support."
+      ],
+      "explanation": "Care-boundaries advice assumes the user should give more, while Empress reversed or Strength reversed/Death reversed explicitly concern depletion and releasing burden. A limit does not remove that directional conflict.",
+      "productionSource": {
+        "path": "content/tarot/reading/relations.tsv",
+        "referenceId": "tension.care-boundaries"
+      },
+      "proposedChange": {
+        "present": {
+          "action": "List one form of support you are giving or receiving and the limit that keeps it freely chosen.",
+          "question": "Where has care become an obligation that no one has checked with you?"
+        },
+        "crossroads": {
+          "action": "Compare what each option asks you to give, receive and stop carrying; include your own capacity before making another promise.",
+          "question": "Which option leaves room for both care and an honest no?"
+        },
+        "action": {
+          "action": "Name one support need and one limit in the same sentence, then use it to make or revise a request.",
+          "question": "What would make this exchange sustainable for you as well as the other person?"
+        }
+      },
+      "rationale": "Giving, receiving and revising are all possible; do not force giving when actual orientation says depletion.",
+      "verificationCases": [
+        "15",
+        "4351"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-relationships.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "REL-03",
+      "severity": "medium",
+      "dimension": "grounding",
+      "topic": "relationships",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "40",
+        "108",
+        "917434"
+      ],
+      "section": "overall/relation",
+      "before": [
+        "A clarifying perspective comes before directed effort.",
+        "Attention to a need opens toward an exchange with others."
+      ],
+      "explanation": "Complement matches thematic sequence but prose treats the earlier card as an achieved resource even when its role is difficulty or hidden conditions. Case108 direction calls for release but relation steers toward another task. Topic is present only in opening; primary relation lacks participating names or roles in overall.",
+      "productionSource": {
+        "path": "scripts/build-reading-content.py",
+        "referenceId": "relation.complement.clarity-effort / flow.*"
+      },
+      "proposedChange": {
+        "selection": "Compose a bridge with actual participating indices/names and their role labels; phrase complement as an available connection, not an achieved stage.",
+        "replacement": "Clarity can guide effort here, but the earlier card is something to examine rather than a settled answer. Check that distinction before turning it into another commitment.",
+        "case108_example": "The Magician asks you to examine scattered promises; The Devil reversed points toward loosening an old attachment. Put the effort into maintaining that limit, rather than adding another promise."
+      },
+      "rationale": "The example is a grounding target, not a new full-combination prose database. Preserve deterministic evidence and do not invent chronology.",
+      "verificationCases": [
+        "40",
+        "108",
+        "917434"
+      ],
+      "disposition": "open",
+      "integrationNote": "Partially addressed: participating card names and card-specific position text are now rendered, and complements no longer imply completed progress. Per-card theme/role contributions and topic-specific relationship synthesis remain shared prose. See independent-validation.json."
+    },
+    {
+      "id": "REL-04",
+      "severity": "high",
+      "dimension": "fallback",
+      "topic": "relationships",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "60",
+        "272",
+        "4935"
+      ],
+      "section": "overall",
+      "before": [
+        "No strong relationship is supported here.",
+        "No strong shared relationship is supported."
+      ],
+      "explanation": "In a relationship-topic reading this can read as a judgment that the human relationship is not strong. The intended claim concerns a rule match among cards, not people.",
+      "productionSource": {
+        "path": "scripts/build-reading-content.py",
+        "referenceId": "flow.crossroads.fallback / flow.action.fallback"
+      },
+      "proposedChange": {
+        "replacement": "These cards do not share a strong theme under the reading rules. Read their positions separately rather than forcing a single story."
+      },
+      "rationale": "Clarify the subject of the limitation while preserving honest fallback; never diagnose the actual relationship from absent rule evidence.",
+      "verificationCases": [
+        "60",
+        "272",
+        "4935"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-relationships.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "REL-05",
+      "severity": "medium",
+      "dimension": "specificity",
+      "topic": "relationships",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "272",
+        "4935"
+      ],
+      "section": "fallback action/question",
+      "before": [
+        "Name one feeling without immediately explaining or acting on it.",
+        "Identify one recurring trigger and choose a different first response."
+      ],
+      "explanation": "Fallback directly chooses card3 actionRef/questionRef, so it loses intent/topic and can diverge from third-role instruction. Ace of Cups action suggests inward noticing while overall suggests a clear request; both could be reasonable but sequence is not explained.",
+      "productionSource": {
+        "path": "crates/pxoracle-tarot-reading/src/lib.rs",
+        "referenceId": "m[2].action_ref / m[2].question_ref"
+      },
+      "proposedChange": {
+        "selection": "Preserve card3 authored action as grounded detail, add intent/topic-aware fallback framing selected by Rust; keep no-relation evidence explicit.",
+        "case272_crossroads": "Before deciding what to offer or accept, name the feeling this possibility brings up and distinguish it from an agreement the other person has actually made.",
+        "case272_action": "Privately name the feeling first; if you choose to share it, use one sentence about your own experience rather than a claim about theirs.",
+        "case4935_present": "Notice one recurring exchange and the first response you usually make. Separate your part in the cycle from what the other person controls."
+      },
+      "rationale": "Keep actual card-orientation detail rather than replace all fallback with generic theme advice.",
+      "verificationCases": [
+        "272",
+        "4935"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-relationships.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "REL-06",
+      "severity": "medium",
+      "dimension": "voice",
+      "topic": "relationships",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "0",
+        "8",
+        "819330"
+      ],
+      "section": "overall/positions",
+      "before": [
+        "The first perspective offers curiosity before a route is settled.",
+        "Ask what support is wanted instead of assuming that caring means taking over."
+      ],
+      "explanation": "Overall uses first/second perspective instead of card names and repeats the same topic sentence from position1; repeated care in819330 repeats again at position3. This feels assembled and hides why these particular cards matter.",
+      "productionSource": {
+        "path": "scripts/build-reading-content.py",
+        "referenceId": "flow.present.first / flow.present.opening / topic.care.relationships"
+      },
+      "proposedChange": {
+        "change": "Use named cards with role-sensitive clauses in flow; use topic-specific connective framing rather than copy position1 topic paragraph into introduction. Do not force novelty in each position where same meaning is justified."
+      },
+      "rationale": "Card-specific resources and difficulties already exist; expose their ownership instead of adding arbitrary variants.",
+      "verificationCases": [
+        "0",
+        "8",
+        "819330"
+      ],
+      "disposition": "open",
+      "integrationNote": "Partially addressed: participating card names and card-specific position text are now rendered, and complements no longer imply completed progress. Per-card theme/role contributions and topic-specific relationship synthesis remain shared prose. See independent-validation.json."
+    },
+    {
+      "id": "REL-07",
+      "severity": "medium",
+      "dimension": "topic",
+      "topic": "relationships",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "2",
+        "6",
+        "6184"
+      ],
+      "section": "action",
+      "before": [
+        "Within a relationship, define one small experiment and the limit at which you will stop or review it."
+      ],
+      "explanation": "An experiment is underspecified and may be read as testing another person. In Devil upright/Justice case the relationship boundary deserves explicit agency and consent, not a generic trial.",
+      "productionSource": {
+        "path": "content/tarot/reading/relations.tsv",
+        "referenceId": "tension.expansion-boundaries"
+      },
+      "proposedChange": {
+        "present": {
+          "action": "Notice one invitation you want to make and one limit that would keep the invitation voluntary for both people.",
+          "question": "Where could you allow more openness without giving up the right to decline?"
+        },
+        "crossroads": {
+          "action": "Compare how each option handles a request for more closeness and a request for space; do not assume either response.",
+          "question": "Which limits would need to be understood before you could choose freely?"
+        },
+        "action": {
+          "action": "Make one modest invitation with a clear scope, and leave an easy way to decline; change your own action rather than testing the person.",
+          "question": "What could you offer without treating acceptance as proof of how they feel?"
+        }
+      },
+      "rationale": "A bounded invitation is observable and agency-preserving; do not add a doom or abuse claim to Devil.",
+      "verificationCases": [
+        "2",
+        "6",
+        "6184"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-relationships.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "work.intent-advice",
+      "severity": "high",
+      "dimension": "Intent",
+      "topic": "work",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "15",
+        "32",
+        "40",
+        "41",
+        "60",
+        "87",
+        "88",
+        "108",
+        "112",
+        "116",
+        "272",
+        "488",
+        "1101",
+        "4351",
+        "4935",
+        "6184",
+        "819330",
+        "917434"
+      ],
+      "section": "action/question",
+      "before": "In your work or career, write one established fact beside one open question and identify a way to check that question.",
+      "explanation": "All 28 aligned cases have the same action and question in all three intents. This is a selector limitation, not merely repeated wording; crossroads never compares options in its concluding action.",
+      "productionSource": [
+        {
+          "path": "crates/pxoracle-tarot-reading/src/lib.rs:402",
+          "referenceId": "action.tension.clarity-uncertainty.work"
+        }
+      ],
+      "proposedChange": "Index advice by topic AND intent in Rust. Author work-context advice with present=inspect conditions, crossroads=compare options using a shared criterion, action=one bounded check. Retain relation selection/evidence across intents.",
+      "rationale": "All 28 aligned cases have the same action and question in all three intents. This is a selector limitation, not merely repeated wording; crossroads never compares options in its concluding action.",
+      "verificationCases": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "15",
+        "32",
+        "40",
+        "41",
+        "60",
+        "87",
+        "88",
+        "108",
+        "112",
+        "116",
+        "272",
+        "488",
+        "1101",
+        "4351",
+        "4935",
+        "6184",
+        "819330",
+        "917434"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-work.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "work.care-added-demand",
+      "severity": "high",
+      "dimension": "Coherence",
+      "topic": "work",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "4351",
+        "15",
+        "9"
+      ],
+      "section": "action",
+      "before": "offer one specific form of support with an honest limit on its time or scope.",
+      "explanation": "Case4351 has Strength reversed asking to reduce demands and Death reversed asking to release an exhausted arrangement. Concluding by offering support can push against both cards. Case15 Empress reversed repeats the depletion warning.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/relations.tsv",
+          "referenceId": "tension.care-boundaries"
+        }
+      ],
+      "proposedChange": "Make the action clarify needed support and a sustainable limit, without presuming the user should give more. Present: identify one support responsibility and its actual time cost. Crossroads: compare the support each option requires and who can realistically provide it. Action: revise one support commitment so its scope fits capacity, asking for help or reducing it if needed.",
+      "rationale": "Case4351 has Strength reversed asking to reduce demands and Death reversed asking to release an exhausted arrangement. Concluding by offering support can push against both cards. Case15 Empress reversed repeats the depletion warning.",
+      "verificationCases": [
+        "4351",
+        "15",
+        "9"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-work.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "work.role-card-conflict",
+      "severity": "high",
+      "dimension": "Grounding",
+      "topic": "work",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "4935"
+      ],
+      "section": "position_2_text",
+      "before": "isolation being defended as independence / Notice where dependence on agreement delays a necessary step.",
+      "explanation": "Hermit reversed indicates too little exchange, but the primary connection-tag role assumes excessive dependence. The source card difficulty already has the correct orientation-specific grounding; preserve it in position detail.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/roles.tsv",
+          "referenceId": "role.connection.difficulty"
+        }
+      ],
+      "proposedChange": "Use orientation/card-aware difficulty phrasing or a role clause that asks how exchange is blocked without diagnosing the opposite problem. Proposed shared connection difficulty: Identify what keeps a needed exchange from happening, including an unspoken request or a response you cannot control.",
+      "rationale": "Hermit reversed indicates too little exchange, but the primary connection-tag role assumes excessive dependence. The source card difficulty already has the correct orientation-specific grounding; preserve it in position detail.",
+      "verificationCases": [
+        "4935"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-work.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "work.fallback-context",
+      "severity": "medium",
+      "dimension": "Topic",
+      "topic": "work",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "60",
+        "272",
+        "4935"
+      ],
+      "section": "action/question",
+      "before": "Name one feeling without immediately explaining or acting on it.",
+      "explanation": "Fallback currently jumps from work handoffs/skills to a contextless feeling exercise. The exercise is safe but does not complete the chosen work-intent frame.",
+      "productionSource": [
+        {
+          "path": "crates/pxoracle-tarot-reading/src/lib.rs:408",
+          "referenceId": "cups.01.upright.action"
+        }
+      ],
+      "proposedChange": "Keep explicit no-supported-relation disclosure. Wrap or dispatch the third-card authored action with work/intent context instead of replacing it with invented synthesis. For Ace of Cups present, privately note a reaction to a recent task or exchange; crossroads, note how each option feels and separately which conditions can be checked; action, name a reaction before choosing a bounded request for support.",
+      "rationale": "Fallback currently jumps from work handoffs/skills to a contextless feeling exercise. The exercise is safe but does not complete the chosen work-intent frame.",
+      "verificationCases": [
+        "60",
+        "272",
+        "4935"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-work.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "work.flow-anonymous",
+      "severity": "medium",
+      "dimension": "Synthesis",
+      "topic": "work",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "0",
+        "40",
+        "88",
+        "108",
+        "917434"
+      ],
+      "section": "overall/relation",
+      "before": "The first perspective offers curiosity before a route is settled. The second asks you to examine scattering skill across too many promises.",
+      "explanation": "Overall uses card-specific first/second fragments but anonymous positions, then third position collapses to one of 12 theme clauses. Case108 Devil reversed becomes generic release, while clarity-effort relation says act without explaining how a small action maintains new freedom.",
+      "productionSource": [
+        {
+          "path": "scripts/build-reading-content.py",
+          "referenceId": "flow.present.first"
+        }
+      ],
+      "proposedChange": "Include card names and actual mapped role labels in the overall flow and use card-specific third-position action/resource alongside the role clause. Explain primary relation via participating card meanings rather than only generic theme labels.",
+      "rationale": "Overall uses card-specific first/second fragments but anonymous positions, then third position collapses to one of 12 theme clauses. Case108 Devil reversed becomes generic release, while clarity-effort relation says act without explaining how a small action maintains new freedom.",
+      "verificationCases": [
+        "0",
+        "40",
+        "88",
+        "108",
+        "917434"
+      ],
+      "disposition": "open",
+      "integrationNote": "Partially addressed: participating card names and card-specific position text are now rendered, and complements no longer imply completed progress. Per-card theme/role contributions and topic-specific relationship synthesis remain shared prose. See independent-validation.json."
+    },
+    {
+      "id": "work.disruption-small-step",
+      "severity": "medium",
+      "dimension": "Coherence",
+      "topic": "work",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "112",
+        "116"
+      ],
+      "section": "overall/action",
+      "before": "adjust one small part of a recurring routine and observe its effect.",
+      "explanation": "Tower upright core highlights failed assumptions and structural support. Generic routine-tweaking advice can undercut the card even though no doom prediction is made. Tower reversed maintenance is already more coherent and is a control.",
+      "productionSource": [
+        {
+          "path": "scripts/build-reading-content.py",
+          "referenceId": "action.repeat.change.work"
+        }
+      ],
+      "proposedChange": "Work change advice should check a changed assumption or task condition before altering a process, and preserve essential work or coordinate a handoff. Do not imply a small routine change repairs a major disruption.",
+      "rationale": "Tower upright core highlights failed assumptions and structural support. Generic routine-tweaking advice can undercut the card even though no doom prediction is made. Tower reversed maintenance is already more coherent and is a control.",
+      "verificationCases": [
+        "112",
+        "116"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-work.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "work.boundaries-authority",
+      "severity": "medium",
+      "dimension": "Agency",
+      "topic": "work",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "6184",
+        "88"
+      ],
+      "section": "action/position_3_text",
+      "before": "Ending an exhausted task can free resources for an actual priority.",
+      "explanation": "Work/career users may not control deadlines, employment terms, or delegated responsibilities. Reflection should support a request or reversible change, not silently assume permission to abandon a task. Existing release checks mention handoffs and should be preserved.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/themes.tsv",
+          "referenceId": "topic.release.work"
+        }
+      ],
+      "proposedChange": "Use scope-aware language: Identify a task that may no longer serve its purpose; check what can end, be reduced, or be handed over before committing its time elsewhere. Apply similar realistic authority checks to work actions that remove obligations.",
+      "rationale": "Work/career users may not control deadlines, employment terms, or delegated responsibilities. Reflection should support a request or reversible change, not silently assume permission to abandon a task. Existing release checks mention handoffs and should be preserved.",
+      "verificationCases": [
+        "6184",
+        "88"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-work.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "creativity-intent-advice",
+      "severity": "high",
+      "dimension": "Intent",
+      "topic": "creativity",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "0",
+        "2",
+        "40",
+        "88",
+        "4351"
+      ],
+      "section": "action_text/question_text",
+      "before": [
+        "For a creative project, write one established fact beside one open question and identify a way to check that question."
+      ],
+      "explanation": "All 28 aligned cases have identical advice across the three intents. Present needs a reading of existing project conditions; crossroads needs comparable options/unknowns; action needs an experiment. Rust action_refs[topic] and generator scope prefixes cannot express that difference.",
+      "productionSource": [
+        {
+          "path": "crates/pxoracle-tarot-reading/src/lib.rs",
+          "referenceId": "action.tension.clarity-uncertainty.creativity"
+        }
+      ],
+      "proposedChange": {
+        "implementation": "Author relation \u00d7 topic \u00d7 intent action and question references, select them in Rust; keep TS a renderer.",
+        "tension.clarity-uncertainty": {
+          "present": {
+            "action": "Look at one unfinished section. Separate what the draft already shows from what you are still guessing about its effect.",
+            "question": "Which uncertainty belongs to the work itself, and which comes from not having shown or tested it yet?"
+          },
+          "crossroads": {
+            "action": "Name two directions for the piece. For each, write what you know from the draft and one unanswered question that could change your choice.",
+            "question": "What would you need to see or hear before preferring one direction?"
+          },
+          "action": {
+            "action": "Make a rough alternate version of one small section to test a single unanswered question. Compare it with the original before polishing either.",
+            "question": "What did that comparison clarify, and what can remain undecided?"
+          }
+        }
+      },
+      "rationale": "Different tasks answer different intents while staying grounded in evidence versus uncertainty, not mere lexical variation.",
+      "verificationCases": [
+        {
+          "caseId": "0",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "2",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "40",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "88",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "4351",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        }
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-creativity.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "creativity-offer-care",
+      "severity": "high",
+      "dimension": "Coherence",
+      "topic": "creativity",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "9",
+        "15",
+        "4351"
+      ],
+      "section": "overall_text/action_text",
+      "before": [
+        "The difficulty to account for is using self-criticism as fuel. ... For a creative project, offer one specific form of support with an honest limit on its time or scope."
+      ],
+      "explanation": "The all-reversed Fool/Strength/Death case raises preparation, exhaustion and ending. The advice suddenly makes the user a giver of support. A solo creator need not be supporting anyone. Generic care-boundaries phrasing leaves the object of care unspecified and can pull against the actual spread.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/relations.tsv",
+          "referenceId": "tension.care-boundaries"
+        }
+      ],
+      "proposedChange": {
+        "creativity": {
+          "present": {
+            "action": "Name what is sustaining the project and what maintaining it is costing you. Mark one demand that is consuming more attention than the work can repay.",
+            "question": "Which part of caring for this work has become pressure to keep every part alive?"
+          },
+          "crossroads": {
+            "action": "For each project direction, compare the attention it needs with the time and materials you can actually provide. Name one limit you will protect in either choice.",
+            "question": "Which direction leaves enough capacity to tend the work without treating exhaustion as proof of commitment?"
+          },
+          "action": {
+            "action": "Give one neglected part of the project a short session, then stop at a limit chosen beforehand. Leave a nonessential demand out of that session.",
+            "question": "What support helped the work, and what demand could stay outside the next session?"
+          }
+        }
+      },
+      "rationale": "Makes the supported object the project and includes creator capacity; does not infer another person or require more giving.",
+      "verificationCases": [
+        {
+          "caseId": "9",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "15",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "4351",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        }
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-creativity.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "creativity-synthesis-grounding",
+      "severity": "medium",
+      "dimension": "Grounding",
+      "topic": "creativity",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "0",
+        "40",
+        "108",
+        "819330"
+      ],
+      "section": "overall_text/relation_text",
+      "before": [
+        "Tension \u00b7 The Magician / The High Priestess. This is the main connection described above. Cards 2, 3"
+      ],
+      "explanation": "The relation paragraph explains abstract themes without saying which participating card brings which theme or how position changes the interaction. Labels list cards after the fact. Case108 has release as Devil reversed primary meaning but complement is effort: its relationship can sound disconnected unless that secondary resource is explained.",
+      "productionSource": [
+        {
+          "path": "scripts/build-reading-content.py",
+          "referenceId": "relation.complement.clarity-effort"
+        }
+      ],
+      "proposedChange": {
+        "implementation": "Add evidence-bearing phrase arguments chosen in Rust for participants and their actual role/theme contribution; do not blindly enumerate all theme/resource/difficulty strings.",
+        "case40ActionExample": "The Magician, in the difficulty position, asks whether your available tools are being scattered across too many promises. The Chariot directs that energy toward one coordinated attempt. Give a single part of the draft a clear job before working harder on it.",
+        "case108Guard": "Preserve Devil reversed recovery/release meaning. A practical test here should reduce an old constraint rather than demand more production."
+      },
+      "rationale": "Users can follow the relationship back to cards and roles; named cards alone are insufficient if the connecting proposition stays generic.",
+      "verificationCases": [
+        {
+          "caseId": "0",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "40",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "108",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "819330",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        }
+      ],
+      "disposition": "open",
+      "integrationNote": "Partially addressed: participating card names and card-specific position text are now rendered, and complements no longer imply completed progress. Per-card theme/role contributions and topic-specific relationship synthesis remain shared prose. See independent-validation.json."
+    },
+    {
+      "id": "creativity-fallback-context",
+      "severity": "medium",
+      "dimension": "Topic",
+      "topic": "creativity",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "60",
+        "272",
+        "4935"
+      ],
+      "section": "action_text/question_text",
+      "before": [
+        "Name one feeling without immediately explaining or acting on it."
+      ],
+      "explanation": "Fallback correctly discloses no shared relationship but returns card3 action verbatim for every topic and intent. With Ace Cups this is a valid general reflection, yet it does not help creative choice or establish the purpose of the next experiment. Do not invent a relation merely to improve tailoring.",
+      "productionSource": [
+        {
+          "path": "crates/pxoracle-tarot-reading/src/lib.rs",
+          "referenceId": "cups.01.upright.action"
+        }
+      ],
+      "proposedChange": {
+        "implementation": "Preserve card3 action/reference and honest no-relation disclosure; provide authored topic/intent wrapper that ties it to current work/choice/small test. Avoid replacing nuanced card advice with a generic theme-only action.",
+        "case272": {
+          "present": "Name the feeling the unfinished work brings up before deciding what it means about the project.",
+          "crossroads": "Notice the feeling each creative direction brings up. Treat it as something to examine alongside the practical checks, not as a verdict.",
+          "action": "Give one feeling a small expression in a rough sketch, phrase or study without requiring a finished explanation."
+        }
+      },
+      "rationale": "These retain receptivity while answering creative purpose, without adding a hidden shared storyline.",
+      "verificationCases": [
+        {
+          "caseId": "60",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "272",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "4935",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        }
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-creativity.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "creativity-routine-versus-piece",
+      "severity": "medium",
+      "dimension": "Specificity",
+      "topic": "creativity",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "88",
+        "112"
+      ],
+      "section": "action_text",
+      "before": [
+        "For a creative project, adjust one small part of a recurring routine and observe its effect."
+      ],
+      "explanation": "Fool plus Death/Tower supports change of the work or its assumptions; the repetition-change action defaults to a recurring routine regardless of the piece itself. This is not wrong but often sends creative feedback to productivity habits without evidence.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/themes.tsv",
+          "referenceId": "action.repeat.change.creativity"
+        }
+      ],
+      "proposedChange": {
+        "present": {
+          "action": "Compare one current section with what you originally wanted it to do. Mark what still serves that purpose and what no longer does.",
+          "question": "Where has the project changed enough that an older approach no longer fits?"
+        },
+        "crossroads": {
+          "action": "Sketch two possible revisions of one section, keeping the original beside them. Compare what each preserves and what each asks you to release.",
+          "question": "Which revision changes the form without losing what matters to the work?"
+        },
+        "action": {
+          "action": "Save the current version, then revise one small section in a copy. Compare what the change makes clearer before widening it.",
+          "question": "What is worth carrying forward from the old version, and what can this revision leave behind?"
+        }
+      },
+      "rationale": "Uses reversible concrete revision with a comparison, preserves Death/Tower agency and avoids predicting loss.",
+      "verificationCases": [
+        {
+          "caseId": "88",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        },
+        {
+          "caseId": "112",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        }
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-creativity.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "creativity-relationship-language",
+      "severity": "medium",
+      "dimension": "Topic",
+      "topic": "creativity",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "1101"
+      ],
+      "section": "overall_text",
+      "before": [
+        "Closeness may become more useful when there is room to think separately and a clear way to return."
+      ],
+      "explanation": "The connection-solitude relation uses interpersonal closeness language even when the creative project is solo. A draft feedback loop is a better creativity-specific expression and need not assume a collaborator.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/relations.tsv",
+          "referenceId": "relation.tension.connection-solitude"
+        }
+      ],
+      "proposedChange": {
+        "creativeRelation": "Private work and outside response serve different needs. Give the draft enough space to develop, then ask for feedback on one question instead of exposing every unfinished part at once.",
+        "presentAction": "Look at a section you have kept private. Identify what is becoming clearer in solitude and what would benefit from an outside response.",
+        "crossroadsAction": "For each direction, decide what you need to work out privately and what feedback you would need before committing.",
+        "nextAction": "Spend ten minutes on one unfinished section, then ask a willing reader or collaborator one precise question about it."
+      },
+      "rationale": "Makes exchange optional and task-bound. Must not use outside feedback as universal requirement when no suitable person is available.",
+      "verificationCases": [
+        {
+          "caseId": "1101",
+          "intents": [
+            "present",
+            "crossroads",
+            "action"
+          ]
+        }
+      ],
+      "disposition": "open",
+      "integrationNote": "Partially addressed: participating card names and card-specific position text are now rendered, and complements no longer imply completed progress. Per-card theme/role contributions and topic-specific relationship synthesis remain shared prose. See independent-validation.json."
+    },
+    {
+      "id": "growth.intent-selector",
+      "severity": "high",
+      "dimension": "Intent",
+      "topic": "growth",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "15",
+        "32",
+        "40",
+        "41",
+        "60",
+        "87",
+        "88",
+        "108",
+        "112",
+        "116",
+        "272",
+        "488",
+        "1101",
+        "4351",
+        "4935",
+        "6184",
+        "819330",
+        "917434"
+      ],
+      "section": "action/question",
+      "before": "In your personal growth, write one established fact beside one open question and identify a way to check that question.",
+      "explanation": "All 28 anchors have identical advice across intents. The growth prefix does not connect an observational prompt or choice comparison to the actual request.",
+      "productionSource": [
+        {
+          "path": "crates/pxoracle-tarot-reading/src/lib.rs",
+          "referenceId": "action.tension.clarity-uncertainty.growth"
+        }
+      ],
+      "proposedChange": "Select topic-and-intent advice in Rust, with observation for present, values and uncertainties compared for crossroads, and a small reversible practice for action. New authored proposal: content/tarot/reading/advice-growth.tsv.",
+      "rationale": "All 28 anchors have identical advice across intents. The growth prefix does not connect an observational prompt or choice comparison to the actual request.",
+      "verificationCases": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "15",
+        "32",
+        "40",
+        "41",
+        "60",
+        "87",
+        "88",
+        "108",
+        "112",
+        "116",
+        "272",
+        "488",
+        "1101",
+        "4351",
+        "4935",
+        "6184",
+        "819330",
+        "917434"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-growth.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "growth.care-giver-default",
+      "severity": "high",
+      "dimension": "Coherence",
+      "topic": "growth",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "9",
+        "15",
+        "4351"
+      ],
+      "section": "action",
+      "before": "offer one specific form of support with an honest limit on its time or scope.",
+      "explanation": "Case4351 explicitly discusses self-criticism and exhausted expectations. Case15 Empress reversed asks to restore depleted resources. Telling these users to offer support can reproduce the burden the reading asks them to reduce.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/relations.tsv",
+          "referenceId": "tension.care-boundaries"
+        }
+      ],
+      "proposedChange": "Present: notice where support draws on an unreplenished resource. Crossroads: compare needs and sustainable limits. Action: make a support arrangement manageable by asking for help, reducing scope, or protecting time for your own needs.",
+      "rationale": "Case4351 explicitly discusses self-criticism and exhausted expectations. Case15 Empress reversed asks to restore depleted resources. Telling these users to offer support can reproduce the burden the reading asks them to reduce.",
+      "verificationCases": [
+        "9",
+        "15",
+        "4351"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-growth.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "growth.role-conflict",
+      "severity": "high",
+      "dimension": "Grounding",
+      "topic": "growth",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "4935"
+      ],
+      "section": "position_2_text",
+      "before": "Reflection may be becoming isolation; share one unfinished thought with someone trusted. / Notice where dependence on agreement delays a necessary step.",
+      "explanation": "Hermit reversed says isolation, the generic connection difficulty says dependence on agreement. Both can exist in a person, but the card evidence here does not establish both. Generic role wording should not override a grounded orientation.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/roles.tsv",
+          "referenceId": "role.connection.difficulty"
+        }
+      ],
+      "proposedChange": "Use the authored Hermit reversed difficulty, or replace the general connection difficulty with a balanced investigation of what blocks exchange, without assigning the opposite pattern.",
+      "rationale": "Hermit reversed says isolation, the generic connection difficulty says dependence on agreement. Both can exist in a person, but the card evidence here does not establish both. Generic role wording should not override a grounded orientation.",
+      "verificationCases": [
+        "4935"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-growth.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "growth.third-card-flattening",
+      "severity": "medium",
+      "dimension": "Synthesis",
+      "topic": "growth",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "32",
+        "108",
+        "112",
+        "917434"
+      ],
+      "section": "overall/position_3_text",
+      "before": "Keep the next move bounded: Do one bounded piece of work and inspect the result.",
+      "explanation": "Shared primary-theme role clauses erase distinct guidance. Lovers becomes generic exchange rather than values, Devil reversed release becomes an unrelated generic effort test, and Ten of Pentacles legacy becomes maintenance. Card-specific core paragraphs partially repair this only after readers reach detail.",
+      "productionSource": [
+        {
+          "path": "scripts/build-reading-content.py",
+          "referenceId": "flow.action.third"
+        }
+      ],
+      "proposedChange": "Include the third card's specific authored action or meaning and card/role identifiers alongside the generic role. Preserve agency and avoid converting every growth direction into productivity.",
+      "rationale": "Shared primary-theme role clauses erase distinct guidance. Lovers becomes generic exchange rather than values, Devil reversed release becomes an unrelated generic effort test, and Ten of Pentacles legacy becomes maintenance. Card-specific core paragraphs partially repair this only after readers reach detail.",
+      "verificationCases": [
+        "32",
+        "108",
+        "112",
+        "917434"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-growth.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "growth.fallback-control",
+      "severity": "low",
+      "dimension": "Fallback",
+      "topic": "growth",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "60",
+        "272",
+        "4935"
+      ],
+      "section": "overall/action",
+      "before": "No strong shared relationship is supported. / Name one feeling without immediately explaining or acting on it.",
+      "explanation": "Unlike the work topic, an inward feeling exercise fits growth naturally. The current fallback is an important control; improvement should preserve its restraint while addressing unchanged crossroads advice.",
+      "productionSource": [
+        {
+          "path": "crates/pxoracle-tarot-reading/src/lib.rs",
+          "referenceId": "cups.01.upright.action"
+        }
+      ],
+      "proposedChange": "Retain honest fallback and the card-specific action. If adding context framing, keep feeling identification a valid reflective action; do not force it into a productive task. Add choice-specific framing only where the selected intent needs it.",
+      "rationale": "Unlike the work topic, an inward feeling exercise fits growth naturally. The current fallback is an important control; improvement should preserve its restraint while addressing unchanged crossroads advice.",
+      "verificationCases": [
+        "60",
+        "272",
+        "4935"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-growth.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    },
+    {
+      "id": "growth.global-judgment-control",
+      "severity": "low",
+      "dimension": "Agency",
+      "topic": "growth",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        "4",
+        "40",
+        "116",
+        "6184",
+        "819330"
+      ],
+      "section": "position/overall",
+      "before": "A precise observation can be more useful than a global judgment about yourself.",
+      "explanation": "The existing growth topic lines provide useful agency and proportion: no unsupported diagnosis or doom for Devil/Tower, and practice does not prove worth. These should remain explicit controls during a more concrete rewrite.",
+      "productionSource": [
+        {
+          "path": "content/tarot/reading/themes.tsv",
+          "referenceId": "topic.clarity.growth"
+        }
+      ],
+      "proposedChange": "Preserve this precise-observation stance in new advice, with ordinary supports, limited capacity, and nonjudgmental review. Avoid treating all effort or rest as tests of personal improvement.",
+      "rationale": "The existing growth topic lines provide useful agency and proportion: no unsupported diagnosis or doom for Devil/Tower, and practice does not prove worth. These should remain explicit controls during a more concrete rewrite.",
+      "verificationCases": [
+        "4",
+        "40",
+        "116",
+        "6184",
+        "819330"
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": {
+        "paths": [
+          "content/tarot/reading/advice-growth.tsv",
+          "content/tarot/reading/positions.tsv",
+          "content/tarot/reading/fallback.tsv",
+          "crates/pxoracle-tarot-reading/src/lib.rs"
+        ],
+        "verification": "Matched production rerender and topic/independent anchor review; see delta.json and examples.json."
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "original CSV versus unmodified current production rerender",
+      "status": "pass",
+      "rows": 32352
+    },
+    {
+      "name": "card/orientation/context/role/lens/rule/fallback/core preservation",
+      "status": "pass",
+      "rows": 32352
+    }
+  ],
+  "humanEditorialApproval": false
+}

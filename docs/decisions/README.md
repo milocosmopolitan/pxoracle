@@ -29,3 +29,5 @@ Manual static publishing: [ADR 005](005-manual-static-publishing.md).
 Exhaustive reading export: [ADR 006](006-exhaustive-reading-export.md).
 
 Local city input, natal interpretation and crystal exploration: [ADR 007](007-local-natal-readings.md).
+
+Context-sensitive tarot editorial release: [ADR 008](008-contextual-tarot-editorial.md).

@@ -1,4 +1,5 @@
 import test from "node:test";
+import { createHash } from "node:crypto";
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -9,9 +10,9 @@ const { renderPhrase, validateReferences, readingInput } = reading;
 const { parseSavedTarot, readSavedTarot, saveTarot, deleteTarot } = persistence;
 const json = (p) => JSON.parse(readFileSync(p, "utf8"));
 const base = "content/tarot/reading/",
-  semantics = json(base + "semantics.1.json"),
-  rules = json(base + "rules.1.json"),
-  prose = json(base + "reading.en.1.json");
+  semantics = json(base + "semantics.2.json"),
+  rules = json(base + "rules.2.json"),
+  prose = json(base + "reading.en.1.1.json");
 const fixtures = json("tests/fixtures/readings.json");
 let mod;
 async function call(payload) {
@@ -73,7 +74,7 @@ test("156 authored meanings, references, bounds and reproducible packs", () => {
       /TODO|lorem ipsum|your question means|you will certainly/i,
     );
   }
-  for (const name of ["semantics.1", "rules.1", "reading.en.1"])
+  for (const name of ["semantics.2", "rules.2", "reading.en.1.1"])
     assert.equal(
       readFileSync(base + name + ".json", "utf8"),
       readFileSync("apps/web/public/content/reading/" + name + ".json", "utf8"),
@@ -111,8 +112,8 @@ test("native/WASM plans match frozen fixtures, all 12 perspectives and every ori
         "--example",
         "evaluate",
         "--",
-        base + "semantics.1.json",
-        base + "rules.1.json",
+        base + "semantics.2.json",
+        base + "rules.2.json",
         "/tmp/pxoracle-reading-parity.json",
       ],
       { encoding: "utf8" },
@@ -220,4 +221,55 @@ test("versioned saves retain cards, require legacy perspective and never persist
   assert.throws(() =>
     readingInput(selected, fixtures[0].input.context, semantics.versions),
   );
+});
+
+test("all rule advice resolves by topic and intent; old release stays immutable", () => {
+  for (const [file, digest] of Object.entries({
+    "semantics.1.json": "0fd3eccd96f746b5baeca122a19d0c4ed2ef62c30dd096c7dec9f642e0ccd4e1",
+    "rules.1.json": "fb6f82b5f1addd75e30fcdfe550e2a97e9af5d88bc844d49c8628120f5351101",
+    "reading.en.1.json": "ea929ef93f75ec25f8e13576cac4b95f8c74c5a7d848169c6ad98df362f44c93",
+  })) {
+    for (const dir of [base, "apps/web/public/content/reading/"]) {
+      assert.equal(createHash("sha256").update(readFileSync(dir + file)).digest("hex"), digest);
+    }
+  }
+  const old = json(base + "reading.en.1.json");
+  assert.equal(old.version, "reading.en.1");
+  assert.equal(reading.currentVersions(json(base + "semantics.1.json").versions), false);
+  for (const rule of rules.rules) {
+    for (const topic of ["relationships", "work", "creativity", "growth"]) {
+      for (const intent of ["present", "crossroads", "action"]) {
+        for (const part of ["actionRefs", "questionRefs"]) {
+          assert.ok(prose.strings[rule[part][topic][intent]], `${rule.id}/${topic}/${intent}/${part}`);
+        }
+      }
+    }
+  }
+  const work = rules.rules.find(r => r.id === "tension.care-boundaries");
+  const action = prose.strings[work.actionRefs.work.action];
+  assert.match(action, /request help or propose a smaller contribution/);
+  assert.doesNotMatch(action, /offer one specific form of support/);
+  const hermit = semantics.meanings["major.09.reversed"];
+  const difficulty = prose.strings[hermit.roleRefs.difficulty];
+  assert.ok(difficulty.includes(prose.strings[hermit.difficultyRef]));
+  assert.doesNotMatch(difficulty, /dependence on agreement/);
+});
+
+test("shared evidence framing does not hide a secondary connection", () => {
+  const fixture = fixtures.find(f => f.plan.relations.length === 2);
+  assert.ok(fixture);
+  const view = reading.composeReading(fixture.plan, prose);
+  assert.equal(view.relations[0].text, reading.MAIN_CONNECTION_TEXT);
+  assert.equal(view.relations[1].text, view.relations[1].fullText);
+  for (const name of view.relations[1].cardNames) assert.ok(view.relations[1].text.includes(name));
+});
+
+test("old interpretation versions require an explicit update without replacing the draw", () => {
+  const oldVersions = json(base + "semantics.1.json").versions;
+  const draw = json("tests/fixtures/engines.json").session;
+  const raw = JSON.stringify({schemaVersion:2,draw,perspective:fixtures[0].input.context,readingVersions:oldVersions});
+  const restored = parseSavedTarot(raw);
+  assert.equal(reading.currentVersions(restored.readingVersions), false);
+  assert.deepEqual(restored.draw, draw);
+  assert.deepEqual(restored.readingVersions, oldVersions);
 });

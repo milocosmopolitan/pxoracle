@@ -219,14 +219,14 @@ export function sourceInfo() {
 export function loadPacks() {
   const base = join(ROOT, "content/tarot/reading");
   const paths = {
-    semantics: join(base, "semantics.1.json"),
-    rules: join(base, "rules.1.json"),
-    prose: join(base, "reading.en.1.json"),
+    semantics: join(base, "semantics.2.json"),
+    rules: join(base, "rules.2.json"),
+    prose: join(base, "reading.en.1.1.json"),
   };
   const bytes = Object.fromEntries(
     Object.entries(paths).map(([k, p]) => [k, readFileSync(p)]),
   );
-  const pub = join(ROOT, "apps/web/public/content/reading/reading.en.1.json");
+  const pub = join(ROOT, "apps/web/public/content/reading/reading.en.1.1.json");
   if (existsSync(pub) && sha256(readFileSync(pub)) !== sha256(bytes.prose))
     throw new Error("EXPORT_PACK public prose copy differs from source");
   const prose = JSON.parse(bytes.prose);

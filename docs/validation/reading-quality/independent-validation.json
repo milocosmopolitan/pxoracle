@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "role": "independent development-time editorial validator",
+  "sourceRevision": "92d78615e11d5fe90415cc68936967a6c29fc880",
+  "sourceState": "Dirty integrated reading.2 worktree; initial and final reviewed output hashes recorded separately.",
+  "inputHashes": {
+    "before": {
+      "creativity-action-review.csv": "cbc36517811504644dda4126546de1d39554733e81f6c4e28c792932ef1545fe",
+      "creativity-crossroads-review.csv": "3a24ab87acffb738d71673a6b22ac6b844402b760f20212844336a59cf8015ce",
+      "creativity-present-review.csv": "0bf0dd3458a546534be90ac63359c80a255f92fd811d6fa83ed87b99423daf6e",
+      "growth-action-review.csv": "c748026bc48d7a64e5aa6cf478c6d27115c0b9e8e32a29ebf0606122150dcea8",
+      "growth-crossroads-review.csv": "27a5d5146e5810a757515d96f9d6d9c6a2a10c4d417760f4098f3c0b836e6fb4",
+      "growth-present-review.csv": "4d000ab14d0a83def8c3e1521aa3dd219f3cc375ef91d60619def17f327cc712",
+      "relationships-action-review.csv": "e64cb27c844c16491b7684be123c5c0b6dd50c33261c0755f368253aa99c1f3e",
+      "relationships-crossroads-review.csv": "177267fd3766326f6ffb1d9dfca4edb85957b2ac788b666bba55d37a8a64bf06",
+      "relationships-present-review.csv": "17f93fe756845ad46d3f46ea8a7afd85a9ce8ebea376e4c9f724aab5fee11fe9",
+      "work-action-review.csv": "dcb5501ea0b2ef95ecddb03ec63359913892ba5bfd106f423f4021efd8a7493c",
+      "work-crossroads-review.csv": "5c10cc115aea30d4aa8a398d07819c1497533de83285aea3f1480d0f2130bba2",
+      "work-present-review.csv": "d9048cfb4f6f3c3163f814484dbb56dedaa4ed1b575c178a1550e74a4adece07"
+    },
+    "after": {
+      "creativity-action-review.csv": "15b4603f3683a1ede02584284204029b1b6839e36a21bdad89634cfa065c8940",
+      "creativity-crossroads-review.csv": "c986c76e37cda2a3fd0fa59e7229c993c22c21fe42a4bee4af7881373f949d62",
+      "creativity-present-review.csv": "ca84c3143e33392dd41389db917bce6077ad90724664c3e26e02cb3ae697c92c",
+      "growth-action-review.csv": "e9c96188916677d55d63a4698389b7bf9992d40f5567e1ceab9b03539347d64f",
+      "growth-crossroads-review.csv": "83f2a552cc33eb4faaac28a469743b69b679c5079108dde32d06c1b5633ef613",
+      "growth-present-review.csv": "c1a0bbbee087266d4e0038afa7f2fcfaf0c084f3b96f28252144068307544ba2",
+      "relationships-action-review.csv": "1cf6d70f6a43ef06c3161609e18782bab2e42abb46a9c1ddc7f949f382368361",
+      "relationships-crossroads-review.csv": "d5ca10d271743f66990d92f8898effedd638b5f119662c5a150777fcc84ac02d",
+      "relationships-present-review.csv": "fca776e26d9b9e62810d7a62868afe5a252ee39fc46f086128d0ac5c674462a6",
+      "work-action-review.csv": "638f122388ffcc133bcf1a85ba6a52a48027ae69ccc4e1f483f9f9201825e17b",
+      "work-crossroads-review.csv": "09458ffe1e9a0db161cf44f27acdde5da8bc73d8d7a6cb46844bac270cb3ea8d",
+      "work-present-review.csv": "99a59993f7f525859b1f3dbe78c7850a4d864c4a180e9766e960ced043f2eb3f"
+    },
+    "finalAfter": {
+      "creativity-action-review.csv": "15b4603f3683a1ede02584284204029b1b6839e36a21bdad89634cfa065c8940",
+      "creativity-crossroads-review.csv": "1b917751e63e18b08eb4c8edfb468ab19d951bab4bc6c037805274c31fde1684",
+      "creativity-present-review.csv": "779ac4241ee45da449a93a8320d29247978a206ffee56577e6c5cd11e2205cac",
+      "growth-action-review.csv": "e9c96188916677d55d63a4698389b7bf9992d40f5567e1ceab9b03539347d64f",
+      "growth-crossroads-review.csv": "2e77e3b814bd8fa31724dfd6ddf22d39702fc390618a893e05910c28dda3d152",
+      "growth-present-review.csv": "dd55f6b0e5fc6dd4623a39dec5c070d86dd4a0e4fdf9c38250be925ea0d07598",
+      "relationships-action-review.csv": "1cf6d70f6a43ef06c3161609e18782bab2e42abb46a9c1ddc7f949f382368361",
+      "relationships-crossroads-review.csv": "aaf83ff52eac538a1d17cc193e66f8f088e72785e933f5b372690f61495fdfb6",
+      "relationships-present-review.csv": "29dd684a80adf696b1d48e3db7461f11c1ed46b6b81db50bce0f2f8d35df0808",
+      "work-action-review.csv": "638f122388ffcc133bcf1a85ba6a52a48027ae69ccc4e1f483f9f9201825e17b",
+      "work-crossroads-review.csv": "9568fb935af2d10792bb790c0cf10ddccb1e0845169824777259dce45a86a359",
+      "work-present-review.csv": "a5a5a20ed7db5a6399255b5b273e818f0a69d5edaa2051a3307e688ce1597d6c"
+    }
+  },
+  "versions": {
+    "before": {
+      "engine_version": "reading.1",
+      "semantics_version": "semantics.1",
+      "rules_version": "rules.1",
+      "content_version": "reading.en.1",
+      "export_schema_version": "reading-export.v1"
+    },
+    "after": {
+      "engine_version": "reading.2",
+      "semantics_version": "semantics.2",
+      "rules_version": "rules.2",
+      "content_version": "reading.en.2",
+      "export_schema_version": "reading-export.v1"
+    }
+  },
+  "coverage": {
+    "contexts": [
+      "creativity-action",
+      "creativity-crossroads",
+      "creativity-present",
+      "growth-action",
+      "growth-crossroads",
+      "growth-present",
+      "relationships-action",
+      "relationships-crossroads",
+      "relationships-present",
+      "work-action",
+      "work-crossroads",
+      "work-present"
+    ],
+    "caseIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      15,
+      32,
+      40,
+      41,
+      60,
+      87,
+      88,
+      108,
+      112,
+      116,
+      272,
+      488,
+      1101,
+      4351,
+      4935,
+      6184,
+      819330,
+      917434
+    ],
+    "additionalAdviceCaseIds": [
+      44,
+      120,
+      625,
+      673,
+      736,
+      746,
+      2585,
+      4256,
+      4338,
+      7325,
+      7405
+    ],
+    "anchorCompositionCount": 336,
+    "additionalAdviceCount": 132,
+    "primaryRelationFamilies": 21,
+    "fallbackCaseIds": [
+      60,
+      272,
+      4935
+    ],
+    "controlCaseIds": [
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+    ],
+    "limitations": [
+      "Purposeful representative review, not an estimate of population quality or exhaustive editorial review.",
+      "Most first-position anchors are The Fool; no claim of all card/orientation/position permutations receiving editorial review.",
+      "Full CSV structural comparison does not imply full editorial review.",
+      "Native/rendered-output evidence only; no independent browser/device or WASM execution claim.",
+      "No human approval."
+    ]
+  },
+  "findings": [
+    {
+      "id": "IV-001",
+      "severity": "medium",
+      "dimension": "coherence",
+      "topic": "relationships",
+      "intents": [
+        "present"
+      ],
+      "caseIds": [
+        272
+      ],
+      "section": "action_text",
+      "before": "Original: Name one feeling without immediately explaining or acting on it.",
+      "after": "Name one feeling without immediately explaining or acting on it. Use the response to notice what happens in one real exchange, without guessing the other person's feelings.",
+      "explanation": "The added wrapper presupposes a response or interpersonal exchange although the card-specific action is private observation and explicitly defers acting. The wrapper is selected independent of card action, so this incompatibility is systemic for private actions.",
+      "productionSource": {
+        "path": "content/tarot/reading/fallback.tsv",
+        "referenceId": "fallback.relationships.present.action"
+      },
+      "proposedChange": "Make the wrapper observation-neutral: Relate what you notice to one recent exchange, without guessing the other person's feelings.",
+      "rationale": "Preserves relationship context without inventing a response or requiring immediate disclosure.",
+      "verificationCases": [
+        272,
+        60,
+        4935
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": "Verified exact final-after CSV delta across all 32,352 paired rows; only expected flow framing and relationships/present fallback action changes occur."
+    },
+    {
+      "id": "IV-002",
+      "severity": "low",
+      "dimension": "voice",
+      "topic": "all",
+      "intents": [
+        "present",
+        "crossroads"
+      ],
+      "caseIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        15,
+        32,
+        40,
+        41,
+        60,
+        87,
+        88,
+        108,
+        112,
+        116,
+        272,
+        488,
+        1101,
+        4351,
+        4935,
+        6184,
+        819330,
+        917434
+      ],
+      "section": "overall_text",
+      "before": "For a helpful direction: Let a checkable distinction guide the next conversation.",
+      "after": "For direction, The High Priestess: One possible direction from this card: ... / Before deciding, The High Priestess: Before choosing, use this card to ask: ...",
+      "explanation": "Flow and card-position clauses each introduce the same role, causing duplicated framing and nested colons across all present/crossroads compositions.",
+      "productionSource": {
+        "path": "scripts/build-reading-content.py",
+        "referenceId": "flow.present.third; flow.crossroads.third"
+      },
+      "proposedChange": "Use {0}: {1} for the third flow, retaining the card-specific role frame.",
+      "rationale": "Names the card once and introduces its role once.",
+      "verificationCases": [
+        0,
+        272,
+        4351
+      ],
+      "disposition": "implemented",
+      "implementationEvidence": "Verified exact final-after CSV delta across all 32,352 paired rows; only expected flow framing and relationships/present fallback action changes occur."
+    },
+    {
+      "id": "IV-003",
+      "severity": "low",
+      "dimension": "synthesis",
+      "topic": "all",
+      "intents": [
+        "present",
+        "crossroads",
+        "action"
+      ],
+      "caseIds": [
+        7,
+        40,
+        4351,
+        819330
+      ],
+      "section": "overall_text; relation_text",
+      "before": "Care needs a sustainable edge. Support becomes more dependable when it is specific, wanted and within capacity ...",
+      "after": "The Fool, Strength and Death: Care needs a sustainable edge. ... / Repetition · Strength / Death. Strength and Death: Care recurs across the cards.",
+      "explanation": "New names make participating cards traceable, but the fixed rule sentence does not identify which card contributes which side or how the positions change the interaction. Secondary relations also repeat names from their displayed heading. This is a remaining limit rather than an invalid relation: the evidence matches and nearby card paragraphs supply relevant meaning.",
+      "productionSource": {
+        "path": "scripts/build-reading-content.py; crates/pxoracle-tarot-reading/src/lib.rs; apps/web/src/features/tarot/reading.ts",
+        "referenceId": "evidence.2; evidence.3; relation.tension.care-boundaries"
+      },
+      "proposedChange": "In a future bounded change, supply side/theme ownership or role evidence to relation prose; avoid repeating card names in both secondary relation heading and body.",
+      "rationale": "Would explain the specific interaction rather than only attach card labels to shared advice. Do not fabricate stronger links or force novelty.",
+      "verificationCases": [
+        7,
+        40,
+        4351,
+        819330
+      ],
+      "disposition": "open",
+      "implementationEvidence": null
+    }
+  ],
+  "assessments": {
+    "grounding": {
+      "status": "pass",
+      "evidence": "Cards, orientations, role labels and relation participants retained; new role clauses use specific resource/difficulty/action/question rather than only a primary theme."
+    },
+    "synthesis": {
+      "status": "concern",
+      "evidence": "Participating cards named and complement language no longer assumes an earlier concern is resolved. IV-003 remains."
+    },
+    "topic": {
+      "status": "pass",
+      "evidence": "Advice covers reciprocal agreements, work requirements/handoffs, creative drafts/practice and personal habits/support rather than topic prefixes."
+    },
+    "intent": {
+      "status": "pass",
+      "evidence": "Present inspects conditions, crossroads compares options/checks, action proposes small reversible work. Verified across all 21 primary relation families."
+    },
+    "coherence": {
+      "status": "pass",
+      "evidence": "IV-001 corrected and independently verified. No high-severity contradiction found in selected compositions."
+    },
+    "specificity": {
+      "status": "pass",
+      "evidence": "Actions commonly identify a task, resource, question, stopping point or comparison; prompts ask about the chosen task."
+    },
+    "reversal": {
+      "status": "pass",
+      "evidence": "Death, Tower, Devil and courts retain grounded review/recovery/limits without reversal-as-doom."
+    },
+    "fallback": {
+      "status": "pass_with_limit",
+      "evidence": "No invented shared theme, correct disclosure retained. IV-001 corrected; topic/intent wrappers remain broader than authored relation advice."
+    },
+    "voice": {
+      "status": "concern",
+      "evidence": "IV-002 duplicated role framing fixed. IV-003 secondary name repetition and restatement of position sentences in overall remain minor limitations."
+    },
+    "agency": {
+      "status": "pass",
+      "evidence": "Selected sensitive-card and relationship outputs avoid guaranteed outcomes, hidden-feeling claims, stereotypes, diagnosis and coerced participation."
+    }
+  },
+  "checks": [
+    {
+      "name": "independent CSV identity, rule evidence and unchanged core comparison",
+      "status": "pass",
+      "rows": 32352,
+      "mismatches": []
+    },
+    {
+      "name": "editorial comparison",
+      "status": "completed_with_findings",
+      "rows": 336,
+      "details": "28 stable anchors x12 contexts; composed sections assessed with deduplicated card/role and rule content inspection. Added advice checks for 11 further cases x12 contexts and complete growth/action compositions for those cases."
+    },
+    {
+      "name": "final correction rerender",
+      "status": "pass",
+      "rows": 32352,
+      "mismatches": [],
+      "details": "Present/crossroads overall removes only redundant third-card flow prefix; relationship/present fallback becomes observation-neutral. All other sections unchanged from reviewed candidate."
+    }
+  ],
+  "humanEditorialApproval": false,
+  "verdict": "Reviewed sample improves topic/intent and card-role specificity. Both actionable candidate regressions were corrected and verified; no unresolved high/medium editorial defect found in reviewed sample. Low synthesis/name-repetition concern remains. This is agent sample review, not exhaustive or human editorial approval."
+}

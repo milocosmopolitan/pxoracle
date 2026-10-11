@@ -64,7 +64,7 @@ Assembly streams each chunk member into `<ctx>.csv.gz.partial`, verifying its SH
 
 ## Validation
 
-`validate-worker.mjs` independently gunzips and parses every file (separate CSV parser) and checks: header; exact row count; contiguous canonical `case_id` range; cards decoded from `case_id` (ids, names, orientations, distinctness); topic/intent; position roles/labels/lens; versions; no `{…}` placeholder, blank required section or unknown rule; evidence kinds match `rules.1.json`; fallback ⇔ no relations; UTF-8 validity; file and raw SHA-256 against the assembly record. It then compares the twelve files for identical case coverage and relation outcome, aggregates rule/fallback frequencies, and counts per case how many of the 12 contexts produce distinct text per section (identical text is legitimate). Finally a sample (edges, chunk boundaries, ~2,000 pseudo-random cases, plus the native/WASM fixtures in `tests/fixtures/readings.json`) is re-rendered through a fresh Rust runner and the production formatter and must equal the parsed CSV rows exactly.
+`validate-worker.mjs` independently gunzips and parses every file (separate CSV parser) and checks: header; exact row count; contiguous canonical `case_id` range; cards decoded from `case_id` (ids, names, orientations, distinctness); topic/intent; position roles/labels/lens; versions; no `{…}` placeholder, blank required section or unknown rule; evidence kinds match the active `rules.2.json`; fallback ⇔ no relations; UTF-8 validity; file and raw SHA-256 against the assembly record. It then compares the twelve files for identical case coverage and relation outcome, aggregates rule/fallback frequencies, and counts per case how many of the 12 contexts produce distinct text per section (identical text is legitimate). Finally a sample (edges, chunk boundaries, ~2,000 pseudo-random cases, plus the native/WASM fixtures in `tests/fixtures/readings.json`) is re-rendered through a fresh Rust runner and the production formatter and must equal the parsed CSV rows exactly.
 
 Coverage levels are kept apart in the report: tested sample (`partial-sample`), verified full export (`complete`), and editorial review (never claimed).
 
@@ -100,3 +100,7 @@ More jobs was slower because the host was oversubscribed, hence the default of a
 Representative rows: `docs/validation/reading-export/representative-sample.csv`.
 
 Reproduce: `npm run reading-export -- full --out <DIR> --jobs 4`; interrupt-safe: rerun `resume` with the same flags.
+
+## Editorial release-2 review
+
+[The quality review](validation/reading-quality/README.md) retains the original release-1 input hashes and rerenders all 2,696 representative cases in all 12 contexts through the production release-2 interpreter and formatter. Its fresh full relation scan reproduces that selection. The 43,819,776-row release-1 export above remains historical evidence, not a release-2 full export. Never resume its checkpoint with release-2 packs.
