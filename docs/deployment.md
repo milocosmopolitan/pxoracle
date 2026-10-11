@@ -121,3 +121,12 @@ These are orchestration tests, not a claim that a public production publish occu
 References: [SAM deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html),
 [CloudFront OAC](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html),
 [GitHub OIDC for AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws).
+
+### GitHub immutable OIDC identity
+
+Bootstrap queries the repository OIDC settings for its exact `sub_claim_prefix`.
+This repository uses owner/repository IDs, not the old name-only subject. The IAM
+condition still pins `refs/heads/main`; PR/other-branch tokens cannot assume it.
+Custom subject templates stop bootstrap for explicit policy review. Repository
+renames/transfers require rerunning bootstrap, not a wildcard trust or disabling
+immutable subjects. See [GitHub OIDC reference](https://docs.github.com/en/actions/reference/security/oidc#immutable-subject-claims).

@@ -8,14 +8,15 @@
       "Default": "pxoracle-production",
       "AllowedPattern": "pxoracle-[a-z0-9-]{1,24}"
     },
-    "GitHubRepository": {
-      "Type": "String",
-      "Default": "milocosmopolitan/pxoracle",
-      "AllowedPattern": "[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+"
-    },
     "OidcProviderArn": {
       "Type": "String",
       "AllowedPattern": "arn:aws:iam::[0-9]{12}:oidc-provider/token.actions.githubusercontent.com"
+    },
+    "GitHubSubjectPrefix": {
+      "Type": "String",
+      "Default": "repo:milocosmopolitan@5334538/pxoracle@1413138338",
+      "Description": "Exact default subject prefix returned by GitHub OIDC settings, including immutable IDs when enabled.",
+      "AllowedPattern": "repo:[A-Za-z0-9_.-]+(@[0-9]+)?/[A-Za-z0-9_.-]+(@[0-9]+)?"
     }
   },
   "Resources": {
@@ -136,7 +137,7 @@
                 "StringEquals": {
                   "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
                   "token.actions.githubusercontent.com:sub": {
-                    "Fn::Sub": "repo:${GitHubRepository}:ref:refs/heads/main"
+                    "Fn::Sub": "${GitHubSubjectPrefix}:ref:refs/heads/main"
                   }
                 }
               }
