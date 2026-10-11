@@ -16,10 +16,12 @@
 | Art/content external to WASM | Accepted | 78 stable IDs, separate English content pack, only revealed faces requested. Source hashes retained. |
 | Browser/resource qualification | Accepted with measured limits | Actual Chrome/Firefox/Safari plus WebKit/mobile emulation, bounded seven-cycle GL allocation baseline, and HMR checks. Physical mobile and hardware GPU budgets remain unqualified; see validation/STATUS.md. |
 
-No library/source license is silently applied to the supplied art. No actual AWS account changes are part of the deployment configuration.
+No library/source license is silently applied to the supplied art. AWS deployment bootstrap and explicit publishing are covered by ADR 005.
 
 Tarot table choreography: [ADR 002](002-tarot-table-choreography.md).
 
 Perspective camera and separate arm rig: [ADR 003](003-tarot-perspective-rig.md).
 
 Deterministic free readings: [ADR 004](004-deterministic-free-readings.md).
+
+Manual static publishing: [ADR 005](005-manual-static-publishing.md).

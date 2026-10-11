@@ -208,6 +208,7 @@ export default function Tarot({
                 Your spread
                 <select
                   value={spread}
+                  disabled={!controller}
                   onChange={(e) => setSpread(Number(e.target.value) as 1 | 3)}
                 >
                   <option value="1">One card · A moment of focus</option>

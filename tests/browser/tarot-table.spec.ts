@@ -22,6 +22,7 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
   await expect(
     page.getByRole("button", { name: "Choose slot 1", exact: true }),
   ).toBeVisible({ timeout: 45000 });
+  await expect(page.getByRole("heading", { name: "0 of 1 cards selected", exact: true })).toBeVisible();
   expect(faces).toHaveLength(0);
   await page.getByRole("button", { name: "Shuffle again" }).click();
   await page
