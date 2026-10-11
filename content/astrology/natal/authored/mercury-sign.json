@@ -13,7 +13,8 @@
     "body": "Mercury in Aries pictures a mind that tests an idea by saying it or trying it. Direct questions can cut through ambiguity and get a conversation moving. The first formulation may be useful precisely because it can be revised, rather than because it must settle the matter immediately.",
     "constructive": "Make your proposal plainly, then leave an explicit opening for correction.",
     "tension": "A fast conclusion can arrive before a quieter person has finished contributing.",
-    "question": "What useful detail might emerge if you let the reply take longer than your question?"
+    "question": "What useful detail might emerge if you let the reply take longer than your question?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.1",
@@ -29,7 +30,8 @@
     "body": "Mercury in Taurus links thinking with concrete examples, patient consideration and the usefulness of a conclusion. You may prefer to understand how an idea will work before adopting it. Deliberation supports sound judgment when it allows genuinely new evidence to change a settled view.",
     "constructive": "Translate an abstract proposal into one observable test.",
     "tension": "The time invested in an opinion can become a reason to keep it.",
-    "question": "Which fact would be substantial enough to make you reconsider?"
+    "question": "Which fact would be substantial enough to make you reconsider?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.2",
@@ -45,7 +47,8 @@
     "body": "Mercury in Gemini pictures language and curiosity as tools for connecting different pieces of experience. Asking a second question can reveal an assumption hidden in the first answer. The range of your observations becomes more useful when you decide what the current conversation actually needs to resolve.",
     "constructive": "Summarize the point of agreement before introducing another possibility.",
     "tension": "A conversation can remain lively while its practical question stays unanswered.",
-    "question": "Which distinction would help someone act on what you have learned?"
+    "question": "Which distinction would help someone act on what you have learned?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.3",
@@ -61,7 +64,8 @@
     "body": "Mercury in Cancer links communication with the personal setting in which something was said and the feeling it left behind. Remembering that context can bring care to a discussion. It also helps to distinguish a present statement from an earlier experience that gives it emotional weight.",
     "constructive": "Ask what the speaker means now before filling in the rest from memory.",
     "tension": "An old association can color a message more strongly than its current content.",
-    "question": "What are you hearing in this exchange, and what are you remembering?"
+    "question": "What are you hearing in this exchange, and what are you remembering?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.4",
@@ -77,7 +81,8 @@
     "body": "Mercury in Leo pictures thought finding its shape through narrative, confident presentation and a sense of personal authorship. A clear example can help another person care about your idea. Persuasion gains depth when the response is allowed to alter the story rather than simply applaud it.",
     "constructive": "Tell the central story, then ask which part did not persuade your listener.",
     "tension": "Defending the presentation can become more important than improving the idea.",
-    "question": "What could feedback add to an idea you already feel proud of?"
+    "question": "What could feedback add to an idea you already feel proud of?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.5",
@@ -93,7 +98,8 @@
     "body": "Mercury in Virgo links reasoning with precise language, practical analysis and attention to how parts fit together. A small correction can prevent a much larger misunderstanding. Precision is most effective when it serves the actual decision and does not demand more certainty than the situation can provide.",
     "constructive": "Separate the detail that changes the decision from the detail that can wait.",
     "tension": "Repeated qualification can obscure the useful answer you have already reached.",
-    "question": "What level of precision is enough for the next step?"
+    "question": "What level of precision is enough for the next step?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.6",
@@ -109,7 +115,8 @@
     "body": "Mercury in Libra pictures reasoning as a dialogue between possible positions. You may find the wording of an agreement as important as its immediate result. Considering another perspective helps when it leads to a choice whose reasons you can state, even if not everyone endorses it.",
     "constructive": "Present the strongest reason for each option before naming your preference.",
     "tension": "Giving every position equal time can postpone a decision that already has adequate support.",
-    "question": "Which criterion would let you choose without pretending the other option has no value?"
+    "question": "Which criterion would let you choose without pretending the other option has no value?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.7",
@@ -125,7 +132,8 @@
     "body": "Mercury in Scorpio links thought with investigation, concentration and attention to what is not being said. This can support careful research and a conversation that reaches beyond the obvious account. An interpretation remains a hypothesis until it has been checked with evidence or the person concerned.",
     "constructive": "Turn a suspicion into a neutral question that someone can actually answer.",
     "tension": "Reading between the lines can become more persuasive than the lines themselves.",
-    "question": "What evidence distinguishes a perceptive inference from a story you are filling in?"
+    "question": "What evidence distinguishes a perceptive inference from a story you are filling in?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.8",
@@ -141,7 +149,8 @@
     "body": "Mercury in Sagittarius pictures thought organizing around principles, possibility and the connection between separate experiences. A broad view can help a discussion escape an unnecessarily narrow choice. It works best alongside someone or some practice that checks the specifics on which the larger claim depends.",
     "constructive": "Pair a general claim with a concrete example that could challenge it.",
     "tension": "An illuminating explanation can become too broad to guide the case at hand.",
-    "question": "Which exception would make your explanation more useful rather than less inspiring?"
+    "question": "Which exception would make your explanation more useful rather than less inspiring?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.9",
@@ -157,7 +166,8 @@
     "body": "Mercury in Capricorn links reasoning with sequence, responsibility and the question of what can be carried out. Clear expectations can reduce uncertainty for everyone involved. Practical thinking need not exclude an imaginative proposal before it has had a chance to become concrete.",
     "constructive": "Name the next decision, its owner and the information still needed.",
     "tension": "A concern with feasibility can close down an idea at its least developed stage.",
-    "question": "What small trial would let you assess an unconventional idea fairly?"
+    "question": "What small trial would let you assess an unconventional idea fairly?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.10",
@@ -173,7 +183,8 @@
     "body": "Mercury in Aquarius pictures a mind drawn to patterns, alternatives and the possibility that the usual question is not the best one. Intellectual independence can make a valuable contribution to a group. An elegant model still needs contact with the particular experience it is meant to explain.",
     "constructive": "Ask a person affected by your model where it fails to describe their situation.",
     "tension": "Distance from a problem can hide details that are obvious to those living with it.",
-    "question": "Which lived example would help your framework become less abstract and more useful?"
+    "question": "Which lived example would help your framework become less abstract and more useful?",
+    "scope": "personal"
   },
   {
     "id": "sign.mercury.11",
@@ -189,6 +200,7 @@
     "body": "Mercury in Pisces links thought with association, metaphor and sensitivity to meanings that are difficult to state directly. A picture or story may help you grasp a situation before you can explain its sequence. Practical communication improves when you distinguish the evocative impression from the agreement that others must act on.",
     "constructive": "Follow a metaphor with a plain statement of what you are asking for.",
     "tension": "An implied meaning can remain clear to you while leaving another person to guess.",
-    "question": "What would turn a shared feeling into an unambiguous next step?"
+    "question": "What would turn a shared feeling into an unambiguous next step?",
+    "scope": "personal"
   }
 ]

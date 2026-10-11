@@ -29,8 +29,14 @@
     "NatalMeaning": {
       "type": "object",
       "properties": {
+        "fallback": {
+          "type": "boolean"
+        },
         "reference": {
           "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/NatalScope"
         },
         "themes": {
           "type": "array",
@@ -47,9 +53,19 @@
       },
       "additionalProperties": false,
       "required": [
+        "scope",
+        "fallback",
         "reference",
         "themes",
         "topics"
+      ]
+    },
+    "NatalScope": {
+      "type": "string",
+      "enum": [
+        "personal",
+        "social",
+        "generational"
       ]
     },
     "NatalTopic": {

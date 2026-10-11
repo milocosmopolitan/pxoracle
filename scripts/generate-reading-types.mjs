@@ -5,6 +5,7 @@ const roots = ["input", "plan", "semantics", "rules"].map((x) =>
 );
 const definitions = Object.assign({}, ...roots.map((s) => s.$defs));
 function type(s) {
+  if (Array.isArray(s.type)) return s.type.map(t => type({ ...s, type: t })).join(" | ");
   if (s.$ref) return s.$ref.split("/").at(-1);
   if (s.const !== undefined) return JSON.stringify(s.const);
   if (s.enum) return s.enum.map((x) => JSON.stringify(x)).join(" | ");

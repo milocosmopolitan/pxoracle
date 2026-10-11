@@ -25,3 +25,5 @@ Perspective camera and separate arm rig: [ADR 003](003-tarot-perspective-rig.md)
 Deterministic free readings: [ADR 004](004-deterministic-free-readings.md).
 
 Manual static publishing: [ADR 005](005-manual-static-publishing.md).
+
+Local city input, natal interpretation and crystal exploration: [ADR 007](007-local-natal-readings.md).

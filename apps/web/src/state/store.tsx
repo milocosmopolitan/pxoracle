@@ -27,7 +27,26 @@ export const emptyReading = (): ReadingState => ({
   status: "idle",
   error: "",
 });
+import type { NatalInput, InterpretationPlan } from "@pxoracle/contracts/natal";
+import type { PlaceProvenance } from "@pxoracle/contracts/atlas";
+import type { AstrologySelection, AstrologyView } from "@pxoracle/contracts/astrology-view";
+export interface NatalState {
+  facts: NatalInput | null;
+  restorePlan: unknown;
+  plan: InterpretationPlan | null;
+  place: PlaceProvenance | null;
+  status: "idle" | "loading" | "ready" | "error";
+  error: string;
+  selection: AstrologySelection;
+  revision: number;
+  restored: "none" | "legacy" | "current" | "unsupported";
+}
+export const emptyNatal = (): NatalState => ({ facts: null, restorePlan: null, plan: null, place: null, status: "idle", error: "", selection: null, revision: 0, restored: "none" });
 export interface AppState {
+  natal: NatalState;
+  setNatal: (value: Partial<NatalState>) => void;
+  astrologyView: AstrologyView | undefined;
+  setAstrologyView: (view: AstrologyView | undefined) => void;
   reading: ReadingState;
   setReading: (value: Partial<ReadingState>) => void;
   tarotPresentation: TarotPresentation;
@@ -59,6 +78,10 @@ export function createAppStore() {
       error: "",
       busy: false,
     },
+    natal: emptyNatal(),
+    setNatal: value => set(s => ({ natal: { ...s.natal, ...value } })),
+    astrologyView: undefined,
+    setAstrologyView: astrologyView => set({ astrologyView }),
     reading: emptyReading(),
     setReading: (value) =>
       set((s) => ({ reading: { ...s.reading, ...value } })),
@@ -75,7 +98,7 @@ export function createAppStore() {
     selectedBody: null,
     question: "",
     setChart: (chart) =>
-      set({ chart, selectedBody: chart?.bodies[0]?.id ?? null }),
+      set(s => ({ chart, selectedBody: null, natal: { ...emptyNatal(), revision: s.natal.revision + 1 } })),
     setTarot: (tarot) =>
       set((s) => ({ tarot, reading: tarot ? s.reading : emptyReading() })),
     setBody: (selectedBody) => set({ selectedBody }),

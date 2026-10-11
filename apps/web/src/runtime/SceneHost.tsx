@@ -8,9 +8,8 @@ export default function SceneHost() {
   const path = usePathname();
   const setSceneReady = useOracle((s) => s.setSceneReady);
   const setEntrance = useOracle((s) => s.setEntrance);
-  const chart = useOracle((s) => s.chart);
-  const selectedBody = useOracle((s) => s.selectedBody);
   const tarotView = useOracle((s) => s.tarotView);
+  const astrologyView = useOracle((s) => s.astrologyView);
   const route: RouteScene = path.startsWith("/astrology")
     ? "astrology"
     : path.startsWith("/tarot")
@@ -27,9 +26,8 @@ export default function SceneHost() {
         if (status && status !== "Preparing the room…") setEntrance("entered");
       }}
       data={{
-        bodies: chart?.bodies,
-        selectedBody,
         tarot: route === "tarot" ? tarotView : undefined,
+        astrology: route === "astrology" ? astrologyView : undefined,
       }}
     />
   );

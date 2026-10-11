@@ -115,6 +115,7 @@ name = "pxoracle-astrology-wasm"
 version = "0.1.0"
 dependencies = [
  "pxoracle-astrology",
+ "pxoracle-natal-reading",
  "serde",
  "serde_json",
 ]

@@ -22,6 +22,11 @@ domain!(EvidenceKind {
     Aspect
 });
 domain!(Certainty { Exact, Sampled });
+domain!(NatalScope {
+    Personal,
+    Social,
+    Generational
+});
 domain!(ThemeRelation {
     Repetition,
     Complement,
@@ -86,6 +91,8 @@ pub struct NatalInput {
 #[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct NatalMeaning {
+    pub scope: NatalScope,
+    pub fallback: bool,
     pub reference: String,
     pub themes: Vec<String>,
     pub topics: Vec<NatalTopic>,
@@ -135,6 +142,8 @@ pub struct NatalEvidence {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct NatalItem {
+    pub scope: NatalScope,
+    pub fallback: bool,
     pub id: String,
     pub reference: String,
     pub rule_id: String,

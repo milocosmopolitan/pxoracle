@@ -1,0 +1,893 @@
+{
+  "sun.moon": {
+    "themes": [
+      "care",
+      "expression"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Sun-Moon relationship connects chosen direction with emotional needs and familiar ways of finding comfort. Neither has to disappear for the other to matter. The practical question is how the life you are building makes room for the conditions that help you feel settled enough to inhabit it.",
+    "constructive": "Include one emotional need in a practical plan.",
+    "question": "What would let your chosen direction and your need for care support each other?",
+    "aspects": {
+      "conjunction": "Purpose and comfort occupy closely connected territory; a clear preference may still need checking against a changing feeling.~A familiar response can be mistaken for the only authentic direction.",
+      "sextile": "There is an opening to coordinate intention and care through small deliberate adjustments, especially before a demand becomes urgent.~Compatibility still needs ordinary maintenance.",
+      "square": "Direction and comfort ask for different arrangements; working with the friction can reveal a need the plan had left out.~Pushing onward can leave the emotional cost unacknowledged.",
+      "trine": "A familiar emotional rhythm can support purposeful action, provided ease does not prevent you from noticing a need that has changed.~What has always felt natural may no longer be sufficient.",
+      "opposition": "Chosen direction and emotional security may appear to pull from opposite sides; a rhythm that alternates attention can serve both.~Assigning one side to another person can hide your own competing needs."
+    }
+  },
+  "sun.mercury": {
+    "themes": [
+      "communication",
+      "expression"
+    ],
+    "topics": [
+      "communication",
+      "self_emotions"
+    ],
+    "body": "The Sun-Mercury relationship brings identity into contact with the way ideas are formed and expressed. Explaining a position can clarify a purpose, while a genuine question can revise it. This connection is useful when changing your mind remains compatible with having a recognizable point of view.",
+    "constructive": "Describe your position and one question you still have.",
+    "question": "What could you reconsider without losing your sense of direction?",
+    "aspects": {
+      "conjunction": "Thought and identity are closely linked, making a personal voice available while increasing the value of listening before defending an explanation.~Criticism of an idea can feel like criticism of the whole person."
+    }
+  },
+  "sun.venus": {
+    "themes": [
+      "reciprocity",
+      "expression"
+    ],
+    "topics": [
+      "relationships",
+      "self_emotions"
+    ],
+    "body": "The Sun-Venus relationship connects personal direction with affection, taste and the wish to value and be valued. A pleasing choice may also express something important about who you are becoming. The task is to let appreciation inform your direction without making approval the only way to recognize its worth.",
+    "constructive": "Choose one expression of taste that reflects your actual values.",
+    "question": "What do you value even when it receives little approval?",
+    "aspects": {
+      "conjunction": "Purpose and appreciation are closely entwined; warmth can support expression while clear preferences keep agreement from replacing identity.~Being liked can become a condition for feeling on course.",
+      "sextile": "Within a wide allowed orb, this is a loose connection between direction and enjoyment; modest choices may help them support each other without implying a dominant pattern.~A wide relationship deserves less emphasis than a close personal one."
+    }
+  },
+  "sun.mars": {
+    "themes": [
+      "initiative",
+      "expression"
+    ],
+    "topics": [
+      "action_work_growth",
+      "self_emotions"
+    ],
+    "body": "The Sun-Mars relationship connects a sense of purpose with the capacity to act, assert and pursue. Effort can make an identity concrete, but motion alone does not establish direction. A chosen aim and a clear limit help distinguish useful initiative from an argument or task undertaken mainly to prove your resolve.",
+    "constructive": "Set a purpose and stopping point for one demanding action.",
+    "question": "Which action serves your direction rather than only demonstrates your strength?",
+    "aspects": {
+      "conjunction": "Purpose and drive are tightly coupled; direct action can be clarifying when a brief pause confirms what the effort is actually for.~Every obstacle can start to feel like a challenge to identity.",
+      "sextile": "Initiative can give a chosen aim a practical next step; a manageable challenge is a useful way to develop this cooperation.~An available opening can remain unused without a specific commitment.",
+      "square": "Drive and purpose can work at cross-purposes; frustration may signal that the current tactic no longer serves the reason you began.~More force can deepen a mismatch of aim and method.",
+      "trine": "Energy can move readily into purposeful action; choosing a worthwhile challenge keeps easy momentum from becoming automatic competition.~Confidence in acting can skip consultation or reflection.",
+      "opposition": "Assertion and identity may be experienced through a counterpart or opposing demand; owning your desire can reduce the need for an external contest.~A conflict can be asked to define what you want."
+    }
+  },
+  "sun.jupiter": {
+    "themes": [
+      "meaning",
+      "exploration"
+    ],
+    "topics": [
+      "self_emotions",
+      "action_work_growth"
+    ],
+    "body": "The Sun-Jupiter relationship connects personal direction with hope, learning and the possibility of a larger contribution. A meaningful horizon can encourage effort beyond current familiarity. The useful question is how confidence becomes a promise you can keep, rather than a requirement to make every project or role increasingly expansive.",
+    "constructive": "Translate an inspiring aim into a realistic next commitment.",
+    "question": "What would growth look like without making your life larger than you can sustain?",
+    "aspects": {
+      "conjunction": "Purpose and expansion are closely joined; confidence can open a path when its promises remain proportionate to current capacity.~A large vision can become the only acceptable version of success.",
+      "sextile": "Learning or encouragement can support a chosen direction; an intentional opportunity gives optimism something concrete to work through.~Waiting for opportunity can replace developing an available one.",
+      "square": "A wish to grow can exceed the scope that serves your purpose; revising a promise may strengthen rather than diminish the aim.~Overextension can be mistaken for commitment.",
+      "trine": "A generous perspective can support self-expression; grounding it in particular people and tasks keeps confidence useful.~Easy optimism can overlook a practical limit.",
+      "opposition": "Purpose and possibility may seem located at opposite poles, inviting a negotiation between a defined role and a larger horizon.~Alternating between restriction and overreach can obscure a workable scale."
+    }
+  },
+  "sun.saturn": {
+    "themes": [
+      "structure",
+      "commitment"
+    ],
+    "topics": [
+      "self_emotions",
+      "action_work_growth"
+    ],
+    "body": "The Sun-Saturn relationship connects identity with responsibility, standards and the effort to make a contribution durable. A chosen structure can support purpose over time. It matters whether the standard serves that purpose or becomes a condition under which you are allowed to feel legitimate, capable or deserving of rest.",
+    "constructive": "Choose a standard that supports the work and a limit that supports you.",
+    "question": "Which responsibility expresses your purpose rather than only proves your endurance?",
+    "aspects": {
+      "conjunction": "Purpose and duty are tightly linked; deliberate effort can build confidence when achievement is not the sole permission to value yourself.~A demanding role can absorb the whole identity.",
+      "sextile": "A practical structure can help an intention take form; a modest repeatable commitment develops this support more reliably than a severe rule.~Available discipline can remain abstract without a chosen practice.",
+      "square": "Standards and self-expression can interfere with each other; a smaller workable step may reveal where the rule is stricter than the task requires.~Self-criticism can consume effort that could support the work.",
+      "trine": "Patience can give purpose a dependable form; allowing revision keeps competence from hardening into a role you can never set down.~Reliability can attract more responsibility than is sustainable.",
+      "opposition": "Purpose may appear opposed by duty or authority; distinguishing a real obligation from an assumed judgment creates room to negotiate.~External approval can become the final authority on your direction."
+    }
+  },
+  "sun.uranus": {
+    "themes": [
+      "independence",
+      "innovation"
+    ],
+    "topics": [
+      "self_emotions",
+      "action_work_growth"
+    ],
+    "body": "The Sun-Uranus relationship connects identity with experimentation and the need for room to choose differently. A new approach may reveal a more fitting direction. Freedom becomes more usable when it is defined by what you want to make possible, rather than by the obligation to resist any expectation placed upon you.",
+    "constructive": "Test a chosen alternative in a reversible way.",
+    "question": "What difference would serve your purpose even if nobody found it surprising?",
+    "aspects": {
+      "conjunction": "Identity and experimentation are closely linked; an original direction benefits from enough continuity to become more than a sequence of departures.~Being different can become a restrictive demand of its own.",
+      "sextile": "An alternative method can support a chosen purpose; deliberate experimentation helps turn an interesting possibility into practical freedom.~An opening for change still needs a defined use.",
+      "square": "The need for independence can disrupt an established direction; separating the useful change from the urge to break free makes revision more precise.~Abrupt rejection can discard support along with constraint.",
+      "trine": "A distinctive approach can flow into purposeful work; patient development lets an unconventional idea become usable by others.~Ease with novelty can reduce attention to ordinary maintenance.",
+      "opposition": "Independence may be encountered through an opposing person or sudden demand; owning your wish for change helps make agreements explicit.~A counterpart can be cast as either the restriction or the escape."
+    }
+  },
+  "sun.neptune": {
+    "themes": [
+      "imagination",
+      "meaning"
+    ],
+    "topics": [
+      "self_emotions",
+      "action_work_growth"
+    ],
+    "body": "The Sun-Neptune relationship connects identity with imagination, ideals and the wish for a purpose that reaches beyond a narrow role. Inspiration can give ordinary work meaning. A concrete commitment helps distinguish a living value from an image of who you should become, leaving room for limits without making the ideal worthless.",
+    "constructive": "Give an inspiring value one observable expression.",
+    "question": "What can your ideal ask of you without requiring a perfect embodiment?",
+    "aspects": {
+      "conjunction": "Purpose and ideal are closely woven; an imaginative direction needs clear choices so receptivity does not dissolve your own position.~An inspiring role can become difficult to separate from identity.",
+      "sextile": "Creative or compassionate possibilities can enrich a direction when you give them a bounded form rather than waiting for certainty.~A meaningful opening may remain only an appealing image.",
+      "square": "An ideal may conflict with the practical form of your life; examining the promise can reveal a more achievable way to honor its value.~Disappointment can turn a partial limitation into a total loss of purpose.",
+      "trine": "Imagination can support self-expression readily; clear agreements help ensure that an evocative intention becomes understandable action.~Inspiration can be treated as sufficient evidence of progress.",
+      "opposition": "An ideal may seem embodied elsewhere, inviting comparison with an imagined better self or rescuer; reclaiming a modest value makes participation possible.~Projection can make an ordinary person carry an impossible promise."
+    }
+  },
+  "sun.pluto": {
+    "themes": [
+      "depth",
+      "transformation"
+    ],
+    "topics": [
+      "self_emotions",
+      "action_work_growth"
+    ],
+    "body": "The Sun-Pluto relationship connects identity with influence, high stakes and the capacity to revise a deeply held direction. Commitment can make a contribution substantial. The question is whether strength includes the ability to change terms, share control and let a former role end without treating that revision as the loss of your whole self.",
+    "constructive": "Name the stake beneath a strongly defended position.",
+    "question": "What could change while your underlying purpose remained intact?",
+    "aspects": {
+      "conjunction": "Identity and intensity are closely connected; a strong purpose becomes more flexible when influence is exercised through consent and clear limits.~Control can be mistaken for the only way to remain yourself.",
+      "sextile": "A deliberate examination of motives can renew a direction; a specific change gives depth a practical use.~Insight can remain unused if no existing arrangement is revised.",
+      "square": "Pressure around control or significance can expose a purpose that needs reformulation; changing the terms may matter more than winning the contest.~Escalation can make a disagreement carry the weight of your identity.",
+      "trine": "Sustained focus can support meaningful change; inviting feedback keeps determination responsive to its effects on others.~Quiet certainty can make your own influence difficult to question.",
+      "opposition": "Power may appear to belong to an opposing person or demand; recognizing your available choices helps move from contest toward accountable participation.~A struggle for influence can eclipse the purpose it was meant to serve."
+    }
+  },
+  "moon.mercury": {
+    "themes": [
+      "care",
+      "communication"
+    ],
+    "topics": [
+      "self_emotions",
+      "communication"
+    ],
+    "body": "The Moon-Mercury relationship connects emotional experience with the words and explanations used to understand it. Naming a feeling can make a need easier to communicate. An explanation is not always the same as listening, so it helps to notice when a feeling needs acknowledgment before it is ready to become a conclusion.",
+    "constructive": "Describe a feeling before explaining its cause.",
+    "question": "What needs to be heard before it needs to be analyzed?",
+    "aspects": {
+      "conjunction": "Feeling and thought are closely linked; immediate language can be helpful when it leaves room for an emotion to change after it is named.~A first explanation can fix a passing mood into a complete story.",
+      "sextile": "Conversation can help emotional needs become practical requests; a patient exchange develops the available understanding.~A need can remain implicit even when it seems easy to discuss.",
+      "square": "Thought and feeling may give different accounts of the same event; allowing both can reveal what a neat explanation leaves out.~Arguing with a feeling can make it harder to understand.",
+      "trine": "Words can readily carry emotional nuance; checking with the other person keeps an intuitive account from becoming an assumed agreement.~Fluent explanation can bypass an unspoken need.",
+      "opposition": "Emotional experience and rational description may seem divided between people; owning both perspectives allows dialogue without appointing a thinker and a feeler.~A counterpart's account can be treated as a denial of your own experience."
+    }
+  },
+  "moon.venus": {
+    "themes": [
+      "care",
+      "reciprocity"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Moon-Venus relationship connects comfort and emotional needs with pleasure, affection and the terms of mutual appreciation. A pleasant exchange can be genuinely nourishing. The important distinction is between what makes a situation agreeable and what actually meets a need, especially when those two things are not immediately the same.",
+    "constructive": "Ask for a form of care you genuinely enjoy receiving.",
+    "question": "What feels pleasant, and what helps you feel emotionally met?",
+    "aspects": {
+      "conjunction": "Comfort and affection are closely associated; warmth can support belonging when preferences and needs are both named.~Keeping an exchange agreeable can conceal a less convenient feeling.",
+      "sextile": "A considerate gesture can connect enjoyment with care; small explicit choices help the available warmth become dependable.~Assumed goodwill can leave a particular need unaddressed.",
+      "square": "The wish for harmony may conflict with an emotional need; a kind disagreement can make the relationship more nourishing than surface ease.~Pleasantness can be used to postpone an uncomfortable request.",
+      "trine": "Pleasure and emotional responsiveness can support one another; clear reciprocity keeps giving from becoming an automatic role.~A comfortable pattern can hide unequal emotional work.",
+      "opposition": "Comfort and attraction may pull toward different arrangements; acknowledging both makes it easier to choose terms that do not require denying a need.~A relationship can be asked to provide incompatible forms of reassurance."
+    }
+  },
+  "moon.mars": {
+    "themes": [
+      "care",
+      "initiative"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Moon-Mars relationship connects emotional responsiveness with assertion and the impulse to act. A strong reaction can point toward a need or boundary worth recognizing. Acting on the first surge is not the only way to honor it; a brief pause can turn urgency into a request that another person can understand.",
+    "constructive": "Name the need before choosing the response.",
+    "question": "What action would care for the feeling without making it the whole decision?",
+    "aspects": {
+      "conjunction": "Feeling and action are closely coupled; directness can protect a need when you allow enough time to distinguish discomfort from a present threat.~A passing reaction can become an irreversible response.",
+      "sextile": "Assertion can help a need find an appropriate outlet; a manageable request gives emotional energy a constructive direction.~Waiting for the right mood can delay a simple boundary.",
+      "square": "Emotional needs and immediate action can interfere with each other; slowing the response may reveal what the urgency is trying to protect.~Reacting can intensify the discomfort it was meant to resolve.",
+      "trine": "Energy can move readily in support of care; checking consent keeps protective action responsive rather than presumptive.~Taking action for someone can replace asking what support they want.",
+      "opposition": "A need for comfort and a demand for action may appear on opposite sides; sharing both concerns can reduce a recurring protector-versus-protester pattern.~One person can be made responsible for carrying all the anger or vulnerability."
+    }
+  },
+  "moon.jupiter": {
+    "themes": [
+      "care",
+      "exploration"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Moon-Jupiter relationship connects emotional nourishment with hope, generosity and a wider view of experience. An encouraging perspective can create breathing room around a difficult feeling. Care is more effective when it includes the particular need in front of you, rather than asking optimism to make every disappointment seem smaller than it feels.",
+    "constructive": "Pair an encouraging thought with one concrete form of care.",
+    "question": "What would support hope without asking you to dismiss a real feeling?",
+    "aspects": {
+      "conjunction": "Emotional life and hopeful expansion are closely linked; generosity can nourish when its scale remains compatible with actual capacity.~Offering more can become a substitute for naming your own need.",
+      "sextile": "A wider perspective can support emotional steadiness; an intentional source of learning or connection helps develop that resource.~An available comfort can be overlooked while waiting for a larger improvement.",
+      "square": "Hope and emotional reality may not fit neatly; a realistic adjustment can preserve optimism without minimizing the need that complicates it.~Overpromising care can create a later sense of letdown.",
+      "trine": "Encouragement and emotional responsiveness can work easily together; practical limits keep generosity available over time.~Assuming things will work out can leave a needed conversation unfinished.",
+      "opposition": "The need for familiar comfort may pull against a larger opportunity; a rhythm of exploration and return can serve both.~Growth can be framed as abandoning care, or care as refusing growth."
+    }
+  },
+  "moon.saturn": {
+    "themes": [
+      "care",
+      "commitment"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Moon-Saturn relationship connects emotional needs with responsibility, restraint and the wish for dependable support. A reliable arrangement can make vulnerability easier to bear. Care also needs room to be received before it has been earned, so competence does not become the only acceptable way to remain connected to other people.",
+    "constructive": "Request one manageable form of support directly.",
+    "question": "What care would you permit yourself without first proving you deserve it?",
+    "aspects": {
+      "conjunction": "Need and duty are closely associated; steadiness can be sustaining when responsibility leaves room for ordinary dependence.~Self-containment can become a rule against receiving comfort.",
+      "sextile": "A dependable practice can support emotional needs; small repeated acts of care give structure a humane purpose.~Reliability may remain one-sided unless support is explicitly requested.",
+      "square": "Emotional need can feel at odds with a demanding standard; revising the standard may be more useful than suppressing the feeling.~Duty can turn vulnerability into an apparent failure of competence.",
+      "trine": "Patience can support emotional continuity; allowing a change of need keeps a reliable pattern from becoming restrictive.~Managing feelings well can be confused with never needing help.",
+      "opposition": "Care and obligation may seem divided between people; an explicit agreement can let responsibility and vulnerability belong to each person.~A caretaker-dependent role can obscure both people's full range of needs."
+    }
+  },
+  "moon.uranus": {
+    "themes": [
+      "care",
+      "independence"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Moon-Uranus relationship connects emotional security with freedom, change and the need for a response that fits the present. Familiar care and personal room can both matter. An explicit rhythm of contact and space makes independence easier to trust, rather than requiring sudden distance whenever an old pattern feels constraining.",
+    "constructive": "Agree on a specific kind of space and a way to reconnect.",
+    "question": "What would make freedom feel compatible with dependable care?",
+    "aspects": {
+      "conjunction": "Emotional responsiveness and change are closely linked; flexible routines can provide continuity without making every day feel predetermined.~Restlessness can be mistaken for proof that connection itself is restrictive.",
+      "sextile": "A different arrangement can make care more responsive; a small experiment helps discover what kind of freedom actually supports you.~An opening for flexibility can go unused without a clear request.",
+      "square": "The need for security and the urge for change can interrupt each other; designing a limited adjustment may serve both better than a sudden break.~Disruption can remove comfort along with an unwanted constraint.",
+      "trine": "Independence can support emotional adaptability; clear signals keep flexibility from becoming uncertainty for people who care about you.~Ease with change can overlook another person's need for continuity.",
+      "opposition": "Freedom and comfort may seem carried by different people; owning both needs makes a shared rhythm more negotiable.~Distance can be treated as the only alternative to dependence."
+    }
+  },
+  "moon.neptune": {
+    "themes": [
+      "care",
+      "imagination"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Moon-Neptune relationship connects emotional responsiveness with imagination, empathy and the meanings carried by an atmosphere. An image or creative practice may help a feeling become approachable. Care becomes clearer when you can distinguish your own need, another person's stated experience and what you are imagining on their behalf.",
+    "constructive": "Check an emotional impression with a gentle, concrete question.",
+    "question": "What do you feel directly, and what are you inferring about someone else?",
+    "aspects": {
+      "conjunction": "Feeling and imagination are closely woven; a clear daily rhythm can give sensitivity a dependable place without closing it down.~An atmosphere can be mistaken for a shared emotional fact.",
+      "sextile": "Creative reflection can help a feeling become understandable; a bounded practice develops this opening without requiring a final explanation.~An evocative impression may remain too vague to become a request.",
+      "square": "An ideal of care may conflict with an actual need; acknowledging disappointment can make a more realistic form of support possible.~Hoping someone will intuit a need can replace stating it.",
+      "trine": "Imagination can readily express emotional nuance; checking assumptions keeps empathy in contact with the other person's experience.~Feeling connected can be confused with knowing what someone needs.",
+      "opposition": "Care and an idealized image may appear on opposite sides; recognizing projection can return attention to what is being offered now.~A person can be asked to provide a kind of comfort no relationship can guarantee."
+    }
+  },
+  "moon.pluto": {
+    "themes": [
+      "care",
+      "depth"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Moon-Pluto relationship connects emotional needs with intensity, trust and the wish to protect what feels indispensable. A strong feeling may reveal a meaningful attachment. It can be honored without becoming a demand for total reassurance, especially when clear boundaries make room for both vulnerability and another person's freedom.",
+    "constructive": "Name a vulnerable need without turning it into a test.",
+    "question": "What would let you receive care without requiring complete certainty?",
+    "aspects": {
+      "conjunction": "Need and intensity are closely linked; recognizing the underlying vulnerability can make a strong response more understandable and more chosen.~Protecting a bond can become pressure on the bond.",
+      "sextile": "Careful reflection can reveal an emotional pattern ready for change; one explicit request gives that insight a practical route.~Understanding a pattern does not by itself change the interaction.",
+      "square": "Emotional security and control can become entangled; reducing pressure may allow the need beneath a conflict to be heard.~Escalation can make reassurance harder to give or receive.",
+      "trine": "Depth can support sustained emotional engagement; room for ordinary disagreement keeps commitment from becoming possessive.~A powerful familiar bond can discourage necessary renegotiation.",
+      "opposition": "Vulnerability and power may seem distributed between people; naming each person's available choices can reduce a recurring struggle over reassurance.~One person can be cast as the source of all security or all threat."
+    }
+  },
+  "mercury.venus": {
+    "themes": [
+      "communication",
+      "reciprocity"
+    ],
+    "topics": [
+      "communication",
+      "relationships"
+    ],
+    "body": "The Mercury-Venus relationship connects language and judgment with affection, taste and the wish to make an exchange agreeable. A considerate explanation can help people hear each other. Clear preferences and accurate words give that consideration substance, so diplomacy does not require leaving the most important difference unspoken.",
+    "constructive": "Say one true preference in language another person can hear.",
+    "question": "What can you express kindly without making it less precise?",
+    "aspects": {
+      "conjunction": "Thought and appreciation are closely associated; a graceful voice is useful when pleasing phrasing remains connected to a real position.~An agreeable explanation can conceal an unresolved preference.",
+      "sextile": "Conversation can support mutual appreciation; choosing a specific topic helps turn goodwill into understanding rather than assumed harmony.~A pleasant exchange can end before a useful decision is made.",
+      "square": "This wide or unusual calculated relationship has a pair-level fallback: consider how words and preferences meet, without assigning a stronger square-specific story.~The sampled coverage has no witness for this configuration; emphasis should remain limited."
+    }
+  },
+  "mercury.mars": {
+    "themes": [
+      "communication",
+      "initiative"
+    ],
+    "topics": [
+      "communication",
+      "action_work_growth"
+    ],
+    "body": "The Mercury-Mars relationship connects thinking with assertion, speed and the wish to make an idea effective. A direct question can cut through uncertainty and move a task forward. The useful distinction is between making a point clear and making it impossible to answer, especially when another perspective contains information you need.",
+    "constructive": "State the request, then leave enough space for a response.",
+    "question": "What would make this exchange productive rather than merely decisive?",
+    "aspects": {
+      "conjunction": "Thought and action are closely coupled; quick articulation benefits from a moment to confirm the aim before committing to the first available answer.~Speed can turn a provisional thought into a defended position.",
+      "sextile": "A clear idea can lead to a useful next action; deliberate practice develops the link between explanation and execution.~An actionable thought can remain a debate without a chosen step.",
+      "square": "The urge to act can outrun the information needed to choose well; slowing the exchange may improve both clarity and effectiveness.~Argument can consume the energy meant for the task.",
+      "trine": "Ideas can move readily into practical effort; checking understanding helps ensure others can participate in the momentum.~Confidence in a quick answer can discourage a necessary question.",
+      "opposition": "Thought and assertion may seem carried by opposing sides; owning both the question and the desired action can reduce debate for its own sake.~A discussion can become a contest over who gets to decide."
+    }
+  },
+  "mercury.jupiter": {
+    "themes": [
+      "communication",
+      "meaning"
+    ],
+    "topics": [
+      "communication",
+      "action_work_growth"
+    ],
+    "body": "The Mercury-Jupiter relationship connects specific information with a larger explanation or possibility. A broad frame can make details meaningful, while accurate details keep the frame honest. The practical task is to move between those scales without treating a memorable story as sufficient evidence or a collection of facts as a complete understanding.",
+    "constructive": "Test one broad conclusion against a concrete example.",
+    "question": "Which detail would strengthen or revise your larger explanation?",
+    "aspects": {
+      "conjunction": "Detail and broad meaning are closely associated; an expansive account becomes useful when its claims and uncertainties are clearly separated.~A confident story can grow faster than its supporting evidence.",
+      "sextile": "Learning can connect a useful detail with a wider context; an intentional comparison develops the available perspective.~An interesting connection can remain untested because it feels plausible.",
+      "square": "The larger story and the available facts may not fit neatly; revising the scale of a claim can improve its usefulness.~Overstatement can make a valid insight harder to trust.",
+      "trine": "A broad perspective can readily organize information; checking exceptions keeps fluency from becoming a substitute for accuracy.~An elegant explanation can overlook a consequential exception.",
+      "opposition": "Specific facts and a guiding framework may seem opposed; alternating between example and principle can make each more precise.~A debate can divide into details versus vision when both are needed."
+    }
+  },
+  "mercury.saturn": {
+    "themes": [
+      "communication",
+      "structure"
+    ],
+    "topics": [
+      "communication",
+      "action_work_growth"
+    ],
+    "body": "The Mercury-Saturn relationship connects thought with standards, patience and the effort to make an account reliable. A carefully bounded statement can be more useful than an impressive but uncertain one. Learning also needs provisional versions, so accuracy does not become a rule against asking an unfinished question or revising a first attempt.",
+    "constructive": "Share a precise claim with its actual limits.",
+    "question": "What can you say reliably before you know everything?",
+    "aspects": {
+      "conjunction": "Thinking and evaluation are closely joined; disciplined attention can clarify an idea when criticism leaves room for exploration.~An internal editor can stop a thought before it develops.",
+      "sextile": "A clear method can support learning and expression; a small repeatable practice makes the available discipline useful.~A method can remain unused while you wait for ideal conditions.",
+      "square": "Standards may interrupt the flow of thought; a draft with explicit limits can reduce the false choice between silence and perfect certainty.~Fear of error can look like a lack of ideas.",
+      "trine": "Careful reasoning can develop steadily; inviting a different question keeps a dependable method from narrowing the field too far.~Familiar rigor can exclude possibilities before they are examined.",
+      "opposition": "An idea may seem opposed by a rule or authority; separating a valid constraint from an assumed judgment makes discussion possible.~A critic can be given final authority over whether you may speak."
+    }
+  },
+  "mercury.uranus": {
+    "themes": [
+      "communication",
+      "innovation"
+    ],
+    "topics": [
+      "communication",
+      "action_work_growth"
+    ],
+    "body": "The Mercury-Uranus relationship connects thought with unexpected associations, alternative methods and the questioning of assumptions. A surprising idea can open a stale problem. Its value becomes clearer when it can be explained, checked and revised, so originality does not depend on remaining inaccessible or contradicting whatever seems conventional.",
+    "constructive": "Give an unusual idea one test another person can follow.",
+    "question": "What would make your insight both surprising and usable?",
+    "aspects": {
+      "conjunction": "Thought and experimentation are closely linked; a rapid connection benefits from a concrete example that shows how its parts relate.~The leap can outrun the explanation needed to share it.",
+      "sextile": "An alternative perspective can support learning; a deliberate trial helps distinguish a useful innovation from novelty alone.~An intriguing possibility can remain an untested mental detour.",
+      "square": "A new idea may disrupt an established explanation; comparing their actual results is more useful than choosing by familiarity or rebellion.~Rejecting a convention can become an automatic response.",
+      "trine": "Flexible thinking can make room for inventive solutions; patient communication helps others work with the insight.~Ease with conceptual leaps can make ordinary clarification feel unnecessary.",
+      "opposition": "Conventional and unconventional views may appear on opposing sides; testing each by the same standard can restore genuine inquiry.~A debate about originality can displace the problem being solved."
+    }
+  },
+  "mercury.neptune": {
+    "themes": [
+      "communication",
+      "imagination"
+    ],
+    "topics": [
+      "communication",
+      "self_emotions"
+    ],
+    "body": "The Mercury-Neptune relationship connects language with imagery, intuition and meanings that are not exhausted by literal description. A metaphor can make an experience accessible. Clear labels for fact, impression and imagination help preserve that richness without asking an evocative account to serve as evidence for claims it cannot establish.",
+    "constructive": "Separate what you observed from the meaning you gave it.",
+    "question": "Which part of your account invites imagination, and which part needs checking?",
+    "aspects": {
+      "conjunction": "Thought and imagery are closely woven; expressive language becomes more useful when its factual claims have visible boundaries.~An impression can enter the explanation as if it were verified.",
+      "sextile": "Imagination can enrich communication; a bounded creative exercise develops the connection while leaving room for factual precision.~An evocative idea can remain too indefinite to be understood.",
+      "square": "An appealing interpretation may conflict with the available facts; clarifying the distinction can preserve meaning without preserving an inaccurate claim.~A persuasive image can be defended against corrective information.",
+      "trine": "Language can readily convey subtle experience; a simple factual check keeps poetic fluency from becoming assumed certainty.~Being understood emotionally can be mistaken for being accurate literally.",
+      "opposition": "Literal and imaginative accounts may seem opposed; naming their different purposes makes room for both without confusing their authority.~A counterpart can be cast as either unimaginative or unreliable."
+    }
+  },
+  "mercury.pluto": {
+    "themes": [
+      "communication",
+      "depth"
+    ],
+    "topics": [
+      "communication",
+      "action_work_growth"
+    ],
+    "body": "The Mercury-Pluto relationship connects inquiry with depth, influence and the wish to understand what organizes an account beneath its surface. A precise question can reveal an important assumption. Investigation works best when it remains open to an ordinary answer, rather than needing every exchange to confirm a hidden struggle or final explanation.",
+    "constructive": "Ask what evidence would change your current interpretation.",
+    "question": "What would let this inquiry remain open rather than become a verdict?",
+    "aspects": {
+      "conjunction": "Thought and scrutiny are closely linked; sustained inquiry can clarify a difficult matter when conclusions remain revisable.~An explanation can become a position you feel compelled to defend completely.",
+      "sextile": "A careful investigation can renew understanding; a focused question gives depth a practical task.~Insight can become another theory if it is never tested against a response.",
+      "square": "The need for certainty can put pressure on thought or conversation; a clear stopping point may improve the quality of inquiry.~Repeated questioning can become a form of control rather than learning.",
+      "trine": "Concentration can support a substantial explanation; inviting correction keeps penetrating analysis responsive to evidence.~Confidence in seeing beneath the surface can overlook a direct answer.",
+      "opposition": "Competing explanations may carry a struggle for influence; clarifying the shared question can reduce the need for either side to own the final account.~Winning the interpretation can replace understanding the situation."
+    }
+  },
+  "venus.mars": {
+    "themes": [
+      "reciprocity",
+      "initiative"
+    ],
+    "topics": [
+      "relationships",
+      "action_work_growth"
+    ],
+    "body": "The Venus-Mars relationship connects attraction, enjoyment and mutuality with desire, assertion and action. Wanting something and making it agreeable to share are related but distinct tasks. A clear request gives desire a useful direction while leaving the other person free to respond, so initiative does not have to compete with consideration.",
+    "constructive": "Express a desire as a request rather than an expectation.",
+    "question": "What do you want, and how can another person answer freely?",
+    "aspects": {
+      "conjunction": "Desire and appreciation are closely linked; direct warmth can be engaging when consent remains explicit rather than assumed from momentum.~Attraction can be mistaken for a shared agreement.",
+      "sextile": "An intentional gesture can connect desire with reciprocity; a specific invitation helps develop the available cooperation.~Goodwill may not become action unless someone makes a clear request.",
+      "square": "What feels attractive and how you pursue it may work against each other; changing the approach can preserve both desire and respect.~Pressure can undermine the pleasure it seeks.",
+      "trine": "Assertion and consideration can work readily together; checking a response keeps confidence from becoming presumption.~An easy rhythm can hide a preference that has changed.",
+      "opposition": "Desire and accommodation may seem divided between people; each person naming both wishes and limits can make the exchange more mutual.~One person can be assigned all the pursuit while the other carries all the refusal."
+    }
+  },
+  "venus.jupiter": {
+    "themes": [
+      "reciprocity",
+      "exploration"
+    ],
+    "topics": [
+      "relationships",
+      "action_work_growth"
+    ],
+    "body": "The Venus-Jupiter relationship connects affection and enjoyment with generosity, opportunity and a larger sense of what life might include. Sharing something pleasurable can expand connection. The value of generosity depends partly on its sustainability, so a clear limit need not diminish warmth or the meaningfulness of what you offer.",
+    "constructive": "Choose a generous gesture that fits your real capacity.",
+    "question": "What would make enjoyment expansive without making its cost invisible?",
+    "aspects": {
+      "conjunction": "Appreciation and abundance are closely associated; warmth can encourage connection when promises remain realistic.~More can become the default proof of affection.",
+      "sextile": "A shared opportunity can support enjoyment and connection; choosing it deliberately helps goodwill become a real experience.~An appealing invitation can remain a vague future promise.",
+      "square": "Pleasure and expansion can exceed practical limits; refining the scale may preserve the enjoyment better than either excess or complete denial.~Generosity can create obligations neither person intended.",
+      "trine": "Warmth and optimism can support a satisfying exchange; noticing unequal costs keeps ease from becoming entitlement.~Assuming goodwill can obscure who is carrying the expense.",
+      "opposition": "Enjoyment and a larger opportunity may pull in different directions; an explicit discussion of values can clarify what is worth pursuing.~A bigger promise can diminish appreciation of what is already offered."
+    }
+  },
+  "venus.saturn": {
+    "themes": [
+      "reciprocity",
+      "commitment"
+    ],
+    "topics": [
+      "relationships",
+      "self_emotions"
+    ],
+    "body": "The Venus-Saturn relationship connects affection and pleasure with reliability, boundaries and the time needed for trust. A consistent gesture can make care believable. A bond also needs room for enjoyment that is not earned through duty, so commitment does not become a test in which warmth is always postponed until enough has been proved.",
+    "constructive": "Make a dependable gesture and allow an uncomplicated pleasure.",
+    "question": "What would let care be reliable without making it conditional on performance?",
+    "aspects": {
+      "conjunction": "Affection and responsibility are closely entwined; commitment can support warmth when limits protect rather than ration the exchange.~Being worthy of care can become a task with no finish.",
+      "sextile": "A clear agreement can support mutual appreciation; small repeated gestures make reliability visible.~Care can remain assumed rather than expressed.",
+      "square": "Standards or fear of disappointment may restrict enjoyment; a realistic request can make connection less dependent on passing an unspoken test.~Protection against rejection can also block an available affection.",
+      "trine": "Patience can help affection develop into dependable connection; allowing play keeps the bond from becoming only an arrangement of duties.~A reliable role can crowd out a changing preference.",
+      "opposition": "Affection may seem opposed by obligation or distance; distinguishing real limits from assumed rejection makes negotiation possible.~One person can be made the gatekeeper of the other's sense of value."
+    }
+  },
+  "venus.uranus": {
+    "themes": [
+      "reciprocity",
+      "independence"
+    ],
+    "topics": [
+      "relationships",
+      "self_emotions"
+    ],
+    "body": "The Venus-Uranus relationship connects affection and taste with freedom, novelty and the wish for room to choose a bond on current terms. An unconventional arrangement can be meaningful when it fits the people involved. Independence is easier to trust when it is communicated, rather than expressed only through surprise or withdrawal.",
+    "constructive": "Discuss one form of freedom that would support connection.",
+    "question": "What agreement would let difference remain welcome and dependable?",
+    "aspects": {
+      "conjunction": "Attraction and experimentation are closely linked; an original exchange benefits from clear signals about what is actually being offered.~Novelty can be mistaken for a lasting agreement.",
+      "sextile": "A different shared experience can refresh connection; an intentional experiment helps discover a useful flexibility.~An opening for change can remain only a fantasy of elsewhere.",
+      "square": "The wish for closeness and the need for room can interrupt each other; a specific adjustment may work better than alternating pursuit and distance.~Disruption can become the only recognized route to freedom.",
+      "trine": "Independence can readily coexist with appreciation; explicit expectations keep a flexible arrangement understandable to both people.~Ease with variety can overlook a need for continuity.",
+      "opposition": "Freedom and affection may appear to belong to opposite sides; owning both needs can reduce the pressure to choose between them.~A counterpart can become the symbol of either confinement or escape."
+    }
+  },
+  "venus.neptune": {
+    "themes": [
+      "reciprocity",
+      "imagination"
+    ],
+    "topics": [
+      "relationships",
+      "self_emotions"
+    ],
+    "body": "The Venus-Neptune relationship connects affection and beauty with imagination, empathy and an ideal of what a bond might become. Inspiration can deepen appreciation. Knowing another person also requires attention to their actual choices, so an evocative feeling does not have to become a promise that either person can reliably fulfill.",
+    "constructive": "Name what is being offered now alongside what you hope for.",
+    "question": "What can you appreciate without asking it to embody a perfect ideal?",
+    "aspects": {
+      "conjunction": "Affection and ideal are closely woven; a creative or tender exchange needs clear terms so hope does not silently become an obligation.~Admiration can substitute for learning who the other person is.",
+      "sextile": "Imagination can enrich appreciation; a bounded shared experience helps translate inspiration into something mutual.~A beautiful possibility can remain disconnected from an actual agreement.",
+      "square": "An ideal of love or beauty may conflict with present reality; acknowledging the difference can make a more honest form of appreciation possible.~Potential can be treated as proof that a difficult arrangement must continue.",
+      "trine": "Empathy and aesthetic sensitivity can support connection; factual clarity helps keep generosity from becoming an unspoken sacrifice.~Feeling moved can be confused with having reached mutual understanding.",
+      "opposition": "An ideal may seem located in another person or unavailable elsewhere; reclaiming a modest value reduces the burden placed on the relationship.~A bond can be asked to rescue a larger sense of meaning or worth."
+    }
+  },
+  "venus.pluto": {
+    "themes": [
+      "reciprocity",
+      "depth"
+    ],
+    "topics": [
+      "relationships",
+      "self_emotions"
+    ],
+    "body": "The Venus-Pluto relationship connects affection and value with intensity, influence and the stakes of attachment. Deep investment can make a bond meaningful, but significance is not measured by how much uncertainty or pressure it can endure. Clear consent and room for separate preferences allow closeness to remain a continuing choice.",
+    "constructive": "State a preference without making it a test of loyalty.",
+    "question": "What would make this attachment both meaningful and freely chosen?",
+    "aspects": {
+      "conjunction": "Affection and intensity are closely associated; sustained attention can deepen connection when each person's choices remain visible.~Possession can be mistaken for security in love.",
+      "sextile": "A deliberate conversation about values can renew a bond; naming one expectation gives depth a practical form.~Insight into a dynamic can remain unused without changing its terms.",
+      "square": "The wish for closeness can become entangled with control; easing the pressure may reveal a more direct request for care.~Testing a bond can erode the trust the test seeks.",
+      "trine": "Deep appreciation can support sustained commitment; allowing disagreement keeps the connection responsive rather than totalizing.~A powerful shared preference can make revision feel disloyal.",
+      "opposition": "Value and influence may seem divided between people; making obligations and choices explicit can reduce a struggle over reassurance.~A counterpart's response can be made the final measure of your worth."
+    }
+  },
+  "mars.jupiter": {
+    "themes": [
+      "initiative",
+      "exploration"
+    ],
+    "topics": [
+      "action_work_growth",
+      "self_emotions"
+    ],
+    "body": "The Mars-Jupiter relationship connects effort and assertion with confidence, meaning and the wish to attempt something larger. A worthwhile challenge can organize energy. A realistic measure of capacity helps enthusiasm become sustained action, rather than requiring each attempt to prove that limits can always be overcome by wanting the result strongly enough.",
+    "constructive": "Choose an ambitious aim with a manageable first stage.",
+    "question": "What would make this effort both inspiring and repeatable?",
+    "aspects": {
+      "conjunction": "Drive and expansion are closely joined; initiative can open a path when the promise stays proportionate to the resources available.~Momentum can exceed the plan before its costs are visible.",
+      "sextile": "A meaningful opportunity can give effort a useful direction; choosing a concrete challenge develops the available confidence.~An encouraging possibility may remain unattempted without a commitment.",
+      "square": "Enthusiasm can push action beyond a workable scale; reducing the scope may improve the chance of following through.~Escalating effort can conceal an unrealistic premise.",
+      "trine": "Confidence can readily support initiative; checking risks and consultation keeps strong momentum accountable.~An easy sense of possibility can minimize a real constraint.",
+      "opposition": "Action and a larger vision may seem to compete; a staged plan can connect immediate effort with a horizon that remains revisable.~Alternating between haste and grand planning can delay useful progress."
+    }
+  },
+  "mars.saturn": {
+    "themes": [
+      "initiative",
+      "structure"
+    ],
+    "topics": [
+      "action_work_growth",
+      "self_emotions"
+    ],
+    "body": "The Mars-Saturn relationship connects drive with limits, patience and the structures that make effort repeatable. A clear constraint can focus energy rather than only restrict it. The practical question is which resistance belongs to the task and which comes from a standard that makes every action feel as though it must overcome an examination.",
+    "constructive": "Define a small task with a realistic pace and finish.",
+    "question": "Which limit helps your effort, and which merely keeps it under pressure?",
+    "aspects": {
+      "conjunction": "Effort and restraint are closely linked; deliberate pacing can make drive durable when a limit is treated as information rather than a verdict.~Pushing against every boundary can make work needlessly exhausting.",
+      "sextile": "A practical structure can support effective action; repeated manageable steps develop strength without requiring constant urgency.~A useful method still needs an actual first step.",
+      "square": "Drive can meet a frustrating barrier; changing timing or method may be more productive than either forcing the issue or abandoning the aim.~Effort can alternate between overexertion and complete stoppage.",
+      "trine": "Persistence can readily organize action; planned flexibility keeps a reliable method from becoming rigid endurance.~The ability to keep going can hide the need to stop.",
+      "opposition": "Assertion and restriction may seem divided between people or roles; clarifying authority and scope can turn a contest into a workable task.~An external barrier can become the explanation for every unexpressed desire."
+    }
+  },
+  "mars.uranus": {
+    "themes": [
+      "initiative",
+      "innovation"
+    ],
+    "topics": [
+      "action_work_growth",
+      "self_emotions"
+    ],
+    "body": "The Mars-Uranus relationship connects action with experimentation, independence and the wish to break an ineffective pattern. A quick intervention can reveal a new option. Reversible trials and clear safety margins help distinguish a useful change from an impulsive departure whose consequences have not yet become visible to everyone involved.",
+    "constructive": "Try a bounded alternative before replacing the whole arrangement.",
+    "question": "What change would increase freedom without transferring its cost to others?",
+    "aspects": {
+      "conjunction": "Action and experimentation are closely joined; a direct breakthrough benefits from a pause to identify who or what the change affects.~Urgency can be mistaken for permission to bypass agreement.",
+      "sextile": "An inventive method can give effort a new route; a deliberate trial helps the opening become usable.~An alternative can remain exciting but untested.",
+      "square": "The urge to act differently can disrupt an existing task; isolating the useful change reduces unnecessary conflict with the whole structure.~Opposition can become an automatic source of energy.",
+      "trine": "Initiative can readily support invention; patient follow-through gives a sudden idea the support needed to last.~Fast adaptation can make maintenance seem unimportant.",
+      "opposition": "Freedom and action may appear blocked by a counterpart; owning the desired change makes negotiation more direct.~A person can be cast as the obstacle before the actual constraint is understood."
+    }
+  },
+  "mars.neptune": {
+    "themes": [
+      "initiative",
+      "imagination"
+    ],
+    "topics": [
+      "action_work_growth",
+      "self_emotions"
+    ],
+    "body": "The Mars-Neptune relationship connects effort with imagination, ideals and motives that may be difficult to state clearly. A meaningful image can inspire action, while an undefined aim can scatter it. A small observable task helps you discover what the ideal asks in practice without needing a complete sense of certainty before beginning.",
+    "constructive": "Give an inspiring aim a clear action and a clear limit.",
+    "question": "What result could show whether this effort is serving the value behind it?",
+    "aspects": {
+      "conjunction": "Drive and ideal are closely woven; purposeful effort needs explicit terms so enthusiasm does not turn into an open-ended obligation.~Acting for an image can obscure what you actually want.",
+      "sextile": "Imagination can suggest a useful route for action; a bounded creative or helpful task develops the connection.~An inspiring possibility may dissolve without a concrete next step.",
+      "square": "An ideal and the available energy may not fit; clarifying the aim can prevent effort from being spent on an impossible promise.~Frustration can grow when success has never been defined.",
+      "trine": "Imaginative purpose can readily support effort; practical feedback keeps inspiration connected to actual effects.~Feeling motivated can be mistaken for having made progress.",
+      "opposition": "Action and an idealized alternative may seem opposed; choosing a modest expression of the value reduces the pull of an unreachable solution.~A rescuer or perfect cause can be asked to supply direction you have not chosen."
+    }
+  },
+  "mars.pluto": {
+    "themes": [
+      "initiative",
+      "depth"
+    ],
+    "topics": [
+      "action_work_growth",
+      "relationships"
+    ],
+    "body": "The Mars-Pluto relationship connects assertion with intensity, influence and the capacity to sustain effort through resistance. Focus can make a difficult change possible. The quality of that effort depends on whether power remains accountable, with clear consent and room to revise the aim rather than treating every obstacle as something that must yield.",
+    "constructive": "Check the purpose and effects of a strongly driven action.",
+    "question": "What would make this effort effective without making it coercive?",
+    "aspects": {
+      "conjunction": "Drive and intensity are closely linked; concentrated effort benefits from a chosen stopping point and attention to its effect on others.~Persistence can turn into an inability to release a contest.",
+      "sextile": "A deliberate examination of obstacles can focus action; one targeted change gives determination a constructive outlet.~Understanding the leverage in a situation does not justify using all of it.",
+      "square": "A struggle over control can consume the energy meant for a task; revising the terms may accomplish more than escalating force.~Winning can replace the original reason for acting.",
+      "trine": "Sustained effort can readily support deep change; consultation keeps quiet determination responsive to shared stakes.~Confidence in endurance can make another person's limit easy to overlook.",
+      "opposition": "Assertion and power may seem located on opposing sides; identifying each person's authority and choice can reduce a totalizing contest.~An opponent can become necessary to sustain a sense of agency."
+    }
+  },
+  "jupiter.saturn": {
+    "themes": [
+      "exploration",
+      "structure"
+    ],
+    "topics": [
+      "action_work_growth",
+      "self_emotions"
+    ],
+    "body": "The Jupiter-Saturn relationship connects expansion with consolidation, possibility with responsibility. It describes a social rhythm shared by many people, while its houses locate a more individual setting when time permits. A workable plan allows learning and limits to inform each other rather than treating optimism and realism as mutually exclusive positions.",
+    "constructive": "Pair a larger aim with a checkpoint that can revise its scale.",
+    "question": "What structure would let growth remain responsive to experience?",
+    "aspects": {
+      "conjunction": "Expansion and restraint are closely associated; a long-term aim can develop through stages that make both opportunity and obligation visible.~Caution and ambition can become tangled into a demand for guaranteed growth.",
+      "sextile": "A practical opening can connect learning with a durable structure; deliberately using it matters more than assuming balance will maintain itself.~A sensible possibility can remain indefinitely in preparation.",
+      "square": "Growth and consolidation can demand different choices; reviewing the scale or timing may serve the aim better than choosing one principle absolutely.~Overreach and overcorrection can become a repeating cycle.",
+      "trine": "Possibility and discipline can cooperate readily; revisiting assumptions keeps an established balance from becoming complacent.~A workable pattern can be mistaken for a permanent one.",
+      "opposition": "Expansion and limitation may appear on opposite sides of a decision; a staged agreement can give each concern an explicit role.~A disagreement can divide people into dreamers and gatekeepers unnecessarily."
+    }
+  },
+  "jupiter.uranus": {
+    "themes": [
+      "exploration",
+      "innovation"
+    ],
+    "topics": [
+      "action_work_growth",
+      "communication"
+    ],
+    "body": "The Jupiter-Uranus relationship connects opportunity with experimentation and the possibility of a different organizing idea. It has a wider social context as well as a personal setting through houses and close contacts. A promising alternative becomes more useful when its claims are tested and its practical consequences can revise the initial enthusiasm.",
+    "constructive": "Test the most important assumption behind a new opportunity.",
+    "question": "What would make this alternative more than a compelling promise?",
+    "aspects": {
+      "conjunction": "Expansion and innovation are closely linked; a bold opening benefits from a bounded trial before its scale is enlarged.~Novelty can be treated as evidence that growth is inevitable.",
+      "sextile": "An unconventional method can open a useful opportunity; a deliberate experiment develops the connection between possibility and change.~An interesting option can remain a future escape rather than a present test.",
+      "square": "The wish to expand can collide with the need to change the structure; clarifying which problem comes first can prevent scattered effort.~A new idea can be asked to solve every existing limit.",
+      "trine": "Experimentation can readily support growth; evaluation keeps confidence in change connected to actual outcomes.~Ease with alternatives can reduce attention to their ongoing costs.",
+      "opposition": "Opportunity and independence may seem to require opposite choices; a limited trial can reveal whether the conflict is as complete as it appears.~Freedom can be framed as incompatible with any sustained commitment."
+    }
+  },
+  "jupiter.neptune": {
+    "themes": [
+      "meaning",
+      "imagination"
+    ],
+    "topics": [
+      "self_emotions",
+      "action_work_growth"
+    ],
+    "body": "The Jupiter-Neptune relationship connects broad belief with imagination, ideals and hopes for a more meaningful world. It is partly a shared cultural background, not proof of personal wisdom or spiritual authority. A generous vision becomes useful when its promises can be translated into conduct and examined without losing the values that inspired it.",
+    "constructive": "Compare an inspiring claim with one observable consequence.",
+    "question": "What could preserve the value of your vision while making its promises more realistic?",
+    "aspects": {
+      "conjunction": "Belief and ideal are closely woven; a compelling vision needs clear limits on what it claims to know or guarantee.~Confidence can amplify an untested assumption.",
+      "sextile": "Imagination can widen a meaningful perspective; a bounded act of generosity develops the connection in practical form.~An inspiring possibility can remain detached from daily choices.",
+      "square": "A broad promise may exceed what experience supports; revising the claim can preserve its humane intention without defending its excess.~Hope can make corrective evidence feel disloyal.",
+      "trine": "Meaning and imagination can flow readily together; careful distinctions keep a beautiful account from acquiring authority it has not earned.~A coherent story can feel verified because it is emotionally satisfying.",
+      "opposition": "Belief and ideal may appear in competing forms; asking what each leads people to do can ground an otherwise limitless debate.~A distant promise can eclipse an available, modest contribution."
+    }
+  },
+  "jupiter.pluto": {
+    "themes": [
+      "meaning",
+      "transformation"
+    ],
+    "topics": [
+      "action_work_growth",
+      "relationships"
+    ],
+    "body": "The Jupiter-Pluto relationship connects growth and conviction with influence, depth and the power to change an arrangement. It participates in wider social patterns while houses give a more particular context. A meaningful aim becomes more accountable when those affected can question its methods, rather than being asked to accept pressure because the goal is important.",
+    "constructive": "Ask who gains choice and who bears cost in a proposed expansion.",
+    "question": "What would make a powerful vision open to correction?",
+    "aspects": {
+      "conjunction": "Expansion and influence are closely linked; a substantial aim benefits from transparent methods and explicit limits on authority.~A worthy purpose can be used to justify disproportionate pressure.",
+      "sextile": "A focused change can open a larger possibility; deliberate attention to consequences helps opportunity serve more than ambition.~Available influence can be used before its purpose is clear.",
+      "square": "A conviction about growth can enter a struggle for control; examining the stakes may reveal a less coercive route to the aim.~Winning adherence can replace testing whether the vision is useful.",
+      "trine": "Sustained conviction can support meaningful development; inviting dissent keeps confidence responsive to the people it affects.~A successful strategy can make its own costs harder to recognize.",
+      "opposition": "Growth and power may appear to belong to opposing interests; making benefits and obligations explicit can clarify a negotiable arrangement.~A disagreement can become a contest over whose worldview must prevail."
+    }
+  },
+  "saturn.uranus": {
+    "themes": [
+      "structure",
+      "innovation"
+    ],
+    "topics": [
+      "action_work_growth",
+      "relationships"
+    ],
+    "body": "The Saturn-Uranus relationship connects continuity with reform and practical responsibility with the wish for a different arrangement. It is a social pattern shared across a period, with individual context supplied by houses and personal contacts. Useful change can preserve a function while revising its form, avoiding the assumption that every limit is either necessary or obsolete.",
+    "constructive": "Identify what a structure must preserve and what can be tested differently.",
+    "question": "Which part of this arrangement needs continuity, and which needs redesign?",
+    "aspects": {
+      "conjunction": "Structure and reform occupy closely connected territory; a durable innovation needs both a clear purpose and room for revision.~Control can be used to enforce a change meant to increase freedom.",
+      "sextile": "A practical experiment can improve an established system; a bounded trial gives reform a dependable route.~An available improvement can remain unused because the old method still functions.",
+      "square": "Continuity and change can interrupt each other; separating essential constraints from habitual rules makes the conflict more workable.~Defending or rejecting the whole structure can hide a useful partial change.",
+      "trine": "Discipline can readily support innovation; regular review keeps the new arrangement from becoming another unquestioned rule.~A successful reform can harden into the convention it once challenged.",
+      "opposition": "Responsibility and independence may appear on opposing sides; explicit scope for experimentation can make both concerns part of one agreement.~People can be assigned fixed roles as the obstacle and the rebel."
+    }
+  },
+  "saturn.neptune": {
+    "themes": [
+      "structure",
+      "imagination"
+    ],
+    "topics": [
+      "action_work_growth",
+      "self_emotions"
+    ],
+    "body": "The Saturn-Neptune relationship connects practical limits with ideals, imagination and the wish for work to carry meaning. It also describes a shared social tension around what institutions or commitments promise. A humane structure gives an ideal a usable form while admitting what the form cannot deliver, so neither realism nor hope has to erase the other.",
+    "constructive": "Define one practical commitment that expresses a value without promising everything.",
+    "question": "What limit would help your ideal become sustainable?",
+    "aspects": {
+      "conjunction": "Form and ideal are closely associated; a meaningful discipline works best when its actual purpose and boundaries are stated.~A role can carry a promise too large for any structure to fulfill.",
+      "sextile": "A modest practice can give imagination a dependable setting; intentional repetition helps inspiration become something usable.~A meaningful possibility can remain only a plan for a better time.",
+      "square": "An ideal may strain against a practical limit; revising the promise can make a more honest commitment possible.~Disappointment can turn a specific failure into rejection of all structure.",
+      "trine": "Patience can readily support imaginative or compassionate work; checking results keeps a satisfying routine connected to its purpose.~A well-maintained form can outlast the meaning that originally animated it.",
+      "opposition": "Reality and ideal may seem irreconcilable; asking what a particular structure can and cannot provide creates room for a partial solution.~A person or institution can be cast as either the savior or the destroyer of hope."
+    }
+  },
+  "saturn.pluto": {
+    "themes": [
+      "structure",
+      "transformation"
+    ],
+    "topics": [
+      "action_work_growth",
+      "relationships"
+    ],
+    "body": "The Saturn-Pluto relationship connects enduring structures with power, pressure and the need for substantial revision. It is partly a generational or social backdrop, not a forecast of personal hardship. Accountability matters when a system is under strain: a durable response makes responsibility and choice clearer instead of treating greater control as the only available solution.",
+    "constructive": "Examine who can question or change a demanding arrangement.",
+    "question": "What would make this structure resilient without making it more coercive?",
+    "aspects": {
+      "conjunction": "Structure and concentrated power are closely connected; durable responsibility needs transparent limits and a real capacity for revision.~Endurance can be used to justify keeping an unnecessarily restrictive arrangement.",
+      "sextile": "A targeted reform can strengthen a useful structure; deliberate attention to responsibility helps change remain accountable.~Practical leverage can be used without enough discussion of its effects.",
+      "square": "Pressure can expose a structure that no longer serves its stated purpose; redesign may be more effective than stricter enforcement.~A crisis of method can be treated as a need for more control.",
+      "trine": "Persistence can support substantial institutional or personal work; allowing challenge keeps competence from becoming unquestionable authority.~A durable system can conceal who pays for its stability.",
+      "opposition": "Authority and pressure for change may appear on opposing sides; explicit terms for review can turn a power contest into accountable revision.~Each side can use the other's resistance to justify escalation."
+    }
+  },
+  "uranus.neptune": {
+    "themes": [
+      "innovation",
+      "imagination"
+    ],
+    "topics": [
+      "communication",
+      "action_work_growth"
+    ],
+    "body": "The Uranus-Neptune relationship is a generational pattern connecting new possibilities with collective ideals and images of the future. Many people share it. Personal relevance depends on the wider chart and lived context; it can frame a question about whether an exciting vision becomes a usable, inclusive practice rather than merely a compelling image of change.",
+    "constructive": "Compare a future-facing ideal with how it treats a specific present need.",
+    "question": "What would turn an inspiring alternative into a practice people can actually use?",
+    "aspects": {
+      "conjunction": "Innovation and ideal are closely woven in the shared background; a new form can carry a large promise that still needs practical examination.~Novelty and inspiration can reinforce an untested expectation.",
+      "sextile": "An alternative method can give an ideal a practical opening; deliberate experimentation helps distinguish meaningful change from fashionable imagery.~An appealing possibility can remain a cultural slogan.",
+      "square": "A vision of change may conflict with the actual form of the innovation; examining whose needs are missed can refine both.~Disillusionment can replace evaluation when the promise proves too broad.",
+      "trine": "New forms and shared imagination can support one another readily; concrete feedback keeps the connection accountable to particular lives.~A widely attractive future can conceal uneven access.",
+      "opposition": "Innovation and an idealized order may appear opposed; testing their practical effects can ground a debate otherwise driven by images.~A generation's preferred story can be treated as a universal solution."
+    }
+  },
+  "uranus.pluto": {
+    "themes": [
+      "innovation",
+      "transformation"
+    ],
+    "topics": [
+      "action_work_growth",
+      "relationships"
+    ],
+    "body": "The Uranus-Pluto relationship is a generational pattern connecting reform with deep changes in power and collective arrangements. It does not establish an individual's revolutionary role. In a personal context, the useful question is how a change redistributes real choice, including whether the methods used to gain freedom reproduce the pressure they were meant to challenge.",
+    "constructive": "Ask how a proposed change alters actual decision-making power.",
+    "question": "Who gains meaningful choice through the change you support?",
+    "aspects": {
+      "conjunction": "Reform and concentrated change are closely linked in the shared background; accountable methods matter as much as the force of the departure.~A break with authority can create another unchallengeable authority.",
+      "sextile": "A targeted innovation can support deeper reform; deliberate attention to participation makes the opening more than a change of appearance.~A technical improvement can leave the underlying power arrangement untouched.",
+      "square": "The urge for reform can collide with entrenched influence; identifying a specific decision process makes the conflict less totalizing.~Escalation can narrow the freedom the change was intended to create.",
+      "trine": "Experimentation can readily support substantial renewal; keeping dissent possible prevents a successful change from becoming rigid.~Confidence in reform can obscure its effects on less powerful participants.",
+      "opposition": "Freedom and control may appear in opposing camps; scrutinizing both sides' methods helps preserve the actual purpose of change.~A collective conflict can demand loyalty at the expense of individual judgment."
+    }
+  },
+  "neptune.pluto": {
+    "themes": [
+      "imagination",
+      "transformation"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "body": "The Neptune-Pluto relationship is a slow generational background linking collective ideals with deep changes in what a culture values or treats as powerful. It is shared by many birth years and receives less personal emphasis. Its reflective use is to examine how a meaningful image influences choices, without treating the image as a hidden truth about everyone.",
+    "constructive": "Notice one inherited ideal and how it affects an ordinary choice.",
+    "question": "Which shared story deserves examination rather than automatic allegiance?",
+    "aspects": {
+      "conjunction": "Collective ideal and concentrated change are closely associated in the sampled era; the symbolism needs particular context before it becomes a personal theme.~A broad cultural pattern can be overread as an individual destiny.",
+      "sextile": "A shared imaginative background can support gradual changes in values; personal relevance should remain tied to specific houses or closer personal relationships.~A common generational connection can be mistaken for a uniquely defining trait.",
+      "square": "Collective ideals and entrenched meanings can pull against each other; concrete context is needed to identify what, if anything, this describes in a life.~An abstract cultural tension can be imposed on an unrelated personal experience.",
+      "trine": "Imagination and deep collective change can develop in a compatible pattern; its broad reach makes restraint in individual interpretation especially important.~A shared backdrop can crowd out more specific personal evidence.",
+      "opposition": "This calculated configuration uses a pair-level fallback because the supported-date sampling produced no opposition witness. The broad generational discussion remains available without an opposition-specific claim.~An unqualified configuration should not be promoted into a defining personal theme."
+    }
+  }
+}

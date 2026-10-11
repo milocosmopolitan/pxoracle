@@ -1,7 +1,7 @@
-# ADR 006: Browser-local natal reports
+# ADR 007: Browser-local natal reports
 
-Status: implementation in progress for #38–#49. This document records the contract;
-qualification evidence belongs in `docs/validation/natal`.
+Status: implemented for #38–#49, pending PR review. Qualification evidence is in
+[the natal validation record](../validation/natal/README.md).
 
 ## Integration and ownership
 
@@ -104,3 +104,18 @@ All new prose is authored locally. Automated coverage is not human editorial app
 A remote geocoder/LLM would add private-data exposure, cost and nondeterminism. A TS
 interpretation engine would duplicate Rust authority. A full world atlas would cost
 unnecessary initial bytes. These are not required for the chosen bounded local path.
+
+## Implementation references
+
+- [Content provenance and editorial ranking](../../content/astrology/natal/README.md)
+- [Atlas licensing, transforms and coverage](../../content/astrology/atlas/README.md)
+- [Scene, camera and cancellation contract](../contracts/natal-scene.md)
+- [Representative prose review](../validation/natal/editorial-review.md)
+
+Persistence uses `pxoracle.natal-report.v1` with envelope schema 1, original input/chart,
+InterpretationPlan, the six-version tuple, atlas/manual PlaceProvenance and explicit
+savedAt timestamp. Supported plans are compared with deterministic regeneration before
+display (object key order does not matter). Failure retains the expected saved plan
+through retries and route abandonment. A separately labeled regeneration action clears
+that expectation; it never overwrites storage automatically. Legacy chart/input keys
+remain readable and are included in explicit deletion.

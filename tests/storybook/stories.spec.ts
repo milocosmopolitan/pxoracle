@@ -13,7 +13,7 @@ test("isolated production stories are labeled, interactive and never load WASM",
   }
   if(story==="astrology-reading"){
    await page.getByRole("button",{name:/^moon/i}).click();
-   await expect(page.locator(".body-reading .eyebrow")).toContainText("moon");
+   await expect(page.getByRole("region", {name:"Selected chart detail"})).toContainText("Moon");
   }
   if(story==="tarot-input"){
    await page.getByRole("button",{name:"Shuffle the deck"}).click();

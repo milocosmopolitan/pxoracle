@@ -1,0 +1,206 @@
+[
+  {
+    "id": "ascendant.0",
+    "summary": "A direct way into the encounter.",
+    "body": "Aries rising describes an approach that begins through action, initiative and a willingness to meet a situation directly. This is a symbolic entry style, not your whole identity. It can help you get moving while the rest of the chart describes different needs, including needs that become apparent only after the first response.",
+    "constructive": "Pause long enough to choose what you are initiating.",
+    "tension": "Speed can make a first reaction look like a final position.",
+    "question": "What beginning would leave room for another person's response?",
+    "themes": [
+      "initiative",
+      "independence"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.1",
+    "summary": "A steady way of finding your footing.",
+    "body": "Taurus rising describes an approach that notices tangible conditions, pace and what makes an encounter feel manageable. Giving yourself time can support a more deliberate choice. A stable entry style does not require an unchanging position; familiarity can serve as a base from which to consider something new.",
+    "constructive": "Identify the practical condition that would help you engage.",
+    "tension": "Waiting for complete comfort can postpone a worthwhile encounter.",
+    "question": "What small adjustment would make a new situation approachable?",
+    "themes": [
+      "stability",
+      "embodiment"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.2",
+    "summary": "A question opens the door.",
+    "body": "Gemini rising describes an approach that uses observation, language and comparison to find a place in a situation. Asking a question may help you engage before you know exactly what you think. That flexibility becomes more useful when attention stays with an answer long enough to move beyond the first interesting impression.",
+    "constructive": "Ask a question and follow one thread of the answer.",
+    "tension": "Quick adaptation can make your own preference hard to locate.",
+    "question": "What are you curious enough to remain with for a while?",
+    "themes": [
+      "curiosity",
+      "communication"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.3",
+    "summary": "An encounter is approached through its atmosphere.",
+    "body": "Cancer rising describes an entry style attentive to familiarity, emotional tone and the conditions that make participation feel safe enough. A careful beginning can support meaningful contact. It helps to distinguish a present signal from a remembered expectation, so a new person or setting has room to be different from the past.",
+    "constructive": "Check an impression against a concrete detail of the present.",
+    "tension": "Protection can arrive before a current risk has been established.",
+    "question": "What would help you feel secure enough to meet this situation as it is?",
+    "themes": [
+      "care",
+      "belonging"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.4",
+    "summary": "A visible presence invites participation.",
+    "body": "Leo rising describes an approach that brings expression, warmth and a recognizable personal presence into an encounter. Letting something bear your mark can make participation feel real. Visibility works best when it remains responsive, allowing others to contribute without requiring you to sustain the entire atmosphere or hold everyone's attention.",
+    "constructive": "Offer a personal contribution and invite another one.",
+    "tension": "Maintaining a confident presentation can hide an ordinary uncertainty.",
+    "question": "What would let you be present without having to perform certainty?",
+    "themes": [
+      "expression",
+      "recognition"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.5",
+    "summary": "Observation helps you enter usefully.",
+    "body": "Virgo rising describes an approach that notices details, practical needs and the adjustments that could make a situation work better. Careful attention can be a generous way of participating. Your place need not depend on finding something to fix; curiosity and ordinary presence can be useful even when no improvement is required.",
+    "constructive": "Notice what already works before proposing a change.",
+    "tension": "Scanning for problems can make an adequate situation feel unfinished.",
+    "question": "What would participation look like if usefulness did not require correction?",
+    "themes": [
+      "craft",
+      "discernment"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.6",
+    "summary": "An encounter begins with awareness of a counterpart.",
+    "body": "Libra rising describes an approach that notices relation, proportion and how different people might find a workable point of contact. Making room for another view can ease a beginning. A clear preference gives that openness substance, so consideration does not leave everyone guessing where you actually stand.",
+    "constructive": "State a preference while inviting a different one.",
+    "tension": "Adapting to the encounter can postpone your own choice.",
+    "question": "What can you bring to the exchange as well as accommodate?",
+    "themes": [
+      "reciprocity",
+      "expression"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.7",
+    "summary": "An encounter invites careful attention to its stakes.",
+    "body": "Scorpio rising describes an approach that looks beyond an immediate presentation and notices what may matter beneath it. A deliberate threshold can support trust. Depth is more useful when it includes the possibility that a situation is ordinary, rather than requiring every exchange to reveal a hidden test or motive.",
+    "constructive": "Ask what is actually at stake before increasing your guard.",
+    "tension": "Scrutiny can make a tentative encounter feel like an examination.",
+    "question": "What would let you remain discerning without demanding complete certainty?",
+    "themes": [
+      "depth",
+      "trust"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.8",
+    "summary": "A wider possibility helps you engage.",
+    "body": "Sagittarius rising describes an approach that looks for movement, perspective and something worth exploring in a situation. An encouraging first response can create room for participation. The promise of the encounter becomes more usable when curiosity includes its practical details, not only the larger horizon it appears to open.",
+    "constructive": "Connect an interesting possibility with one concrete next step.",
+    "tension": "Optimism can skip over a limit that deserves attention.",
+    "question": "What detail would help your enthusiasm become a workable invitation?",
+    "themes": [
+      "exploration",
+      "meaning"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.9",
+    "summary": "A deliberate approach establishes a useful structure.",
+    "body": "Capricorn rising describes an entry style attentive to responsibility, purpose and the expectations of a situation. Taking a measured position can make participation feel manageable. Seriousness need not require self-sufficiency; asking a clear question or accepting support can be part of approaching a task competently.",
+    "constructive": "Clarify the actual expectation before taking responsibility.",
+    "tension": "An assumed duty can make an encounter heavier than it needs to be.",
+    "question": "What is yours to carry here, and what has not been asked of you?",
+    "themes": [
+      "structure",
+      "commitment"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.10",
+    "summary": "A different angle can make room for participation.",
+    "body": "Aquarius rising describes an approach that notices patterns, alternatives and how an arrangement might include more possibilities. Some distance can help you see what habit has made invisible. Contact with specific people gives that wider view a practical setting, so an interesting principle can respond to ordinary needs.",
+    "constructive": "Ask how a proposed idea affects someone in the room.",
+    "tension": "Observing the system can distance you from the immediate encounter.",
+    "question": "What would connect your broader view with a particular person's experience?",
+    "themes": [
+      "independence",
+      "community"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  },
+  {
+    "id": "ascendant.11",
+    "summary": "A receptive beginning notices subtle connections.",
+    "body": "Pisces rising describes an approach sensitive to imagery, atmosphere and meanings that may be difficult to state immediately. Openness can make an encounter feel less rigid. A simple practical boundary helps you stay available without taking on every expectation, allowing imagination to coexist with a recognizable personal position.",
+    "constructive": "Name one preference or limit within an open-ended encounter.",
+    "tension": "Adapting to an atmosphere can blur what you actually agreed to.",
+    "question": "What clear boundary would make receptivity easier to sustain?",
+    "themes": [
+      "imagination",
+      "care"
+    ],
+    "topics": [
+      "self_emotions",
+      "relationships"
+    ],
+    "scope": "personal"
+  }
+]

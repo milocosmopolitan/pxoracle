@@ -211,6 +211,19 @@ See [ADR 003](docs/decisions/003-tarot-perspective-rig.md) for articulated arms,
 
 [ADR 004](docs/decisions/004-deterministic-free-readings.md) adds the independent pure Rust `pxoracle-tarot-reading` crate to the existing tarot WASM adapter. Its external symbolic packs are validated/cached in the Worker; English sentences remain a separate frontend content pack. Only three revealed cards and a fixed structured perspective enter interpretation. The original draw engine, position IDs, `en.v1`, Scene contracts, and astrology engine remain independent. Versioned v2 save envelopes preserve draw identity and require explicit perspective selection or version migration when needed.
 
+## Local natal interpretation
+
+[ADR 007](docs/decisions/007-local-natal-readings.md) adds the independent pure Rust
+`pxoracle-natal-reading` crate to the astrology WASM adapter. Calculation still owns
+chart facts and uncertainty. The Worker installs bounded, hashed symbolic packs once;
+the frontend resolves the resulting evidence-linked `InterpretationPlan` against a
+separate English pack. Only explicit US/Korea city shards are requested by the city
+chooser. Scene data contains display longitudes, supported houses/aspects, selection
+and usable viewport, never birth records or interpretation rules. Current and legacy
+saved charts are validated without ephemeris recalculation; version changes require
+explicit regeneration or recalculation. Tarot contracts, art, camera and rules remain
+separate. See [validation](docs/validation/natal/README.md).
+
 ## Manual publishing
 
 [ADR 005](docs/decisions/005-manual-static-publishing.md) defines a manually dispatched main-only workflow, GitHub OIDC, private S3/CloudFront hosting and complete-release staging. Both WASM engines rebuild before export; publishing does not add an application server or interpretation service.

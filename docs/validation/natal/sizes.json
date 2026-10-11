@@ -1,0 +1,16 @@
+{
+  "astrology": {
+    "deployedMainBytes": 1172727,
+    "deployedMainGzip": 267418,
+    "branchBytes": 1539686,
+    "branchGzip": 359216,
+    "byteIdentical": false
+  },
+  "tarot": {
+    "deployedMainBytes": 499855,
+    "deployedMainGzip": 141342,
+    "branchBytes": 499810,
+    "branchGzip": 141476,
+    "byteIdentical": false
+  }
+}

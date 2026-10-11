@@ -207,6 +207,9 @@
             "$ref": "#/$defs/NatalEvidence"
           }
         },
+        "fallback": {
+          "type": "boolean"
+        },
         "id": {
           "type": "string"
         },
@@ -220,15 +223,28 @@
         },
         "ruleId": {
           "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/NatalScope"
         }
       },
       "additionalProperties": false,
       "required": [
+        "scope",
+        "fallback",
         "id",
         "reference",
         "ruleId",
         "priority",
         "evidence"
+      ]
+    },
+    "NatalScope": {
+      "type": "string",
+      "enum": [
+        "personal",
+        "social",
+        "generational"
       ]
     },
     "NatalTopic": {

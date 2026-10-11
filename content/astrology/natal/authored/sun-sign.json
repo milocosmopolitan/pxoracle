@@ -13,7 +13,8 @@
     "body": "Sun in Aries places the search for purpose near the act of starting. Trying something directly can reveal what extended preparation cannot. Identity becomes clearer through initiative, but the first impulse is only the opening of a longer conversation with consequences.",
     "constructive": "Choose a small experiment you can finish and learn from.",
     "tension": "A quick start can become a substitute for staying with the less exciting middle.",
-    "question": "Which beginning deserves your commitment after the first burst of enthusiasm?"
+    "question": "Which beginning deserves your commitment after the first burst of enthusiasm?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.1",
@@ -29,7 +30,8 @@
     "body": "Sun in Taurus pictures purpose taking shape through tangible commitments. Craft, continuity and a dependable rhythm can make your contribution feel real. The question is not simply what can be kept, but what remains alive enough to be worth tending over time.",
     "constructive": "Name one practice whose value grows through repetition.",
     "tension": "Protecting a familiar arrangement can outlast the nourishment it provides.",
-    "question": "What are you preserving because it matters, and what only because it is familiar?"
+    "question": "What are you preserving because it matters, and what only because it is familiar?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.2",
@@ -45,7 +47,8 @@
     "body": "Sun in Gemini locates vitality in learning, comparing and putting experience into words. Several interests can reveal different sides of the same question. A coherent direction need not eliminate variety, but it benefits from a thread that turns scattered information into something another person can use.",
     "constructive": "Follow one interesting question far enough to explain what you discovered.",
     "tension": "Collecting possibilities can postpone the choice that gives them practical meaning.",
-    "question": "Which conversation keeps opening a question you genuinely want to pursue?"
+    "question": "Which conversation keeps opening a question you genuinely want to pursue?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.3",
@@ -61,7 +64,8 @@
     "body": "Sun in Cancer links purpose with continuity, memory and the creation of a sustaining place. Caring for people or work can become an expression of identity. That role is strongest when protection leaves room for others to develop their own relationship with the world.",
     "constructive": "Define a form of care that also preserves your own time.",
     "tension": "Feeling responsible for everyone's comfort can make change seem like disloyalty.",
-    "question": "What would caring look like if belonging did not require you to hold everything together?"
+    "question": "What would caring look like if belonging did not require you to hold everything together?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.4",
@@ -77,7 +81,8 @@
     "body": "Sun in Leo pictures vitality in authorship, generosity and the courage to let something bear your mark. Recognition can help you feel that your contribution has reached another person. The deeper task is to keep creating when feedback is mixed or attention shifts elsewhere.",
     "constructive": "Offer a piece of work because you stand behind it, then invite a real response.",
     "tension": "A need to be appreciated can narrow the space available for revision.",
-    "question": "What would you still choose to express without a guaranteed audience?"
+    "question": "What would you still choose to express without a guaranteed audience?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.5",
@@ -93,7 +98,8 @@
     "body": "Sun in Virgo connects identity with noticing how things work and making a contribution that holds up in practice. Purpose may become clearer through a specific task than through a grand declaration. Discernment is most useful when it serves the work instead of continually putting the worker on trial.",
     "constructive": "Choose one improvement that makes a process easier for someone.",
     "tension": "An endless list of defects can hide the value of what already functions.",
-    "question": "Where would a workable next version serve better than another round of self-correction?"
+    "question": "Where would a workable next version serve better than another round of self-correction?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.6",
@@ -109,7 +115,8 @@
     "body": "Sun in Libra pictures purpose developing through comparison, dialogue and the effort to make room for more than one perspective. A considered agreement can be a creative achievement. Balance becomes less sustainable when it depends on leaving your own preference unnamed.",
     "constructive": "State your preference before negotiating the terms of an agreement.",
     "tension": "Maintaining a pleasant exchange can conceal an unresolved difference.",
-    "question": "What would a fair arrangement include that you have not yet asked for?"
+    "question": "What would a fair arrangement include that you have not yet asked for?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.7",
@@ -125,7 +132,8 @@
     "body": "Sun in Scorpio links vitality with sustained attention to what carries emotional weight. Surface agreement may feel insufficient when the underlying stakes remain unspoken. This image supports the work of examining motives and renewing commitments, while allowing uncertainty that no amount of investigation can remove.",
     "constructive": "Name the real stake in one decision without demanding complete certainty.",
     "tension": "Testing a commitment repeatedly can erode the trust you hope to establish.",
-    "question": "What deserves deeper engagement, and what deserves release from constant examination?"
+    "question": "What deserves deeper engagement, and what deserves release from constant examination?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.8",
@@ -141,7 +149,8 @@
     "body": "Sun in Sagittarius places purpose in the search for a workable meaning beyond immediate circumstances. Learning, travel in thought or place, and teaching can connect separate experiences. A guiding conviction is more useful when it remains open to details that complicate the story.",
     "constructive": "Test an important belief against one concrete experience.",
     "tension": "A broad explanation can overlook the person or detail that does not fit.",
-    "question": "Which belief helps you act, and what evidence would help you refine it?"
+    "question": "Which belief helps you act, and what evidence would help you refine it?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.9",
@@ -157,7 +166,8 @@
     "body": "Sun in Capricorn pictures identity being built through sustained effort and the capacity to carry a commitment into the world. Standards can give work durability. They become more humane when achievement is connected to a chosen purpose rather than treated as the only permission to feel worthwhile.",
     "constructive": "Define a milestone and the limit on what you will sacrifice for it.",
     "tension": "Carrying responsibility alone can make support seem incompatible with competence.",
-    "question": "Which responsibility expresses your values, and which merely proves you can endure?"
+    "question": "Which responsibility expresses your values, and which merely proves you can endure?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.10",
@@ -173,7 +183,8 @@
     "body": "Sun in Aquarius links purpose with questioning established arrangements and imagining a wider field of participation. An idea may matter because it offers room for people who were left out. Independence becomes more effective when it remains in contact with the particular people affected by the proposal.",
     "constructive": "Invite feedback from someone who would live with the change you envision.",
     "tension": "Attachment to an ideal can make ordinary relational needs seem inconvenient.",
-    "question": "How could your preferred future become more responsive to the people already here?"
+    "question": "How could your preferred future become more responsive to the people already here?",
+    "scope": "personal"
   },
   {
     "id": "sign.sun.11",
@@ -189,6 +200,7 @@
     "body": "Sun in Pisces pictures vitality in imagination, compassion and sensitivity to the atmosphere around an experience. Art or service may offer a language for what is difficult to state directly. Giving that openness a form makes it easier to offer something meaningful without losing your own point of reference.",
     "constructive": "Choose one bounded form for a generous or imaginative impulse.",
     "tension": "Identifying with every need can blur which commitments are actually yours.",
-    "question": "What form would let your sensitivity contribute without asking it to hold everything?"
+    "question": "What form would let your sensitivity contribute without asking it to hold everything?",
+    "scope": "personal"
   }
 ]

@@ -13,7 +13,8 @@
     "body": "Venus in Aries pictures attraction through initiative, freshness and the freedom to make an unmistakable choice. A relationship or creative preference can come alive when desire is expressed directly. Sustaining the connection asks for interest in what follows the pursuit, including the other person's pace and independent wishes.",
     "constructive": "Offer a clear invitation that leaves room for an unpressured answer.",
     "tension": "The excitement of beginning can obscure whether the everyday exchange is satisfying.",
-    "question": "What remains attractive when there is nothing left to win?"
+    "question": "What remains attractive when there is nothing left to win?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.1",
@@ -29,7 +30,8 @@
     "body": "Venus in Taurus links appreciation with sensory detail, reliability and the enjoyment of what has been patiently cultivated. Affection may be expressed through practical generosity or a shared ritual. Consistency supports intimacy when it does not become an assumption that another person's preferences will always remain the same.",
     "constructive": "Ask what would feel pleasurable or caring now, even in a familiar relationship.",
     "tension": "Comfort can become a reason to avoid renegotiating an arrangement.",
-    "question": "Which shared pleasure still feels chosen rather than automatic?"
+    "question": "Which shared pleasure still feels chosen rather than automatic?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.2",
@@ -45,7 +47,8 @@
     "body": "Venus in Gemini pictures enjoyment in conversation, humor and discovering more than one side of a person or subject. Mental variety can keep affection alive without making every interest a permanent commitment. Clarity about the kind of relationship or collaboration you are offering helps others enjoy that openness with you.",
     "constructive": "Say what kind of connection you are available for before relying on chemistry alone.",
     "tension": "A lively exchange can leave expectations pleasantly vague until someone needs an answer.",
-    "question": "How could you keep curiosity alive while making your intentions easier to understand?"
+    "question": "How could you keep curiosity alive while making your intentions easier to understand?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.3",
@@ -61,7 +64,8 @@
     "body": "Venus in Cancer links appreciation with remembered details, gestures of care and the feeling that a bond has a place in your life. Something cherished may acquire value through its history rather than its appearance. The invitation is to honor that history without making the past the only measure of what the relationship can become.",
     "constructive": "Create a new shared ritual that reflects both people's current needs.",
     "tension": "Giving care indirectly can leave a wish for care in return unspoken.",
-    "question": "What do you hope a caring gesture will communicate that you could also say aloud?"
+    "question": "What do you hope a caring gesture will communicate that you could also say aloud?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.4",
@@ -77,7 +81,8 @@
     "body": "Venus in Leo pictures affection through warmth, celebration and the willingness to make a person or creation feel special. A generous expression can be sincere without needing to be restrained. It becomes more mutual when you remain curious about which gestures the recipient actually values.",
     "constructive": "Offer appreciation in the form that matters to the other person.",
     "tension": "A dramatic gesture can substitute for the quieter attention a relationship needs.",
-    "question": "Where would consistent attention mean more than a memorable display?"
+    "question": "Where would consistent attention mean more than a memorable display?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.5",
@@ -93,7 +98,8 @@
     "body": "Venus in Virgo links affection with attentiveness, useful help and a discerning sense of what makes an experience better. Care can be visible in a detail others might overlook. The relationship benefits when your eye for improvement includes recognition of what is already worthy of enjoyment.",
     "constructive": "Name what you appreciate before offering a suggestion.",
     "tension": "Helpful correction can be received as a condition attached to affection.",
-    "question": "What could you enjoy without making it better first?"
+    "question": "What could you enjoy without making it better first?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.6",
@@ -109,7 +115,8 @@
     "body": "Venus in Libra pictures enjoyment in proportion, mutual consideration and the sense that an encounter has room for two distinct people. A well-made agreement can be as satisfying as an attractive object. Harmony is more robust when it includes a way to handle preferences that cannot be perfectly balanced.",
     "constructive": "Negotiate one preference openly rather than disguising it as what everyone wants.",
     "tension": "A graceful surface can make an uneven arrangement difficult to acknowledge.",
-    "question": "What would reciprocity look like in the ordinary work of this relationship?"
+    "question": "What would reciprocity look like in the ordinary work of this relationship?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.7",
@@ -125,7 +132,8 @@
     "body": "Venus in Scorpio links attraction with depth, loyalty and the feeling that something substantial is being shared. A connection may matter because it allows a less polished part of life to be seen. Intimacy becomes more sustainable when honesty is offered as a choice rather than demanded as proof of devotion.",
     "constructive": "Discuss one concrete boundary alongside one wish for greater closeness.",
     "tension": "Measuring a bond by intensity can overlook quieter forms of reliability.",
-    "question": "What makes a connection trustworthy beyond how strongly it is felt?"
+    "question": "What makes a connection trustworthy beyond how strongly it is felt?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.8",
@@ -141,7 +149,8 @@
     "body": "Venus in Sagittarius pictures enjoyment in discovery, candid conversation and relationships that leave room for growth. Shared ideals can create a genuine attraction, but they do not remove the need to agree on everyday expectations. Freedom works best when both people understand what it includes.",
     "constructive": "Make a shared plan that includes space for separate interests.",
     "tension": "An expansive promise can outrun what you actually want to sustain.",
-    "question": "Which commitment would preserve adventure rather than turn it into an escape?"
+    "question": "Which commitment would preserve adventure rather than turn it into an escape?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.9",
@@ -157,7 +166,8 @@
     "body": "Venus in Capricorn links value with durability, discernment and the care invested in a commitment. Affection may become visible gradually through dependable acts. A relationship also needs room for pleasure that has no productive purpose and vulnerability that is not presented as a completed achievement.",
     "constructive": "Make time for an enjoyable exchange that does not have to accomplish anything.",
     "tension": "Testing worth through usefulness or status can make simple affection harder to receive.",
-    "question": "What would you value in this bond if neither person had to prove their competence?"
+    "question": "What would you value in this bond if neither person had to prove their competence?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.10",
@@ -173,7 +183,8 @@
     "body": "Venus in Aquarius pictures attraction through originality, friendship and a sense that connection need not follow a standard script. Shared principles may open a relationship, while curiosity about individual needs helps it last. Unconventional terms are useful when they are genuinely discussed rather than assumed to be more enlightened.",
     "constructive": "Agree explicitly on the balance between shared time and independence.",
     "tension": "Defending freedom in the abstract can miss a specific request for closeness.",
-    "question": "What arrangement respects both autonomy and the wish to feel personally chosen?"
+    "question": "What arrangement respects both autonomy and the wish to feel personally chosen?",
+    "scope": "personal"
   },
   {
     "id": "sign.venus.11",
@@ -189,6 +200,7 @@
     "body": "Venus in Pisces links appreciation with imagination, tenderness and the capacity to see beauty in what is unfinished or overlooked. Art or kindness can give a bond a generous atmosphere. That generosity benefits from clear limits, especially when an appealing possibility differs from what is actually being offered.",
     "constructive": "Appreciate a person's potential while making decisions from their present actions.",
     "tension": "Idealizing a connection can make boundaries feel less loving than they are.",
-    "question": "What can you cherish without taking responsibility for rescuing or completing it?"
+    "question": "What can you cherish without taking responsibility for rescuing or completing it?",
+    "scope": "personal"
   }
 ]

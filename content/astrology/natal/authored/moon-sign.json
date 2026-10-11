@@ -13,7 +13,8 @@
     "body": "Moon in Aries pictures an emotional rhythm that responds quickly and often seeks relief through action. Naming a feeling and doing something small can be more helpful than waiting for a perfectly ordered explanation. Speed does not make the feeling unimportant, but it can make the first response louder than the underlying need.",
     "constructive": "Give a strong reaction a brief pause and a clear, limited outlet.",
     "tension": "Treating urgency as an instruction can leave little room to hear another response.",
-    "question": "What need remains after the immediate urge to act has passed?"
+    "question": "What need remains after the immediate urge to act has passed?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.1",
@@ -29,7 +30,8 @@
     "body": "Moon in Taurus links emotional settling with dependable sensations, routines and familiar forms of care. A meal, a place or a repeated practice can carry meaning beyond its practical function. Continuity supports you best when it can adapt to changes in your needs rather than requiring life to stay the same.",
     "constructive": "Keep one grounding routine while changing one thing that no longer fits.",
     "tension": "Holding tightly to comfort can delay a necessary conversation about change.",
-    "question": "Which familiar practice restores you, and which mainly keeps a difficult question away?"
+    "question": "Which familiar practice restores you, and which mainly keeps a difficult question away?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.2",
@@ -45,7 +47,8 @@
     "body": "Moon in Gemini pictures emotional processing as a conversation, sometimes with another person and sometimes between several thoughts of your own. Finding a useful description can create breathing room. The language matters, but it need not arrive before you allow a feeling to be present.",
     "constructive": "Describe an experience first, then notice the sensation beneath the explanation.",
     "tension": "Explaining a feeling from several angles can become a way to avoid staying with it.",
-    "question": "What would you notice if you paused the account of how you feel?"
+    "question": "What would you notice if you paused the account of how you feel?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.3",
@@ -61,7 +64,8 @@
     "body": "Moon in Cancer connects comfort with remembered care, familiarity and a sense of having somewhere to return. Small changes in the atmosphere of a relationship may carry considerable meaning in this symbolism. Caring can preserve connection without requiring you to anticipate or manage every feeling in the room.",
     "constructive": "Ask directly for a form of reassurance instead of relying on shared history to communicate it.",
     "tension": "Protecting a bond can turn into retreat when a need remains unspoken.",
-    "question": "What makes a place feel like home while still allowing everyone to change?"
+    "question": "What makes a place feel like home while still allowing everyone to change?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.4",
@@ -77,7 +81,8 @@
     "body": "Moon in Leo pictures emotional nourishment through play, affection and the feeling that your presence matters to someone. A generous gesture can carry a genuine request for connection. That request becomes easier to meet when it can be expressed plainly rather than tested through the size of the response.",
     "constructive": "Ask for a specific kind of attention or shared enjoyment.",
     "tension": "An ordinary lapse in attention can feel larger when appreciation has not been discussed.",
-    "question": "What kind of recognition feels nourishing rather than merely impressive?"
+    "question": "What kind of recognition feels nourishing rather than merely impressive?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.5",
@@ -93,7 +98,8 @@
     "body": "Moon in Virgo links emotional steadiness with useful actions, discernible improvements and a rhythm that makes daily life manageable. Noticing what needs doing can be an affectionate language. Yet a feeling does not always need a repair, and receiving care need not depend on first making yourself useful.",
     "constructive": "Ask whether a situation needs practical help, listening or a quiet pause.",
     "tension": "Turning discomfort into a task can obscure the need for simple acceptance.",
-    "question": "Where could you receive care without earning it through another useful act?"
+    "question": "Where could you receive care without earning it through another useful act?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.6",
@@ -109,7 +115,8 @@
     "body": "Moon in Libra pictures comfort arising through companionship, proportion and a climate in which differences can be discussed. Sensitivity to the quality of an exchange may help you notice an imbalance early. Peace becomes more dependable when disagreement can be spoken without threatening the whole relationship.",
     "constructive": "State one small preference before resentment has time to accumulate.",
     "tension": "Smoothing an exchange can leave your own emotional position difficult to locate.",
-    "question": "Which difference could you name while keeping the relationship in view?"
+    "question": "Which difference could you name while keeping the relationship in view?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.7",
@@ -125,7 +132,8 @@
     "body": "Moon in Scorpio links comfort with a depth of trust that can hold difficult feelings as well as pleasant ones. Partial explanations may leave you wanting to understand the unspoken stake. The symbolism asks for honest intimacy while recognizing that another person's privacy is not necessarily a withdrawal of care.",
     "constructive": "Share one vulnerable need without making disclosure a test for the other person.",
     "tension": "Seeking certainty about a bond can become repeated scrutiny of it.",
-    "question": "What would help trust grow without requiring complete access to another person's inner life?"
+    "question": "What would help trust grow without requiring complete access to another person's inner life?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.8",
@@ -141,7 +149,8 @@
     "body": "Moon in Sagittarius pictures emotional renewal through a wider horizon, an honest conversation or a change of scene. Finding meaning can help you carry an experience without becoming defined by it. Optimism is most supportive when it leaves room for disappointment before offering a lesson.",
     "constructive": "Make space for the feeling before asking what it may teach you.",
     "tension": "Moving quickly toward a larger story can bypass a very particular hurt or need.",
-    "question": "What perspective opens room for your experience without explaining it away?"
+    "question": "What perspective opens room for your experience without explaining it away?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.9",
@@ -157,7 +166,8 @@
     "body": "Moon in Capricorn links security with follow-through, clear expectations and the ability to remain present when circumstances are demanding. Restraint can protect what matters until it feels safe to share. It need not become a rule that feelings are acceptable only after every duty has been completed.",
     "constructive": "Arrange one dependable source of support before you reach your limit.",
     "tension": "Self-sufficiency can make an ordinary request for care feel like a failure of responsibility.",
-    "question": "Who can meet you as a person rather than only as the capable one?"
+    "question": "Who can meet you as a person rather than only as the capable one?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.10",
@@ -173,7 +183,8 @@
     "body": "Moon in Aquarius pictures comfort in relationships that allow difference, independent thought and a sense of shared humanity. Some emotional distance may help you find perspective. The task is to let perspective support connection rather than becoming the only language in which vulnerability is allowed.",
     "constructive": "Describe the personal feeling alongside the broader principle you see.",
     "tension": "Explaining an experience collectively can leave a close companion unsure what you need now.",
-    "question": "How can you preserve space while making your wish for connection unmistakable?"
+    "question": "How can you preserve space while making your wish for connection unmistakable?",
+    "scope": "personal"
   },
   {
     "id": "sign.moon.11",
@@ -189,6 +200,7 @@
     "body": "Moon in Pisces links emotional life with imagination, receptivity and sensitivity to subtle changes in an environment. Music, image or quiet can offer a way to process what words have not yet organized. A clear boundary can protect this receptivity without requiring you to stop caring.",
     "constructive": "Check which feeling is yours to act on and which you can witness with compassion.",
     "tension": "Absorbing the mood around you can make your own preference difficult to hear.",
-    "question": "What small boundary would make your capacity for care easier to sustain?"
+    "question": "What small boundary would make your capacity for care easier to sustain?",
+    "scope": "personal"
   }
 ]

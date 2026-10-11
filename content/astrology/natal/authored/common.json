@@ -1,0 +1,352 @@
+{
+  "articles": [
+    {
+      "id": "overview.introduction",
+      "summary": "A symbolic map for reflection.",
+      "body": "This report connects calculated tropical placements, Whole Sign houses when supported, and five major angular relationships. Read the Sun, Moon and Ascendant as different starting points, then follow the linked evidence through the themes. These are interpretive prompts, not measured personality traits or predictions. Different passages can describe competing needs; you do not have to resolve them into a single label.",
+      "constructive": "Choose one passage that connects with an actual situation and test a modest action.",
+      "tension": "A coherent description can feel more certain than the symbolism warrants.",
+      "question": "Which part of this account is useful to reflect on, and which does not fit your experience?"
+    },
+    {
+      "id": "overview.no-pattern",
+      "summary": "Let the specific placements lead.",
+      "body": "The editorial rules did not establish a strong repeated or complementary theme from distinct supported placements. The report therefore keeps the individual evidence visible instead of inventing a unifying story. Begin with the core map and the life-topic links; a weak symbolic relationship is a reason for restraint, not evidence that something is missing from you.",
+      "constructive": "Compare two specific passages with one real situation.",
+      "tension": "Searching for a single theme can flatten meaningful differences.",
+      "question": "What becomes clearer when you allow these placements to remain distinct?"
+    },
+    {
+      "id": "overview.sampled",
+      "summary": "This is a sampled, time-uncertain view.",
+      "body": "The birth-time interval is represented by a midpoint calculation and 15-minute samples. Listed sign alternatives are observed samples, not certified bounds for every instant. Even a single observed sign remains conditional. Ascendant, houses and major aspects are omitted under the existing engine policy; no definite repeated theme is asserted from these interval samples.",
+      "constructive": "Treat each sign passage as a possibility and refine the time only if a reliable record is available.",
+      "tension": "A midpoint or a single sampled sign can be mistaken for certainty across the whole interval.",
+      "question": "Which reflection remains useful without assuming an exact birth time?"
+    },
+    {
+      "id": "overview.polar",
+      "summary": "Angles and houses are unavailable at this latitude.",
+      "body": "At absolute latitude 66 degrees or above, this engine omits the Ascendant and Whole Sign houses. Exact-time planetary signs and calculated major aspects remain available. Their presence does not imply that an angle or a house was calculated, and this report does not fill the missing areas with a substitute system.",
+      "constructive": "Use the supported planetary placements and relationship evidence.",
+      "tension": "A missing house must not be inferred from another chart convention.",
+      "question": "What can you explore using the facts that are actually available?"
+    },
+    {
+      "id": "overview.no-aspects",
+      "summary": "No supported major relationships are available here.",
+      "body": "The report has no major planetary aspects to interpret. This can reflect the selected orb limits or the policy that omits aspects when birth time is uncertain. It does not mean that the chart, the person or their relationships are disconnected. The supported sign and house passages remain independently available.",
+      "constructive": "Start with the core placements and their specific settings.",
+      "tension": "Absence from a configured aspect list is not a statement about personal capacity.",
+      "question": "Which supported placement gives you a useful starting question?"
+    },
+    {
+      "id": "topic.self_emotions",
+      "summary": "Self and emotional life",
+      "body": "Read purpose, emotional care and the way you enter situations as related but distinct needs. The evidence below was selected from this chart, with personal placements prioritized. It can help you compare what you are trying to build with the conditions that make participation feel manageable.",
+      "constructive": "Name one need that a current plan should include.",
+      "tension": "A description of identity can crowd out a changing feeling.",
+      "question": "What adjustment would make your direction more livable?"
+    },
+    {
+      "id": "topic.communication",
+      "summary": "Learning and communication",
+      "body": "The linked placements concern how questions are formed, expressed and tested in exchange. Consider the difference between an explanation that is personally meaningful and one another person can follow or verify. The selected evidence offers concrete points of comparison; it does not measure intelligence or communication ability.",
+      "constructive": "Try one clearer question or explanation in a real exchange.",
+      "tension": "An appealing account can be mistaken for a verified one.",
+      "question": "What could you ask that would genuinely change your understanding?"
+    },
+    {
+      "id": "topic.relationships",
+      "summary": "Connection, reciprocity and boundaries",
+      "body": "The selected evidence connects care, appreciation, assertion and the terms of sharing. These passages describe possible areas for reflection, not the quality or future of a partnership. Compare them with actual consent, communication and reciprocity, allowing another person their own experience rather than interpreting them through your chart.",
+      "constructive": "Turn one unspoken expectation into an appropriate, explicit request.",
+      "tension": "A symbolic account can replace asking the other person directly.",
+      "question": "What would make this exchange more freely chosen by everyone involved?"
+    },
+    {
+      "id": "topic.action_work_growth",
+      "summary": "Action, work and development",
+      "body": "The linked evidence considers initiative, practical methods, responsibility and the scale of a chosen aim. A meaningful direction needs both a next step and a sustainable limit. These selections can help frame an experiment; they do not prescribe a profession, guarantee an outcome or rank your potential.",
+      "constructive": "Choose one reversible step and a point at which to review it.",
+      "tension": "A large ideal can make a useful small action feel insufficient.",
+      "question": "What could you do now that would produce information for the next decision?"
+    },
+    {
+      "id": "theme.repeat-care",
+      "summary": "Care appears in more than one supported placement.",
+      "body": "The linked placements both emphasize responsiveness and the conditions that help a person feel sustained. Their different settings can show where care is offered and where it is needed. Repetition makes the question worth considering; it does not require you to become responsible for every need around you.",
+      "constructive": "Choose one reciprocal form of care with a clear limit.",
+      "tension": "Repeated attention to needs can become an unbounded sense of obligation.",
+      "question": "Where can care include you as well as the people or work you support?"
+    },
+    {
+      "id": "theme.repeat-communication",
+      "summary": "Understanding develops through more than one channel.",
+      "body": "Several supported placements bring attention to language, inquiry or exchange. Compare their specific settings before treating them as one style: speaking, listening and revising an explanation may serve different needs. The shared thread suggests a useful place to try a clearer question rather than a fixed identity as a communicator.",
+      "constructive": "Ask a question whose answer could revise your position.",
+      "tension": "Explaining more can replace listening for a new fact.",
+      "question": "Which exchange would benefit from a more genuinely open question?"
+    },
+    {
+      "id": "theme.repeat-structure",
+      "summary": "A workable structure is a recurring concern.",
+      "body": "The evidence returns to responsibility, boundaries or the arrangements that make effort dependable. A structure is most useful when its purpose is clear and its limits can be revised. The repetition invites you to examine what is being sustained, rather than to assume that more discipline is always the answer.",
+      "constructive": "Review one recurring obligation against its actual purpose.",
+      "tension": "Durability can become a reason to preserve an arrangement after it stops helping.",
+      "question": "Which rule supports the work, and which only prolongs it?"
+    },
+    {
+      "id": "theme.repeat-expression",
+      "summary": "A personal contribution wants a recognizable form.",
+      "body": "The linked placements both concern expression, authorship or being present as a distinct person. Their settings can differ: one may support visible work while another concerns play or an ordinary preference. Giving something a form is a useful experiment; appreciation remains feedback rather than the sole measure of its worth.",
+      "constructive": "Finish one small expression of a real preference or idea.",
+      "tension": "Recognition can take over the purpose of expressing yourself.",
+      "question": "What would you still want to make or say without immediate approval?"
+    },
+    {
+      "id": "theme.repeat-depth",
+      "summary": "The stakes beneath an arrangement deserve attention.",
+      "body": "More than one placement emphasizes depth, trust or the wish to understand what matters below an immediate account. That attention can clarify a commitment when it remains open to evidence and consent. The repeated theme does not mean every situation hides a secret or requires a complete explanation before you may act.",
+      "constructive": "Name one real stake and one limit to what you can know.",
+      "tension": "Investigation can become a way to seek impossible certainty.",
+      "question": "What could become clearer without demanding total access or control?"
+    },
+    {
+      "id": "theme.repeat-community",
+      "summary": "Participation has more than one meaningful setting.",
+      "body": "The linked evidence brings attention to groups, friendship or shared futures. Compare what each placement asks of participation, because belonging, contribution and independence need not have identical terms. A concrete shared task can make the theme useful while preserving room for disagreement and individual limits.",
+      "constructive": "Offer a bounded contribution to a group you actually value.",
+      "tension": "A shared identity can conceal unequal effort or unspoken reservations.",
+      "question": "Where can you belong while keeping your own judgment?"
+    },
+    {
+      "id": "theme.repeat-imagination",
+      "summary": "Imagination offers a recurring language for experience.",
+      "body": "The linked placements emphasize imagery, ideals or meanings that may take time to become explicit. Their value grows when an impression receives a bounded form, such as a draft, a question or a practical act of care. Repetition does not make an intuition more factual; evidence still has a separate role.",
+      "constructive": "Give one image or ideal a small observable expression.",
+      "tension": "A vivid pattern can feel verified simply because it appears in several symbolic passages.",
+      "question": "What would help your imagination contribute without asking it to prove a claim?"
+    },
+    {
+      "id": "theme.repeat-initiative",
+      "summary": "Beginning and acting form a recurring thread.",
+      "body": "Several placements connect with initiative or the wish to make a situation move. Their different settings help distinguish useful action from action taken mainly to relieve impatience. The repetition suggests trying a clear, manageable step with a defined purpose, rather than increasing force or speed everywhere.",
+      "constructive": "Choose one action and state what it is meant to accomplish.",
+      "tension": "Starting repeatedly can displace finishing or listening.",
+      "question": "Which beginning deserves enough follow-through to teach you something?"
+    },
+    {
+      "id": "theme.care-structure",
+      "summary": "Care becomes more dependable through a humane structure.",
+      "body": "One part of the evidence emphasizes responsiveness while another emphasizes limits or continuity. Together they suggest that care may be easier to offer and receive when its practical terms are clear. A routine or agreement should serve a real need, with enough flexibility to change when that need changes.",
+      "constructive": "Build one realistic form of support into a recurring arrangement.",
+      "tension": "A helpful routine can become an obligation disconnected from its purpose.",
+      "question": "What structure would make care more available without making it compulsory?"
+    },
+    {
+      "id": "theme.expression-craft",
+      "summary": "Practice can give a personal idea a durable form.",
+      "body": "The linked evidence joins a wish to express something with attention to method or useful detail. A small repeatable practice can help a personal contribution develop beyond its first inspiration. The point is not to perfect away its individuality, but to make it clear enough that someone else can encounter and respond to it.",
+      "constructive": "Give one expressive idea a short, repeatable working session.",
+      "tension": "Refinement can remove the life from an idea if it never allows a finished attempt.",
+      "question": "What amount of craft would help this expression reach another person?"
+    },
+    {
+      "id": "theme.curiosity-depth",
+      "summary": "An open question can make deeper inquiry more useful.",
+      "body": "One placement invites exploration while another asks what is really at stake. Their cooperation lies in investigating without deciding the answer in advance. A precise question can make depth less controlling and curiosity less scattered, especially when you know what evidence could change your current account.",
+      "constructive": "Choose one question and identify what would count as a surprising answer.",
+      "tension": "Inquiry can become either endless collection or a search for confirmation.",
+      "question": "What could you discover if the result were allowed to differ from your expectation?"
+    },
+    {
+      "id": "theme.imagination-craft",
+      "summary": "A modest method can make an ideal tangible.",
+      "body": "The linked placements connect an image or possibility with practical attention. A bounded draft, experiment or task gives imagination something it can revise through experience. The practical form does not have to capture the whole ideal at once; its usefulness includes showing what the next version needs.",
+      "constructive": "Make a small testable version of an inspiring idea.",
+      "tension": "An ideal can reject every workable draft for being incomplete.",
+      "question": "What can this first version teach you that imagining alone cannot?"
+    },
+    {
+      "id": "theme.independence-reciprocity",
+      "summary": "Room for yourself and room for another person both matter.",
+      "body": "The evidence places independence alongside mutuality. These needs can compete when freedom is expressed only as distance or connection only as accommodation. A specific agreement about contact, choice and responsibility can give both a place, instead of asking one person or one mood to carry the entire conflict.",
+      "constructive": "State one desired freedom and one dependable commitment together.",
+      "tension": "Alternating between withdrawal and over-accommodation can leave the actual terms unclear.",
+      "question": "What arrangement would let connection remain a choice rather than a constraint?"
+    },
+    {
+      "id": "theme.initiative-care",
+      "summary": "The urge to act needs to hear the need for care.",
+      "body": "One placement points toward initiative while another emphasizes comfort or responsiveness. Acting can protect a need, but it can also outrun the time required to recognize it. A short pause to name what matters can make the next step more accurate without requiring you to abandon momentum altogether.",
+      "constructive": "Name the need, then choose the smallest action that serves it.",
+      "tension": "Urgency can treat an emotional cost as an obstacle rather than useful information.",
+      "question": "What would let this action support the person who has to live with its result?"
+    },
+    {
+      "id": "theme.exploration-stability",
+      "summary": "A wider possibility needs a dependable base.",
+      "body": "The linked evidence asks for both expansion and continuity. A new option may be worth exploring without making every familiar support obsolete. A reversible trial, a resource limit and a place to review the result can turn an apparent choice between freedom and security into a more informative sequence.",
+      "constructive": "Test a new option while preserving one essential source of stability.",
+      "tension": "Overreach and retreat can replace a manageable experiment.",
+      "question": "What can you explore without asking the whole foundation to move at once?"
+    },
+    {
+      "id": "theme.imagination-discernment",
+      "summary": "Meaning and verification need distinct roles.",
+      "body": "One part of the evidence welcomes imagery or ideals while another asks for careful distinctions. An account can be emotionally useful without being factual evidence, and a factual limit need not erase every meaning it carries. Naming the purpose of each kind of statement helps both contribute without confusing their authority.",
+      "constructive": "Separate an observation, an interpretation and a hope in one current story.",
+      "tension": "A compelling image can resist correction when its meaning feels personally important.",
+      "question": "What can you keep as a useful meaning while revising the claim about what is known?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "repeat-care.v1",
+      "kind": "repetition",
+      "left": "care",
+      "right": "care",
+      "priority": 80,
+      "reference": "theme.repeat-care"
+    },
+    {
+      "id": "repeat-communication.v1",
+      "kind": "repetition",
+      "left": "communication",
+      "right": "communication",
+      "priority": 75,
+      "reference": "theme.repeat-communication"
+    },
+    {
+      "id": "repeat-structure.v1",
+      "kind": "repetition",
+      "left": "structure",
+      "right": "structure",
+      "priority": 75,
+      "reference": "theme.repeat-structure"
+    },
+    {
+      "id": "repeat-expression.v1",
+      "kind": "repetition",
+      "left": "expression",
+      "right": "expression",
+      "priority": 70,
+      "reference": "theme.repeat-expression"
+    },
+    {
+      "id": "repeat-depth.v1",
+      "kind": "repetition",
+      "left": "depth",
+      "right": "depth",
+      "priority": 70,
+      "reference": "theme.repeat-depth"
+    },
+    {
+      "id": "repeat-community.v1",
+      "kind": "repetition",
+      "left": "community",
+      "right": "community",
+      "priority": 70,
+      "reference": "theme.repeat-community"
+    },
+    {
+      "id": "repeat-imagination.v1",
+      "kind": "repetition",
+      "left": "imagination",
+      "right": "imagination",
+      "priority": 60,
+      "reference": "theme.repeat-imagination"
+    },
+    {
+      "id": "repeat-initiative.v1",
+      "kind": "repetition",
+      "left": "initiative",
+      "right": "initiative",
+      "priority": 75,
+      "reference": "theme.repeat-initiative"
+    },
+    {
+      "id": "care-structure.v1",
+      "kind": "complement",
+      "left": "care",
+      "right": "structure",
+      "priority": 90,
+      "reference": "theme.care-structure"
+    },
+    {
+      "id": "expression-craft.v1",
+      "kind": "complement",
+      "left": "expression",
+      "right": "craft",
+      "priority": 85,
+      "reference": "theme.expression-craft"
+    },
+    {
+      "id": "curiosity-depth.v1",
+      "kind": "complement",
+      "left": "curiosity",
+      "right": "depth",
+      "priority": 80,
+      "reference": "theme.curiosity-depth"
+    },
+    {
+      "id": "imagination-craft.v1",
+      "kind": "complement",
+      "left": "imagination",
+      "right": "craft",
+      "priority": 80,
+      "reference": "theme.imagination-craft"
+    },
+    {
+      "id": "independence-reciprocity.v1",
+      "kind": "tension",
+      "left": "independence",
+      "right": "reciprocity",
+      "priority": 95,
+      "reference": "theme.independence-reciprocity"
+    },
+    {
+      "id": "initiative-care.v1",
+      "kind": "tension",
+      "left": "initiative",
+      "right": "care",
+      "priority": 90,
+      "reference": "theme.initiative-care"
+    },
+    {
+      "id": "exploration-stability.v1",
+      "kind": "tension",
+      "left": "exploration",
+      "right": "stability",
+      "priority": 90,
+      "reference": "theme.exploration-stability"
+    },
+    {
+      "id": "imagination-discernment.v1",
+      "kind": "tension",
+      "left": "imagination",
+      "right": "discernment",
+      "priority": 85,
+      "reference": "theme.imagination-discernment"
+    }
+  ],
+  "glossary": {
+    "tropical": "Signs are twelve equal 30-degree sectors beginning at the March equinox, not the unequal modern astronomical constellations.",
+    "whole-sign": "The entire sign containing the Ascendant is house one; each following sign is the next house. This report does not use Placidus.",
+    "longitude": "Geocentric ecliptic longitude is an angle around the zodiac. The crystal is a symbolic angle map, not a scale model of planetary orbits.",
+    "ascendant": "The Ascendant is the intersection of the ecliptic with the eastern horizon at the calculated time and place. It is omitted when time or latitude is unsupported.",
+    "orb": "Orb is the angular distance from an exact aspect. Smaller orbs receive more editorial emphasis; this is not a scientific strength or personality score.",
+    "conjunction": "Near 0 degrees: the paired functions occupy closely related territory. Combining them can help or complicate how each is expressed.",
+    "sextile": "Near 60 degrees: an available cooperation that may benefit from deliberate use. The actual pair gives the relationship its specific subject.",
+    "square": "Near 90 degrees: functions may interrupt or challenge one another. The interpretation asks for a workable adjustment, not a prediction of harm.",
+    "trine": "Near 120 degrees: a compatible pattern can be readily available. Ease does not guarantee that it will be used thoughtfully.",
+    "opposition": "Near 180 degrees: contrasting needs may seem located at opposite poles. A conscious agreement or rhythm can give each a place.",
+    "retrograde": "Negative signed longitudinal speed means apparent retrograde motion from Earth. The table reports it; this release does not add a separate retrograde personality interpretation.",
+    "elements": "Fire (Aries, Leo, Sagittarius), Earth (Taurus, Virgo, Capricorn), Air (Gemini, Libra, Aquarius), Water (Cancer, Scorpio, Pisces). Counts describe supported placements, not measured character or a deficit.",
+    "modalities": "Cardinal signs begin a season; fixed signs occupy its middle; mutable signs precede its transition. Counts are an unweighted description of ten bodies, not a ranking of personal capacities.",
+    "sampling": "Unknown or approximate time uses a midpoint and 15-minute samples. Observed sign alternatives do not certify every instant between samples; ASC, houses and aspects are omitted.",
+    "generational": "Uranus, Neptune and Pluto move slowly. Their sign and mutual-aspect passages describe a broad shared backdrop; personal contacts and supported houses provide more individual context.",
+    "historical-time": "The engine uses an embedded IANA timezone database for the supplied local date. Historical records, especially before 1970, can be incomplete. City coordinates and current zone assignments are not proof of the exact historical birth location."
+  }
+}
