@@ -45,10 +45,12 @@ export function frameTarot(
         Math.cos(azimuth) * Math.cos(elevation) * distance,
       ),
     );
+  // The canvas extends behind the 98px header; keep the room at the scale it had below it.
+  const bleed = mobile ? 1 : height / Math.max(1, height - 98);
   const conversationTarget = new THREE.Vector3(mobile ? -3 : -0.4, 0.9, -2);
   const conversation = conversationTarget
     .clone()
-    .add(new THREE.Vector3(0, 4, mobile ? 22 : 18));
+    .add(new THREE.Vector3(0, 4, mobile ? 22 : 18).multiplyScalar(bleed));
   camera.position.lerpVectors(conversation, close, approach);
   camera.lookAt(conversationTarget.lerp(target, approach));
   camera.fov = 36;

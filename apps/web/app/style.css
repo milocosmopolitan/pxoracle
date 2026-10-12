@@ -797,7 +797,7 @@ body:has(.table-reading) main { pointer-events: none; }
 .table-reading .tarot-heading { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .tarot-layout.table-reading { display: block; padding: 24px; margin: 0 0 0 auto; width: 380px; }
 .table-reading .tarot-panel { width: 100%; max-width: none; padding: 24px; pointer-events: auto; }
-.scene-host[data-route="tarot"] { inset: 98px 0 0; height: calc(100svh - 98px); position: fixed; }
+.scene-host[data-route="tarot"] { inset: 0; height: 100svh; position: fixed; }
 .scene-host[data-table="active"] .scene-shade { background: linear-gradient(0deg,#0a101055,transparent 20%); }
 .slot-controls { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin: 18px 0; }
 .slot-controls button { min-width: 44px; min-height: 44px; padding: 7px; }
