@@ -9,6 +9,7 @@ import { studyLayers } from "./study";
 import { frameTarot, frameReview, TarotCameraDirector } from "./tarot-camera";
 import { createArm, pixelMaterial, type HandPose } from "./tarot-rig";
 import { surfaceMaterial } from "./tarot-materials";
+import { buildTableAssembly, tableMaterials, TAROT_TABLE, TAROT_TABLE_SURFACE } from "./study-table";
 import { createShawl } from "./tarot-shawl";
 import { createCardInscription, finishCardFace } from "./tarot-card-finish";
 import { createPixelPresentation } from "./tarot-pixels";
@@ -201,12 +202,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
     const pixelPass = createPixelPresentation();
     releases.push(() => pixelPass.dispose());
     const walnut = await acquire("/art/hand-mesh/table-reference-albedo.png");
-    const wood = surfaceMaterial("wood", walnut, owner),
-      trim = surfaceMaterial("wood", walnut, owner);
-    trim.color.setRGB(0.42, 0.40, 0.43);
-    wood.color.setRGB(0.40, 0.46, 0.55);
-    wood.normalScale.setScalar(0.22);
-    wood.roughness = 0.94;
+    const { wood, trim } = tableMaterials(walnut, TAROT_TABLE_SURFACE, owner);
 
     function box(
       name: string,
@@ -215,10 +211,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
       material: THREE.Material,
       parent: THREE.Object3D = table,
     ) {
-      const geometry =
-        name === "tabletop"
-          ? new RoundedBoxGeometry(size[0], size[1], size[2], 3, 0.075)
-          : new THREE.BoxGeometry(...(size as [number, number, number]));
+      const geometry = new THREE.BoxGeometry(...(size as [number, number, number]));
       geometries.push(geometry);
       const mesh = new THREE.Mesh(geometry, material);
       mesh.name = name;
@@ -228,14 +221,8 @@ export const createScene: SceneFactory = async (leases, signal) => {
       parent.add(mesh);
       return mesh;
     }
-    box("tabletop", [14, 8.4, 0.32], [0, 0, -0.16], wood);
-    box("table-front-apron", [13.6, 0.18, 0.62], [0, -3.95, -0.55], trim);
-    box("table-back-apron", [13.6, 0.18, 0.62], [0, 3.95, -0.55], trim);
-    for (const x of [-6.15, 6.15]) {
-      box("table-side-apron", [0.18, 7.8, 0.62], [x, 0, -0.55], trim);
-      for (const y of [-3.4, 3.4])
-        box("table-leg", [0.45, 0.45, 3.35], [x, y, -2.0], wood);
-    }
+    // The same assembly the painted study rooms place on their desks.
+    buildTableAssembly(table, TAROT_TABLE, wood, trim, owner);
     // A thin rounded cloth volume provides an actual edge and contact shadow.
     const matEdgeMaterial = surfaceMaterial("cloth", surface, owner);
     matEdgeMaterial.color.set(0x343a36);
@@ -294,7 +281,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
       pixelMaterial(0x171919, owner),
       base.scene,
     );
-    const props = await createStudyProps(leases, signal, true);
+    const props = await createStudyProps(leases, signal, "tarot");
     releases.push(props.dispose);
     base.scene.add(props.group);
     const globe = await createStudyGlobe(leases, signal, true, "room");

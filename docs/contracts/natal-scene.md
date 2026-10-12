@@ -1,13 +1,17 @@
 # Natal scene and controller contract
 
-`AstrologyView` contains phase (`entry`/`chart`), camera-request revision, ten `{id, longitude}`
+`AstrologyView` contains phase (`entry`/`chart`; `chart` only while the consultation
+presentation is `crystal`, see [consultation.md](consultation.md)), camera-request revision, ten `{id, longitude}`
 display bodies, supported Whole Sign boundaries and aspect pairs, a body/pair/null
 selection, normalized usable viewport, and intent/readiness callbacks. No birth
 date, location, notes, rule pack or full engine session enters Three.js. DOM and
 raycasting dispatch the same selection into the root Zustand provider.
 
-The room, table and crystal art remain at their original world coordinates. The
-map anchor is (-3.4, 0.13, 0.4). A 32° perspective camera changes position and target
+The room and crystal art remain at their original world coordinates; the painted desk is
+replaced by the shared study table (ADR 010), and the map anchor sits just in front of
+the painted crystal standing on it (`-3.4, 0.13, rear + 0.36 × depth + 0.03`). The
+`entry` shot now raises the camera by `0.16 × distance` so the tabletop reads as a
+surface. A 32° perspective camera changes position and target
 in that same scene: entry radius 4.2, overview 1.25, body 0.84, relationship 1.02.
 The camera distance accounts for the smaller usable viewport dimension; an off-axis
 projection centers the target outside the DOM panel. Entry/overview moves take 1.6s,

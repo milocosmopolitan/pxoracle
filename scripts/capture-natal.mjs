@@ -18,17 +18,22 @@ for (const [name, viewport] of [
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(`${base}/astrology/`);
+  // Table-first consultation: Natal Chart → new chart → globe → confirm → details → review → crystal.
+  await page.getByRole("button", { name: "Natal Chart" }).click();
+  await page.locator(".oracle-bubble").getByRole("button", { name: "Begin a new chart" }).click();
   await page.getByLabel("Birth country").selectOption("KR");
   await page.getByLabel("Birth city", { exact: true }).fill("서울");
   await page.getByRole("button", { name: /Seoul.*Seoul.*South Korea/ }).click();
+  await page.getByRole("button", { name: "Confirm birthplace" }).click();
   await page.getByLabel("Birth date", { exact: true }).fill("2000-01-01");
   await page.getByLabel("Local birth time").fill("12:00");
+  await page.getByRole("button", { name: "Review the details" }).click();
   await page
     .locator(".scene-status")
     .waitFor({ state: "hidden", timeout: 30000 });
   await page.waitForTimeout(3000);
   await page.screenshot({ path: `${out}/${name}-entry.png` });
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: "Calculate and enter the crystal" }).click();
   await page
     .getByRole("heading", { name: "Your celestial map", exact: true })
     .waitFor();
@@ -65,7 +70,8 @@ for (const [name, viewport] of [
   assert.match(report, /Every supported placement/);
   await page.getByRole("button", { name: "Save on this device" }).click();
   await page.reload();
-  await page.getByRole("button", { name: "Open saved chart" }).click();
+  await page.getByRole("button", { name: "Natal Chart" }).click();
+  await page.locator(".oracle-bubble").getByRole("button", { name: "Open saved chart" }).click();
   await page
     .getByRole("heading", { name: "A first look at your map" })
     .waitFor({ timeout: 30000 });

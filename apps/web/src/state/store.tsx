@@ -45,8 +45,13 @@ export const emptyNatal = (): NatalState => ({ facts: null, restorePlan: null, p
 import { emptyBirthplace, navigateBirthplace, chooseBirthplace, type BirthplaceNavigation } from "./birthplace";
 import type { Birthplace } from "@pxoracle/contracts/atlas";
 import type { GlobeIntent, GlobeView } from "@pxoracle/contracts/globe-view";
+import { emptyConsultation, navigateConsultation, type ConsultationIntent, type ConsultationState } from "./consultation";
 export interface AppState {
   birthplace: BirthplaceNavigation;
+  /** Oracle-led service/dialogue/presentation state, independent of chart data. */
+  consultation: ConsultationState;
+  navigateConsultation: (intent: ConsultationIntent) => void;
+  /** An explicit globe shortcut (landing globe) that survives the route change without discarding context. */
   globeEntryPending: boolean;
   requestGlobeEntry: () => void;
   consumeGlobeEntry: () => void;
@@ -91,10 +96,21 @@ export function createAppStore() {
       busy: false,
     },
     birthplace: emptyBirthplace(),
+    consultation: emptyConsultation(),
+    navigateConsultation: intent => set(s => ({ consultation: navigateConsultation(s.consultation, intent) })),
     globeEntryPending: false,
-    requestGlobeEntry: () => set(s => ({ globeEntryPending: true, birthplace: navigateBirthplace(s.birthplace, {type: "open"}) })),
+    requestGlobeEntry: () => set(s => ({ globeEntryPending: true, birthplace: navigateBirthplace(s.birthplace, {type: "open"}), consultation: navigateConsultation(s.consultation, {type: "explore-birthplace"}) })),
     consumeGlobeEntry: () => set({ globeEntryPending: false }),
-    navigateBirthplace: intent => set(s => ({ birthplace: navigateBirthplace(s.birthplace, intent) })),
+    navigateBirthplace: intent => set(s => {
+      const birthplace = navigateBirthplace(s.birthplace, intent);
+      // Globe browsing intents own the globe presentation; leaving the room framing returns to the table.
+      const consultation = intent.type === "open" || intent.type === "region" || intent.type === "country"
+        ? navigateConsultation(s.consultation, { type: "explore-birthplace" })
+        : intent.type === "cancel" || (intent.type === "back" && birthplace.phase === "room")
+          ? navigateConsultation(s.consultation, { type: "cancel-birthplace" })
+          : s.consultation;
+      return { birthplace, consultation };
+    }),
     chooseBirthplace: (city, revision) => set(s => ({ birthplace: chooseBirthplace(s.birthplace, city, revision) })),
     clearBirthplaceCandidate: () => set(s => ({ birthplace: { ...s.birthplace, candidate: null } })),
     globeView: undefined,

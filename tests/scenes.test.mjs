@@ -38,7 +38,7 @@ test('abandoning a room while a prop loads releases every acquired texture', asy
   const original = THREE.TextureLoader.prototype.loadAsync;
   const controller = new AbortController();
   THREE.TextureLoader.prototype.loadAsync = async (url) => {
-    if (url === '/art/table.webp') controller.abort();
+    if (url === '/art/mat.webp') controller.abort();
     return new THREE.Texture();
   };
   try {

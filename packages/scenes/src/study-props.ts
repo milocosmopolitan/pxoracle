@@ -2,14 +2,22 @@ import * as THREE from "three";
 import type { TextureLeases } from "@pxoracle/scene-runtime";
 import { createLamp } from "./props/lamp";
 import { createCandle } from "./props/candle";
+import { studyDesk } from "./study-table";
 
 // World coordinates: tarot's tabletop is y=-1 despite its rotated local parent.
 export const STUDY_ANCHORS = {
-  lamp: [-5.9, -1, 0.25], candle: [-1.45, -1, 0.9], globe: [-0.55, -1, 0.75],
   tarotLamp: [-7.25, -0.96, -0.9], tarotCandle: [1.2, -0.96, -0.7], tarotGlobe: [1.6, -0.96, 2.6],
 } as const;
+/** Painted rooms stand their props on the shared study desk surface. */
+export function studyAnchors(mode: "landing" | "astrology") {
+  const desk = studyDesk(mode);
+  const at = (x: number, z: number): [number, number, number] => [x, desk.top, desk.rear + z * desk.depth];
+  return { lamp: at(-5.9, 0.3), candle: at(-1.45, 0.5), globe: at(mode === "landing" ? -0.55 : -0.45, 0.62) };
+}
 
-export async function createStudyProps(leases: TextureLeases, signal: AbortSignal, tarot = false) {
+export async function createStudyProps(leases: TextureLeases, signal: AbortSignal, mode: "landing" | "astrology" | "tarot" = "astrology") {
+  const tarot = mode === "tarot";
+  const anchors = tarot ? null : studyAnchors(mode);
   const group = new THREE.Group();
   group.name = "prop-owned-study-lighting";
   const disposers: (() => void)[] = [];
@@ -18,11 +26,11 @@ export async function createStudyProps(leases: TextureLeases, signal: AbortSigna
   try {
     const lamp = await createLamp(leases, signal);
     disposers.push(lamp.dispose);
-    lamp.group.position.fromArray(tarot ? STUDY_ANCHORS.tarotLamp : STUDY_ANCHORS.lamp);
+    lamp.group.position.fromArray(anchors ? anchors.lamp : STUDY_ANCHORS.tarotLamp);
     lamp.group.scale.setScalar(tarot ? 1.2 : 0.9);
     const candle = await createCandle(leases, signal);
     disposers.push(candle.dispose);
-    candle.group.position.fromArray(tarot ? STUDY_ANCHORS.tarotCandle : STUDY_ANCHORS.candle);
+    candle.group.position.fromArray(anchors ? anchors.candle : STUDY_ANCHORS.tarotCandle);
     candle.group.scale.setScalar(tarot ? 1.1 : 0.75);
     const ambient = new THREE.HemisphereLight(0xc1cedb, 0x574432, 1.35);
     const window = new THREE.DirectionalLight(0xb3c6df, 1.8);

@@ -5,7 +5,7 @@
     "astrology": {
       "bytes": 1539558,
       "gzipBytes": 364171,
-      "initializationMs": 42.269000000000005,
+      "initializationMs": 158.464791,
       "imports": [
         "env.invoke_vi",
         "env.__cxa_find_matching_catch_2",
@@ -38,7 +38,7 @@
     "tarot": {
       "bytes": 517771,
       "gzipBytes": 146722,
-      "initializationMs": 31.979667000000063,
+      "initializationMs": 37.31333300000006,
       "imports": [
         "env.invoke_vi",
         "env.__cxa_find_matching_catch_2",
@@ -67,7 +67,7 @@
         "env.invoke_jiii",
         "env.invoke_jii"
       ],
-      "meanCreateMs": 0.1621515820000004,
+      "meanCreateMs": 0.18255899999999928,
       "heapBytes": 16908288
     }
   }

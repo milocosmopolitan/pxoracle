@@ -9,7 +9,9 @@ import type {
 import { StateProvider, useOracleStore, useOracle } from "../state/store";
 import { SceneCanvas } from "../runtime/SceneCanvas";
 import { NatalReport } from "../features/astrology/Report";
-import { BirthForm } from "../features/astrology/BirthForm";
+import { BirthplaceForm } from "../features/astrology/BirthForm";
+import { BirthReview } from "../features/astrology/Consultation";
+import { consultationFromInput } from "../state/consultation";
 import Astrology from "../features/Astrology";
 import fixtures from "../../../../tests/fixtures/natal.json";
 import prose from "../../public/content/natal/en.1.json";
@@ -62,6 +64,7 @@ function Input({
   initial?: BirthInput;
 }) {
   const [notice, setNotice] = useState("");
+  const recorded = initial ? consultationFromInput(initial, null) : null;
   return (
     <div
       className="panel natal-panel"
@@ -73,16 +76,20 @@ function Input({
       }}
     >
       <p>STORYBOOK · Local input preview, no calculation submitted.</p>
-      <BirthForm
-        busy={false}
-        error={error}
-        initial={initial}
-        onSubmit={() =>
-          setNotice(
-            "Input accepted locally. Production submits it to the calculation Worker.",
-          )
-        }
-      />
+      {recorded ? (
+        <BirthReview
+          birthplace={recorded.birthplace}
+          draft={recorded.draft}
+          busy={false}
+          error={error}
+          onCalculate={() => setNotice("Input accepted locally. Production submits it to the calculation Worker.")}
+          onEditDetails={() => setNotice("Edit date and time")}
+          onChangeBirthplace={() => setNotice("Change birthplace")}
+          onBack={() => setNotice("Back")}
+        />
+      ) : (
+        <BirthplaceForm confirmed={null} onConfirm={(place) => setNotice(`Confirmed ${place.label}`)} onCancel={() => setNotice("Returned to the table")} />
+      )}
       <p role="status">{notice}</p>
     </div>
   );
@@ -309,6 +316,7 @@ function Seeded({
         error: failure ? "NATAL_CONTENT_FAILED" : "",
         restored: legacy ? "legacy" : unsupported ? "unsupported" : "current",
       });
+    store.getState().navigateConsultation({ type: "open-crystal" });
     setSeeded(true);
   }, [store, f, failure, legacy, unsupported]);
   const engine = {

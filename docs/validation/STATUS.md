@@ -1,5 +1,7 @@
 # Verification status
 
+Current consultation/shared-desk delivery (#81, #82–#88): [2026-10-11 evidence and open gates](consultation/README.md). It supersedes the astrology entry flow described below; globe, lighting, tarot and engine measurements from the globe/lighting delivery remain valid.
+
 Current globe/lighting delivery: [2026-10-11 implementation, visual evidence and open hardware gates](globe-lighting/README.md). These measurements supersede older scene allocation counts only for the new feature branch; Apple M4 desktop GPU and software fallback are measured; physical mobile remains unqualified.
 
 For the current tarot choreography implementation, see [2026-10-10 checks and visual evidence](tarot-table/README.md). The counts and browser versions below describe the earlier baseline, not new head qualification.

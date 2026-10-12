@@ -5,14 +5,18 @@ import type {
   AstrologyView,
 } from "@pxoracle/contracts/astrology-view";
 import { createStudyProps } from "./study-props";
-import { createStudyGlobe, createStudyTable } from "./study-globe";
+import { createStudyGlobe } from "./study-globe";
+import { createStudyTable } from "./study-table";
 import { globeCountries } from "@pxoracle/contracts/globe-geography";
 import { globeShot } from "./globe-camera";
 import type { GlobeView } from "@pxoracle/contracts/globe-view";
 import { composition } from "./composition";
 import { studyLayers } from "./study";
 import { layoutMarkers } from "./astrology-layout";
-const ANCHOR = new THREE.Vector3(-3.4, 0.13, 0.4);
+import { studyDesk } from "./study-table";
+// The map sits just in front of the painted crystal standing on the shared desk.
+const DESK = studyDesk("astrology");
+const ANCHOR = new THREE.Vector3(-3.4, 0.13, DESK.rear + DESK.depth * 0.36 + 0.03);
 const ids = [
   "sun",
   "moon",
@@ -39,6 +43,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
     signal,
     studyLayers("astrology"),
     "tarot",
+    { desk: "astrology" },
   );
   const camera = new THREE.PerspectiveCamera(32, 1, 0.05, 100);
   const root = new THREE.Group();
@@ -264,13 +269,13 @@ export const createScene: SceneFactory = async (leases, signal) => {
       );
   }
   try {
-    const props = await createStudyProps(leases, signal);
+    const props = await createStudyProps(leases, signal, "astrology");
     staticResources.push(props.dispose);
     base.scene.add(props.group);
     const globe = await createStudyGlobe(leases, signal);
     staticResources.push(globe.dispose);
     base.scene.add(globe.group);
-    const desk = await createStudyTable(leases, signal);
+    const desk = await createStudyTable(leases, signal, "astrology");
     staticResources.push(desk.dispose);
     base.scene.add(desk.group);
     let globeView: GlobeView | undefined;

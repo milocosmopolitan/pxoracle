@@ -12,5 +12,6 @@ export function globeShot(view: GlobeView, focus: GeographicFocus | null, center
   const available = Math.max(.08, Math.min(view.viewport.height, view.viewport.width * camera.aspect));
   // Bound distance outside relief and mounting ring even for a one-pixel country.
   const distance = Math.max(2.2, radius / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / available);
-  return { target, position: target.clone().add(new THREE.Vector3(0, room ? 0 : .04, distance)), radius };
+  // The table framing looks down a few degrees so the real tabletop reads as a surface.
+  return { target, position: target.clone().add(new THREE.Vector3(0, room ? distance * .16 : .04, distance)), radius };
 }

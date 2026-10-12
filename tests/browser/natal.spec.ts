@@ -1,25 +1,21 @@
 import { test, expect, type Page } from "@playwright/test";
 import fixtures from "../fixtures/natal.json";
 import { graphicsAvailable } from "./tarot-support";
+import { beginNewChart, chooseNatal, confirmCity, confirmManual, enterDetails, layout, openConsultation, openSaved, oracle } from "./consultation-support";
+/** Table → new chart → Seoul confirmed → date/time reviewed; the crystal is entered explicitly afterwards. */
 async function enterCity(page: Page, country = "KR", city = "서울") {
-  await page.goto("/astrology/");
-  await page.getByLabel("Birth country").selectOption(country);
-  await page.getByLabel("Birth city", { exact: true }).fill(city);
-  await page.getByRole("button", { name: /Seoul.*Seoul.*South Korea/ }).click();
-  await page.getByLabel("Birth date", { exact: true }).fill("2000-01-01");
-  await page.getByLabel("Local birth time").fill("12:00");
+  await openConsultation(page);
+  await beginNewChart(page);
+  await confirmCity(page, country, city, /Seoul.*Seoul.*South Korea/);
+  await enterDetails(page, "2000-01-01", "12:00");
 }
 async function manual(page: Page, date: string, time: string, zone: string) {
-  await page.goto("/astrology/");
-  await page
-    .getByRole("button", { name: "Enter or adjust coordinates" })
-    .click();
-  await page.getByLabel("Birth date", { exact: true }).fill(date);
-  await page.getByLabel("Local birth time").fill(time);
-  await page.getByLabel("Birthplace time zone").fill(zone);
-  await page.getByLabel("Latitude", { exact: true }).fill("40.7");
-  await page.getByLabel("Longitude", { exact: true }).fill("-74");
+  await openConsultation(page);
+  await beginNewChart(page);
+  await confirmManual(page, zone, "40.7", "-74");
+  await enterDetails(page, date, time);
 }
+const CALCULATE = "Calculate and enter the crystal";
 test("city to crystal, selection, full report, explicit save and validated restore", async ({
   page,
 }) => {
@@ -41,7 +37,7 @@ test("city to crystal, selection, full report, explicit save and validated resto
   expect(requests.some((url) => /\/content\/atlas\/US\./.test(url))).toBe(
     false,
   );
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: CALCULATE }).click();
   await expect(
     page.getByRole("heading", { name: "A first look at your map" }),
   ).toBeVisible();
@@ -72,7 +68,7 @@ test("city to crystal, selection, full report, explicit save and validated resto
   expect(saved).toBeTruthy();
   expect(new URL(page.url()).search).toBe("");
   await page.reload();
-  await page.getByRole("button", { name: "Open saved chart" }).click();
+  await openSaved(page);
   await expect(
     page.getByRole("heading", { name: "A first look at your map" }),
   ).toBeVisible();
@@ -100,21 +96,26 @@ test("DST fold is progressive and a skipped local time is never silently moved",
   await expect(
     page.getByLabel("This clock time occurred twice.", { exact: false }),
   ).toHaveCount(0);
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: CALCULATE }).click();
+  // The fold question appears in the review at the table; the reader is not sent anywhere.
+  await expect(layout(page)).toHaveAttribute("data-presentation", "table");
   await page
     .getByLabel("This clock time occurred twice.", { exact: false })
     .selectOption("later");
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: CALCULATE }).click();
   await expect(
     page.getByText("America/New_York · UTC−05:00", { exact: false }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Edit details" }).click();
+  await page.getByRole("button", { name: "Adjust birth details" }).click();
+  await expect(layout(page)).toHaveAttribute("data-stage", "details");
   await page.getByLabel("Birth date", { exact: true }).fill("2021-03-14");
   await page.getByLabel("Local birth time").fill("02:30");
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: "Review the details" }).click();
+  await page.getByRole("button", { name: CALCULATE }).click();
   await expect(page.locator(".natal-panel").getByRole("alert")).toContainText(
     "clock skipped this local time",
   );
+  await page.getByRole("button", { name: "Edit date and time" }).click();
   await expect(page.getByLabel("Local birth time")).toHaveValue("02:30");
 });
 test("content failure retries the same calculated chart and caches symbolic packs", async ({
@@ -130,7 +131,7 @@ test("content failure retries the same calculated chart and caches symbolic pack
     fail ? route.abort() : route.continue(),
   );
   await enterCity(page);
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: CALCULATE }).click();
   await expect(page.locator(".natal-panel").getByRole("alert")).toContainText(
     "calculated chart has been kept",
   );
@@ -159,7 +160,8 @@ test("legacy restore requires explicit interpretation and leaves the original sa
     (value) => localStorage.setItem("pxoracle.astrology-chart.v1", value),
     legacy,
   );
-  await page.getByRole("button", { name: "Open saved chart" }).click();
+  await page.reload();
+  await openSaved(page);
   await expect(
     page.getByRole("button", { name: "Generate interpretation", exact: true }),
   ).toBeVisible();
@@ -188,7 +190,8 @@ test("duplicate city keyboard choice, atlas retry and unknown-time disclosure", 
   await page.route("**/content/atlas/US.*.json", (route) =>
     fail ? route.abort() : route.continue(),
   );
-  await page.goto("/astrology/");
+  await openConsultation(page);
+  await beginNewChart(page);
   await page.getByLabel("Birth country").selectOption("US");
   await expect(page.locator(".natal-panel").getByRole("alert")).toContainText(
     "city data could not load",
@@ -206,13 +209,15 @@ test("duplicate city keyboard choice, atlas retry and unknown-time disclosure", 
   await expect(page.locator(".place-confirmation")).toContainText(
     "Massachusetts",
   );
+  await page.getByRole("button", { name: "Confirm birthplace" }).click();
   await page.getByLabel("Time accuracy").selectOption("unknown");
   await expect(page.getByLabel("Local birth time")).toHaveCount(0);
   await expect(
     page.getByText("Only midpoint positions", { exact: false }),
   ).toBeVisible();
   await page.getByLabel("Birth date", { exact: true }).fill("2000-01-02");
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: "Review the details" }).click();
+  await page.getByRole("button", { name: CALCULATE }).click();
   await expect(
     page.getByText("Birth time is uncertain.", { exact: false }),
   ).toBeVisible();
@@ -236,7 +241,7 @@ test("route abandonment ignores late content and preserves a single owned canvas
   });
   try {
     await enterCity(page);
-    await page.getByRole("button", { name: "Enter the crystal" }).click();
+    await page.getByRole("button", { name: CALCULATE }).click();
     await expect(
       page.getByText("Composing your local interpretation", { exact: false }),
     ).toBeVisible();
@@ -251,7 +256,9 @@ test("route abandonment ignores late content and preserves a single owned canvas
   await expect(
     page.getByRole("heading", { name: "A first look at your map" }),
   ).toHaveCount(0);
+  // Reentry begins at the table; the retained chart resumes with its pending interpretation.
   await page.getByRole("link", { name: "Astrology", exact: true }).click();
+  await page.getByRole("button", { name: "Resume the current chart" }).click();
   await expect(
     page.getByRole("heading", { name: "A first look at your map" }),
   ).toBeVisible();
@@ -277,7 +284,8 @@ test("inconsistent saved plans require explicit regeneration without replacing s
     (value) => localStorage.setItem("pxoracle.natal-report.v1", value),
     saved,
   );
-  await page.getByRole("button", { name: "Open saved chart" }).click();
+  await page.reload();
+  await openSaved(page);
   await expect(page.locator(".natal-panel").getByRole("alert")).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "A first look at your map" }),
@@ -304,7 +312,7 @@ test("crystal raycasting selects bodies and relationships; drag and empty backgr
     !(await graphicsAvailable(page)),
     "This runner has no WebGL; DOM coverage is separate.",
   );
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await page.getByRole("button", { name: CALCULATE }).click();
   await expect(
     page.getByRole("heading", { name: "A first look at your map" }),
   ).toBeVisible();
@@ -348,8 +356,10 @@ test("crystal raycasting selects bodies and relationships; drag and empty backgr
 test("worldwide country shards stay lazy and a quarter-hour-zone chart restores", async ({page}) => {
  const atlasRequests:string[]=[];
  page.on("request",r=>{if(r.url().includes("/content/atlas/"))atlasRequests.push(r.url());});
- await page.goto("/astrology/");
+ await openConsultation(page);
  await expect(page.locator(".door-entrance")).toHaveCount(0,{timeout:20000});
+ expect(atlasRequests).toEqual([]);
+ await beginNewChart(page);
  await expect(page.getByLabel("Birth country").locator("option")).toHaveCount(245);
  expect(atlasRequests).toEqual([]);
  for(const [country,query,zone] of [["JP","東京","Asia/Tokyo"],["FR","Paris","Europe/Paris"],["BR","São Paulo","America/Sao_Paulo"],["EG","القاهرة","Africa/Cairo"],["AU","Sydney","Australia/Sydney"],["NP","Kathmandu","Asia/Kathmandu"]]) {
@@ -361,16 +371,16 @@ test("worldwide country shards stay lazy and a quarter-hour-zone chart restores"
  const shards=atlasRequests.filter(u=>!/manifest\./.test(u)).map(u=>u.split("/").at(-1)!.split(".")[0]);
  expect(shards.sort()).toEqual(["AU","BR","EG","FR","JP","NP"]);
  expect(atlasRequests.every(u=>!u.includes("Kathmandu")&&!u.includes("Paris"))).toBe(true);
- await page.getByLabel("Birth date",{exact:true}).fill("2000-01-01");
- await page.getByLabel("Local birth time").fill("12:00");
- await page.getByRole("button",{name:"Enter the crystal"}).click();
+ await page.getByRole("button",{name:"Confirm birthplace"}).click();
+ await enterDetails(page,"2000-01-01","12:00");
+ await page.getByRole("button",{name:CALCULATE}).click();
  await expect(page.getByRole("heading",{name:"A first look at your map"})).toBeVisible();
  await expect(page.getByText("Asia/Kathmandu · UTC+05:45",{exact:false})).toBeVisible();
  await page.getByRole("button",{name:"Save on this device"}).click();
  const saved=await page.evaluate(()=>localStorage.getItem("pxoracle.natal-report.v1"));
  expect(JSON.parse(saved!).place.country).toBe("NP");
  await page.reload();
- await page.getByRole("button",{name:"Open saved chart"}).click();
+ await openSaved(page);
  await expect(page.getByRole("heading",{name:"A first look at your map"})).toBeVisible();
  expect(await page.evaluate(()=>localStorage.getItem("pxoracle.natal-report.v1"))).toBe(saved);
  await expect(page.locator(".door-entrance")).toHaveCount(0,{timeout:20000});
