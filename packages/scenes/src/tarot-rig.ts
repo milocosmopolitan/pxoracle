@@ -2,6 +2,8 @@ import * as THREE from "three";
 import { surfaceMaterial } from "./tarot-materials";
 import { CARD_GRIP_Y } from "./tarot-layout";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+/** Reviewers read 9 as oversized beside the cards; the grip follows fingertips, not this scale. */
+const HAND_SCALE = 7.8;
 export type HandPose = "rest" | "support" | "packet" | "pinch" | "release";
 export interface RigOwner {
   geometry(g: THREE.BufferGeometry): void;
@@ -135,7 +137,7 @@ export async function createArm(
   }
   const normalized = new THREE.Group();
   normalized.rotation.y = side === "right" ? -Math.PI / 2 : Math.PI / 2;
-  normalized.scale.setScalar(9);
+  normalized.scale.setScalar(HAND_SCALE);
   model.position.sub(origin);
   normalized.add(model);
   wrist.add(normalized);
@@ -172,7 +174,7 @@ export async function createArm(
   }
   const length = 2.1,
     upperLength = 2.2;
-  const forearm = limb("forearm", length, 0.32, 0.2, skin);
+  const forearm = limb("forearm", length, 0.3, 0.18, skin);
   const sleeve = limb("sleeve", upperLength, 0.36, 0.35, cloth);
   const cuff = new THREE.Mesh(
     new THREE.CylinderGeometry(0.365, 0.38, 0.26, 16),
@@ -294,7 +296,7 @@ export async function createArm(
         j === 3
           ? 0
           : pose === "pinch" || pose === "packet"
-            ? (side === "right" ? [0.22, 0.56, 0.107] : [0.217, 0.583, 0.006])[
+            ? (side === "right" ? [0.22, 0.66, 0.107] : [0.217, 0.683, 0.006])[
                 j
               ]
             : curl * 0.4,
@@ -386,7 +388,7 @@ export async function createArm(
       root.updateMatrixWorld(true);
       const contact = new THREE.Vector3(
         0,
-        -0.75 + 0.25 * supportMix,
+        -0.75 * (HAND_SCALE / 9) + 0.25 * supportMix,
         -0.28 - 0.04 * supportMix,
       ).applyQuaternion(wrist.quaternion);
       contact.lerp(

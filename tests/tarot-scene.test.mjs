@@ -31,19 +31,19 @@ test("hand ownership changes preserve card world position and reveal uses separa
     scene.update(1, { tarot: fixture }, false);
     const card = scene.scene.getObjectByName("tarot-card-12"),
       hand = scene.scene.getObjectByName("supportAnchor");
-    scene.update(1 + 2.4 * 0.21999, { tarot: fixture }, false);
+    scene.update(1 + 3.6 * 0.29999, { tarot: fixture }, false);
     scene.scene.updateMatrixWorld(true);
     const before = card.getWorldPosition(new THREE.Vector3());
-    scene.update(1 + 2.4 * 0.22001, { tarot: fixture }, false);
+    scene.update(1 + 3.6 * 0.30001, { tarot: fixture }, false);
     scene.scene.updateMatrixWorld(true);
     assert.ok(card.parent === hand);
     assert.ok(
       card.getWorldPosition(new THREE.Vector3()).distanceTo(before) < 0.002,
     );
-    scene.update(1 + 2.4 * 0.79999, { tarot: fixture }, false);
+    scene.update(1 + 3.6 * 0.75999, { tarot: fixture }, false);
     scene.scene.updateMatrixWorld(true);
     const held = card.getWorldPosition(new THREE.Vector3());
-    scene.update(1 + 2.4 * 0.80001, { tarot: fixture }, false);
+    scene.update(1 + 3.6 * 0.76001, { tarot: fixture }, false);
     scene.scene.updateMatrixWorld(true);
     assert.ok(card.parent !== hand);
     assert.ok(
@@ -188,7 +188,7 @@ test("every visible slot and spread position is reachable without stretching arm
       scene.resize(mobile ? 390 : 1100, mobile ? 500 : 800);
       for (let index = 0; index < 3; index++)
         for (let slot = 0; slot < 12; slot++)
-          for (const progress of [0.22, 0.5, 0.79, 0.8]) {
+          for (const progress of [0.3, 0.5, 0.75, 0.76]) {
             const view = {
               ...fixture,
               index,
@@ -268,9 +268,9 @@ test("continuous choreography never flips a wrist or jumps an elbow between adja
       ["shuffle", 109],
       ["fan", 25],
       ["selecting", 10],
-      ["dealing", 73],
+      ["dealing", 109],
       ["preparing", 10],
-      ["revealing", 79],
+      ["revealing", 103],
       ["reading", 10],
     ]) {
       const view = {

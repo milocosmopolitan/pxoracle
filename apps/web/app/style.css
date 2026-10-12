@@ -974,3 +974,22 @@ body:has(.natal-layout) main { pointer-events: none; }
   /* The phone bubble sits at the bottom of the stage; the transient scene banner moves to the top. */
   .scene-status { top: 64px; bottom: auto; left: 12px; right: 12px; max-width: none; }
 }
+
+/* iOS Safari zooms into any focused field under 16px; keep touch forms at 16px. */
+@media (pointer: coarse) {
+  input, select, textarea { font-size: 16px; }
+}
+
+/* Keep text selection inside the reading panel instead of spilling across the page. */
+body:has(.table-reading) { -webkit-user-select: none; user-select: none; }
+.table-reading .tarot-panel { -webkit-user-select: text; user-select: text; }
+
+@media print {
+  body { background: #fff; color: #000; }
+  body * { visibility: hidden; }
+  .reading-export, .reading-export * { visibility: visible; color: #000 !important; }
+  main, .panel { position: static !important; backdrop-filter: none !important; }
+  .reading-export { position: absolute; inset: 0 auto auto 0; width: 100%; padding: 0 12mm; font: 11pt/1.5 Georgia, serif; }
+  .reading-export .question, .reading-export details:not([open]) { display: none; }
+  .reading-export button { all: unset; font-weight: 700; }
+}

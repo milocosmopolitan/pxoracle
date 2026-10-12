@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { ArtManifest, TarotContent } from "@pxoracle/contracts";
 import { useOracle, useOracleStore } from "../state/store";
@@ -41,6 +41,26 @@ const labels: Record<string, string> = {
   revealing: "Turning your card…",
   reading: "Your reading",
 };
+/** The private note stays out of exported files, matching the never-saved promise. */
+function downloadReading(root: HTMLElement) {
+  const blocks = [
+    ...root.querySelectorAll<HTMLElement>("h3, h4, p, article > small"),
+  ].filter((el) => !el.closest(".question, details:not([open]) > :not(summary)"));
+  const text = [
+    "PXOracle — a tarot reflection",
+    new Date().toLocaleDateString(),
+    ...blocks.map((el) => el.innerText.trim()).filter(Boolean),
+  ].join("\n\n");
+  const url = URL.createObjectURL(
+    new Blob([text + "\n"], { type: "text/plain;charset=utf-8" }),
+  );
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `pxoracle-reading-${new Date().toISOString().slice(0, 10)}.txt`;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
 export default function Tarot({
   engine: providedEngine,
 }: {
@@ -60,6 +80,7 @@ export default function Tarot({
     p = useOracle((s) => s.tarotPresentation),
     question = useOracle((s) => s.question),
     setQuestion = useOracle((s) => s.setQuestion);
+  const readingRef = useRef<HTMLDivElement>(null);
   const [pendingRestore, setPendingRestore] = useState<SavedTarot | null>(null);
   const [controller, setController] = useState<TarotController | null>(null);
   const [spread, setSpread] = useState<1 | 3>(3),
@@ -199,8 +220,9 @@ export default function Tarot({
                 placeholder="What deserves my attention right now?"
               />
               <small>
-                This note is not analyzed. It stays in memory and is never saved
-                or sent.
+                Just between the two of us, dear. Not even the cards read it.
+                It is never saved or sent, and it is forgotten when you close
+                this page.
               </small>
             </label>
             <div className="two">
@@ -427,6 +449,7 @@ export default function Tarot({
                     </button>
                   ))}
                 </div>
+                <div className="reading-export" ref={readingRef}>
                 {session.spread === 3 ? (
                   <>
                     {interpretation.status === "loading" && (
@@ -489,6 +512,17 @@ export default function Tarot({
                     </aside>
                   </details>
                 )}
+                </div>
+                <div className="actions" aria-label="Keep this reading">
+                  <button onClick={() => window.print()}>Print reading</button>
+                  <button
+                    onClick={() => {
+                      if (readingRef.current) downloadReading(readingRef.current);
+                    }}
+                  >
+                    Download as text
+                  </button>
+                </div>
               </>
             )}
             <div className="actions">
