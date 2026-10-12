@@ -1,0 +1,59 @@
+{
+  "baseline_main": "f074088b78796bfc1fbff8d9bf0b2eb4208435d2",
+  "date": "2026-10-11",
+  "machine": "Apple M4 macOS, Google Chrome channel, headless Playwright 1.56.1",
+  "checks": [
+    {
+      "name": "cargo test --locked",
+      "result": "pass",
+      "detail": "35 tests across the workspace crates; no Rust changes in this branch"
+    },
+    {
+      "name": "npm run typecheck",
+      "result": "pass"
+    },
+    {
+      "name": "npm run build (Next static export)",
+      "result": "pass",
+      "detail": "/, /astrology/, /tarot/, 404 prerendered"
+    },
+    {
+      "name": "npm run build-storybook",
+      "result": "pass"
+    },
+    {
+      "name": "npm test (Node)",
+      "result": "pass",
+      "detail": "98/98 including tests/consultation.test.mjs (8) and existing scene/engine/parity suites"
+    },
+    {
+      "name": "node scripts/check-boundaries.mjs",
+      "result": "pass"
+    },
+    {
+      "name": "npx playwright test --project=chrome (static export)",
+      "result": "pass",
+      "detail": "41/41 across app, natal, consultation, birthplace-regression, globe-lighting, reading, tarot-table, tarot-fallback; real WASM"
+    },
+    {
+      "name": "npx playwright test --config playwright.storybook.config.ts",
+      "result": "pass",
+      "detail": "27/27 including tests/storybook/consultation.spec.ts and the dev HMR listener check"
+    },
+    {
+      "name": "scripts/capture-consultation.mjs",
+      "result": "pass",
+      "detail": "desktop and mobile journeys recorded; zero page errors; no engine request before explicit calculation; saved path saw only crystal/room globe phases; storage unchanged"
+    },
+    {
+      "name": "npm run wasm",
+      "result": "not rerun",
+      "detail": "no Rust/C/engine changes; committed artifacts unchanged and exercised by the real-WASM browser suite"
+    }
+  ],
+  "not_qualified": [
+    "physical mobile hardware",
+    "manual screen-reader audit",
+    "Firefox/WebKit/mobile-emulation Playwright projects were not rerun locally for this branch"
+  ]
+}

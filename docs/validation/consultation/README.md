@@ -85,8 +85,28 @@ Key frames (desktop): [hub](desktop-01-consultation-hub.png), [greeting](desktop
 
 ## Checks performed
 
-See the table in this file's *Results* section; raw Playwright output is kept in
-[`checks.json`](checks.json).
+All on the final branch head, Apple M4 Chrome, static export served by `python3 -m http.server`
+([`checks.json`](checks.json)):
+
+| Check | Result |
+| --- | --- |
+| `cargo test --locked` | 35 pass (no Rust changes) |
+| `npm run typecheck`, `npm run build`, `npm run build-storybook` | pass |
+| `npm test` | 98/98, including `tests/consultation.test.mjs` (reducer transitions, revision policy, input assembly, store wiring, saved-data probe branches without writes) |
+| `node scripts/check-boundaries.mjs` | pass |
+| `npx playwright test --project=chrome` | 41/41 (real WASM): new `consultation.spec.ts` (9) plus migrated app, natal, birthplace-regression and globe-lighting suites, tarot table/fallback/reading unchanged |
+| `npx playwright test --config playwright.storybook.config.ts` | 27/27, including `tests/storybook/consultation.spec.ts` (hub, every saved branch, unsaved resume, details, review, crystal return, mobile) |
+| `scripts/capture-consultation.mjs` | both journeys at desktop and 390×844; zero page errors |
+
+What the browser tests prove, by criterion: no engine/atlas/content request before a service
+choice; Horoscopes never opens the globe; saved-chart open sees no globe phase and leaves
+storage byte-identical; legacy/input-only/unsupported/corrupt/unavailable greetings never
+write; city choice keeps the camera revision and the reduced-motion stage pixels
+(`globe-lighting.spec.ts`); confirmation returns to the table with no engine request; a late
+calculation after returning stays at the table; globe exit before a country, after a city and
+by Escape keeps the confirmed place; return/resume keeps identical planet text; the landing
+globe shortcut keeps chart and details; no WebGL fallback keeps the flow usable; the landing
+fetches no WASM; seven navigation cycles keep the GL allocation baseline (`app.spec.ts`).
 
 ## Scope and limits
 

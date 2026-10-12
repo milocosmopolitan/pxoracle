@@ -173,13 +173,14 @@ function Harness({
             </div>
           ) : route === "astrology" ? (
             <>
-              <Seed feature="astrology" revealed={state === "reading"} />
+              {/* Seed after the feature mounts: its entry effect would otherwise reset the presentation. */}
               <Astrology engine={mockNatal} />
+              <Seed feature="astrology" revealed={state === "reading"} />
             </>
           ) : route === "tarot" ? (
             <>
-              <Seed feature="tarot" revealed={state === "reading"} />
               <Tarot engine={mockTarot} />
+              <Seed feature="tarot" revealed={state === "reading"} />
             </>
           ) : (
             <div

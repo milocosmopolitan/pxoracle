@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import type { BirthInput } from "@pxoracle/contracts";
 import type { NatalInput } from "@pxoracle/contracts/natal";
 import type { PlaceProvenance } from "@pxoracle/contracts/atlas";
-import { useOracleStore } from "../../state/store";
+import { useOracle, useOracleStore } from "../../state/store";
 import {
   loadNatalContent,
   NATAL_VERSIONS,
@@ -45,6 +45,23 @@ export function useNatal(providedEngine?: NatalEngine) {
     typeof import("@pxoracle/engine-client/astrology") | null
   >(null);
   const mounted = useRef(true);
+  // A plan that arrives without its prose (restored or seeded after mount) loads the pack lazily.
+  const plan = useOracle((s) => s.natal.plan);
+  useEffect(() => {
+    if (!plan || content) return;
+    const abort = new AbortController();
+    void loadNatalContent(abort.signal)
+      .then((pack) => {
+        if (abort.signal.aborted || !mounted.current) return;
+        validatePlanReferences(plan, pack);
+        setContent(pack);
+      })
+      .catch((e) => {
+        if (!abort.signal.aborted && mounted.current)
+          store.getState().setNatal({ status: "error", error: message(e) });
+      });
+    return () => abort.abort();
+  }, [plan, content, store]);
   async function engine() {
     if (providedEngine) return providedEngine;
     module.current ??= await import("@pxoracle/engine-client/astrology");

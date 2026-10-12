@@ -301,7 +301,7 @@ function Seeded({
   const f = fixture();
   const view = useOracle((s) => s.astrologyView);
   const globe = useOracle(s => s.globeView);
-  const [seeded, setSeeded] = useState(false);
+  // Seeding runs after the mounted feature's entry effect, so the crystal presentation sticks.
   useEffect(() => {
     store.getState().setChart(f.chart as Chart);
     store
@@ -317,7 +317,6 @@ function Seeded({
         restored: legacy ? "legacy" : unsupported ? "unsupported" : "current",
       });
     store.getState().navigateConsultation({ type: "open-crystal" });
-    setSeeded(true);
   }, [store, f, failure, legacy, unsupported]);
   const engine = {
     calculateNatal: async () => ({
@@ -330,7 +329,6 @@ function Seeded({
     }),
     interpretNatal: async () => f.plan as InterpretationPlan,
   };
-  if (!seeded) return <p>Preparing synthetic fixture…</p>;
   return (
     <>
       <p
