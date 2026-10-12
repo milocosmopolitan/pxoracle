@@ -6,7 +6,8 @@ import { useOracle, useOracleStore } from "../../state/store";
 import type { BirthDraft, ConfirmedBirthplace } from "../../state/consultation";
 import { globeCountries } from "@pxoracle/contracts/globe-geography";
 import { GlobeChooser } from "./GlobeChooser";
-import { COUNTRIES, COUNTRY_OPTIONS, ATLAS_CITY_COUNT, loadCities, searchCities } from "./atlas";
+import { ATLAS_CITY_COUNT } from "@pxoracle/contracts/atlas";
+import { COUNTRIES, COUNTRY_OPTIONS, loadCities, searchCities } from "./atlas";
 
 const finite = (value: string, limit: number) => value.trim() !== "" && Number.isFinite(Number(value)) && Math.abs(Number(value)) <= limit;
 
