@@ -42,16 +42,20 @@ export function BirthplaceForm({
   });
   useEffect(() => setReady(true), []);
   // Clear the old country, its candidate coordinates and zone before the replacement
-  // input can receive typing. The first run keeps a previously confirmed place's values.
+  // input can receive typing. The first run keeps a previously confirmed place's values,
+  // and a reset that lands after the reader already typed for this country is skipped,
+  // so a slow commit (observed in WebKit) can never erase fresh input.
   const firstCountry = useRef(true);
+  const typedFor = useRef(country);
   useLayoutEffect(() => {
-    setQuery("");
-    setCities([]);
-    setAtlasStatus("idle");
     if (firstCountry.current) {
       firstCountry.current = false;
       return;
     }
+    if (typedFor.current === country) return;
+    setQuery("");
+    setCities([]);
+    setAtlasStatus("idle");
     setCoordinates({ timezone: "", latitude: "", longitude: "" });
   }, [country]);
   useEffect(() => {
@@ -74,6 +78,7 @@ export function BirthplaceForm({
   }, [country, attempt, manual]);
   const results = useMemo(() => searchCities(cities, query), [cities, query]);
   function choose(city: Birthplace) {
+    typedFor.current = country;
     setChosen(city);
     setQuery(city.name);
     setCoordinates({ timezone: city.timezone, latitude: String(city.latitude), longitude: String(city.longitude) });
@@ -163,6 +168,7 @@ export function BirthplaceForm({
                   maxLength={120}
                   value={query}
                   onChange={(event) => {
+                    typedFor.current = country;
                     setQuery(event.target.value);
                     setChosen(null);
                   }}

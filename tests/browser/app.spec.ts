@@ -112,8 +112,11 @@ test("rapid route changes keep a single canvas and usable keyboard navigation", 
     await page.getByRole("link", { name: "The room", exact: true }).click();
   }
   await expect(page.locator("canvas")).toHaveCount(1);
+  // Route commit moves focus to the destination heading; wait for it so it cannot steal focus later.
+  await expect(page.getByRole("heading", { level: 1 })).toBeFocused();
   const tarotLink = page.getByRole("link", { name: "Tarot", exact: true });
   await tarotLink.focus();
+  await expect(tarotLink).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/tarot\/$/);
 });

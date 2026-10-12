@@ -41,7 +41,7 @@ try:
  for slot in [1,2,3]:
   wait(lambda:execute(f"return !!document.querySelector('[aria-label=\"Choose slot {slot}\"]:not(:disabled)')"));click(f'[aria-label="Choose slot {slot}"]')
  wait(lambda:execute("return document.querySelectorAll('.structured-reading .reading-card').length===3"));screenshot('tarot.png')
- visit('/astrology/');wait(lambda:execute("return !!Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim()==='Natal Chart')"))
+ visit('/astrology/');wait(lambda:execute("return !!Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim().startsWith('Natal Chart'))"))
  execute("Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim().startsWith('Natal Chart')).click()")
  wait(lambda:execute("return !!document.querySelector('.oracle-bubble button')"))
  execute("Array.from(document.querySelectorAll('.oracle-bubble button')).find(b=>b.textContent==='Begin a new chart').click()")
@@ -64,7 +64,7 @@ try:
  wait(lambda:execute("return !!document.querySelector('.natal-report')"));screenshot('astrology.png')
  execute("Array.from(document.querySelectorAll('button')).find(b=>b.textContent==='Save on this device').click()")
  wait(lambda:execute("return !!localStorage.getItem('pxoracle.natal-report.v1')"))
- visit('/astrology/');wait(lambda:execute("return !!Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim()==='Natal Chart')"))
+ visit('/astrology/');wait(lambda:execute("return !!Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim().startsWith('Natal Chart'))"))
  execute("Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim().startsWith('Natal Chart')).click()")
  wait(lambda:execute("return !!Array.from(document.querySelectorAll('.oracle-bubble button')).find(b=>b.textContent==='Open saved chart')"))
  execute("Array.from(document.querySelectorAll('.oracle-bubble button')).find(b=>b.textContent==='Open saved chart').click()")
