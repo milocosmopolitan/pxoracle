@@ -322,6 +322,12 @@ test("crystal raycasting selects bodies and relationships; drag and empty backgr
     "true",
   );
   await expect(page.locator(".door-entrance")).toHaveCount(0);
+  // The consultation page can scroll on a phone; the fixture coordinates assume the top.
+  await page.evaluate(() => window.scrollTo(0, 0));
+  // Scrolling re-measures the usable viewport, which re-frames the camera; wait for it to settle.
+  await page.waitForTimeout(300);
+  await expect(page.locator(".natal-stage")).toHaveAttribute("data-settled", "true");
+  await page.waitForTimeout(300);
   // Coordinates are checked against the committed 390×844 Seoul fixture capture.
   await page.mouse.move(72, 278);
   await page.mouse.down();

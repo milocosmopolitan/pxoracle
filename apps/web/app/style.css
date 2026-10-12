@@ -910,7 +910,8 @@ body:has(.natal-layout) main { pointer-events: none; }
  .natal-scene-caption h1 { font-size: 24px; }
  .oracle-bubble { position: static; width: 100%; margin: 6px 0 4px; padding: 12px 14px; font-size: 14px; }
  .oracle-bubble::before { display: none; }
- .stage-return { top: auto; bottom: 8px; }
+ /* The phone-sized chart fills the stage; keep the return control in the free bottom-left corner. */
+ .natal-layout[data-presentation="crystal"] .stage-return { top: auto; right: auto; bottom: 8px; left: 8px; min-height: 36px; padding: 6px 10px; font-size: 11px; }
  .natal-scene-caption p { margin: 4px 0; }
  .natal-stage-instruction { margin: 0 0 8px; font-size: 10px; }
  .scene-host[data-route="astrology"] .scene-shade { background: linear-gradient(0deg, #090d12b0, transparent 65%); }

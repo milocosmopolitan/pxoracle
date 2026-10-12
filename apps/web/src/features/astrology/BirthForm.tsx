@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useLayoutEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import type { BirthInput } from "@pxoracle/contracts";
 import type { Birthplace } from "@pxoracle/contracts/atlas";
 import { useOracle, useOracleStore } from "../../state/store";
@@ -41,11 +41,18 @@ export function BirthplaceForm({
     longitude: confirmed ? String(confirmed.longitude) : "",
   });
   useEffect(() => setReady(true), []);
-  // Clear the old country before its replacement input can receive typing.
+  // Clear the old country, its candidate coordinates and zone before the replacement
+  // input can receive typing. The first run keeps a previously confirmed place's values.
+  const firstCountry = useRef(true);
   useLayoutEffect(() => {
     setQuery("");
     setCities([]);
     setAtlasStatus("idle");
+    if (firstCountry.current) {
+      firstCountry.current = false;
+      return;
+    }
+    setCoordinates({ timezone: "", latitude: "", longitude: "" });
   }, [country]);
   useEffect(() => {
     if (!country || manual) return;

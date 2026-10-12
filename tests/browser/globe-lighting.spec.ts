@@ -117,6 +117,8 @@ test("asset retry restores the scene and city search survives WebGL unavailabili
     await page.route("**/art/candle.webp", route => blocked ? route.abort() : route.continue());
     await page.goto("/astrology/");
     await expect(page.getByRole("button", { name: "Retry scene" })).toBeVisible();
+    await page.getByRole("button", { name: "Natal Chart" }).click();
+    await page.locator(".oracle-bubble").getByRole("button", { name: "Begin a new chart" }).click();
     await expect(page.getByLabel("Birth country")).toBeEnabled();
     blocked = false;
     await page.getByRole("button", { name: "Retry scene" }).click();
