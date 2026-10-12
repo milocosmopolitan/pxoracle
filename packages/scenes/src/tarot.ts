@@ -35,8 +35,8 @@ const durations: Record<string, number> = {
   approach: 2.4,
   shuffle: 3.6,
   fan: 0.8,
-  dealing: 2.4,
-  revealing: 2.6,
+  dealing: 3.6,
+  revealing: 3.4,
 };
 export const createScene: SceneFactory = async (leases, signal) => {
   const base = await composition(
@@ -710,36 +710,32 @@ export const createScene: SceneFactory = async (leases, signal) => {
                   Math.sin(gripTurn * Math.PI) * (halfWidth * 2 + 0.08) + 0.04,
                 ),
               );
-            if (progress < 0.2)
-              activeHand.position.lerpVectors(
-                restHand,
-                edge,
-                ease(progress / 0.2),
-              );
+            if (progress < 0.2) {
+              const t = ease(progress / 0.2);
+              activeHand.position.lerpVectors(restHand, edge, t);
+              activeHand.position.z += Math.sin(t * Math.PI) * 0.25;
+            }
             else activeHand.position.lerpVectors(edge, restHand, release);
           }
           if (view.phase === "dealing" && view.index === i) {
-            if (useLeft)
-              leftPose =
-                progress < 0.15 ? "rest" : progress > 0.8 ? "release" : "pinch";
-            else
-              rightPose =
-                progress < 0.15 ? "rest" : progress > 0.8 ? "release" : "pinch";
-            if (useLeft) leftHeld = progress >= 0.22 && progress < 0.8;
-            else rightHeld = progress >= 0.22 && progress < 0.8;
+            // Fingers close only as the hand arrives, and open just before it withdraws.
+            const pose =
+              progress < 0.24 ? "rest" : progress > 0.76 ? "release" : "pinch";
+            if (useLeft) leftPose = pose;
+            else rightPose = pose;
+            if (useLeft) leftHeld = progress >= 0.3 && progress < 0.76;
+            else rightHeld = progress >= 0.3 && progress < 0.76;
             const source = slotPosition(selected.slot, view.page, mobile);
             const grip = source
               .clone()
               .add(new THREE.Vector3(0, CARD_GRIP_Y, 0.13));
-            if (progress < 0.22) {
-              activeHand.position.lerpVectors(
-                restHand,
-                grip,
-                ease(progress / 0.22),
-              );
+            if (progress < 0.3) {
+              const t = ease(progress / 0.3);
+              activeHand.position.lerpVectors(restHand, grip, t);
+              activeHand.position.z += Math.sin(t * Math.PI) * 0.3;
               card.group.position.copy(source);
-            } else if (progress < 0.8) {
-              const t = ease((progress - 0.22) / 0.58);
+            } else if (progress < 0.76) {
+              const t = ease((progress - 0.3) / 0.46);
               activeHand.position.lerpVectors(
                 grip,
                 target.clone().add(new THREE.Vector3(0, CARD_GRIP_Y, 0.13)),
@@ -753,11 +749,13 @@ export const createScene: SceneFactory = async (leases, signal) => {
               // attach() preserves the world transform when ownership returns to the table.
               cardRoot.attach(card.group);
               card.group.position.copy(target);
+              const t = ease((progress - 0.76) / 0.24);
               activeHand.position.lerpVectors(
                 target.clone().add(new THREE.Vector3(0, CARD_GRIP_Y, 0.13)),
                 restHand,
-                ease((progress - 0.8) / 0.2),
+                t,
               );
+              activeHand.position.z += Math.sin(t * Math.PI) * 0.2;
             }
           }
         });
@@ -944,7 +942,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
           rightTurn,
           reduced || view.reviewProgress !== undefined
             ? 1
-            : Math.min(1, dt * 18),
+            : Math.min(1, dt * 9),
           lateral,
           attachment(-1),
         );
@@ -956,7 +954,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
           leftTurn,
           reduced || view.reviewProgress !== undefined
             ? 1
-            : Math.min(1, dt * 18),
+            : Math.min(1, dt * 9),
           lateral,
           attachment(1),
         );
