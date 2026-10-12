@@ -40,13 +40,15 @@ test("consultation stories use production components and never load WASM", async
   await page.getByRole("button", { name: "Return to the table" }).first().click();
   await expect(page.locator(".natal-layout")).toHaveAttribute("data-presentation", "table");
   await expect(page.getByRole("button", { name: "Resume the current chart" })).toBeVisible();
-  // Mobile: the bubble sits below the stage, never over the oracle.
+  // Mobile: the bubble is a sheet at the bottom of the stage, below the caption and never over the framed oracle.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/iframe.html?id=pxoracle-consultation--mobile&viewMode=story");
   await expect(page.locator(".oracle-bubble")).toContainText("I have a chart you saved here");
   const bubble = await page.locator(".oracle-bubble").boundingBox();
   const stage = await page.locator(".natal-stage").boundingBox();
-  expect(bubble!.y).toBeGreaterThanOrEqual(stage!.y + stage!.height - 1);
+  const caption = await page.locator(".natal-scene-caption").boundingBox();
+  expect(bubble!.y).toBeGreaterThanOrEqual(caption!.y + caption!.height);
+  expect(bubble!.y + bubble!.height).toBeLessThanOrEqual(stage!.y + stage!.height + 1);
   await page.screenshot({ path: test.info().outputPath("mobile.png"), scale: "css" });
   expect(engines).toEqual([]);
   expect(errors).toEqual([]);

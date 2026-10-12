@@ -141,8 +141,8 @@ test('repeated navigation releases WebGL allocations and records a frame baselin
  await page.goto('/');
  const samples:Record<string,number>[]=[];
  for(let i=0;i<7;i++){
-  for(const name of ['Astrology','Tarot','The room']){
-   await page.getByRole('link',{name,exact:true}).click();
+  for(const name of ['Astrology','Tarot','The room'] as const){
+   await (await navLink(page,name)).click();
    await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   }
