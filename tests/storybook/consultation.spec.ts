@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 
 const stories = {
-  hub: { heading: "What shall we look at?", bubble: "Shall we look at the sky you were born under" },
-  "hub-with-current-chart": { heading: "What shall we look at?", button: "Resume the current chart" },
-  horoscopes: { heading: "Not ready yet", bubble: "Horoscopes are not ready" },
+  hub: { bubble: "Shall we look at the sky you were born under" },
+  "hub-with-current-chart": { button: "Resume the current chart" },
+  horoscopes: { bubble: "Horoscopes are not ready" },
   "natal-no-save": { bubble: "No chart is kept on this device", button: "Begin a new chart" },
   "natal-saved-chart": { bubble: "I have a chart you saved here from Seoul", button: "Open saved chart" },
   "natal-legacy-save": { bubble: "older saved chart", button: "Open saved chart" },

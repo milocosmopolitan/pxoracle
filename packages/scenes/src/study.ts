@@ -32,23 +32,14 @@ export function studyLayers(mode: "landing" | "tarot" | "astrology"): Layer[] {
   const furniture: Layer[] = [
     ["/art/cat-chair.webp", fx(2.6), fy(-2.0), 2.6 * s, 3.1 * s],
     // The skirt stands behind the real desk; the portrait's forearms meet its rear edge.
-    ["/art/oracle.webp", -3, fy(-2.88), 2.7 * s, 2.64 * s, [0.2, 0.69, 0.8, 1]],
-    ["/art/oracle.webp", -3, fy(1.43 - (mode === "landing" ? 0.635 : 0.45)), 4.5 * s, 3.35 * s, 0.595],
+    ["/art/oracle.webp", -3, fy(-2.88), 2.7 * s, 2.64 * s, [0.2, 0.69, 0.8, 1], { fade: 0.34 }],
+    ["/art/oracle.webp", -3, fy(1.43 - 0.635), 4.5 * s, 3.35 * s, 0.595],
     // The runner is draped over the real desk by the composition.
     ["/art/runner.webp", -3.1, desk.top, 1.65 * s, 4 * s, 1, { z: desk.front }],
     // The reading mat lies flat on the surface; the crystal stands on it.
     ["/art/mat.webp", mode === "landing" ? -3.08 : -3.1, desk.top + 0.004, 4.35 * s, desk.depth * 0.62, [0.02, 0.248, 0.982, 0.822], { flat: true, z: desk.rear + desk.depth * 0.52 }],
-    stand("/art/mug.webp", mode === "landing" ? -4.13 : -5.35, 0.8 * s, 0.8 * s, CONTACT.mug, 0.3),
-    stand("/art/tray.webp", mode === "landing" ? -1.95 : -1.65, 1.5 * s, 0.75 * s, CONTACT.tray, 0.66),
-    stand("/art/deck.webp", mode === "landing" ? -1.95 : -1.65, 0.85 * s, 0.55 * s, CONTACT.deck, 0.67),
   ];
-  if (mode === "astrology") {
-    furniture.push(
-      stand("/art/notebook.webp", -0.7, 1.45, 0.9, CONTACT.notebook, 0.22),
-      stand("/art/pen.webp", -0.55, 0.95, 0.36, CONTACT.pen, 0.3),
-    );
-  }
-  const crystal = mode === "landing" ? 1.85 : 2.85;
+  const crystal = mode === "landing" ? 1.85 : 2.15;
   furniture.push(
     stand(mode === "astrology" ? "/art/crystal-active.webp" : "/art/crystal.webp", mode === "landing" ? -3.08 : -3.4, crystal, crystal, CONTACT.crystal, 0.36),
   );

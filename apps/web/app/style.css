@@ -808,7 +808,7 @@ body:has(.table-reading) main { pointer-events: none; }
 .motion-controls { margin: 16px 0; font-size: 12px; }
 .tarot-story .scene-host[data-route="tarot"] { inset: 0; height: 100%; width: 100%; position: absolute; }
 @media (max-width: 760px) {
-  .scene-host[data-route="tarot"] { inset: 70px 0 auto; height: 64svh; width: 100%; position: fixed; }
+  .scene-host[data-route="tarot"] { inset: 0 0 auto; height: calc(64svh + 57px); width: 100%; position: fixed; }
   .tarot-layout.table-reading { padding: 12px; width: 100%; padding-top: 64svh; }
   .table-reading .tarot-panel { padding: 20px; }
   .tarot-story .scene-host[data-route="tarot"] { inset: 0; height: 100%; }
@@ -836,7 +836,7 @@ body:has(.table-reading) main { pointer-events: none; }
 .scene-host[data-route="astrology"] .scene-shade { background: linear-gradient(90deg, transparent 42%, #090d12a0 70%, #090d12d9); }
 body:has(.natal-layout) main { pointer-events: none; }
 .natal-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 440px); gap: 24px; padding: 22px 28px 18px; min-height: calc(100dvh - 98px); }
-.natal-stage-column > a, .natal-panel, .oracle-bubble, .stage-return { pointer-events: auto; }
+.natal-stage-column > a, .natal-panel, .oracle-bubble, .stage-return, .stage-help, .help-dialog { pointer-events: auto; }
 .natal-stage-column { position: relative; }
 /* Readable HTML dialogue beside the oracle; never over the face or the globe. */
 .oracle-bubble { position: absolute; left: 55%; top: 56px; width: min(320px, 40%); background: #f3e9d2; color: #1f1c16; border-radius: 14px; padding: 14px 18px 16px; box-shadow: 0 12px 32px #0009; z-index: 3; font: 15px/1.5 Georgia, serif; }
@@ -903,7 +903,7 @@ body:has(.natal-layout) main { pointer-events: none; }
 .table-scroll button { padding: 4px; }
 .natal-report footer { font-size: 11px; color: var(--muted); }
 @media (max-width: 800px) {
- .natal-layout { display: flex; flex-direction: column; gap: 4px; padding: 12px; min-height: calc(100dvh - 70px); }
+ .natal-layout { display: flex; flex-direction: column; gap: 4px; padding: 12px; min-height: calc(100dvh - 57px); }
  .natal-stage { height: 37dvh; min-height: 190px; }
  .natal-panel { max-height: 47dvh; padding: 20px; width: 100%; }
  .natal-scene-caption { top: 2px; }
@@ -928,3 +928,49 @@ body:has(.natal-layout) main { pointer-events: none; }
 .globe-chooser { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 12px 0; margin: 14px 0; }
 .globe-chooser details { font-size: 12px; margin-top: 10px; }
 .globe-chooser summary { cursor: pointer; min-height: 32px; }
+
+/* Compact phone header: logo only, links behind a hamburger dropdown. */
+.menu-toggle { display: none; }
+@media (max-width: 800px) {
+  header { min-height: 57px; padding: 6px 4vw; }
+  .brand-text { display: none; }
+  .brand { display: inline-flex; align-items: center; min-height: 44px; }
+  .brand-star { margin-right: 0; font-size: 28px; }
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; min-height: 44px; padding: 0; background: transparent; border: 1px solid var(--line); border-radius: 8px; color: #ead8b7; }
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after { display: block; width: 20px; height: 2px; background: currentColor; border-radius: 1px; transition: transform .18s ease, background .18s ease; }
+  .menu-toggle span { position: relative; }
+  .menu-toggle span::before, .menu-toggle span::after { content: ""; position: absolute; left: 0; }
+  .menu-toggle span::before { top: -7px; }
+  .menu-toggle span::after { top: 7px; }
+  header[data-menu="open"] .menu-toggle span { background: transparent; }
+  header[data-menu="open"] .menu-toggle span::before { top: 0; transform: rotate(45deg); }
+  header[data-menu="open"] .menu-toggle span::after { top: 0; transform: rotate(-45deg); }
+  header nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; padding: 6px 4vw 10px; background: #0b1211f7; border-bottom: 1px solid var(--line); font-size: 15px; box-shadow: 0 14px 28px #000a; }
+  header[data-menu="open"] nav { display: flex; }
+  header nav a { display: flex; align-items: center; min-height: 48px; border-bottom: 1px solid #ffffff10; }
+  header nav a:last-child { border-bottom: 0; }
+}
+
+/* Table stages without a panel: the stage spans the page and the oracle's bubble carries the choices. */
+.natal-layout[data-panel="none"] { grid-template-columns: minmax(0, 1fr); }
+.natal-layout[data-panel="none"] .oracle-bubble { left: 60%; top: 14%; width: min(380px, 34%); }
+.oracle-bubble .actions button { text-align: left; }
+.stage-help { position: absolute; right: 8px; top: 8px; z-index: 3; width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 50%; background: #101a1ae8; border: 1px solid var(--line); color: #ead8b7; font: 600 18px Georgia, serif; }
+.help-dialog { background: #101a1a; color: #e9e2d0; border: 1px solid var(--line); border-radius: 14px; padding: 26px; max-width: min(460px, calc(100vw - 32px)); }
+.help-dialog::backdrop { background: #000000b3; }
+.help-dialog h2 { font-size: 27px; margin: 4px 0 12px; }
+.help-dialog p { line-height: 1.6; }
+@media (max-width: 800px) {
+  /* Phone table stages: the stage fills the page, caption top-left on the clean wall, bubble as a sheet at the bottom. */
+  .natal-layout[data-panel="none"] { padding: 0; gap: 0; min-height: calc(100dvh - 57px); }
+  .natal-layout[data-panel="none"] .natal-stage { height: calc(100dvh - 57px); min-height: 360px; }
+  .natal-layout[data-panel="none"] .natal-stage-column > a { position: absolute; left: 14px; top: 10px; z-index: 3; }
+  .natal-layout[data-panel="none"] .natal-scene-caption { top: 46px; left: 14px; }
+  .natal-layout[data-panel="none"] .natal-scene-caption h1 { font-size: 26px; margin: 4px 0; }
+  .natal-layout[data-panel="none"] .oracle-bubble { position: absolute; left: 12px; right: 12px; top: auto; bottom: 14px; width: auto; margin: 0; }
+  .stage-help { top: auto; bottom: auto; right: 12px; top: 8px; }
+}
+@media (max-width: 800px) {
+  /* The phone bubble sits at the bottom of the stage; the transient scene banner moves to the top. */
+  .scene-status { top: 64px; bottom: auto; left: 12px; right: 12px; max-width: none; }
+}

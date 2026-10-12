@@ -4,7 +4,7 @@ import { studyDesk } from "./study-table";
 import type { SceneInstance, TextureLeases } from "@pxoracle/scene-runtime";
 import type { ViewData } from "@pxoracle/contracts";
 type Crop = [left: number, top: number, right: number, bottom: number];
-export type Layer = [url: string, x: number, y: number, width: number, height: number, crop?: number | Crop, appearance?: { flipX?: boolean; tint?: number; /** World z instead of the layer-order depth. */ z?: number; /** Lie flat on the tabletop (height becomes depth). */ flat?: boolean }];
+export type Layer = [url: string, x: number, y: number, width: number, height: number, crop?: number | Crop, appearance?: { flipX?: boolean; tint?: number; /** World z instead of the layer-order depth. */ z?: number; /** Lie flat on the tabletop (height becomes depth). */ flat?: boolean; /** Fraction of the height, from the bottom, that fades to transparent. */ fade?: number }];
 
 export async function composition(
   leases: TextureLeases,
@@ -47,7 +47,7 @@ export async function composition(
       const lease = await leases.acquire(url);
       releases.push(lease.release);
       if (signal.aborted) throw new Error("aborted");
-      const geometry = new THREE.PlaneGeometry(width, height, 1, url === "/art/runner.webp" ? 2 : 1);
+      const geometry = new THREE.PlaneGeometry(width, height, 1, url === "/art/runner.webp" ? 2 : appearance?.fade ? 8 : 1);
       const meshZ = appearance?.z ?? z * 0.02;
       if (url === "/art/runner.webp" && desk) {
         // Drape the cloth over the real desk: the top row lies on the tabletop, the
@@ -75,7 +75,18 @@ export async function composition(
         const uv = geometry.attributes.uv;
         for (let i = 0; i < uv.count; i++) uv.setX(i, 1 - uv.getX(i));
       }
+      if (appearance?.fade) {
+        // Per-row vertex alpha: the garment dissolves into the shadow instead of ending in a cut.
+        const rows = 8, colors = new Float32Array((rows + 1) * 2 * 4);
+        for (let i = 0; i < (rows + 1) * 2; i++) {
+          const t = Math.floor(i / 2) / rows;
+          const edge = THREE.MathUtils.smoothstep(t, 1 - appearance.fade, 1);
+          colors.set([1, 1, 1, 1 - edge], i * 4);
+        }
+        geometry.setAttribute("color", new THREE.BufferAttribute(colors, 4));
+      }
       const material = new THREE.MeshBasicMaterial({
+        vertexColors: !!appearance?.fade,
         map: lease.texture,
         color: appearance?.tint ?? 0xffffff,
         transparent: true,

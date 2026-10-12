@@ -12,7 +12,7 @@ export const STUDY_ANCHORS = {
 export function studyAnchors(mode: "landing" | "astrology") {
   const desk = studyDesk(mode);
   const at = (x: number, z: number): [number, number, number] => [x, desk.top, desk.rear + z * desk.depth];
-  return { lamp: at(-5.9, 0.3), candle: at(-1.45, 0.5), globe: at(mode === "landing" ? -0.55 : -0.45, 0.62) };
+  return { lamp: at(mode === "landing" ? -5.2 : -5.6, 0.42), candle: at(mode === "landing" ? -1.2 : -1.15, 0.26), globe: at(mode === "landing" ? -0.55 : -0.45, 0.62) };
 }
 
 export async function createStudyProps(leases: TextureLeases, signal: AbortSignal, mode: "landing" | "astrology" | "tarot" = "astrology") {
