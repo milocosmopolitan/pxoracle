@@ -4,7 +4,7 @@ from PIL import Image
 import hashlib,json,sys
 source=Path(sys.argv[1]); root=Path(__file__).resolve().parent.parent
 out=root/'apps/web/public/art';out.mkdir(parents=True,exist_ok=True)
-manifest={'schemaVersion':1,'deckId':'pxoracle.standard.v1','approval':'User supplied for PXOracle implementation, 2026-10-10. No redistribution license inferred.','assets':{},'cards':{}}
+manifest={'schemaVersion':1,'deckId':'pxoracle.layered.v2','approval':'User supplied for PXOracle implementation, 2026-10-10. No redistribution license inferred.','assets':{},'cards':{}}
 if '--scenes-only' in sys.argv:
  manifest=json.loads((out/'manifest.json').read_text())
 def export(key,p,maxsize=1024):
@@ -57,32 +57,16 @@ if '--scenes-only' in sys.argv:
  (out/'manifest.json').write_text(json.dumps(manifest,separators=(',',':')))
  print('Imported',len(files),'scene assets; preserved card artwork and content.')
  sys.exit(0)
-majors=['Fool','Magician','High Pristese','Empress','Emperor','Teacher','Lovers','Chariot','Strength','Hermit','Wheel','Justice','Hanged','Death','Temperance','Devil','Tower','Star','Moon XVIII','Sun and','Judgement','World']
-major_names=['The Fool','The Magician','The High Priestess','The Empress','The Emperor','The Teacher','The Lovers','The Chariot','Strength','The Hermit','Wheel of Fortune','Justice','The Hanged Man','Death','Temperance','The Devil','The Tower','The Star','The Moon','The Sun','Judgement','The World']
-major_themes=['beginnings','agency','intuition','nurturing','structure','guidance','values','direction','courage','reflection','change','fairness','perspective','transition','balance','attachment','disruption','hope','uncertainty','vitality','renewal','integration']
 content={'version':'en.v1','locale':'en','cards':{},'positions':{'focus':'What deserves your attention?','situation':'What is present in this situation?','examination':'What deserves a closer look?','next_action':'What small action is available to you?'}}
 authored_content=root/'content/tarot/en.v1.json'
 if authored_content.exists():
  content=json.loads(authored_content.read_text())
-def card(cid,p,name,theme):
- url=export('cards/'+cid,p,768);manifest['cards'][cid]={'name':name,'url':url}
+# Card faces are layered at runtime (art, frame, banners, effect); see scripts/tarot_decks.py.
+sys.path.insert(0,str(Path(__file__).resolve().parent));import tarot_decks
+manifest['deckId']='pxoracle.layered.v2';manifest['cards']=tarot_decks.build(source)
+manifest['assets']={k:v for k,v in manifest['assets'].items() if not k.startswith('cards/')}
+for cid in manifest['cards']:
  if cid not in content['cards']:raise ValueError('Missing authored reading for '+cid)
-for n,match in enumerate(majors):
- matches=[p for p in (source/'tarot/major arcana').glob('*.png') if match.lower() in p.name.lower()]
- assert len(matches)==1,(match,matches)
- card(f'major.{n:02}',matches[0],major_names[n],major_themes[n])
-ranks=['Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Page','Knight','Queen','King']
-rank_themes=['potential','choice','growth','stability','challenge','support','assessment','movement','culmination','completion','curiosity','pursuit','care','stewardship']
-suits={'wand':'wands','cup':'cups','sword':'swords','pentacle':'pentacles'}
-for singular,suit in suits.items():
- for p in (source/f'tarot/minor arcana - {singular}').glob('*.png'):
-  name=p.name.lower();n=next((i+1 for i,r in enumerate(ranks) if r.lower() in name),None)
-  if n is None:
-   if name.startswith('sword1') or name.startswith('golden pentacle'):n=1
-   elif 'curious traveler' in name:n=11
-  assert n is not None,p
-  cid=f'{suit}.{n:02}';assert cid not in manifest['cards'],cid
-  card(cid,p,f'{ranks[n-1]} of {suit.title()}',rank_themes[n-1]+' in '+{'wands':'creativity and intention','cups':'feelings and connection','swords':'thought and communication','pentacles':'practical life and resources'}[suit])
 assert len(manifest['cards'])==78
 (root/'assets/manifests').mkdir(parents=True,exist_ok=True)
 (root/'assets/manifests/art.json').write_text(json.dumps(manifest,indent=2)+'\n')

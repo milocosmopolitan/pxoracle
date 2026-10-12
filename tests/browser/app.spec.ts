@@ -146,7 +146,12 @@ test('repeated navigation releases WebGL allocations and records a frame baselin
    await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   }
-  samples.push(await page.evaluate(()=>(window as any).__pxResources()));
+  // Software-rendered CI can still be tearing down the previous scene a frame later; sample once counts settle.
+  // A real leak keeps growing across iterations, so it still fails the comparison below.
+  const read=()=>page.evaluate(()=>JSON.stringify((window as any).__pxResources()));
+  let settled=await read();
+  for(let n=0;n<20;n++){await page.waitForTimeout(250);const next=await read();if(next===settled)break;settled=next;}
+  samples.push(JSON.parse(settled));
  }
  await test.info().attach('navigation-live-allocations',{body:JSON.stringify(samples,null,2),contentType:'application/json'});
  for(const key of ['textures','buffers','programs'])expect(samples.at(-1)![key]).toBeLessThanOrEqual(samples[1][key]+1);

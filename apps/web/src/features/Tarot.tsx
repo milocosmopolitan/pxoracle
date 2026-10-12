@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import type { ArtManifest, TarotContent } from "@pxoracle/contracts";
+import type { DeckIndex, TarotContent } from "@pxoracle/contracts";
 import { useOracle, useOracleStore } from "../state/store";
 import { ErrorNotice } from "./shared";
 import {
@@ -18,6 +18,7 @@ import {
   UnsupportedReading,
 } from "./tarot/ReadingResult";
 import { useReading } from "./tarot/useReading";
+import { loadDeck, loadDeckIndex, type LoadedDeck } from "./tarot/deck";
 import {
   READING_VERSIONS,
   TOPICS,
@@ -79,14 +80,16 @@ export default function Tarot({
   const session = useOracle((s) => s.tarot),
     p = useOracle((s) => s.tarotPresentation),
     question = useOracle((s) => s.question),
-    setQuestion = useOracle((s) => s.setQuestion);
+    setQuestion = useOracle((s) => s.setQuestion),
+    deckId = useOracle((s) => s.tarotDeck);
   const readingRef = useRef<HTMLDivElement>(null);
   const [pendingRestore, setPendingRestore] = useState<SavedTarot | null>(null);
   const [controller, setController] = useState<TarotController | null>(null);
   const [spread, setSpread] = useState<1 | 3>(3),
     [reversals, setReversals] = useState(false),
     [notice, setNotice] = useState("");
-  const [art, setArt] = useState<ArtManifest | null>(null),
+  const [decks, setDecks] = useState<DeckIndex | null>(null),
+    [art, setArt] = useState<LoadedDeck | null>(null),
     [content, setContent] = useState<TarotContent | null>(null),
     [contentError, setContentError] = useState(false),
     [contentAttempt, setContentAttempt] = useState(0);
@@ -113,21 +116,15 @@ export default function Tarot({
     const abort = new AbortController();
     setContentError(false);
     void Promise.all([
-      fetch("/art/manifest.json", { signal: abort.signal }),
+      loadDeckIndex(abort.signal),
       fetch("/content/tarot.en.v1.json", { signal: abort.signal }),
     ])
-      .then(async ([a, c]) => {
-        if (!a.ok || !c.ok) throw new Error("content");
-        const manifest = (await a.json()) as ArtManifest,
-          pack = (await c.json()) as TarotContent;
-        if (
-          manifest.schemaVersion !== 1 ||
-          pack.version !== "en.v1" ||
-          Object.keys(manifest.cards).length !== 78
-        )
-          throw new Error("content");
+      .then(async ([index, c]) => {
+        if (!c.ok) throw new Error("content");
+        const pack = (await c.json()) as TarotContent;
+        if (pack.version !== "en.v1") throw new Error("content");
         if (!abort.signal.aborted) {
-          setArt(manifest);
+          setDecks(index);
           setContent(pack);
         }
       })
@@ -136,6 +133,21 @@ export default function Tarot({
       });
     return () => abort.abort();
   }, [contentAttempt]);
+  // A drawn reading keeps the deck it was drawn with; only the form can change it.
+  const drawnDeck = session ? art?.deck.id : undefined;
+  const wantedDeck = drawnDeck ?? deckId;
+  useEffect(() => {
+    if (!decks || art?.deck.id === wantedDeck) return;
+    const abort = new AbortController();
+    void loadDeck(decks, wantedDeck, abort.signal)
+      .then((loaded) => {
+        if (!abort.signal.aborted) setArt(loaded);
+      })
+      .catch(() => {
+        if (!abort.signal.aborted) setContentError(true);
+      });
+    return () => abort.abort();
+  }, [decks, wantedDeck, art]);
   const view = useMemo(
     () => ({
       ...tarotView(session, p, art),
@@ -225,6 +237,21 @@ export default function Tarot({
                 this page.
               </small>
             </label>
+            {decks && decks.decks.length > 1 && (
+              <label>
+                Your deck
+                <select
+                  value={deckId}
+                  onChange={(e) => store.getState().setTarotDeck(e.target.value)}
+                >
+                  {decks.decks.map((d) => (
+                    <option key={d.id} value={d.id}>
+                      {d.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
             <div className="two">
               <label>
                 Your spread
@@ -254,7 +281,12 @@ export default function Tarot({
             )}
             <button
               className="primary"
-              disabled={p.busy || !art || !content || !controller}
+              disabled={
+                p.busy ||
+                art?.deck.id !== deckId ||
+                !content ||
+                !controller
+              }
               onClick={startReading}
             >
               Shuffle the deck →

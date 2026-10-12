@@ -12,6 +12,7 @@ import { surfaceMaterial } from "./tarot-materials";
 import { buildTableAssembly, tableMaterials, TAROT_TABLE, TAROT_TABLE_SURFACE } from "./study-table";
 import { createShawl } from "./tarot-shawl";
 import { createCardInscription, finishCardFace } from "./tarot-card-finish";
+import { composeCardFace } from "./tarot-card-compose";
 import { createPixelPresentation } from "./tarot-pixels";
 import {
   CARD_WIDTH,
@@ -405,6 +406,39 @@ export const createScene: SceneFactory = async (leases, signal) => {
     halo.material.depthWrite = true;
     halo.renderOrder = 0;
     cardRoot.add(halo);
+    // Choosing a face-down card uses a pre-baked glow quad: no bloom pass while browsing the deck.
+    const BILLBOARD_SCALE = [180 / 152, 256 / 228];
+    const billboard = plane(
+      CARD_WIDTH * BILLBOARD_SCALE[0],
+      CARD_HEIGHT * BILLBOARD_SCALE[1],
+    );
+    billboard.name = "card-selection-billboard";
+    billboard.material.blending = THREE.AdditiveBlending;
+    // It writes no depth, so it must draw after the transparent mat or the mat paints over it.
+    billboard.renderOrder = 10;
+    billboard.visible = false;
+    cardRoot.add(billboard);
+    let billboardUrl = "",
+      billboardRelease: (() => void) | undefined;
+    releases.push(() => billboardRelease?.());
+    const requestBillboard = (url: string | undefined) => {
+      if (!url || url === billboardUrl) return;
+      billboardUrl = url;
+      billboard.material.map = null;
+      billboard.material.needsUpdate = true;
+      billboardRelease?.();
+      billboardRelease = undefined;
+      void leases.acquire(url).then(
+        (lease) => {
+          if (dead || url !== billboardUrl) return lease.release();
+          billboardRelease = lease.release;
+          billboard.material.map = lease.texture;
+          billboard.material.needsUpdate = true;
+          loadDirty = true;
+        },
+        () => {},
+      );
+    };
     const requestFaces = (view: TarotView) => {
       const wanted = view.cards.filter(
         (c, i) =>
@@ -414,10 +448,12 @@ export const createScene: SceneFactory = async (leases, signal) => {
       for (const card of wanted) {
         if (!card.face || loaded.has(card.face) || pending.has(card.face))
           continue;
-        const url = card.face;
+        const url = card.face,
+          look = card.look;
         pending.add(url);
-        void leases
-          .acquire(url)
+        void (look
+          ? leases.acquireWith(url, () => composeCardFace(look))
+          : leases.acquire(url))
           .then((lease) => {
             if (
               dead ||
@@ -591,6 +627,9 @@ export const createScene: SceneFactory = async (leases, signal) => {
         handAnchor.visible = otherHand.visible = table.visible;
         halo.visible = false;
         halo.rotation.z = 0;
+        halo.material.color.set(0xb38a3b);
+        billboard.visible = false;
+        requestBillboard(view.selectionEffect?.billboard);
         for (const card of cards) {
           if (card.group.parent !== cardRoot) cardRoot.attach(card.group);
           card.group.visible = false;
@@ -620,9 +659,11 @@ export const createScene: SceneFactory = async (leases, signal) => {
           card.group.position.copy(pos);
           if (view.focus === slot) {
             card.group.position.z += 0.12;
-            halo.visible = true;
-            halo.position.copy(card.group.position);
-            halo.position.z -= 0.015;
+            // The bloom outline remains only as a fallback until the billboard texture arrives.
+            const glow = billboard.material.map ? billboard : halo;
+            glow.visible = true;
+            glow.position.copy(card.group.position);
+            glow.position.z -= 0.015;
           }
         }
         view.cards.forEach((selected, i) => {
@@ -646,13 +687,16 @@ export const createScene: SceneFactory = async (leases, signal) => {
             card.front.material.color.set(0xffffff);
             card.front.material.needsUpdate = true;
           }
+          const effect = selected.look?.effect;
           card.inscription.update(
-            selected.name ?? "",
+            selected.look ? "" : (selected.name ?? ""),
             view.phase === "reading" && (view.readingFocus === i || view.reviewShot === "detail"),
             time, reduced,
+            effect ? new THREE.Color(effect.dust).getHex() : undefined,
           );
           if (view.phase === "reading" && (view.readingFocus === i || view.reviewShot === "detail")) {
             halo.visible = true;
+            if (effect) halo.material.color.set(effect.outline);
             halo.position.copy(card.group.position);
             halo.position.z -= .012;
             halo.rotation.z = card.group.rotation.z;

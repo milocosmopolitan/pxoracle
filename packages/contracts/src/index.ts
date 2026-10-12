@@ -70,6 +70,87 @@ export interface ArtManifest {
   cards: Record<string, { name: string; url: string }>;
   assets: Record<string, { url: string; size: [number, number] }>;
 }
+/** [x, y, width, height] on the card canvas (CardPartsCatalog.canvas). */
+export type CardRect = [number, number, number, number];
+export type BannerSlot = "top" | "bottom";
+export interface BannerChoice {
+  style: string;
+  text: "name" | "numeral" | "none";
+}
+/** Deck- or card-level look; a card's value replaces the deck default field by field. */
+export interface CardLookSettings {
+  frame: string;
+  fit: "cover" | "contain";
+  matte: string;
+  banners: Record<BannerSlot, BannerChoice | null>;
+  effect: string;
+}
+export interface DeckManifest {
+  schemaVersion: 1;
+  id: string;
+  name: string;
+  description: string;
+  license: string;
+  defaults: CardLookSettings;
+  cards: Record<
+    string,
+    {
+      name: string;
+      numeral: string;
+      art: string;
+    } & Partial<Omit<CardLookSettings, "banners">> & {
+        banners?: Partial<Record<BannerSlot, BannerChoice | null>>;
+      }
+  >;
+}
+export interface CardEffect {
+  id: string;
+  outline: string;
+  dust: string;
+  billboard: string;
+}
+export interface CardPartsCatalog {
+  schemaVersion: 1;
+  canvas: [number, number];
+  frames: Record<
+    string,
+    {
+      name: string;
+      url?: string;
+      opening: CardRect;
+      slots: Record<BannerSlot, CardRect>;
+    }
+  >;
+  banners: Record<
+    string,
+    { name: string; url: string; textBox: CardRect; size: [number, number]; color: string; shadow?: string }
+  >;
+  effects: Record<string, Omit<CardEffect, "id"> & { name: string }>;
+}
+export interface DeckIndex {
+  schemaVersion: 1;
+  parts: string;
+  decks: { id: string; name: string; url: string }[];
+}
+/** Fully resolved layers for one card face; the scene composes them without catalog lookups. */
+export interface CardLook {
+  canvas: [number, number];
+  art: string;
+  fit: "cover" | "contain";
+  matte: string;
+  opening: CardRect;
+  frame?: string;
+  banners: {
+    slot: BannerSlot;
+    url: string;
+    rect: CardRect;
+    textBox: CardRect;
+    text: string;
+    color: string;
+    shadow?: string;
+  }[];
+  effect: CardEffect;
+}
 export interface TarotContent {
   version: string;
   cards: Record<
@@ -121,7 +202,11 @@ export interface TarotView {
     reversed: boolean;
     face?: string;
     name?: string;
+    /** When present, `face` is a cache key and the scene composes the face from these layers. */
+    look?: CardLook;
   }[];
+  /** Cheap pre-baked highlight for choosing face-down cards; avoids the bloom pass. */
+  selectionEffect?: CardEffect;
   onIntent?: (intent: {
     type: "select" | "focus" | "inspect";
     slot: number;
