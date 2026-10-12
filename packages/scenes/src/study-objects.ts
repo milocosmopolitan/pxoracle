@@ -10,6 +10,15 @@ const CARD_BACK = "/art/tarot-table/back.png";
 const rad = (degrees: number) => THREE.MathUtils.degToRad(degrees);
 
 /**
+ * Where the loose desk objects stand: x in unscaled room units, zf as a fraction of the desk depth from its
+ * rear edge. Every footprint stays inside the tabletop (see tests/scenes.test.mjs).
+ */
+export const STUDY_SPOTS = {
+  landing: { mug: { x: -4.2, zf: 0.84 } },
+  astrology: { mug: { x: -4.55, zf: 0.16 }, book: { x: -4.75, zf: 0.74 } },
+} as const;
+
+/**
  * Real meshes standing on the shared study desk: mug, tray, tarot deck and (astrology) a notebook and pen,
  * plus a vintage chair pulled out in front of the desk and the shadow pooled under it. Each piece carries the
  * same dark contour hull as the desk so edges read as hand-inked, and every piece has its own yaw so the
@@ -73,9 +82,12 @@ export async function createStudyObjects(leases: TextureLeases, signal: AbortSig
     return group;
   };
 
-  // Mug: a lathed pewter-glaze body with a C handle.
-  const mug = place(-4.2, 0.84, 28);
+  // Mug: a lathed pewter-glaze body with a C handle. At the astrology table it waits behind the crystal,
+  // where the book used to lie; the book and pen take the mug's place on the visitor's side.
+  const mugSpot = STUDY_SPOTS[mode].mug;
+  const mug = place(mugSpot.x, mugSpot.zf, 28);
   mug.scale.multiplyScalar(0.8);
+  mug.name = "mug";
   {
     const profile = [
       [0, 0], [0.2, 0], [0.25, 0.04], [0.27, 0.5], [0.275, 0.6], [0.24, 0.6], [0.235, 0.1], [0, 0.1],
@@ -115,9 +127,10 @@ export async function createStudyObjects(leases: TextureLeases, signal: AbortSig
     loose.rotation.y = rad(-9);
   }
 
-  const bookX = -4.6, bookZ = 0.12;
+  const { x: bookX, zf: bookZ } = STUDY_SPOTS.astrology.book;
   if (mode === "astrology") {
     const book = place(bookX, bookZ, 10);
+    book.name = "closed-book";
     const cover = mesh(book, new RoundedBoxGeometry(1.0, 0.13, 1.3, 2, 0.02), solid(0x1d3a46, 0.85), 0.018);
     cover.position.y = 0.065;
     const pages = mesh(book, new THREE.BoxGeometry(0.9, 0.09, 1.22), solid(0xe6dcc0, 0.95), 0);
@@ -125,6 +138,7 @@ export async function createStudyObjects(leases: TextureLeases, signal: AbortSig
     const clasp = mesh(book, new THREE.BoxGeometry(0.05, 0.135, 1.3), solid(0xb8924a, 0.45, 0.6), 0);
     clasp.position.set(-0.46, 0.066, 0);
     const pen = place(bookX - 0.08, bookZ + 0.04, -32, 0.13);
+    pen.name = "book-pen";
     const barrel = mesh(pen, new THREE.CylinderGeometry(0.03, 0.03, 0.85, 12), solid(0x131c2a, 0.35, 0.3), 0.012);
     barrel.rotation.z = Math.PI / 2;
     barrel.position.y = 0.03;

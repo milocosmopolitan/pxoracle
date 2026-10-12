@@ -106,3 +106,5 @@ export const BirthReview: Story = { render: () => <Consultation stage="review" /
 export const CrystalWithReturn: Story = { render: () => <Consultation stage="crystal" /> };
 export const Mobile: Story = { render: () => <Consultation stage="greeting" saved="current" />, globals: { viewport: { value: "mobile390", isRotated: false } } };
 export const Animated: Story = { render: () => <Consultation frozen={false} /> };
+/** Live (unfrozen) table with a current chart: "Resume the current chart" plays the lens zoom into the crystal. */
+export const CrystalZoomAnimated: Story = { render: () => <Consultation withChart frozen={false} /> };

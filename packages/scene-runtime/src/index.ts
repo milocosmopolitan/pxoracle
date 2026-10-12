@@ -8,6 +8,10 @@ export interface SceneInstance {
   render?(renderer: THREE.WebGLRenderer): void;
   gesture?(event: { dx: number; dy: number; zoom: number }): boolean;
   pointer?(event: { type: "focus" | "select"; x: number; y: number }): void;
+  /** CSS cursor for the canvas after the latest pointer event (e.g. "pointer" over a clickable object). */
+  cursor?(): string;
+  /** The pointer left the canvas: hover effects end. */
+  pointerLeave?(): void;
   enter(): void;
   resize?(width: number, height: number): void;
   update(time: number, data: ViewData, reduced: boolean): void;
@@ -126,6 +130,14 @@ export class SceneRuntime {
   private pointerCancel = () => {
     this.down = null;
   };
+  private pointerLeave = () => {
+    this.active?.pointerLeave?.();
+    this.setCursor("");
+    this.dirty = true;
+  };
+  private setCursor(cursor: string) {
+    if (this.canvas?.style) this.canvas.style.cursor = cursor;
+  }
   private sendPointer(e: PointerEvent, type: "focus" | "select") {
     if (!this.acceptingInput) return;
     const r = this.canvas.getBoundingClientRect();
@@ -134,6 +146,7 @@ export class SceneRuntime {
       x: ((e.clientX - r.left) / r.width) * 2 - 1,
       y: 1 - ((e.clientY - r.top) / r.height) * 2,
     });
+    this.setCursor(this.active?.cursor?.() ?? "");
     this.dirty = true;
   }
   get data() {
@@ -185,6 +198,7 @@ export class SceneRuntime {
     canvas.addEventListener("pointermove", this.pointerMove);
     canvas.addEventListener("pointerup", this.pointerUp);
     canvas.addEventListener("pointercancel", this.pointerCancel);
+    canvas.addEventListener("pointerleave", this.pointerLeave);
     canvas.addEventListener("wheel", this.wheel, {passive:false});
     this.tick();
   }
@@ -257,6 +271,7 @@ export class SceneRuntime {
       this.active?.exit();
       this.active?.dispose();
       this.active = next;
+      this.setCursor("");
       this.firstFramePending = true;
       this.dirty = true;
       next.resize?.(this.width, this.height);
@@ -280,6 +295,7 @@ export class SceneRuntime {
     this.canvas.removeEventListener("pointermove", this.pointerMove);
     this.canvas.removeEventListener("pointerup", this.pointerUp);
     this.canvas.removeEventListener("pointercancel", this.pointerCancel);
+    this.canvas.removeEventListener("pointerleave", this.pointerLeave);
     this.canvas.removeEventListener("wheel", this.wheel);
     this.canvas.removeEventListener("webglcontextlost", this.lost);
     this.active?.dispose();

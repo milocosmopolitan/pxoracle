@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CrystalEntryLink } from "../src/runtime/CrystalEntryLink";
 export default function Home() {
   return (
     <div className="landing">
@@ -30,14 +31,14 @@ export default function Home() {
             </span>
             <span>↗</span>
           </Link>
-          <Link className="entry" href="/astrology/" prefetch={false}>
+          <CrystalEntryLink className="entry">
             <span className="entry-icon">☾</span>
             <span>
               <strong>Look to the stars</strong>
               <small>Sit with the oracle for your natal chart; horoscopes are on the way</small>
             </span>
             <span>↗</span>
-          </Link>
+          </CrystalEntryLink>
         </div>
         <p className="local-note">
           Your questions stay here. Calculations happen on your device.
