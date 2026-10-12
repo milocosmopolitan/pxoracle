@@ -3,10 +3,11 @@ import { composition } from "./composition";
 import { studyLayers } from "./study";
 import { createStudyGlobe } from "./study-globe";
 import { createStudyTable } from "./study-table";
+import { createStudyObjects } from "./study-objects";
 import type { SceneFactory } from "@pxoracle/scene-runtime";
 import type { GlobeView } from "@pxoracle/contracts/globe-view";
 export const createScene: SceneFactory = async (leases, signal) => {
-  const base = await composition(leases, signal, studyLayers("landing"), "landing", { pitch: 9 });
+  const base = await composition(leases, signal, studyLayers("landing"), "landing", { pitch: 12 });
   const disposers: (() => void)[] = [base.dispose];
   let dead = false, view: GlobeView | undefined;
   const dispose = () => { if(dead)return; dead=true; disposers.reverse().forEach(fn => fn()); };
@@ -17,6 +18,9 @@ export const createScene: SceneFactory = async (leases, signal) => {
     const desk = await createStudyTable(leases, signal, "landing");
     disposers.push(desk.dispose);
     base.scene.add(desk.group);
+    const objects = await createStudyObjects(leases, signal, "landing");
+    disposers.push(objects.dispose);
+    base.scene.add(objects.group);
     const ray = new THREE.Raycaster();
     return { ...base, dispose,
       update(time, data, reduced) { view = data.globe; base.update(time,data,reduced); },

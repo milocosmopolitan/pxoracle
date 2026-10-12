@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { navLink } from "./nav";
 import fixtures from "../fixtures/natal.json";
 import { graphicsAvailable } from "./tarot-support";
 import { beginNewChart, chooseNatal, confirmCity, confirmManual, enterDetails, layout, openConsultation, openSaved, oracle } from "./consultation-support";
@@ -245,7 +246,7 @@ test("route abandonment ignores late content and preserves a single owned canvas
     await expect(
       page.getByText("Composing your local interpretation", { exact: false }),
     ).toBeVisible();
-    await page.getByRole("link", { name: "The room", exact: true }).click();
+    await (await navLink(page, "The room")).click();
   } finally {
     release();
   }
@@ -257,7 +258,7 @@ test("route abandonment ignores late content and preserves a single owned canvas
     page.getByRole("heading", { name: "A first look at your map" }),
   ).toHaveCount(0);
   // Reentry begins at the table; the retained chart resumes with its pending interpretation.
-  await page.getByRole("link", { name: "Astrology", exact: true }).click();
+  await (await navLink(page, "Astrology")).click();
   await page.getByRole("button", { name: "Resume the current chart" }).click();
   await expect(
     page.getByRole("heading", { name: "A first look at your map" }),
@@ -328,15 +329,15 @@ test("crystal raycasting selects bodies and relationships; drag and empty backgr
   await page.waitForTimeout(300);
   await expect(page.locator(".natal-stage")).toHaveAttribute("data-settled", "true");
   await page.waitForTimeout(300);
-  // Coordinates are checked against the committed 390×844 Seoul fixture capture.
-  await page.mouse.move(72, 278);
+  // Coordinates are checked against the committed 390×844 Seoul fixture capture, shifted up by the compact 58px phone header (it was 80px).
+  await page.mouse.move(72, 256);
   await page.mouse.down();
-  await page.mouse.move(110, 285, { steps: 5 });
+  await page.mouse.move(110, 263, { steps: 5 });
   await page.mouse.up();
   await expect(
     page.getByRole("button", { name: "Whole chart", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
-  await page.mouse.click(72, 278);
+  await page.mouse.click(72, 256);
   await expect(
     page.getByRole("region", { name: "Selected chart detail" }),
   ).toContainText("Moon in Scorpio");
@@ -345,7 +346,7 @@ test("crystal raycasting selects bodies and relationships; drag and empty backgr
     "data-settled",
     "true",
   );
-  await page.mouse.click(200, 325);
+  await page.mouse.click(200, 303);
   await expect(
     page.getByRole("region", { name: "Selected chart detail" }),
   ).toContainText("Moon & Uranus");
@@ -353,7 +354,7 @@ test("crystal raycasting selects bodies and relationships; drag and empty backgr
     "data-settled",
     "true",
   );
-  await page.mouse.click(360, 415);
+  await page.mouse.click(360, 393);
   await expect(
     page.getByRole("button", { name: "Whole chart", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");

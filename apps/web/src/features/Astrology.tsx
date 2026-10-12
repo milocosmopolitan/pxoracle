@@ -21,10 +21,11 @@ import { probeSaved } from "./astrology/savedProbe";
 import type { RestoreCandidate } from "./astrology/persistence";
 import {
   BirthReview,
-  HoroscopesNotice,
+  HoroscopesBubble,
+  HubBubble,
+  NatalHelp,
   NatalGreeting,
   OracleBubble,
-  ServiceHub,
 } from "./astrology/Consultation";
 import {
   degrees,
@@ -134,13 +135,22 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
       if (!rect) return;
       const w = window.innerWidth,
         h = window.innerHeight;
-      const left = Math.max(0, rect.left),
-        top = Math.max(0, rect.top);
+      const left = Math.max(0, rect.left);
+      let top = Math.max(0, rect.top),
+        bottom = rect.bottom;
+      // On phones the oracle is framed between the caption above and the bubble below, never behind them.
+      if (w <= 800 && view === "table") {
+        const caption = stageElement.current?.querySelector(".natal-scene-caption");
+        if (caption) top = Math.max(top, caption.getBoundingClientRect().bottom);
+        const bubble = column.current?.querySelector<HTMLElement>(".oracle-bubble");
+        if (bubble && getComputedStyle(bubble).position === "absolute")
+          bottom = Math.min(bottom, bubble.getBoundingClientRect().top);
+      }
       const next = {
         left: left / w,
         top: top / h,
         width: Math.max(1, Math.min(w, rect.right) - left) / w,
-        height: Math.max(1, Math.min(h, rect.bottom) - top) / h,
+        height: Math.max(1, Math.min(h, bottom) - top) / h,
       };
       setViewport((old) =>
         Object.keys(next).every(
@@ -156,6 +166,11 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
     measure();
     const observer = new ResizeObserver(measure);
     if (stageElement.current) observer.observe(stageElement.current);
+    const framing = [
+      stageElement.current?.querySelector(".natal-scene-caption"),
+      column.current?.querySelector(".oracle-bubble"),
+    ];
+    for (const element of framing) if (element) observer.observe(element);
     window.addEventListener("resize", measure);
     window.addEventListener("scroll", measure, { passive: true });
     return () => {
@@ -163,7 +178,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", measure);
     };
-  }, []);
+  }, [view, stage]);
   useEffect(() => {
     setSceneSettled(false);
     const revision = ++cameraRequest.current;
@@ -290,11 +305,21 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
             : false;
       })
     : [];
+  // The oracle's bubble carries the choices and greetings; the panel is only for forms, the globe and the chart.
+  const hasPanel = !(view === "table" && (stage === "hub" || stage === "horoscopes" || stage === "greeting"));
   const bubble =
     view !== "table" ? null : stage === "hub" ? (
-      <OracleBubble stage="hub">Come in. Shall we look at the sky you were born under, or at the days ahead?</OracleBubble>
+      <HubBubble
+        hasChart={!!chart}
+        hasDraft={hasDraft}
+        disabled={busy}
+        onNatal={actions.natal}
+        onHoroscopes={actions.horoscopes}
+        onResumeChart={actions.resumeChart}
+        onContinueDraft={actions.continueDraft}
+      />
     ) : stage === "horoscopes" ? (
-      <OracleBubble stage="horoscopes">Horoscopes are not ready in this room yet. For now I can only read the sky you were born under.</OracleBubble>
+      <HoroscopesBubble disabled={busy} onBack={actions.hub} onNatal={actions.natal} />
     ) : stage === "greeting" ? (
       <NatalGreeting
         saved={consultation.saved}
@@ -326,6 +351,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
       data-presentation={view}
       data-stage={stage}
       data-globe-phase={globePhase}
+      data-panel={hasPanel ? "open" : "none"}
     >
       <section className="natal-stage-column" ref={column}>
         <Link href="/" prefetch={false}>
@@ -351,6 +377,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
               </h1>
             )}
           </div>
+          {view === "table" && (stage === "greeting" || stage === "details" || stage === "review") && <NatalHelp />}
           {view !== "table" && (
             <button type="button" className="stage-return" onClick={view === "globe" ? actions.cancelBirthplace : actions.returnToTable}>
               ← Return to the table
@@ -365,6 +392,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
           </p>
         )}
       </section>
+      {hasPanel && (
       <section
         ref={panel}
         className="panel natal-panel"
@@ -376,36 +404,6 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
             <h2 tabIndex={-1}>Where did your story begin?</h2>
             <BirthplaceForm confirmed={confirmed} onConfirm={actions.confirmBirthplace} onCancel={actions.cancelBirthplace} />
           </>
-        )}
-        {view === "table" && stage === "hub" && (
-          <ServiceHub
-            hasChart={!!chart}
-            hasDraft={hasDraft}
-            disabled={busy}
-            onNatal={actions.natal}
-            onHoroscopes={actions.horoscopes}
-            onResumeChart={actions.resumeChart}
-            onContinueDraft={actions.continueDraft}
-          />
-        )}
-        {view === "table" && stage === "horoscopes" && <HoroscopesNotice disabled={busy} onBack={actions.hub} onNatal={actions.natal} />}
-        {view === "table" && stage === "greeting" && (
-          <section aria-label="Natal chart">
-            <p className="eyebrow">NATAL CHART</p>
-            <h2 tabIndex={-1}>Your birth sky</h2>
-            <p>
-              The oracle checks this device for a saved chart without calculating or changing anything.
-              A new chart needs your birthplace, date and, if known, time. Everything stays in this browser.
-            </p>
-            {consultation.saved !== "none" && consultation.saved !== "unknown" && consultation.saved !== "unavailable" && (
-              <div className="actions">
-                <button type="button" onClick={actions.deleteSaved} disabled={busy}>Delete saved chart</button>
-              </div>
-            )}
-            <div className="actions">
-              <button type="button" onClick={actions.hub} disabled={unhydrated}>Back to the choices</button>
-            </div>
-          </section>
         )}
         {view === "table" && stage === "details" && confirmed && (
           <>
@@ -758,6 +756,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
           assessment. No LLM or interpretation service is used.
         </small>
       </section>
+      )}
     </div>
   );
 }

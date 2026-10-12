@@ -44,7 +44,7 @@ export const TAROT_TABLE: TableDimensions = {
 /** The painted study's desk: same proportions, sized to the room painting (astrology units). */
 export const STUDY_TABLE: TableDimensions = {
   width: 8.4,
-  depth: 2.9,
+  depth: 3.5,
   top: 0.2,
   apronHeight: 0.42,
   apronThickness: 0.12,
@@ -109,15 +109,27 @@ export function buildTableAssembly(
     return mesh;
   };
   const { width, depth, top, apronHeight, apronThickness, apronDrop, sideInset, frontInset, legInset, legSize, legHeight } = dims;
-  const tabletop = box("tabletop", new RoundedBoxGeometry(width, depth, top, 3, Math.min(0.075, top * 0.25)), [0, 0, -top / 2], wood);
+  // A dark contour hull gives every edge the hand-inked outline the painted sprites carry.
+  const ink = new THREE.MeshBasicMaterial({ color: 0x1a0f08, side: THREE.BackSide });
+  owner.material(ink);
+  const outlined = (mesh: THREE.Mesh, [sx, sy, sz]: [number, number, number], grow = 0.035) => {
+    const hull = new THREE.Mesh(mesh.geometry, ink);
+    hull.name = `${mesh.name}-outline`;
+    hull.scale.set(1 + grow / sx, 1 + grow / sy, 1 + grow / sz);
+    hull.position.copy(mesh.position);
+    parent.add(hull);
+    return mesh;
+  };
+  const tabletop = box("tabletop", new RoundedBoxGeometry(width, depth, top, 4, top * 0.42), [0, 0, -top / 2], wood);
+  outlined(tabletop, [width, depth, top]);
   const apronY = depth / 2 - frontInset,
     sideX = width / 2 - sideInset;
-  box("table-front-apron", new THREE.BoxGeometry(width - 2 * frontInset - 0.1, apronThickness, apronHeight), [0, -apronY, -apronDrop], trim);
+  outlined(box("table-front-apron", new THREE.BoxGeometry(width - 2 * frontInset - 0.1, apronThickness, apronHeight), [0, -apronY, -apronDrop], trim), [width - 2 * frontInset - 0.1, apronThickness, apronHeight], 0.025);
   box("table-back-apron", new THREE.BoxGeometry(width - 2 * frontInset - 0.1, apronThickness, apronHeight), [0, apronY, -apronDrop], trim);
   for (const x of [-sideX, sideX]) {
     box("table-side-apron", new THREE.BoxGeometry(apronThickness, depth - 2 * frontInset - 0.1, apronHeight), [x, 0, -apronDrop], trim);
     for (const y of [-(depth / 2 - legInset), depth / 2 - legInset])
-      box("table-leg", new THREE.BoxGeometry(legSize, legSize, legHeight), [x, y, -(top + legHeight / 2)], wood);
+      outlined(box("table-leg", new THREE.BoxGeometry(legSize, legSize, legHeight), [x, y, -(top + legHeight / 2)], wood), [legSize, legSize, legHeight], 0.03);
   }
   return { tabletop };
 }
@@ -148,6 +160,8 @@ export async function createStudyTable(leases: TextureLeases, signal: AbortSigna
   group.scale.setScalar(desk.scale);
   group.rotation.x = -Math.PI / 2;
   const { tabletop } = buildTableAssembly(group, STUDY_TABLE, wood, trim, owner);
+  // The landing camera is orthographic, so the desk carries its own perspective: the front edge is wider than the rear.
+  if (mode === "landing") taperToward(group, STUDY_TABLE.depth / 2, 0.075, owner);
   let dead = false;
   return {
     group,
@@ -163,4 +177,26 @@ export async function createStudyTable(leases: TextureLeases, signal: AbortSigna
       lease.release();
     },
   };
+}
+
+/**
+ * Bakes a depth taper into every mesh of the assembly: x is scaled by 1 + amount * (front-ness),
+ * where the front is local -y. Each mesh gets its own geometry so shared outline hulls stay consistent.
+ */
+function taperToward(group: THREE.Group, half: number, amount: number, owner: RigOwner) {
+  for (const child of group.children) {
+    if (!(child instanceof THREE.Mesh)) continue;
+    child.updateMatrix();
+    const geometry = child.geometry.clone();
+    geometry.applyMatrix4(child.matrix);
+    const position = geometry.getAttribute("position");
+    for (let i = 0; i < position.count; i++) position.setX(i, position.getX(i) * (1 - (amount * position.getY(i)) / half));
+    position.needsUpdate = true;
+    geometry.computeVertexNormals();
+    geometry.computeBoundingSphere();
+    owner.geometry(geometry);
+    child.geometry = geometry;
+    child.position.set(0, 0, 0);
+    child.scale.set(1, 1, 1);
+  }
 }

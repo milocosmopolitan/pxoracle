@@ -30,7 +30,7 @@ test("direct entry begins at the consultation table with service choices and no 
   expect(contentRequests(requests)).toEqual([]);
   // Horoscopes is a separate branch with an honest availability notice and a way back.
   await page.getByRole("button", { name: "Horoscopes" }).click();
-  await expect(page.getByRole("heading", { name: "Not ready yet" })).toBeVisible();
+  await expect(oracle(page)).toContainText("Horoscopes are not ready in this room yet");
   await expect(layout(page)).toHaveAttribute("data-presentation", "table");
   await expect(layout(page)).toHaveAttribute("data-globe-phase", "room");
   await expect(page.getByLabel("Birth country")).toHaveCount(0);
@@ -261,7 +261,10 @@ test("mobile viewport keeps the dialogue readable and the flow usable", async ({
   await expect(oracle(page)).toBeVisible();
   const bubble = await oracle(page).boundingBox();
   const stage = await page.locator(".natal-stage").boundingBox();
-  expect(bubble!.y).toBeGreaterThanOrEqual(stage!.y + stage!.height - 1);
+  // The bubble is a sheet at the bottom of the stage and never covers the caption or the oracle framing above it.
+  const caption = await page.locator(".natal-scene-caption").boundingBox();
+  expect(bubble!.y).toBeGreaterThanOrEqual(caption!.y + caption!.height);
+  expect(bubble!.y + bubble!.height).toBeLessThanOrEqual(stage!.y + stage!.height + 1);
   await chooseNatal(page);
   await oracle(page).getByRole("button", { name: "Begin a new chart" }).click();
   await expect(layout(page)).toHaveAttribute("data-presentation", "globe");

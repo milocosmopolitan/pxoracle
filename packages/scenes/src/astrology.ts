@@ -7,6 +7,7 @@ import type {
 import { createStudyProps } from "./study-props";
 import { createStudyGlobe } from "./study-globe";
 import { createStudyTable } from "./study-table";
+import { createStudyObjects } from "./study-objects";
 import { globeCountries } from "@pxoracle/contracts/globe-geography";
 import { globeShot } from "./globe-camera";
 import type { GlobeView } from "@pxoracle/contracts/globe-view";
@@ -278,6 +279,9 @@ export const createScene: SceneFactory = async (leases, signal) => {
     const desk = await createStudyTable(leases, signal, "astrology");
     staticResources.push(desk.dispose);
     base.scene.add(desk.group);
+    const objects = await createStudyObjects(leases, signal, "astrology");
+    staticResources.push(objects.dispose);
+    base.scene.add(objects.group);
     let globeView: GlobeView | undefined;
     let lastGlobeTime = 0;
     let globeMoving = false;

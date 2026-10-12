@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { navLink } from "./nav";
 import { settleTarot } from "./tarot-support";
 import { beginNewChart, confirmManual, enterDetails, openConsultation, openSaved } from "./consultation-support";
 test.beforeEach(async({browser},info)=>{await info.attach("browser-version",{body:JSON.stringify({project:info.project.name,version:browser.version()}),contentType:"application/json"});});
@@ -41,7 +42,7 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
   await page.reload();
   await page.getByRole("button", { name: "Resume a saved reading" }).click();
   await settleTarot(page, page.getByRole("heading", { name: "Let the images settle." }));
-  await page.getByRole("link", { name: "The room", exact: true }).click();
+  await (await navLink(page, "The room")).click();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole('heading',{level:1})).toContainText('Some answers');
   await page.goBack();
@@ -107,14 +108,14 @@ test("rapid route changes keep a single canvas and usable keyboard navigation", 
 }) => {
   await page.goto("/");
   for (let n = 0; n < 3; n++) {
-    await page.getByRole("link", { name: "Astrology", exact: true }).click();
-    await page.getByRole("link", { name: "Tarot", exact: true }).click();
-    await page.getByRole("link", { name: "The room", exact: true }).click();
+    await (await navLink(page, "Astrology")).click();
+    await (await navLink(page, "Tarot")).click();
+    await (await navLink(page, "The room")).click();
   }
   await expect(page.locator("canvas")).toHaveCount(1);
   // Route commit moves focus to the destination heading; wait for it so it cannot steal focus later.
   await expect(page.getByRole("heading", { level: 1 })).toBeFocused();
-  const tarotLink = page.getByRole("link", { name: "Tarot", exact: true });
+  const tarotLink = await navLink(page, "Tarot");
   await tarotLink.focus();
   await expect(tarotLink).toBeFocused();
   await page.keyboard.press("Enter");
@@ -140,8 +141,8 @@ test('repeated navigation releases WebGL allocations and records a frame baselin
  await page.goto('/');
  const samples:Record<string,number>[]=[];
  for(let i=0;i<7;i++){
-  for(const name of ['Astrology','Tarot','The room']){
-   await page.getByRole('link',{name,exact:true}).click();
+  for(const name of ['Astrology','Tarot','The room'] as const){
+   await (await navLink(page,name)).click();
    await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   }

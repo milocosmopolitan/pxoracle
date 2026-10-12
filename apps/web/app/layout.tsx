@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Providers from "../src/runtime/Providers";
+import SiteHeader from "../src/runtime/SiteHeader";
 import "./style.css";
 export const metadata: Metadata = {
   title: {
@@ -18,25 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <a className="skip" href="#main">
             Skip to reading
           </a>
-          <header>
-            <Link className="brand" href="/" prefetch={false}>
-              <span className="brand-star">✧</span> PXORACLE
-            </Link>
-            <nav aria-label="Main navigation">
-              <Link href="/" prefetch={false}>
-                The room
-              </Link>
-              <Link href="/tarot/" prefetch={false}>
-                Tarot
-              </Link>
-              <Link href="/astrology/" prefetch={false}>
-                Astrology
-              </Link>
-            </nav>
-            <span className="private-note">
-              ◌ &nbsp; A moment, just for you
-            </span>
-          </header>
+          <SiteHeader />
           <main id="main">{children}</main>
           <footer>
             <span>Made of stardust & a little curiosity.</span>

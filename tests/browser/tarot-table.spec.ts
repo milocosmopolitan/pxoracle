@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { navLink } from "./nav";
 import { graphicsAvailable } from "./tarot-support";
 test.beforeEach(async ({ page }) => {
   test.skip(
@@ -84,8 +85,8 @@ test("standard motion camera, keyboard highlight, route cancellation and three-c
     fullPage: false,
   });
   await page.keyboard.press("Enter");
-  await page.getByRole("link", { name: "The room", exact: true }).click();
-  await page.getByRole("link", { name: "Tarot", exact: true }).click();
+  await (await navLink(page, "The room")).click();
+  await (await navLink(page, "Tarot")).click();
   await expect(
     page.getByRole("button", { name: "Choose slot 2", exact: true }),
   ).toBeVisible({ timeout: 60000 });

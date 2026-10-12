@@ -45,8 +45,8 @@ export function frameTarot(
         Math.cos(azimuth) * Math.cos(elevation) * distance,
       ),
     );
-  // The canvas extends behind the 98px header; keep the room at the scale it had below it.
-  const bleed = mobile ? 1 : height / Math.max(1, height - 98);
+  // The canvas extends behind the header (98px on desktop, 57px on phones); keep the room at the scale it had below it.
+  const bleed = height / Math.max(1, height - (mobile ? 57 : 98));
   const conversationTarget = new THREE.Vector3(mobile ? -3 : -0.4, 0.9, -2);
   const conversation = conversationTarget
     .clone()

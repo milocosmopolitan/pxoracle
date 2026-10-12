@@ -1,5 +1,5 @@
 "use client";
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import type { BirthInput } from "@pxoracle/contracts";
 import type { BirthDraft, ConfirmedBirthplace, SavedAvailability } from "../../state/consultation";
 
@@ -14,7 +14,8 @@ export function OracleBubble({ stage, children, actions }: { stage: string; chil
   );
 }
 
-export function ServiceHub({
+/** The first dialogue: the oracle offers the services as choices instead of a separate panel. */
+export function HubBubble({
   hasChart,
   hasDraft,
   disabled = false,
@@ -33,44 +34,72 @@ export function ServiceHub({
   onContinueDraft: () => void;
 }) {
   return (
-    <section className="service-hub" aria-label="Consultation choices">
-      <p className="eyebrow">A CONSULTATION</p>
-      <h2 tabIndex={-1}>What shall we look at?</h2>
-      <div className="service-choices">
-        <button type="button" className="service-choice" disabled={disabled} onClick={onNatal}>
-          <strong>Natal Chart</strong>
-          <small>The sky at the moment and place you were born, calculated in this browser.</small>
-        </button>
-        <button type="button" className="service-choice" disabled={disabled} onClick={onHoroscopes}>
-          <strong>Horoscopes</strong>
-          <small>Readings for the days ahead. Not yet available in this room.</small>
-        </button>
-      </div>
-      {(hasChart || hasDraft) && (
-        <div className="actions" aria-label="Continue">
+    <OracleBubble
+      stage="hub"
+      actions={
+        <>
+          <button type="button" disabled={disabled} onClick={onNatal}>Natal Chart</button>
+          <button type="button" disabled={disabled} onClick={onHoroscopes}>Horoscopes</button>
           {hasChart && <button type="button" disabled={disabled} onClick={onResumeChart}>Resume the current chart</button>}
           {hasDraft && <button type="button" disabled={disabled} onClick={onContinueDraft}>Continue the birth details</button>}
-        </div>
-      )}
-      {hasChart && <small>The current chart lives in this visit’s memory. It is saved only when you choose Save.</small>}
-    </section>
+        </>
+      }
+    >
+      Come in. Shall we look at the sky you were born under, or at the days ahead?
+    </OracleBubble>
   );
 }
 
-export function HoroscopesNotice({ onBack, onNatal, disabled = false }: { onBack: () => void; onNatal: () => void; disabled?: boolean }) {
+/** Horoscopes are not built yet: say so honestly and offer the way back. */
+export function HoroscopesBubble({ onBack, onNatal, disabled = false }: { onBack: () => void; onNatal: () => void; disabled?: boolean }) {
   return (
-    <section aria-label="Horoscopes">
-      <p className="eyebrow">HOROSCOPES</p>
-      <h2 tabIndex={-1}>Not ready yet</h2>
-      <p>
-        Horoscopes are a separate service and are not available in this room yet. Nothing is calculated or
-        invented in the meantime, and this choice never opens the birthplace globe.
-      </p>
-      <div className="actions">
-        <button type="button" disabled={disabled} onClick={onBack}>Back to the consultation</button>
-        <button type="button" disabled={disabled} onClick={onNatal}>Natal Chart instead</button>
-      </div>
-    </section>
+    <OracleBubble
+      stage="horoscopes"
+      actions={
+        <>
+          <button type="button" disabled={disabled} onClick={onBack}>Back to the consultation</button>
+          <button type="button" disabled={disabled} onClick={onNatal}>Natal Chart instead</button>
+        </>
+      }
+    >
+      Horoscopes are not ready in this room yet. For now I can only read the sky you were born under.
+    </OracleBubble>
+  );
+}
+
+/** Help opens a modal explaining the natal chart, replacing the always-visible explanatory panel. */
+export function NatalHelp() {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const close = () => {
+    dialog.current?.close();
+    trigger.current?.focus();
+  };
+  return (
+    <>
+      <button ref={trigger} type="button" className="stage-help" aria-label="About the natal chart" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>
+        ?
+      </button>
+      <dialog ref={dialog} className="help-dialog" aria-labelledby="natal-help-title" onClick={(event) => event.target === dialog.current && close()}>
+        <p className="eyebrow">NATAL CHART</p>
+        <h2 id="natal-help-title">Your birth sky</h2>
+        <p>
+          A natal chart is a map of where the Sun, Moon and planets stood at the moment and place you were born.
+          It is read as symbol and reflection, not as a prediction.
+        </p>
+        <p>
+          A new chart needs your birthplace, the date and, if you know it, the time. Without a time the chart
+          leaves out the Ascendant and houses.
+        </p>
+        <p>
+          The calculation runs in this browser and nothing is sent anywhere. A chart is kept only if you choose
+          Save, and you can delete it at any time.
+        </p>
+        <div className="actions">
+          <button type="button" onClick={close} autoFocus>Got it</button>
+        </div>
+      </dialog>
+    </>
   );
 }
 
@@ -142,6 +171,7 @@ export function NatalGreeting({
           {reviewable && <button type="button" disabled={wait} onClick={actions.useSaved}>Review saved details</button>}
           {saved !== "unknown" && <button type="button" disabled={wait} onClick={actions.newChart}>Begin a new chart</button>}
           {saved === "corrupt" && <button type="button" disabled={wait} onClick={actions.deleteSaved}>Delete the unreadable save</button>}
+          {reviewable && <button type="button" disabled={wait} onClick={actions.deleteSaved}>Delete saved chart</button>}
           {hasChart && <button type="button" disabled={disabled} onClick={actions.resumeChart}>Resume the current chart</button>}
           {hasDraft && <button type="button" disabled={disabled} onClick={actions.continueDraft}>Continue the birth details</button>}
           <button type="button" disabled={disabled} onClick={actions.back}>Back</button>
