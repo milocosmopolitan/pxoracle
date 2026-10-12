@@ -50,8 +50,10 @@ AWS_PROFILE=milo AWS_REGION=us-east-1 bash scripts/bootstrap-publish.sh
 The script deploys `pxoracle-publish-bootstrap` and sets these **repository variables**:
 `AWS_REGION`, `AWS_ACCOUNT_ID`, `AWS_PUBLISH_ROLE_ARN`, `AWS_CLOUDFORMATION_ROLE_ARN`.
 They are identifiers, not secrets. The website stack is `pxoracle-production`; its bucket
-name is `pxoracle-production-<account>-us-east-1`. No custom domain, Route 53 record or ACM
-certificate is required; the initial endpoint is the distribution's `cloudfront.net` name.
+name is `pxoracle-production-<account>-us-east-1`. The template's `DomainName` and
+`HostedZoneId` parameters (defaults `pxoracle.com` and its Route 53 zone) create a DNS-validated
+ACM certificate, CloudFront aliases and alias A/AAAA records for the apex and `www`; set
+`DomainName` empty to serve only the distribution's `cloudfront.net` name.
 
 ## Release and cache behavior
 
