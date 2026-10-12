@@ -1,12 +1,10 @@
 import {
   ATLAS_VERSION,
   ATLAS_COUNTRIES,
-  ATLAS_CITY_COUNT,
   type AtlasCountry,
   type Birthplace,
 } from "@pxoracle/contracts/atlas";
 export const COUNTRIES = ATLAS_COUNTRIES;
-export { ATLAS_CITY_COUNT };
 export const COUNTRY_OPTIONS = Object.entries(COUNTRIES).sort((a, b) => a[1].localeCompare(b[1], "en"));
 interface Shard {
   label: string;
