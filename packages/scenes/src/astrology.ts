@@ -12,12 +12,32 @@ import { globeCountries } from "@pxoracle/contracts/globe-geography";
 import { globeShot } from "./globe-camera";
 import type { GlobeView } from "@pxoracle/contracts/globe-view";
 import { composition } from "./composition";
-import { studyLayers } from "./study";
+import { studyCrystal, studyLayers } from "./study";
 import { layoutMarkers } from "./astrology-layout";
-import { studyDesk } from "./study-table";
-// The map sits just in front of the painted crystal standing on the shared desk.
-const DESK = studyDesk("astrology");
-const ANCHOR = new THREE.Vector3(-3.4, 0.13, DESK.rear + DESK.depth * 0.36 + 0.03);
+import { createCrystalMist } from "./props/crystal-mist";
+// The map floats inside the painted crystal, which stands between the visitor and the oracle.
+const CRYSTAL = studyCrystal("astrology");
+const ANCHOR = new THREE.Vector3(CRYSTAL.sphere.x, CRYSTAL.sphere.y, CRYSTAL.sphere.z + 0.03);
+/** Outer extent of the chart in its own units: planet discs and glyphs at radius 0.99. */
+const CHART_EXTENT = 1.1;
+/** The chart is drawn inside the glass: its outer glyphs stay within 90% of the ball's radius. */
+export const CHART_SCALE = (0.9 * CRYSTAL.sphere.radius) / CHART_EXTENT;
+/**
+ * Lens zoom into the crystal: the table is framed with a 32° lens, the crystal with an 18° lens, and the
+ * move animates focal length together with the dolly so the room's perspective visibly compresses.
+ */
+export const TABLE_FOV = 32;
+export const CRYSTAL_FOV = 18;
+export const ZOOM_DURATION = 2.2;
+/** Mist inside the glass at the table; it blooms fully as the lens closes on the crystal. */
+const TABLE_MIST = 0.3;
+const focal = (fov: number) => 1 / Math.tan(THREE.MathUtils.degToRad(fov / 2));
+/** Interpolates in focal length (not angle), as a zoom lens moves; e is the eased progress. */
+export function zoomFov(from: number, to: number, e: number) {
+  return THREE.MathUtils.radToDeg(2 * Math.atan(1 / THREE.MathUtils.lerp(focal(from), focal(to), e)));
+}
+/** Quintic ease in/out: no velocity or acceleration jump at either end of the zoom. */
+export const zoomEase = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
 const ids = [
   "sun",
   "moon",
@@ -46,10 +66,13 @@ export const createScene: SceneFactory = async (leases, signal) => {
     "tarot",
     { desk: "astrology" },
   );
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.05, 100);
+  const camera = new THREE.PerspectiveCamera(TABLE_FOV, 1, 0.05, 100);
+  // Globe and table shots are planned with the table lens whatever the current zoom is.
+  const planner = new THREE.PerspectiveCamera(TABLE_FOV, 1, 0.05, 100);
   const root = new THREE.Group();
   root.name = "natal-crystal-map";
   root.position.copy(ANCHOR);
+  root.scale.setScalar(CHART_SCALE);
   base.scene.add(root);
   let dead = false,
     current: AstrologyView | undefined,
@@ -59,7 +82,11 @@ export const createScene: SceneFactory = async (leases, signal) => {
     dataKey = "",
     start = 0,
     moving = false,
-    dirty = true;
+    dirty = true,
+    fov = TABLE_FOV,
+    fromFov = TABLE_FOV,
+    toFov = TABLE_FOV,
+    mistMoving = false;
   const position = new THREE.Vector3(-3, 0.8, 20),
     target = new THREE.Vector3(-3, 0.8, 0),
     fromPosition = position.clone(),
@@ -73,7 +100,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
   const dynamic = new THREE.Group();
   root.add(dynamic);
   const ray = new THREE.Raycaster();
-  ray.params.Line = { threshold: 0.035 };
+  ray.params.Line = { threshold: 0.035 * CHART_SCALE };
   function mesh(
     geometry: THREE.BufferGeometry,
     material: THREE.MeshBasicMaterial,
@@ -233,8 +260,9 @@ export const createScene: SceneFactory = async (leases, signal) => {
       0.08,
       Math.min(view.viewport.height, view.viewport.width * camera.aspect),
     );
-    let radius = 1.25;
+    let radius = 1.25 * CHART_SCALE;
     toTarget.copy(ANCHOR);
+    toFov = view.phase === "entry" ? TABLE_FOV : CRYSTAL_FOV;
     if (view.phase === "entry") {
       toTarget.set(-3, 0.7, 0.15);
       radius = 4.2;
@@ -243,8 +271,8 @@ export const createScene: SceneFactory = async (leases, signal) => {
       const m = markers.find(
         (m) => !m.userData.hit && m.userData.selection.id === id,
       );
-      if (m) toTarget.addScaledVector(m.position, 0.52);
-      radius = 0.84;
+      if (m) toTarget.addScaledVector(m.position, 0.52 * CHART_SCALE);
+      radius = 0.84 * CHART_SCALE;
     } else if (view.selection?.type === "aspect") {
       const s = view.selection,
         a = view.bodies.find((b) => b.id === s.a),
@@ -253,12 +281,12 @@ export const createScene: SceneFactory = async (leases, signal) => {
         toTarget.add(
           point(a.longitude, 0.65)
             .add(point(b.longitude, 0.65))
-            .multiplyScalar(0.25),
+            .multiplyScalar(0.25 * CHART_SCALE),
         );
-      radius = 1.02;
+      radius = 1.02 * CHART_SCALE;
     }
     const distance =
-      radius / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / available;
+      radius / Math.tan(THREE.MathUtils.degToRad(toFov / 2)) / available;
     toPosition
       .copy(toTarget)
       .add(
@@ -293,6 +321,10 @@ export const createScene: SceneFactory = async (leases, signal) => {
       dirty = true;
     }
     const globeCenter = globe.group.localToWorld(globe.center.clone());
+    const mist = createCrystalMist(CRYSTAL.sphere.radius);
+    staticResources.push(mist.dispose);
+    mist.mesh.position.set(CRYSTAL.sphere.x, CRYSTAL.sphere.y, CRYSTAL.sphere.z + 0.02);
+    base.scene.add(mist.mesh);
     mesh(
       new THREE.CircleGeometry(0.91, 96),
       mat(0x101528, 0.77),
@@ -359,13 +391,14 @@ export const createScene: SceneFactory = async (leases, signal) => {
         width = w;
         height = h;
         camera.aspect = w / Math.max(1, h);
+        planner.aspect = camera.aspect;
         key = "";
         dataKey = "";
         dirty = true;
       },
       needsRender() {
         const fixedReview = (globeView?.reviewProgress ?? current?.reviewProgress) !== undefined;
-        return (moving && !fixedReview) || globeMoving || dirty;
+        return (moving && !fixedReview) || globeMoving || mistMoving || dirty;
       },
       gesture(event) {
         if(!globeView || globeView.phase === "room" || globeView.phase === "crystal" || dead)return false;
@@ -475,12 +508,14 @@ export const createScene: SceneFactory = async (leases, signal) => {
         if (key !== nextKey) {
           fromPosition.copy(position);
           fromTarget.copy(target);
+          fromFov = fov;
           if (browsing) {
             const focus = browsing.country ? globe.focusCountry(browsing.country) : browsing.region ? globe.focusRegion(browsing.region) : null;
             globe.rotateTo(THREE.MathUtils.clamp((focus?.latitude ?? 25) + orbitPitch, -85, 85), (focus?.longitude ?? 20) + orbitYaw);
             if (browsing.country) globe.highlightCountry(browsing.country);
             else globe.highlightRegion(browsing.region);
-            const shot = globeShot(browsing, focus, globeCenter, camera);
+            const shot = globeShot(browsing, focus, globeCenter, planner);
+            toFov = TABLE_FOV;
             toPosition.copy(shot.position).sub(shot.target).multiplyScalar(zoomOut).add(shot.target); toTarget.copy(shot.target);
           } else chooseShot(view);
           start = time;
@@ -489,22 +524,30 @@ export const createScene: SceneFactory = async (leases, signal) => {
           if (first) {
             fromPosition.copy(toPosition);
             fromTarget.copy(toTarget);
+            fromFov = toFov;
           }
         }
         const dt = Math.min(.1, Math.max(0, time - lastGlobeTime));
         lastGlobeTime = time;
         globeMoving = !!globe.update(dt, reduced);
         const viewport = browsing ? browsing.viewport : view.viewport;
-        const duration = view.phase === "entry" || !view.selection ? 1.6 : 0.7,
+        const zooming = fromFov !== toFov;
+        const duration = zooming ? ZOOM_DURATION : view.phase === "entry" || !view.selection ? 1.6 : 0.7,
           t =
             browsing?.reviewProgress ?? view.reviewProgress ??
             (reduced ? 1 : Math.min(1, (time - start) / duration)),
-          ease = t * t * (3 - 2 * t);
+          ease = zooming ? zoomEase(t) : t * t * (3 - 2 * t);
         position.lerpVectors(fromPosition, toPosition, ease);
         target.lerpVectors(fromTarget, toTarget, ease);
+        fov = zoomFov(fromFov, toFov, ease);
+        camera.fov = fov;
         camera.position.copy(position);
         camera.lookAt(target);
         camera.updateProjectionMatrix();
+        // The mist follows the lens: faint at the table, fully risen once the zoom closes on the crystal.
+        const closed = (focal(fov) - focal(TABLE_FOV)) / (focal(CRYSTAL_FOV) - focal(TABLE_FOV));
+        const room = !browsing || browsing.phase === "room";
+        mistMoving = mist.update(time, room ? TABLE_MIST + (1 - TABLE_MIST) * THREE.MathUtils.clamp(closed, 0, 1) : 0, reduced);
         // Off-axis projection focuses within the actual region left clear by the DOM panel.
         camera.projectionMatrix.elements[8] +=
           1 - 2 * (viewport.left + viewport.width / 2);
@@ -516,7 +559,7 @@ export const createScene: SceneFactory = async (leases, signal) => {
         for (const hit of markers)
           if (hit.userData.hit) {
             const center = hit.getWorldPosition(new THREE.Vector3());
-            const edge = center.clone().add(new THREE.Vector3(0.12, 0, 0));
+            const edge = center.clone().add(new THREE.Vector3(0.12 * CHART_SCALE, 0, 0));
             const a = center.project(camera),
               b = edge.project(camera);
             const radiusPixels = Math.max(1, (Math.abs(b.x - a.x) * width) / 2);

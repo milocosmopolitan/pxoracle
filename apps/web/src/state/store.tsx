@@ -70,6 +70,9 @@ export interface AppState {
   tarotView: TarotView | undefined;
   setTarotView: (tarotView: TarotView | undefined) => void;
   setTarotPresentation: (value: Partial<TarotPresentation>) => void;
+  /** Landing crystal hover sources: the canvas pointer and the HTML astrology entry (hover/focus). */
+  landingCrystal: { scene: boolean; entry: boolean };
+  setLandingCrystal: (value: Partial<{ scene: boolean; entry: boolean }>) => void;
   sceneReady: boolean;
   setSceneReady: (ready: boolean) => void;
   entrance: "waiting" | "opening" | "entered";
@@ -129,6 +132,8 @@ export function createAppStore() {
     setTarotView: (tarotView) => set({ tarotView }),
     setTarotPresentation: (value) =>
       set((s) => ({ tarotPresentation: { ...s.tarotPresentation, ...value } })),
+    landingCrystal: { scene: false, entry: false },
+    setLandingCrystal: (value) => set((s) => ({ landingCrystal: { ...s.landingCrystal, ...value } })),
     sceneReady: false,
     setSceneReady: (sceneReady) => set({ sceneReady }),
     entrance: "waiting",

@@ -51,6 +51,37 @@ test("static direct routes, feature-only WASM, tarot restore and history", async
     "Make a little room",
   );
 });
+test("landing crystal is dormant, blooms on hover or entry focus, and a click opens astrology", async ({ page, isMobile }) => {
+  test.skip(isMobile, "hover needs a mouse; tap-to-open is covered by the scene unit test");
+  await page.goto("/");
+  const host = page.locator(".scene-host");
+  await expect(host).toHaveAttribute("data-ready", "true", { timeout: 60000 });
+  await expect(page.locator(".door-entrance")).toHaveCount(0, { timeout: 20000 });
+  await expect(host).toHaveAttribute("data-crystal", "dormant");
+  const canvas = page.locator(".scene-host canvas");
+  const box = (await canvas.boundingBox())!;
+  // Search the room's left half for the crystal through the real pointer path.
+  let found: { x: number; y: number } | null = null;
+  search: for (let y = box.y + box.height * 0.3; y < box.y + box.height * 0.8; y += 18)
+    for (let x = box.x + box.width * 0.1; x < box.x + box.width * 0.55; x += 18) {
+      await page.mouse.move(x, y);
+      if ((await host.getAttribute("data-crystal")) === "lit") { found = { x, y }; break search; }
+    }
+  expect(found, "the crystal answers the pointer").not.toBeNull();
+  await expect(canvas).toHaveCSS("cursor", "pointer");
+  await page.mouse.move(box.x + box.width * 0.02, box.y + box.height * 0.98);
+  await expect(host).toHaveAttribute("data-crystal", "dormant");
+  await expect(canvas).not.toHaveCSS("cursor", "pointer");
+  // Keyboard equivalent: focusing the astrology entry wakes the crystal; the link stays the accessible route.
+  const entry = page.getByRole("link", { name: /Look to the stars/ });
+  await entry.focus();
+  await expect(host).toHaveAttribute("data-crystal", "lit");
+  await entry.blur();
+  await expect(host).toHaveAttribute("data-crystal", "dormant");
+  await page.mouse.click(found!.x, found!.y);
+  await expect(page).toHaveURL(/\/astrology\/$/);
+  await expect(host).not.toHaveAttribute("data-crystal", /./);
+});
 test("real astrology worker and explicit unknown time", async ({ page }) => {
   const wasm: string[] = [];
   page.on("request", (r) => {

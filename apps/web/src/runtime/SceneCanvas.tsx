@@ -15,12 +15,15 @@ export function SceneCanvas({
   data = {},
   frozen = false,
   embedded = false,
+  crystal,
   onStatus,
 }: {
   route: RouteScene;
   data?: ViewData;
   frozen?: boolean;
   embedded?: boolean;
+  /** Landing crystal state, exposed for styling and tests. */
+  crystal?: "lit" | "dormant";
   onStatus?: (status: string) => void;
 }) {
   const preparedFor = useRef(route);
@@ -80,7 +83,7 @@ export function SceneCanvas({
   }, [data, frozen]);
   return (
     <>
-    <div data-ready={preparedRoute === route && !status} data-route={route} data-table={route === "tarot" && data.tarot && data.tarot.phase !== "conversation" ? "active" : undefined} className="scene-host" style={embedded?{position:"absolute"}:undefined}>
+    <div data-ready={preparedRoute === route && !status} data-route={route} data-crystal={crystal} data-table={route === "tarot" && data.tarot && data.tarot.phase !== "conversation" ? "active" : undefined} className="scene-host" style={embedded?{position:"absolute"}:undefined}>
       <canvas ref={canvas} aria-hidden="true" />
       <div className="scene-shade" />
     </div>

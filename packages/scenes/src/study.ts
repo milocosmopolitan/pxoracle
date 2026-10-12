@@ -4,6 +4,27 @@ import { studyDesk } from "./study-table";
 /** Visible bottom edge of each tabletop sprite as a fraction of its image height (alpha bounds). */
 const CONTACT = { mug: 0.862, crystal: 0.833, deck: 0.911, tray: 0.805, notebook: 0.762, pen: 0.718 } as const;
 
+/** Measured from the crystal sprites' alpha: the glass sphere's center (from the top) and radius, as fractions of the image. */
+const SPHERE = { center: 0.455, radius: 0.305 } as const;
+/**
+ * The painted crystal standing on the study desk. Astrology brings it forward, between the visitor and the
+ * oracle; the landing keeps its place in the room. `sphere` is the glass ball in world space, for the chart,
+ * the in-ball mist and picking.
+ */
+export function studyCrystal(mode: "landing" | "astrology") {
+  const desk = studyDesk(mode);
+  const size = mode === "landing" ? 1.85 : 2.15;
+  const x = mode === "landing" ? -3.08 : -3.2;
+  const depth = mode === "landing" ? 0.36 : 0.6;
+  const z = desk.rear + depth * desk.depth;
+  const y = desk.top + size * (CONTACT.crystal - 0.5);
+  return {
+    url: mode === "astrology" ? "/art/crystal-active.webp" : "/art/crystal.webp",
+    x, y, z, size, depth,
+    sphere: { x, y: y + size * (0.5 - SPHERE.center), z, radius: size * SPHERE.radius },
+  };
+}
+
 export function studyLayers(mode: "landing" | "tarot" | "astrology"): Layer[] {
   const room: Layer[] = [
     ["/art/room.webp", 0, 0, 18, 10],
@@ -39,9 +60,7 @@ export function studyLayers(mode: "landing" | "tarot" | "astrology"): Layer[] {
     // The reading mat lies flat on the surface; the crystal stands on it.
     ["/art/mat.webp", mode === "landing" ? -3.08 : -3.1, desk.top + 0.004, 4.35 * s, desk.depth * 0.62, [0.02, 0.248, 0.982, 0.822], { flat: true, z: desk.rear + desk.depth * 0.52 }],
   ];
-  const crystal = mode === "landing" ? 1.85 : 2.15;
-  furniture.push(
-    stand(mode === "astrology" ? "/art/crystal-active.webp" : "/art/crystal.webp", mode === "landing" ? -3.08 : -3.4, crystal, crystal, CONTACT.crystal, 0.36),
-  );
+  const crystal = studyCrystal(mode);
+  furniture.push(stand(crystal.url, crystal.x, crystal.size, crystal.size, CONTACT.crystal, crystal.depth));
   return [...room, ...furniture];
 }
