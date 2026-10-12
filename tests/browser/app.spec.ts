@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { settleTarot } from "./tarot-support";
+import { beginNewChart, confirmManual, enterDetails, openConsultation, openSaved } from "./consultation-support";
 test.beforeEach(async({browser},info)=>{await info.attach("browser-version",{body:JSON.stringify({project:info.project.name,version:browser.version()}),contentType:"application/json"});});
 test("static direct routes, feature-only WASM, tarot restore and history", async ({
   page,
@@ -54,14 +55,11 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   page.on("request", (r) => {
     if (r.url().endsWith(".wasm")) wasm.push(r.url());
   });
-  await page.goto("/astrology/");
-  await page.getByLabel("Birth date", { exact: true }).fill("2000-01-01");
-  await page.getByLabel("Local birth time").fill("12:00");
-  await page.getByRole("button", { name: "Enter or adjust coordinates" }).click();
-  await page.getByLabel("Birthplace time zone").fill("UTC");
-  await page.getByLabel("Latitude", { exact: true }).fill("0");
-  await page.getByLabel("Longitude", { exact: true }).fill("0");
-  await page.getByRole("button", { name: "Enter the crystal" }).click();
+  await openConsultation(page);
+  await beginNewChart(page);
+  await confirmManual(page, "UTC", "0", "0");
+  await enterDetails(page, "2000-01-01", "12:00");
+  await page.getByRole("button", { name: "Calculate and enter the crystal" }).click();
   await expect(
     page.getByRole("heading", { name: "Your celestial map" }),
   ).toBeVisible({ timeout: 20000 });
@@ -75,12 +73,13 @@ test("real astrology worker and explicit unknown time", async ({ page }) => {
   await page.getByRole('button',{name:'Save on this device'}).click();
   await page.reload();
   const beforeRestore=wasm.length;
-  await page.getByRole('button',{name:'Open saved chart'}).click();
+  await openSaved(page);
   await expect(page.locator('.planets').getByRole('button',{name:/sun.*Capricorn/i})).toBeVisible({ timeout: 20000 });
   expect(wasm.length).toBe(beforeRestore + 1); // The isolated Worker validates restored facts; it does not recalculate them.
-  await page.getByRole('button',{name:'Edit details'}).click();
+  await page.getByRole('button',{name:'Adjust birth details'}).click();
   await page.getByLabel('Time accuracy').selectOption('unknown');
-  await page.getByRole('button',{name:'Enter the crystal'}).click();
+  await page.getByRole('button',{name:'Review the details'}).click();
+  await page.getByRole('button',{name:'Calculate and enter the crystal'}).click();
   await expect(page.getByText('Birth time is uncertain.',{exact:false})).toBeVisible({ timeout: 20000 });
   await expect(page.getByText('Ascendant ·',{exact:false})).toHaveCount(0);
 
@@ -113,8 +112,11 @@ test("rapid route changes keep a single canvas and usable keyboard navigation", 
     await page.getByRole("link", { name: "The room", exact: true }).click();
   }
   await expect(page.locator("canvas")).toHaveCount(1);
+  // Route commit moves focus to the destination heading; wait for it so it cannot steal focus later.
+  await expect(page.getByRole("heading", { level: 1 })).toBeFocused();
   const tarotLink = page.getByRole("link", { name: "Tarot", exact: true });
   await tarotLink.focus();
+  await expect(tarotLink).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/tarot\/$/);
 });
@@ -155,11 +157,14 @@ test('failed scene art preserves controls and offers an accessible retry',async(
  let fail=true;
  await page.route('**/art/room.webp',route=>fail?route.abort():route.continue());
  await page.goto('/astrology/');
- await expect(page.getByLabel('Birth date',{exact:true})).toBeVisible({ timeout: 20000 });
- await page.getByLabel('Birth date',{exact:true}).fill('2000-01-01');
+ await expect(page.getByRole('button',{name:'Natal Chart'})).toBeVisible({ timeout: 20000 });
+ await page.getByRole('button',{name:'Natal Chart'}).click();
+ await page.locator('.oracle-bubble').getByRole('button',{name:'Begin a new chart'}).click();
+ await page.getByRole('button',{name:'Enter or adjust coordinates'}).click();
+ await page.getByLabel('Birthplace time zone').fill('UTC');
  await expect(page.locator('.scene-status')).toContainText(/retry|cannot start WebGL/i,{timeout:15000});
  if(browserName==='firefox'&&(await page.locator('.scene-status').innerText()).includes('cannot start WebGL')){
-  await expect(page.getByLabel('Birth date',{exact:true})).toHaveValue('2000-01-01');
+  await expect(page.getByLabel('Birthplace time zone')).toHaveValue('UTC');
   await test.info().attach('graphics-support',{body:'Hosted Firefox cannot initialize WebGL; HTML form fallback remains usable. Asset retry is covered by Chrome/WebKit/mobile emulation.',contentType:'text/plain'});
   return;
  }
@@ -167,11 +172,11 @@ test('failed scene art preserves controls and offers an accessible retry',async(
  await expect(retry).toBeVisible({ timeout: 20000 });fail=false;
  await retry.focus();await page.keyboard.press('Enter');
  await expect(page.locator('.scene-status')).toHaveCount(0,{timeout:15000});
- await expect(page.getByLabel('Birth date',{exact:true})).toHaveValue('2000-01-01');
+ await expect(page.getByLabel('Birthplace time zone')).toHaveValue('UTC');
 });
 
 
-test("birth fields remain disabled until hydration owns their values", async ({ page }) => {
+test("the consultation hub is server-rendered and birth fields stay disabled until hydration owns their values", async ({ page }) => {
   let release!: () => void;
   const gate = new Promise<void>((resolve) => { release = resolve; });
   await page.route("**/_next/static/**/*.js", async (route) => {
@@ -180,10 +185,14 @@ test("birth fields remain disabled until hydration owns their values", async ({ 
   });
   try {
     await page.goto("/astrology/", { waitUntil: "commit" });
-    await expect(page.getByLabel("Birth date", { exact: true })).toBeDisabled();
-    await expect(page.getByRole("button", { name: "Enter the crystal" })).toBeDisabled();
+    // No birth form flashes before hydration; the static hub is already readable.
+    await expect(page.getByRole("button", { name: "Natal Chart" })).toBeVisible();
+    await expect(page.getByLabel("Birth date", { exact: true })).toHaveCount(0);
+    await expect(page.locator(".natal-layout")).toHaveAttribute("data-presentation", "table");
   } finally { release(); }
-  await expect(page.getByLabel("Birth date", { exact: true })).toBeEnabled();
+  await openConsultation(page);
+  await beginNewChart(page);
+  await expect(page.locator(".birthplace-form fieldset")).toBeEnabled();
   await page.getByRole("button", { name: "Enter or adjust coordinates" }).click();
   await page.getByLabel("Birthplace time zone").fill("UTC");
   await expect(page.getByLabel("Birthplace time zone")).toHaveValue("UTC");

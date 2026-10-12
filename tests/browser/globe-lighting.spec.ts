@@ -6,6 +6,9 @@ test.use({ reducedMotion: "reduce" });
 async function room(page: Page, requireGraphics = true) {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/astrology/");
+  // Globe browsing is a step of Natal Chart creation, entered explicitly from the consultation table.
+  await page.getByRole("button", { name: "Natal Chart" }).click();
+  await page.locator(".oracle-bubble").getByRole("button", { name: "Begin a new chart" }).click();
   await expect(page.getByLabel("Birth country")).toBeEnabled();
   if (!(await graphicsAvailable(page))) {
     test.skip(requireGraphics, "WebGL unavailable in this browser environment; HTML form is usable, visual qualification remains unsupported.");
@@ -64,6 +67,7 @@ test("region/country/city keeps the country frame and only loads selected atlas 
   await expect(page.getByLabel("Browsing region")).toHaveValue("asia");
   await page.getByRole("button", { name: "Room view" }).click();
   await expect(page.getByRole("button", { name: "Back one view" })).toHaveCount(0);
+  await expect(page.locator(".natal-layout")).toHaveAttribute("data-presentation", "table");
   expect(errors).toEqual([]);
 });
 
@@ -113,6 +117,8 @@ test("asset retry restores the scene and city search survives WebGL unavailabili
     await page.route("**/art/candle.webp", route => blocked ? route.abort() : route.continue());
     await page.goto("/astrology/");
     await expect(page.getByRole("button", { name: "Retry scene" })).toBeVisible();
+    await page.getByRole("button", { name: "Natal Chart" }).click();
+    await page.locator(".oracle-bubble").getByRole("button", { name: "Begin a new chart" }).click();
     await expect(page.getByLabel("Birth country")).toBeEnabled();
     blocked = false;
     await page.getByRole("button", { name: "Retry scene" }).click();
@@ -129,6 +135,8 @@ test("asset retry restores the scene and city search survives WebGL unavailabili
   });
   await page.goto("/astrology/");
   await expect(page.getByText("Your browser cannot start WebGL. All reading controls remain available.")).toBeVisible();
+  await page.getByRole("button", { name: "Natal Chart" }).click();
+  await page.locator(".oracle-bubble").getByRole("button", { name: "Begin a new chart" }).click();
   await page.getByLabel("Birth country").selectOption("SG");
   const citySearch = page.getByLabel("Birth city", { exact: true });
   // Type immediately after country commit; a delayed reset must never erase fresh input.

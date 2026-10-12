@@ -33,3 +33,5 @@ Local city input, natal interpretation and crystal exploration: [ADR 007](007-lo
 Context-sensitive tarot editorial release: [ADR 008](008-contextual-tarot-editorial.md).
 
 Country-framed globe and prop-owned lighting: [ADR 009](009-globe-and-prop-lighting.md).
+
+Oracle-led consultation flow and the shared study desk: [ADR 010](010-oracle-consultation-flow.md).

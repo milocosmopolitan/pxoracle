@@ -1,14 +1,31 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import type { BirthInput } from "@pxoracle/contracts";
 import type {
   AstrologySelection,
   AstrologyView,
 } from "@pxoracle/contracts/astrology-view";
 import { useOracle, useOracleStore } from "../state/store";
+import {
+  birthInputFrom,
+  consultationFromInput,
+  emptyDraft,
+  type ConfirmedBirthplace,
+  type ConsultationIntent,
+} from "../state/consultation";
 import { ErrorNotice } from "./shared";
-import { BirthForm } from "./astrology/BirthForm";
+import { BirthDetailsForm, BirthplaceForm } from "./astrology/BirthForm";
 import { useNatal, type NatalEngine } from "./astrology/useNatal";
+import { probeSaved } from "./astrology/savedProbe";
+import type { RestoreCandidate } from "./astrology/persistence";
+import {
+  BirthReview,
+  HoroscopesNotice,
+  NatalGreeting,
+  OracleBubble,
+  ServiceHub,
+} from "./astrology/Consultation";
 import {
   degrees,
   evidenceLabel,
@@ -22,28 +39,51 @@ import {
 export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
   const chart = useOracle((s) => s.chart),
     natal = useOracle((s) => s.natal);
-  const birthplace = useOracle(s => s.birthplace);
+  const birthplace = useOracle((s) => s.birthplace);
+  const consultation = useOracle((s) => s.consultation);
   const store = useOracleStore();
   const controller = useNatal(engine);
-  const entryPending = useOracle(s => s.globeEntryPending);
-  const [preferAtlas, setPreferAtlas] = useState(entryPending);
+  const dispatch = useCallback(
+    (intent: ConsultationIntent) => store.getState().navigateConsultation(intent),
+    [store],
+  );
+  const { presentation, stage } = consultation;
+  // Static HTML renders the hub before hydration; controls enable once React owns them.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
+  const busy = controller.busy || !hydrated;
+  const unhydrated = !hydrated;
+  const inCrystal = presentation === "crystal" && !!chart;
+  // Camera presentation is explicit navigation; a chart alone never selects the crystal.
+  const view: "crystal" | "globe" | "table" = inCrystal ? "crystal" : presentation === "globe" ? "globe" : "table";
+
+  // Route entry: an explicit globe shortcut keeps its context; everything else begins at the table.
   useEffect(() => {
-    if (!entryPending) return;
-    store.getState().consumeGlobeEntry();
-    setPreferAtlas(true);
-    if (store.getState().chart) controller.edit();
-  }, [entryPending, store, controller]);
+    const s = store.getState();
+    if (s.globeEntryPending) s.consumeGlobeEntry();
+    else s.navigateConsultation({ type: "arrive" });
+  }, [store]);
+
+  // Hydration-safe saved-data probe: read-only, repeated after explicit Save/Delete.
+  const [candidate, setCandidate] = useState<RestoreCandidate | null>(null);
+  useEffect(() => {
+    const probe = probeSaved(() => localStorage);
+    setCandidate(probe.candidate);
+    store.getState().navigateConsultation({ type: "saved", availability: probe.availability });
+  }, [store, controller.storageRevision]);
+
   const [full, setFull] = useState(false);
   const [sceneSettled, setSceneSettled] = useState(false);
   const cameraRequest = useRef(0);
   const onSettled = useCallback((revision: number) => {
     if (revision === cameraRequest.current) setSceneSettled(true);
   }, []);
-  const stage = useRef<HTMLDivElement>(null);
+  const stageElement = useRef<HTMLDivElement>(null);
+  const column = useRef<HTMLElement>(null);
   const panel = useRef<HTMLElement>(null);
   useEffect(() => {
     if (panel.current) panel.current.scrollTop = 0;
-  }, [natal.revision]);
+  }, [natal.revision, view, stage]);
   useEffect(() => {
     const report = panel.current?.querySelector<HTMLElement>(".natal-report");
     if (full && report && panel.current)
@@ -62,6 +102,16 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
         panel.current.getBoundingClientRect().top -
         20;
   }, [natal.selection, full]);
+  // Keyboard focus follows the dialogue after each explicit stage or presentation change.
+  const focusedRevision = useRef(consultation.revision);
+  useEffect(() => {
+    if (focusedRevision.current === consultation.revision) return;
+    focusedRevision.current = consultation.revision;
+    const target =
+      column.current?.querySelector<HTMLElement>(".oracle-bubble") ??
+      panel.current?.querySelector<HTMLElement>("h2[tabindex], .stage-return");
+    target?.focus({ preventScroll: true });
+  }, [consultation.revision]);
   const [viewport, setViewport] = useState<AstrologyView["viewport"]>({
     left: 0,
     top: 0.15,
@@ -80,7 +130,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
   );
   useEffect(() => {
     const measure = () => {
-      const rect = stage.current?.getBoundingClientRect();
+      const rect = stageElement.current?.getBoundingClientRect();
       if (!rect) return;
       const w = window.innerWidth,
         h = window.innerHeight;
@@ -105,7 +155,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
     };
     measure();
     const observer = new ResizeObserver(measure);
-    if (stage.current) observer.observe(stage.current);
+    if (stageElement.current) observer.observe(stageElement.current);
     window.addEventListener("resize", measure);
     window.addEventListener("scroll", measure, { passive: true });
     return () => {
@@ -118,7 +168,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
     setSceneSettled(false);
     const revision = ++cameraRequest.current;
     store.getState().setAstrologyView({
-      phase: chart ? "chart" : "entry",
+      phase: inCrystal ? "chart" : "entry",
       revision,
       bodies:
         chart?.bodies.map(({ id, longitude }) => ({ id, longitude })) ?? [],
@@ -131,6 +181,7 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
     });
   }, [
     chart,
+    inCrystal,
     natal.revision,
     natal.selection,
     viewport,
@@ -138,24 +189,93 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
     onSettled,
     store,
   ]);
+  // Globe phases follow the presentation: the table framing is "room", the crystal hides browsing.
+  const globePhase =
+    view === "globe"
+      ? birthplace.phase === "room"
+        ? "overview"
+        : birthplace.phase
+      : view === "crystal"
+        ? "crystal"
+        : "room";
   useEffect(() => {
     store.getState().setGlobeView({
-      phase: chart ? "crystal" : birthplace.phase,
+      phase: globePhase,
       region: birthplace.region, country: birthplace.country, revision: birthplace.revision, adjustment: birthplace.adjustment, viewport,
       onIntent: store.getState().navigateBirthplace,
     });
-  }, [chart, birthplace.phase, birthplace.region, birthplace.country, birthplace.revision, birthplace.adjustment, viewport, store]);
+  }, [globePhase, birthplace.region, birthplace.country, birthplace.revision, birthplace.adjustment, viewport, store]);
   useEffect(() => () => { store.getState().setAstrologyView(undefined); store.getState().setGlobeView(undefined); }, [store]);
+  // Layered Escape: report → exploration → whole chart → table; globe → table. One handler.
   useEffect(() => {
     const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") select(null);
+      if (event.key !== "Escape") return;
+      const s = store.getState();
+      if (s.consultation.presentation === "crystal" && s.chart) {
+        if (full) setFull(false);
+        else if (s.natal.selection) select(null);
+        else s.navigateConsultation({ type: "return" });
+      } else if (s.consultation.presentation === "globe") s.navigateBirthplace({ type: "cancel" });
     };
     window.addEventListener("keydown", escape);
     return () => window.removeEventListener("keydown", escape);
-  }, [select]);
+  }, [select, store, full]);
   useEffect(() => {
-    if (!chart) setFull(false);
-  }, [chart]);
+    if (!inCrystal) setFull(false);
+  }, [inCrystal]);
+
+  const draft = consultation.draft ?? emptyDraft();
+  const confirmed = consultation.birthplace;
+  const hasDraft = !!(confirmed || consultation.draft);
+  const actions = {
+    natal: () => dispatch({ type: "service", service: "natal" }),
+    horoscopes: () => dispatch({ type: "service", service: "horoscopes" }),
+    hub: () => dispatch({ type: "hub" }),
+    returnToTable: () => dispatch({ type: "return" }),
+    resumeChart: () => dispatch({ type: "open-crystal" }),
+    continueDraft: () => dispatch({ type: "details" }),
+    exploreBirthplace: () => store.getState().navigateBirthplace({ type: "open" }),
+    newChart: () => {
+      controller.clearError();
+      dispatch({ type: "new-chart" });
+      store.getState().navigateBirthplace({ type: "open" });
+    },
+    confirmBirthplace: (place: ConfirmedBirthplace) => {
+      dispatch({ type: "confirm-birthplace", birthplace: place });
+      store.getState().navigateBirthplace({ type: "cancel" });
+    },
+    cancelBirthplace: () => store.getState().navigateBirthplace({ type: "cancel" }),
+    review: () => {
+      controller.clearError();
+      dispatch({ type: "review" });
+    },
+    editDetails: () => dispatch({ type: "details" }),
+    useSaved: () => {
+      if (!candidate) return;
+      controller.clearError();
+      dispatch({ type: "use-saved", ...consultationFromInput(candidate.input, candidate.place) });
+    },
+    adjustDetails: () => {
+      if (!chart) return;
+      controller.clearError();
+      dispatch({ type: "use-saved", stage: "details", ...consultationFromInput(chart.provenance.settings as BirthInput, natal.place) });
+    },
+    openSaved: async () => {
+      const revision = store.getState().consultation.revision;
+      const ok = await controller.restore();
+      // A late completion updates data only; it cannot pull a reader who moved on into the crystal.
+      if (ok && store.getState().consultation.revision === revision) dispatch({ type: "open-crystal" });
+    },
+    calculate: async (fold: BirthInput["fold"]) => {
+      const input = birthInputFrom(confirmed, consultation.draft, fold);
+      if (!input || !confirmed) return;
+      const revision = store.getState().consultation.revision;
+      const ok = await controller.calculate(input, confirmed.provenance);
+      if (ok && store.getState().consultation.revision === revision) dispatch({ type: "open-crystal" });
+    },
+    deleteSaved: () => controller.remove(),
+  };
+
   const selectedItems = natal.plan
     ? [...natal.plan.placements, ...natal.plan.aspects].filter((item) => {
         const evidence = item.evidence[0],
@@ -170,70 +290,163 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
             : false;
       })
     : [];
+  const bubble =
+    view !== "table" ? null : stage === "hub" ? (
+      <OracleBubble stage="hub">Come in. Shall we look at the sky you were born under, or at the days ahead?</OracleBubble>
+    ) : stage === "horoscopes" ? (
+      <OracleBubble stage="horoscopes">Horoscopes are not ready in this room yet. For now I can only read the sky you were born under.</OracleBubble>
+    ) : stage === "greeting" ? (
+      <NatalGreeting
+        saved={consultation.saved}
+        label={candidate?.place?.label ?? null}
+        date={candidate?.input.date ?? null}
+        hasChart={!!chart}
+        hasDraft={hasDraft}
+        busy={controller.busy}
+        disabled={unhydrated}
+        actions={{
+          openSaved: () => void actions.openSaved(),
+          useSaved: actions.useSaved,
+          newChart: actions.newChart,
+          resumeChart: actions.resumeChart,
+          continueDraft: actions.continueDraft,
+          deleteSaved: actions.deleteSaved,
+          back: actions.hub,
+        }}
+      />
+    ) : stage === "details" ? (
+      <OracleBubble stage="details">Born in {confirmed?.label ?? "your birthplace"}. Now tell me the date, and the time if you know it.</OracleBubble>
+    ) : (
+      <OracleBubble stage="review">Let me read that back before I look into the crystal.</OracleBubble>
+    );
   return (
-    <div className="natal-layout" data-chart={chart ? "ready" : "entry"}>
-      <section className="natal-stage-column">
+    <div
+      className="natal-layout"
+      data-chart={inCrystal ? "ready" : "entry"}
+      data-presentation={view}
+      data-stage={stage}
+      data-globe-phase={globePhase}
+    >
+      <section className="natal-stage-column" ref={column}>
         <Link href="/" prefetch={false}>
           ← Back to the room
         </Link>
         <div
-          ref={stage}
+          ref={stageElement}
           className="natal-stage"
           data-settled={sceneSettled}
           aria-busy={!sceneSettled}
-          aria-label={chart ? "Crystal exploration area" : "Birthplace globe exploration area"}
+          aria-label={view === "crystal" ? "Crystal exploration area" : view === "globe" ? "Birthplace globe exploration area" : "Consultation table"}
         >
           <div className="natal-scene-caption">
-            <p className="eyebrow">{!chart && birthplace.phase !== "room" ? "THE WORLD AT YOUR BEGINNING" : "THE CELESTIAL MIRROR"}</p>
-            {!chart ? (
-              <h1 tabIndex={-1}>
-                {birthplace.phase === "room" ? <>A sky that<br /><em>began with you.</em></> : <>Find your <em>beginning.</em></>}
-              </h1>
-            ) : (
+            <p className="eyebrow">{view === "globe" ? "THE WORLD AT YOUR BEGINNING" : view === "crystal" ? "THE CELESTIAL MIRROR" : "THE ORACLE’S STUDY"}</p>
+            {view === "crystal" ? (
               <>
                 <h1 tabIndex={-1}>Your celestial map</h1>
                 <p>A symbolic longitude map, not planetary orbits.</p>
               </>
+            ) : (
+              <h1 tabIndex={-1}>
+                {view === "globe" ? <>Find your <em>beginning.</em></> : <>A sky that<br /><em>began with you.</em></>}
+              </h1>
             )}
           </div>
+          {view !== "table" && (
+            <button type="button" className="stage-return" onClick={view === "globe" ? actions.cancelBirthplace : actions.returnToTable}>
+              ← Return to the table
+            </button>
+          )}
         </div>
-        {chart && (
+        {bubble}
+        {view === "crystal" && (
           <p className="natal-stage-instruction">
             Select a marker or use the buttons. Escape or an empty area returns
-            to the whole chart.
+            to the whole chart, then to the table.
           </p>
         )}
       </section>
       <section
         ref={panel}
         className="panel natal-panel"
-        aria-label={chart ? "Chart exploration and report" : "Birth details"}
+        aria-label={view === "crystal" ? "Chart exploration and report" : view === "globe" ? "Birthplace" : "Consultation"}
       >
-        {!chart ? (
+        {view === "globe" && (
           <>
             <p className="eyebrow">A PLACE. A MOMENT. YOU.</p>
-            <h2>Where did your story begin?</h2>
-            <p>Use the local date and time recorded at your birthplace.</p>
-            <BirthForm
-              preferAtlas={preferAtlas}
-              initial={controller.initial}
-              initialPlace={controller.initialPlace}
-              busy={controller.busy}
-              error={controller.error}
-              onSubmit={controller.calculate}
-            />
+            <h2 tabIndex={-1}>Where did your story begin?</h2>
+            <BirthplaceForm confirmed={confirmed} onConfirm={actions.confirmBirthplace} onCancel={actions.cancelBirthplace} />
           </>
-        ) : (
+        )}
+        {view === "table" && stage === "hub" && (
+          <ServiceHub
+            hasChart={!!chart}
+            hasDraft={hasDraft}
+            disabled={busy}
+            onNatal={actions.natal}
+            onHoroscopes={actions.horoscopes}
+            onResumeChart={actions.resumeChart}
+            onContinueDraft={actions.continueDraft}
+          />
+        )}
+        {view === "table" && stage === "horoscopes" && <HoroscopesNotice disabled={busy} onBack={actions.hub} onNatal={actions.natal} />}
+        {view === "table" && stage === "greeting" && (
+          <section aria-label="Natal chart">
+            <p className="eyebrow">NATAL CHART</p>
+            <h2 tabIndex={-1}>Your birth sky</h2>
+            <p>
+              The oracle checks this device for a saved chart without calculating or changing anything.
+              A new chart needs your birthplace, date and, if known, time. Everything stays in this browser.
+            </p>
+            {consultation.saved !== "none" && consultation.saved !== "unknown" && consultation.saved !== "unavailable" && (
+              <div className="actions">
+                <button type="button" onClick={actions.deleteSaved} disabled={busy}>Delete saved chart</button>
+              </div>
+            )}
+            <div className="actions">
+              <button type="button" onClick={actions.hub} disabled={unhydrated}>Back to the choices</button>
+            </div>
+          </section>
+        )}
+        {view === "table" && stage === "details" && confirmed && (
+          <>
+            <p className="eyebrow">A PLACE. A MOMENT. YOU.</p>
+            <h2 tabIndex={-1}>When were you born?</h2>
+            <p className="place-confirmation" role="status">
+              <strong>{confirmed.label}</strong>
+              <br />
+              {confirmed.latitude}°, {confirmed.longitude}° · {confirmed.timezone}
+            </p>
+            <BirthDetailsForm draft={draft} onChange={(value) => dispatch({ type: "draft", draft: value })} onContinue={actions.review} />
+            <div className="actions">
+              <button type="button" disabled={unhydrated} onClick={actions.exploreBirthplace}>Change birthplace</button>
+              <button type="button" disabled={unhydrated} onClick={actions.hub}>Back to the consultation</button>
+            </div>
+          </>
+        )}
+        {view === "table" && stage === "review" && confirmed && (
+          <BirthReview
+            birthplace={confirmed}
+            draft={draft}
+            busy={controller.busy}
+            disabled={unhydrated}
+            error={controller.error}
+            onCalculate={(fold) => void actions.calculate(fold)}
+            onEditDetails={actions.editDetails}
+            onChangeBirthplace={actions.exploreBirthplace}
+            onBack={actions.hub}
+          />
+        )}
+        {view === "table" && (stage === "details" || stage === "review") && !confirmed && (
+          <div className="hint">
+            <p>No birthplace is confirmed yet.</p>
+            <button type="button" onClick={actions.exploreBirthplace}>Choose a birthplace</button>
+          </div>
+        )}
+        {view === "crystal" && chart && (
           <>
             <div className="panel-heading">
-              <h2>
-                {controller.initialPlace?.label ??
-                  natal.place?.label ??
-                  "Your birth chart"}
-              </h2>
-              <button onClick={controller.edit} disabled={controller.busy}>
-                Edit details
-              </button>
+              <h2 tabIndex={-1}>{natal.place?.label ?? "Your birth chart"}</h2>
+              <button onClick={actions.returnToTable}>Return to the table</button>
             </div>
             <HistoricalTime chart={chart} />
             {natal.facts?.certainty === "sampled" && (
@@ -258,6 +471,9 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
               </button>
               <button onClick={() => setFull((v) => !v)} aria-expanded={full}>
                 {full ? "Back to exploration" : "Read full HTML report"}
+              </button>
+              <button onClick={actions.adjustDetails} disabled={controller.busy}>
+                Adjust birth details
               </button>
             </div>
             <div className="planets" aria-label="Select a celestial body">
@@ -514,10 +730,11 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
                 Save on this device
               </button>
               <button onClick={controller.remove}>Delete saved chart</button>
+              <button onClick={actions.returnToTable}>Return to the table</button>
             </div>
           </>
         )}
-        {controller.error && controller.error !== "NONEXISTENT_LOCAL_TIME" && (
+        {controller.error && !["NONEXISTENT_LOCAL_TIME", "AMBIGUOUS_LOCAL_TIME"].includes(controller.error) && (
           <ErrorNotice code={controller.error} />
         )}
         {controller.pending && (
@@ -535,13 +752,6 @@ export default function Astrology({ engine }: { engine?: NatalEngine } = {}) {
             </button>
           </div>
         )}
-        <button
-          className="text-button"
-          disabled={controller.busy}
-          onClick={() => void controller.restore()}
-        >
-          Open saved chart
-        </button>
         {controller.notice && <p role="status">{controller.notice}</p>}
         <small>
           Symbolic reflection, not prediction or a scientific personality

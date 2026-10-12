@@ -836,7 +836,29 @@ body:has(.table-reading) main { pointer-events: none; }
 .scene-host[data-route="astrology"] .scene-shade { background: linear-gradient(90deg, transparent 42%, #090d12a0 70%, #090d12d9); }
 body:has(.natal-layout) main { pointer-events: none; }
 .natal-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 440px); gap: 24px; padding: 22px 28px 18px; min-height: calc(100dvh - 98px); }
-.natal-stage-column > a, .natal-panel { pointer-events: auto; }
+.natal-stage-column > a, .natal-panel, .oracle-bubble, .stage-return { pointer-events: auto; }
+.natal-stage-column { position: relative; }
+/* Readable HTML dialogue beside the oracle; never over the face or the globe. */
+.oracle-bubble { position: absolute; left: 55%; top: 56px; width: min(320px, 40%); background: #f3e9d2; color: #1f1c16; border-radius: 14px; padding: 14px 18px 16px; box-shadow: 0 12px 32px #0009; z-index: 3; font: 15px/1.5 Georgia, serif; }
+.oracle-bubble::before { content: ""; position: absolute; left: -13px; top: 40px; border: 9px solid transparent; border-right-color: #f3e9d2; border-left: 0; }
+.oracle-bubble .eyebrow { color: #7a6333; margin: 0 0 6px; }
+.oracle-bubble .oracle-line { margin: 0; }
+.oracle-bubble .actions { margin-top: 12px; gap: 6px; }
+.oracle-bubble button { background: #2b3a36; color: #f1e9d6; border-color: #2b3a36; min-height: 40px; font-size: 12px; }
+.oracle-bubble button:disabled { opacity: .45; }
+.oracle-bubble:focus-visible { outline: 2px solid #d8bc80; outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) { .oracle-bubble { animation: bubble-in .32s ease-out; } }
+@keyframes bubble-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.stage-return { position: absolute; right: 8px; top: 8px; background: #101a1ae8; border: 1px solid var(--line); color: #ead8b7; font-size: 12px; min-height: 44px; z-index: 3; }
+.service-choices { display: grid; gap: 10px; margin: 18px 0; }
+.service-choice { text-align: left; padding: 16px 18px; min-height: 64px; display: block; }
+.service-choice strong { display: block; font: 21px Georgia, serif; color: #ead8b7; }
+.service-choice small { display: block; color: var(--muted); font-size: 11px; margin-top: 6px; }
+.service-choice:hover strong, .service-choice:focus-visible strong { color: var(--gold); }
+.birth-summary { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 16px 0; font-size: 13px; }
+.birth-summary dt { color: var(--muted); }
+.birth-summary dd { margin: 0; color: #ead8b7; }
+.birthplace-form .actions .primary { width: auto; margin-top: 0; padding: 12px 18px; }
 .natal-stage { height: calc(100dvh - 202px); min-height: 260px; position: relative; }
 .natal-scene-caption { position: absolute; left: 8px; top: 10px; text-shadow: 0 2px 14px #000; }
 .natal-scene-caption h1 { font-size: clamp(26px, 3vw, 44px); margin: 8px 0; }
@@ -886,6 +908,10 @@ body:has(.natal-layout) main { pointer-events: none; }
  .natal-panel { max-height: 47dvh; padding: 20px; width: 100%; }
  .natal-scene-caption { top: 2px; }
  .natal-scene-caption h1 { font-size: 24px; }
+ .oracle-bubble { position: static; width: 100%; margin: 6px 0 4px; padding: 12px 14px; font-size: 14px; }
+ .oracle-bubble::before { display: none; }
+ /* The phone-sized chart fills the stage; keep the return control in the free bottom-left corner. */
+ .natal-layout[data-presentation="crystal"] .stage-return { top: auto; right: auto; bottom: 8px; left: 8px; min-height: 36px; padding: 6px 10px; font-size: 11px; }
  .natal-scene-caption p { margin: 4px 0; }
  .natal-stage-instruction { margin: 0 0 8px; font-size: 10px; }
  .scene-host[data-route="astrology"] .scene-shade { background: linear-gradient(0deg, #090d12b0, transparent 65%); }

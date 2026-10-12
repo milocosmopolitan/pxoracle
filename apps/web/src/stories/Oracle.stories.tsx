@@ -35,10 +35,11 @@ function Seed({
   const setChart = useOracle((s) => s.setChart),
     setTarot = useOracle((s) => s.setTarot),
     setReading = useOracle((s) => s.setReading),
-    setNatal = useOracle((s) => s.setNatal);
+    setNatal = useOracle((s) => s.setNatal),
+    navigateConsultation = useOracle((s) => s.navigateConsultation);
   useEffect(() => {
     if (!revealed) return;
-    if (feature === "astrology") { setChart(natalFixture.chart as Chart); setNatal({ facts: natalFixture.facts as NatalInput, plan: natalFixture.plan as InterpretationPlan, status: "ready" }); }
+    if (feature === "astrology") { setChart(natalFixture.chart as Chart); setNatal({ facts: natalFixture.facts as NatalInput, plan: natalFixture.plan as InterpretationPlan, status: "ready" }); navigateConsultation({ type: "open-crystal" }); }
     else {
       const s = structuredClone(session);
       s.selections = [0, 1, 2].map((slot, i) => ({
@@ -55,7 +56,7 @@ function Seed({
         versions: readingFixtures[0].plan.versions as ReadingPlan["versions"],
       });
     }
-  }, [feature, revealed, setChart, setTarot, setReading, setNatal]);
+  }, [feature, revealed, setChart, setTarot, setReading, setNatal, navigateConsultation]);
   return null;
 }
 const mockTarot = {
@@ -172,13 +173,14 @@ function Harness({
             </div>
           ) : route === "astrology" ? (
             <>
-              <Seed feature="astrology" revealed={state === "reading"} />
+              {/* Seed after the feature mounts: its entry effect would otherwise reset the presentation. */}
               <Astrology engine={mockNatal} />
+              <Seed feature="astrology" revealed={state === "reading"} />
             </>
           ) : route === "tarot" ? (
             <>
-              <Seed feature="tarot" revealed={state === "reading"} />
               <Tarot engine={mockTarot} />
+              <Seed feature="tarot" revealed={state === "reading"} />
             </>
           ) : (
             <div

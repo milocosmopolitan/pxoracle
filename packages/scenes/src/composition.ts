@@ -1,19 +1,25 @@
 import * as THREE from "three";
 import { createStudyProps } from "./study-props";
+import { studyDesk } from "./study-table";
 import type { SceneInstance, TextureLeases } from "@pxoracle/scene-runtime";
 import type { ViewData } from "@pxoracle/contracts";
 type Crop = [left: number, top: number, right: number, bottom: number];
-export type Layer = [url: string, x: number, y: number, width: number, height: number, crop?: number | Crop, appearance?: { flipX?: boolean; tint?: number }];
+export type Layer = [url: string, x: number, y: number, width: number, height: number, crop?: number | Crop, appearance?: { flipX?: boolean; tint?: number; /** World z instead of the layer-order depth. */ z?: number; /** Lie flat on the tabletop (height becomes depth). */ flat?: boolean }];
 
 export async function composition(
   leases: TextureLeases,
   signal: AbortSignal,
   layers: Layer[],
   mode: "landing" | "tarot" | "astrology",
+  options: { pitch?: number; /** Which painted room's desk the runner drapes over when the caller owns props. */ desk?: "landing" | "astrology" } = {},
 ): Promise<SceneInstance> {
   const scene = new THREE.Scene();
   const camera = new THREE.OrthographicCamera(-8, 8, 5, -5, 0.1, 100);
-  camera.position.z = 20;
+  // A small downward pitch shows the real tabletop; billboards keep their painted size.
+  const pitch = THREE.MathUtils.degToRad(options.pitch ?? 0);
+  camera.position.set(0, 20 * Math.sin(pitch), 20 * Math.cos(pitch));
+  camera.lookAt(0, 0, 0);
+  const desk = options.desk ? studyDesk(options.desk) : mode === "tarot" ? null : studyDesk(mode);
   const releases: (() => void)[] = [];
   const geometries: THREE.BufferGeometry[] = [];
   const materials: THREE.Material[] = [];
@@ -41,29 +47,20 @@ export async function composition(
       const lease = await leases.acquire(url);
       releases.push(lease.release);
       if (signal.aborted) throw new Error("aborted");
-      const geometry = new THREE.PlaneGeometry(width, height, 1, url === "/art/runner.webp" || url === "/art/table.webp" ? 2 : 1);
-      if (url === "/art/table.webp") {
+      const geometry = new THREE.PlaneGeometry(width, height, 1, url === "/art/runner.webp" ? 2 : 1);
+      const meshZ = appearance?.z ?? z * 0.02;
+      if (url === "/art/runner.webp" && desk) {
+        // Drape the cloth over the real desk: the top row lies on the tabletop, the
+        // middle row sits on the front edge and the bottom hangs down the apron.
         const uv = geometry.attributes.uv;
         const positions = geometry.attributes.position;
-        for (let i = 0; i < uv.count; i++) {
-          const row = Math.floor(i / 2);
-          uv.setY(i, [1, 0.64, 0][row]);
-          if (row === 1) positions.setY(i, height * 0.14);
-          if (mode === "landing" && row === 0)
-            positions.setY(i, height * (0.14 + 0.36 * 0.55));
-        }
-      }
-      if (url === "/art/runner.webp") {
-        // Keep the cloth's bend on the same desk edge as every tabletop prop.
-        const uv = geometry.attributes.uv;
-        const positions = geometry.attributes.position;
+        const lie = Math.min(desk.depth * 0.33, height * 0.3475);
         for (let i = 0; i < uv.count; i++) {
           const row = Math.floor(i / 2);
           uv.setY(i, [0.895, 0.69, 0.105][row]);
-          if (row === 1) positions.setY(i, height * 0.19);
-          // Extend the cloth to the rear edge, beneath the reading mat.
-          if (row === 0)
-            positions.setY(i, height * (0.19 + 0.3475 * (mode === "landing" ? 0.55 : 1)));
+          if (row === 0) { positions.setY(i, desk.top + 0.002 - y); positions.setZ(i, desk.front - lie - meshZ); }
+          if (row === 1) { positions.setY(i, desk.top + 0.006 - y); positions.setZ(i, desk.front + 0.015 - meshZ); }
+          if (row === 2) { positions.setY(i, desk.top - height * 0.55 - y); positions.setZ(i, desk.front + 0.02 - meshZ); }
         }
       }
       // Separate the portrait from its painted desk without mutating shared textures.
@@ -86,7 +83,8 @@ export async function composition(
         alphaTest: 0.025,
       });
       const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.set(x, y, z * 0.02);
+      mesh.position.set(x, y, meshZ);
+      if (appearance?.flat) mesh.rotation.x = -Math.PI / 2;
       mesh.renderOrder = z;
       scene.add(mesh);
       geometries.push(geometry);
@@ -97,7 +95,7 @@ export async function composition(
       }
     }
     if (mode !== "tarot") {
-      props = await createStudyProps(leases, signal);
+      props = await createStudyProps(leases, signal, mode);
       scene.add(props.group);
     }
     if (oracle) {
@@ -133,7 +131,7 @@ export async function composition(
       setShadows(enabled) { props?.lamp.setShadows(enabled); },
       scene,
       camera,
-      resize(width:number,height:number){const aspect=width/Math.max(height,1);const center=aspect<1.45?-3:0;const halfWidth=Math.max(5.2,5*aspect);camera.left=center-halfWidth;camera.right=center+halfWidth;camera.top=halfWidth/aspect;camera.bottom=-halfWidth/aspect;camera.updateProjectionMatrix();},
+      resize(width:number,height:number){const aspect=width/Math.max(height,1);const center=aspect<1.45?-3:0;const halfWidth=Math.max(5.2,5*aspect);camera.left=center-halfWidth;camera.right=center+halfWidth;camera.top=halfWidth/aspect*Math.cos(pitch);camera.bottom=-halfWidth/aspect*Math.cos(pitch);camera.updateProjectionMatrix();},
       enter() {
         enteredAt = null;
       },

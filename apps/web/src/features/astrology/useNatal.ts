@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import type { BirthInput } from "@pxoracle/contracts";
 import type { NatalInput } from "@pxoracle/contracts/natal";
 import type { PlaceProvenance } from "@pxoracle/contracts/atlas";
-import { useOracleStore } from "../../state/store";
+import { useOracle, useOracleStore } from "../../state/store";
 import {
   loadNatalContent,
   NATAL_VERSIONS,
@@ -31,6 +31,8 @@ export function useNatal(providedEngine?: NatalEngine) {
     [notice, setNotice] = useState("");
   const [content, setContent] = useState<NatalContent | null>(null);
   const [pending, setPending] = useState<RestoreCandidate | null>(null);
+  // Increments after explicit Save/Delete so a read-only saved-data probe can refresh.
+  const [storageRevision, setStorageRevision] = useState(0);
   const [initial, setInitial] = useState<BirthInput | null>(
     (store.getState().chart?.provenance.settings as BirthInput) ?? null,
   );
@@ -43,6 +45,23 @@ export function useNatal(providedEngine?: NatalEngine) {
     typeof import("@pxoracle/engine-client/astrology") | null
   >(null);
   const mounted = useRef(true);
+  // A plan that arrives without its prose (restored or seeded after mount) loads the pack lazily.
+  const plan = useOracle((s) => s.natal.plan);
+  useEffect(() => {
+    if (!plan || content) return;
+    const abort = new AbortController();
+    void loadNatalContent(abort.signal)
+      .then((pack) => {
+        if (abort.signal.aborted || !mounted.current) return;
+        validatePlanReferences(plan, pack);
+        setContent(pack);
+      })
+      .catch((e) => {
+        if (!abort.signal.aborted && mounted.current)
+          store.getState().setNatal({ status: "error", error: message(e) });
+      });
+    return () => abort.abort();
+  }, [plan, content, store]);
   async function engine() {
     if (providedEngine) return providedEngine;
     module.current ??= await import("@pxoracle/engine-client/astrology");
@@ -128,11 +147,13 @@ export function useNatal(providedEngine?: NatalEngine) {
       store.getState().setNatal({ facts: result.facts, place });
       setBusy(false);
       void interpret(result.facts);
+      return true;
     } catch (e) {
       if (active(id)) setError(message(e));
     } finally {
       if (active(id)) setBusy(false);
     }
+    return false;
   }
   async function restore() {
     const { id } = begin();
@@ -182,26 +203,16 @@ export function useNatal(providedEngine?: NatalEngine) {
       );
       if (candidate.mode === "current")
         void interpret(result.facts, candidate.plan);
+      return true;
     } catch (e) {
-      if (!active(id)) return;
+      if (!active(id)) return false;
       setError(message(e));
       if (candidate && message(e) === "INCOMPATIBLE_CHART")
         setPending(candidate);
     } finally {
       if (active(id)) setBusy(false);
     }
-  }
-  function edit() {
-    begin();
-    setBusy(false);
-    setError("");
-    setNotice("");
-    setContent(null);
-    setPending(null);
-    const s = store.getState();
-    setInitial((s.chart?.provenance.settings as BirthInput) ?? initial);
-    setInitialPlace(s.natal.place ?? initialPlace);
-    s.setChart(null);
+    return false;
   }
   function save() {
     const s = store.getState();
@@ -219,6 +230,7 @@ export function useNatal(providedEngine?: NatalEngine) {
       setNotice(
         "Chart, birth details and interpretation saved on this device.",
       );
+      setStorageRevision((n) => n + 1);
     } catch {
       setNotice(
         "This browser could not save the reading. The current chart remains available.",
@@ -229,6 +241,7 @@ export function useNatal(providedEngine?: NatalEngine) {
     try {
       deleteNatal(localStorage);
       setNotice("Saved chart and birth details deleted.");
+      setStorageRevision((n) => n + 1);
     } catch {
       setNotice("Storage is unavailable.");
     }
@@ -243,8 +256,8 @@ export function useNatal(providedEngine?: NatalEngine) {
     pending,
     calculate,
     restore,
-    edit,
     save,
+    storageRevision,
     remove,
     retry: () => {
       const facts = store.getState().natal.facts;
@@ -257,6 +270,7 @@ export function useNatal(providedEngine?: NatalEngine) {
         void interpret(facts);
       }
     },
+    clearError: () => setError(""),
     recalculateSaved: () => {
       if (pending)
         void calculate(
