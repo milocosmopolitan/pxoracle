@@ -13,7 +13,8 @@ test("real tarot: sequential reveal, bounded face loading, same-card retry and r
 }) => {
   const faces: string[] = [];
   let fail = true;
-  await page.route("**/art/cards/*", (route) => {
+  // Card illustrations only; frame, banner and billboard parts load normally.
+  await page.route("**/art/decks/*/*.webp", (route) => {
     faces.push(route.request().url());
     return fail ? route.abort() : route.continue();
   });
