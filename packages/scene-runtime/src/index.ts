@@ -23,16 +23,20 @@ export class TextureLeases {
     string,
     { refs: number; promise: Promise<THREE.Texture> }
   >();
-  async acquire(url: string) {
+  acquire(url: string) {
+    return this.acquireWith(url, () =>
+      new THREE.TextureLoader().loadAsync(url),
+    );
+  }
+  /** Share a texture built by `create` (e.g. a composed card face) under the same ref counting. */
+  async acquireWith(url: string, create: () => Promise<THREE.Texture>) {
     let entry = this.entries.get(url);
     if (!entry) {
-      const promise = new THREE.TextureLoader()
-        .loadAsync(url)
-        .then((texture) => {
-          texture.colorSpace = THREE.SRGBColorSpace;
-          texture.magFilter = THREE.NearestFilter;
-          return texture;
-        });
+      const promise = create().then((texture) => {
+        texture.colorSpace = THREE.SRGBColorSpace;
+        texture.magFilter = THREE.NearestFilter;
+        return texture;
+      });
       entry = { refs: 0, promise };
       this.entries.set(url, entry);
     }

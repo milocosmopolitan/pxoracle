@@ -56,7 +56,9 @@ export function createCardInscription() {
   let lastName = "", texture: THREE.Texture | undefined;
   return {
     group,
-    update(name: string, focused: boolean, time: number, reduced: boolean) {
+    /** `name` draws the legacy label; composed faces pass "" because their banners carry text. */
+    update(name: string, focused: boolean, time: number, reduced: boolean, dustColor = 0xffce78) {
+      dustMaterial.color.set(dustColor);
       group.userData.cardName = name;
       if (name !== lastName) {
         lastName = name;

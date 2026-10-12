@@ -571,3 +571,33 @@ test("instanced anonymous cards keep page slot identities and leave confirmed ca
     THREE.TextureLoader.prototype.loadAsync = original;
   }
 });
+test("choosing a face-down card shows the deck's billboard, not the bloom outline", async () => {
+  const original = THREE.TextureLoader.prototype.loadAsync;
+  THREE.TextureLoader.prototype.loadAsync = async () => new THREE.Texture();
+  try {
+    const pool = new TextureLeases(),
+      scene = await createScene(pool, new AbortController().signal);
+    scene.resize(1100, 800);
+    const view = {
+      ...fixture,
+      phase: "selecting",
+      focus: 5,
+      cards: [],
+      selectionEffect: { id: "amethyst", outline: "#8f5fd8", dust: "#c9a6ff", billboard: "/billboard.png" },
+    };
+    scene.update(1, { tarot: view }, true);
+    await new Promise((r) => setImmediate(r));
+    scene.update(1.1, { tarot: view }, true);
+    const billboard = scene.scene.getObjectByName("card-selection-billboard"),
+      outline = scene.scene.getObjectByName("card-focus-outline"),
+      card = scene.scene.getObjectsByProperty("name", "tarot-card-5")[0];
+    assert.ok(billboard.visible && billboard.material.map, "billboard shown once loaded");
+    assert.equal(outline.visible, false, "no bloom outline while choosing");
+    assert.ok(Math.abs(billboard.position.x - card.position.x) < 1e-6);
+    assert.ok(billboard.position.z < card.position.z, "billboard sits under the lifted card");
+    scene.dispose();
+    assert.equal(pool.count, 0, "billboard lease released");
+  } finally {
+    THREE.TextureLoader.prototype.loadAsync = original;
+  }
+});

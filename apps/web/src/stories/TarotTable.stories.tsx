@@ -2,7 +2,14 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { SceneCanvas } from "../runtime/SceneCanvas";
 import type { TarotView, TarotPhase } from "@pxoracle/contracts";
-import manifest from "../../public/art/manifest.json";
+import type { CardPartsCatalog, DeckManifest } from "@pxoracle/contracts";
+import houseDeck from "../../public/art/decks/pxoracle/deck.json";
+import cardParts from "../../public/art/card-parts/parts.json";
+import { lookKey, resolveCardLook, resolveEffect } from "../features/tarot/deck";
+const deck = {
+  deck: houseDeck as unknown as DeckManifest,
+  parts: cardParts as unknown as CardPartsCatalog,
+};
 function TableStory({
   cameraProfile,
   handPose,
@@ -47,6 +54,7 @@ function TableStory({
     index: 0,
     attempt: retry,
     spread: count,
+    selectionEffect: resolveEffect(deck.parts, deck.deck.defaults.effect),
     cards: ["major.00", "major.01", "major.02"]
       .slice(
         0,
@@ -58,13 +66,12 @@ function TableStory({
       )
       .map((id, i) => ({
         slot: i + selectedSlot,
-        name: manifest.cards[id as keyof typeof manifest.cards].name,
+        name: deck.deck.cards[id].name,
         revealed: stage === "reading" || stage === "revealing",
         reversed: reversed || i === 1,
-        face:
-          failed && !retry
-            ? "/art/missing-story-card.png"
-            : manifest.cards[id as keyof typeof manifest.cards].url,
+        ...(failed && !retry
+          ? { face: "/art/missing-story-card.png" }
+          : { face: lookKey(deck.deck.id, id), look: resolveCardLook(deck, id) }),
       })),
     onEvent: (event) => {
       if (reviewShot) return;

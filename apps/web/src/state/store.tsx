@@ -78,6 +78,9 @@ export interface AppState {
   tarot: TarotSession | null;
   selectedBody: string | null;
   question: string;
+  /** Chosen tarot deck; applies to the next reading's card faces. */
+  tarotDeck: string;
+  setTarotDeck: (deck: string) => void;
   setChart: (chart: Chart | null) => void;
   setTarot: (tarot: TarotSession | null) => void;
   setBody: (body: string | null) => void;
@@ -134,6 +137,8 @@ export function createAppStore() {
     tarot: null,
     selectedBody: null,
     question: "",
+    tarotDeck: "pxoracle",
+    setTarotDeck: (tarotDeck) => set({ tarotDeck }),
     setChart: (chart) =>
       set(s => ({ chart, selectedBody: null, natal: { ...emptyNatal(), revision: s.natal.revision + 1 } })),
     setTarot: (tarot) =>

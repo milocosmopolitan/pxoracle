@@ -2,8 +2,13 @@ import type {
   TarotSession,
   TarotPresentation,
   TarotView,
-  ArtManifest,
 } from "@pxoracle/contracts";
+import {
+  lookKey,
+  resolveCardLook,
+  resolveEffect,
+  type LoadedDeck,
+} from "./deck";
 export type TarotEngine = Pick<
   typeof import("@pxoracle/engine-client/tarot"),
   "create" | "select" | "reveal" | "restore" | "complete" | "evict"
@@ -176,9 +181,12 @@ export class TarotController {
 export function tarotView(
   s: TarotSession | null,
   p: TarotPresentation,
-  art: ArtManifest | null,
+  deck: LoadedDeck | null,
 ): TarotView {
   return {
+    ...(deck
+      ? { selectionEffect: resolveEffect(deck.parts, deck.deck.defaults.effect) }
+      : {}),
     phase: p.phase,
     revision: p.revision,
     page: p.page,
@@ -191,8 +199,13 @@ export function tarotView(
         slot: x.slot,
         reversed: x.card.orientation === "reversed",
         revealed: x.revealed,
-        face: art?.cards[x.card.cardId]?.url,
-        name: art?.cards[x.card.cardId]?.name,
+        ...(deck
+          ? {
+              face: lookKey(deck.deck.id, x.card.cardId),
+              name: deck.deck.cards[x.card.cardId]?.name,
+              look: resolveCardLook(deck, x.card.cardId),
+            }
+          : {}),
       })) ?? [],
   };
 }
